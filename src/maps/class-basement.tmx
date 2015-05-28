@@ -8,9 +8,9 @@
   <property name="soundtrack" value="greendale-alt"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="72" height="14">
@@ -25,12 +25,12 @@
  </layer>
  <layer name="Tile Layer 3" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ7E6EcGs4HmzCHCLHQwlYD8ZCRMrHnTCJhFrDsIuY1cQCtzR8EoGAWjgBIAAI5VGf8=
+   eJxjYBgFo2AUjIKBA/4D7QAcAOiuBiQ23e2kJsjDwabEPFLNBKnJBeI2IG4lwz5qqoOBA4wMCTeAmERtBIECAXlvaltIAGTQ2T4QUGZkYFBhxC5ngUXsLxD/o5LdzUB7W4BYEU18Jg71VkSaWw+l1xKpvhGI63DIWQPdZ4MlfNJwqBcFqhXDEZ649D8Gqn+CRc9soNgcIsxCB1MJyE9GwsSCaQTMItYdhNyGDfwGhsEfAuFAjrmjYBSMglFAawAAVSgdLA==
   </data>
  </layer>
  <layer name="collision" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzKENACAMBdG2EwD7L8cSGAw43FetIfeSs2cGZTqpAAD41fYXtBFm7dYj55XxqbScVADqHDaNiF0=
+   eJzt0KENACAMRNGmW7IEhiWgU1OHO9Ua8l/y7YkzgzKcVAAA/Gr5C1rkRzs7BV9F0U6n6aQC0OcCB2w9MA==
   </data>
  </layer>
  <objectgroup name="nodes" width="72" height="14">
@@ -155,6 +155,14 @@
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/greendale/ventfan1.png"/>
     <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object name="wires" type="spawn" x="576" y="216" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="material"/>
+    <property name="sound" value="false"/>
+    <property name="spawnType" value="keypress"/>
+    <property name="sprite" value="wastebin"/>
    </properties>
   </object>
  </objectgroup>

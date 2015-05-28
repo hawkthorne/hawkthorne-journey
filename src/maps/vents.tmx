@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="24" tileheight="24" nextobjectid="482">
+<map version="1.0" orientation="orthogonal" width="50" height="30" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="16"/>
   <property name="soundtrack" value="somewhereoutthere"/>
@@ -22,12 +22,17 @@
  </layer>
  <layer name="pipe" width="50" height="30">
   <data encoding="base64" compression="zlib">
-   eJztl01OwzAQhWfJFnYgFmzgAhQJKvEjQAKWwBraZWFVqTtoUURBASRAFRwgR8lROAovrQ1Tx3ac1KGVyJM+Oa7tmXmxI9VElSpVctEr0d4buMezDcyJMTd2iBMM0A5EzKx1vtRHvgfQRn7Rkg6MxX1LPTxOnnWK//jdgvpurvAsCDqjvIHwofUg6fyuS8Hj5F33jDYv10Rf8l20x3MPfWR58U0RDwkvNDzvscqTOBePIEQ/HLUqcRZdth94Jpf5RX3odIc6b8AtMExxUotoRfposb23zG/69LEOamBjEhNUrg+5vx9oPw3xpuXjAlxS+vw1xG/8nLrEm5YP3/EqH5Pl9R2v8jFZXt/x/rMPxI1c8m6Beo64UpuGeDaZfHTT/YDVHKlxdHkPwKFr8Uz7hng2mXyotSZxTWNyvIxzldTWG/V/0CmHj6ZpjOf17YP/P6kJdJpVH6b/LaHhbmbzgViR3Mse+z7EPge6e5EvH1maU/o2H3gfkdxLdgca3r1qyv2P7796nn2TaEGpdxvsgF2Nj4bwkfdeVPZdMtGyUu8ROAYnFh+674FrnsbvE3/hY020i6I9BWfgXPRXC/hYIvt36RtbLTq5+ph1zaqPbzBUf8o=
+   eJztl71OwzAUhe/IChuIgQVegCIBEj8CJGAEZmjHwlSpGxQUUVABCVAFD5BHyaP0UThpbHDda8duHdpKOdInx7V9fU/spDFRqVKlXPROtP8BHnFtA30S9E0c4kRdlF0RM29cKLUx3xNoYH5REgfakrYlHzWOzzjNf/JpQb8317gWRM1s3kj4YD1Imn/jhlDj+I57RenLDVFP3ovG4Nx9H3leQjOKh5Q36u/3ROdF7Itn0EG9k5U6SR4tZT1wTS79R/XB6QF53oI7YOjipDrRivRRV9be0r8W0sc6qICNcUxQsT7k+n6h/DbEm5SPS3BFw/uvKn5T96lLvEn58IwX5/UvfVjn7Y0ZbiBeK3tnRhKu/yz40OE0Cz70/yOu/yz4KOp9xT133LxbYNsjrtSmIZ5NJh+t4Xqk5Bzrcbh5D8GRa/KKDgzxbDL50HNN45raZHsR+yrN7T6r/8LJw0fN1KbOG9qH+n1SEXCaVh+m7xbf91WaK2LFci3vledDrHPEnYtC+cjTnFa3+cD9iOVaKv9D/bNXRTv/qeuv7+fQpFrQ8t0Bu2CP8VEVPnzPRUWfJVMta/kegxNwavGR9502T4Pnif/wsSbKRVGegXNwIeqrI/hYIvtzGRpbLpxcfUy7ptXHD39ZhVQ=
   </data>
  </layer>
  <layer name="pipe2" width="50" height="30">
   <data encoding="base64" compression="zlib">
    eJztlMEJgDAQBLcoC7hyLMOfGHypBVmKpXhRBJWo4MNc4g7sI9w9dkgIQAghhBBCyH8ZgLHXdOGIj85F9yR21zuc9m00BVAFAh+di7PvEep/8CjWPdNk5HH1ps4eErfpPbv7WKjVa4s/p+bRXszp8S30sMWTRyps/y49bJCjRwlMsfu8JRWPGfgkTsw=
+  </data>
+ </layer>
+ <layer name="Tile Layer 10" width="50" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1EENADAMA7FgKZLxRzUSkzq1NoJTHkkAAP5WyelumM7GwGY+EAB45QIKagEn
   </data>
  </layer>
  <layer name="ladders" width="50" height="30">
@@ -56,22 +61,22 @@
    eJzt0jEKACEMBdH0Wu81XG+co5p2u4UE8pF5kE6iA5oBAAB8DTPvfkMFOrTQoYUOLd0dK+aN2ck93R1V6NBCR/re6vE/59Txr7Tc0PFEw7ygA3kHfa8OjQ==
   </data>
  </layer>
- <layer name="collision" width="50" height="30">
+ <layer name="collision" width="50" height="30" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztlksOwCAIRHv/+/R+3ZsG5g2VNg2TsFHj8BQ/xzEa7dUJw51nt4hHxuH2uaF6PJmr05fl4u75l2quo1Y79CeOaH8r526tk+odmHFE7dX9WjnIeNfnrv3LHMo+vslB6lT1r7xFDoealzrfykE9XF/iMRy6h+tLPIZD93B9icdw8Pt8Nwd5B6Nc3uQg4//MEdWVWndZPUR5qX+JjMMV/ePQ6OLolnoGKuvUIcJB59opsqYOR1coubgcTyrL+wKtU/d3
+   eJztllEOwCAIQ73/fXYOr7R/56AtisbYxB9HsE9gsZSrq7l6yKXmmS3mDI9D/aYu9IyRXpVvnhe15jv1XEavZugkDqu+kblr+yT6D/Q4rP1ovVoOJl49p92vgby9/KM5kDqurAfSd+gdq/MR5UB99bxZ8czsZXMw8Zfju3c5/vOdMB/K/8pSNfLuyuG9O6Lnor56Xqx4z+tKDib+ZA6rr9C+8/rB8oW+JTwOVejbRl1ZHNlCZyByTxliONhcM8XcqcKRtRAvKsdIeb5fXUr8Aw==
   </data>
  </layer>
- <objectgroup name="nodes">
-  <object id="1" type="climbable" x="154" y="264" width="5" height="354"/>
-  <object id="2" name="main" type="door" x="129" y="624" width="24" height="48">
+ <objectgroup name="nodes" width="0" height="0">
+  <object type="climbable" x="154" y="264" width="5" height="354"/>
+  <object name="main" type="door" x="129" y="624" width="24" height="48">
    <properties>
     <property name="level" value="womens-bathroom"/>
     <property name="sound" value="false"/>
     <property name="to" value="secret"/>
    </properties>
   </object>
-  <object id="3" type="climbable" x="1090" y="288" width="5" height="208"/>
-  <object id="4" type="door" x="1176" y="588" width="24" height="84">
+  <object type="climbable" x="1090" y="288" width="5" height="208"/>
+  <object type="door" x="1176" y="588" width="24" height="84">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="studyroom"/>
@@ -79,7 +84,7 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object id="5" type="sprite" x="253" y="187" width="24" height="24">
+  <object type="sprite" x="253" y="187" width="24" height="24">
    <properties>
     <property name="animation" value="1-5,1|1-4,2"/>
     <property name="height" value="24"/>
@@ -87,7 +92,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="6" type="door" x="289" y="697" width="53" height="23">
+  <object type="door" x="289" y="697" width="53" height="23">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="deans-office-2"/>
@@ -95,12 +100,12 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object id="7" type="enemy" x="194" y="103" width="14" height="25">
+  <object type="enemy" x="194" y="103" width="14" height="25">
    <properties>
     <property name="enemytype" value="rubberspider"/>
    </properties>
   </object>
-  <object id="8" type="sprite" x="739" y="607" width="30" height="11">
+  <object type="sprite" x="739" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -109,7 +114,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="9" type="sprite" x="657" y="603" width="30" height="11">
+  <object type="sprite" x="657" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -118,7 +123,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="10" type="sprite" x="636" y="602" width="30" height="11">
+  <object type="sprite" x="636" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -127,7 +132,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="11" type="sprite" x="678" y="606" width="30" height="11">
+  <object type="sprite" x="678" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -136,7 +141,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="12" type="sprite" x="819" y="603" width="30" height="11">
+  <object type="sprite" x="819" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -145,7 +150,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="13" type="sprite" x="658" y="602" width="30" height="11">
+  <object type="sprite" x="658" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -154,7 +159,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="14" type="sprite" x="738" y="599" width="30" height="11">
+  <object type="sprite" x="738" y="599" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -163,7 +168,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="15" type="sprite" x="834" y="609" width="30" height="11">
+  <object type="sprite" x="834" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -172,7 +177,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="16" type="sprite" x="769" y="605" width="30" height="11">
+  <object type="sprite" x="769" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -181,7 +186,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="17" type="sprite" x="690" y="602" width="30" height="11">
+  <object type="sprite" x="690" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -190,7 +195,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="18" type="sprite" x="745" y="599" width="30" height="11">
+  <object type="sprite" x="745" y="599" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -199,7 +204,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="19" type="sprite" x="630" y="608" width="30" height="11">
+  <object type="sprite" x="630" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -208,7 +213,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="20" type="sprite" x="777" y="606" width="30" height="11">
+  <object type="sprite" x="777" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -217,7 +222,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="21" type="sprite" x="718" y="605" width="30" height="11">
+  <object type="sprite" x="718" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -226,7 +231,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="22" type="sprite" x="759" y="604" width="30" height="11">
+  <object type="sprite" x="759" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -235,7 +240,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="23" type="sprite" x="806" y="611" width="30" height="11">
+  <object type="sprite" x="806" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -244,7 +249,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="24" type="sprite" x="787" y="602" width="30" height="11">
+  <object type="sprite" x="787" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -253,7 +258,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="25" type="sprite" x="948" y="608" width="30" height="11">
+  <object type="sprite" x="948" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -262,7 +267,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="26" type="sprite" x="866" y="604" width="30" height="11">
+  <object type="sprite" x="866" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -271,7 +276,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="27" type="sprite" x="845" y="603" width="30" height="11">
+  <object type="sprite" x="845" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -280,7 +285,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="28" type="sprite" x="887" y="607" width="30" height="11">
+  <object type="sprite" x="887" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -289,7 +294,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="29" type="sprite" x="1028" y="604" width="30" height="11">
+  <object type="sprite" x="1028" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -298,7 +303,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="30" type="sprite" x="867" y="603" width="30" height="11">
+  <object type="sprite" x="867" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -307,7 +312,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="31" type="sprite" x="947" y="600" width="30" height="11">
+  <object type="sprite" x="947" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -316,7 +321,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="32" type="sprite" x="1043" y="610" width="30" height="11">
+  <object type="sprite" x="1043" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -325,7 +330,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="33" type="sprite" x="978" y="606" width="30" height="11">
+  <object type="sprite" x="978" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -334,7 +339,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="34" type="sprite" x="899" y="603" width="30" height="11">
+  <object type="sprite" x="899" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -343,7 +348,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="35" type="sprite" x="954" y="600" width="30" height="11">
+  <object type="sprite" x="954" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -352,7 +357,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="36" type="sprite" x="839" y="609" width="30" height="11">
+  <object type="sprite" x="839" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -361,7 +366,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="37" type="sprite" x="986" y="607" width="30" height="11">
+  <object type="sprite" x="986" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -370,7 +375,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="38" type="sprite" x="927" y="606" width="30" height="11">
+  <object type="sprite" x="927" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -379,7 +384,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="39" type="sprite" x="968" y="605" width="30" height="11">
+  <object type="sprite" x="968" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -388,7 +393,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="40" type="sprite" x="1015" y="612" width="30" height="11">
+  <object type="sprite" x="1015" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -397,7 +402,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="41" type="sprite" x="996" y="603" width="30" height="11">
+  <object type="sprite" x="996" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -406,7 +411,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="42" type="sprite" x="862" y="620" width="30" height="11">
+  <object type="sprite" x="862" y="620" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -415,7 +420,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="43" type="sprite" x="681" y="613" width="30" height="11">
+  <object type="sprite" x="681" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -424,7 +429,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="44" type="sprite" x="1066" y="621" width="30" height="11">
+  <object type="sprite" x="1066" y="621" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -433,7 +438,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="45" type="sprite" x="799" y="617" width="30" height="11">
+  <object type="sprite" x="799" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -442,7 +447,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="46" type="sprite" x="909" y="618" width="30" height="11">
+  <object type="sprite" x="909" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -451,7 +456,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="47" type="sprite" x="700" y="617" width="30" height="11">
+  <object type="sprite" x="700" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -460,7 +465,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="48" type="sprite" x="1019" y="614" width="30" height="11">
+  <object type="sprite" x="1019" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -469,7 +474,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="49" type="sprite" x="868" y="614" width="30" height="11">
+  <object type="sprite" x="868" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -478,7 +483,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="50" type="sprite" x="792" y="616" width="30" height="11">
+  <object type="sprite" x="792" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -487,7 +492,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="51" type="sprite" x="1051" y="615" width="30" height="11">
+  <object type="sprite" x="1051" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -496,7 +501,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="52" type="sprite" x="768" y="610" width="30" height="11">
+  <object type="sprite" x="768" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -505,7 +510,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="53" type="sprite" x="1008" y="618" width="30" height="11">
+  <object type="sprite" x="1008" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -514,7 +519,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="54" type="sprite" x="971" y="619" width="30" height="11">
+  <object type="sprite" x="971" y="619" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -523,7 +528,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="55" type="sprite" x="921" y="614" width="30" height="11">
+  <object type="sprite" x="921" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -532,7 +537,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="56" type="sprite" x="762" y="618" width="30" height="11">
+  <object type="sprite" x="762" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -541,7 +546,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="57" type="sprite" x="1037" y="623" width="30" height="11">
+  <object type="sprite" x="1037" y="623" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -550,7 +555,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="58" type="sprite" x="841" y="614" width="30" height="11">
+  <object type="sprite" x="841" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -559,7 +564,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="59" type="sprite" x="856" y="620" width="30" height="11">
+  <object type="sprite" x="856" y="620" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -568,7 +573,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="60" type="sprite" x="829" y="622" width="30" height="11">
+  <object type="sprite" x="829" y="622" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -577,7 +582,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="61" type="sprite" x="969" y="611" width="30" height="11">
+  <object type="sprite" x="969" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -586,7 +591,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="62" type="sprite" x="760" y="610" width="30" height="11">
+  <object type="sprite" x="760" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -595,7 +600,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="63" type="sprite" x="990" y="616" width="30" height="11">
+  <object type="sprite" x="990" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -604,7 +609,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="64" type="sprite" x="781" y="615" width="30" height="11">
+  <object type="sprite" x="781" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -613,7 +618,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="65" type="sprite" x="652" y="619" width="30" height="11">
+  <object type="sprite" x="652" y="619" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -622,7 +627,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="66" type="sprite" x="890" y="614" width="30" height="11">
+  <object type="sprite" x="890" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -631,7 +636,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="67" type="sprite" x="950" y="617" width="30" height="11">
+  <object type="sprite" x="950" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -640,7 +645,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="68" type="sprite" x="679" y="614" width="30" height="11">
+  <object type="sprite" x="679" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -649,7 +654,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="69" type="sprite" x="810" y="613" width="30" height="11">
+  <object type="sprite" x="810" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -658,7 +663,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="70" type="sprite" x="712" y="613" width="30" height="11">
+  <object type="sprite" x="712" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -667,7 +672,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="71" type="sprite" x="977" y="611" width="30" height="11">
+  <object type="sprite" x="977" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -676,7 +681,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="72" type="sprite" x="741" y="616" width="30" height="11">
+  <object type="sprite" x="741" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -685,7 +690,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="73" type="sprite" x="658" y="613" width="30" height="11">
+  <object type="sprite" x="658" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -694,7 +699,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="74" type="sprite" x="1001" y="617" width="30" height="11">
+  <object type="sprite" x="1001" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -703,7 +708,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="75" type="sprite" x="888" y="615" width="30" height="11">
+  <object type="sprite" x="888" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -712,7 +717,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="76" type="sprite" x="993" y="607" width="30" height="11">
+  <object type="sprite" x="993" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -721,7 +726,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="77" type="sprite" x="811" y="600" width="30" height="11">
+  <object type="sprite" x="811" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -730,7 +735,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="78" type="sprite" x="1197" y="608" width="30" height="11">
+  <object type="sprite" x="1197" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -739,7 +744,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="79" type="sprite" x="931" y="604" width="30" height="11">
+  <object type="sprite" x="931" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -748,7 +753,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="80" type="sprite" x="1041" y="605" width="30" height="11">
+  <object type="sprite" x="1041" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -757,7 +762,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="81" type="sprite" x="832" y="604" width="30" height="11">
+  <object type="sprite" x="832" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -766,7 +771,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="82" type="sprite" x="1150" y="601" width="30" height="11">
+  <object type="sprite" x="1150" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -775,7 +780,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="83" type="sprite" x="999" y="601" width="30" height="11">
+  <object type="sprite" x="999" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -784,7 +789,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="84" type="sprite" x="922" y="603" width="30" height="11">
+  <object type="sprite" x="922" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -793,7 +798,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="85" type="sprite" x="1182" y="602" width="30" height="11">
+  <object type="sprite" x="1182" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -802,7 +807,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="86" type="sprite" x="898" y="597" width="30" height="11">
+  <object type="sprite" x="898" y="597" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -811,7 +816,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="87" type="sprite" x="1140" y="605" width="30" height="11">
+  <object type="sprite" x="1140" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -820,7 +825,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="88" type="sprite" x="1102" y="606" width="30" height="11">
+  <object type="sprite" x="1102" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -829,7 +834,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="89" type="sprite" x="1053" y="601" width="30" height="11">
+  <object type="sprite" x="1053" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -838,7 +843,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="90" type="sprite" x="892" y="605" width="30" height="11">
+  <object type="sprite" x="892" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -847,7 +852,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="91" type="sprite" x="1169" y="610" width="30" height="11">
+  <object type="sprite" x="1169" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -856,7 +861,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="92" type="sprite" x="973" y="601" width="30" height="11">
+  <object type="sprite" x="973" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -865,7 +870,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="93" type="sprite" x="988" y="607" width="30" height="11">
+  <object type="sprite" x="988" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -874,7 +879,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="94" type="sprite" x="960" y="609" width="30" height="11">
+  <object type="sprite" x="960" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -883,7 +888,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="95" type="sprite" x="1101" y="598" width="30" height="11">
+  <object type="sprite" x="1101" y="598" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -892,7 +897,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="96" type="sprite" x="892" y="597" width="30" height="11">
+  <object type="sprite" x="892" y="597" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -901,7 +906,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="97" type="sprite" x="1122" y="603" width="30" height="11">
+  <object type="sprite" x="1122" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -910,7 +915,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="98" type="sprite" x="913" y="602" width="30" height="11">
+  <object type="sprite" x="913" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -919,7 +924,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="99" type="sprite" x="784" y="606" width="30" height="11">
+  <object type="sprite" x="784" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -928,7 +933,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="100" type="sprite" x="1021" y="601" width="30" height="11">
+  <object type="sprite" x="1021" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -937,7 +942,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="101" type="sprite" x="1081" y="604" width="30" height="11">
+  <object type="sprite" x="1081" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -946,7 +951,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="102" type="sprite" x="811" y="601" width="30" height="11">
+  <object type="sprite" x="811" y="601" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -955,7 +960,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="103" type="sprite" x="940" y="600" width="30" height="11">
+  <object type="sprite" x="940" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -964,7 +969,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="104" type="sprite" x="844" y="600" width="30" height="11">
+  <object type="sprite" x="844" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -973,7 +978,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="105" type="sprite" x="1108" y="598" width="30" height="11">
+  <object type="sprite" x="1108" y="598" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -982,7 +987,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="106" type="sprite" x="871" y="603" width="30" height="11">
+  <object type="sprite" x="871" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -991,7 +996,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="107" type="sprite" x="790" y="600" width="30" height="11">
+  <object type="sprite" x="790" y="600" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1000,7 +1005,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="108" type="sprite" x="1132" y="604" width="30" height="11">
+  <object type="sprite" x="1132" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1009,7 +1014,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="109" type="sprite" x="1020" y="602" width="30" height="11">
+  <object type="sprite" x="1020" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1018,7 +1023,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="110" type="sprite" x="958" y="617" width="30" height="11">
+  <object type="sprite" x="958" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1027,7 +1032,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="111" type="sprite" x="777" y="610" width="30" height="11">
+  <object type="sprite" x="777" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1036,7 +1041,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="112" type="sprite" x="1163" y="618" width="30" height="11">
+  <object type="sprite" x="1163" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1045,7 +1050,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="113" type="sprite" x="896" y="614" width="30" height="11">
+  <object type="sprite" x="896" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1054,7 +1059,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="114" type="sprite" x="1007" y="615" width="30" height="11">
+  <object type="sprite" x="1007" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1063,7 +1068,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="115" type="sprite" x="797" y="614" width="30" height="11">
+  <object type="sprite" x="797" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1072,7 +1077,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="116" type="sprite" x="1115" y="611" width="30" height="11">
+  <object type="sprite" x="1115" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1081,7 +1086,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="117" type="sprite" x="964" y="611" width="30" height="11">
+  <object type="sprite" x="964" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1090,7 +1095,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="118" type="sprite" x="888" y="613" width="30" height="11">
+  <object type="sprite" x="888" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1099,7 +1104,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="119" type="sprite" x="1148" y="612" width="30" height="11">
+  <object type="sprite" x="1148" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1108,7 +1113,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="120" type="sprite" x="864" y="607" width="30" height="11">
+  <object type="sprite" x="864" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1117,7 +1122,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="121" type="sprite" x="1106" y="615" width="30" height="11">
+  <object type="sprite" x="1106" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1126,7 +1131,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="122" type="sprite" x="1067" y="616" width="30" height="11">
+  <object type="sprite" x="1067" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1135,7 +1140,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="123" type="sprite" x="1019" y="611" width="30" height="11">
+  <object type="sprite" x="1019" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1144,7 +1149,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="124" type="sprite" x="858" y="615" width="30" height="11">
+  <object type="sprite" x="858" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1153,7 +1158,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="125" type="sprite" x="1134" y="620" width="30" height="11">
+  <object type="sprite" x="1134" y="620" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1162,7 +1167,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="126" type="sprite" x="938" y="611" width="30" height="11">
+  <object type="sprite" x="938" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1171,7 +1176,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="127" type="sprite" x="953" y="617" width="30" height="11">
+  <object type="sprite" x="953" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1180,7 +1185,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="128" type="sprite" x="925" y="619" width="30" height="11">
+  <object type="sprite" x="925" y="619" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1189,7 +1194,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="129" type="sprite" x="1067" y="608" width="30" height="11">
+  <object type="sprite" x="1067" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1198,7 +1203,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="130" type="sprite" x="857" y="607" width="30" height="11">
+  <object type="sprite" x="857" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1207,7 +1212,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="131" type="sprite" x="1088" y="613" width="30" height="11">
+  <object type="sprite" x="1088" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1216,7 +1221,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="132" type="sprite" x="878" y="612" width="30" height="11">
+  <object type="sprite" x="878" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1225,7 +1230,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="133" type="sprite" x="749" y="616" width="30" height="11">
+  <object type="sprite" x="749" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1234,7 +1239,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="134" type="sprite" x="986" y="611" width="30" height="11">
+  <object type="sprite" x="986" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1243,7 +1248,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="135" type="sprite" x="1046" y="614" width="30" height="11">
+  <object type="sprite" x="1046" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1252,7 +1257,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="136" type="sprite" x="776" y="611" width="30" height="11">
+  <object type="sprite" x="776" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1261,7 +1266,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="137" type="sprite" x="906" y="610" width="30" height="11">
+  <object type="sprite" x="906" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1270,7 +1275,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="138" type="sprite" x="809" y="610" width="30" height="11">
+  <object type="sprite" x="809" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1279,7 +1284,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="139" type="sprite" x="1073" y="608" width="30" height="11">
+  <object type="sprite" x="1073" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1288,7 +1293,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="140" type="sprite" x="837" y="613" width="30" height="11">
+  <object type="sprite" x="837" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1297,7 +1302,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="141" type="sprite" x="755" y="610" width="30" height="11">
+  <object type="sprite" x="755" y="610" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1306,7 +1311,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="142" type="sprite" x="1097" y="614" width="30" height="11">
+  <object type="sprite" x="1097" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1315,7 +1320,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="143" type="sprite" x="985" y="612" width="30" height="11">
+  <object type="sprite" x="985" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1324,7 +1329,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="144" type="sprite" x="702" y="611" width="30" height="11">
+  <object type="sprite" x="702" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1333,7 +1338,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="145" type="sprite" x="705" y="615" width="30" height="11">
+  <object type="sprite" x="705" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1342,7 +1347,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="146" type="sprite" x="630" y="620" width="30" height="11">
+  <object type="sprite" x="630" y="620" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1351,7 +1356,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="147" type="sprite" x="674" y="613" width="30" height="11">
+  <object type="sprite" x="674" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1360,7 +1365,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="148" type="sprite" x="649" y="617" width="30" height="11">
+  <object type="sprite" x="649" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1369,7 +1374,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="149" type="sprite" x="652" y="608" width="30" height="11">
+  <object type="sprite" x="652" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1378,7 +1383,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="150" type="sprite" x="655" y="604" width="30" height="11">
+  <object type="sprite" x="655" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1387,7 +1392,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="151" type="sprite" x="730" y="622" width="30" height="11">
+  <object type="sprite" x="730" y="622" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1396,7 +1401,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="152" type="sprite" x="677" y="612" width="30" height="11">
+  <object type="sprite" x="677" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1405,7 +1410,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="153" type="sprite" x="644" y="613" width="30" height="11">
+  <object type="sprite" x="644" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1414,7 +1419,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="154" type="sprite" x="678" y="615" width="30" height="11">
+  <object type="sprite" x="678" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1423,7 +1428,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="155" type="sprite" x="679" y="603" width="30" height="11">
+  <object type="sprite" x="679" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1432,7 +1437,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="156" type="sprite" x="734" y="606" width="30" height="11">
+  <object type="sprite" x="734" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1441,7 +1446,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="157" type="sprite" x="617" y="618" width="30" height="11">
+  <object type="sprite" x="617" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1450,7 +1455,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="158" type="sprite" x="739" y="605" width="30" height="11">
+  <object type="sprite" x="739" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1459,7 +1464,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="159" type="sprite" x="736" y="616" width="30" height="11">
+  <object type="sprite" x="736" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1468,7 +1473,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="160" type="sprite" x="665" y="616" width="30" height="11">
+  <object type="sprite" x="665" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1477,7 +1482,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="161" type="sprite" x="735" y="605" width="30" height="11">
+  <object type="sprite" x="735" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1486,7 +1491,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="162" type="sprite" x="709" y="616" width="30" height="11">
+  <object type="sprite" x="709" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1495,7 +1500,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="163" type="sprite" x="732" y="609" width="30" height="11">
+  <object type="sprite" x="732" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1504,7 +1509,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="164" type="sprite" x="660" y="618" width="30" height="11">
+  <object type="sprite" x="660" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1513,7 +1518,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="165" type="sprite" x="712" y="602" width="30" height="11">
+  <object type="sprite" x="712" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1522,7 +1527,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="166" type="sprite" x="645" y="608" width="30" height="11">
+  <object type="sprite" x="645" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1531,7 +1536,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="167" type="sprite" x="687" y="605" width="30" height="11">
+  <object type="sprite" x="687" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1540,7 +1545,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="168" type="sprite" x="623" y="612" width="30" height="11">
+  <object type="sprite" x="623" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1549,7 +1554,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="169" type="sprite" x="726" y="617" width="30" height="11">
+  <object type="sprite" x="726" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1558,7 +1563,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="170" type="sprite" x="724" y="622" width="30" height="11">
+  <object type="sprite" x="724" y="622" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1567,7 +1572,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="171" type="sprite" x="627" y="606" width="30" height="11">
+  <object type="sprite" x="627" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1576,7 +1581,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="172" type="sprite" x="628" y="612" width="30" height="11">
+  <object type="sprite" x="628" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1585,7 +1590,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="173" type="sprite" x="645" y="612" width="30" height="11">
+  <object type="sprite" x="645" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1594,7 +1599,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="174" type="sprite" x="713" y="605" width="30" height="11">
+  <object type="sprite" x="713" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1603,7 +1608,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="175" type="sprite" x="658" y="602" width="30" height="11">
+  <object type="sprite" x="658" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1612,7 +1617,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="176" type="sprite" x="637" y="607" width="30" height="11">
+  <object type="sprite" x="637" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1621,7 +1626,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="177" type="sprite" x="636" y="612" width="30" height="11">
+  <object type="sprite" x="636" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1630,7 +1635,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="178" type="sprite" x="667" y="619" width="30" height="11">
+  <object type="sprite" x="667" y="619" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1639,7 +1644,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="179" type="sprite" x="746" y="614" width="30" height="11">
+  <object type="sprite" x="746" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1648,7 +1653,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="180" type="sprite" x="725" y="609" width="30" height="11">
+  <object type="sprite" x="725" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1657,7 +1662,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="181" type="sprite" x="700" y="606" width="30" height="11">
+  <object type="sprite" x="700" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1666,7 +1671,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="182" type="sprite" x="707" y="611" width="30" height="11">
+  <object type="sprite" x="707" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1675,7 +1680,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="183" type="sprite" x="679" y="602" width="30" height="11">
+  <object type="sprite" x="679" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1684,7 +1689,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="184" type="sprite" x="697" y="624" width="30" height="11">
+  <object type="sprite" x="697" y="624" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1693,7 +1698,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="185" type="sprite" x="1157" y="611" width="30" height="11">
+  <object type="sprite" x="1157" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1702,7 +1707,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="186" type="sprite" x="1160" y="615" width="30" height="11">
+  <object type="sprite" x="1160" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1711,7 +1716,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="187" type="sprite" x="1085" y="620" width="30" height="11">
+  <object type="sprite" x="1085" y="620" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1720,7 +1725,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="188" type="sprite" x="1129" y="613" width="30" height="11">
+  <object type="sprite" x="1129" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1729,7 +1734,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="189" type="sprite" x="1103" y="617" width="30" height="11">
+  <object type="sprite" x="1103" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1738,7 +1743,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="190" type="sprite" x="1106" y="608" width="30" height="11">
+  <object type="sprite" x="1106" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1747,7 +1752,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="191" type="sprite" x="1109" y="604" width="30" height="11">
+  <object type="sprite" x="1109" y="604" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1756,7 +1761,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="192" type="sprite" x="1184" y="622" width="30" height="11">
+  <object type="sprite" x="1184" y="622" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1765,7 +1770,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="193" type="sprite" x="1132" y="612" width="30" height="11">
+  <object type="sprite" x="1132" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1774,7 +1779,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="194" type="sprite" x="1099" y="613" width="30" height="11">
+  <object type="sprite" x="1099" y="613" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1783,7 +1788,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="195" type="sprite" x="1133" y="615" width="30" height="11">
+  <object type="sprite" x="1133" y="615" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1792,7 +1797,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="196" type="sprite" x="1133" y="603" width="30" height="11">
+  <object type="sprite" x="1133" y="603" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1801,7 +1806,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="197" type="sprite" x="1189" y="606" width="30" height="11">
+  <object type="sprite" x="1189" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1810,7 +1815,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="198" type="sprite" x="1071" y="618" width="30" height="11">
+  <object type="sprite" x="1071" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1819,7 +1824,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="199" type="sprite" x="1193" y="605" width="30" height="11">
+  <object type="sprite" x="1193" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1828,7 +1833,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="200" type="sprite" x="1190" y="616" width="30" height="11">
+  <object type="sprite" x="1190" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1837,7 +1842,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="201" type="sprite" x="1120" y="616" width="30" height="11">
+  <object type="sprite" x="1120" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1846,7 +1851,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="202" type="sprite" x="1190" y="605" width="30" height="11">
+  <object type="sprite" x="1190" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1855,7 +1860,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="203" type="sprite" x="1163" y="616" width="30" height="11">
+  <object type="sprite" x="1163" y="616" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1864,7 +1869,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="204" type="sprite" x="1187" y="609" width="30" height="11">
+  <object type="sprite" x="1187" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1873,7 +1878,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="205" type="sprite" x="1115" y="618" width="30" height="11">
+  <object type="sprite" x="1115" y="618" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1882,7 +1887,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="206" type="sprite" x="1166" y="602" width="30" height="11">
+  <object type="sprite" x="1166" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1891,7 +1896,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="207" type="sprite" x="1100" y="608" width="30" height="11">
+  <object type="sprite" x="1100" y="608" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1900,7 +1905,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="208" type="sprite" x="1142" y="605" width="30" height="11">
+  <object type="sprite" x="1142" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1909,7 +1914,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="209" type="sprite" x="1077" y="612" width="30" height="11">
+  <object type="sprite" x="1077" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1918,7 +1923,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="210" type="sprite" x="1181" y="617" width="30" height="11">
+  <object type="sprite" x="1181" y="617" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1927,7 +1932,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="211" type="sprite" x="1178" y="622" width="30" height="11">
+  <object type="sprite" x="1178" y="622" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1936,7 +1941,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="212" type="sprite" x="1082" y="606" width="30" height="11">
+  <object type="sprite" x="1082" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1945,7 +1950,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="213" type="sprite" x="1083" y="612" width="30" height="11">
+  <object type="sprite" x="1083" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1954,7 +1959,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="214" type="sprite" x="1100" y="612" width="30" height="11">
+  <object type="sprite" x="1100" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1963,7 +1968,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="215" type="sprite" x="1168" y="605" width="30" height="11">
+  <object type="sprite" x="1168" y="605" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1972,7 +1977,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="216" type="sprite" x="1112" y="602" width="30" height="11">
+  <object type="sprite" x="1112" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1981,7 +1986,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="217" type="sprite" x="1091" y="607" width="30" height="11">
+  <object type="sprite" x="1091" y="607" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1990,7 +1995,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="218" type="sprite" x="1091" y="612" width="30" height="11">
+  <object type="sprite" x="1091" y="612" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -1999,7 +2004,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="219" type="sprite" x="1121" y="619" width="30" height="11">
+  <object type="sprite" x="1121" y="619" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2008,7 +2013,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="220" type="sprite" x="1201" y="614" width="30" height="11">
+  <object type="sprite" x="1201" y="614" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2017,7 +2022,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="221" type="sprite" x="1180" y="609" width="30" height="11">
+  <object type="sprite" x="1180" y="609" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2026,7 +2031,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="222" type="sprite" x="1154" y="606" width="30" height="11">
+  <object type="sprite" x="1154" y="606" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2035,7 +2040,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="223" type="sprite" x="1162" y="611" width="30" height="11">
+  <object type="sprite" x="1162" y="611" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2044,7 +2049,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="224" type="sprite" x="1133" y="602" width="30" height="11">
+  <object type="sprite" x="1133" y="602" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2053,7 +2058,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="225" type="sprite" x="1151" y="624" width="30" height="11">
+  <object type="sprite" x="1151" y="624" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2062,7 +2067,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="226" type="sprite" x="58" y="167" width="30" height="11">
+  <object type="sprite" x="58" y="167" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2071,7 +2076,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="227" type="sprite" x="57" y="175" width="30" height="11">
+  <object type="sprite" x="57" y="175" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2080,7 +2085,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="228" type="sprite" x="31" y="167" width="30" height="11">
+  <object type="sprite" x="31" y="167" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2089,7 +2094,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="229" type="sprite" x="31" y="167" width="30" height="11">
+  <object type="sprite" x="31" y="167" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2098,7 +2103,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="230" type="sprite" x="14" y="174" width="30" height="11">
+  <object type="sprite" x="14" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2107,7 +2112,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="231" type="sprite" x="18" y="172" width="30" height="11">
+  <object type="sprite" x="18" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2116,7 +2121,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="232" type="sprite" x="-4" y="166" width="30" height="11">
+  <object type="sprite" x="-4" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2125,7 +2130,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="233" type="sprite" x="-4" y="173" width="30" height="11">
+  <object type="sprite" x="-4" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2134,7 +2139,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="234" type="sprite" x="42" y="171" width="30" height="11">
+  <object type="sprite" x="42" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2143,7 +2148,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="235" type="sprite" x="340" y="171" width="30" height="11">
+  <object type="sprite" x="340" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2152,7 +2157,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="236" type="sprite" x="375" y="165" width="30" height="11">
+  <object type="sprite" x="375" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2161,7 +2166,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="237" type="sprite" x="340" y="164" width="30" height="11">
+  <object type="sprite" x="340" y="164" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2170,7 +2175,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="238" type="sprite" x="362" y="170" width="30" height="11">
+  <object type="sprite" x="362" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2179,7 +2184,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="239" type="sprite" x="375" y="165" width="30" height="11">
+  <object type="sprite" x="375" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2188,7 +2193,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="240" type="sprite" x="358" y="172" width="30" height="11">
+  <object type="sprite" x="358" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2197,7 +2202,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="241" type="sprite" x="386" y="169" width="30" height="11">
+  <object type="sprite" x="386" y="169" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2206,7 +2211,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="242" type="sprite" x="401" y="173" width="30" height="11">
+  <object type="sprite" x="401" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2215,7 +2220,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="243" type="sprite" x="410" y="165" width="30" height="11">
+  <object type="sprite" x="410" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2224,7 +2229,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="244" type="sprite" x="419" y="171" width="30" height="11">
+  <object type="sprite" x="419" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2233,7 +2238,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="245" type="sprite" x="454" y="165" width="30" height="11">
+  <object type="sprite" x="454" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2242,7 +2247,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="246" type="sprite" x="419" y="164" width="30" height="11">
+  <object type="sprite" x="419" y="164" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2251,7 +2256,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="247" type="sprite" x="441" y="170" width="30" height="11">
+  <object type="sprite" x="441" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2260,7 +2265,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="248" type="sprite" x="454" y="165" width="30" height="11">
+  <object type="sprite" x="454" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2269,7 +2274,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="249" type="sprite" x="437" y="172" width="30" height="11">
+  <object type="sprite" x="437" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2278,7 +2283,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="250" type="sprite" x="465" y="169" width="30" height="11">
+  <object type="sprite" x="465" y="169" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2287,7 +2292,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="251" type="sprite" x="480" y="173" width="30" height="11">
+  <object type="sprite" x="480" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2296,7 +2301,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="252" type="sprite" x="489" y="165" width="30" height="11">
+  <object type="sprite" x="489" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2305,7 +2310,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="253" type="sprite" x="355" y="172" width="30" height="11">
+  <object type="sprite" x="355" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2314,7 +2319,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="254" type="sprite" x="390" y="166" width="30" height="11">
+  <object type="sprite" x="390" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2323,7 +2328,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="255" type="sprite" x="355" y="165" width="30" height="11">
+  <object type="sprite" x="355" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2332,7 +2337,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="256" type="sprite" x="377" y="171" width="30" height="11">
+  <object type="sprite" x="377" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2341,7 +2346,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="257" type="sprite" x="390" y="166" width="30" height="11">
+  <object type="sprite" x="390" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2350,7 +2355,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="258" type="sprite" x="373" y="173" width="30" height="11">
+  <object type="sprite" x="373" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2359,7 +2364,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="259" type="sprite" x="401" y="170" width="30" height="11">
+  <object type="sprite" x="401" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2368,7 +2373,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="260" type="sprite" x="416" y="174" width="30" height="11">
+  <object type="sprite" x="416" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2377,7 +2382,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="261" type="sprite" x="425" y="166" width="30" height="11">
+  <object type="sprite" x="425" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2386,7 +2391,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="262" type="sprite" x="423" y="172" width="30" height="11">
+  <object type="sprite" x="423" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2395,7 +2400,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="263" type="sprite" x="458" y="166" width="30" height="11">
+  <object type="sprite" x="458" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2404,7 +2409,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="264" type="sprite" x="423" y="165" width="30" height="11">
+  <object type="sprite" x="423" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2413,7 +2418,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="265" type="sprite" x="445" y="171" width="30" height="11">
+  <object type="sprite" x="445" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2422,7 +2427,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="266" type="sprite" x="458" y="166" width="30" height="11">
+  <object type="sprite" x="458" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2431,7 +2436,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="267" type="sprite" x="441" y="173" width="30" height="11">
+  <object type="sprite" x="441" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2440,7 +2445,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="268" type="sprite" x="469" y="170" width="30" height="11">
+  <object type="sprite" x="469" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2449,7 +2454,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="269" type="sprite" x="484" y="174" width="30" height="11">
+  <object type="sprite" x="484" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2458,7 +2463,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="270" type="sprite" x="493" y="166" width="30" height="11">
+  <object type="sprite" x="493" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2467,7 +2472,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="271" type="sprite" x="783" y="171" width="30" height="11">
+  <object type="sprite" x="783" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2476,7 +2481,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="272" type="sprite" x="714" y="171" width="30" height="11">
+  <object type="sprite" x="714" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2485,7 +2490,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="273" type="sprite" x="762" y="166" width="30" height="11">
+  <object type="sprite" x="762" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2494,7 +2499,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="274" type="sprite" x="747" y="166" width="30" height="11">
+  <object type="sprite" x="747" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2503,7 +2508,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="275" type="sprite" x="727" y="166" width="30" height="11">
+  <object type="sprite" x="727" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2512,7 +2517,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="276" type="sprite" x="807" y="170" width="30" height="11">
+  <object type="sprite" x="807" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2521,7 +2526,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="277" type="sprite" x="677" y="172" width="30" height="11">
+  <object type="sprite" x="677" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2530,7 +2535,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="278" type="sprite" x="796" y="166" width="30" height="11">
+  <object type="sprite" x="796" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2539,7 +2544,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="279" type="sprite" x="712" y="166" width="30" height="11">
+  <object type="sprite" x="712" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2548,7 +2553,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="280" type="sprite" x="778" y="171" width="30" height="11">
+  <object type="sprite" x="778" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2557,7 +2562,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="281" type="sprite" x="727" y="166" width="30" height="11">
+  <object type="sprite" x="727" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2566,7 +2571,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="282" type="sprite" x="761" y="165" width="30" height="11">
+  <object type="sprite" x="761" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2575,7 +2580,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="283" type="sprite" x="699" y="171" width="30" height="11">
+  <object type="sprite" x="699" y="171" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2584,7 +2589,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="284" type="sprite" x="761" y="172" width="30" height="11">
+  <object type="sprite" x="761" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2593,7 +2598,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="285" type="sprite" x="677" y="165" width="30" height="11">
+  <object type="sprite" x="677" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2602,7 +2607,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="286" type="sprite" x="710" y="173" width="30" height="11">
+  <object type="sprite" x="710" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2611,7 +2616,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="287" type="sprite" x="774" y="173" width="30" height="11">
+  <object type="sprite" x="774" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2620,7 +2625,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="288" type="sprite" x="753" y="174" width="30" height="11">
+  <object type="sprite" x="753" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2629,7 +2634,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="289" type="sprite" x="738" y="170" width="30" height="11">
+  <object type="sprite" x="738" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2638,7 +2643,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="290" type="sprite" x="802" y="170" width="30" height="11">
+  <object type="sprite" x="802" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2647,7 +2652,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="291" type="sprite" x="791" y="166" width="30" height="11">
+  <object type="sprite" x="791" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2656,7 +2661,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="292" type="sprite" x="738" y="174" width="30" height="11">
+  <object type="sprite" x="738" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2665,7 +2670,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="293" type="sprite" x="796" y="166" width="30" height="11">
+  <object type="sprite" x="796" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2674,7 +2679,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="294" type="sprite" x="791" y="166" width="30" height="11">
+  <object type="sprite" x="791" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2683,7 +2688,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="295" type="sprite" x="692" y="172" width="30" height="11">
+  <object type="sprite" x="692" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2692,7 +2697,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="296" type="sprite" x="779" y="173" width="30" height="11">
+  <object type="sprite" x="779" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2701,7 +2706,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="297" type="sprite" x="822" y="174" width="30" height="11">
+  <object type="sprite" x="822" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2710,7 +2715,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="298" type="sprite" x="712" y="166" width="30" height="11">
+  <object type="sprite" x="712" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2719,7 +2724,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="299" type="sprite" x="756" y="172" width="30" height="11">
+  <object type="sprite" x="756" y="172" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2728,7 +2733,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="300" type="sprite" x="692" y="165" width="30" height="11">
+  <object type="sprite" x="692" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2737,7 +2742,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="301" type="sprite" x="817" y="174" width="30" height="11">
+  <object type="sprite" x="817" y="174" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2746,7 +2751,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="302" type="sprite" x="695" y="173" width="30" height="11">
+  <object type="sprite" x="695" y="173" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2755,7 +2760,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="303" type="sprite" x="723" y="170" width="30" height="11">
+  <object type="sprite" x="723" y="170" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2764,7 +2769,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="304" type="sprite" x="826" y="166" width="30" height="11">
+  <object type="sprite" x="826" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2773,7 +2778,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="305" type="sprite" x="756" y="165" width="30" height="11">
+  <object type="sprite" x="756" y="165" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2782,7 +2787,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="306" type="sprite" x="831" y="166" width="30" height="11">
+  <object type="sprite" x="831" y="166" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2791,11 +2796,11 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="307" type="killing_floor" x="343" y="165" width="178" height="17"/>
-  <object id="308" type="killing_floor" x="-45" y="167" width="133" height="17"/>
-  <object id="309" type="killing_floor" x="679" y="166" width="179" height="17"/>
-  <object id="310" type="killing_floor" x="630" y="598" width="560" height="31"/>
-  <object id="311" type="sprite" x="1216" y="511" width="30" height="11">
+  <object type="killing_floor" x="343" y="165" width="178" height="17"/>
+  <object type="killing_floor" x="-45" y="167" width="133" height="17"/>
+  <object type="killing_floor" x="679" y="166" width="179" height="17"/>
+  <object type="killing_floor" x="630" y="598" width="560" height="31"/>
+  <object type="sprite" x="1216" y="511" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2804,7 +2809,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="312" type="sprite" x="1148" y="511" width="30" height="11">
+  <object type="sprite" x="1148" y="511" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2813,7 +2818,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="313" type="sprite" x="1196" y="506" width="30" height="11">
+  <object type="sprite" x="1196" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2822,7 +2827,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="314" type="sprite" x="1181" y="505" width="30" height="11">
+  <object type="sprite" x="1181" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2831,7 +2836,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="315" type="sprite" x="1161" y="506" width="30" height="11">
+  <object type="sprite" x="1161" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2840,7 +2845,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="316" type="sprite" x="1240" y="510" width="30" height="11">
+  <object type="sprite" x="1240" y="510" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2849,7 +2854,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="317" type="sprite" x="1111" y="511" width="30" height="11">
+  <object type="sprite" x="1111" y="511" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2858,7 +2863,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="318" type="sprite" x="1229" y="506" width="30" height="11">
+  <object type="sprite" x="1229" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2867,7 +2872,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="319" type="sprite" x="1146" y="505" width="30" height="11">
+  <object type="sprite" x="1146" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2876,7 +2881,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="320" type="sprite" x="1212" y="510" width="30" height="11">
+  <object type="sprite" x="1212" y="510" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2885,7 +2890,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="321" type="sprite" x="1161" y="506" width="30" height="11">
+  <object type="sprite" x="1161" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2894,7 +2899,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="322" type="sprite" x="1194" y="505" width="30" height="11">
+  <object type="sprite" x="1194" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2903,7 +2908,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="323" type="sprite" x="1133" y="510" width="30" height="11">
+  <object type="sprite" x="1133" y="510" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2912,7 +2917,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="324" type="sprite" x="1194" y="512" width="30" height="11">
+  <object type="sprite" x="1194" y="512" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2921,7 +2926,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="325" type="sprite" x="1111" y="504" width="30" height="11">
+  <object type="sprite" x="1111" y="504" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2930,7 +2935,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="326" type="sprite" x="1144" y="513" width="30" height="11">
+  <object type="sprite" x="1144" y="513" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2939,7 +2944,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="327" type="sprite" x="1208" y="512" width="30" height="11">
+  <object type="sprite" x="1208" y="512" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2948,7 +2953,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="328" type="sprite" x="1187" y="514" width="30" height="11">
+  <object type="sprite" x="1187" y="514" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2957,7 +2962,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="329" type="sprite" x="1172" y="510" width="30" height="11">
+  <object type="sprite" x="1172" y="510" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2966,7 +2971,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="330" type="sprite" x="1236" y="509" width="30" height="11">
+  <object type="sprite" x="1236" y="509" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2975,7 +2980,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="331" type="sprite" x="1225" y="505" width="30" height="11">
+  <object type="sprite" x="1225" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2984,7 +2989,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="332" type="sprite" x="1172" y="513" width="30" height="11">
+  <object type="sprite" x="1172" y="513" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -2993,7 +2998,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="333" type="sprite" x="1229" y="506" width="30" height="11">
+  <object type="sprite" x="1229" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3002,7 +3007,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="334" type="sprite" x="1225" y="505" width="30" height="11">
+  <object type="sprite" x="1225" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3011,7 +3016,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="335" type="sprite" x="1126" y="512" width="30" height="11">
+  <object type="sprite" x="1126" y="512" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3020,7 +3025,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="336" type="sprite" x="1212" y="513" width="30" height="11">
+  <object type="sprite" x="1212" y="513" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3029,7 +3034,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="337" type="sprite" x="1255" y="515" width="30" height="11">
+  <object type="sprite" x="1255" y="515" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3038,7 +3043,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="338" type="sprite" x="1146" y="505" width="30" height="11">
+  <object type="sprite" x="1146" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3047,7 +3052,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="339" type="sprite" x="1190" y="511" width="30" height="11">
+  <object type="sprite" x="1190" y="511" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3056,7 +3061,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="340" type="sprite" x="1126" y="505" width="30" height="11">
+  <object type="sprite" x="1126" y="505" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3065,7 +3070,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="341" type="sprite" x="1251" y="514" width="30" height="11">
+  <object type="sprite" x="1251" y="514" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3074,7 +3079,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="342" type="sprite" x="1129" y="512" width="30" height="11">
+  <object type="sprite" x="1129" y="512" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3083,8 +3088,8 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="343" type="killing_floor" x="1114" y="505" width="178" height="17"/>
-  <object id="344" type="sprite" x="1157" y="509" width="30" height="11">
+  <object type="killing_floor" x="1114" y="505" width="178" height="17"/>
+  <object type="sprite" x="1157" y="509" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3093,7 +3098,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="345" type="sprite" x="1260" y="506" width="30" height="11">
+  <object type="sprite" x="1260" y="506" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3102,7 +3107,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="346" type="sprite" x="1190" y="504" width="30" height="11">
+  <object type="sprite" x="1190" y="504" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3111,7 +3116,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="347" type="sprite" x="1264" y="507" width="30" height="11">
+  <object type="sprite" x="1264" y="507" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3120,7 +3125,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="348" type="sprite" x="901" y="128" width="30" height="11">
+  <object type="sprite" x="901" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3129,7 +3134,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="349" type="sprite" x="884" y="135" width="30" height="11">
+  <object type="sprite" x="884" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3138,7 +3143,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="350" type="sprite" x="942" y="136" width="30" height="11">
+  <object type="sprite" x="942" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3147,7 +3152,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="351" type="sprite" x="972" y="133" width="30" height="11">
+  <object type="sprite" x="972" y="133" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3156,7 +3161,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="352" type="sprite" x="888" y="133" width="30" height="11">
+  <object type="sprite" x="888" y="133" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3165,7 +3170,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="353" type="sprite" x="881" y="127" width="30" height="11">
+  <object type="sprite" x="881" y="127" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3174,7 +3179,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="354" type="sprite" x="991" y="132" width="30" height="11">
+  <object type="sprite" x="991" y="132" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3183,7 +3188,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="355" type="sprite" x="899" y="135" width="30" height="11">
+  <object type="sprite" x="899" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3192,8 +3197,8 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="356" type="killing_floor" x="868" y="128" width="179" height="17"/>
-  <object id="357" type="sprite" x="980" y="128" width="30" height="11">
+  <object type="killing_floor" x="868" y="128" width="179" height="17"/>
+  <object type="sprite" x="980" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3202,7 +3207,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="358" type="sprite" x="916" y="128" width="30" height="11">
+  <object type="sprite" x="916" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3211,7 +3216,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="359" type="sprite" x="950" y="134" width="30" height="11">
+  <object type="sprite" x="950" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3220,7 +3225,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="360" type="sprite" x="866" y="134" width="30" height="11">
+  <object type="sprite" x="866" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3229,7 +3234,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="361" type="sprite" x="985" y="128" width="30" height="11">
+  <object type="sprite" x="985" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3238,7 +3243,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="362" type="sprite" x="881" y="134" width="30" height="11">
+  <object type="sprite" x="881" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3247,7 +3252,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="363" type="sprite" x="912" y="132" width="30" height="11">
+  <object type="sprite" x="912" y="132" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3256,7 +3261,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="364" type="sprite" x="945" y="134" width="30" height="11">
+  <object type="sprite" x="945" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3265,7 +3270,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="365" type="sprite" x="903" y="133" width="30" height="11">
+  <object type="sprite" x="903" y="133" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3274,7 +3279,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="366" type="sprite" x="927" y="132" width="30" height="11">
+  <object type="sprite" x="927" y="132" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3283,7 +3288,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="367" type="sprite" x="980" y="128" width="30" height="11">
+  <object type="sprite" x="980" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3292,7 +3297,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="368" type="sprite" x="901" y="128" width="30" height="11">
+  <object type="sprite" x="901" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3301,7 +3306,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="369" type="sprite" x="951" y="128" width="30" height="11">
+  <object type="sprite" x="951" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3310,7 +3315,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="370" type="sprite" x="967" y="133" width="30" height="11">
+  <object type="sprite" x="967" y="133" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3319,7 +3324,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="371" type="sprite" x="927" y="136" width="30" height="11">
+  <object type="sprite" x="927" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3328,7 +3333,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="372" type="sprite" x="1020" y="128" width="30" height="11">
+  <object type="sprite" x="1020" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3337,7 +3342,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="373" type="sprite" x="985" y="128" width="30" height="11">
+  <object type="sprite" x="985" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3346,7 +3351,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="374" type="sprite" x="963" y="135" width="30" height="11">
+  <object type="sprite" x="963" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3355,7 +3360,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="375" type="sprite" x="1011" y="136" width="30" height="11">
+  <object type="sprite" x="1011" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3364,7 +3369,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="376" type="sprite" x="996" y="132" width="30" height="11">
+  <object type="sprite" x="996" y="132" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3373,7 +3378,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="377" type="sprite" x="866" y="127" width="30" height="11">
+  <object type="sprite" x="866" y="127" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3382,7 +3387,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="378" type="sprite" x="950" y="127" width="30" height="11">
+  <object type="sprite" x="950" y="127" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3391,7 +3396,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="379" type="sprite" x="916" y="128" width="30" height="11">
+  <object type="sprite" x="916" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3400,7 +3405,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="380" type="sprite" x="945" y="127" width="30" height="11">
+  <object type="sprite" x="945" y="127" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3409,7 +3414,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="381" type="sprite" x="968" y="135" width="30" height="11">
+  <object type="sprite" x="968" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3418,7 +3423,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="382" type="sprite" x="936" y="128" width="30" height="11">
+  <object type="sprite" x="936" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3427,7 +3432,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="383" type="sprite" x="1006" y="136" width="30" height="11">
+  <object type="sprite" x="1006" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3436,7 +3441,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="384" type="sprite" x="1015" y="128" width="30" height="11">
+  <object type="sprite" x="1015" y="128" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3445,7 +3450,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="385" type="sprite" x="1025" y="130" width="30" height="11">
+  <object type="sprite" x="1025" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3454,7 +3459,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="386" type="sprite" x="1008" y="137" width="30" height="11">
+  <object type="sprite" x="1008" y="137" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3463,7 +3468,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="387" type="sprite" x="1066" y="138" width="30" height="11">
+  <object type="sprite" x="1066" y="138" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3472,7 +3477,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="388" type="sprite" x="1096" y="135" width="30" height="11">
+  <object type="sprite" x="1096" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3481,7 +3486,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="389" type="sprite" x="1012" y="135" width="30" height="11">
+  <object type="sprite" x="1012" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3490,7 +3495,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="390" type="sprite" x="1005" y="129" width="30" height="11">
+  <object type="sprite" x="1005" y="129" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3499,7 +3504,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="391" type="sprite" x="1115" y="134" width="30" height="11">
+  <object type="sprite" x="1115" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3508,7 +3513,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="392" type="sprite" x="1023" y="137" width="30" height="11">
+  <object type="sprite" x="1023" y="137" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3517,8 +3522,8 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="393" type="killing_floor" x="992" y="130" width="179" height="17"/>
-  <object id="394" type="sprite" x="1104" y="130" width="30" height="11">
+  <object type="killing_floor" x="992" y="130" width="179" height="17"/>
+  <object type="sprite" x="1104" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3527,7 +3532,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="395" type="sprite" x="1040" y="130" width="30" height="11">
+  <object type="sprite" x="1040" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3536,7 +3541,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="396" type="sprite" x="1074" y="136" width="30" height="11">
+  <object type="sprite" x="1074" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3545,7 +3550,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="397" type="sprite" x="990" y="136" width="30" height="11">
+  <object type="sprite" x="990" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3554,7 +3559,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="398" type="sprite" x="1109" y="130" width="30" height="11">
+  <object type="sprite" x="1109" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3563,7 +3568,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="399" type="sprite" x="1005" y="136" width="30" height="11">
+  <object type="sprite" x="1005" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3572,7 +3577,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="400" type="sprite" x="1036" y="134" width="30" height="11">
+  <object type="sprite" x="1036" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3581,7 +3586,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="401" type="sprite" x="1069" y="136" width="30" height="11">
+  <object type="sprite" x="1069" y="136" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3590,7 +3595,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="402" type="sprite" x="1027" y="135" width="30" height="11">
+  <object type="sprite" x="1027" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3599,7 +3604,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="403" type="sprite" x="1051" y="134" width="30" height="11">
+  <object type="sprite" x="1051" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3608,7 +3613,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="404" type="sprite" x="1104" y="130" width="30" height="11">
+  <object type="sprite" x="1104" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3617,7 +3622,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="405" type="sprite" x="1025" y="130" width="30" height="11">
+  <object type="sprite" x="1025" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3626,7 +3631,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="406" type="sprite" x="1075" y="130" width="30" height="11">
+  <object type="sprite" x="1075" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3635,7 +3640,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="407" type="sprite" x="1091" y="135" width="30" height="11">
+  <object type="sprite" x="1091" y="135" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3644,7 +3649,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="408" type="sprite" x="1051" y="138" width="30" height="11">
+  <object type="sprite" x="1051" y="138" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3653,7 +3658,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="409" type="sprite" x="1144" y="130" width="30" height="11">
+  <object type="sprite" x="1144" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3662,7 +3667,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="410" type="sprite" x="1109" y="130" width="30" height="11">
+  <object type="sprite" x="1109" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3671,7 +3676,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="411" type="sprite" x="1087" y="137" width="30" height="11">
+  <object type="sprite" x="1087" y="137" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3680,7 +3685,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="412" type="sprite" x="1135" y="138" width="30" height="11">
+  <object type="sprite" x="1135" y="138" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3689,7 +3694,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="413" type="sprite" x="1120" y="134" width="30" height="11">
+  <object type="sprite" x="1120" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3698,7 +3703,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="414" type="sprite" x="990" y="129" width="30" height="11">
+  <object type="sprite" x="990" y="129" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3707,7 +3712,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="415" type="sprite" x="1074" y="129" width="30" height="11">
+  <object type="sprite" x="1074" y="129" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3716,7 +3721,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="416" type="sprite" x="1040" y="130" width="30" height="11">
+  <object type="sprite" x="1040" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3725,7 +3730,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="417" type="sprite" x="1069" y="129" width="30" height="11">
+  <object type="sprite" x="1069" y="129" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3734,7 +3739,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="418" type="sprite" x="1092" y="137" width="30" height="11">
+  <object type="sprite" x="1092" y="137" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3743,7 +3748,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="419" type="sprite" x="1060" y="130" width="30" height="11">
+  <object type="sprite" x="1060" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3752,7 +3757,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="420" type="sprite" x="1130" y="138" width="30" height="11">
+  <object type="sprite" x="1130" y="138" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3761,7 +3766,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="421" type="sprite" x="1139" y="130" width="30" height="11">
+  <object type="sprite" x="1139" y="130" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3770,7 +3775,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="422" type="sprite" x="866" y="144" width="30" height="11">
+  <object type="sprite" x="866" y="144" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3779,7 +3784,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="423" type="sprite" x="861" y="152" width="30" height="11">
+  <object type="sprite" x="861" y="152" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3788,7 +3793,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="424" type="sprite" x="855" y="164" width="30" height="11">
+  <object type="sprite" x="855" y="164" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3797,7 +3802,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="425" type="sprite" x="643" y="148" width="30" height="11">
+  <object type="sprite" x="643" y="148" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3806,7 +3811,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="426" type="sprite" x="611" y="106" width="30" height="11">
+  <object type="sprite" x="611" y="106" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3815,7 +3820,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="427" type="sprite" x="534" y="116" width="30" height="11">
+  <object type="sprite" x="534" y="116" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3824,7 +3829,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="428" type="sprite" x="325" y="168" width="30" height="11">
+  <object type="sprite" x="325" y="168" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3833,7 +3838,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="429" type="sprite" x="304" y="119" width="30" height="11">
+  <object type="sprite" x="304" y="119" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3842,7 +3847,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="430" type="sprite" x="236" y="103" width="30" height="11">
+  <object type="sprite" x="236" y="103" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3851,7 +3856,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="431" type="sprite" x="116" y="104" width="30" height="11">
+  <object type="sprite" x="116" y="104" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3860,7 +3865,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="432" type="sprite" x="92" y="163" width="30" height="11">
+  <object type="sprite" x="92" y="163" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3869,7 +3874,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="433" type="sprite" x="1150" y="149" width="30" height="11">
+  <object type="sprite" x="1150" y="149" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3878,7 +3883,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="434" type="sprite" x="1142" y="141" width="30" height="11">
+  <object type="sprite" x="1142" y="141" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3887,7 +3892,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="435" type="sprite" x="1172" y="148" width="30" height="11">
+  <object type="sprite" x="1172" y="148" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3896,7 +3901,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="436" type="sprite" x="1161" y="148" width="30" height="11">
+  <object type="sprite" x="1161" y="148" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3905,7 +3910,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="437" type="sprite" x="571" y="111" width="30" height="11">
+  <object type="sprite" x="571" y="111" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3914,7 +3919,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="438" type="sprite" x="642" y="125" width="30" height="11">
+  <object type="sprite" x="642" y="125" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3923,7 +3928,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="439" type="sprite" x="107" y="134" width="30" height="11">
+  <object type="sprite" x="107" y="134" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3932,7 +3937,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="440" type="sprite" x="168" y="106" width="30" height="11">
+  <object type="sprite" x="168" y="106" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3941,7 +3946,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="441" type="door" x="1176" y="504" width="24" height="48">
+  <object type="door" x="1176" y="504" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-englishmemorial"/>
@@ -3949,7 +3954,7 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object id="442" type="door" x="0" y="168" width="24" height="48">
+  <object type="door" x="0" y="168" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="acschool"/>
@@ -3957,7 +3962,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object id="443" type="door" x="209" y="697" width="58" height="22">
+  <object type="door" x="209" y="697" width="58" height="22">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="class-basement"/>
@@ -3965,8 +3970,8 @@
     <property name="to" value="vent"/>
    </properties>
   </object>
-  <object id="444" type="killing_floor" x="220" y="356" width="207" height="17"/>
-  <object id="445" type="sprite" x="380" y="367" width="30" height="11">
+  <object type="killing_floor" x="220" y="356" width="207" height="17"/>
+  <object type="sprite" x="380" y="367" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3975,7 +3980,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="446" type="sprite" x="359" y="356" width="30" height="11">
+  <object type="sprite" x="359" y="356" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3984,7 +3989,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="447" type="sprite" x="377" y="374" width="30" height="11">
+  <object type="sprite" x="377" y="374" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -3993,7 +3998,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="448" type="sprite" x="339" y="365" width="30" height="11">
+  <object type="sprite" x="339" y="365" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4002,7 +4007,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="449" type="sprite" x="397" y="368" width="30" height="11">
+  <object type="sprite" x="397" y="368" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4011,7 +4016,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="450" type="sprite" x="395" y="360" width="30" height="11">
+  <object type="sprite" x="395" y="360" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4020,7 +4025,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="451" type="sprite" x="384" y="351" width="30" height="11">
+  <object type="sprite" x="384" y="351" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4029,7 +4034,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="452" type="sprite" x="356" y="375" width="30" height="11">
+  <object type="sprite" x="356" y="375" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4038,7 +4043,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="453" type="sprite" x="338" y="357" width="30" height="11">
+  <object type="sprite" x="338" y="357" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4047,7 +4052,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="454" type="sprite" x="321" y="353" width="30" height="11">
+  <object type="sprite" x="321" y="353" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4056,7 +4061,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="455" type="sprite" x="329" y="374" width="30" height="11">
+  <object type="sprite" x="329" y="374" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4065,7 +4070,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="456" type="sprite" x="312" y="364" width="30" height="11">
+  <object type="sprite" x="312" y="364" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4074,7 +4079,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="457" type="sprite" x="297" y="355" width="30" height="11">
+  <object type="sprite" x="297" y="355" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4083,7 +4088,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="458" type="sprite" x="293" y="373" width="30" height="11">
+  <object type="sprite" x="293" y="373" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4092,7 +4097,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="459" type="sprite" x="313" y="372" width="30" height="11">
+  <object type="sprite" x="313" y="372" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4101,7 +4106,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="460" type="sprite" x="278" y="368" width="30" height="11">
+  <object type="sprite" x="278" y="368" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4110,7 +4115,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="461" type="sprite" x="276" y="361" width="30" height="11">
+  <object type="sprite" x="276" y="361" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4119,7 +4124,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="462" type="sprite" x="271" y="355" width="30" height="11">
+  <object type="sprite" x="271" y="355" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4128,7 +4133,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="463" type="sprite" x="262" y="373" width="30" height="11">
+  <object type="sprite" x="262" y="373" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4137,7 +4142,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="464" type="sprite" x="250" y="364" width="30" height="11">
+  <object type="sprite" x="250" y="364" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4146,7 +4151,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="465" type="sprite" x="244" y="354" width="30" height="11">
+  <object type="sprite" x="244" y="354" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4155,7 +4160,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="466" type="sprite" x="230" y="372" width="30" height="11">
+  <object type="sprite" x="230" y="372" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4164,7 +4169,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="467" type="sprite" x="218" y="378" width="30" height="11">
+  <object type="sprite" x="218" y="378" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4173,7 +4178,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="468" type="sprite" x="222" y="366" width="30" height="11">
+  <object type="sprite" x="222" y="366" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4182,7 +4187,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="469" type="sprite" x="218" y="356" width="30" height="11">
+  <object type="sprite" x="218" y="356" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4191,8 +4196,8 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="470" type="climbable" x="390" y="458" width="12" height="139"/>
-  <object id="471" type="sprite" x="344" y="356" width="30" height="11">
+  <object type="climbable" x="390" y="458" width="12" height="139"/>
+  <object type="sprite" x="344" y="356" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4201,7 +4206,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="472" type="sprite" x="365" y="366" width="30" height="11">
+  <object type="sprite" x="365" y="366" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4210,7 +4215,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="473" type="sprite" x="317" y="366" width="30" height="11">
+  <object type="sprite" x="317" y="366" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4219,7 +4224,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="474" type="sprite" x="270" y="362" width="30" height="11">
+  <object type="sprite" x="270" y="362" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4228,7 +4233,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="475" type="sprite" x="246" y="367" width="30" height="11">
+  <object type="sprite" x="246" y="367" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4237,7 +4242,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="476" type="sprite" x="218" y="359" width="30" height="11">
+  <object type="sprite" x="218" y="359" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4246,7 +4251,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="477" type="sprite" x="226" y="371" width="30" height="11">
+  <object type="sprite" x="226" y="371" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4255,7 +4260,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="478" type="sprite" x="276" y="379" width="30" height="11">
+  <object type="sprite" x="276" y="379" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4264,7 +4269,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="479" type="sprite" x="333" y="371" width="30" height="11">
+  <object type="sprite" x="333" y="371" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4273,7 +4278,7 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="480" type="sprite" x="392" y="376" width="30" height="11">
+  <object type="sprite" x="392" y="376" width="30" height="11">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="foreground" value="true"/>
@@ -4282,6 +4287,88 @@
     <property name="width" value="30"/>
    </properties>
   </object>
-  <object id="481" name="anniesboobs" type="npc" x="243" y="163" width="48" height="48"/>
+  <object name="anniesboobs" type="npc" x="243" y="163" width="48" height="48"/>
+  <object type="sprite" x="1066" y="138" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1111" y="342" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1111" y="343" width="97" height="14"/>
+  <object type="sprite" x="1122" y="345" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1138" y="343" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1151" y="346" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1169" y="341" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1176" y="347" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1111" y="349" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="door" x="1176" y="360" width="24" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="vents-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="exit" type="door" x="1152" y="360" width="24" height="48"/>
  </objectgroup>
 </map>
