@@ -259,6 +259,7 @@ state.credits = {
   'mminson',
   'mtwstudios',
   'muugin',
+  'muplah',
   'myers78',
   'mystro256',
   'm_a_d',
