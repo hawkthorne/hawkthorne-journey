@@ -14,7 +14,9 @@ local sound = require 'vendor/TEsound'
 return {
   name = 'spider',
   die_sound = 'acorn_crush', -- TODO Need a kill sound
-  spawn_sound = 'spider-growl', -- TODO: Need a 'roar' sound
+  spawn_sound = 'spider-growl',
+  passive_sound = 'spider-growl',
+  passive_sound_chance = .2,
   height = 48,
   width = 48,
   bb_width = 36,
