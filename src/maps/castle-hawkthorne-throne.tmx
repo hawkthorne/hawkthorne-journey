@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="115" height="37" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="115" height="37" tilewidth="24" tileheight="24" nextobjectid="21">
  <properties>
   <property name="blue" value="223"/>
   <property name="green" value="181"/>
@@ -49,34 +49,34 @@
    eJztmWsOgkAMBkk4iXgMz2G8/02MMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBoSImvw==
   </data>
  </layer>
- <objectgroup name="nodes" width="115" height="37" visible="0">
-  <object type="liquid" x="0" y="840" width="480" height="48">
+ <objectgroup name="nodes">
+  <object id="1" type="liquid" x="0" y="840" width="480" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object type="liquid" x="480" y="816" width="768" height="72">
+  <object id="2" type="liquid" x="480" y="816" width="768" height="72">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object type="liquid" x="1248" y="864" width="1176" height="24">
+  <object id="3" type="liquid" x="1248" y="864" width="1176" height="24">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object type="liquid" x="2424" y="840" width="336" height="48">
+  <object id="4" type="liquid" x="2424" y="840" width="336" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="35" y="132" width="51" height="84">
+  <object id="5" name="main" type="door" x="35" y="132" width="51" height="84">
    <properties>
-    <property name="level" value="castle-hawkthorne"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="sprite" x="288" y="192" width="24" height="24">
+  <object id="6" type="sprite" x="288" y="192" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -84,7 +84,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="0" y="360" width="24" height="24">
+  <object id="7" type="sprite" x="0" y="360" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -92,7 +92,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2376" y="600" width="24" height="24">
+  <object id="8" type="sprite" x="2376" y="600" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -100,7 +100,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2328" y="648" width="24" height="24">
+  <object id="9" type="sprite" x="2328" y="648" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -108,7 +108,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2280" y="696" width="24" height="24">
+  <object id="10" type="sprite" x="2280" y="696" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -116,13 +116,13 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="greendale" type="key" x="2496" y="624" width="24" height="24"/>
-  <object type="scenetrigger" x="2472" y="504" width="24" height="144">
+  <object id="11" name="greendale" type="key" x="2496" y="624" width="24" height="24"/>
+  <object id="12" type="scenetrigger" x="2472" y="504" width="24" height="144">
    <properties>
     <property name="cutscene" value="throne"/>
    </properties>
   </object>
-  <object type="sprite" x="2448" y="768" width="24" height="24">
+  <object id="13" type="sprite" x="2448" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -130,7 +130,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="720" width="24" height="24">
+  <object id="14" type="sprite" x="2496" y="720" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -138,7 +138,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="744" width="24" height="24">
+  <object id="15" type="sprite" x="2496" y="744" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -146,7 +146,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="768" width="24" height="24">
+  <object id="16" type="sprite" x="2496" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -154,7 +154,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="792" width="24" height="24">
+  <object id="17" type="sprite" x="2496" y="792" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -162,7 +162,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2496" y="816" width="24" height="24">
+  <object id="18" type="sprite" x="2496" y="816" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -170,7 +170,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2448" y="792" width="24" height="24">
+  <object id="19" type="sprite" x="2448" y="792" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -178,7 +178,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2448" y="816" width="24" height="24">
+  <object id="20" type="sprite" x="2448" y="816" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
