@@ -214,7 +214,7 @@ return {
       enemy.direction = 'left'
     end
 
-    if enemy.props.diving and enemy.position.y >= enemy.props.original_pos.y + enemy.height then
+    if enemy.props.diving and enemy.position.y >= enemy.props.original_pos.y + (enemy.height*2) then
       enemy.velocity.y = 0
       enemy.props.rise(enemy, dt)
     end
