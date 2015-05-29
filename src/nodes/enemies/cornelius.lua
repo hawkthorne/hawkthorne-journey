@@ -6,6 +6,7 @@ local Fireball = require 'nodes/fire_cornelius_big'
 local utils = require 'utils'
 local Dialog = require 'dialog'
 local anim8 = require 'vendor/anim8'
+local player = require 'player'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -14,8 +15,13 @@ local cheat = require 'cheat'
 local Sprite = require 'nodes/sprite'
 local Insults = require 'nodes/insults'
 
+local Player = player.factory()
+local playersinsult = Insults[Player.character.name]
+playersinsult = playersinsult[math.random(#playersinsult)]
+
 return {
   name = 'cornelius',
+  isBoss = true,
   attackDelay = 1,
   height = 220,
   width = 200,
@@ -38,15 +44,14 @@ return {
   enterScript ={
         "{{grey}}Welcome{{white}}, you are the first to make it to the {{orange}}Throne of Hawkthorne{{white}}.",
         "Let me take a look at you...",
-        "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} .. enemy.containerLevel.player .. {{white}}.",
-        "You don't deserve my fortune!",
+        "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} ".. Player.character.name:gsub("^%l", string.upper) .. "{{white}}.",
       }, 
   deathScript ={
   		"{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}. ",
   		"Why record myself breathing weird and letting you destroy me?",
-			"Because I am a man of {{red}}Honor!{{white}}",
-			"So you've earned the pleasure of my death!",
-  },
+		"Because I am a man of {{red}}Honor!{{white}}",
+		"So you've earned the pleasure of my death!",
+},
  
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -129,13 +134,16 @@ return {
 
     --enter dialog
 		if enemy.enterScript then
+	    for i= 0, #playersinsult do
+	      table.insert(enemy.enterScript, playersinsult[i])
+	    end
+      table.insert(enemy.enterScript, "You don't deserve my fortune!")
       enemy.state = 'talking'
 	    Dialog.new(enemy.enterScript, function() 
         enemy.state = 'attack'
         enemy.rage = true
-	      end, nil, 'small')
-	  end
-     
+				end, nil, 'small')
+		end
   end,
 
   sparkleRotated = function(enemy, offsetX, offestY)
@@ -226,11 +234,9 @@ return {
     sound.playSfx("teleport")
     Timer.add(.5, function()  
       if enemy.position.x >= player.position.x then
-        print('right')
         enemy.position.x = player.position.x - enemy.width
         enemy.state = 'attack'
       elseif enemy.position.x < player.position.x then
-        print('left')
         enemy.position.x = player.position.x 
         enemy.state = 'attack'
       end
@@ -352,9 +358,8 @@ return {
     elseif enemy.state == 'attack' and not enemy.hatched then
       enemy.hatched = true
       enemy.props.fireball( enemy, player )
-      print('hatch')
     elseif enemy.hatched then
-    	enemy.rage = true
+			enemy.rage = true
       enemy.last_teleport = enemy.last_teleport + dt
       enemy.last_attack = enemy.last_attack + dt
       enemy.last_fireball = enemy.last_fireball + dt 
