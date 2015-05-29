@@ -705,7 +705,7 @@ function Inventory:addItem(item, sfx, callback)
   end 
   local slot = self:nextAvailableSlot(pageName)
   if not slot then
-    if sfx ~= false then 
+    if sfx ~= false then
       sound.playSfx('dbl_beep')
     end
     return false
