@@ -131,13 +131,13 @@ end
 
 function Projectile:draw()
   if self.dead then return end
-  local scalex = 1
+  local scaley = 1
   local angle = self.angle
   if self.velocity.x < 0 or self.defaultDirection == "left" then
-    scalex = -1
+    scaley = -1
     angle = angle - math.pi
   end
-  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, angle, scalex, 1)
+  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, angle, 1, scaley)
 end
 
 function Projectile:update(dt, player, map)
