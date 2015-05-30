@@ -86,7 +86,7 @@
  </layer>
  <layer name="buildings" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJztmM1SwjAQx7feZPQI6hE/HgM8o2f1XTztCypn5eRBPfEA6PixJV0Ia9I2aUsF9jfznyYlyWz4N9ukAIqiKIqiKIriZj8B6BghlbHteLaBL9J3gX48fbvkRc8Iu5F+fJA+jdAl+j1q3E1lTPN9NAKfxp6+dfihrDIhL56NwKeJp6/0o7NUcB57EfVp3HSimHrKMqZ1wH4MqDwUuoQwP3pLBa8byonIedEXSxOE5OcyyPwfOhb7MaLyldA1RPkBMX4cUPvD5M+4Cx0lgRMrifS9qvfWs4RD85xjet+3BiX/xY9jan/Sgh9yzjzvlJicKWPnuGdWm5mzp6HIjzfSu6fv/R7AaTIXZmXM6ov7/ZJ+nFP7iyz2/uoYc5214EcMLj+stYd8HXj2jexHhRA2mrr84LXk8sMaG/k62uH/PI91rA/1ozy3Dt1VGE/m2jTPWmMjX28i/Sg6v1fZGyrhuM4Ccm/Inqk3zePad8lc+wD531WU+ijjxxPkn1PSvbCoYyPB7gD03nG+8+x33ysUn1NEHRsJVlEUZYv5BYCNsx4=
+   eJztmM1SwjAQx7dyktEjqEf8eAzwjJ7Vd1EPe8OXU87KyYN64gHQ8WNLGghr0jbp1wD7m/lPk5JkNvybbVIAQRAEQRAEQbCzGwG0lZDK2HQ8m8A36SdDv46+HfKiq4SdQD8+SV9KaBP9HjTuujKm+T4pgUtjR98y/BBWmZAXL0rg0sTRl/vRXso7j72y+jRsOkFMHWUeUx1oP/pUHjCdg58f3aW81w3lRNR50RVLFfjk5zzw/O87lvZjSOULpksI8gNC/Nij9vvRv3EXOog8J5YT7ntR741nCQfqOcf4vmsNcury464FcN9yx3FI7Y8a8IPPWc87JiRn8th13DOjzczaU5Hlxzvpw9H3dgfgOJoLkzIm9cX9XuLHiLx4SPHjlNqfJbH3VseY66QBP0Kw+WGsPdTXvmPfqP0oEMJaU5Yfei3Z/DDGRn0dbvF/nkYd60P8yM+1RTcFxuO5Ns6zxtior1eBfmSd34vsDQV/bGcBvjfUnok31WPbd/Fc+wjp31WE8sjjxzOkn1PivTCrYyXBbgH03rG+88x33xtkn1NYHSsJVhAEYYP5A9nztTA=
   </data>
  </layer>
  <layer name="windows" width="100" height="25">
@@ -101,7 +101,7 @@
  </layer>
  <layer name="collision" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt11sKwjAQheGC+38QvCyiy1ChtptyXgI6RG2SKZmk/wfnrZR2TnrJMAAAAABx4+EzQG/0Gv8WtIcu7XiapadracU9Mq9bwcxqzdy6e9YRkCb3GZzkmKfkYZTR8FzvmSVLx++B0ENrQj8ti623HpzkPs6SY2JgK/SQK7W/LXKRXFfeg+Xe3fLfsrQHj1J6+eXfbPVepWSf0mMPmlUvW9pDD5rHXvbYg1b7+8b/D+DDCwzOmlA=
+   eJzt10EOwiAQheEm3n9hUvUQJlXPoN6rs+nCSVUoQzoD/5fMrguYBwWGAQAAAFh3PXwW0Bq9xr8V4iFLO5566WksUbxW+vUs6NlePbfOPso68jw29GXrHpzkm1vifeud+F2Nuks9Gt5rSw7RtPAPjHLe5BplHiepY2bB1pLDVrn51aiz1CVxDpZvd8u7ZWkOHuXk8su/3uq3Ssk7pcUcNKtcauohB81jLj3moO19vnH/AXyYATkQln4=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="100" height="25">

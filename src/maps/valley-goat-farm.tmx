@@ -161,11 +161,6 @@
     <property name="to" value="door1"/>
    </properties>
   </object>
-  <object name="farm_key" type="key" x="1824" y="312" width="24" height="24">
-   <properties>
-    <property name="info" value="You've found the {{red_dark}}Goat Farm{{white}} key!"/>
-   </properties>
-  </object>
   <object name="next" type="door" x="48" y="288" width="24" height="48">
    <properties>
     <property name="level" value="valley-goat-cave"/>

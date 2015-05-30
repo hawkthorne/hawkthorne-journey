@@ -5,7 +5,7 @@ local quests = {
     infinite = false,
     questName = 'Aliens! - Investigate Goat Farm',
     questParent = 'telescopejuan',
-    collect = {name = 'alien_object', type = 'key'},
+    collect = {name = 'alienobject', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
       "You will not believe what's been going on lately!",
@@ -15,12 +15,16 @@ local quests = {
     successPrompt = "Can you go investigate the goat farm and retrieve whatever alien object is there?",
     promptExtra = {
       "Excellent! But first, you're gonna need a key to get inside the farm.",
-      "Talk to Juan with the sombrero, he owns the goat farm. Maybe you can persuade him to let you in.",
+      "Talk to Juan with the {{purple}}purple sombrero{{white}}, he owns the goat farm. Maybe you can persuade him to let you in.",
     },
-    completeQuestFail = "The entrance to the goat farm is right beside Juan with the sombrero. Ask him for the key to get inside!",
-    completeQuestSucceed = "That alien thing is really weird. Thanks for getting it for me though!",
-    completed = "Man, that alien this is weird!",
-    reward = {money = 50},
+    completeQuestFail = "The entrance to the goat farm is right beside Juan with the {{purple}}purple sombrero{{white}}. Ask him for the key to get inside!",
+    completeQuestSucceed = {
+      "Ooh, this alien thing looks amazing. This is definite proof that aliens are among us!",
+      "What, you say you heard a weird voice telling you to come to Chili Fields? I dunno man, sounds dangerous, but do what you'd like.",
+      "Here's some money for your troubles, thanks again!",
+    },
+    completed = "Man, that alien thing was weird!",
+    reward = {money = 70},
   },
 }
 
