@@ -254,11 +254,7 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object type="enemy" x="1968" y="744" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="violinist"/>
-   </properties>
-  </object>
+  <object name="alien" type="npc" x="216" y="792" width="48" height="48"/>
   <object type="enemy" x="1824" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
@@ -333,6 +329,11 @@
   <object type="enemy" x="960" y="840" width="48" height="48">
    <properties>
     <property name="enemytype" value="frog"/>
+   </properties>
+  </object>
+  <object type="enemy" x="432" y="816" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_elite"/>
    </properties>
   </object>
  </objectgroup>

@@ -12,10 +12,10 @@ return {
   attack_bb = true,
   bb_width = 30,
   bb_height = 48,
-  bb_offset = {x=0, y=0},
-  attack_width = 18,
+  bb_offset = {x=8, y=0},
+  attack_width = 15,
   --attack_height = 10,
-  attack_offset = { x = 10, y = 4},
+  --attack_offset = { x = 14, y = 4},
   velocity = {x = 0, y = 0},
   hp = 10,
   vulnerabilities = {'slash'},
@@ -53,15 +53,10 @@ return {
 
   update = function( dt, enemy, player, level )
     if enemy.dead then return end
-
-    local direction = player.position.x > enemy.position.x and -1 or 1
-
-
-    if player.position.x > enemy.position.x then 
-      enemy.direction = 'right'
-      enemy.velocity.x = enemy.velocity.x *direction
-    else
+    if enemy.position.x > player.position.x then
       enemy.direction = 'left'
+    else
+      enemy.direction = 'right'
     end
 
     if player.position.x > (enemy.position.x - 30) and player.position.x < enemy.position.x then
@@ -75,6 +70,7 @@ return {
     	enemy.collider:setSolid(enemy.attack_bb)
     	Timer.add(0.8, function() enemy.collider:setGhost(enemy.attack_bb) enemy.state = state end)
     end
-
+    local direction = enemy.direction == 'left' and 1 or -1
+    enemy.velocity.x = enemy.velocity.x *direction
   end
 }
