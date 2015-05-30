@@ -13,11 +13,12 @@ local fonts = require 'fonts'
 
 return {
   name = 'qfo',
+  isBoss = true,
   attackDelay = 1,
   height = 60,
   width = 218,
   damage = 30,
-  attack_bb = true,
+  --attack_bb = true,
   jumpkill = false,
   knockback = 0,
   player_rebound = 400,
@@ -25,7 +26,7 @@ return {
   bb_width = 218,
   bb_height = 15,
   --bb_offset = { x = -40, y = 10},
-  attack_width = 40,
+  --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
   hp = 50,
@@ -64,6 +65,7 @@ return {
     enemy.hatched = false
     enemy.dropmax = enemy.position.y --336
     enemy.velocity.y = 10
+    enemy.last_attack = 0
     Timer.add(.1, function() 
       enemy.maxx = enemy.position.x + 48
       enemy.minx = enemy.position.x - 48
@@ -144,7 +146,7 @@ return {
       level:addNode(beam)
       Timer.add(.5, function() 
           if enemy.hp < 50 then
-            enemy.props.spawn_alien(enemy, direction, beamPos)
+            enemy.props.spawn_alien_elite(enemy, direction, beamPos)
           else
             enemy.props.spawn_alien(enemy, direction, beamPos)
           end
@@ -161,7 +163,22 @@ return {
       }
     }
     local spawnedAlien = Enemy.new(node, enemy.collider, enemy.type)
+    spawnedAlien.velocity.x = math.random(20,50)*direction
     enemy.containerLevel:addNode(spawnedAlien)
+  end,
+
+  spawn_alien_elite = function( enemy, direction, beamPos )
+    local node = {
+      x = beamPos,
+      y = enemy.position.y+128,
+      type = 'enemy',
+      properties = {
+          enemytype = 'alien_elite'
+      }
+    }
+    local spawnedAlienElite = Enemy.new(node, enemy.collider, enemy.type)
+    spawnedAlienElite.velocity.x = math.random(40,60)*direction
+    enemy.containerLevel:addNode(spawnedAlienElite)
   end,
 
   spawn_pilot = function( enemy, direction)
@@ -187,7 +204,7 @@ return {
 
     
     if not enemy.hatched then
-      enemy.state = 'enter'
+      enemy.state = 'default'
     elseif not enemy.hatched and enemy.position.y >= enemy.dropmax then
       enemy.hatched = true
       enemy.velocity.y = 0
@@ -232,23 +249,11 @@ return {
 
       if enemy.last_attack > pause then
         enemy.props.spawn_beam(enemy, direction, offset)
-      
-        --[[if enemy.hp < 80 and rand > 0.9 then
-                            enemy.props.spawn_alien(enemy, direction)
-                        elseif rand > 0.6 then
-                          --should really spawn the churo enemy here but whatevs
-                            enemy.props.spawn_alien(enemy, direction)
-                        end]]
-        enemy.last_attack = -0
-      end
-      if enemy.hatched then
-        enemy.state = 'default'
+        enemy.last_attack = 0
       end
       if enemy.hp <=0 then
         enemy.props.spawn_pilot(enemy, direction)
       end
-
     end
-
   end
 }
