@@ -77,14 +77,15 @@ return {
     enemy.fly_speed = 75
     enemy.swoop_distance = 150
     enemy.swoop_ratio = 0.75
+    enemy.props.guarding = false
     enemy.props.attackFire(enemy)
-    enemy.maxx = enemy.position.x - 500
 
     if not enemy.props.original_pos then
       enemy.props.original_pos = {
         x = enemy.position.x,
         y = enemy.position.y
       }
+      enemy.maxx = enemy.props.original_pos.x - 50
     end
   end,
 
@@ -186,11 +187,14 @@ return {
   end,
 
   jump = function ( enemy, player, direction )
-    local direction = player.position.x > enemy.position.x + 90 and -1 or 1
+    local direction = enemy.direction == "left" and 1 or -1
 
     if enemy.props.guarding then
       direction = enemy.props.original_pos.x > enemy.position.x and -1 or 1
+      if math.abs(enemy.props.original_pos.x - enemy.position.x) < 100 then return end
     end
+
+    if not enemy.props.guarding and enemy.direction == "right" and enemy.position.x >= enemy.maxx then return end
 
     sound.playSfx( 'benzalk_growl' )
     enemy.state = 'jump'
@@ -203,14 +207,17 @@ return {
     enemy.swoop_ratio = math.abs(p_x - enemy.position.x) / enemy.swoop_distance
     -- experimentally determined max and min swoop_ratio values
     enemy.swoop_ratio = math.min(1.4, math.max(0.7, enemy.swoop_ratio))
+
+    enemy.velocity.y = enemy.jump_speed.y
+    -- swoop ratio used to center on target
+    enemy.velocity.x = -( enemy.jump_speed.x * enemy.swoop_ratio ) * enemy.fly_dir
   end,
 
   jumpWind = function ( enemy )
     local level = enemy.containerLevel
 
     if not enemy.dead then
-      --add left jump wind
-      local windL = {
+      local wind = {
         type = 'sprite',
         name = 'jump_wind',
         x = enemy.position.x-5,
@@ -226,15 +233,13 @@ return {
                       foreground = false}
       }
 
-      --add right jump wind
-      local windR = windL
-      windR.x = enemy.position.x + 70
-      windR.properties.animation = '1-7,2'
+      if enemy.direction == "right" then
+        wind.x = enemy.position.x + 70
+        wind.properties.animation = '1-7,2'
+      end
 
-      local jumpL = Sprite.new( windL, enemy.collider )
-      local jumpR = Sprite.new( windL, enemy.collider )
-      level:addNode(jumpL)
-      level:addNode(jumpR)
+      local jump_wind = Sprite.new( wind, enemy.collider )
+      level:addNode(jump_wind)
     end
   end,
   
@@ -283,16 +288,6 @@ return {
     local level = enemy.containerLevel
     local shake = 0
     local player_dist= {x = 1, y = 1 }
-    local player_dir= {x = 'left', y = 'below' }
-    
-    --checks where the player is in relation to benzalk
-    if player.position.x < enemy.position.x then
-       player_dist.x = math.ceil((enemy.position.x - player.position.x))
-       player_dir.x = 'left'
-    else 
-       player_dist.x = math.ceil((player.position.x - enemy.position.x))
-       player_dir.x = 'right'
-    end
 
     if player.position.x < 350 then
       enemy.props.guard( enemy )
@@ -300,12 +295,6 @@ return {
       enemy.props.guarding = false
     end
 
-    --checks if the player is above benzalk 
-    if player.position.y < enemy.position.y-55 then
-      player_dir.y = 'above'
-    else
-      player_dir.y = 'below'
-    end
     if enemy.shake and level.trackPlayer == false then
       shake = (math.random() * 4)-2/player_dist.x
       camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
@@ -325,25 +314,27 @@ return {
     enemy.last_jump = enemy.last_jump + dt
     enemy.last_attack = enemy.last_attack + dt
 
-    local pause = 1.5
-    
+    local pause = 3
+
     if enemy.hp < 20 then
-      pause = 0.7
+      pause = 1.5
     elseif enemy.hp < 50 then
-      pause = 1
+      pause = 2
     end
-    
+
+    if enemy.direction == 'right' then
+      pause = pause / 2
+    end
+
     --triggers the jump attack or the fire attack
     if enemy.last_jump > 4 and enemy.state ~= 'attack' then
       enemy.props.jump( enemy, player, enemy.direction )
-      enemy.velocity.y = enemy.jump_speed.y
-      -- swoop ratio used to center on target
-      enemy.velocity.x = -( enemy.jump_speed.x * enemy.swoop_ratio ) * enemy.fly_dir
-    elseif not enemy.props.guarding and enemy.last_attack > pause and enemy.state ~= 'jump' and enemy.last_jump > 1 and enemy.shake == false then
+    end
+    if not enemy.props.guarding and enemy.last_attack > pause and enemy.last_jump > 2 and enemy.state ~= 'jump' and not enemy.shake then
       local rand = math.random()
-      if enemy.hp < 80 and rand > 0.4 then
+      if enemy.hp >= 70 and rand > 0.6 then
         enemy.props.attackFire(enemy)
-      elseif enemy.hp < 40 and rand > 0.2 then
+      elseif enemy.hp < 70 and rand > 0.3 then
         enemy.props.attackFire(enemy)
       end
     end

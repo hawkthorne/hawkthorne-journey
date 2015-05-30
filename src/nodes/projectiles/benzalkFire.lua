@@ -13,7 +13,7 @@ return{
   enemyCanPickUp = false,
   canPlayerStore = true,
   velocity = { x = 0, y = 0 }, --initial velocity
-  throwVelocityX = 400,
+  throwVelocityX = 300,
   throwVelocityY = 0,
   thrown = false,
   damage = 10,
