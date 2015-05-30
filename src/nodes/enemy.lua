@@ -175,7 +175,10 @@ function Enemy:hurt( damage, special_damage, knockback )
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
-  self.state = 'hurt'
+
+  if not self.rage then
+    self.state = 'hurt'
+  end
   
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
@@ -208,7 +211,7 @@ function Enemy:hurt( damage, special_damage, knockback )
               'outCubic',
               function() self.knockbackActive = false end)
     end
-    if not self.flashing then
+    if not self.flashing and not self.rage then
       self:start_flash()
     end
     if self.props.hurt then self.props.hurt( self ) end

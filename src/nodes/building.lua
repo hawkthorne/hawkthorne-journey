@@ -82,8 +82,7 @@ function Building:enter()
 
   -- If the npc trigger that shares the name of the
   -- building is dead and the building hasn't burned
-  if gamesave:get(self.trigger, false) and gamesave:get(self.name .. '_building_burned', false) == false then
-    self.state = 'burning'
+  if gamesave:get(self.trigger, false) and not gamesave:get(self.name .. '_building_burned', false) then
     self:burn()
   end
 end
@@ -104,6 +103,8 @@ end
 ---
 -- Start burning the building at the first row
 function Building:burn()
+  if self.state == 'burning' or self.state == 'burned' then return end
+  self.state = 'burning'
   self:burned()
   Timer.add(3, function()
     if self.containerLevel:hasNode(self) then
@@ -180,8 +181,7 @@ end
 ---
 -- Called when the building collides with a burning enemy
 function Building:collide(node)
-  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', true) then
-    self.state = 'burning'
+  if node.burn and self.state ~= 'burned' then
     self:burn()
   end
 end
