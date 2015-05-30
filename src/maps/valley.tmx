@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="38" tilewidth="24" tileheight="24" nextobjectid="36">
+<map version="1.0" orientation="orthogonal" width="150" height="38" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="24"/>
   <property name="overworldName" value="valley_1"/>
@@ -21,23 +21,23 @@
  </layer>
  <layer name="nacho_mountains_bg" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.4"/>
+   <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1UtugzAUQFG8sn5n/c6StF1Mll5H6qBFgI36XFx0jvQmAYsIX5lhAAAAAAAAAOC76zQMN3lu89ylrf8NPflNG4/5/qc8z3leZtZqr29Xqc0eLbWx9Lx87/mYfzvlecvzPtNWTXts5yHF71GpjbnnXdadvtaNp3Sftv7G1Dl0P/HuD/m3mvPhouZcK7Ux19zSuvH6mvZoY+oceh2990NhD8dK51pNG61HW21NnUMf6ef1NXtU+rb10JS22lpqJl871zS15tvTU1PaamNNM3sfbcXQlLaiaUpb0TSlrWia0lY0TWkrmqa0FU1T2oqmKW1F05S2omlKW9E0pa1omtJWNE1pK5qmtBVNU9vP3trSVD+zl7Y01d/8h7Y+Af7+gWY=
+   eJzt1ctqwzAQQFHry5o+dulrl6Ttx+TTO4FCqbEtmY4aU86B2cQWDtZFHgYAAAAAAAAAAIBvuzIMtzF3Mffl2v+GLflNG49x/1PMc8zLzFrtbdtN6bNHS20sPS/uPR/jt1PMW8z7TFst7XE9+5K/R7U25p53WXf6Wjee2n3a+htT59DDxLs/xG8t58NFy7lWa2OuuaV14/Ut7dHH1Dn0Onrvh8oejtXOtZY2eo+2+po6hz7Kz+tr9qj2bdtCU9rqa6mZuHZuaWrNt2dLTWmrjzXN/PfRVg5NaSubprSVTVPayqYpbWXTlLayaUpb2TSlrWya0lY2TWkrm6a0lU1T2sqmKW1l05S2smlKWy0+AQ2ZGBI=
   </data>
  </layer>
  <layer name="nacho_mountains" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.45"/>
+   <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztltkKwjAUBetnub7V7c31e/rpXq0FlRhz25uktTMwIFhByNCTogAAAAAAAAAAAAAAAAAAGDfTSVHMxLm4EJfiapL7X8HQKaWhtbgRt+JO3H/pigYhlIN0cRRP4lm8iNcvrWgahPFyeLbk0tWWpkH4D7Qb5WvK1ZZ8rjQNQjy63kc0v9dsVEhTr834mqKt9HS9j2hbCdkoTVMa2cR0/DrrX+8ji1bkuyrkOStpKy5NE42uNnzvI8tW7s+naIq24lHW5/joyGdz1q7m+tgKm5iXvp51DmnLhub9k/s8+yRttedz+3KfZd+krXawfbRlDdsXJnf5MNi+dtKWH7aPtqxh+7rJJr7D9tlKWzVsH21Zw/bRliVsH23FgO1L45ju8mxfev+5LbaPtmLA9uV1SJt4A1kGJYs=
+   eJzt1tmKg0AQRmF9rKx3Zrsz2/P46KnECElo2y4tbaPngx8GJgMDHlImCQAAAAAAAAAAAAAAAIC5WKRJspStZGvZRrZNY/9X+HeZNLST7WUH2VF2qumKBhEqly7OsovsKrvJ7jWtaBrEfOXvllxztaVpENOgvVG+plxtyc+FpkH0p+v7iObvNTcqpKnPZnxN0dbwur6PaFsJuVGapjTjJg6n6Vk3fR9ZtCK/K0I+ZzXa6lfVRDVXG77vI8tWnp8foina6k9WPsdXR75Vz9rV3Bhb4SbGNdZnHWO0ZaP6/on9PMc02mrv9/bFfpZjG221w+2jLWvcvrDxLh+G29dutOXH7aMta9y+buMmfuP22Y62Stw+2rLG7aMtS9w+2uoDt2+YTeVd/gGaLsWc
   </data>
  </layer>
  <layer name="mountains_bg" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.5"/>
+   <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztl8dOA0EQBdf//03kJHKSiQZEMOlA5s47YGlkIbOe6Q29UyXVdcZSl9o7RQEAAAAAAAAAAAAAAAAAAAAAuTDTK4pZOSfn5YJclEtyWa7IVbnWa/qXgifW1cuG3JRbclvuyF25J/flgTykKyjBaE/15ZE8lifyVJ7JczmQF/JSXtEVlGC0p67ljbyVd3Io7+WDfJRPQVsA/9EPmnqRr/JNvsuP376+5DdtdZKqvqvDpv7aU8Mxacsei9nGnlHFd/WkPfUZ7CnaqhaL2caeYf1dHTY13k0ZacsOi9nGnmH5XZ3aFG3ZYjHbmDPK/l9Nc39qU7Rlg8VsY86YtoOy91s0RVtpWMw25oznyA4s7qetyaS+4WLnkbJzrOdc1/05tZXyhrN4M8XuHKs5131/Lm2lvr+a6MG7ObSV+v5qekZe7XJbdby/MK+26nx/YR5tsXPaZRfaoql26rktmmq3HtuiKR96aoumfOmhLZryaZva+gHKPsG4
@@ -45,7 +45,7 @@
  </layer>
  <layer name="mountains" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.55"/>
+   <property name="parallax" value="0.65"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztmNdOw0AQRZ1PpzfRm+gBRC8SNZCv4yIRabGB7Npjb7ycI52nlebFV3dGzjIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqJuxTpaNywk5KafktJyRs3JOzsuFTjNzIA0W9Z2X5LJckatyTa7LDbkptzyy4Dtnm1yNPBYdsaO3Xbkn9+WBPJRHsiuP5Yk8HZIHqzkQH4uOONPbubyQl/JKXssbeSvvnEz8hdUciE+ZjnC7a5CFR/kkn+WLfJU9+Sbff8mE1Rywp+oeK9MRg+5ys9DzMD/Lag7YE7rHLDris7tCs/BTJqzmgD2he8yiI8pmIT/Lag7ZKtL0HrPoiIcKWXBnWc25J1cFmt5jFh1RJQd1SG8VaXqPWXTEKEq2vtPkHkvdlLIVch/l76QYeyx1U7m3Qu4j905ij9Wbrbb3Vsh9VPWfDf6fbPncR24vkymyNQzf+6j/lS0yFSdbbbq3QjPSJ1NRs9WG3qJ32mfsbH0AcVa95g==
@@ -86,84 +86,84 @@
    eJzt2UsOwiAYRWGT7n/QROsiTHzsUBwQDWnND1xaHudLGGpsPQLF0wkA6nCbjv4E6N2nMToDUBvmJsTIbYXe4KV2cHeve0zfltYGYOV7AhToCanW1i96goVlX8QeCVbMO1CiJyjRE3Ip90XzZBuLG1e6hdEc2Qp9jc36HBjblUdffcs9f0rtyqOvvqXu23O78hbawg9VV0faWvOfbrwE1xd7tlxiqK5lLy13ZZ2jw++k5f8g9uhL0XnLXcUq8Z2c3ftdjGc1yrOcWvrfuqcjdeUp+vI9ldDis1B4T0fsykvpq2RPoZb7GrmrGHv2FFL1ZVkvVespXf13ZE8h5fxVek/Wa1eq/XSNSqyPqsZq+h0q9Xpda1L6KvX82Ot97/W6LBRnHD3O6zlG7mkU/E4AAAAAAIDKG7atzXI=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes">
-  <object id="1" name="main" type="door" x="72" y="696" width="48" height="48"/>
-  <object id="2" type="enemy" x="975" y="607" width="14" height="25">
+ <objectgroup color="#000000" name="nodes" width="0" height="0">
+  <object name="main" type="door" x="72" y="696" width="48" height="48"/>
+  <object type="enemy" x="975" y="607" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="3" type="enemy" x="2823" y="631" width="14" height="25">
+  <object type="enemy" x="2823" y="631" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="4" type="enemy" x="2800" y="584" width="14" height="25">
+  <object type="enemy" x="2800" y="584" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="5" type="enemy" x="1721" y="439" width="14" height="25">
+  <object type="enemy" x="1721" y="439" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="6" name="bone" type="material" x="1152" y="624" width="24" height="24"/>
-  <object id="7" name="bone" type="material" x="1560" y="456" width="24" height="24"/>
-  <object id="8" name="bone" type="material" x="1848" y="504" width="24" height="24"/>
-  <object id="9" name="bone" type="material" x="2688" y="312" width="24" height="24"/>
-  <object id="10" name="bone" type="material" x="3264" y="312" width="24" height="24"/>
-  <object id="11" type="climbable" x="2742" y="596" width="10" height="99">
+  <object name="bone" type="material" x="1152" y="624" width="24" height="24"/>
+  <object name="bone" type="material" x="1560" y="456" width="24" height="24"/>
+  <object name="bone" type="material" x="1848" y="504" width="24" height="24"/>
+  <object name="bone" type="material" x="2688" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="3264" y="312" width="24" height="24"/>
+  <object type="climbable" x="2742" y="596" width="10" height="99">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="12" type="climbable" x="2551" y="614" width="8" height="57">
+  <object type="climbable" x="2551" y="614" width="8" height="57">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="13" type="climbable" x="2744" y="402" width="8" height="102">
+  <object type="climbable" x="2744" y="402" width="8" height="102">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="14" type="climbable" x="3079" y="138" width="8" height="101">
+  <object type="climbable" x="3079" y="138" width="8" height="101">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="15" type="climbable" x="3103" y="116" width="8" height="122">
+  <object type="climbable" x="3103" y="116" width="8" height="122">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="16" type="climbable" x="3439" y="13" width="7" height="130">
+  <object type="climbable" x="3439" y="13" width="7" height="130">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="17" type="climbable" x="3463" y="58" width="9" height="85">
+  <object type="climbable" x="3463" y="58" width="9" height="85">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="18" type="climbable" x="3415" y="104" width="9" height="46">
+  <object type="climbable" x="3415" y="104" width="9" height="46">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object id="19" type="enemy" x="1866" y="393" width="14" height="25">
+  <object type="enemy" x="1866" y="393" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="20" type="enemy" x="1914" y="416" width="14" height="25">
+  <object type="enemy" x="1914" y="416" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="21" type="door" x="0" y="456" width="48" height="288">
+  <object type="door" x="0" y="456" width="48" height="288">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-3"/>
@@ -171,7 +171,7 @@
     <property name="to" value="valley"/>
    </properties>
   </object>
-  <object id="22" type="door" x="3576" y="336" width="24" height="96">
+  <object type="door" x="3576" y="336" width="24" height="96">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-2"/>
@@ -179,16 +179,16 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object id="23" name="next" type="door" x="3480" y="336" width="24" height="48"/>
-  <object id="24" type="door" x="3576" y="0" width="24" height="144">
+  <object name="next" type="door" x="3480" y="336" width="24" height="48"/>
+  <object type="door" x="3576" y="0" width="24" height="144">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-chili-fields"/>
     <property name="sound" value="false"/>
    </properties>
   </object>
-  <object id="25" name="chilifields" type="door" x="3528" y="96" width="24" height="48"/>
-  <object id="26" type="sprite" x="159" y="850" width="24" height="24">
+  <object name="chilifields" type="door" x="3528" y="96" width="24" height="48"/>
+  <object type="sprite" x="159" y="850" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -198,7 +198,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="27" type="sprite" x="34" y="829" width="24" height="24">
+  <object type="sprite" x="34" y="829" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -208,7 +208,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="28" type="sprite" x="363" y="851" width="24" height="24">
+  <object type="sprite" x="363" y="851" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -218,7 +218,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="29" type="sprite" x="276" y="833" width="24" height="24">
+  <object type="sprite" x="276" y="833" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -228,7 +228,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="30" type="sprite" x="319" y="886" width="24" height="24">
+  <object type="sprite" x="319" y="886" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -238,7 +238,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="31" type="sprite" x="93" y="891" width="24" height="24">
+  <object type="sprite" x="93" y="891" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -248,22 +248,22 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="32" type="info" x="4944" y="312" width="24" height="48">
+  <object type="info" x="4944" y="312" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object id="33" type="info" x="5232" y="312" width="24" height="48">
+  <object type="info" x="5232" y="312" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object id="34" type="info" x="6768" y="432" width="24" height="48">
+  <object type="info" x="6768" y="432" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object id="35" type="spawn" x="240" y="600" width="144" height="24">
+  <object type="spawn" x="240" y="600" width="144" height="24">
    <properties>
     <property name="enemytype" value="qfo"/>
     <property name="nodeType" value="enemy"/>

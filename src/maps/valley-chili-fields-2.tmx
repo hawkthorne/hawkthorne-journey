@@ -6,9 +6,9 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="110" height="40">
@@ -16,28 +16,28 @@
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0UENAgEQQ9FlggAEIAABKx8BCEAAAhDAkeuce2nS/peMgOk/DgAAAAAAAAAAAADo9rz0XQL3hnTTuDekm8a9Id00+59XySXY3d4ll2B3+5Rcgt3tW3IJdrdfySXY3a7TcQl2t9t0XILd7T4dl2B3e0zHJTin7xK4N6Sbxr0h3TTuDemmcW9IN417Q7pp3BvSTePekG4a94Z007g3pJvmDzx5XYA=
+   eJzt0UENAgEQQ9GdCQJWAAIQgHwEIGAFIAABHPHQS5P2v6QG+o8DAAAAAAAAAAAAALq9pm8J3B/STeP+kG4a94d007ynbwmu6VuCz/QtwXf6luA3fUtw274lOLdvCe7btwSP7VuC5/YtgftDumncH9JN4/6Qbhr3h3TTuD+km8b9Id007g/ppnF/SDeN+0O6af4jiVfg
   </data>
  </layer>
  <layer name="taco_mountains_bg" width="110" height="40">
   <properties>
-   <property name="parallax" value="0.3"/>
+   <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlMkOwjAMRNsvY72x3tj6MXw6RgKpB0idkGSCPSO9Q9vI9XiSdB1FURRFURRFURRFURRFUZQ/zfqumwsLYSmshHXfTj2P0sxwI89bYSfshYNw7OPrxNSzpBL7VDPDkzyfhYtwFW7CkJBtTL0Y362f35jZaL1MzfD0ev8J+XbX1nlL3t2/1fuW3ZTv1s9vzD7VeAnN8JlJKDPtunF/of+FstPsrZjzW1PafT9eH/KimWEuhj7uf9o+Q3VbyU6z799rp/Z/zcxqZd1qdpo+tXebJ9DZof3/O6js0L4tgMgO7dkCiDsT7dkKtbND+7VEzezQXi1SIzu0R6uUzg7tzyql70y0P8uUzA7tzTqlskP78kLu7NB+PJEzO7QXT+S8M9FevJErO7QPj+TIDu3BM79kh+7dO6nZofv2Tuqdie6bpGWH7pmkZfcASMcYgg==
+   eJztlEkOgzAQBO2XZb1lvZGFx/D0TKQgcQhmHNluZ9wl1SEEDbTb2DlCCCGEEEIIIYQQQgghhBBCCCEoVt65tbgRt+JO3Pt65rWIZg0P8vsonsSzeBGvPn5OzDxL5NinmjXs5PdNvIsP8Sn2P3QbMy8md+3fb8zaaLMsrWH3uf5N+W/QzhmRa8PcvLnulnLX/v3G7FNNltAavjsJdaa9b/p+oeeFutPsrZjvtyTafT+9P5RFs4ap7H3c87TvGZpbS3eafT/eu7T/S3ZWqutau9O8p/Zsa0l0d+j8/y6qO3RuCyK6Q2e2IOLMRGe2Yunu0HktWbI7dFaLlugOndGqubtD57Nq7jMTnc+yObtDZ7Nuru7QuVoxdXfoPC2Zsjt0lpZMeWais7Rmqu7QOVo0RXcv+p9qOA==
   </data>
  </layer>
  <layer name="taco_mountains" width="110" height="40">
   <properties>
-   <property name="parallax" value="0.35"/>
+   <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlkkOwjAQBJ1nsd5Yb2F7D09nJDhEyCEeY7udcZdUV0i7TIRzhBBCCCGEEEIIIYQQQgghhLxZdM4txZW4FjfitkM/FZliJ4324kE8iifxPNKNjeuhl3O/iFfxJt7Fx0gLTeMWKXWv+08rn752msaIPWhi7rX2bH4187XTNv53zxyJudeaswlpNmyibazdY+H3GHuvQ1trmmmVz37G7Am5czW3jb3Xoa1zNvO1C90TcudqftfmPpvczYbPl+L7vnfG/CcqAeJsandqp+/dXHM3Wk879P45i2yH3j53Ue3Quy2IaIfebMXS7dB7LVmyHXqrNUu1Q++0aIl26I1Wzd0Ovc+yOduht1k3Vzv0rhbM0Q69qRVTt0PvacmU7dBbWjNVuxdKdTqJ
+   eJztlktywjAQBe1jJSTsyG/nADlPjp5ZsHCl5FijID153F3VW/BTCxfDAAAAAAAAAAAAAAAAAAAAADk8jMPwaB7MJ/PZPI7qp4I1TtboxXw138x382OhG437YbJz/zTP5sW8ml8LLTyN90irez3dWqVMtfM0VuxRU3KvvWfzV7NUO2/j/+7ZIiX32nM2Oc3mTbyNvXsi/B5L73Vua08zr/bZ3yV7cu5cz21L73Vu65rNUu1y9+TcuZ7ftbXPpnaz+fPd4/t+7yz5T9QCxdn07trO1Lu5527YTzv1/i2rbKfevnVV7dS7I6hop94cxdbt1Hsj2bKdems0W7VT74xoi3bqjVGt3U69L7I126m3RbdWO/WuPVij3Q/mK91f
   </data>
  </layer>
  <layer name="mountains_bg" width="110" height="40">
   <properties>
-   <property name="parallax" value="0.4"/>
+   <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztlMduw0AMRLX//03pDekNTi9IcxIDKXKSe8aHhQVBu15R0tJazAPewQeZ5FBilhFCCCGEEEIIIYQQQgghhBBCCCGEEEIIIUTKssmyFbgK1+A63ICbcMu0W2sB/7cIl0zcuimyh4z24QE8hEfwGJ7AU0d+0vy38XsH7hpZXQmhvfaNC/R8Ca/gNbyBt/AO3jvmqZu/zW4Az+C5kdWVENqrpS834Rn1X+AQvsI3+F7IsIg0f5udfebJTOva2r66TQjt1aJxEyR8o34Ox/AH/sI/R4bS/AelZ77MtG7xWVfdCdJ7V9Wr7x3VuAkSbG5VtpX/A3x0ZJeXag5nvDOh926Cq1ffO+rrtaubIMG3t/LuJPmP4Af89GSXFxwHvDMh9664s1kz2nohvfpuQkzanKkq/yZKv4O6O2va27zuTdO638Eows7mYXfae+m7WrvTnjsFNXanPXMqxt6d9rwpGXN32rOmZqzdac+ZojF2pz1jqna9O+35UrbL3f0DG3lJ0w==
@@ -45,7 +45,7 @@
  </layer>
  <layer name="mountains" width="110" height="40">
   <properties>
-   <property name="parallax" value="0.45"/>
+   <property name="parallax" value="0.65"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt08dOxEAQAFH708lJ5CRyEmFJEhn+jrqstAdr8c4aTxvqSXXxYSR3zxSFJEmSJEmSJEmSJEmSJEmSJElxTJVFMU0zNEtzZYyzVG2Zma7QKq3ROm3QJm3RNu3Qbo3Zj3PWf9z1BP84WVb/+zwt0CItVcxij2/7dECHdETHdEKndEbndFFjjilnNXlvumacf7/k2xVd0w316Jbu6J4eBub9k5Szmrw3OeR4M/05P9MLvdIbvdMHfdJXzd2lntXkvcmh7TczOOdejYbNL/WsUXcdUZtvZtQ5D9vdOGel7Dqatt7MIz0lzLlqd6k7Synqu+vP8rffTBM1sf+/srvoM4tStN3lnkeXirS73LPoWlF2l3sOXSzC7r4BwMD63A==
@@ -151,10 +151,10 @@
  </layer>
  <layer name="collision" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmF0OwiAQhEk4tS96iCb+nMF6DD2XJD5IlRZoWXYo8yX7WFl3ZpdtjSGEEEIIIYQQQvQYrTF3q53F/hjsJ1JqOyjVX+tcEofahBntt7ckqXEGiaOlQ+hc+uGfLTXx78ilPWSo1PN7BWXHK6UhfUBa4uz8erHTOYYQVxe3jnsppgs6vn6t5JxDzjt0i/Tef5Js7eMU78XmqyZregdlT0RDW0sNEDxMZCgxs3JmBeJcieXUqv9L7Uwpd9vW+rzc80+QGiN6lJQBdU+j5+qTUnM0n2iTWoOea1SCUI05I8Js9VqvdUW6B3vVAAHO6ikI/RACqUe0vsfX0AJFby0eAP+/pNfnelhCZ/83DzYvji5OAjnlnFl63qG9b6fkcViZl5R+S9TyUC6/3wZreGCtbv7zc1GL3JlROz8JpPJHrwt6fjGoW5tQtzZB0e0NkOKoYw==
+   eJztmEsOwjAMRCPl/gs2cIhKfM5AOQachUgsSCFtkjaOJ808ycsS4xk7bo0hhBBCCCGEEEL0GK0xd6udxf4Y7CdSajso1V/rXBKH2oQZ7be3JKlxBomjpUPoXPrhny018e/IpT1kqNTzewVlxyulIX1AWuLs/Hqx0zmGEFcXt457KaYLOr5+reScQ847dIv03n+SbO3jFO/F5qsma3oHZU9EQ1tLDRA8TGQoMbNyZgXiXInl1Kr/S+1MKXfb1vq83PNPkBojepSUAXVPo+fqk1JzNJ9ok1qDnmtUglCNOSPCbPVar3VFugd71QABzuopCP0QAqlHtL7H19ACRW8tHgD/v6TX53pYQmf/Nw82L44uTgI55ZxZet6hvW+n5HFYmZeUfkvU8lAuv98Ga3hgrW7+83NRi9yZUTs/CaTyR68Len4xqFubULc2QdHtDbwnw6s=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="110" height="40">
+ <objectgroup color="#000000" name="nodes" width="110" height="40">
   <object type="liquid" x="696" y="888" width="1128" height="72">
    <properties>
     <property name="drag" value="true"/>

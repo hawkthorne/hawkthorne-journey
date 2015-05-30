@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="valley2"/>
+ </properties>
+ <tileset firstgid="1" name="valley-sandpits" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
+ </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="floor" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzLY2BoyKMB5mNkYBjF9MEyQCxNA3M1gFidBuaaALExlczKBaY1WmBa5IlRTHsMAK4qmLY=
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztyrkNgDAQRNEtjYqogdKmDc7MXJm5Yr60meUUIo/0pNXs1GZN/YFoVh04ceHG48QtOvETG0WX3ad9wIwFKzbsTtyiEz+xUXDZfdq36NBjwIjJiVt04ic2al12n/ZWUlLyW176nGmY
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh+IBOIs2hgbikQl9HA3EYgbqKBuaNgFIw0AAD18wLC
+  </data>
+ </layer>
+ <layer name="features" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzykOgDAQheGeBbhLORZXY8ew48GDB8kvEKRJKavjJZ+Z10mmQnyTRAgvRoQQAXxkSHG3b1CjQokCOTq0D3rdPwa6/kGvy8TOeLBn6s/cY8GGo+mv5I17JVxltrAzK3u88eQ2M/V//uyzAsRHWQ8=
+  </data>
+ </layer>
+ <layer name="dark" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzCEOgDAQRNHlJtyoePDUgwdffCsnAQ/ckJ/U4EjQK14y2U1+aqzN2HFWYoubEhZMGNEj4DazLxutggNXJba4iZ9WzIgY0HnXuz+6zr09yPP2KA==
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJx7y8jA8JYGeBQMPGBnQuDhCmiRdkfT79AFAEM4KQQ=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="22" height="14">
+  <object name="main" type="door" x="72" y="120" width="48" height="72">
+   <properties>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="enemy" x="288" y="144" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+   </properties>
+  </object>
+  <object type="enemy" x="384" y="144" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+   </properties>
+  </object>
+  <object name="alienobject" type="key" x="456" y="168" width="24" height="24">
+   <properties>
+    <property name="info" value="Some sort of weird, alien technology..."/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="7" y="32" width="12" height="47"/>
+  <object type="killing_floor" x="29" y="21" width="12" height="47"/>
+  <object type="killing_floor" x="-1" y="24" width="143" height="30"/>
+  <object type="killing_floor" x="71" y="18" width="23" height="50"/>
+  <object type="killing_floor" x="264" y="22" width="13" height="52"/>
+  <object type="killing_floor" x="319" y="12" width="9" height="53"/>
+  <object type="killing_floor" x="297" y="27" width="9" height="53"/>
+  <object type="killing_floor" x="194" y="18" width="9" height="53"/>
+  <object type="killing_floor" x="128" y="11" width="9" height="53"/>
+  <object type="killing_floor" x="51" y="6" width="9" height="53"/>
+  <object type="killing_floor" x="223" y="9" width="9" height="53"/>
+  <object type="killing_floor" x="243" y="10" width="9" height="53"/>
+  <object type="killing_floor" x="203" y="19" width="17" height="20"/>
+  <object type="killing_floor" x="272" y="26" width="17" height="20"/>
+  <object type="killing_floor" x="386" y="34" width="17" height="20"/>
+  <object type="killing_floor" x="415" y="37" width="11" height="23"/>
+  <object type="killing_floor" x="434" y="35" width="39" height="27"/>
+  <object type="killing_floor" x="441" y="48" width="8" height="29"/>
+  <object type="killing_floor" x="489" y="21" width="11" height="33"/>
+  <object type="killing_floor" x="510" y="25" width="17" height="45"/>
+  <object type="killing_floor" x="461" y="-2" width="17" height="45"/>
+  <object type="killing_floor" x="375" y="39" width="6" height="31"/>
+  <object type="scenetrigger" x="72" y="48" width="48" height="144">
+   <properties>
+    <property name="cutscene" value="alien"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
