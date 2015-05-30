@@ -12,7 +12,7 @@ return {
   bb_width = 29,
   bb_height = 48,
   bb_offset = {x=0, y=0},
-  velocity = {x = 0, y = 0},
+  speed = math.random(40,50),
   hp = 8,
   vulnerabilities = {'slash'},
   jumpBounce = true,
@@ -41,25 +41,30 @@ return {
     },
   },
 
-  enter = function( enemy )
-    enemy.direction = math.random(2) == 1 and 'left' or 'right'
-    enemy.state = 'default'
-    enemy.velocity.x = math.random(10,50)
-    print('enter')
+  update = function ( dt, enemy, player )
+    if enemy.position.x > player.position.x then
+      enemy.direction = 'left'
+    else
+      enemy.direction = 'right'
+    end
+    enemy.last_jump = enemy.last_jump + dt*math.random()
+    if enemy.last_jump > 4 then
+      enemy.state = 'jump'
+      enemy.jumpkill = false
+      enemy.last_jump = math.random()
+      enemy.velocity.y = -300
+      Timer.add(.5, function()
+        enemy.state = 'default'
+        enemy.jumpkill = true
+      end)
+    end
+    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
+      -- stay put
+      enemy.velocity.x = 0
+    else
+      local direction = enemy.direction == 'left' and 1 or -1
+      enemy.velocity.x =  direction * enemy.props.speed
+    end
   end,
 
-  update = function( dt, enemy, player, level )
-    if enemy.dead then return end
-
-    local direction = player.position.x > enemy.position.x and -1 or 1
-
-
-    if player.position.x > enemy.position.x then 
-      enemy.direction = 'right'
-      enemy.velocity.x = enemy.velocity.x *direction
-    else
-      enemy.direction = 'left'
-    end
-
-  end
 }

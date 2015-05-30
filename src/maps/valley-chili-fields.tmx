@@ -6,9 +6,9 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="140" height="40">
@@ -16,28 +16,28 @@
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0kENAgEMRcGlQQACEICAlY8ABCAAAQjgyLXnXpqmM0kN9L/jAAAAAAAAAAAA2OF52XfUdW+nl1m6t9PLLN3b6WWW/MfXkqMu9/JectTlXj5Ljrrcy3fJUZd7+S056nIv19hx1OVebrHjqMu93GPHUZd7ecSOo+6MfUdd93Z6maV7O73M0r2dXmbp3k4vs3Rvp5dZurfTyyzd2+lllu7t9DJL93Z6meUPHZVdgA==
+   eJzt0kENAlEQRMH9PwhYAQhAAPIRgIAVgAAEcMTDXDqTqUpaQb/jAAAAAAAAAAAAmOG15o269Hd66SX9nV56SX+nl17ea96ou9a8UfdZ80bdd80bdb81b9Td9rxRd+55o+6+5426x5436p573qhLf6eXXtLf6aWX9Hd66SX9nV56SX+nl17S3+mll/R3eukl/Z1eekl/p5de/oNTV+A=
   </data>
  </layer>
  <layer name="taco_mountains_bg" width="140" height="40">
   <properties>
-   <property name="parallax" value="0.3"/>
+   <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlctuwjAURJMvg5bueLQ7WuBj+HRuJZCoFJzrAhk8M0c6izzkJONx3HXGGGOMMcYYY4wxxhhjjDHGvAazvuvm4Vv4Hi7Cj/51xjPTkZm7ZRyvwnW4CT/Dr75+nJrxzP08Y11m5m4bx9/hT7gL9+HhH52qGa/mu/2/GqZmTrIZjs3d9nx+yLh2zI5zIc4db413qzNj3+3/1TA16zKTYWnufrtQ6kr2vuv3Kz2v1JlMp2v+Vwpk1/n1/aUMM3P3KA993fOy71kaV70zmXV+uXdsvU/Zlak65s78JZNPdg9RUrUz6NxbV60z6LwZVOoMOmsGlfYmdNYsqnQGnTOTCp1BZ8woc2fQ2bLK2hl0rqyy7k3oXJll7Aw6U3bZOoPOU0WWzqBzVJKhM+gMlWTYm9AZqtl6Z9D5KdpyZ9DZKdtiZ9CZqdtaZ9B5qdva3oTOy7bVGXRWtq3OnACKYRiC
+   eJztldtuwjAQBeMva2n7Vmj7lhb4GD6dRSoSlRJnTSFLzs5I85CLnOT4OO46AAAAAAAAAAAAAAAAAAAAAAC4hqfSdc/mynwxX8238jjjwXx45u7djtfmxvwwP82v0j5Oy3jwf+6xLj1z19vxt/ljbs2dub+iUy3jtXw3/6thWubEm+HU3PW/54e0awfvOGfs3GFsvLHOTH03/6thWtalJ8Pa3J26UOuK977L96s9r9YZT6db/lcZ8K7zy/trGXrm7lbuS9vzvO9ZGzd7Zzzr/Hzv1HqfsytzdYzO/MWTj3cPyWTWzkTnvnSzdSY6bwUzdSY6awUz7U3RWauYpTPROSuZoTPRGSuq3JnobFVV7Ux0rqqq7k3RuSqr2JnoTNVV60x0nllU6Ux0jplU6Ex0hplU2JuiM8zm0jsTnV9Gl9yZ6Owyu8TOHAGTm4xa
   </data>
  </layer>
  <layer name="taco_mountains" width="140" height="40">
   <properties>
-   <property name="parallax" value="0.35"/>
+   <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlkFSAkEQBJdnKcpNUW+A+h6fbh88EDLo9OhSbHVmRF5huyeHZZoAAAAAAAAAAAAAAAAAAAAA4GY1TbfhOrwL78PNSv1UcK08RBuP4TZ8Cp/DlzO90Bbs4rz34SF8Dd/C9zMNZNqCy3Gpe7z7aqRlq5lMW4p5qjJyj7Nn8lMrrWaybf11Huhn5B5nzqSnleMWsm1l5+H3Z5zRe9zbWKaVrPHZHyPz9LROU6eM3uPexuZspdVM7zw9rfNOO2XuM5m7lePn+4/v+z7nyH9tZxRncu3+NmfrHVgF9dks1arNqPe+ZCs2o9750q3WjHrfDlZqRr1rF6s0o96zkxWaUe/YTfdm1Pt11LkZ9W5ddW1GvVdnHZtR79Rdt2bU+6ygUzPqXVbRpRn1Hivp0Ix6h9VcejOfEUE6iQ==
+   eJztlkkSgkAMAOFZrjfXG27v8enm4IGSQSejEEm6q/qqJNMjVhUAAAAAAAAAAAAAAAAAAAAAAAAMxayuqrm4EJfiSlzX1k8F/8pG2tiKO3EvHsRjTy+0BY2c90k8ixfxKt56GtC0BeMx1j1uno2kTDWjactinqiU3GPtmbxrJdWMtq1v54F8Su6x5kxyWmm3oG1LOw+/P+WU3uPcxjStaJXPvpfMk9M6TXUpvce5jQ3ZSqqZ3HlyWued1mXoMxm6lfbz/eL7Xucs+a/tGYsz+Xc/zZl6B0bB+mymatRmrPc+ZSM2Y73zqRutGet9ezBSM9a79mKUZqz37MkIzVjv2Jvem7Her0c9N2O9W696bcZ6r5712Iz1Tr3rrRnrfUbQUzPWu4yil2Ye5eX8Ew==
   </data>
  </layer>
  <layer name="mountains_bg" width="140" height="40">
   <properties>
-   <property name="parallax" value="0.4"/>
+   <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztldduAjEQRdf//03pTelNpBelkQQpBZK85/JgsUKsMWbBWvsc6TzwsMzszLW3KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAnlk1RrMhVuSbX5YbclFum3loL+r9FuWTmWxfqY0+72ZcH8lAeyWN5Ik8r9ha692393pG7JqxuCL69gh8XmtWlvJLX8kbeyjt5XzHHSfdud9aSZ/LchNUNwbdXC3egm2e994tsy1f5Jt9LuysTune7M/vMkxnUtbVddafBt1dLjDuwSXzrvbuyJ3/kr/yr2F3o3ltDz3yZQd3ys1V1+4R+V0b16jobMe7AJmH3Ncq69v4gHyt21h2q2R6TVd/vSp+qXl1nw9XrrO7AJuHKy3BmQvbekR/y07GzbsmeR1Z9vivlrIx7R1vPp1fXHZgDdc5y1N6nMfTcT5qVaXvLiVnNs869THLuO3PISs6ZiZ2HpptbZmLPOwVzykzsWadiLpmJPeeUzCEzsWecmqlnJvZ8UzTlzMSebaqmmpnYc03ZFDPzD5WxSdM=
@@ -45,7 +45,7 @@
  </layer>
  <layer name="mountains" width="140" height="40">
   <properties>
-   <property name="parallax" value="0.45"/>
+   <property name="parallax" value="0.65"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJzt1NlKw1AUQNHk053qhFpnnKviUCdw1r9zQylWiDW9uWYge8F+ycN5yDncJJEkSZIkSZIkSZIkSZIkSZIkSZIkSZL0m5k0SWZpjjo0n9ZjluplhV2u0hp1aZ02aJO2aJt2aDfHzovM8sbKM8W/nU6z//kCLdISLWfsYI9v+3RAh3REx3RCPTqlMzrPsb+QWTHvVfkU+ecXfLukK7qmPt3QLd3R/cie/xIyK+a9tkkVb8Rwv0/0TC/0Sm/0Th/0mfNmQmfFvNc2KfuNGN1vP0fj9hY6a9Ib07cy34hJ9zvuZorMCrkxDZT1RjzQY8B+s24m9FZC8p35abjD/34jYhTj7ryZYuq+q7rkzQxUvYcm5c1Uv4Om1fabqfr/N7E238wX61H63A==
@@ -131,10 +131,10 @@
  </layer>
  <layer name="collision" width="140" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmluOwyAMRSt11VXnsYhK81jDdJElGiFlMlAMXGPi3CPxVyUOHLChnE6EEEIIIYT85Xb+bYQQguYlrC2voV0q2lto71yTDsOSf6InPdAb/yA8WXOhLy5BexKhLz6pqU8kbc2ovBT3ctzT1VPbX6lxbiX3HNbEc3EP/f9TGIPc3BvhS+vvIlwz9JGuzXvwhcxDqy+58xnpO8lY7qD6rtYXxH7q2fskuXXhCLVt6/eh+qWnfkHuu7m+2JPKD7m9SOq3JZBjTF+w1KwnknlfqjHoiz3SPNwLou89+mJV33yEd36e/58hbttXaN8G8dGXOYieaNBT927njWdfUv00Yt2oeb6mJxJq89hIX7T+ZzoiaydRZyMSRvmyB2Y9jxnpQwn60sYMY4dG4iQyP1j1ocb8y+X11Dta7p5K2rXwPaVvtqrfSBqtu2JrSs5soQ/jqF0nRmCR62fxDbluI+9NzbznKsVlMbaos+TSWqgxJghvZnVlYYbYrO6qan1773NnGJMcMTbk/0Oa+/NnOUQ6t7XrwiP4YklNHSGhdO9BG/qyzxiszuzpi/8YkNAX/zEgoS/+Y0BCX/zHgIS++I8BCX3xHwMSbV8esEnJ5A==
+   eJztmluOwyAMRSt1/x9V57GISvNYw3RhJRohZTJQDFxj4twj8VclDhywoZxOhBBCCCGE/OV2/m2EEILmJawtr6FdKtpbaO9ckw7Dkn+iJz3QG/8gPFlzoS8uQXsSoS8+qalPJG3NqLwU93Lc09VT21+pcW4l9xzWxHNxD/3/UxiD3Nwb4Uvr7yJcM/SRrs178IXMQ6svufMZ6TvJWO6g+q7WF8R+6tn7JLl14Qi1bev3ofqlp35B7ru5vtiTyg+5vUjqtyWQY0xfsNSsJ5J5X6ox6Is90jzcC6LvPfpiVd98hHd+nv+fIW7bV2jfBvHRlzmInmjQU/du541nX1L9NGLdqHm+picSavPYSF+0/mc6ImsnUWcjEkb5sgdmPY8Z6UMJ+tLGDGOHRuIkMj9Y9aHG/Mvl9dQ7Wu6eStq18D2lb7aq30garbtia0rObKEP46hdJ0Zgketn8Q25biPvTc285yrFZTG2qLPk0lqoMSYIb2Z1ZWGG2Kzuqmp9e+9zZxiTHDE25P9DmvvzZzlEOre168Ij+GJJTR0hoXTvQRv6ss8YrM7s6Yv/GJDQF/8xIKEv/mNAQl/8x4CEvviPAQl98R8DEm1fHnyC7ow=
   </data>
  </layer>
- <objectgroup color="#000000" draworder="topdown" name="nodes" width="140" height="40" visible="0">
+ <objectgroup color="#000000" name="nodes" width="140" height="40">
   <object name="main" type="door" x="96" y="624" width="48" height="48"/>
   <object type="climbable" x="834" y="584" width="13" height="387"/>
   <object type="climbable" x="869" y="551" width="13" height="412"/>

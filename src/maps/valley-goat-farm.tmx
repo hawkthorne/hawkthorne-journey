@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="25" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="11"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="tacotown"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
+ </tileset>
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="sky" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0EENgFAQA9HfDQIQgAAEIB8BCEAAAhDAERdsJ/QlY2DGiIiIiK/t4uag+0H+5R81B4e4OTjFzcElbg5ucXPwiJuDqbg5mIubg6W4OViLm4OtuDnofpB/+UfNQfeD/Pv3vxeC4aaD
+  </data>
+ </layer>
+ <layer name="nacho_mountains_bg" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0.56"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jkSwjAQRFHNyWyWzGbJDMb3PwcdEBAILUiAgN9VL3GV5FnkHCGEENJeOnOul5WsZSNb+3RV35NBsxplJ3s5yDFzfi3voH+yttSeJn07yVlmuchiefe0sIPQeV9tnYXPpPQ03ebms2Te88odlJwfH9Q2WPifsZ5Cs7ufYck9tXZQct5X1xzpLdZTyuxSZ/uOHdR4C7+odJe13gIAAAAAAPhvV0Gw3ss=
+  </data>
+ </layer>
+ <layer name="nacho_mountains" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0EsKwzAMRVFnWU0/s/Q3a5tm/0vpGxqDLVVO6KD3wYGAsCIpJUIIIYR4sxtSGmUvBznKafj1VOtmyx0n9TnLRa5yk/sKvaMz195Z/Vr1nh2t/z70/ZSXzPKWxTlXXi/Tmjmyq3WDVr1nR6vvXLE43uf1Mq2ZI7taN2i969kx0jfv7527vF2kp2emWr9v3201T3Ruz+1Qx+36cDsAAAAAwD/4ANvsxbY=
+  </data>
+ </layer>
+ <layer name="mountains" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt09lOAkEQRuGpRxcRRKIiskQ2EQICIkYBZXk5zoTMnWS6L7Az8T/Jd0WFkKomipRSSiml0ruwKMpZ6F+R3W7Z3V3K/hqB95vc+BJ5XKGAIq5Rwo2FmXvKwNtLbnyPCh5QxSNqqNvxxiHmklxvUg6w7/jGLbTRQRc9PKOPFwwszJzvjZv29/se8R1jvGKCKWZ4wxzvWFi4uQ+PmwzNf9+uuz7VJ599YYkV1vjGDzbYYmfh5vaeu/b5T8X7dt11lvPZddw53vZ/6hxvW/2e666VUkoppZRS7h0AJs/iFg==
+  </data>
+ </layer>
+ <layer name="taco_bg" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt07kOwjAQRVGHvWKv2Cv2Cgjw/1/GTWchxUbGJkR6TzrVaKQZj2yMoiiKoiiKovwujcyYJlpoo4MuelnVk32W95ld+6So9THAECOMMfH0/FPsmaeOfVLVZphjgSVWWHt6Qm+VIvbMG8c+qWpb7LDHAUecPD2htyoS+w/ZM58d+6SqXXDFDTnueHh6Qm9VJPYfsmd+OvZJVctLuHpCb1Uk9h8qm/+ffXOr2H+o6reoy9uX1areR0RERESkTl6tA93U
+  </data>
+ </layer>
+ <layer name="taco" width="80" height="25">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0rkKAkEUBdFu98g9co/cI/f//zIrNGwbR7CtAxUMD2bgMiFIkiRJkn5BLYZQpwY1qUVt6sQyblXr8o0e9WlAQxrROJZxq3rbCe+Z0ozmtKAlrWIZt9xtU3df87yhLe1oTwc6xjJuudum7n6iM13oSje606OQW+62qbuXLnfb1N3/2Sf+ab3vdVtJkvR9TxMWLsM=
+  </data>
+ </layer>
+ <layer name="bg_buildings" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEOgCAMQFGOzvnEWZjFWT2CTXAwTEBsSJP/kr8pVlLnAAAAALsWKVStUyeyZZNiVZo6kQ6tvdilXHU0vCez+FAysbNaezF6fzKLjyUTO9v6X71G70+e8bmkNtufLulWOPd8z/7W8h1r9wcAAAAA6PMA3Ak7WQ==
+  </data>
+ </layer>
+ <layer name="bushes" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0rEJgEAMQNFwk7iJ9g7geo5yoxlBGxGxOe6K9yBFuvBJBAAAAC1sJZa1xHRP7rX3TaPLRvvday4Rz9HxW/ZZ3ro9JxtOvW8dzfl7f9pdf1h73wsAAEAbB+9tD3c=
+  </data>
+ </layer>
+ <layer name="smallfence" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0VsKgCAQQNFwc/mvC5qlh+HEMGpECAbdAwM9xW7bBgAAAOBPYjhHVu9jNdugHPsmvUalXa6j56OWMbza09T1ZtP9lTENRJvoPb3mGl/t6j09Ls82/fPge0eN7taz+10pm1baJ7sufmJo2ol5T9z4d2WvHXbX3Pyrpt1glut948t5uo6k2i/115DO+Wf7AQAAAACeOQDfl0kZ
+  </data>
+ </layer>
+ <layer name="bg_fence" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0CEOwCAMQNGG222enWdHX3EEswRRzHvJF1WURgAAAMC/u8Vb2ZXN7+c8dtjutCf/U1lf7pfz2GG709wPAACACh8+OFfH
+  </data>
+ </layer>
+ <layer name="buildings" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt0EEKgCAQRuHRVtU693mqjtN1OmTmQK0CC0oYhPfBw50MvwgAAAAAS7uWtMWf773D8LYW9E5keGh01hfW11X8a9J9wksoY79/Zt0nXjvFQi3avKzWNwAAAAAAvsnoWwym
+  </data>
+ </layer>
+ <layer name="features" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztlT0OwjAMhaOyAzM7LEzAwAFYOUBnYAaOwEXKCjkA3KkHQOqEcFAilaoOaXEESO+TrDbuj5+f1VQpAAAAAID/IrHRo+h/WcuvkyXqUM11KiHp4zJ5PcbgSD3V9SVJZmvoAP9czAXq3u0x9fhHuowHreH6kuRK77809G8RU1AJ0vT0sC2ut6bPFUyemydXx/lVKFn/0sAcaTLaPkILfsO+edbVcV7lFGMl59+Gya0o1nZtdGqBvfFMPZ3e+NcNrOObZ10d59VNyfq3Z3Jbip1dkxajKYiJ576Q/W8QWIeb55Tys9K1IZ2PIv4XAQAAAAAAAADI8gBndjSs
+  </data>
+ </layer>
+ <layer name="fence" width="80" height="25">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0EENwCAQRNEJfqoBAQiojQroAemQWphsFuh/yVzJ8iWsrEq9Zh+xsTb7tewjNkY/D/089PPQz0M/D/089PP8pd8V9O7p/Z6iHrnT+73zj5G79Q0AAAAAgFQDc2U8zA==
+  </data>
+ </layer>
+ <layer name="floor" width="80" height="25">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAIADDBPAawfzEb+AheGywCAAAAYFeetqepqqr6dAAWwSlB
+  </data>
+ </layer>
+ <layer name="collision" width="80" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1EEKwCAMRFEh9194jmzaGyqIFFwVR0uJ/8EcIB8xJfxZtjbMoZ+Gfhr6aeinid7Pre2quzfcGb3faHXH0/p1vujmU/sp+p/g9vTzYXiH96ehnyZ6v2xMGQAAAAB8pQDcjEbj
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="80" height="25" opacity="0.9">
+  <object name="main" type="door" x="1488" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-tacotown"/>
+    <property name="to" value="farm"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="312" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="216" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="120" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="288" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="360" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object name="door1" type="door" x="648" y="288" width="24" height="48">
+   <properties>
+    <property name="info" value="The door requires a key to get in!"/>
+    <property name="key" value="farm_key"/>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="door2"/>
+   </properties>
+  </object>
+  <object name="door2" type="door" x="528" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="door1"/>
+   </properties>
+  </object>
+  <object name="farm_key" type="key" x="1824" y="312" width="24" height="24">
+   <properties>
+    <property name="info" value="You've found the {{red_dark}}Goat Farm{{white}} key!"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="48" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-goat-cave"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
