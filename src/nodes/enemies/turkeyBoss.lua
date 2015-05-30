@@ -5,12 +5,14 @@ local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local utils = require 'utils'
 
+local cheat = require 'cheat'
 local window = require 'window'
 local camera = require 'camera'
 local fonts = require 'fonts'
 
 return {
   name = 'turkeyBoss',
+  isBoss = true,
   attackDelay = 1,
   height = 115,
   width = 215,
