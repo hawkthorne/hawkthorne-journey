@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="30" tilewidth="24" tileheight="24" nextobjectid="109">
+<map version="1.0" orientation="orthogonal" width="240" height="30" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="16"/>
   <property name="overworldName" value="valley_1"/>
@@ -114,357 +114,357 @@
    eJztmlluwyAUACPl/h+VuhyiUpcztAcrVWXJRQFj8jZgRuIjSozD4w0GzOUCrTxcdX8P/yF+IAn+2kL8QBL8tYX4gST4awvxA0nw1xbiB5Lgry3EDyTBX1uIH0iCv7YQP5AEf20hfmPylvrtPZXXrHgTxV+peHynOr4CxLUE/o7F5q01j+meT9e/fMnLnij+9rA5H9nXnEjxg3jccjT/vva5pX7oh/hBjaP86PG39vzWQnseXJqfPKfyonjf1vhFWmOtSr7W/UjlU7k/tPzVRipXa+uGM2PQ0fVSRXu8AHk0Pe7xt6V4c+T25u2o4PF4aHh81t/RiTK+SDFbe3pYeY6yor+zMWObJFjBY29/S/Ncrb2YGXO9tsZZIYeP8IyB9jkOb3+tma09v7TsMbIXZtteq3Mcvf6Osj+aj3er+lsjWp9po5mv1uev7vG3Rm9ceuYWZ+Yl+FtmNY/33Nt263fvre9Pev3diJYT+HtMtD6zRLPtrWcNJN/P3uvvRpScwN92ovSZB5Jt9zxr0Lr+bcU7J/D3PN595onls1Lr/0v85tY1Hu3zjqcG2v7u65UqK48Jlmj5K3HtCPezwMpfDUZ/vkUHf+Mzsr+gC/7GB3+hhPT+VWv9WsyY2/gLJaTeH52tX4sZc3t1f38ANiTv3A==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes">
-  <object id="1" type="breakable_block" x="1728" y="312" width="24" height="24">
+ <objectgroup color="#000000" name="nodes" width="0" height="0">
+  <object type="breakable_block" x="1728" y="312" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="2" type="breakable_block" x="1728" y="288" width="24" height="24">
+  <object type="breakable_block" x="1728" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="3" type="breakable_block" x="1776" y="312" width="24" height="24">
+  <object type="breakable_block" x="1776" y="312" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="4" type="breakable_block" x="1752" y="312" width="24" height="24">
+  <object type="breakable_block" x="1752" y="312" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="5" type="breakable_block" x="1776" y="288" width="24" height="24">
+  <object type="breakable_block" x="1776" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="6" type="breakable_block" x="1752" y="288" width="24" height="24">
+  <object type="breakable_block" x="1752" y="288" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="7" type="breakable_block" x="1752" y="336" width="24" height="24">
+  <object type="breakable_block" x="1752" y="336" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="8" type="breakable_block" x="1728" y="360" width="24" height="24">
+  <object type="breakable_block" x="1728" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="9" type="breakable_block" x="1776" y="336" width="24" height="24">
+  <object type="breakable_block" x="1776" y="336" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="10" type="breakable_block" x="1776" y="360" width="24" height="24">
+  <object type="breakable_block" x="1776" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="11" type="breakable_block" x="1752" y="360" width="24" height="24">
+  <object type="breakable_block" x="1752" y="360" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="12" type="breakable_block" x="1728" y="336" width="24" height="24">
+  <object type="breakable_block" x="1728" y="336" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="13" type="breakable_block" x="1752" y="384" width="24" height="24">
+  <object type="breakable_block" x="1752" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="14" type="breakable_block" x="1728" y="408" width="24" height="24">
+  <object type="breakable_block" x="1728" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="15" type="breakable_block" x="1776" y="384" width="24" height="24">
+  <object type="breakable_block" x="1776" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="16" type="breakable_block" x="1776" y="408" width="24" height="24">
+  <object type="breakable_block" x="1776" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="17" type="breakable_block" x="1752" y="408" width="24" height="24">
+  <object type="breakable_block" x="1752" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="18" type="breakable_block" x="1728" y="384" width="24" height="24">
+  <object type="breakable_block" x="1728" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="19" type="breakable_block" x="1752" y="432" width="24" height="24">
+  <object type="breakable_block" x="1752" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="20" type="breakable_block" x="1728" y="456" width="24" height="24">
+  <object type="breakable_block" x="1728" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="21" type="breakable_block" x="1776" y="432" width="24" height="24">
+  <object type="breakable_block" x="1776" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="22" type="breakable_block" x="1776" y="456" width="24" height="24">
+  <object type="breakable_block" x="1776" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="23" type="breakable_block" x="1752" y="456" width="24" height="24">
+  <object type="breakable_block" x="1752" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="24" type="breakable_block" x="1728" y="432" width="24" height="24">
+  <object type="breakable_block" x="1728" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="25" type="breakable_block" x="1800" y="456" width="24" height="24">
+  <object type="breakable_block" x="1800" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="26" type="breakable_block" x="1824" y="456" width="24" height="24">
+  <object type="breakable_block" x="1824" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="27" type="breakable_block" x="1752" y="480" width="24" height="24">
+  <object type="breakable_block" x="1752" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="28" type="breakable_block" x="1728" y="504" width="24" height="24">
+  <object type="breakable_block" x="1728" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="29" type="breakable_block" x="1776" y="480" width="24" height="24">
+  <object type="breakable_block" x="1776" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="30" type="breakable_block" x="1776" y="504" width="24" height="24">
+  <object type="breakable_block" x="1776" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="31" type="breakable_block" x="1752" y="504" width="24" height="24">
+  <object type="breakable_block" x="1752" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="32" type="breakable_block" x="1824" y="480" width="24" height="24">
+  <object type="breakable_block" x="1824" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="33" type="breakable_block" x="1728" y="480" width="24" height="24">
+  <object type="breakable_block" x="1728" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="34" type="breakable_block" x="1800" y="504" width="24" height="24">
+  <object type="breakable_block" x="1800" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="35" type="breakable_block" x="1800" y="480" width="24" height="24">
+  <object type="breakable_block" x="1800" y="480" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="36" type="breakable_block" x="1824" y="504" width="24" height="24">
+  <object type="breakable_block" x="1824" y="504" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="37" type="breakable_block" x="1752" y="528" width="24" height="24">
+  <object type="breakable_block" x="1752" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="38" type="breakable_block" x="1728" y="552" width="24" height="24">
+  <object type="breakable_block" x="1728" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="39" type="breakable_block" x="1776" y="528" width="24" height="24">
+  <object type="breakable_block" x="1776" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="40" type="breakable_block" x="1776" y="552" width="24" height="24">
+  <object type="breakable_block" x="1776" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="41" type="breakable_block" x="1752" y="552" width="24" height="24">
+  <object type="breakable_block" x="1752" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="42" type="breakable_block" x="1824" y="528" width="24" height="24">
+  <object type="breakable_block" x="1824" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="43" type="breakable_block" x="1728" y="528" width="24" height="24">
+  <object type="breakable_block" x="1728" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="44" type="breakable_block" x="1800" y="552" width="24" height="24">
+  <object type="breakable_block" x="1800" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="45" type="breakable_block" x="1800" y="528" width="24" height="24">
+  <object type="breakable_block" x="1800" y="528" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="46" type="breakable_block" x="1824" y="552" width="24" height="24">
+  <object type="breakable_block" x="1824" y="552" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="47" type="breakable_block" x="1728" y="576" width="24" height="24">
+  <object type="breakable_block" x="1728" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="48" type="breakable_block" x="1800" y="576" width="24" height="24">
+  <object type="breakable_block" x="1800" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="49" type="breakable_block" x="1824" y="576" width="24" height="24">
+  <object type="breakable_block" x="1824" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="50" type="breakable_block" x="1776" y="576" width="24" height="24">
+  <object type="breakable_block" x="1776" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="51" type="breakable_block" x="1752" y="576" width="24" height="24">
+  <object type="breakable_block" x="1752" y="576" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="52" type="breakable_block" x="1776" y="600" width="24" height="24">
+  <object type="breakable_block" x="1776" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="53" type="breakable_block" x="1752" y="600" width="24" height="24">
+  <object type="breakable_block" x="1752" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="54" type="breakable_block" x="1728" y="600" width="24" height="24">
+  <object type="breakable_block" x="1728" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="55" type="breakable_block" x="1800" y="600" width="24" height="24">
+  <object type="breakable_block" x="1800" y="600" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="56" type="breakable_block" x="1752" y="624" width="24" height="24">
+  <object type="breakable_block" x="1752" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="57" type="breakable_block" x="1728" y="624" width="24" height="24">
+  <object type="breakable_block" x="1728" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="58" type="breakable_block" x="1776" y="624" width="24" height="24">
+  <object type="breakable_block" x="1776" y="624" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object id="59" name="main" type="door" x="48" y="336" width="48" height="48"/>
-  <object id="60" type="door" x="0" y="0" width="24" height="384">
+  <object name="main" type="door" x="48" y="336" width="48" height="48"/>
+  <object type="door" x="0" y="0" width="24" height="384">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-tacotown"/>
@@ -472,7 +472,7 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object id="61" type="movingplatform" x="1128" y="240" width="48" height="24">
+  <object type="movingplatform" x="1128" y="240" width="48" height="24">
    <properties>
     <property name="line" value="platform1"/>
     <property name="speed" value="4"/>
@@ -480,7 +480,7 @@
     <property name="start" value="1"/>
    </properties>
   </object>
-  <object id="62" type="movingplatform" x="1344" y="240" width="48" height="24">
+  <object type="movingplatform" x="1344" y="240" width="48" height="24">
    <properties>
     <property name="line" value="platform2"/>
     <property name="speed" value="4"/>
@@ -488,79 +488,79 @@
     <property name="start" value="0"/>
    </properties>
   </object>
-  <object id="63" name="purple_potion" type="spawn" x="1872" y="648" width="24" height="24">
+  <object name="purple_potion" type="spawn" x="1872" y="648" width="24" height="24">
    <properties>
     <property name="message" value="Apparently this will give you fists of steel."/>
     <property name="nodeType" value="consumable"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object id="64" type="enemy" x="1968" y="408" width="48" height="48">
+  <object type="enemy" x="1968" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object id="65" type="enemy" x="1344" y="480" width="48" height="48">
+  <object type="enemy" x="1344" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object id="66" type="enemy" x="1152" y="480" width="48" height="48">
+  <object type="enemy" x="1152" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object id="67" type="enemy" x="624" y="528" width="48" height="48">
+  <object type="enemy" x="624" y="528" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object id="68" type="climbable" x="2309" y="411" width="11" height="317"/>
-  <object id="69" type="climbable" x="2479" y="425" width="11" height="296"/>
-  <object id="70" type="climbable" x="2404" y="483" width="15" height="240"/>
-  <object id="71" type="climbable" x="2596" y="329" width="15" height="393"/>
-  <object id="72" type="climbable" x="2668" y="237" width="13" height="488"/>
-  <object id="73" type="climbable" x="2753" y="289" width="13" height="435"/>
-  <object id="74" type="climbable" x="2919" y="264" width="16" height="455"/>
-  <object id="75" type="climbable" x="2788" y="336" width="16" height="387"/>
-  <object id="76" type="climbable" x="2836" y="472" width="15" height="251"/>
-  <object id="77" type="climbable" x="3088" y="217" width="13" height="92"/>
-  <object id="78" type="enemy" x="3168" y="264" width="48" height="48">
+  <object type="climbable" x="2309" y="411" width="11" height="317"/>
+  <object type="climbable" x="2479" y="425" width="11" height="296"/>
+  <object type="climbable" x="2404" y="483" width="15" height="240"/>
+  <object type="climbable" x="2596" y="329" width="15" height="393"/>
+  <object type="climbable" x="2668" y="237" width="13" height="488"/>
+  <object type="climbable" x="2753" y="289" width="13" height="435"/>
+  <object type="climbable" x="2919" y="264" width="16" height="455"/>
+  <object type="climbable" x="2788" y="336" width="16" height="387"/>
+  <object type="climbable" x="2836" y="472" width="15" height="251"/>
+  <object type="climbable" x="3088" y="217" width="13" height="92"/>
+  <object type="enemy" x="3168" y="264" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object id="79" type="enemy" x="3360" y="240" width="48" height="48">
+  <object type="enemy" x="3360" y="240" width="48" height="48">
    <properties>
     <property name="enemytype" value="guitarist"/>
    </properties>
   </object>
-  <object id="80" type="enemy" x="864" y="528" width="48" height="48">
+  <object type="enemy" x="864" y="528" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>
    </properties>
   </object>
-  <object id="81" type="enemy" x="1192" y="462" width="14" height="25">
+  <object type="enemy" x="1192" y="462" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="82" type="enemy" x="2079" y="415" width="14" height="25">
+  <object type="enemy" x="2079" y="415" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="83" type="enemy" x="3375" y="222" width="14" height="25">
+  <object type="enemy" x="3375" y="222" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object id="84" name="bone" type="material" x="1272" y="504" width="24" height="24"/>
-  <object id="85" name="bone" type="material" x="1656" y="216" width="24" height="24"/>
-  <object id="86" name="bone" type="material" x="3264" y="288" width="24" height="24"/>
-  <object id="87" name="senorjuan" type="npc" x="3888" y="264" width="48" height="48"/>
-  <object id="88" type="climbable" x="4280" y="290" width="8" height="429"/>
-  <object id="89" type="door" x="4248" y="672" width="72" height="48">
+  <object name="bone" type="material" x="1272" y="504" width="24" height="24"/>
+  <object name="bone" type="material" x="1656" y="216" width="24" height="24"/>
+  <object name="bone" type="material" x="3264" y="288" width="24" height="24"/>
+  <object name="senorjuan" type="npc" x="3888" y="264" width="48" height="48"/>
+  <object type="climbable" x="4280" y="290" width="8" height="429"/>
+  <object type="door" x="4248" y="672" width="72" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-sandpits-2"/>
@@ -568,8 +568,8 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object id="90" name="surface" type="door" x="4272" y="240" width="24" height="48"/>
-  <object id="92" type="sprite" x="5412" y="672" width="24" height="24">
+  <object name="surface" type="door" x="4272" y="240" width="24" height="48"/>
+  <object type="sprite" x="5412" y="672" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -579,7 +579,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="95" type="sprite" x="5688" y="660" width="24" height="24">
+  <object type="sprite" x="5688" y="660" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -589,7 +589,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="98" type="sprite" x="5616" y="696" width="24" height="24">
+  <object type="sprite" x="5616" y="696" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -599,7 +599,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="99" type="door" x="5736" y="216" width="24" height="384">
+  <object type="door" x="5736" y="216" width="24" height="384">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="gay-island"/>
@@ -607,13 +607,13 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object id="100" name="gayisland" type="door" x="5640" y="552" width="48" height="48"/>
-  <object id="101" type="scenetrigger" x="3816" y="48" width="24" height="264">
+  <object name="gayisland" type="door" x="5640" y="552" width="48" height="48"/>
+  <object type="scenetrigger" x="3816" y="48" width="24" height="264">
    <properties>
     <property name="cutscene" value="valley"/>
    </properties>
   </object>
-  <object id="107" type="sprite" x="5520" y="648" width="24" height="24">
+  <object type="sprite" x="5520" y="648" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -623,7 +623,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="108" type="spawn" x="4992" y="432" width="168" height="24">
+  <object type="spawn" x="4992" y="432" width="168" height="24">
    <properties>
     <property name="enemytype" value="qfo"/>
     <property name="nodeType" value="enemy"/>
@@ -633,11 +633,11 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="movement">
-  <object id="102" name="platform1" x="1104" y="240">
+ <objectgroup name="movement" width="0" height="0">
+  <object name="platform1" x="1104" y="240">
    <polyline points="0,0 123,-1"/>
   </object>
-  <object id="103" name="platform2" x="1296" y="240">
+  <object name="platform2" x="1296" y="240">
    <polyline points="15,0 144,0"/>
   </object>
  </objectgroup>

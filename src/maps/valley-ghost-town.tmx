@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="valley"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
+ </tileset>
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="sky" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0EENAkEURMH9EwQgAAEIWPkIQAACEIAAjhjg2JdJVyXPwDsOAAAAAAD+eUxf/vnn374lPaevpNf0lfSevpI+01fSd/pKuqy+kq6rr6Tb6ivpvvpKOldf/vnn3775559/++aff/7tW9IPw7BX4A==
+  </data>
+ </layer>
+ <layer name="taco_mountains_bg" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztk1kOgkAUBGdO5vrn+ocLh+HotokmxMjQz0AgsSqpD5A8XvdgSgAAAAAAAAAAAAAwNxY5paVcybXcyG2ez7wpcbLsdL2XB3mUJ3nO8TmReWMwxrk5WSpdX+RV3uRd1j90HJkXye32EtnRndmXpXrd/6Z+a6Kd6F7TNa+rw77cbi+Rc3NmlrI8uyl15z7X3q/0vlKHzhn39eJ+B+5MJ8tQ1jn2PnfP0tzPvM534HQdzTKVQ+zZ7tB53v3P/ZPvDqfeAxERERERERERseQDElM/aQ==
+  </data>
+ </layer>
+ <layer name="taco_mountains" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.55"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkskOgkAQBYfPcr253nD7Hj/dZyIJ0UG6B3BEq5K6Qnf1hAAAAAAAAAAAAAAA8BtMihCmcibnciGXRe6pxsNKrdZyI7dyJ/cN/Wj9Sqn9D/IoT/IsLw1NPK1z8qk7l49mMWMNPa1z7FORcmfvjO/axRp6W3fdpwspd/bMaGlXb+Nt7d2nz/eZemdrc087r/r2NWUfy+0tjVPvbG0+ZLtYQ+s+lttbGg8949Dt6vP18b/nPdsa55jx223bs94496xjtWqYe44xe2+YewZERERERPwfb8a+xjo=
+  </data>
+ </layer>
+ <layer name="mountains_bg" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztk8duwzAQBcX//6b0hvQGpxekOYmBFDnJPXMhTBAiTVKyksMbYCDoQO7u06qqhBBCCCGEEEIIIYQQQgghhBDif7BoqmoJl3EFV3EN13HDdFtrjvvmccH0W3eW7NDrLu7hPh7gIR7hcWCO0hw2ed/CbVNWt4TUXks54+w5XuAlXuE13uBt4N7cHOwMAzzBU1NWt4TUXi25u/HI8wmH+Iwv+OrM4lKag53Bnnkwk7q2dqxuG1J7zc3b7sYnzxrH+IXf+BOYpTSHgXfmw0zqumdDdXP2wqep19iu5O6G7b/JrnK4w/vADLVXczjl26X+h352bq+xXYn12pR3LD8/w5IcRviG75EZasdxwrdL+Q/d7KbNaOul9Orn3eXdTTm0sXQvcrNr09us7u+yz5y9GPWQndvbX+cjpZRSSin79Rf4WhjX
+  </data>
+ </layer>
+ <layer name="mountains" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.65"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkttOwlAQRdtPVxQBo6AgRrxxCSh4SQQU/DvXC0ljSinTY08b90rWSx+ms/eZIBBCCCGEEEIIIYQQQgghhBBCCCGEEP+ZShgER3iMVTwJizGr6JyR7Ryb2MILvMQ2dvAKu3idooMss3x2fsC/DsP4HWpYxwaexux0w7ce3uId3uMDPmIfBzjEUYo8llku389Klh3GfJvgEz7jFGf4gq/4Fsm9C8ssV+/n44Y2eee4wCV+4heucI3fKTu0znL1fnnfUDTvNIVJOayz9u08iTxvaN+8SR1mmWXpfBt53dA7fhjyxnVo7c7irjvcZPrrG3Khi3dw3WHRdy+K2zr0vVeZjOvQ905l83eHvvcpo9EOfwCWL/rc
+  </data>
+ </layer>
+ <layer name="bg_leaves" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0tEJgzAUQNGHk7hJ++8AruMoHbUpIkibpjGWlsA58P4U866JAAAAAAAAAAAAAOBhHuI2rTPWTHp+/PeZz9rt/LL70f3SO9fLEHFkeu24dUs7LE/TvF9Lv216ajjnu2X71ey3+xdN7Xq5i4U797Ffab8z9y7zjeX3ZepM6xlL7Yr93u2nn341vtXvDiWrYX8=
+  </data>
+ </layer>
+ <layer name="bg_leaves_2" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1LENgzAQBVCLBTKAG7qskdEYJaNktBiFAiETMCYglPeka2h8/2MIAQAAAAAAAAAAAM51b8IzZiY9b8/ercaQq81MdbZxT7cmhLlJ57z2SXOstPcj7d/NTHW2b52NJ160v7iiv5psa/u74h1cuHvdHtlK+hve1fTfuOncX+p76/9vC911uWyleUr7u8J3HT+7FXW3Nc8f95cd/emv1pH9vQGH7VGz
+  </data>
+ </layer>
+ <layer name="bg_chilis_1" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmGFugzAMhX30HaPa+NkTbPvd5WgzGpYy85yYJEBR/SREVUj8/EEcEqJQKBQKhUKhUIu+id6++Pjk42wvV1Ribj98PILfJn0wr3c+0sLvbD9X08TMbg5+zHhmvVmj6kJr/L0187s7+N3+7t2sNKgutMbfW9OSV6rwu1Mfv4amQ+LvLS+/5d7N8vTr1RH8uM4Q15u57rgU/P6L6wyx39m3S8FvreDXJ+HnmfOD31rCzzPnB7+1hJ9nzg9+a+X17xX59a5Vrs7P+gbzxi/VLc968kh+NT+efrWsbzAvv1LdEj+l9eSR/Gp+PP0i9fAr3evxcwY/q42nX6QR/NDY0H5k/86KncdEdfUZ+KE8R/BLYGxoP7J/l7e1+KG6ehS/0pyYQJ4j+RHZ+8Syf5e3tfihulrip+dBDz89HuR6aU5EsdEaqoeftU8s+ee5luqfrgslfnoe9PDT40Gue+bE/D+0hprI/rZBzzopfmifWPLPc63xkz4eFX55Hqgv1E6PB5VDtabL+4vWUBPZ3zboWavYMM8p+72VH+pXP8cWfvMZ1RtPTZf3F8WVs7W/9Az89HNs5YfqjY6N+pD396r8tI8efrreePlZcV+Nn74e/Nay/AQ/7EnL8hP8sCcty0/ww560LD/BD3vSsvwEP+xJy/JzFL9fT3cRlA==
+  </data>
+ </layer>
+ <layer name="bg_chilis_2" width="80" height="40">
+  <properties>
+   <property name="parallax" value="0.85"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmFEOgyAMhj26B9gBls1HM6853ULWlZa2AwaY/i8ai3/xE2vDNLlcLpfL5XK5ausyTfNjP26tJzKolp1frsd997gV8BlRJfgdHlfnl+WxOr+mHi21vf8B88VwT6hZzu+jxTb2VbOO4y/8sZd27P7OjnfXpaz8VrT+LPdjL+3Ya0ae2rLyg0fr/ZSXRmtGntrqlR/u0Vvw09SNXvnheAt+mrrRO7+wBnL5/fK/09SN3vmFNVBq/Vl9qPHwu67FT6odwYPbiwjxsAZ64ge/61r8pNpBeVHxkKMnfvC7rsVPqh0j84PXYVza17PWv1H5QQ4WftqafnZ+mudL8eP2NkfgJ/UpOfyodUnxW5i9zRH4SbmlfoTKnbrO8aP2Ns/KD/cKJfgxuaP4CPxgPZL6ESp36rrED/XaUXwEfrAeadZlSX6o147iR4yr2T3xWxvxQ712FEf3s3Mi5ht5UfHgk8tPmlPN+vcvfqg/+MqR8qL6rbPxw98448Wdi+8C91tn46f04s5Ffrjfcn42flye1Hyt452f86Pk/Mj5feVwfiov7px97ifaNcFV
+  </data>
+ </layer>
+ <layer name="filler" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0lEKgCAQQEGP7nk6ZQb5WSHLotgMiH/L+rAUAAAAAAAAAIB/OmYvkKy9r9531vyt9X6J8wnQb9z1p5/O7N1W9dZMv2/6xegXoxkAOzoBV5443w==
+  </data>
+ </layer>
+ <layer name="floor" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1rsNwjAUhlELagaAhgFYkobHFqQNU+IUrpGA5F6Hc6S/tv1VLgUAAAAAAADI7F7K+VY3zrxLXfRbf6l1ey60x0r6Ld1tLf2iurUN0QG+cA3sNu1Y77BJsB7bTTvVe2wT7BODfvr9cb9dgm699svUrqd++3ruIUGv3vpl7dYW/X96t+g+ZmZmc+wFsdG1/w==
+  </data>
+ </layer>
+ <layer name="Tile Layer 12" width="80" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt07kKgEAQRMFh/9sr9PpnOzYQYQMRquDlSzNbBQAAAAAAAAAA3A2takxTmtPSvn7Rv6zZa0t7OtJpv0furc+be7NxH38aAOB7FzzAD9M=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="80" height="40"/>
+</map>
