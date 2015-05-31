@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="72" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="115"/>
   <property name="green" value="109"/>
   <property name="red" value="105"/>
