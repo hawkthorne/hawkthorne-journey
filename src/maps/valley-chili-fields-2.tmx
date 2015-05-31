@@ -331,7 +331,7 @@
     <property name="enemytype" value="frog"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="816" width="48" height="48">
+  <object type="enemy" x="432" y="816" width="24" height="48">
    <properties>
     <property name="enemytype" value="alien_elite"/>
    </properties>

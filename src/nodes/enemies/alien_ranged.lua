@@ -1,20 +1,20 @@
 local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
+local Projectile = require 'nodes/projectile'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local player = require 'player'
 local Player = player.factory()
 local Quest = require 'quest'
-local gamestate = require 'vendor/gamestate'
 
 return {
-  name = 'alien_elite',
+  name = 'alien_ranged',
   height = 48,
   width = 48,
   damage = 25,
   jumpkill = true,
-  --attack_bb = true,
-  --attack_width = 10,
+  hand_x = -10,
+  hand_y = -24,
   bb_width = 31,
   bb_height = 48,
   --bb_offset = {x=0, y=0},
@@ -33,56 +33,61 @@ return {
     dying = {
       right = {'loop', {'6,2'}, 0.2},
       left = {'loop', {'6,1'}, 0.2}
-      },
-    hurt = {
-      right = {'loop', {'6,2'}, 0.2},
-      left = {'loop', {'6,1'}, 0.2}
-    },
-    standing = {
-      right = {'loop', {'1,2'}, 0.2},
-      left = {'loop', {'1,1'}, 0.2}
     },
     default = {
-      right = {'loop', {'2,2', '3,2', '1,2'}, 0.2},
-      left = {'loop', {'2,1', '3,1', '1,1'}, 0.2}
+      right = {'loop', {'1,2','5,2','2,2'}, 0.2},
+      left = {'loop', {'1,1','5,1','2,1'}, 0.2}
+    },
+    hurt = {
+      right = {'loop', {'4,2'}, 0.2},
+      left = {'loop', {'4,1'}, 0.2}
+    },
+    standing = {
+      right = {'loop', {'3,2'}, 0.2},
+      left = {'loop', {'3,1'}, 0.2}
     },
     attack = {
-      right = {'loop', {'3-5,2'}, 0.2},
-      left = {'loop', {'3-5,1'}, 0.2}
+      right = {'loop', {'1,2','5,2','2,2'}, 0.2},
+      left = {'loop', {'1,1','5,1','2,1'}, 0.2}
     },
   },
 
+  laserAttack = function( enemy, direction, player )
+    local node = {
+      type = 'projectile',
+      name = 'alien_laser',
+      x = enemy.position.x,
+      y = enemy.position.y,
+      width = 17,
+      height = 5,
+      properties = {}
+    }
+    local laser = Projectile.new( node, enemy.collider )
+    local level = enemy.containerLevel
+    level:addNode(laser)
+    sound.playSfx( 'alien_laser' )
+    laser.velocity.x = 310*direction
+    laser.position.x = enemy.position.x + 15
+    laser.position.y = enemy.position.y + 17
+    enemy.idletime = 0
 
-  die = function( enemy )
-  --in the special quest ambushing aliens
-  --drop the special quest item
-    if enemy.drop and player.quest == enemy.quest then
-      sound.stopSfx( enemy.props.gobbleNoise )
-      local NodeClass = require('nodes/key')
-      local node = {
-        type = 'key',
-        name = enemy.drop,
-        x = enemy.position.x + enemy.width / 2 + enemy.bb_offset.x,
-        y = enemy.position.y + enemy.height - 24,
-        width = 24,
-        height = 24,
-        properties = {info = "This must be the alien technology that Juan wants!"},
-      }
-      local spawnedNode = NodeClass.new(node, enemy.collider)
-      local level = gamestate.currentState()
-      level:addNode(spawnedNode)
-    end
   end,
-
   update = function( dt, enemy, player, level )
     if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
+      enemy:die()
     end
     local direction 
     local velocity = enemy.props.speed
     if enemy.quest then
       if math.abs(enemy.position.x - player.position.x) < 200 then
         enemy.state = 'default'
+        enemy.idletime = enemy.idletime + dt
+        --laser attack
+        local direction = player.position.x > enemy.position.x and 1 or -1
+        if enemy.idletime >= 2 then
+          enemy.props.laserAttack(enemy, direction, player)
+          enemy.idletime = 0
+        end
         if math.abs(enemy.position.x - player.position.x) < 2 then
            velocity = 0
         elseif enemy.position.x < player.position.x then
@@ -99,9 +104,14 @@ return {
     else
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
         velocity = enemy.props.speed
-
-
     else
+      enemy.idletime = enemy.idletime + dt
+      --laser attack
+      local direction = player.position.x > enemy.position.x and 1 or -1
+        if enemy.idletime >= 2 then
+          enemy.props.laserAttack(enemy, direction, player)
+          enemy.idletime = 0
+        end
       if math.abs(enemy.position.x - player.position.x) < 2 then
         velocity = 0
       elseif enemy.position.x < player.position.x then

@@ -24,7 +24,7 @@ return {
   bb_height = 95,
   bb_offset = { x = -40, y = 10},
   attack_width = 40,
-  attack_offset = { x = 0, y = 0},
+  attack_offset = { x = -40, y = 10},
   velocity = {x = 0, y = 1},
   hp = 100,
   tokens = 15,

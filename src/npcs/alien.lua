@@ -4,6 +4,7 @@ local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
 local telescope = require 'npcs/quests/telescopejuanquest'
+local quests = require 'npcs/quests/alienquest'
 
 return {
   width = 29,
@@ -33,14 +34,7 @@ return {
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
-      Quest:activate(npc, player, quests.alcohol, function()
-          for _,node in pairs(npc.containerLevel.nodes) do
-            if node.name == 'alcohol' then
-              return true
-            end
-          end
-          return false
-        end)
+      Quest:activate(npc, player, quests.alienquest)
       end,
   },
   talk_responses = {

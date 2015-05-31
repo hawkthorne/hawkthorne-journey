@@ -70,7 +70,6 @@ function Enemy.new(node, collider, enemytype)
   enemy.width = enemy.props.width
   enemy.bb_width = enemy.props.bb_width or enemy.width
   enemy.bb_height = enemy.props.bb_height or enemy.height
-  
   enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
   
   -- Height to be used when offsetting an enemy to its node
@@ -130,6 +129,9 @@ function Enemy.new(node, collider, enemytype)
                                    enemy.props.bb_height or enemy.props.height)
   enemy.bb.node = enemy
   enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
+  
+  enemy.quest = node.properties.quest
+  enemy.drop = node.properties.drop
 
   if enemy.props.passive then
     collider:setGhost(enemy.bb)

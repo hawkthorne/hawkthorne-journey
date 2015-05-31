@@ -2,6 +2,9 @@ local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
+local player = require 'player'
+local Player = player.factory()
+local Quest = require 'quest'
 
 return {
   name = 'alien',
@@ -24,16 +27,20 @@ return {
 
   animations = {
     dying = {
-      right = {'once', {'1,2', '6-7,2'}, 0.1},
-      left = {'once', {'1,1', '6-7,1'}, 0.1}
+      right = {'loop', {'6,2'}, 0.2},
+      left = {'loop', {'6,1'}, 0.2}
     },
     default = {
       right = {'loop', {'1-5,2'}, 0.2},
       left = {'loop', {'1-5,1'}, 0.2}
     },
     hurt = {
-      right = {'loop', {'1,2'}, 0.2},
-      left = {'loop', {'1,1'}, 0.2}
+      right = {'loop', {'6,2'}, 0.2},
+      left = {'loop', {'6,1'}, 0.2}
+    },
+    standing = {
+      right = {'loop', {'4,2'}, 0.2},
+      left = {'loop', {'4,1'}, 0.2}
     },
     attack = {
       right = {'loop', {'1-5,2'}, 0.2},
@@ -42,29 +49,44 @@ return {
   },
 
   update = function ( dt, enemy, player )
-    if enemy.position.x > player.position.x then
-      enemy.direction = 'left'
-    else
-      enemy.direction = 'right'
+    if enemy.quest and Player.quest ~= enemy.quest then
+    enemy:die()
     end
-    enemy.last_jump = enemy.last_jump + dt*math.random()
-    if enemy.last_jump > 4 then
-      enemy.state = 'jump'
-      enemy.jumpkill = false
-      enemy.last_jump = math.random()
-      enemy.velocity.y = -300
-      Timer.add(.5, function()
+    local direction 
+    local velocity = enemy.props.speed
+    if enemy.quest then
+      if math.abs(enemy.position.x - player.position.x) < 200 then
         enemy.state = 'default'
-        enemy.jumpkill = true
-      end)
-    end
-    if math.abs(enemy.position.x - player.position.x) < 2 or enemy.state == 'dying' or enemy.state == 'attack' or enemy.state == 'hurt' then
-      -- stay put
-      enemy.velocity.x = 0
+        if math.abs(enemy.position.x - player.position.x) < 2 then
+           velocity = 0
+        elseif enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+            velocity = enemy.props.speed
+        elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+            enemy.direction = 'left'
+            velocity = enemy.props.speed
+        end
+      else  
+      enemy.state = 'standing'
+      velocity = 0
+      end 
     else
-      local direction = enemy.direction == 'left' and 1 or -1
-      enemy.velocity.x =  direction * enemy.props.speed
+    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
+        velocity = enemy.props.speed
+    else
+      if math.abs(enemy.position.x - player.position.x) < 2 then
+        velocity = 0
+      elseif enemy.position.x < player.position.x then
+        enemy.direction = 'right'
+        velocity = enemy.props.speed
+      elseif enemy.position.x + enemy.props.width > player.position.x + player.width then
+        enemy.direction = 'left'
+        velocity = enemy.props.speed
+      end
     end
-  end,
+  end
+    direction = enemy.direction == 'left' and 1 or -1
+    enemy.velocity.x = velocity * direction
+  end
 
 }

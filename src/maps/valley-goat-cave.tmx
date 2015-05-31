@@ -56,7 +56,7 @@
     <property name="enemytype" value="alien"/>
    </properties>
   </object>
-  <object name="alienobject" type="key" x="456" y="168" width="24" height="24">
+  <object name="alien_object" type="key" x="456" y="168" width="24" height="24">
    <properties>
     <property name="info" value="Some sort of weird, alien technology..."/>
    </properties>

@@ -1,5 +1,5 @@
 return{
-  name = "alienobject",
+  name = "alien_object",
   description = "Alien Object",
   type = "key",
   info = "An alien-looking object",

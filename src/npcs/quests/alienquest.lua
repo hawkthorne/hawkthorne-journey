@@ -2,11 +2,11 @@
 
 local quests = {
 
-  potatoes = {
+  alienobject = {
     infinite = true,
-    questName = 'Save Greendale - Collect potatoes',
+    questName = 'Aliens! - Bring back alien technology from hostile aliens',
     questParent = 'frankie',
-    collect = {name = 'potato', type = 'material'},
+    collect = {name = 'alien_object2', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
       "You're probably wondering why I've called you, eh? Well, I'll explain...",
@@ -17,11 +17,11 @@ local quests = {
     },
     successPrompt = "Adventurer, will you join me in my fight against the invading aliens?",
     promptExtra = {
-      "Good, good. Your first task is to hijack an item from a group of alien soldiers up near the coast. Be prepared for a fight!",
-      "I am working on a weapon to disable their main ship, the {{orange}}QFO{{white}}, and I need this item to make it work.",
-      "Alright, good luck then.",
+      "Good, good. Your first task is to hijack an item from a group of alien soldiers up near the {{blue_light}}coast{{white}} to Village Forest.",
+      "I found out that one of the alien soldiers is carrying an alien technology that I need for my plan to bring them down.",
+      "I'll explain what I need the item for later. Be prepared for a fight! Good luck then.",
     },
-    completeQuestFail = "Found those {{olive}}potatoes{{white}} yet? They're still on the roofs I hear.",
+    completeQuestFail = "The aliens are still camped up by the coast. I need the alien equipment that they're carrying!",
     completeQuestSucceed = "Thank you for getting rid of those potatoes!",
     reward = {affection = 50, money = 50},
   },
