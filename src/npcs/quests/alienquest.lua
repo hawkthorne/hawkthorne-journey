@@ -5,7 +5,7 @@ local quests = {
   alienobject = {
     infinite = true,
     questName = 'Aliens! - Bring back alien technology from hostile aliens',
-    questParent = 'frankie',
+    questParent = 'alien',
     collect = {name = 'alien_object2', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
@@ -22,8 +22,11 @@ local quests = {
       "I'll explain what I need the item for later. Be prepared for a fight! Good luck then.",
     },
     completeQuestFail = "The aliens are still camped up by the coast. I need the alien equipment that they're carrying!",
-    completeQuestSucceed = "Thank you for getting rid of those potatoes!",
-    reward = {affection = 50, money = 50},
+    completeQuestSucceed = {
+    "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
+    "Alright, I got another task for you. Talk to me when you're ready.",
+    },
+    reward = {affection = 100},
   },
 
   bones = {

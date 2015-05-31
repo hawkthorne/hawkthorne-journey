@@ -11,14 +11,13 @@ return {
   height = 48,
   width = 29,
   damage = 8,
-  jumpkill = true,
+  jumpkill = false,
   bb_width = 29,
   bb_height = 48,
   bb_offset = {x=0, y=0},
-  speed = math.random(40,50),
+  speed = math.random(60,70),
   hp = 8,
   vulnerabilities = {'slash'},
-  jumpBounce = true,
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -55,7 +54,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
     if enemy.quest then
-      if math.abs(enemy.position.x - player.position.x) < 200 then
+      if math.abs(enemy.position.x - player.position.x) < 350 then
         enemy.state = 'default'
         if math.abs(enemy.position.x - player.position.x) < 2 then
            velocity = 0

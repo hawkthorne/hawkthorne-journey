@@ -27,14 +27,14 @@ return {
     { ['text']='Talk about quests'},
   },
   enter = function(npc, previous)
-      if Quest.alreadyCompleted(telesopejuan, player, telescope.alien) == false then
+      if Quest.alreadyCompleted(telescopejuan, player, telescope.alien) == false then
         npc.busy = true
         npc.state = 'hidden'
       end
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
-      Quest:activate(npc, player, quests.alienquest)
+      Quest:activate(npc, player, quests.alienobject)
       end,
   },
   talk_responses = {

@@ -12,7 +12,7 @@ return {
   height = 48,
   width = 48,
   damage = 25,
-  jumpkill = true,
+  jumpkill = false,
   hand_x = -10,
   hand_y = -24,
   bb_width = 31,
@@ -21,8 +21,7 @@ return {
   velocity = {x = 0, y = 0},
   hp = 10,
   vulnerabilities = {'slash'},
-  jumpBounce = true,
-  speed = math.random(60,70),
+  speed = math.random(80,90),
   tokens = 6,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -79,7 +78,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
     if enemy.quest then
-      if math.abs(enemy.position.x - player.position.x) < 200 then
+      if math.abs(enemy.position.x - player.position.x) < 350 then
         enemy.state = 'default'
         enemy.idletime = enemy.idletime + dt
         --laser attack

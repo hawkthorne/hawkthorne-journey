@@ -11,18 +11,17 @@ return {
   name = 'alien_elite',
   height = 48,
   width = 48,
-  damage = 25,
-  jumpkill = true,
+  damage = 35,
+  jumpkill = false,
   --attack_bb = true,
   --attack_width = 10,
   bb_width = 31,
   bb_height = 48,
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
-  hp = 10,
+  hp = 15,
   vulnerabilities = {'slash'},
-  jumpBounce = true,
-  speed = math.random(60,70),
+  speed = math.random(110,120),
   tokens = 6,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
@@ -43,8 +42,8 @@ return {
       left = {'loop', {'1,1'}, 0.2}
     },
     default = {
-      right = {'loop', {'2,2', '3,2', '1,2'}, 0.2},
-      left = {'loop', {'2,1', '3,1', '1,1'}, 0.2}
+      right = {'loop', {'3-5,2'}, 0.2},
+      left = {'loop', {'3-5,1'}, 0.2}
     },
     attack = {
       right = {'loop', {'3-5,2'}, 0.2},
@@ -56,7 +55,7 @@ return {
   die = function( enemy )
   --in the special quest ambushing aliens
   --drop the special quest item
-    if enemy.drop and player.quest == enemy.quest then
+    if enemy.drop then
       sound.stopSfx( enemy.props.gobbleNoise )
       local NodeClass = require('nodes/key')
       local node = {
@@ -81,7 +80,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
     if enemy.quest then
-      if math.abs(enemy.position.x - player.position.x) < 200 then
+      if math.abs(enemy.position.x - player.position.x) < 300 then
         enemy.state = 'default'
         if math.abs(enemy.position.x - player.position.x) < 2 then
            velocity = 0
@@ -99,8 +98,6 @@ return {
     else
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
         velocity = enemy.props.speed
-
-
     else
       if math.abs(enemy.position.x - player.position.x) < 2 then
         velocity = 0
