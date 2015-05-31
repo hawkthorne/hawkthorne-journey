@@ -55,8 +55,7 @@ return {
   die = function( enemy )
   --in the special quest ambushing aliens
   --drop the special quest item
-    if enemy.drop then
-      sound.stopSfx( enemy.props.gobbleNoise )
+    if enemy.drop and Player.quest == enemy.quest then
       local NodeClass = require('nodes/key')
       local node = {
         type = 'key',
