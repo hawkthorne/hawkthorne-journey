@@ -280,7 +280,7 @@ end
 
 function state:reset_saves()
   -- Reset saves
-  for slotNumber=1, 2, 3 do
+  for slotNumber=1, 3 do
     app.gamesaves:delete( slotNumber )
   end
   sound.playSfx('beep')
