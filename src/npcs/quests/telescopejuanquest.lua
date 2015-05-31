@@ -5,7 +5,7 @@ local quests = {
     infinite = false,
     questName = 'Aliens! - Investigate Goat Farm',
     questParent = 'telescopejuan',
-    collect = {name = 'alienobject', type = 'key'},
+    collect = {name = 'alien_object', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
       "You will not believe what's been going on lately!",

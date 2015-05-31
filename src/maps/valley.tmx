@@ -272,5 +272,30 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
+  <object type="enemy" x="1440" y="432" width="48" height="48">
+   <properties>
+    <property name="drop" value="alien_object2"/>
+    <property name="enemytype" value="alien_elite"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1368" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1488" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1560" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_ranged"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
