@@ -67,8 +67,9 @@ function Inventory.new( player )
   inventory.tooltipKeyWasDown = false
 
   inventory.pageList = {
-    weapons = {'keys','scrolls'},
-    keys = {'materials','weapons'},
+    weapons = {'armours','scrolls'},
+    armours = {'keys', 'weapons'},
+    keys = {'materials','armours'},
     materials = {'consumables','keys'},
     consumables = {'scrolls','materials'},
     scrolls = {'weapons','consumables'}
@@ -83,6 +84,7 @@ function Inventory.new( player )
 
   inventory.cursorPos = {x=0,y=0} --The position of the cursor.
   inventory.selectedWeaponIndex = 1 --The index of the item on the weapons page that is selected as the current weapon.
+  inventory.selectedArmourIndices = {primary = -1, secondary = -1}
 
   inventory.animState = 'closed' --The current animation state.
 
@@ -429,6 +431,17 @@ function Inventory:draw( playerPosition )
           self:slotPosition(scrollPosition).x + ffPos.x - 2, self:slotPosition(scrollPosition).y + ffPos.y - 2)
       end
     end
+    for key, index in pairs(self.selectedArmourIndices) do
+      if self.currentPageName == 'armours' and index <= self.pageLength then
+        local lowestVisibleIndex = (self.scrollbar - 1 )* 2 + 1
+        local armourPosition = index - lowestVisibleIndex
+        if index >= lowestVisibleIndex and index < lowestVisibleIndex + 8 then
+          love.graphics.draw(curWeaponSelect,
+            love.graphics.newQuad(0,0, curWeaponSelect:getWidth(), curWeaponSelect:getHeight(), curWeaponSelect:getWidth(), curWeaponSelect:getHeight()),
+            self:slotPosition(armourPosition).x + ffPos.x - 2, self:slotPosition(armourPosition).y + ffPos.y - 2)
+        end
+      end
+    end
 
   end
   fonts.revert() -- Changes back to old font
@@ -444,6 +457,9 @@ function Inventory:getItemStats( item )
   end
   if item.damage ~= nil and item.damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
+  end
+  if item.defense ~= nil and item.defense ~= "nil" then
+    itemStats = itemStats .. "{{white}}\ndefense: {{blue_light}}" .. tostring(item.defense)
   end
   if item.special_damage ~= nil and item.special_damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
@@ -853,6 +869,14 @@ function Inventory:hasWeapon( weaponName )
   end
 end
 
+function Inventory:hasArmour( armourName )
+  for slot,armour in pairs(self.pages.armours) do
+    if armour.name == armourName then
+      return true
+    end
+  end
+end
+
 ---
 -- Gets the currently selected weapon
 -- @return the currently selected weapon
@@ -879,6 +903,7 @@ end
 function Inventory:select()
   if self.currentPageName == 'weapons' then self:selectCurrentWeaponSlot() end
   if self.currentPageName == 'scrolls' then self:selectCurrentScrollSlot() end
+  if self.currentPageName == 'armours' then self:selectCurrentArmourSlot() end
   if self.currentPageName == 'consumables' then self:consumeCurrentSlot() end
   if self.currentPageName == 'materials' then self:craftCurrentSlot() end
 end
@@ -909,6 +934,18 @@ function Inventory:selectCurrentScrollSlot()
   local scroll = self.pages.scrolls[index]
   self.player:selectWeapon(scroll)
   self.player.doBasicAttack = false
+end
+
+---
+-- Selects the current slot as the selected armour
+-- @return nil
+function Inventory:selectCurrentArmourSlot()
+  local index = self:slotIndex(self.cursorPos)
+  local armour = self.pages.armours[index]
+  if armour then
+    self.selectedArmourIndices[armour.subtype] = index
+    self.player:selectArmour(armour)
+  end
 end
 
 ---
@@ -1083,6 +1120,7 @@ end
 function Inventory:save( gamesave )
   gamesave:set('inventory', json.encode(self.pages))
   gamesave:set('weapon_index', self.selectedWeaponIndex)
+  gamesave:set('armour_indices', json.encode(self.selectedArmourIndices))
 end
 
 ---
@@ -1093,6 +1131,7 @@ function Inventory:loadSaveData( gamesave )
   local saved_inventory = gamesave:get( 'inventory' )
   local weapon_idx = gamesave:get( 'weapon_index' )
   self.selectedWeaponIndex = weapon_idx or 1
+  local armour_indices = gamesave:get( 'armour_indices' )
   if not saved_inventory then return end
 
   -- Page numbers
@@ -1110,8 +1149,10 @@ function Inventory:loadSaveData( gamesave )
         itemNode = {type = saved_item.type, name = saved_item.name}
       elseif saved_item.type == Item.types.ITEM_CONSUMABLE then
         itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
-      elseif saved_item.type == 'scroll' then
+      elseif saved_item.type == Item.types.ITEM_SCROLL then
         itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
+      elseif saved_item.type == Item.types.ITEM_ARMOUR then
+        itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
       else
         print( "Warning: unhandled saved item type: " .. saved_item.type )
       end
@@ -1130,6 +1171,16 @@ function Inventory:loadSaveData( gamesave )
         end
       end
 
+    end
+  end
+  -- This won't be reached if the player has nothing saved in the inventory
+  if armour_indices then
+    for key, value in pairs( json.decode( armour_indices ) ) do
+      local armour = self.pages.armours[value]
+      if armour then
+        self.selectedArmourIndices[key] = value
+        self.player:selectArmour(armour)
+      end
     end
   end
 end

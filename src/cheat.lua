@@ -27,6 +27,11 @@ local function setCheat(cheatName, turnOn)
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
       'throwingaxe','throwingknife','arrow'}},
+    give_armour = {armour = {
+      'ajaxshield', 'berserkerbarbute', 'femininefaulds',
+      'greenguard', 'hagshat', 'ivoryheadpiece', 'lightarmour',
+      'necromancercloak', 'platemail', 'pruneplackart',
+      'spiderburgonet', 'tinytarge', 'windwalkercloak'}},
     give_scrolls = {misc = {'lightning', 'ghost_pepper'}},
     give_materials = {materials = {
       'blade','bone','boulder','crystal','ember','fire',

@@ -78,6 +78,8 @@ function Player.new(collider)
   plyr.punchDamage = 1
 
   plyr.inventory = Inventory.new( plyr )
+  plyr.currentArmour = {primary = 0, secondary = 0}
+  plyr.defense = 0
 
   plyr.money = plyr.startingMoney   
   plyr.slideDamage = 8
@@ -259,6 +261,16 @@ end
 -- @return true if this function captured the keypress
 function Player:switchWeapon()
   self:selectWeapon(self.inventory:tryNextWeapon())
+end
+
+-- Set the current armour.
+-- @return nil
+function Player:selectArmour(armour)
+  self.currentArmour[armour.subtype] = armour.defense
+  self.defense = 0
+  for _, defns in pairs(self.currentArmour) do
+    self.defense = self.defense + defns
+  end
 end
 
 function Player:keypressed( button, map )
@@ -605,9 +617,11 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
+  --Apply defense as a percentage of player health
+  damage = damage * (1 - self.defense / 100)
   --Minimum damage is 5%
   --Prevents damage from falling off small heights.
-  if damage < self.min_damage then return end
+  if damage < self.min_damage or damage < self.defense then return end
   if self.invulnerable or self.godmode or self.dead then
     return
   end
