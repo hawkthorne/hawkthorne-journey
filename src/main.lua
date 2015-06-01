@@ -72,6 +72,7 @@ function love.load(arg)
 
   cli:add_option("--console", "Displays print info")
   cli:add_option("--fused", "Passed in when the app is running in fused mode")
+  cli:add_option("--reset-saves", "Resets all the saves")
   cli:add_option("-b, --bbox", "Draw all bounding boxes ( enables memory debugger )")
   cli:add_option("-c, --character=NAME", "The character to use in the game")
   cli:add_option("-d, --debug", "Enable Memory Debugger")
@@ -151,6 +152,10 @@ function love.load(arg)
 
   if args["b"] then
     debugger.set(true, true)
+  end
+  
+  if args["reset-saves"] then
+    options:reset_saves()
   end
 
   if args["locale"] ~= "" then
