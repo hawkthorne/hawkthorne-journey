@@ -43,8 +43,8 @@ function Fire.new(node, collider, position)
   fire.hp = 1
   fire.hurtBy = {'water'}
   fire.dead = false
-  fire.damage = 2
-  fire.special_damage = {fire = 2 }
+  fire.damage = 6
+  fire.special_damage = {fire = 10 }
   fire.enterTimer = false
 
   return fire

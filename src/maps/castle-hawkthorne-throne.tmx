@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="96" height="37" tilewidth="24" tileheight="24" nextobjectid="1166">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="96" height="37" tilewidth="24" tileheight="24" nextobjectid="1227">
  <properties>
   <property name="autosave" value="false"/>
   <property name="blue" value="223"/>
@@ -17,17 +17,17 @@
  </tileset>
  <layer name="bg_leaves2" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1NEJgzAUQNGM4igdraM4VaEjdIT+NYKFICkmmjZUz4GAHyLxhrwQAAAAAACAM3mGMD4KVnxv6L3XI4ptw71gxfeunbZ4aKX95zMYpuUu1JlnSLZbTX93YZtP3abZX9t+eRd+8wf/Ldd/T/t0sS7t9Z5B8SwuWzvqXyczO8b0ec/3WNd6fuhf51szW/96Lc9Bf4B2br03cHL696V/X/oD0MoLQ82E+A==
+   eJzt1NEJwyAUQFFHySgdraNkqkJH6Aj9q4EUpFiiialUzgEhHxKSK74QAAAAAAAAABjdM4T5UbDivqn3t44otg33ghX3XTt94tBK+69nMC3LXaizzpBst5r+7sI+37ots7+2/edd+M0f/Ldc/yPt08W2tNd7BsWzuOztqH+dzOyY0+cj72Nb6/mhf52zZvaI/W8nv7/lOehPa/r3pT8ArbwAXDeE+A==
   </data>
  </layer>
  <layer name="bg_leaves" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1MENwjAMBVCPklEYjVEYpXMwQkbghCtxyCFUrdJSEO9JkaIcrOg7cQQAAAAAAADA5zwibrWz8nw6+27/ILOOe2dV+R9ufvu97Jse+BcHWsp+oSfTGXf9RZlVyfda9qon/21eeV3nffbhUgd7If9tmplR2hkyUo/13s3wkVqst2f+AAAA8K2e4LFNWw==
+   eJzt1MEJxCAQBVBLsZQtbUtJKaljS7CEPWUCe/BgQoKREPY9EMTDIH90UgIAAAAAAAAAgLG+KU2lseJ8vvtu/yCyTp/GKvIfbn37reyrHvgXA+1lv9OT+Y67PlFkleO95qvqyf+cX17vdR99eJXOXsj/nGpm5HqG9NTjuK0Z3lOL467MHwDgCRapgU1b
   </data>
  </layer>
  <layer name="background" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1EXwllUUB+APDNAdBiIqdmGBLSh2gAJ2IGCLoKKCiYrHwEDFAEWwBQu7UFCxCwRdG+jawMTc+Djvmvl/mzt37sw9M8/Z3N95Z875Zr5WK111qjqUsnLvVoKUlXu3EqSs3LuVIGXl3q0EKSv3biVIWbl3K0HKyr1bCVJW7t1KkLJy71aClJV7txKkrNy7lSBl5d6tBCkr924lSFm5dytBysq9WwlSVu7dSpCycu9WgpSVe7cS9NTWY302oBcbshG/8Cu/8TvL+YM/+Yu/+Yd/V/BD5t6tBL21bdiW7dieHehDp86tVmdWYmVWYVW60JXVWL15D7mQD3NhPnwncu9Wgn5af/ZkLwawN/vQzW3XYE3WYm26sw49WJeezXvIhXyYC/MxoN6/LYO0QzmMwQxhKIezsdtuwqZsxuZswZZsxdb0bt5DLuTDXJiPIfX+bRmmnchwRjCSkziZvm67IzuxM7uwK7uxO3vQr3kPuZAPc2E+Rtb7t2WMdjbncC5jOY/z2ddt92N/DuBADuJgDmEgg5r3kAv5MBfmY2y9f1smaJdzBVcykav4/3hHuO2RHMXRHMOxHMfxnMCw5j3kQj7MhfmYWO/flsnazdzCrUzhNm7nFLc9ldM4nTM4k1GcxWjGNO8hF/JhLsyH78Ti+ht0aKZ2L/dxPw/wIA9xgduOYzwXchEXcwmXchkTmveQC/kwF+bDd+Lrev8OzdGe4mme4Vme43mudttruJbrmMT13MCN3MTk5j3kQj7Mhfnwnfix3r9D87XXeYM3WcBbvM0dbnsnU5nGXdzNdO5hBjOb95AL+TAX5mNBvX1bFmqL+BT/160lfMbnPOy2jzCL2TzKYzzOEzzJnOY95EI+zIX5WFLv35YvtC/5Cv/XraV8w7e84LYv8hIv8wpzeZXXmMf85j3kQj7MhflYWu/flu+07/kB/9etZfzEz7zjtu/yHu/zAR/yER/zCQub95AL+TAX5mNZvX9VVVVVrdB/TLfNpQ==
+   eJzt1kVsFVEUxvHXh7PDobhDcYcCxa24Q3GXBHcSyodLQnFNKK4Jxa1AcYfCGimskeK+4U9m9Raks7m5ucmc5HcX95wzyTmTSSYUMhdRgSyZDNuzucBk2J7NBSbD9mwuMBm2Z3OBybA9mwtMhu3ZXGAybM/mApNhezYXmAzbs7nAZNiezQUmw/ZsLjAZtmdzgcmwPZsLTIbt2VxgMmzP5gKTYXs2F5gM27O5wGTYns0FJsP2bC4wGbZnc4HJsD2bC0yG7dlcEM1RHCVQEqVQGmXwCZ/xBV/xDd/xAz/xC7/x5z8v0vZsLojhqIbqqIGaqIXaiAqHQmFkQ3bkQE7kQm7kQV4vL+pEvegT/eI5sj2bC2I5mqIZmiMOLdAS+dhtfhRAQRRCYRRBURRDtJcXdaJe9Il+xQX79yWeozO6oCu6oTt6oCy7LYfyqICKqITKqIKqiPHyok7Uiz7RL56jx8E7yFICxyAMxhAMxTAMRx12Wxf1UB8N0BCN0BhNEOvlRZ2oF32iXzxHL4P9Z2k0+xuDsZjExWRMwVS04q412qAt2qE9OqAjOiHey4s6US/6RL94jt4H+8/STPY3C7OxgItELMS/xfXkrhd6ow/6oh/6YwAGIsHLizpRL/pEvxKD3fuylP0tw3Ks4SIJa7EOI7gbiVHhyO9kHMZjAiZ6eVEn6kWf6FdSsH9fNrG/zdiCnVwkYxd2Yxp30zEjHPmdzMFczMN8Ly/qRL3oE/1KDvbvy372dwAHcYyLFBzHCSzibjGWhCO/kxVYiVVY7eVFnagXfaJfKcH+fUnluITLuII0XMU1rGe3G7AxHPmdbMU2bMcOLy/qRL3oE/1KC/bvywOOh3gE/tdD6XiCp9jDbvdiXzjyOzmEwziCo15e1Il60Sf6lR7s35dnHM/xAvyvhzLwCq9xkt2ewmmcwVmcw3lcwEWkenlRJ+pFn+hXRrB/X95wvMU78L8eysQHfMR1dnsDN3ELt3EHd3EP9/HAy4s6US/6RL8yg/378hfV0cz+
   </data>
  </layer>
  <layer name="pillar" width="96" height="37">
@@ -37,27 +37,28 @@
  </layer>
  <layer name="ground" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt0EERADAMw7DwB1g8I7Etj0oIfE4AAAAAAAAAAAAAAO6bdsBiE/+b/O/y/z+/u/yHtw6BeQeH
+   eJzt0LENACAIRUH2H0Q3Yh5bB0AovEtoyc+LAAAAAAAAAAAAAACol9MDPpah/yT9Z+nfT+9ZHf3XddX2g59Q6QAJJQog
   </data>
  </layer>
  <layer name="floor" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJztkj1OAlEYRT9cA9JYQCEW/lApNYW4ArSxIlHW4QaUFaAdVOAKBLRAa0T3QQuNt5iJjUFjvueVN/ckp5jJ5M7LyTMLR89s3DWrJY5T8b4W8LciQf25qD8X9eei/lzUn4v6c1F/LurPRf25qD8X9eei/lzUn4v6c1F/LurPRf1/RzFnVoLz3PffLvDN8gffia/ZRbs9uA8PYEUt146tDfYJROzk4SYssA+SUbZhGe6wD5JRDuERrAbYPg+wGRvHsA5PnHev4Q1sO+/GRgOewjPn3Q68hXfOu7FxAS9hy3m3Dwfw3nk3Bh7hE3xNnmdwAp8d//EAh3DkuJnSNLsKMPsnpO2nyfObfbZ/YR0qI6y692ofFt17Hrr3PHTvhYiL7pr77p9E/DM+ALyA5vc=
+   eJztmT1OAlEURi+uQWkssBALECqwplBXoDRWJso62ACwAqCDSl2BihZq7d8+bLXxI5kJFEYNeW8+Hu87ySlm8nLn5uR1Y+aPsdlkZNZInKTifcPjZ0WC+nNRfy7qz0X9uag/F/Xnov5c1J+L+nNRfy7qz0X9uag/F/Xnov5c1J+L+i9GIWe2BT9yf5/9xJmvf5wTP1NCuzLchRVYVcvg2FxjbyBWnXW4AfPsRSJlGxbhDnuRSKnBOtxjLxIp+/AAHrIXiZQjeAyb7EUi5QyewxZ7kYi4g/fwJXl+hQ/w0fF3ThzPWwXS9s/J85vN2j85/E4HdmHP4czQ+e3eu2w/pQ8HcOh4bqhkde9TLuAlvPIwOzSyvPcp1/AG3nqYfWrW9jDWC1nfeyGE2dw/KedgZnvu/1dwvntoIpaLb7wk9qs=
   </data>
  </layer>
  <layer name="features" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1LEJgDAQQNGbwREcwY2cXZ1A7Y2oINYxAX0PrkiKEH5xEQAAAAAAAAAAAAC8aUgzppnSrBnf7TO+9XVL7Q/8nP5lXTunOc/6l3Hf9Xvz9rzXv4w5jtZN6F/L1V3/Op79u9AfctkAOEwX4w==
+   eJzt1LEJgDAQQNGbwREcwY2cXZ1A7Y2oIGJpDOJ7cEVShPCLiwAAAAAAAAAAAAAgpy5Nn2ZIMxf+y19NpT/wc/q/69g51X7W/x3nXb82r/f7HP3bDG9+3Rhb6yry9+fe0V3/Mq79m9AfnrIA8h8X4w==
   </data>
  </layer>
- <layer name="collision" width="96" height="37" visible="0">
+ <layer name="collision" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1zEKgEAMAMEDX+L/PykW4rWCspzMQJqUWyVjfGffnu15l/4t/Vv6t/Rv6d/Sv6V/S/+W/i39W/q39G/p39K/pX9L/5b+AAAAsKbzd78GAAC4zbfyqsO/HRBsDGE=
+   eJzt1zEKgDAQAMGAL/H/nxQLwTZgWCIzcE2KK7a6jLHOecy98y39W/q39G/p39K/pX9L/5b+Lf1b+rf0b+nf0r+lf0v/lv4t/QEAAGBP99/9GQAA2M3Ke/a9e9fh3y5SwgzN
   </data>
  </layer>
  <objectgroup name="nodes">
-  <object id="5" name="main" type="door" x="1152" y="720" width="48" height="72">
+  <object id="5" name="main" type="door" x="12" y="720" width="54" height="72">
    <properties>
+    <property name="info" value="Only a coward would run from Cornelius!"/>
     <property name="key" value="greendale"/>
     <property name="level" value="castle-hawkthorne"/>
     <property name="to" value="next"/>
@@ -162,7 +163,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object id="205" type="liquid" x="552" y="864" width="1176" height="54">
+  <object id="205" type="liquid" x="0" y="864" width="1728" height="54">
    <properties>
     <property name="death" value="true"/>
     <property name="drag" value="true"/>
@@ -180,7 +181,7 @@
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="321" type="breakable_block" x="696" y="576" width="24" height="24">
+  <object id="321" type="breakable_block" x="696" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -188,30 +189,30 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="322" type="breakable_block" x="696" y="600" width="24" height="24">
+  <object id="322" type="breakable_block" x="696" y="696" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
+    <property name="flippedY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-corner"/>
    </properties>
   </object>
-  <object id="323" type="breakable_block" x="552" y="600" width="24" height="24">
+  <object id="323" type="breakable_block" x="552" y="696" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="flipY" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="flippedY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-corner"/>
    </properties>
   </object>
-  <object id="330" type="breakable_block" x="552" y="576" width="24" height="24">
+  <object id="330" type="breakable_block" x="552" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
+    <property name="flipped" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-side"/>
    </properties>
@@ -728,61 +729,25 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="594" type="breakable_block" x="672" y="600" width="24" height="24">
+  <object id="598" type="breakable_block" x="672" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
     <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="630" type="breakable_block" x="576" y="696" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="598" type="breakable_block" x="672" y="576" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="627" type="breakable_block" x="648" y="600" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="628" type="breakable_block" x="624" y="600" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="629" type="breakable_block" x="600" y="600" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="630" type="breakable_block" x="576" y="600" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="631" type="breakable_block" x="696" y="552" width="24" height="24">
+  <object id="631" type="breakable_block" x="696" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -790,7 +755,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="632" type="breakable_block" x="696" y="528" width="24" height="24">
+  <object id="632" type="breakable_block" x="696" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -798,7 +763,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="633" type="breakable_block" x="696" y="504" width="24" height="24">
+  <object id="633" type="breakable_block" x="696" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -806,7 +771,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="634" type="breakable_block" x="696" y="480" width="24" height="24">
+  <object id="634" type="breakable_block" x="696" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -814,7 +779,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="635" type="breakable_block" x="696" y="456" width="24" height="24">
+  <object id="635" type="breakable_block" x="696" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -822,7 +787,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="636" type="breakable_block" x="696" y="432" width="24" height="24">
+  <object id="636" type="breakable_block" x="696" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -830,7 +795,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="637" type="breakable_block" x="648" y="576" width="24" height="24">
+  <object id="637" type="breakable_block" x="648" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -839,7 +804,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="638" type="breakable_block" x="624" y="576" width="24" height="24">
+  <object id="638" type="breakable_block" x="624" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -848,7 +813,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="639" type="breakable_block" x="600" y="576" width="24" height="24">
+  <object id="639" type="breakable_block" x="600" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -857,7 +822,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="640" type="breakable_block" x="576" y="576" width="24" height="24">
+  <object id="640" type="breakable_block" x="576" y="672" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -866,7 +831,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="641" type="breakable_block" x="576" y="552" width="24" height="24">
+  <object id="641" type="breakable_block" x="576" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -875,7 +840,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="642" type="breakable_block" x="600" y="552" width="24" height="24">
+  <object id="642" type="breakable_block" x="600" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -884,7 +849,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="643" type="breakable_block" x="624" y="552" width="24" height="24">
+  <object id="643" type="breakable_block" x="624" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -893,7 +858,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="644" type="breakable_block" x="672" y="552" width="24" height="24">
+  <object id="644" type="breakable_block" x="672" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -902,7 +867,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="645" type="breakable_block" x="648" y="552" width="24" height="24">
+  <object id="645" type="breakable_block" x="648" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -911,7 +876,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="646" type="breakable_block" x="576" y="528" width="24" height="24">
+  <object id="646" type="breakable_block" x="576" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -920,7 +885,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="647" type="breakable_block" x="600" y="528" width="24" height="24">
+  <object id="647" type="breakable_block" x="600" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -929,7 +894,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="648" type="breakable_block" x="624" y="528" width="24" height="24">
+  <object id="648" type="breakable_block" x="624" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -938,7 +903,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="649" type="breakable_block" x="672" y="528" width="24" height="24">
+  <object id="649" type="breakable_block" x="672" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -947,7 +912,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="650" type="breakable_block" x="648" y="528" width="24" height="24">
+  <object id="650" type="breakable_block" x="648" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -956,7 +921,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="651" type="breakable_block" x="672" y="432" width="24" height="24">
+  <object id="651" type="breakable_block" x="672" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -965,7 +930,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="652" type="breakable_block" x="624" y="432" width="24" height="24">
+  <object id="652" type="breakable_block" x="624" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -974,7 +939,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="653" type="breakable_block" x="576" y="480" width="24" height="24">
+  <object id="653" type="breakable_block" x="576" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -983,7 +948,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="654" type="breakable_block" x="624" y="456" width="24" height="24">
+  <object id="654" type="breakable_block" x="624" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -992,7 +957,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="655" type="breakable_block" x="576" y="432" width="24" height="24">
+  <object id="655" type="breakable_block" x="576" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1001,7 +966,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="656" type="breakable_block" x="600" y="480" width="24" height="24">
+  <object id="656" type="breakable_block" x="600" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1010,7 +975,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="657" type="breakable_block" x="576" y="456" width="24" height="24">
+  <object id="657" type="breakable_block" x="576" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1019,7 +984,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="658" type="breakable_block" x="648" y="432" width="24" height="24">
+  <object id="658" type="breakable_block" x="648" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1028,7 +993,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="659" type="breakable_block" x="672" y="456" width="24" height="24">
+  <object id="659" type="breakable_block" x="672" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1037,7 +1002,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="660" type="breakable_block" x="648" y="456" width="24" height="24">
+  <object id="660" type="breakable_block" x="648" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1046,7 +1011,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="661" type="breakable_block" x="624" y="480" width="24" height="24">
+  <object id="661" type="breakable_block" x="624" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1055,7 +1020,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="662" type="breakable_block" x="672" y="480" width="24" height="24">
+  <object id="662" type="breakable_block" x="672" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1064,7 +1029,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="663" type="breakable_block" x="600" y="456" width="24" height="24">
+  <object id="663" type="breakable_block" x="600" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1073,7 +1038,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="664" type="breakable_block" x="648" y="480" width="24" height="24">
+  <object id="664" type="breakable_block" x="648" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1082,7 +1047,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="665" type="breakable_block" x="600" y="432" width="24" height="24">
+  <object id="665" type="breakable_block" x="600" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1091,7 +1056,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="666" type="breakable_block" x="624" y="504" width="24" height="24">
+  <object id="666" type="breakable_block" x="624" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1100,7 +1065,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="667" type="breakable_block" x="648" y="504" width="24" height="24">
+  <object id="667" type="breakable_block" x="648" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1109,7 +1074,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="668" type="breakable_block" x="576" y="504" width="24" height="24">
+  <object id="668" type="breakable_block" x="576" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1118,7 +1083,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="669" type="breakable_block" x="600" y="504" width="24" height="24">
+  <object id="669" type="breakable_block" x="600" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1127,139 +1092,13 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="670" type="breakable_block" x="672" y="504" width="24" height="24">
+  <object id="670" type="breakable_block" x="672" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
     <property name="flipY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="671" type="breakable_block" x="552" y="552" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="672" type="breakable_block" x="552" y="528" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="673" type="breakable_block" x="552" y="504" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="674" type="breakable_block" x="552" y="480" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="675" type="breakable_block" x="552" y="456" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="676" type="breakable_block" x="552" y="432" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="687" type="breakable_block" x="792" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-below"/>
-   </properties>
-  </object>
-  <object id="688" type="breakable_block" x="768" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-diagonal"/>
-   </properties>
-  </object>
-  <object id="689" type="breakable_block" x="768" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-side"/>
-   </properties>
-  </object>
-  <object id="690" type="breakable_block" x="744" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-side"/>
-   </properties>
-  </object>
-  <object id="691" type="breakable_block" x="744" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-diagonal"/>
-   </properties>
-  </object>
-  <object id="692" type="breakable_block" x="720" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-side"/>
-   </properties>
-  </object>
-  <object id="693" type="breakable_block" x="720" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-diagonal"/>
-   </properties>
-  </object>
-  <object id="694" type="breakable_block" x="696" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle-diagonal"/>
-   </properties>
-  </object>
-  <object id="695" type="breakable_block" x="696" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-top-angle"/>
    </properties>
   </object>
   <object id="699" type="breakable_block" x="792" y="816" width="24" height="24">
@@ -1286,94 +1125,6 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="702" type="breakable_block" x="744" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="703" type="breakable_block" x="720" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="704" type="breakable_block" x="720" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="705" type="breakable_block" x="696" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="706" type="breakable_block" x="696" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="707" type="breakable_block" x="672" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="708" type="breakable_block" x="672" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="709" type="breakable_block" x="648" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="710" type="breakable_block" x="648" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="711" type="breakable_block" x="648" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="712" type="breakable_block" x="648" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
   <object id="713" type="breakable_block" x="648" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
@@ -1383,30 +1134,6 @@
    </properties>
   </object>
   <object id="716" type="breakable_block" x="672" y="816" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="717" type="breakable_block" x="672" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="718" type="breakable_block" x="672" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="719" type="breakable_block" x="696" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1430,63 +1157,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="732" type="breakable_block" x="624" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="733" type="breakable_block" x="624" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="735" type="breakable_block" x="624" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
   <object id="736" type="breakable_block" x="624" y="816" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="737" type="breakable_block" x="624" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="738" type="breakable_block" x="600" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="739" type="breakable_block" x="600" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="741" type="breakable_block" x="600" y="744" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1502,38 +1173,6 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="743" type="breakable_block" x="600" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="744" type="breakable_block" x="576" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="745" type="breakable_block" x="576" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="747" type="breakable_block" x="576" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
   <object id="748" type="breakable_block" x="576" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
@@ -1542,69 +1181,16 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="749" type="breakable_block" x="576" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="750" type="breakable_block" x="552" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-corner"/>
-   </properties>
-  </object>
-  <object id="751" type="breakable_block" x="552" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="752" type="breakable_block" x="552" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="753" type="breakable_block" x="552" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="754" type="breakable_block" x="552" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
   <object id="755" type="breakable_block" x="552" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
+    <property name="flipped" value="true"/>
     <property name="hp" value="5000"/>
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="757" type="breakable_block" x="576" y="696" width="24" height="24">
+  <object id="758" type="breakable_block" x="576" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1612,7 +1198,7 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="758" type="breakable_block" x="600" y="696" width="24" height="24">
+  <object id="759" type="breakable_block" x="600" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1620,7 +1206,7 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="759" type="breakable_block" x="624" y="696" width="24" height="24">
+  <object id="760" type="breakable_block" x="624" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1628,23 +1214,7 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="760" type="breakable_block" x="648" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="761" type="breakable_block" x="672" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="762" type="breakable_block" x="816" y="792" width="24" height="24">
+  <object id="761" type="breakable_block" x="648" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1740,7 +1310,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="786" type="breakable_block" x="48" y="504" width="24" height="24">
+  <object id="786" type="breakable_block" x="48" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1748,7 +1318,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="788" type="breakable_block" x="0" y="384" width="24" height="24">
+  <object id="788" type="breakable_block" x="0" y="480" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1757,16 +1327,51 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="790" type="breakable_block" x="0" y="552" width="24" height="24">
+  <object id="791" type="breakable_block" x="48" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="792" type="breakable_block" x="24" y="648" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="791" type="breakable_block" x="48" y="456" width="24" height="24">
+  <object id="796" type="breakable_block" x="0" y="600" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="797" type="breakable_block" x="0" y="624" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="799" type="breakable_block" x="24" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="800" type="breakable_block" x="48" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1774,16 +1379,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="792" type="breakable_block" x="24" y="552" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="796" type="breakable_block" x="0" y="504" width="24" height="24">
+  <object id="805" type="breakable_block" x="24" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1792,7 +1388,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="797" type="breakable_block" x="0" y="528" width="24" height="24">
+  <object id="808" type="breakable_block" x="0" y="504" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1801,7 +1397,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="799" type="breakable_block" x="24" y="408" width="24" height="24">
+  <object id="811" type="breakable_block" x="24" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1810,7 +1406,16 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="800" type="breakable_block" x="48" y="528" width="24" height="24">
+  <object id="812" type="breakable_block" x="0" y="576" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="813" type="breakable_block" x="48" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1818,7 +1423,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="805" type="breakable_block" x="24" y="480" width="24" height="24">
+  <object id="817" type="breakable_block" x="24" y="480" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1827,34 +1432,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="808" type="breakable_block" x="0" y="408" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="811" type="breakable_block" x="24" y="456" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="812" type="breakable_block" x="0" y="480" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="813" type="breakable_block" x="48" y="432" width="24" height="24">
+  <object id="818" type="breakable_block" x="48" y="576" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1862,7 +1440,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="817" type="breakable_block" x="24" y="384" width="24" height="24">
+  <object id="820" type="breakable_block" x="24" y="624" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1871,7 +1449,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="818" type="breakable_block" x="48" y="480" width="24" height="24">
+  <object id="823" type="breakable_block" x="48" y="504" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1879,7 +1457,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="820" type="breakable_block" x="24" y="528" width="24" height="24">
+  <object id="826" type="breakable_block" x="0" y="552" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1888,7 +1466,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="823" type="breakable_block" x="48" y="408" width="24" height="24">
+  <object id="828" type="breakable_block" x="48" y="480" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1896,7 +1474,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="826" type="breakable_block" x="0" y="456" width="24" height="24">
+  <object id="834" type="breakable_block" x="24" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1905,33 +1483,16 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="828" type="breakable_block" x="48" y="384" width="24" height="24">
+  <object id="835" type="breakable_block" x="48" y="648" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="834" type="breakable_block" x="24" y="432" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="835" type="breakable_block" x="48" y="552" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="flipY" value="true"/>
+    <property name="flippedY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-corner"/>
    </properties>
   </object>
-  <object id="836" type="breakable_block" x="24" y="504" width="24" height="24">
+  <object id="836" type="breakable_block" x="24" y="600" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1940,7 +1501,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="837" type="breakable_block" x="0" y="432" width="24" height="24">
+  <object id="837" type="breakable_block" x="0" y="528" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1949,7 +1510,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="840" type="breakable_block" x="24" y="288" width="24" height="24">
+  <object id="840" type="breakable_block" x="24" y="384" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1958,7 +1519,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="841" type="breakable_block" x="48" y="264" width="24" height="24">
+  <object id="841" type="breakable_block" x="48" y="360" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1966,7 +1527,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="842" type="breakable_block" x="48" y="312" width="24" height="24">
+  <object id="842" type="breakable_block" x="48" y="408" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1974,7 +1535,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="847" type="breakable_block" x="0" y="312" width="24" height="24">
+  <object id="847" type="breakable_block" x="0" y="408" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1983,7 +1544,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="848" type="breakable_block" x="0" y="264" width="24" height="24">
+  <object id="848" type="breakable_block" x="0" y="360" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -1992,7 +1553,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="849" type="breakable_block" x="0" y="360" width="24" height="24">
+  <object id="849" type="breakable_block" x="0" y="456" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2001,7 +1562,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="850" type="breakable_block" x="0" y="288" width="24" height="24">
+  <object id="850" type="breakable_block" x="0" y="384" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2010,7 +1571,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="851" type="breakable_block" x="48" y="360" width="24" height="24">
+  <object id="851" type="breakable_block" x="48" y="456" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2018,7 +1579,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="853" type="breakable_block" x="0" y="336" width="24" height="24">
+  <object id="853" type="breakable_block" x="0" y="432" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2027,7 +1588,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="855" type="breakable_block" x="24" y="336" width="24" height="24">
+  <object id="855" type="breakable_block" x="24" y="432" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2036,7 +1597,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="858" type="breakable_block" x="24" y="264" width="24" height="24">
+  <object id="858" type="breakable_block" x="24" y="360" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2045,7 +1606,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="859" type="breakable_block" x="24" y="360" width="24" height="24">
+  <object id="859" type="breakable_block" x="24" y="456" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2054,7 +1615,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="863" type="breakable_block" x="48" y="336" width="24" height="24">
+  <object id="863" type="breakable_block" x="48" y="432" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2062,7 +1623,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="864" type="breakable_block" x="24" y="312" width="24" height="24">
+  <object id="864" type="breakable_block" x="24" y="408" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2071,7 +1632,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="866" type="breakable_block" x="48" y="288" width="24" height="24">
+  <object id="866" type="breakable_block" x="48" y="384" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2079,7 +1640,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="870" type="breakable_block" x="24" y="168" width="24" height="24">
+  <object id="870" type="breakable_block" x="24" y="264" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2088,7 +1649,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="871" type="breakable_block" x="48" y="144" width="24" height="24">
+  <object id="871" type="breakable_block" x="48" y="240" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2096,7 +1657,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="872" type="breakable_block" x="48" y="192" width="24" height="24">
+  <object id="872" type="breakable_block" x="48" y="288" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2104,7 +1665,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="877" type="breakable_block" x="0" y="192" width="24" height="24">
+  <object id="877" type="breakable_block" x="0" y="288" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2113,7 +1674,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="878" type="breakable_block" x="0" y="144" width="24" height="24">
+  <object id="878" type="breakable_block" x="0" y="240" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2122,7 +1683,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="879" type="breakable_block" x="0" y="240" width="24" height="24">
+  <object id="879" type="breakable_block" x="0" y="336" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2131,7 +1692,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="880" type="breakable_block" x="0" y="168" width="24" height="24">
+  <object id="880" type="breakable_block" x="0" y="264" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2140,7 +1701,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="881" type="breakable_block" x="48" y="240" width="24" height="24">
+  <object id="881" type="breakable_block" x="48" y="336" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2148,7 +1709,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="883" type="breakable_block" x="0" y="216" width="24" height="24">
+  <object id="883" type="breakable_block" x="0" y="312" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2157,7 +1718,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="885" type="breakable_block" x="24" y="216" width="24" height="24">
+  <object id="885" type="breakable_block" x="24" y="312" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2166,7 +1727,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="888" type="breakable_block" x="24" y="144" width="24" height="24">
+  <object id="888" type="breakable_block" x="24" y="240" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2175,7 +1736,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="889" type="breakable_block" x="24" y="240" width="24" height="24">
+  <object id="889" type="breakable_block" x="24" y="336" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2184,7 +1745,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="893" type="breakable_block" x="48" y="216" width="24" height="24">
+  <object id="893" type="breakable_block" x="48" y="312" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2192,7 +1753,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="894" type="breakable_block" x="24" y="192" width="24" height="24">
+  <object id="894" type="breakable_block" x="24" y="288" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2201,7 +1762,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="896" type="breakable_block" x="48" y="168" width="24" height="24">
+  <object id="896" type="breakable_block" x="48" y="264" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2209,7 +1770,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="900" type="breakable_block" x="24" y="48" width="24" height="24">
+  <object id="900" type="breakable_block" x="24" y="144" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2218,7 +1779,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="901" type="breakable_block" x="48" y="24" width="24" height="24">
+  <object id="901" type="breakable_block" x="48" y="120" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2226,7 +1787,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="902" type="breakable_block" x="48" y="72" width="24" height="24">
+  <object id="902" type="breakable_block" x="48" y="168" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2234,7 +1795,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="907" type="breakable_block" x="0" y="72" width="24" height="24">
+  <object id="907" type="breakable_block" x="0" y="168" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2243,7 +1804,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="908" type="breakable_block" x="0" y="24" width="24" height="24">
+  <object id="908" type="breakable_block" x="0" y="120" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2252,7 +1813,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="909" type="breakable_block" x="0" y="120" width="24" height="24">
+  <object id="909" type="breakable_block" x="0" y="216" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2261,7 +1822,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="910" type="breakable_block" x="0" y="48" width="24" height="24">
+  <object id="910" type="breakable_block" x="0" y="144" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2270,7 +1831,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="911" type="breakable_block" x="48" y="120" width="24" height="24">
+  <object id="911" type="breakable_block" x="48" y="216" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2278,7 +1839,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="913" type="breakable_block" x="0" y="96" width="24" height="24">
+  <object id="913" type="breakable_block" x="0" y="192" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2287,7 +1848,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="915" type="breakable_block" x="24" y="96" width="24" height="24">
+  <object id="915" type="breakable_block" x="24" y="192" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2296,7 +1857,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="918" type="breakable_block" x="24" y="24" width="24" height="24">
+  <object id="918" type="breakable_block" x="24" y="120" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2305,7 +1866,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="919" type="breakable_block" x="24" y="120" width="24" height="24">
+  <object id="919" type="breakable_block" x="24" y="216" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2314,7 +1875,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="923" type="breakable_block" x="48" y="96" width="24" height="24">
+  <object id="923" type="breakable_block" x="48" y="192" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2322,7 +1883,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="924" type="breakable_block" x="24" y="72" width="24" height="24">
+  <object id="924" type="breakable_block" x="24" y="168" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2331,7 +1892,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="926" type="breakable_block" x="48" y="48" width="24" height="24">
+  <object id="926" type="breakable_block" x="48" y="144" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2339,7 +1900,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="987" type="breakable_block" x="0" y="696" width="24" height="24">
+  <object id="987" type="breakable_block" x="-24" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2347,7 +1908,7 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="991" type="breakable_block" x="24" y="696" width="24" height="24">
+  <object id="991" type="breakable_block" x="0" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2355,15 +1916,7 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="992" type="breakable_block" x="48" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="993" type="breakable_block" x="48" y="696" width="24" height="24">
+  <object id="993" type="breakable_block" x="48" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2371,37 +1924,12 @@
     <property name="sprite" value="castle-corner"/>
    </properties>
   </object>
-  <object id="994" type="breakable_block" x="48" y="744" width="24" height="24">
+  <object id="996" type="breakable_block" x="48" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
     <property name="hp" value="5000"/>
     <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="995" type="breakable_block" x="48" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="996" type="breakable_block" x="48" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
-  <object id="1032" type="liquid" x="0" y="816" width="552" height="96">
-   <properties>
-    <property name="death" value="true"/>
-    <property name="drag" value="true"/>
-    <property name="drown" value="true"/>
-    <property name="opacity" value="0.8"/>
-    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
   <object id="1036" type="breakable_block" x="1632" y="792">
@@ -2470,7 +1998,7 @@
    </properties>
    <polygon points="0,0 24,0 24,-24"/>
   </object>
-  <object id="1042" type="breakable_block" x="528" y="696" width="24" height="24">
+  <object id="1042" type="breakable_block" x="504" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2574,7 +2102,7 @@
     <property name="sprite" value="stair-center"/>
    </properties>
   </object>
-  <object id="1093" type="breakable_block" x="504" y="696" width="24" height="24">
+  <object id="1093" type="breakable_block" x="480" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2582,7 +2110,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1094" type="breakable_block" x="480" y="696" width="24" height="24">
+  <object id="1094" type="breakable_block" x="456" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2590,7 +2118,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1095" type="breakable_block" x="456" y="696" width="24" height="24">
+  <object id="1095" type="breakable_block" x="432" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2598,7 +2126,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1096" type="breakable_block" x="432" y="696" width="24" height="24">
+  <object id="1096" type="breakable_block" x="408" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2606,7 +2134,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1097" type="breakable_block" x="408" y="696" width="24" height="24">
+  <object id="1097" type="breakable_block" x="384" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2614,7 +2142,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1098" type="breakable_block" x="384" y="696" width="24" height="24">
+  <object id="1098" type="breakable_block" x="360" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2622,7 +2150,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1099" type="breakable_block" x="336" y="696" width="24" height="24">
+  <object id="1099" type="breakable_block" x="312" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2630,7 +2158,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1100" type="breakable_block" x="360" y="696" width="24" height="24">
+  <object id="1100" type="breakable_block" x="336" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2638,7 +2166,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1101" type="breakable_block" x="192" y="696" width="24" height="24">
+  <object id="1101" type="breakable_block" x="168" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2646,7 +2174,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1102" type="breakable_block" x="144" y="696" width="24" height="24">
+  <object id="1102" type="breakable_block" x="120" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2654,7 +2182,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1103" type="breakable_block" x="288" y="696" width="24" height="24">
+  <object id="1103" type="breakable_block" x="264" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2662,7 +2190,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1104" type="breakable_block" x="216" y="696" width="24" height="24">
+  <object id="1104" type="breakable_block" x="192" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2670,7 +2198,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1105" type="breakable_block" x="264" y="696" width="24" height="24">
+  <object id="1105" type="breakable_block" x="240" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2678,7 +2206,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1106" type="breakable_block" x="120" y="696" width="24" height="24">
+  <object id="1106" type="breakable_block" x="96" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2686,7 +2214,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1107" type="breakable_block" x="168" y="696" width="24" height="24">
+  <object id="1107" type="breakable_block" x="144" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2694,7 +2222,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1108" type="breakable_block" x="312" y="696" width="24" height="24">
+  <object id="1108" type="breakable_block" x="288" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2702,7 +2230,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1109" type="breakable_block" x="240" y="696" width="24" height="24">
+  <object id="1109" type="breakable_block" x="216" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2710,7 +2238,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1112" type="breakable_block" x="72" y="696" width="24" height="24">
+  <object id="1117" type="breakable_block" x="72" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2718,55 +2246,7 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1117" type="breakable_block" x="96" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="bridge"/>
-   </properties>
-  </object>
-  <object id="1139" type="breakable_block" x="792" y="768">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle"/>
-    <property name="tile_id" value="106"/>
-   </properties>
-   <polygon points="0,0 0,24 24,24"/>
-  </object>
-  <object id="1140" type="breakable_block" x="768" y="744">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle"/>
-    <property name="tile_id" value="106"/>
-   </properties>
-   <polygon points="0,0 0,24 24,24"/>
-  </object>
-  <object id="1141" type="breakable_block" x="744" y="720">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle"/>
-    <property name="tile_id" value="106"/>
-   </properties>
-   <polygon points="0,0 0,24 24,24"/>
-  </object>
-  <object id="1142" type="breakable_block" x="720" y="696">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-angle"/>
-    <property name="tile_id" value="106"/>
-   </properties>
-   <polygon points="0,0 0,24 24,24"/>
-  </object>
-  <object id="1153" type="spawn" x="456" y="624" width="72" height="72">
+  <object id="1153" type="spawn" x="456" y="720" width="72" height="72">
    <properties>
     <property name="enemytype" value="benzalkBoss"/>
     <property name="nodeType" value="enemy"/>
@@ -2775,7 +2255,7 @@
     <property name="x_Proximity" value="350"/>
    </properties>
   </object>
-  <object id="1154" name="throne_barrier" type="door" x="576" y="624" width="24" height="72">
+  <object id="1154" name="throne_barrier" type="door" x="576" y="720" width="24" height="72">
    <properties>
     <property name="aniframes2" value="1-12,1"/>
     <property name="anispeed2" value="0.05"/>
@@ -2790,7 +2270,7 @@
     <property name="trigger" value="bosstriggers.benzalk"/>
    </properties>
   </object>
-  <object id="1155" type="breakable_block" x="24" y="0" width="24" height="24">
+  <object id="1155" type="breakable_block" x="24" y="96" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2799,7 +2279,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1156" type="breakable_block" x="48" y="0" width="24" height="24">
+  <object id="1156" type="breakable_block" x="48" y="96" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2807,7 +2287,7 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="1157" type="breakable_block" x="0" y="0" width="24" height="24">
+  <object id="1157" type="breakable_block" x="0" y="96" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
@@ -2816,7 +2296,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1158" type="breakable_block" x="24" y="720" width="24" height="24">
+  <object id="1164" type="breakable_block" x="24" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2824,7 +2304,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1159" type="breakable_block" x="0" y="720" width="24" height="24">
+  <object id="1165" type="breakable_block" x="0" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -2832,51 +2312,535 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1160" type="breakable_block" x="24" y="744" width="24" height="24">
+  <object id="1166" type="breakable_block" x="816" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
     <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1167" type="breakable_block" x="792" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1168" type="breakable_block" x="768" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1169" type="breakable_block" x="744" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1170" type="breakable_block" x="720" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1171" type="breakable_block" x="696" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1172" type="breakable_block" x="672" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1173" type="breakable_block" x="0" y="72" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1161" type="breakable_block" x="0" y="744" width="24" height="24">
+  <object id="1174" type="breakable_block" x="0" y="24" width="24" height="24">
    <properties>
-    <property name="brokenBy" value="fire"/>
+    <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1162" type="breakable_block" x="24" y="768" width="24" height="24">
+  <object id="1175" type="breakable_block" x="48" y="48" width="24" height="24">
    <properties>
-    <property name="brokenBy" value="fire"/>
+    <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1176" type="breakable_block" x="24" y="24" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1163" type="breakable_block" x="0" y="768" width="24" height="24">
+  <object id="1177" type="breakable_block" x="24" y="48" width="24" height="24">
    <properties>
-    <property name="brokenBy" value="fire"/>
+    <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1164" type="breakable_block" x="24" y="792" width="24" height="24">
+  <object id="1178" type="breakable_block" x="0" y="48" width="24" height="24">
    <properties>
-    <property name="brokenBy" value="fire"/>
+    <property name="brokenBy" value="cornelius"/>
     <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="1165" type="breakable_block" x="0" y="792" width="24" height="24">
+  <object id="1179" type="breakable_block" x="48" y="24" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1180" type="breakable_block" x="24" y="72" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1181" type="breakable_block" x="48" y="72" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1182" type="breakable_block" x="24" y="0" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1183" type="breakable_block" x="48" y="0" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1184" type="breakable_block" x="0" y="0" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1185" type="breakable_block" x="528" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
     <property name="hp" value="5000"/>
+    <property name="sprite" value="bridge"/>
+   </properties>
+  </object>
+  <object id="1186" type="breakable_block" x="552" y="648" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1187" type="breakable_block" x="552" y="624" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1188" type="breakable_block" x="552" y="600" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1189" type="breakable_block" x="552" y="576" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1190" type="breakable_block" x="552" y="552" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1191" type="breakable_block" x="552" y="528" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1192" type="breakable_block" x="552" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-corner"/>
+   </properties>
+  </object>
+  <object id="1193" type="breakable_block" x="24" y="792" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="fire"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="5000"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1194" type="breakable_block" x="0" y="648" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1195" type="breakable_block" x="600" y="696" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1196" type="breakable_block" x="624" y="696" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1197" type="breakable_block" x="648" y="696" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1198" type="breakable_block" x="672" y="696" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flippedY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-top"/>
+   </properties>
+  </object>
+  <object id="1199" type="breakable_block" x="552" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1200" type="breakable_block" x="672" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1201" type="breakable_block" x="600" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1202" type="breakable_block" x="672" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1203" type="breakable_block" x="648" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1204" type="breakable_block" x="552" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1205" type="breakable_block" x="624" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1206" type="breakable_block" x="696" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1207" type="breakable_block" x="696" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1208" type="breakable_block" x="576" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1209" type="breakable_block" x="696" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1210" type="breakable_block" x="624" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1211" type="breakable_block" x="600" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1212" type="breakable_block" x="576" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1213" type="breakable_block" x="624" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1214" type="breakable_block" x="648" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1215" type="breakable_block" x="600" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1216" type="breakable_block" x="552" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1217" type="breakable_block" x="648" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1218" type="breakable_block" x="648" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1219" type="breakable_block" x="576" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1220" type="breakable_block" x="696" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1221" type="breakable_block" x="552" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipped" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-side"/>
+   </properties>
+  </object>
+  <object id="1222" type="breakable_block" x="576" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1223" type="breakable_block" x="672" y="480" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1224" type="breakable_block" x="672" y="504" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1225" type="breakable_block" x="624" y="432" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1226" type="breakable_block" x="600" y="456" width="24" height="24">
+   <properties>
+    <property name="brokenBy" value="cornelius"/>
+    <property name="explode" value="true"/>
+    <property name="flipY" value="true"/>
+    <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
