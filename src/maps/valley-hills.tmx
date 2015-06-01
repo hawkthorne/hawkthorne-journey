@@ -74,7 +74,7 @@
  </layer>
  <layer name="floor" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1kEKgkAYhuHRI9V5FGqnGz1Cmw5QtK9tnbKJHDBJ5lcq56P3hW8XGPM4kXOUUme/m2GUVrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYabZrhphtu8NplzW7+mtzL73fNxm1bwart5q10zWOH37e+Bm62hV1jtjdrBKtwWb8xritve72R8Xmm8r7i9L+YVc1vlzq3zp9nj/C7G59bG+4rba0X3H2PMKXTwO/pdI+ufYeyzU2Yx+ye3KnK/gpf13Jbe3MLvRWpZ78vc9zyVffKOp7Clz5Mxxhhj83cHLKnSEg==
+   eJzt1kEKwjAURdHfLknXo6AznegSnLiAinOd2qW5CiM1UKRtapA0j94LbyZYchrRjBS6udWtkUa4aYabZrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYabZrhphptmuGmGm2a4aYbbcJvCbOt2aG1dTP1UuPXlvY4d2+OWXUNeuOXXGK+Q29ntOvL7ns1Osc87d7dfvLrcFqXZsmzM3ud3T/Tcc3Vbff5j9Nn4KreL2yOw9hmGPvuP1TZPt13gTnmv7/PJdbH534vcGntfQu9z7ktxx1Nu6vNkjDHGWPxeIfpB/g==
   </data>
  </layer>
  <layer name="features" width="110" height="40">
@@ -84,7 +84,7 @@
  </layer>
  <layer name="collision" width="110" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt00EKgzAQQFHB+y+U9hSCXrFZmEWD6BhS0w//weyCSH5mGPRPprH3H6iG3ZjsxmQ3Jrsx2Y3Jbkx2Y7Ibk92Y7MZkNya7MdmNyW5MdmOyG5PdmOzGZDcmuzHZjcluTHZjshuT3ZjsVmdN97alWYp5it3uyb2ysttT/ewWU/bqzW7nWvSax/g9R/fVbsda7de8f6P1PdvtW/S9v9KZ975HZ5NdnasZxeVe6iO6L/Q3/os97zmSJInrA9IzXpc=
+   eJzt1NEKgyAYQOGg978o2lME9YoTlhezctJk7tD5wDuR8PjXdSIY+tZfoCvsxmQ3Jrsx2Y3Jbkx2Y7Ibk92Y7MZkNya7MdmNyW5MdmOyG5PdmOzGZDcmuzHZjcluTHZjshuT3ZjsxmS3vCXczxrWnKzW7HYs9orSbq372e1d2utf2e2lRq+xL7/Pb+f17t1qzde4nVH7Ps/Ou2u30vc+hT2PbY5yK/q0r+bSXuylNkrnhf6Wfznn/kskSVLOEzkNYqM=
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="110" height="40">
@@ -211,7 +211,7 @@
     <property name="sprite" value="sand-block-dark"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2088" y="720" width="24" height="24">
+  <object type="breakable_block" x="1920" y="696" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block-dark"/>
@@ -241,7 +241,7 @@
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
    </properties>
   </object>
-  <object type="enemy" x="1992" y="720" width="48" height="48">
+  <object type="enemy" x="2088" y="720" width="48" height="48">
    <properties>
     <property name="enemytype" value="alien_ranged"/>
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
@@ -253,7 +253,7 @@
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
    </properties>
   </object>
-  <object type="enemy" x="2232" y="720" width="48" height="48">
+  <object type="enemy" x="2328" y="720" width="48" height="48">
    <properties>
     <property name="enemytype" value="alien"/>
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
@@ -265,14 +265,14 @@
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
    </properties>
   </object>
-  <object type="enemy" x="2328" y="720" width="48" height="48">
+  <object type="enemy" x="2448" y="720" width="48" height="48">
    <properties>
     <property name="drop" value="alien_object3"/>
     <property name="enemytype" value="alien_elite"/>
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
    </properties>
   </object>
-  <object type="enemy" x="2112" y="720" width="48" height="48">
+  <object type="enemy" x="2184" y="720" width="48" height="48">
    <properties>
     <property name="enemytype" value="alien_heavy"/>
     <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
@@ -449,6 +449,13 @@
     <property name="tile_id" value="105"/>
    </properties>
    <polygon points="0,0 24,-24 24,0"/>
+  </object>
+  <object name="red_potion" type="spawn" x="1824" y="744" width="24" height="24">
+   <properties>
+    <property name="message" value="A health potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
   </object>
  </objectgroup>
 </map>

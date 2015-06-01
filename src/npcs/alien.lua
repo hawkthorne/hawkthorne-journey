@@ -6,6 +6,9 @@ local Quest = require 'quest'
 local telescope = require 'npcs/quests/telescopejuanquest'
 local quests = require 'npcs/quests/alienquest'
 
+local window = require 'window'
+local camera = require 'camera'
+
 return {
   width = 29,
   height = 48,
@@ -34,7 +37,12 @@ return {
   end,]]
   talk_commands = {
     ['Talk about quests']= function(npc, player)
-    if Quest.alreadyCompleted(npc, player, quests.alienobject) then
+    if player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
+    if enemy.shake and level.trackPlayer == false then
+      shake = (math.random() * 4)-2/player_dist.x
+      camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
+    end
+    elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
       Quest:activate(npc, player, quests.aliencamp)
     elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
       local start = {
