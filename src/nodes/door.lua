@@ -5,6 +5,7 @@ local sound = require 'vendor/TEsound'
 local Prompt = require 'prompt'
 local utils = require 'utils'
 local app = require 'app'
+local collision  = require 'hawk/collision'
 
 local Door = {}
 Door.__index = Door
@@ -12,7 +13,7 @@ Door.__index = Door
 Door.isInteractive = true
 Door.isDoor = true
 
-function Door.new(node, collider)
+function Door.new(node, collider, level)
   local door = {}
   setmetatable(door, Door)
 
@@ -72,6 +73,27 @@ function Door.new(node, collider)
     }
     door.position = utils.deepcopy(door.position_hidden)
     door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
+    door.obstruct = node.properties.obstruct or false
+    door.show_sfx = node.properties.show_sfx or 'reveal'
+    --used if the closed door should obstruct the player's movement
+    if door.obstruct then
+      -- used for collision detection
+      door.bb = collider:addRectangle(node.x-5, node.y, node.width+10, node.height)
+      door.bb.node = door
+      collider:setPassive(door.bb)
+      door.collider = collider
+      
+      door.map = level.map
+      local tw = door.map.tilewidth
+        
+      -- add collision tiles
+      for x = 0, door.width / tw - 1 do
+        for y = 0, door.height / tw - 1 do
+          collision.add_tile( door.map, node.x + x * tw,
+                              node.y + y * tw, tw, tw, 0)
+        end
+      end
+    end
   end
 
   return door
@@ -134,7 +156,19 @@ end
 
 function Door:keypressed( button, player)
   if player.freeze or player.dead then return end
-  if self.hideable and self.hidden and not self.inventory then return end
+  if self.hideable and self.hidden and not self.inventory then 
+    if self.obstruct then
+      if not player.inventory:hasKey(self.key) and self.info then
+        message = {self.info}
+        local callback = function(result)
+          self.prompt = nil
+          player.freeze = false
+        end
+        local options = {'Exit'}
+        self.prompt = Prompt.new(message, callback, options)
+      return end
+    else return end
+    end
   if button == self.button or button=="INTERACT" then
     if player.currently_held and player.currently_held.type == 'vehicle' then
       if button == 'INTERACT' then
@@ -143,7 +177,12 @@ function Door:keypressed( button, player)
       end
       return false
     end
-    self:switch(player)
+    if self.obstruct then
+    else
+      self:switch(player)
+    end
+
+
     return true
   end
 end
@@ -156,8 +195,19 @@ function Door:show(previous)
     if self.inventory then
       self.open = true
     end
-    sound.playSfx( 'reveal' )
+    sound.playSfx( self.show_sfx )
     Tween.start( self.movetime, self.position, self.position_shown )
+    if self.obstruct then
+      local tw = self.map.tilewidth
+  
+      -- remove collision tiles
+      for x = 0, self.width / tw - 1 do
+        for y = 0, self.height / tw - 1 do
+          collision.remove_tile(self.map, self.position.x + x * tw,
+                                self.position.y + y * tw, tw, tw)
+    end
+  end
+    end
   end
 end
 
@@ -179,6 +229,13 @@ function Door:update(dt)
   if self.animation2 and self.open then
     self.animation2:update(dt)
   end
+
+  local trg = app.gamesaves:active():get(self.trigger, false)
+  if trg ~= false and not self.open then
+    self:show()
+    self.open = true
+  end
+
 end
 
 function Door:draw()
