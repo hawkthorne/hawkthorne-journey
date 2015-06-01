@@ -254,7 +254,6 @@
     <property name="enemytype" value="trombonist"/>
    </properties>
   </object>
-  <object name="alien" type="npc" x="216" y="792" width="48" height="48"/>
   <object type="enemy" x="1824" y="408" width="48" height="48">
    <properties>
     <property name="enemytype" value="violinist"/>

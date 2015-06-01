@@ -1,24 +1,22 @@
 local game = require 'game'
 return{
-  name = 'alien_laser',
+  name = 'alien_gatling',
   type = 'projectile',
   lift = game.gravity,
-  width = 17,
-  height = 5,
-  frameWidth = 17,
-  frameHeight = 5,
+  width = 13,
+  height = 3,
+  frameWidth = 13,
+  frameHeight = 3,
   solid = true,
   velocity = { x=500, y=0},
   throwVelocityX = -300, 
   throwVelocityY = 0,
-  damage = 10,
+  damage = 12,
   stayOnScreen = false,
   horizontalLimit = 420,
-  special_damage = {blunt = 1},
   playerCanPickUp = false,
   enemyCanPickUp = true,
   canPlayerStore = false,
-  throw_sound = 'maincorn_beam',
 
   update = function(node, projectile)
   projectile.thrown = true

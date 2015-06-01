@@ -17,8 +17,8 @@ end
 
 function Scene:start(player)
   script = {
-    '(As you enter, a booming voice echoes throughout the cave)',
-    'Cooooome find meeee in the Chili Fieldsssss...',
+    'In the cave, you notice two green alien creatures converging on the orange one.',
+    'As you enter, they instead turn towards you.',
   }
   self.dialog = dialog.create(script)
   self.dialog:open(function() self.finished = true end)
