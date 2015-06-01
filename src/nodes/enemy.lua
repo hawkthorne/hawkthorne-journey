@@ -156,6 +156,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.enterScript = enemy.props.enterScript or false
   enemy.deathScript = enemy.props.deathScript or false
   enemy.rage = false
+  enemy.freeze = false
 
   enemy.foreground = node.properties.foreground or enemy.props.foreground or false
   enemy.db = app.gamesaves:active()
@@ -183,6 +184,7 @@ function Enemy:hurt( damage, special_damage, knockback )
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
+  local state = self.state
   self.state = 'hurt'
   
   -- Subtract from hp total damage including special damage
@@ -218,7 +220,7 @@ function Enemy:hurt( damage, special_damage, knockback )
               function() self.knockbackActive = false end)
     end
     if not self.flashing then
-      self:start_flash()
+      self:start_flash(state)
     end
     if self.props.hurt then self.props.hurt( self ) end
   end
@@ -242,7 +244,7 @@ function Enemy:calculateDamage(damage, special_damage)
   return damage
 end
 
-function Enemy:start_flash()
+function Enemy:start_flash( state )
   if not self.blink then
     self.blink = Timer.addPeriodic(.12, function()
       self.flash = not self.flash
@@ -250,8 +252,8 @@ function Enemy:start_flash()
   end
   if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
   self.reviveTimer = Timer.add( self.revivedelay, function()
-                                self.state = 'default'
-                                self:cancel_flash()
+                                self.state = state
+                                self:cancel_flash( state )
                                 self.flashing = false
                                 end )
   self.flashing = true
