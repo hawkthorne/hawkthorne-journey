@@ -53,7 +53,7 @@ return {
 
 
   die = function( enemy )
-  --in the special quest ambushing aliens
+  --in the special quest fighting aliens
   --drop the special quest item
     if enemy.drop and Player.quest == enemy.quest then
       local NodeClass = require('nodes/key')

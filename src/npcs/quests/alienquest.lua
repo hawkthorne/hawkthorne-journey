@@ -9,40 +9,50 @@ local quests = {
     collect = {name = 'alien_object2', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
-      "You're probably wondering why I've called you, eh? Well, I'll explain...",
+      "Alright, so listen up human. I need your help.",
       "There's a huge, hidden group of {{blue_light}}aliens{{white}} hiding in the Valley of Laziness, who are secretly preparing for an invasion.",
       "I was one of them, until I fell in love with Mexican food and decided to prevent those other aliens from destroying this fine cuisine.",
-      "Ever since, I've been fighting against those other aliens. The goat farm was my hideout for a while until I was discovered",
-      "Before I escaped, I left behind a message in hopes that it would reach anyone other than those lazy citizens of Tacotown.",
+      "I ran away and hid myself in this farm, and ever since, I've been fighting against those other aliens. However, I can't do this by myself.",
     },
-    successPrompt = "Adventurer, will you join me in my fight against the invading aliens?",
+    successPrompt = "Earthling, would you like to have the honor of serving under me in my fight against the invading aliens?",
     promptExtra = {
       "Good, good. Your first task is to hijack an item from a group of alien soldiers up near the {{blue_light}}coast{{white}} to Village Forest.",
       "I found out that one of the alien soldiers is carrying an alien technology that I need for my plan to bring them down.",
-      "I'll explain what I need the item for later. Be prepared for a fight! Good luck then.",
+      "It's usually the {{blue_light}}Elite Alien{{white}} carrying important equipment, so target those guys first.",
+      "I'll explain what I need the item for later. Be prepared for a fight, and try not to die alright? Good luck then.",
     },
     completeQuestFail = "The aliens are still camped up by the coast. I need the alien equipment that they're carrying!",
     completeQuestSucceed = {
     "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
     "Alright, I got another task for you. Talk to me when you're ready.",
     },
-    reward = {affection = 100},
+    reward = {affection = 1},
   },
 
-  bones = {
+  aliencamp = {
     infinite = false,
-    questName = 'Save Greendale - Remove bones from parking lot',
-    questParent = 'frankie',
-    removeall = {name = 'bone', level = 'parking-lot'},
+    questName = 'Aliens! - Attack alien camp and bring back alien technology',
+    questParent = 'alien',
+    collect = {name = 'alien_object3', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
-      "The janitorial staff reported that the school parking lot is currently littered with bones of unknown origins.",
-      "I do not care nor do I want to find out where those bones came from, but we need to clean them up.",
+      "Ughhhh...the things I would do for a burrito right now--oh shoot, you're back already?",
     },
-    successPrompt = "Can you remove the bones from the parking lot?",
-    completeQuestFail = "The parking lot is still littered with those creepy bones!",
-    completeQuestSucceed = "Thank you for helping clean up the parking lot! Even for Greendale, that was creepy.",
-    reward = {affection = 100},
+    successPrompt = "Alright, you ready for the next task?",
+    promptExtra = {
+      "Okay, listen up underlin--oh alright fine, I guess you're my partner.",
+      "So there's an even bigger group of aliens camped up by the {{orange}}Hills{{white}} area, who are in possession of another important alien equipment.",
+      "I'm not gonna lie, this alien camp is stacked to the brim. It's gonna be extremely dangerous, so be prepared!",
+      "Ahh, don't look at me like that. I have complete faith that you'll make it out alive with most of your limbs. Cheer up eh?",
+      "It's the same drill as before. It's usually the {{blue_light}}Elite Alien{{white}} carrying important equipment, so target those guys first.",
+      "Oh, you wanna know what I want to do with this alien technology? Well, that I'll tell you if you come back alive. Now go!",
+    },
+    completeQuestFail = "The aliens are still camped up in the {{orange_light}}Hills{{white}} area. Chop chop!",
+    completeQuestSucceed = {
+    "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
+    "Alright, I got another task for you. Talk to me when you're ready.",
+    },
+    reward = {affection = 1},
   },
 
   peanutcostume = {

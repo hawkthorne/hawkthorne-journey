@@ -59,7 +59,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.dead = false
   enemy.dying = false
   enemy.idletime = 0
-  
+  enemy.db = app.gamesaves:active()
   assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )

@@ -86,7 +86,7 @@
  </layer>
  <layer name="features" width="80" height="25">
   <data encoding="base64" compression="zlib">
-   eJztlT0OwjAMhaOyAzM7LEzAwAFYOUBnYAaOwEXKCjkA3KkHQOqEcFAilaoOaXEESO+TrDbuj5+f1VQpAAAAAID/IrHRo+h/WcuvkyXqUM11KiHp4zJ5PcbgSD3V9SVJZmvoAP9czAXq3u0x9fhHuowHreH6kuRK77809G8RU1AJ0vT0sC2ut6bPFUyemydXx/lVKFn/0sAcaTLaPkILfsO+edbVcV7lFGMl59+Gya0o1nZtdGqBvfFMPZ3e+NcNrOObZ10d59VNyfq3Z3Jbip1dkxajKYiJ576Q/W8QWIeb55Tys9K1IZ2PIv4XAQAAAAAAAADI8gBndjSs
+   eJztlT0OwjAMhaOwAzM7LEzAwAysHKAH4AAcgYuUFXoAuBMHQOpU4aBEKlUS3OIIkN4nWWndHz8/q6lSAAAAAAD/hbYxoBh+Wcuvk2t1aOZ6jZD0catf1xQcqSdfX5LktkbB8M/FUqBuZdcs4h/pMh50JtSXJFd6/6Wlf5uUgmqQpqeHXXG9tX2uDORD8wzVcX6VSta/jJkjTUbbRxSC33Bsnr46zqsbxVTJ+bcL5FYUa3tudBYCe+OZejq98a/PrBObp6+O8+quZP3bM3KkxWhiMYvcx9n/Rsw6oXnOKb+oXRvT8SThfxEAAAAAAAAAgCwPwsczjQ==
   </data>
  </layer>
  <layer name="fence" width="80" height="25">
