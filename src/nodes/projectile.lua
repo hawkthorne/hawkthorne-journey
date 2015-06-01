@@ -224,7 +224,7 @@ function Projectile:keypressed( button, player)
         item:select(player)
       end
     end
-    player.inventory:addItem(item, false, callback)
+    player.inventory:addItem(item, true, callback)
   end
 end
 

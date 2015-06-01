@@ -68,7 +68,7 @@ function Consumable:keypressed( button, player )
     self.containerLevel:removeNode(self)
     self.collider:remove(self.bb)
   end
-  player.inventory:addItem(item, false, callback)
+  player.inventory:addItem(item, true, callback)
 end
 
 ---
