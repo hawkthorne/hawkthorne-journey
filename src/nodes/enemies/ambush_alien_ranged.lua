@@ -8,7 +8,7 @@ local Player = player.factory()
 local Quest = require 'quest'
 
 return {
-  name = 'alien_ranged',
+  name = 'ambush_alien_ranged',
   height = 48,
   width = 48,
   damage = 25,
@@ -29,9 +29,9 @@ return {
   },
 
   animations = {
-    dying = {
-      right = {'loop', {'6,2'}, 0.2},
-      left = {'loop', {'6,1'}, 0.2}
+    hurt = {
+      right = {'loop', {'4,2'}, 0.2},
+      left = {'loop', {'4,1'}, 0.2}
     },
     default = {
       right = {'loop', {'1,2','5,2','2,2'}, 0.2},
@@ -50,7 +50,11 @@ return {
       left = {'loop', {'1,1','5,1','2,1'}, 0.2}
     },
   },
-
+  enter = function( enemy )
+    enemy.direction = math.random(2) == 1 and 'left' or 'right'
+    enemy.maxx = enemy.position.x + 48
+    enemy.minx = enemy.position.x - 48
+  end,
   laserAttack = function( enemy, direction, player )
     local node = {
       type = 'projectile',
@@ -75,9 +79,9 @@ return {
     if enemy.quest and Player.quest ~= enemy.quest then
       enemy:die()
     end
+    enemy.idletime = enemy.idletime + dt
     local direction 
     local velocity = enemy.props.speed
-    if enemy.quest then
       if math.abs(enemy.position.x - player.position.x) < 350 then
         if math.abs(enemy.position.x - player.position.x) < 200 then
           if math.abs(enemy.position.x - player.position.x) < 2 then
@@ -98,8 +102,6 @@ return {
             velocity = enemy.props.speed     
           end
         end
-        enemy.state = 'default'
-        enemy.idletime = enemy.idletime + dt
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
         if enemy.idletime >= 2 then
@@ -107,41 +109,13 @@ return {
           enemy.idletime = 0
         end
       else  
-      enemy.state = 'standing'
-      velocity = 0
+      if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+        enemy.direction = 'left'
+      elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+        enemy.direction = 'right'
+      end
+      velocity = enemy.props.speed
       end 
-    else
-    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
-        velocity = enemy.props.speed
-    else
-      enemy.idletime = enemy.idletime + dt
-      --laser attack
-      local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 then
-          enemy.props.laserAttack(enemy, direction, player)
-          enemy.idletime = 0
-        end
-        if math.abs(enemy.position.x - player.position.x) < 200 then
-          if math.abs(enemy.position.x - player.position.x) < 2 then
-          velocity = 0
-          elseif enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed * -1
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed * -1       
-          end
-        else
-          if enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed 
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed     
-          end
-        end
-    end
-  end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

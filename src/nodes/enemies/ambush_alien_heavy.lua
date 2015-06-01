@@ -8,7 +8,7 @@ local Player = player.factory()
 local Quest = require 'quest'
 
 return {
-  name = 'alien_heavy',
+  name = 'ambush_alien_heavy',
   breakBlock = false,
   height = 48,
   width = 48,
@@ -28,7 +28,7 @@ return {
   },
 
   animations = {
-    hurt = {
+    dying = {
       right = {'loop', {'1,2'}, 0.2},
       left = {'loop', {'4,1'}, 0.2}
     },
@@ -45,6 +45,11 @@ return {
       left = {'loop', {'1,1'}, 0.2}
     },
   },
+  enter = function( enemy )
+    enemy.direction = math.random(2) == 1 and 'left' or 'right'
+    enemy.maxx = enemy.position.x + 48
+    enemy.minx = enemy.position.x - 48
+  end,
 
   laserAttack = function( enemy, direction, player )
     local node = {
@@ -59,12 +64,11 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
-    laser.velocity.x = 240*direction
+    laser.velocity.x = 250*direction
     laser.velocity.y = math.random(-10,10)
     laser.position.x = enemy.position.x +15
     laser.position.y = enemy.position.y + 40
     Timer.add(0.1, function()
-    enemy.state = 'default'
     end)
   end,
   update = function( dt, enemy, player, level )
@@ -75,7 +79,6 @@ return {
     enemy.chargeUpTime = enemy.chargeUpTime + dt
     local direction 
     local velocity = enemy.props.speed
-    if enemy.quest then
       if math.abs(enemy.position.x - player.position.x) < 350 then
         if math.abs(enemy.position.x - player.position.x) < 200 then
           if math.abs(enemy.position.x - player.position.x) < 2 then
@@ -96,7 +99,6 @@ return {
             velocity = enemy.props.speed     
           end
         end
-        enemy.state = 'default'
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
         if enemy.idletime >= 0.1 then
@@ -112,48 +114,13 @@ return {
           end
         end
       else  
-      enemy.state = 'standing'
-      velocity = 0
+      if enemy.position.x > enemy.maxx and enemy.state ~= 'attack' then
+        enemy.direction = 'left'
+      elseif enemy.position.x < enemy.minx and enemy.state ~= 'attack'then
+        enemy.direction = 'right'
+      end
+      velocity = enemy.props.speed
       end 
-    else
-    if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
-        velocity = enemy.props.speed
-    else
-        --laser attack
-        local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 0.1 then
-          if enemy.chargeUpTime >= 1 then
-            Timer.add(1, function()
-              enemy.idletime = 0
-              enemy.chargeUpTime = 0
-              end)
-          else
-          sound.playSfx( 'alien_gatling' )
-          enemy.props.laserAttack(enemy, direction, player)
-          enemy.idletime = 0
-          end
-        end
-        if math.abs(enemy.position.x - player.position.x) < 200 then
-          if math.abs(enemy.position.x - player.position.x) < 2 then
-          velocity = 0
-          elseif enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed * -1
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed * -1       
-          end
-        else
-          if enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed 
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed     
-          end
-        end
-    end
-  end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

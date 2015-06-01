@@ -49,7 +49,7 @@ local quests = {
     },
     completeQuestFail = "The aliens are still camped up in the {{orange_light}}Hills{{white}} area. Chop chop!",
     completeQuestSucceed = {
-    "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
+    "Holy burrito",
     "Alright, I got another task for you. Talk to me when you're ready.",
     },
     reward = {affection = 1},
