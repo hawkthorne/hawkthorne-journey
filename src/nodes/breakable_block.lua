@@ -119,7 +119,7 @@ function Wall:explosion()
 	local rand = math.random(100)
 	local Sprite = require 'nodes/sprite'
 	if rand > 50 then
-		sound.playSfx('explosion_quiet')
+		sound.playSfx('block_explode')
 		local node = {
 		  type = 'sprite',
 		  name = 'explosion',

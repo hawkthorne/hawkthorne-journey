@@ -14,6 +14,7 @@ local fonts = require 'fonts'
 local cheat = require 'cheat'
 local Sprite = require 'nodes/sprite'
 local Insults = require 'nodes/insults'
+local Firework = require 'nodes/firework'
 
 local Player = player.factory()
 local playersinsult = Insults[Player.character.name]
@@ -111,6 +112,7 @@ return {
     --remove this after testing
     --enemy.rage = true
     --enemy.velocity.x = 100
+   
 
     --shake
     enemy.props.shake( enemy, camera )
@@ -331,7 +333,9 @@ return {
       local spawnedNode = NodeClass.new(node, enemy.collider)
       local level = gamestate.currentState()
       level:addNode(spawnedNode)
-      --enemy.props.firwork( player )
+      --add firework
+      --local firework = Firework.new(2300, 700)
+     --level:addNode(firework)
 
       end, nil, 'small')
 

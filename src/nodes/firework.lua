@@ -3,7 +3,7 @@ local app = require 'app'
 local sound = require 'vendor/TEsound'
 
 local Firework = {}
-Firework.__index = Firework
+Firework.__index = Fire
 Firework.isFirework = true
 
 local image = love.graphics.newImage('images/firework.png')
@@ -17,7 +17,7 @@ local states = {
 
 ---
 -- Creates a new Firework object
--- @param parent the parent node that the firework are added to
+-- @param parent the parent node that the fire are added to
 function Firework.new( x, y )
   local firework = {}
   setmetatable(firework, Firework)
@@ -28,7 +28,7 @@ function Firework.new( x, y )
   firework.y = y
   
 
-  return firework
+  return fire
 end
 
 function Firework:enter()
