@@ -17,7 +17,7 @@ local states = {
 
 ---
 -- Creates a new Firework object
--- @param parent the parent node that the fire are added to
+-- @param parent the parent node that the firework are added to
 function Firework.new( x, y )
   local firework = {}
   setmetatable(firework, Firework)
@@ -28,7 +28,7 @@ function Firework.new( x, y )
   firework.y = y
   
 
-  return fire
+  return firework
 end
 
 function Firework:enter()
