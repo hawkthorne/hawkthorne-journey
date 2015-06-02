@@ -10,9 +10,9 @@
   <property name="title" value="Black Caverns"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/black-caverns.png" width="360" height="384"/>
+  <image source="../images/tilesets/black-caverns.png" width="360" height="432"/>
  </tileset>
- <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="271" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="125" height="37" opacity="0.93">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="walls" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="wall shadow corners" width="125" height="37">
@@ -37,12 +37,12 @@
  </layer>
  <layer name="floors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKwjAQBdCC9b87ccXuVYoWQk1S+07qOTBfpqZwZ5SkaQAAoBxtUPeT34X9hDkDb7HfvttJ77KG2a5b33PtzIIthL0HAED5fj07uN+7tlQfyB3KF87vkTM77LvXno9EkTe3H6bWL73nWZPZsN/zU3w78043NZNzM+8y300Z+iy6oGKf54r6jHNL5bk0d71Rnli2U+vNet3mZjdeP3429v9A2aZ6wHwD1CV3ZttiPQDHGp+/uK5uh6IOsv5fsgbWeAHAPhHx
+   eJzt2N0NwiAUhmES6z2bsGIXcTGdoE4hja05QVqkLX/1fZKTXoiF5DtoQCkAAACgHp2oa+G1IB2ZM4A332/fpdBa9mBvt23suS6ygCPI3gMAAED9fj07cL93bkt9UHvud1sPpXr77EuvBXkMtp4274HMP+T+zbln53lTzWmmkpmbRHOdSWw/hMZvvecxomLN892mwreSd7pG+fONzVyvvBt1GLPQonyfrxXa4+a2lOfW3OmN+viyDY1nr7ctNjt3vPtd3/8D6hbqAfY3ALRl7cx2xHgAQF7u+QvnpRMU2kDW/4usAezxAsioHGs=
   </data>
  </layer>
  <layer name="doors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztzjERACAMBLCuqEE3DpCHBab+HSQKUgUAAAAAAAAA8IeRDtBupQO02+kAAAAAPGKmAwAAAADAtQMjcQGa
+   eJztzrsJwDAQREGlqkb9t6OP67ACFSAw3AWegWXTVwoAAAAAAAAA/FPNDiDU2JvZEYRa55/UCiL1vXYeAAAA+KZlBwAAAAAA114ssgW+
   </data>
  </layer>
  <layer name="extras" width="125" height="37">
@@ -50,12 +50,12 @@
    eJzt2FlKw1AYhuFcNboaV+A8g/MMzjM4z+BUDg5Q3UB1A1UXUHV5vlCjsbSlFyc5IX4PvNDS9M8PgXrQ80RE3MiQTw1VPqvGD323/Dq/lLGxn4hI0jW6XkBi9+Z6AYndp+sFHMh4P2c9E7z3vN+zH2dHU+usWMd844fu5ZVmhs+Xf+5rm/+9f/heIiL/TY4e6DGi+cw1zDc5/c4mRp6e6LnGNcHf+eB1oNL/f8ox1zDf5PXME6NAL/Qa0XzmGuabgp55YhTpnT4ims9cw3xT1DNPtajPCJI89ZwRJF2iPiNI8kR9RhAREUm7ZmqhVmqjduqgTuqibuqhXuqjfidbik0DNEhDNEwjNEpjNE4TNElTNE0zbtYUi2ZpjuZpgRZpiZZphVZpjdZpgzadbCk2bdE27dAu7dE+HdAhHdExndApnblZUyw6pwu6pCu6pmzZNTd0S3d0H+t2IiKVNbleQGKnZy4iIiIiIiKSHl8O0To+
   </data>
  </layer>
- <layer name="collision" width="125" height="37" visible="0">
+ <layer name="collision" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmN0KwyAMRrvrvf+D9g3GLsqEGaPkV/MdEDbaqvFUo72v67oNygjp8yAfM86569YF6CJ1bk10+ycC5/WA83pkcU7lcDjXJ3IPNeNZe9/nsefE/pWGikkaK+d8J3r+36+gzgjg3mM4/ydTvrNYs6yd77huauQ7rRyjNXbSPPZd755yYq6MnOcWznd04I33PKfa7v2XxgP6eI4RnOcAzuvh7dx6Dyeto92/cWVXIuZFZuc9TvMetRbu5Pw0KjuPOmNHn+urO6eeW30fuPt7163Gnjsnw/nv92iMVr49UM4lfZ3l+XY4As71WXWuvSeEc517pX3wmucz9cK5PnA+z0nOue9PVu1nzuc9TnEe3T6c27YnAc7h3Kve6LhbqjtfPbNR98O5bXsSMM/h3Kve6Lhb4Nyn3ui4Wyo6typcu1mo5jyKTHHDuQ+Z4oZzHzLFDee2fACHiMSL
+   eJztmEsOwyAMBdMT5By5/wWrLCqlql2D/AW/kVhUSXHMBDA5X8dxOrR/aP8P6jHiXLru3YAtWufeZMffETjvB5z3o4pzbg+Hc3sya6gRz9Z1X0TNifqVh8tJm6vkfCUo/9diOdxI7zGc/1Jpv/NYs7ydr7huWux3VnuM1dhp97F7vfu0HffKzHnu4XxFB9FEz3MuNvVbmw+giRwjOK8BnPcj2rl3Daft41m/SW1VMuZFZecUu3nPWgtXcr4bnZ1nnbGzz/XdnXP/m30fpPup615jL52T4fz7ebgxmvn2wDnXPOsoFzGuEXFHqObcklnn1jUhnNvcq32GqHk+0i+c2wPn4+zkXPr+5BW/8n5OsYvz7Phw7htPA5zDeVS/2Xk/6e589szG3Q/nvvE0YJ7DeVS/2Xk/gfOYfrPzftLRuVeT4lahm/MsKuUN5zFUyhvOY6iUN5z78gbP1SNb
   </data>
  </layer>
- <objectgroup color="#0000ff" name="nodes">
+ <objectgroup color="#0000ff" name="nodes" visible="0">
   <object id="1" type="liquid" x="1824" y="456" width="192" height="24">
    <properties>
     <property name="drag" value="true"/>
@@ -823,7 +823,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="79" name="black-cavenrs-3" type="door" x="2928" y="408" width="24" height="48">
+  <object id="79" name="black-cavenrs-3" type="door" x="2922" y="396" width="36" height="60">
    <properties>
     <property name="info" value="You'll need the {{peach}}white crystal{{white}} to open this door. Try killing the giant turkey."/>
     <property name="key" value="white_crystal"/>

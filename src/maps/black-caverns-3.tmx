@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="14" tilewidth="24" tileheight="24" nextobjectid="35">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="101" height="14" tilewidth="24" tileheight="24" nextobjectid="38">
  <properties>
   <property name="Title" value="Black Caverns 3"/>
   <property name="autosave" value="false"/>
@@ -11,61 +11,82 @@
   <property name="soundtrack" value="blackcaves"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/black-caverns.png" width="360" height="384"/>
+  <image source="../images/tilesets/black-caverns.png" width="360" height="432"/>
  </tileset>
- <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="271" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="black" width="100" height="14">
+ <layer name="wall" width="101" height="14">
   <data encoding="base64" compression="zlib">
-   eJxt2NHRszoMhGFfAw0kaYDQQEj/jZ3vzPiZvDD/hScBbElerdaC5xjj8zfWv3H+jef8/5jX7/n/+zeOeW/7G/tc95q/y3x+zP/W7PP6PZ895prvtLVnzTv2HvP+ez5b53jPNftcL8Z3YvzOGNfYf83/z3m9Tx/P2H9k3jmvP/En7vftd512PnPda9rc5ljiGyaN4RV8nvP6FbvrXFdclxsu4vzElxyK4cicz7xek9c1vuz3yD4a2zPDmkfyuM/fxsPHmXjEcWT+d/w4ZYgHL/bx4yH8cBUvtvHjxCdxwWYbP25YL5ZtXLnvv/0fGWfsn+PH83f2/bj5ZBdfvpm/BscleKiNYt8aUccwZUOO+cOfV3zxv40ff+H4HL/a3JIjMbQGlsRV7MVebHDmOX68LBdbA/Z4jqtGqAEYN+bP+HG/NavW8Z1WwB//t3/kTKw4ZC+0ovs744t/XFED8P7Et/jVuz21jvATX2CkVvfx4809V2fu+YUBLMt98YpdHe7BDzbqqdrhDMBRurdl2P82rvHA4hU78oML5oj7ru/0G4dgigOP+Dpjf8+1OqkW4hc9Z5cmVWfVI07Q+uo+nrq/jitG1ZBH5uCimODnHFS3OPkdPx6os++4nn30kBbASQ0tWUuTHxl4R7vLXXvtOVC9lOdqXc9E8bUOq5v2hn/P2C2e1btqD45Xp+GyjGtMraGepbQP78RIj+64N7/st7/ZxpWbfOLM/bw0v5qkvmGEO3y7hyc0GVY0DCdgqs+q5uHfmTXuV8+/sfMaV63CG7bshX/6Tw9f41p7jVtu1szbY0sNlpPqunXjXLOHb/yt48oFsS+xVc4sWaNWqx/lWM87NbTH7x2P9uc407Ov54xacb3FbvWqe13GNeft38oluSsGOG7eIz7EjF984oSzeIlfddAe31l0xNZdh+/vGnCydzjo7XCqNdse/v4e8I5NetJ+T95oG73r+dCz1d63rMXXPWta2/j1jp/G2j4HFvf3BbZhIoc9S9srVXvljk6JV1xHbLaXf45r3ZXfzgdzYQtDz7u2XLm/q9Eke5Vv/C+H26cVj2oSLOzZ2cbOMz7ufRT+0mqcxb2eE+0P7N15zEY53r6lZ4EhJ3IIAzyG0RH76hjujel9s01fxAADedzHlZfwaQ/R9/LXzd/3Zs/enYPlUXWsOaSdcn1kXnH/xq/19gCrvlfaW78NVCfxUL3c+xPr2yMd8dd3674vyHvXqkE8aF/XHpaP9gX4KJftcc7Mh1uxLC/+Nbf9+CfPaBbcmss+hzcc5LM5x+3WZHs/+1Hn7NLx9tViZQvPcW4fV/61n1hyT84bwzquHLqfS36rL3iKT0d+xfCvbzaNQd2c4xrX/dtSv221F4DXHRc2++7hP79GObzEhv3i9b3HUhcwtPd7j3zHgr0jtvhu7D3zxVcN7VmGB9WE5rJ2nCePPO+3RXVSTZV3fOp3Cfn4f+1/cke16Q==
+   eJzt0bENwCAQBMErnTrtgBhndOBHJHYFbLAvjT49aXuSLowANsgmdDbhsQmPTXhswmMTjqvcSavfTm/RNspTPYZNMObH6S36C2CDbEJnE551LxIGyKk=
   </data>
  </layer>
- <layer name="floor" width="100" height="14">
+ <layer name="wall overlay" width="101" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEOgCAIBmAfneesC9e6ZT1ANvDSlumWYvV/G2NRAk3n/oOtF4CusPUCANANNj7fqufbsfUCAPBZm8HMVeZSyNSyv9bdRT1rnyHEKPn2294tEnRkrzWvz7Feu39ufQoxS6bznNS7FC76m/rYeoEHsGa9Eyq9EwCAlnaTF0Ag
+  </data>
+ </layer>
+ <layer name="floor" width="101" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztkksOAiEMQHHhpdTDcRD1AoMnmMQDjJ8TTExczMqVnwPYBQvSYDMtqKB9yQuZDpRCMebzDF/YU6HRnpRHLT2ZToz1489TS0/+Ce1JeWhPykN7Uh7aEx538GGMhdEy4oYzf2DO5+bnzKeYgXNwMXZBJq7Im4/DaH3M5o4Pb85PxTtwB+7BA3gETwluwbPP3Y+47xg9453kRHoXl0RT7luihBw5uKS8zVRq7MmqYNfCM4YsK6gX1+jA1usi3y2KYV1kHSWeT63bCM8Y0rw4E1UP507Cf9J6G7TXExV5OGk=
+  </data>
+ </layer>
+ <layer name="background" width="101" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlNsOgjAMQDcvGP+aPzS++4ToG36DrbowFzpSWVhtepJmo20K7AScW86NmefOqcVjXNuaz/ELGpxsvWs3fjz7g/92gtcB6MN+0Whw4tEHxA5iD+fdJE6adx7r0PzqF40GJ+n9cR87SWvSMSfyMCfyMCdlOBacpdXJ8NkPKzi5QvSZOtfXvzk5QZyjCHTEfq5WgvDu94laztdUfzxvLk+dBdV/IeZyKDFjDbpkjcn54n4Ptf9FWsj5or5Zbt4wDGMpT8D5YB4=
+  </data>
+ </layer>
+ <layer name="foreground" width="101" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0M0NABAMhuGOZtFu0A0sh8RFUz+9ObxP8iWIUlSkKPkmAgAAAAAAgIWSr2I9dcaCeXVrPhbUneL3v9ZF5/j6qJfdm079ZP4kc9ft/WPcACvm2ns=
+   eJztkV0KgDAMg3f0HlEmeJP5gwpmOGEvRcY2qJgPQkPJWCHOEWKTHTqSP5XMs0dOkJfuR/2YAM3QAq3Qdk/JM2kvcY+cIC+BvXRlUnxphrSDndiDndiDndiDndhjVHxp5ssMafpsp/ka/Ita/1H7vtVNhBBCyAW4tjkX
   </data>
  </layer>
- <layer name="background" width="100" height="14">
-  <data encoding="base64" compression="zlib">
-   eJztzrENwCAMBEAGygSZjhGTBpFtQAqFK3ehyZ30ehdfuBQAAADI9XBfM3dIdM4cb9c9n/1TW93TFbs8q1u6AvjGAGKrCJk=
-  </data>
- </layer>
- <layer name="foreground" width="100" height="14">
-  <data encoding="base64" compression="zlib">
-   eJzt0ssJwCAQRdHpv5N0kBryMavg1lLystOdmBGF3AMXwYUMOGYAAAAAgBrL6AFQWEcP0FnNvm1qV4c6VVBXQ194vTO7fN9us/SeMbvz+gvPAPzDAwENNBc=
-  </data>
- </layer>
- <layer name="super foreground" width="100" height="14">
+ <layer name="super foreground" width="101" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1EEKgCAQBVDvf7wWkbSoo+RGKCjQSox4Dz64GIYBdUIAAADOTL0H4GDsPcDPLSlrRX2+jyFlvpEn3urzZfv3XrKL/I+24sW5pB6gtQ3BvhfV
+   eJztk90JgDAMBju6I0qFOIKOYQWFvvXPkmDuIFASAv16VEIfotT3QG92nMwDJ/bAiT1wYg+c2KOUfW/cw8k4pexab4+T9vlfnKyp4kCl/eXrO2k6iU//zReys2Q9b3j/JxbZKuZHqrNyb3YfAODmAqhyVko=
   </data>
  </layer>
- <layer name="collision" width="100" height="14">
+ <layer name="collision" width="101" height="14" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt2DEKwCAQBdFN7f37XFFPIIFALMU1OMU8+K0i01kj7uooi2disAeLPVjswWIPFnuw2IPFHix/9SjXN83L9mjDGSvL2HUOSeY9bdPdp3oSDW87/W/j3v8rsXS/Zm8p
+   eJztmEEKgDAMBO0LWp/hr32qoIjSi4eEdsAZWHJKSzP0klqWvRpKTu4q89EJD53w0AkPnfDQCQ+d8NDJN1t5MoK/O2nlens0a+L8ZjnJmkU0mUTP7ftHOmlJd1H/dsRJXwF7HvPadwmPA8cGjWQ=
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes">
-  <object id="3" name="main" type="door" x="96" y="240" width="24" height="48">
+  <object id="3" name="main" type="door" x="114" y="228" width="36" height="60">
    <properties>
     <property name="level" value="black-caverns-2"/>
     <property name="to" value="black-cavenrs-3"/>
    </properties>
   </object>
-  <object id="5" name="seabluff" type="door" x="1152" y="192" width="24" height="48">
+  <object id="5" name="seabluff" type="door" x="2376" y="192" width="24" height="48">
    <properties>
     <property name="level" value="seabluff"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object id="6" type="sprite" x="432" y="180" width="48" height="60">
+  <object id="6" type="sprite" x="1482" y="156" width="48" height="60">
+   <properties>
+    <property name="animation" value="1-5,1|1-5,2"/>
+    <property name="height" value="60"/>
+    <property name="random" value="true"/>
+    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
+    <property name="speed" value="0.1"/>
+    <property name="width" value="48"/>
+    <property name="window" value="5"/>
+   </properties>
+  </object>
+  <object id="7" name="epic" type="weapon" x="1728" y="141" width="48" height="60">
+   <properties>
+    <property name="foreground" value="true"/>
+   </properties>
+  </object>
+  <object id="31" type="sprite" x="1542" y="156" width="48" height="60">
    <properties>
     <property name="animation" value="1-5,1|1-5,2"/>
     <property name="foreground" value="true"/>
@@ -77,99 +98,19 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object id="7" name="epic" type="weapon" x="528" y="171" width="48" height="60">
-   <properties>
-    <property name="foreground" value="true"/>
-   </properties>
-  </object>
-  <object id="10" type="liquid" x="744" y="240" width="360" height="24">
+  <object id="35" type="liquid" x="2016" y="240" width="312" height="96">
    <properties>
     <property name="drag" value="true"/>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="12" type="sprite" x="528" y="0" width="24" height="216">
+  <object id="36" type="liquid" x="960" y="252" width="384" height="96">
    <properties>
-    <property name="animation" value="1-14,1"/>
-    <property name="background" value="true"/>
-    <property name="height" value="216"/>
-    <property name="sheet" value="images/sprites/caverns/light-beam.png"/>
-    <property name="width" value="25"/>
+    <property name="drag" value="true"/>
+    <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="24" type="sprite" x="432" y="120" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="26" type="sprite" x="432" y="60" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="27" type="sprite" x="432" y="0" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="28" type="sprite" x="600" y="60" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="29" type="sprite" x="600" y="180" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="30" type="sprite" x="600" y="120" width="48" height="60">
-   <properties>
-    <property name="animation" value="1-5,1|1-5,2"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="60"/>
-    <property name="random" value="true"/>
-    <property name="sheet" value="images/sprites/caverns/lightning_pillar.png"/>
-    <property name="speed" value="0.1"/>
-    <property name="width" value="48"/>
-    <property name="window" value="5"/>
-   </properties>
-  </object>
-  <object id="31" type="sprite" x="600" y="0" width="48" height="60">
+  <object id="37" type="sprite" x="1878" y="156" width="48" height="60">
    <properties>
     <property name="animation" value="1-5,1|1-5,2"/>
     <property name="foreground" value="true"/>
