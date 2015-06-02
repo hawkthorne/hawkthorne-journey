@@ -3,7 +3,7 @@ local app = require 'app'
 local sound = require 'vendor/TEsound'
 
 local Firework = {}
-Firework.__index = Fire
+Firework.__index = Firework
 Firework.isFirework = true
 
 local image = love.graphics.newImage('images/firework.png')
