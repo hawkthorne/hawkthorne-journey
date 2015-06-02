@@ -18,17 +18,17 @@
  </tileset>
  <layer name="wall" width="101" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0bENwCAQBMErnTrtgBhndOBHJHYFbLAvjT49aXuSLowANsgmdDbhsQmPTXhswmMTjqvcSavfTm/RNspTPYZNMObH6S36C2CDbEJnE551LxIGyKk=
+   eJztwwENAAAMw6D6NzkrF3JIWDVVVVVVVd88jkHP9w==
   </data>
  </layer>
  <layer name="wall overlay" width="101" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0cEOgCAIBmAfneesC9e6ZT1ANvDSlumWYvV/G2NRAk3n/oOtF4CusPUCANANNj7fqufbsfUCAPBZm8HMVeZSyNSyv9bdRT1rnyHEKPn2294tEnRkrzWvz7Feu39ufQoxS6bznNS7FC76m/rYeoEHsGa9Eyq9EwCAlnaTF0Ag
+   eJzt0cEKgDAIBuA9us9ZF691a/UALbQOQZRQuur/QCRZ7oel9B8cHQCqwtEBAKAaHPy/18634+gAAPBZU8Cdo9xLpZPnfp2ng/mlPE2pVvrp2doNUrT0rLOs3+v86f2G+VZ7XaleOlnyseWwA44OcAPWrm9C1jcBAPA0A/xSP7c=
   </data>
  </layer>
  <layer name="floor" width="101" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkksOAiEMQHHhpdTDcRD1AoMnmMQDjJ8TTExczMqVnwPYBQvSYDMtqKB9yQuZDpRCMebzDF/YU6HRnpRHLT2ZToz1489TS0/+Ce1JeWhPykN7Uh7aEx538GGMhdEy4oYzf2DO5+bnzKeYgXNwMXZBJq7Im4/DaH3M5o4Pb85PxTtwB+7BA3gETwluwbPP3Y+47xg9453kRHoXl0RT7luihBw5uKS8zVRq7MmqYNfCM4YsK6gX1+jA1usi3y2KYV1kHSWeT63bCM8Y0rw4E1UP507Cf9J6G7TXExV5OGk=
+   eJztks0NwjAMhcOBpYDhMgiwQMsElRiAvwGgQuLQA3CiZQCeRARRKCl2CiSQJ31K6ziu41chPq/iC9+Msit64p9C8aTbEVKtP69QPPknRU/8U/TEP0VP/FP05FFrsBFCYpXmXgXOiFfGXkNcUPILYj61PiXfph7og8GrBxy0Bwf0hlWe8KxTqpzyvifbjhdvrm+Lz8AcLMASrMDWgSnYqdp58+hrlV+9uHnCLEMWdxZHR1zmzYGjNmpQ5fJvuipET0YeM2beUdcwgH7NHlOQKdKa98yImaQ152yY+bZzE+YddSVP7mTrhzITfY/bb2J86wIgAkNw
   </data>
  </layer>
  <layer name="background" width="101" height="14">
@@ -52,9 +52,9 @@
    eJztk90JgDAMBju6I0qFOIKOYQWFvvXPkmDuIFASAv16VEIfotT3QG92nMwDJ/bAiT1wYg+c2KOUfW/cw8k4pexab4+T9vlfnKyp4kCl/eXrO2k6iU//zReys2Q9b3j/JxbZKuZHqrNyb3YfAODmAqhyVko=
   </data>
  </layer>
- <layer name="collision" width="101" height="14" visible="0">
+ <layer name="collision" width="101" height="14">
   <data encoding="base64" compression="zlib">
-   eJztmEEKgDAMBO0LWp/hr32qoIjSi4eEdsAZWHJKSzP0klqWvRpKTu4q89EJD53w0AkPnfDQCQ+d8NDJN1t5MoK/O2nlens0a+L8ZjnJmkU0mUTP7ftHOmlJd1H/dsRJXwF7HvPadwmPA8cGjWQ=
+   eJztmFsKgCAUBXUF2i5q1y01BCEI8ueecsAzML++hvtjyekslmRqGg67m+BwEx5uwsNNeLgJDzfh4SZjjnz7Fys3qf3uUTfx+81oonqLqEqi6359vhFVtBd1tpVNAH88qztlRsw7zzYX1WmPdQ==
   </data>
  </layer>
  <objectgroup color="#a41f05" name="nodes">
