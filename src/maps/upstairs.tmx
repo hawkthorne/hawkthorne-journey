@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24" nextobjectid="24">
  <properties>
   <property name="jumping" value="false"/>
   <property name="soundtrack" value="tavern"/>
@@ -29,21 +29,17 @@
    </properties>
    <polygon points="0,0 360,0 432,72 -72,72"/>
   </object>
-  <object x="384" y="264" width="60" height="8">
-   <properties>
-    <property name="height" value="36"/>
-   </properties>
-  </object>
-  <object x="384" y="312">
+  <object name="bed" x="405" y="317">
    <properties>
     <property name="height" value="27"/>
    </properties>
-   <polygon points="0,0 96,0 120,24 24,24"/>
+   <polygon points="-21,-4 81,-4 101,15 -5,15"/>
   </object>
-  <object x="24.0606" y="324.545" width="24" height="3">
+  <object name="dresser" x="406" y="261">
    <properties>
-    <property name="info" value="I wouldn't go through there if I were you. | I'll write something better later."/>
+    <property name="height" value="27"/>
    </properties>
+   <polygon points="-21,-4 81,-4 101,15 -5,15"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes">
@@ -53,7 +49,7 @@
     <property name="to" value="balcony"/>
    </properties>
   </object>
-  <object type="sprite" x="384" y="288" width="120" height="48">
+  <object type="sprite" x="384" y="285" width="120" height="48">
    <properties>
     <property name="depth" value="18"/>
     <property name="height" value="47"/>
@@ -61,16 +57,16 @@
     <property name="width" value="95"/>
    </properties>
   </object>
-  <object type="sprite" x="480" y="264" width="24" height="48">
+  <object type="sprite" x="480" y="261" width="24" height="48">
    <properties>
     <property name="height" value="48"/>
     <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="384" y="228" width="72" height="48">
+  <object type="sprite" x="385" y="228" width="72" height="48">
    <properties>
-    <property name="depth" value="8"/>
+    <property name="depth" value="18"/>
     <property name="flip" value="true"/>
     <property name="height" value="44"/>
     <property name="sheet" value="images/sprites/town/dresser.png"/>
@@ -82,13 +78,6 @@
     <property name="height" value="72"/>
     <property name="sheet" value="images/sprites/town/hay_left.png"/>
     <property name="width" value="120"/>
-   </properties>
-  </object>
-  <object type="sprite" x="24" y="276" width="24" height="48">
-   <properties>
-    <property name="height" value="48"/>
-    <property name="sheet" value="images/sprites/town/barrel.png"/>
-    <property name="width" value="24"/>
    </properties>
   </object>
   <object name="pot" type="throwable" x="192" y="264" width="24" height="24"/>
