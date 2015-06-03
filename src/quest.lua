@@ -60,8 +60,11 @@ function Quest:activate(npc, player, quest, condition)
 end
 
 function Quest:save(quest)
+  local level = Gamestate.currentState()
+  level.hud:startSave()
   local gamesave = app.gamesaves:active()
   gamesave:set( 'quest', json.encode( quest ) )
+  level.hud:endSave()
 end
 
 function Quest:load(player)
