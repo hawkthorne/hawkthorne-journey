@@ -5,21 +5,21 @@
   <property name="soundtrack" value="tavern"/>
  </properties>
  <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/inside.png" width="288" height="240"/>
+  <image source="../images/tilesets/inside.png" width="288" height="288"/>
  </tileset>
  <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJy1kcENwjAMRb9Qz4FDBuAOFzpA1VE6ikfrKB0Fh9oQosTUkTg8fVeNXn/cCGBkHgBdgSVxl7lMmVHLBDswAXPcc2UQM/gM1VLmairccU7u8HnWzpuwOPLVdZTvh4wpcxt72OTeX6lOdlAovOqOu4Nqae2h5VROzLkDy5kYeOd/8rqdfMf1l7en63DQe/F7zX/W29fa7+0Y1OB9psNZelvvvE4XT4IMRMo=
+   eJy1kcENgzAMRb8Q58AhA/QOlzIAYhRG8WiMwih1ii3SKHWbCA5P30jRy4/xACbmCdADWAOjzGnKjFwG2IEZWPyRGwMfwWcolzJnU+GOS3C781s778JakO+uk9zvIubIbexhl3d/pDrZQS7xqtsfDsqltYdvTqVhugosZ6Dlnd/kLXbyG7df3pqu7Z/evtxr/rPavtZ+h4u4wUnCpT1TXllfQEo=
   </data>
  </layer>
  <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYKANMGZgWEADMxnsgeZS02yomWBALbORzYQBSs3GZiay2fIMDAnkYFxmgoA8iW4UYGBwQNLbQMhcViBmA2J2EuwgxlxBIBYCYmEgdga6yQXJXTDgAhWHyRFjLjmAhuYewCbOAYxTGNsGyEbGxJgL1M/Ah8dMGPBDwsQCZLOxmQkC6OmTVLMBIqsddA==
+   eJxjYKANMGZgWEADMxnsgeZS02yomWBALbORzYQBSs3GZiay2fIMDAnkYFxmgoA8Ee6SQ8ICDAwOSHobCJlbCcRVQFwNxDVoarSQMJpegua2AnEbELcDcQd+55NkLjFAFwlT01wseg9gE+cAxikFxoL0M/BR2UxsZlPLTHSzAdkNGqY=
   </data>
  </layer>
  <layer name="accents" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyTZ2BoYKAykIfgUXPpZC6Q7UCBWQdwmUstQIy5clBMbXO1oBgE3JHEs4A4G4hzyDQXGTASqY5Uc3nxm9WAxKZrvNkzMCwwBmJ0NqXmUgpA5gIAZpgRzA==
+   eJyTZ2BoYKAykIfgUXPpZC6Q7UCBWQdwmUstMFjMdaeRuYxI7FogrgPieiqYy4tHDi3+B0X4DgZzATOvDhE=
   </data>
  </layer>
  <objectgroup color="#ff0000" name="floorspace">
@@ -91,10 +91,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="info" x="144" y="288" width="72" height="24">
-   <properties>
-    <property name="info" value="I wouldn't try going through here if I were you."/>
-   </properties>
-  </object>
+  <object name="pot" type="throwable" x="192" y="264" width="24" height="24"/>
+  <object name="pot" type="throwable" x="204" y="276" width="24" height="24"/>
  </objectgroup>
 </map>
