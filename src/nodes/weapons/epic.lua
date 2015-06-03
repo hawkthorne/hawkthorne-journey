@@ -44,8 +44,8 @@ return {
   actionjump = "wieldaction3",
 
   wield = function( weapon )
-     weapon.player.wielding = true
-      --changes the animation is weapon is charged
+    weapon.player.wielding = true
+    --changes the animation is weapon is charged
     weapon.player.character:animation():gotoFrame(1)
     weapon.player.character:animation():resume()
 
@@ -102,7 +102,6 @@ return {
   end,
 
   weaponShake = function (weapon)
-    
     local current = gamestate.currentState()
     Timer.add(.3, function()
       weapon.shake = true
@@ -119,10 +118,9 @@ return {
   end,
 
   update = function( dt, weapon, player, level )
-    local shake = 0
     local current = gamestate.currentState()
     if weapon.shake and current.trackPlayer == false then
-      shake = (math.random() * 4) - 2
+      local shake = (math.random() * 4) - 2
       camera:setPosition(weapon.camera.tx + shake, weapon.camera.ty + shake)
     end
   end,
