@@ -23,6 +23,10 @@ return {
   },
   walking = true,
   walk_speed = 36,
+  hurt = function(npc)
+  Dialog.new("Ouch! Stop hittig me you stupid human!", function()
+      end)
+  end,
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='Who are you?' },
