@@ -107,7 +107,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="climbable" x="560" y="165" width="11" height="100"/>
+  <object type="climbable" x="567" y="165" width="1" height="100"/>
   <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
   <object type="door" x="0" y="0" width="24" height="264">
    <properties>
