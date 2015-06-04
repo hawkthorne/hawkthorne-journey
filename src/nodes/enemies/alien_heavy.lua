@@ -9,6 +9,7 @@ local Quest = require 'quest'
 
 return {
   name = 'alien_heavy',
+  die_sound = 'alien_hurt',
   breakBlock = false,
   height = 48,
   width = 48,
@@ -59,6 +60,7 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
+    laser.burn = true
     laser.velocity.x = 240*direction
     laser.velocity.y = math.random(-10,10)
     laser.position.x = enemy.position.x +15

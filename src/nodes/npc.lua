@@ -259,6 +259,7 @@ function NPC.new(node, collider)
   npc.type = node.type
 
   npc.busy = false
+  npc.shake = false
 
   --sets the position from the tmx file
   npc.position = {x = node.x, y = node.y}

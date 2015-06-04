@@ -9,6 +9,7 @@ local Quest = require 'quest'
 
 return {
   name = 'ambush_alien_heavy',
+  die_sound = 'alien_hurt',
   breakBlock = false,
   height = 48,
   width = 48,

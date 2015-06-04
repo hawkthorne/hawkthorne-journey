@@ -9,6 +9,7 @@ local gamestate = require 'vendor/gamestate'
 
 return {
   name = 'ambush_alien_elite',
+  die_sound = 'alien_hurt',
   height = 48,
   width = 48,
   damage = 35,
