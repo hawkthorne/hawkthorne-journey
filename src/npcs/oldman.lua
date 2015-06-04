@@ -47,7 +47,6 @@ return {
         npc.menu:close(player)
 
         player.freeze = true
-        npc.fixed = result == 'Yes'
         npc.prompt = nil
         Timer.add(2, function()
           npc.fixed = false
