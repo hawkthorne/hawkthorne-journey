@@ -369,5 +369,10 @@
     <property name="to" value="treeline"/>
    </properties>
   </object>
+  <object name="bluemushroom" type="material" x="240" y="96" width="24" height="24"/>
+  <object name="bluemushroom" type="material" x="240" y="960" width="24" height="24"/>
+  <object name="bluemushroom" type="material" x="1104" y="1608" width="24" height="24"/>
+  <object name="bluemushroom" type="material" x="264" y="1848" width="24" height="24"/>
+  <object name="bluemushroom" type="material" x="1032" y="2304" width="24" height="24"/>
  </objectgroup>
 </map>
