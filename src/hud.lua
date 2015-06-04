@@ -85,7 +85,7 @@ function HUD:questBadge( player )
     love.graphics.setColor( 255, 255, 255, 255 )
     love.graphics.print(quest, (x + 2), (y + 2), 0, 0.5, 0.5)
     love.graphics.push()
-    love.graphics.printf("for " .. questParent, (x + 2), (y + 15), (width + 8), "left", 0, 0.5, 0.5)
+    --love.graphics.printf("for " .. questParent, (x + 2), (y + 15), (width + 8), "left", 0, 0.5, 0.5)
     love.graphics.pop()
 
     love.graphics.setColor( 255, 255, 255, 255 )

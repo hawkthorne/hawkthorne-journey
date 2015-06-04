@@ -7,21 +7,21 @@ return{
   height = 15 ,
   frameWidth = 15,
   frameHeight = 15,
-  solid = false,
+  solid = true,
   handle_x = 10,
   handle_y = -6,
-  lift = game.gravity,
+  lift = 0,
   playerCanPickUp = false,
   enemyCanPickUp = true,
   canPlayerStore = false,
   velocity = { x = 0, y = 0 }, --initial vel isn't used since this is insantly picked up
   throwVelocityX = math.random(400,500),
-  throwVelocityY = 0,
+  throwVelocityY = math.random(-100,-200),
   stayOnScreen = false,
   damage = 10,
   idletime = 0,
   horizontalLimit = 400,
-  throw_sound = 'acorn_bomb',
+  throw_sound = 'acorn_throw',
   animations = {
     default = {'loop', {'1,1'}, 0.2},
     thrown = {'once', {'1,1'}, 0.1},
@@ -29,7 +29,6 @@ return{
   },
 
   collide = function(node, dt, mtv_x, mtv_y,projectile)
-    projectile.animation = projectile.finishAnimation
     if not node.isPlayer then return end
     if projectile.thrown then
       node:hurt(projectile.damage)

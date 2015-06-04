@@ -1,10 +1,12 @@
 local Enemy = require 'nodes/enemy'
-local gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
+local Dialog = require 'dialog'
+local player = require 'player'
+local Player = player.factory()
 
 local window = require 'window'
 local camera = require 'camera'
@@ -25,7 +27,7 @@ return {
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   --velocity = {x = 0, y = 1},
-  hp = 100,
+  hp = 50,
   tokens = 15,
   --hand_x = -40,
   --hand_y = 70,
@@ -55,9 +57,9 @@ return {
       right = {'loop', {'7-9,1', '8,1'}, 0.25},
       left = {'loop', {'5,2','4,2','3,2','4,2'}, 0.25}
     },
-    down = {
-      right = {'once', {'11,1','11,1','11,1','12-14,1'}, 0.2},
-      left = {'once', {'1,2','1,2','1,2','14,2', '13,2', '12, 2'}, 0.2}
+    dying = {
+      right = {'once', {'11,1','11,1','11,1','12-14,1'}, 0.25},
+      left = {'once', {'1,2','1,2','1,2','14,2', '13,2', '12, 2'}, 0.25}
     },
     vanish = {
       right = {'once', {'12-14,1'}, 0.2},
@@ -73,19 +75,11 @@ return {
   end,
 
   die = function( enemy )
-    local NodeClass = require('nodes/key')
-    local node = {
-      type = 'key',
-      name = 'white_crystal',
-      x = 2592,
-      y = 742,
-      width = 24,
-      height = 24,
-      properties = {info = "Congratulations. You have found the White Crystal key. You can now unlock Castle Hawkthorne."},
-    }
-    local spawnedNode = NodeClass.new(node, enemy.collider)
-    local level = gamestate.currentState()
-    level:addNode(spawnedNode)
+  if Player.quest == 'To Slay An Acorn - Explore the Mines for a Map to the Acorn King' then
+      Dialog.new("With the laser wielding man dead, you're not sure what to do...maybe Tilda has an idea of what to do next.", function()
+      Player.quest = 'To Slay an Acorn - Return to Tilda'
+    end)
+  end
   end,
 
   draw = function( enemy )
@@ -115,7 +109,7 @@ return {
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
     end
     love.graphics.setStencil(energy_stencil, x, y)
-    local max_hp = 100
+    local max_hp = 50
     local rate = 55/max_hp
     love.graphics.setColor(
       math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
@@ -162,23 +156,6 @@ return {
   update = function( dt, enemy, player, level )
   
   if enemy.dead then return end
-  if enemy.hp <= 50 and enemy.state ~= 'down' and player.quest == 'To Slay An Acorn - Explore the Mines for a Map to the Acorn King' then
-    player.freeze = true
-    enemy.state = 'down'
-    enemy.passive = true
-    enemy.velocity.x = 0
-    enemy.idletime = 0
-    enemy.last_jump = 0
-    Timer.add(1.2, function()
-      script = {
-      'The laser wielding man quickly vanishes before you can strike the final blow...maybe Tilda has an idea of what to do next.',
-      }
-      dialog.new(script, callback)
-      player.freeze = false
-      player.quest = 'To Slay an Acorn - Return to Tilda'
-      enemy:die()
-    end) 
-  end
     
   if enemy.state ~= 'down' then
   if enemy.state == 'enter' then

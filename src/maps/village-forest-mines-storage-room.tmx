@@ -40,7 +40,7 @@
  </layer>
  <layer name="collision" width="22" height="24">
   <data encoding="base64" compression="zlib">
-   eJxrZWegOmhlh+BRc0fNRTZ3J5XxUA2HoWbuaLwNTXNH421omjuU4g0AqnpWQQ==
+   eJxrZWegOmhlh+BRc0fNRTZ3PpXxUA2HoWbuaLwNTXNH421omksrTAv3AgBlhEwZ
   </data>
  </layer>
  <objectgroup color="#ffffff" name="nodes" width="22" height="24">
@@ -110,16 +110,13 @@
   </object>
   <object name="minecarts" type="spawn" x="336" y="504" width="24" height="24">
    <properties>
-    <property name="message" value="There's something in the chest..."/>
+    <property name="message" value="You found the {{orange}}Minecarts{{white}} key!"/>
     <property name="nodeType" value="key"/>
     <property name="offset_x" value="20"/>
     <property name="offset_y" value="-40"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object type="climbable" x="341" y="167" width="11" height="101"/>
-  <object type="climbable" x="149" y="287" width="13" height="99"/>
-  <object type="climbable" x="269" y="407" width="14" height="99"/>
   <object name="stick" type="spawn" x="360" y="144" width="24" height="24">
    <properties>
     <property name="message" value="You've found a stick!"/>
@@ -129,5 +126,8 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
+  <object type="climbable" x="342" y="168" width="10" height="97"/>
+  <object type="climbable" x="150" y="288" width="10" height="97"/>
+  <object type="climbable" x="270" y="408" width="10" height="97"/>
  </objectgroup>
 </map>

@@ -98,8 +98,6 @@ return {
 
     if enemy.idletime >= 0.8 and enemy.state ~= 'attackranged' then
       enemy.props.attackranged(enemy)
-      enemy.props.attackranged(enemy)
-      enemy.props.attackranged(enemy)
       enemy.state = 'attackranged'
     end
 

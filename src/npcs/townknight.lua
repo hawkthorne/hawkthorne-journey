@@ -1,4 +1,6 @@
--- inculdes
+local utils = require 'utils'
+local app = require 'app'
+local Dialog = require 'dialog'
 
 return {
   width = 32,
@@ -19,28 +21,23 @@ return {
     { ['text']='i am done with you' },
     { ['text']='Any useful info for me?' },
     { ['text']='This town is in ruins!' },
-    { ['text']='Talk about the Acorn King', ['option'] ={
-        { ['text']='Who is he?'},
-        { ['text']='Where did he come from?'},
-        { ['text']='How do we defeat him?' },
-        { ['text']='These damned acorns!' },
-        --{ ['text']='Lets overthrow him?' },
-        --{ ['text']='Get this town together!'},
-    }},
+    { ['text']='Talk about the Acorn King'},
+  },
+  talk_commands = {
+    ['Talk about the Acorn King'] = function (npc, player)
+      local check = app.gamesaves:active():get("bosstriggers.acorn", false)
+      if check ~= false then
+          Dialog.new("Hooray to the great slayer of acorns! Thank you for saving us from destruction!", function()
+          npc.menu:close(player)
+        end)
+      else
+        Dialog.new("The Acorn King? Don't know lot about him. He popped out of nowhere a while ago, and brought those nasty little acorns with him.", function()
+          npc.menu:close(player)
+        end)
+      end
+      end,
   },
   talk_responses = {
-    ["Who is he?"]={
-      "This giant acorn monster with a crown on his head, fancies himself a king.",
-      "He is known to terrorize any wayward travelers or villagers he comes across,",
-    },
-    ["Where did he come from?"]={
-      "No idea really, he kind of popped out of nowhere a long time ago.",
-      "Brought with him a bunch of those nasty little acorns, they've been infesting the forests ever since.",
-    },
-    ["How do we defeat him?"]={
-      "There's nothing a good sword to the face can fix, you know what I'm saying?",
-      "But really? I have no idea. Maybe some others in the village could tell you.",
-    },
     ["This town is in ruins!"]={
       "It's that damned {{grey}}Hawkthorne{{white}}! He's a madman, that's what he is.",
       "Just sitting in that ivory tower of his, it's his fault we're in shambles like this.",
@@ -50,8 +47,6 @@ return {
       "One of them, I hear, is a key that unlocks a fabled world called {{olive}}Greendale{{white}}.",
       "Now there's what I call an adventure.",
     },
-    ["These damned acorns!"]={
-      "Hear, hear, brother. This acorn problem is nuts.",
-    },
+
   },
 }

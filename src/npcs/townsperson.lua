@@ -1,4 +1,6 @@
--- inculdes
+local utils = require 'utils'
+local Dialog = require 'dialog'
+local app = require 'app'
 
 return {
   width = 32,
@@ -19,22 +21,26 @@ return {
     { ['text']='i am done with you' },
     { ['text']='What are you carrying?'},
     { ['text']='This town is in ruins!' },
-    { ['text']='Talk about the Acorn King', ['option'] ={
-        { ['text']='Who is he?'},
-        { ['text']='Where did he come from?'},
-        { ['text']='How do we defeat him?' },
-        { ['text']='Great, even more acorns!' },
-        --{ ['text']='Lets overthrow him?' },
-        --{ ['text']='Get this town together!'},
-    }},
+    { ['text']='Talk about the Acorn King'},
   },
-
+  talk_commands = {
+    ['Talk about the Acorn King'] = function (npc, player)
+      npc.walking = false
+      local check = app.gamesaves:active():get("bosstriggers.acorn", false)
+      if check ~= false then
+          Dialog.new("You saved us from the Acorn King! Thank you so much, adventurer!", function()
+          npc.menu:close(player)
+          npc.walking = true
+        end)
+      else
+        Dialog.new("The Acorn King? He's a monster! It's because of the acorn infestation that we had to close the mines, it got too dangerous!", function()
+          npc.menu:close(player)
+          npc.walking = true
+          end)
+      end
+      end,    
+      },
   talk_responses = {
-    ["Who is he?"]={
-      "Who knows? Some say he's a monster, some say he's an evil spirit.",
-      "All I know is that him and his acorn underlings aren't welcome in this town.",
-      "It's because of the acorn infestation that we had to close the mines, it got too dangerous!",
-    },
     ["This town is in ruins!"]={
       "Ever since that tyrant {{grey}}Hawkthorne{{white}} started ruling,",
       "our town started falling apart into pieces. If only he were overthrown!",
@@ -42,16 +48,6 @@ return {
     ["What are you carrying?"]={
       "It's a piece of wood. The town {{green_light}}blacksmith{{white}} needs it to make his weapons.",
       "You can find him at the last house on the street.",
-    },
-    ["Where did he come from?"]={
-      "Let's see, no one really knows where the Acorn King suddenly came from...",
-      "I think it appeared around the time Cornelius first took over--oh god, maybe Cornelius has something to do with that Acorn!",
-    },
-    ["How do we defeat him?"]={
-      "Hey man, I'm just a guy carrying around some lumber. What makes you think I know anything?",
-    },
-    ["Fantastic, even more acorns!"]={
-      "I know right? Annoying little buggers, they'll get you if you don't keep your eyes peeled!",
     },
   },
 }
