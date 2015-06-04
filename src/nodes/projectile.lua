@@ -96,7 +96,6 @@ function Projectile.new(node, collider)
   proj.height = proj.props.height
   proj.offset = proj.props.offset or {x=0, y=0}
   proj.angle = 0
-  proj.drawoffset = proj.props.drawoffset or {x=0, y=0}
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
   -- Damage that does not affect all enemies ie. stab, fire
@@ -141,7 +140,7 @@ function Projectile:draw()
     scaley = -1
     angle = angle - math.pi
   end
-  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y+self.drawoffset.y, angle, 1, scaley)
+  self.animation:draw(self.sheet, self.position.x, self.position.y, angle, 1, scaley)
 end
 
 function Projectile:update(dt, player, map)

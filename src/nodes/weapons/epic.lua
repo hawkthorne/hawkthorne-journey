@@ -89,7 +89,7 @@ return {
         type = 'projectile',
         name = 'waterSpout',
         x = weapon.position.x+weapon.hand_x,
-        y = weapon.position.y+(weapon.bbox_height),
+        y = weapon.player.position.y - weapon.player.height + 17,
         width = 24,
         height = 16,
         properties = {}
@@ -109,19 +109,11 @@ return {
       weapon.camera.ty = camera.y
       current.trackPlayer = false
       current.player.freeze = true
+      Timer.add(1, function()
+        weapon.shake = false
+        current.trackPlayer = true
+        current.player.freeze = false
+      end)
     end)
-    Timer.add(1.25, function()
-      weapon.shake = false
-      current.trackPlayer = true
-      current.player.freeze = false
-    end)
-  end,
-
-  update = function( dt, weapon, player, level )
-    local current = gamestate.currentState()
-    if weapon.shake and current.trackPlayer == false then
-      local shake = (math.random() * 4) - 2
-      camera:setPosition(weapon.camera.tx + shake, weapon.camera.ty + shake)
-    end
   end,
 }

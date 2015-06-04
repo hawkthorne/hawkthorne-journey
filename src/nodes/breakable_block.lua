@@ -101,7 +101,7 @@ end
 
 function Wall:update(dt, player)
   if not self.dead then return end
-  self.dying_animation:update(dt)
+  if self.dying_animation then self.dying_animation:update(dt) end
 end
 
 function Wall:hurt( damage )
