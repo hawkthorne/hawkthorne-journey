@@ -34,6 +34,7 @@ function Wall.new(node, collider, level)
     node.width = max_x - min_x
     node.height = max_y - min_y
     node.y = node.y + min_y
+    node.x = node.x + min_x
   else
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     wall.bb.polyline = nil
@@ -50,6 +51,7 @@ function Wall.new(node, collider, level)
   wall.position = {x = node.x, y = node.y}
   wall.width = node.width
   wall.height = node.height
+  wall.flipped = node.properties.flipped == 'true'
   
   -- used for collision detection
   wall.map = level.map
@@ -133,13 +135,15 @@ function Wall:die()
 end
 
 function Wall:draw()
+  local scalex = self.flipped and -1 or 1
+  local offset = self.flipped and self.node.width or 0
   if self.crack then
-    love.graphics.draw(self.sprite, self.node.x, self.node.y)
-    self.destroyAnimation:draw(crack, self.node.x, self.node.y)
+    love.graphics.draw(self.sprite, self.node.x + offset, self.node.y, 0, scalex, 1)
+    self.destroyAnimation:draw(crack, self.node.x + offset, self.node.y, 0, scalex, 1)
   elseif not self.dead then
-    self.destroyAnimation:draw(self.sprite, self.node.x, self.node.y)
+    self.destroyAnimation:draw(self.sprite, self.node.x + offset, self.node.y, 0, scalex, 1)
   else
-    self.dying_animation:draw(self.dying_image, self.node.x, self.node.y)
+    self.dying_animation:draw(self.dying_image, self.node.x + offset, self.node.y, 0, scalex, 1)
   end
 end
 
