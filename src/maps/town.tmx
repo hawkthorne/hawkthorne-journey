@@ -28,7 +28,7 @@
    <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztkt0JgDAMhIMbdIMbxdEcxVE6mrYo1JDUSlt8uQ8O/EnvzKEIIYQQ8p0gskMkjvQ8/fagNDqjJRv5di6L5A6jkx+dY49ZPRcu31Kh4mX54Nk/kqD6gNHVeb2q3Py+tkcPOsfbGcY/ZX2nfm7NoNK347HdurtMKmcuH3jZs/DyXvbpVkvfqr+uvFmM7mWStkLs7wcRQojmAMbqLWA=
+   eJztktENgCAMRBs3YIOO4miOwiiMphJJoLaogcafe8klivXOXiQCAAAAvhOIIhOlmZ6HXwxCszPeZHO+9WWh3GEy8pPxWjMr58LlWyt0vDQfbvvnUyz6YKWr43oVufl5b48RZI61Myv/lPad8lyb4U7fhsdWVLo8pfjfzoq8sPIe9hnWm75Ff0N5XszuxUlbJfT3gwAAQLID1totYg==
   </data>
  </layer>
  <layer name="reeds" width="80" height="14">
@@ -144,5 +144,10 @@
    </properties>
   </object>
   <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
+  <object type="enemy" x="240" y="192" width="71" height="70">
+   <properties>
+    <property name="enemytype" value="acornBoss"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
