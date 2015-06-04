@@ -184,7 +184,7 @@ function Enemy:hurt( damage, special_damage, knockback )
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
-  local state = self.state
+  --local state = self.state
   self.state = 'hurt'
   
   -- Subtract from hp total damage including special damage
@@ -206,8 +206,8 @@ function Enemy:hurt( damage, special_damage, knockback )
       self.currently_held:die()
     end
     Timer.add(self.dyingdelay, function() 
-      if self.props.die then self.props.die( self ) else self:die() end
-        
+      --if self.props.die then self.props.die( self ) else self:die() end
+        self:die()
     end)
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
@@ -220,7 +220,7 @@ function Enemy:hurt( damage, special_damage, knockback )
               function() self.knockbackActive = false end)
     end
     if not self.flashing then
-      self:start_flash(state)
+      self:start_flash()
     end
     if self.props.hurt then self.props.hurt( self ) end
   end
@@ -244,7 +244,7 @@ function Enemy:calculateDamage(damage, special_damage)
   return damage
 end
 
-function Enemy:start_flash( state )
+function Enemy:start_flash()
   if not self.blink then
     self.blink = Timer.addPeriodic(.12, function()
       self.flash = not self.flash
@@ -252,8 +252,8 @@ function Enemy:start_flash( state )
   end
   if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
   self.reviveTimer = Timer.add( self.revivedelay, function()
-                                self.state = state
-                                self:cancel_flash( state )
+                                if self.rage then self.state = 'attack' print('return to attack') else self.state = 'default' end
+                                self:cancel_flash()
                                 self.flashing = false
                                 end )
   self.flashing = true
@@ -419,7 +419,7 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
       player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
     elseif node.isWall then
       node:hurt(self.props.damage)
-      print('enemy hurts wall')
+      --print('enemy hurts wall')
     end
   end
 end

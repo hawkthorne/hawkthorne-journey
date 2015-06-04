@@ -7,6 +7,7 @@ local utils = require 'utils'
 local Dialog = require 'dialog'
 local anim8 = require 'vendor/anim8'
 local player = require 'player'
+local game = require 'game'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -38,7 +39,7 @@ return {
   bb_offset = { x = 0, y = 8},
   attack_width = 40,
   velocity = {x = 0, y = 10},
-  hp = 100,
+  hp = 200,
   tokens = 100,
   dyingdelay = 2,
   fadeIn = true,
@@ -76,8 +77,8 @@ return {
       left = {'once', {'1-3,4','2,2'}, 0.1}
     },
     dying = {
-      right = {'loop', {'1-3,1','2,1'}, 0.15},
-      left = {'loop', {'1-3,1','2,1'}, 0.15}
+      right = {'loop', {'1-3,5','2,5'}, 0.15},
+      left = {'loop', {'1-3,5','2,5'}, 0.15}
     },
     enter = {
       right = {'once', {'1,1'}, 0.2},
@@ -95,13 +96,16 @@ return {
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.directionY = math.random(2) == 1 and 'up' or 'down'
     enemy.state = 'default'
-    enemy.maxy = enemy.position.y
+    enemy.typicalY = enemy.position.y
+    enemy.maxy = enemy.position.y - 25
+    enemy.miny = enemy.position.y + 25
     enemy.hatched = false
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
     enemy.last_dive = 0
     enemy.diving = false
+    enemy.falling = false
     enemy.swoop_speed = 150
     enemy.fly_speed = 75
     enemy.swoop_distance = 150
@@ -144,6 +148,8 @@ return {
 	    Dialog.new(enemy.enterScript, function() 
         enemy.state = 'attack'
         enemy.rage = true
+        enemy.velocity.x = 125
+        enemy.velocity.y = 5
         sound.playMusic("cornelius-attacks")
 				end, nil, 'small')
 		end
@@ -213,6 +219,7 @@ return {
   --throws a fireball that will spawn fire to the right and left as well as eat away the floor.
   fireball = function( enemy, player )
     if not enemy.dead then
+      print('fireball')
       enemy.last_fireball = 0 
       enemy.last_attack = 0
       local Fireball = require('nodes/fire_cornelius_big')
@@ -233,6 +240,7 @@ return {
 
   --cornelius teleports to behind the player
   teleport = function ( enemy, player, dt )
+    print('teleport')
     enemy.state = 'teleport'
     enemy.last_teleport = 0 
     enemy.last_attack = 0
@@ -264,8 +272,8 @@ return {
 
   --cornelius dives at the player
   startDive = function ( enemy )
+    print('dive')
     enemy.diving = true
-    --local origVelX = enemy.velocity.x
     enemy.velocity.x = 0
     enemy.last_attack = 0
     enemy.last_dive = 0
@@ -275,7 +283,6 @@ return {
     Timer.add(.6, function()  
       enemy.velocity.y = -enemy.fly_speed
       enemy.velocity.x = -(enemy.swoop_speed / 1.5) * enemy.fly_dir
-      print('undive')
     end)
 
   end,
@@ -308,6 +315,7 @@ return {
   end,
 
   die = function( enemy )
+  	enemy.falling = true
     enemy.freeze = true
     sound.playMusic("cornelius-forfeiting")
     Dialog.new(enemy.deathScript, function()
@@ -317,7 +325,6 @@ return {
       Timer.add(8, function()
         sound.playMusic("castle")
         end)
-
       local NodeClass = require('nodes/key')
       local node = {
         type = 'key',
@@ -344,20 +351,23 @@ return {
   draw = function( enemy )
     --I opted for cornelius not to have a HUD
     --maybe there should be another, more subtle, indication of his health?
-
-    x, y = camera.x + window.width - 130 , camera.y + 10
-
   end,
-
-   hurt = function( enemy )
+  hurt = function ( enemy )
     print(enemy.hp)
   end,
 
+	--this updates Cornelius's position when he dies so that he drops off the screen
+  dyingupdate = function ( dt, enemy )
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 0.4
+    enemy.position.y = enemy.position.y + enemy.velocity.y * dt
+  end,
+
+
   update = function( dt, enemy, player, level )
   --move cornelius up if near the bridge
-  --still not sure how to handle 
+  --still not sure how to handle this and this is not the niceset solution
     if enemy.position.x < 1320 then
-      enemy.maxy = 531
+      enemy.typicalY = 531
     end
     if not enemy.diving and not player.jumping then 
       enemy.position.y = player.position.y - (enemy.height+55)
@@ -374,14 +384,12 @@ return {
       camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
     end
 
-    local offset = math.random(0,200)
-
-    --this is where cornelius is controlled
+    --this is where cornelius's attacks are controlled
     if enemy.state == 'talking' and not enemy.hatched then
       
     elseif enemy.state == 'attack' and not enemy.hatched then
       enemy.hatched = true
-      --enemy.props.fireball( enemy, player )
+      enemy.props.fireball( enemy, player )
     elseif enemy.hatched and not enemy.freeze then
 			enemy.rage = true
       enemy.last_teleport = enemy.last_teleport + dt
@@ -390,39 +398,63 @@ return {
       enemy.last_dive = enemy.last_dive + dt 
       enemy.props.targetDive( enemy, player, -direction )
 
-      if enemy.diving and enemy.position.y <= enemy.maxy then 
+      if enemy.diving and enemy.position.y <= enemy.typicalY then 
         enemy.velocity.y = 0
-        print('stabilize')
+        enemy.diving = false
       end
 
       --cornelius chases player
-      if enemy.position.x > player.position.x then
-        enemy.velocity.x = 100
-      elseif enemy.position.x < player.position.x then
-        enemy.velocity.x = -100
+
+      if not enemy.diving then
+        if enemy.position.x >= player.position.x + 60 then
+          enemy.velocity.x = 125
+        elseif enemy.position.x <= player.position.x - 250 then
+          enemy.velocity.x = -125
+        elseif enemy.position.x <= player.position.x - 250 and enemy.position.x <= player.position.x then
+          enemy.velocity.x = -125
+        end
+      --[[this bit would be for cornelius bobbing up and down
+            
+                    if enemy.position.y <= enemy.maxy then
+                      enemy.velocity.y = 10
+                      print('down')
+                    elseif enemy.position.y >= miny then
+                      enemy.velocity.y = -10
+                      print('up')
+        end]]
       end
-      --[[--this bit would be for cornelius bobbing up and down
-                  
-                  if enemy.position.y <= enemy.miny then 
-                    enemy.velocity.y = -enemy.velocity.y 
-                  elseif enemy.position.y >= enemy.maxy then
-                    enemy.velocity.y = -enemy.velocity.y
-                  end]]
-      
       --each attack should have a different chance of occuring
       --fireball is probally the most common attack followed by the dive and then the teleport.
-      if enemy.last_attack > 2 then
-        if enemy.last_fireball > 4 then
+      --They values change based on cornelius's hp
+      local pause = 3
+      local fireballPause = 4
+      local divePause = 6
+      local teleportPause = 10
+	    if enemy.hp >= 100 and enemy.hp < 150 then
+        local fireballPause = 3
+        local divePause = 4
+        local teleportPause = 8
+      elseif enemy.hp >= 50 and enemy.hp < 100 then
+        local pause = 2
+        local fireballPause = 3
+        local divePause = 3
+        local teleportPause = 6
+      elseif enemy.hp >= 1 and enemy.hp < 50 then
+        local pause = 0
+        local fireballPause = 1
+        local divePause = 2
+        local teleportPause = 3
+      end
+
+      if enemy.last_attack > pause then
+        if enemy.last_fireball > fireballPause then
           enemy.props.fireball( enemy, player )
-        elseif enemy.last_dive > 6 then
+        elseif enemy.last_dive > divePause then
           enemy.props.startDive ( enemy )
-        elseif enemy.last_teleport > 2 then
+        elseif enemy.last_teleport > teleportPause then
           enemy.props.teleport( enemy, player, dt )
         end
       end
-      
     end
-
-  
   end
 }

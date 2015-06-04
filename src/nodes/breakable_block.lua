@@ -156,7 +156,7 @@ end
 -- Compares brokenBy to a weapons special damage and sums up total damage
 function Wall:calculateDamage(damage, special_damage, player)
     if not self:specialDamageCheck(special_damage) then 
-            sound.playSfx( "dbl_beep" )
+            --sound.playSfx( "dbl_beep" )
             if self.warning==true then
                 Dialog.new(''..self.message..'', function()
                 end)

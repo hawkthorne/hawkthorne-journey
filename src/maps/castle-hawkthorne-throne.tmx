@@ -17,7 +17,7 @@
  </tileset>
  <layer name="bg_leaves2" width="115" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1dENgjAUQNGO4iiO5iisxQiM4J/4QfKiNbTgg0TPSV7ih6L20lIKAAAAAAAAEE2lXJ5zn+fs38I+Y5gtTef3D1PDuFfyjeWt563n81PlGrXpvS79jmq57HvneZ61luEMrTboaWmP5qqtdWwWW9U693Z83aNpf+wPra31p/20p2MccrSs/bJn567XrU20PEbj+TjE13u+g3yZZ6SW58l6xml5rm821RIAAACAX/QAWjKzlg==
+   eJzt1dENgjAUQNGO4iiO5ihMZcIIjOCf+EHSSA0UeDTBc5KX+KEIvbamBAAAAAAAAOSGlG6feY3T+l7Yp89mS9Px/d2wYvxW4vVp1vNR8/mhcI3S1F6Xeme1nPa98zzOUsvsDC02qGlpj8YqrXXeLG9V6lzb8XuPhj3YH1pa61/7aU/HfIixZu2nPTt2vW9touU5Vp6PXf56z3cQL/KM1LKdqP84Lds6sqmWANR4tr4BDqPldWh5HVoCwLHe+vG27g==
   </data>
  </layer>
  <layer name="bg_leaves" width="115" height="37">
@@ -33,6 +33,11 @@
  <layer name="pillar" width="115" height="37">
   <data encoding="base64" compression="zlib">
    eJztmj1OxDAQRt2w96CDkg7K3QpaKmip4AbQ+QpwiOVGOQ+2SCTLGq/HjuN4fp70KdpJokR6+rKOdo2RxfNgc6UeSS6vXA47XLcXklxyR13yQV3yQV3yQV3yQV3yQbJL935i3XuK3fs+WiHZJTfUJR84uzxnZtB+ykhyydmjh7vLS/npcA89keySWzelujRGXfZy2eL3KXW577wlueeqNJdxP6i5XLaloQjnXsbUOKXktbWbtT2GuHG5Rcyw/Bpjz/9h9Rym0Mt7lwfErBRMH9Vl/Rzi0eUJMSsF6dKuvEw3KLh8cXlFzErJrY3mfXblZboxgsvcu+S7ywdiVkr8LE3EfhPxuWbNEp6zZS8/Xb4QsxoQ61hyLkeZh1wjjmlF6C6Ouqybh9xFn49zPBPi/BqgbqrLurln6eMx2p7mTGY7l5TZei1T43Lp4wnYqss0e61XoeNTfQy3PuoS5pKDA/Cfwy3dp/romYz2MsfbQPNUHxd32styoD72APp+9EyJKOOS66W6pEOqlwo9Ur2s5Q+1D8/i
+  </data>
+ </layer>
+ <layer name="ground" width="115" height="37">
+  <data encoding="base64" compression="zlib">
+   eJzt0QEJADAMxMD3L7B6ZqJQ9twpCCQBAAAAAAAAAAAAAAAAYNtcB7Bi4mULL3t4+TfvengJXR7MXAeH
   </data>
  </layer>
  <layer name="floor" width="115" height="37">
@@ -51,7 +56,7 @@
   </data>
  </layer>
  <objectgroup name="nodes">
-  <object id="5" name="main" type="door" x="1944" y="720" width="48" height="72">
+  <object id="5" name="main" type="door" x="1848" y="720" width="48" height="72">
    <properties>
     <property name="key" value="greendale"/>
     <property name="level" value="castle-hawkthorne"/>
