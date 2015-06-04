@@ -40,7 +40,7 @@ function Tooltip:getItemStats( item )
   return itemStats
 end
 
-function Tooltip:draw(x, y, selectedItem)
+function Tooltip:draw(x, y, selectedItem, parent)
   if not self.visible then return end
   
   love.graphics.draw( self.background, x + 116, y - 32 )
@@ -49,9 +49,8 @@ function Tooltip:draw(x, y, selectedItem)
   local textX = x + 130
   local textY = y - 24
 
-  local itemInfo = selectedItem
-  local name = itemInfo.name
-  local item = itemInfo.item
+  local item = parent == "shopping" and selectedItem.item or selectedItem
+    
   local lineHeight = love.graphics.getFont():getHeight("line height")
 
   local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 64)
