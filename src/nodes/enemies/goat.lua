@@ -20,8 +20,16 @@ return {
   peaceful = true,
   animations = {
     default = {
-      right = {'loop', {'1-5,2'}, 0.25},
-      left = {'loop', {'1-5,1'}, 0.25},
+      right = {'loop', {'1-4,2'}, 0.25},
+      left = {'loop', {'1-4,1'}, 0.25},
+    },
+    dying = {
+      right = {'loop', {'5,2'}, 0.25},
+      left = {'loop', {'5,1'}, 0.25},
+    },
+    hurt = {
+      right = {'loop', {'5,2'}, 0.25},
+      left = {'loop', {'5,1'}, 0.25},
     },
   },
   enter = function( enemy )

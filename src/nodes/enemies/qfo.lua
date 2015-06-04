@@ -29,7 +29,7 @@ return {
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
-  hp = 50,
+  hp = 80,
   tokens = 15,
   hand_x = -40,
   hand_y = 70,
@@ -143,10 +143,15 @@ return {
       }
       local beam = Sprite.new( node, enemy.collider )
       local level = enemy.containerLevel
+      local random = math.random(0,9)
       level:addNode(beam)
       Timer.add(.5, function() 
-          if enemy.hp < 50 then
+          if random == 0 then
             enemy.props.spawn_alien_elite(enemy, direction, beamPos)
+          elseif random == 1 or random == 2 or random == 3 then
+            enemy.props.spawn_alien_ranged(enemy, direction, beamPos)
+          elseif random == 4 or random == 5 then
+            enemy.props.spawn_alien_heavy(enemy, direction, beamPos)
           else
             enemy.props.spawn_alien(enemy, direction, beamPos)
           end
@@ -180,6 +185,32 @@ return {
     spawnedAlienElite.velocity.x = math.random(40,60)*direction
     enemy.containerLevel:addNode(spawnedAlienElite)
   end,
+    spawn_alien_ranged = function( enemy, direction, beamPos )
+    local node = {
+      x = beamPos,
+      y = enemy.position.y+128,
+      type = 'enemy',
+      properties = {
+          enemytype = 'alien_ranged'
+      }
+    }
+    local spawnedAlienElite = Enemy.new(node, enemy.collider, enemy.type)
+    spawnedAlienElite.velocity.x = math.random(40,60)*direction
+    enemy.containerLevel:addNode(spawnedAlienElite)
+  end,
+    spawn_alien_heavy = function( enemy, direction, beamPos )
+    local node = {
+      x = beamPos,
+      y = enemy.position.y+128,
+      type = 'enemy',
+      properties = {
+          enemytype = 'alien_heavy'
+      }
+    }
+    local spawnedAlienElite = Enemy.new(node, enemy.collider, enemy.type)
+    spawnedAlienElite.velocity.x = math.random(40,60)*direction
+    enemy.containerLevel:addNode(spawnedAlienElite)
+  end,
 
   spawn_pilot = function( enemy, direction)
     local node = {
@@ -196,6 +227,9 @@ return {
 
 
   update = function( dt, enemy, player, level )
+    if enemy.quest and Player.quest ~= enemy.quest then
+    enemy:die()
+    end
     if enemy.dead then return end
 
     local direction = player.position.x > enemy.position.x + 40 and -1 or 1
@@ -238,12 +272,12 @@ return {
       --deal with enemy attacks
       enemy.last_attack = enemy.last_attack + dt
 
-      local pause = 4
+      local pause = 3
     
-      if enemy.hp < 20 then
-        pause = 0.7
-      elseif enemy.hp < 50 then
+      if enemy.hp < 10 then
         pause = 1
+      elseif enemy.hp < 50 then
+        pause = 2
       end
         
 

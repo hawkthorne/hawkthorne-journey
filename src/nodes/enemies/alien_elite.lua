@@ -9,6 +9,7 @@ local gamestate = require 'vendor/gamestate'
 
 return {
   name = 'alien_elite',
+  die_sound = 'alien_hurt',
   height = 48,
   width = 48,
   damage = 35,
@@ -19,7 +20,7 @@ return {
   bb_height = 48,
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
-  hp = 15,
+  hp = 18,
   vulnerabilities = {'slash'},
   speed = math.random(110,120),
   tokens = 6,
@@ -64,7 +65,7 @@ return {
         y = enemy.position.y + enemy.height - 24,
         width = 24,
         height = 24,
-        properties = {info = "This must be the alien technology that Juan wants!"},
+        properties = {info = "This must be the technology that the alien wants!"},
       }
       local spawnedNode = NodeClass.new(node, enemy.collider)
       local level = gamestate.currentState()

@@ -1,5 +1,6 @@
 -- inculdes
 local Dialog = require 'dialog'
+local sound = require 'vendor/TEsound'
 local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
@@ -33,19 +34,46 @@ return {
     { ['text']='What do you do here?' },
     { ['text']='Talk about quests'},
   },
-  --[[enter = function(npc, previous)
-      if Quest.alreadyCompleted(telescopejuan, player, telescope.alien) == false then
-        npc.busy = true
-        npc.state = 'hidden'
-      end
-  end,]]
+  enter = function(npc, previous)
+  npc.shake = false
+  end,
+  update = function(dt, npc, player)
+  local shakeval = 0
+  if npc.shake == true then
+    local player_dist= {x = 1, y = 1 }
+    shakeval = (math.random() * 5)-2/player_dist.x
+    camera:setPosition(camera.x + shakeval, camera.y + shakeval)
+  end
+  end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
     if player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
-    if enemy.shake and level.trackPlayer == false then
-      shake = (math.random() * 4)-2/player_dist.x
-      camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
-    end
+      Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
+      local level = npc.containerLevel
+    npc.shake = true
+    sound.playSfx( "quake" )
+    level.trackPlayer = false
+    Timer.add(2.5, function()
+      level.trackPlayer = true
+      npc.shake = false
+    end)
+    npc.walking = false
+      local script = {
+      "Holy crap, what the hell is that???",
+      "Damn it, you stupid human! The aliens followed you when you were coming back here, and now they've found us! We're under attack!",
+      "No, no, no, no, the device was so close to being complete! Then you had to go and mess it all up!",
+      "The aliens' main source of power is the {{orange}}QFO{{white}}, a giant spaceship that can teleport and transport them in numbers.",
+      "Judging by the sound of it, that exact {{orange}}QFO{{white}} is outside right now, carrying a bunch of angry, muderderous aliens.",
+      "Okay, I'm going to need you to hold them off while I build this extremely important device that will help defeat them.",
+      "I'll tell you when the device is ready, alright? Now go buy me some time!",
+      }
+      Dialog.new(script, function()
+      npc.menu:close(player)
+      end)
+      end)
+      player.inventory:removeManyItems(1, 'alien_object3')
+      
+
     elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
       Quest:activate(npc, player, quests.aliencamp)
     elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
@@ -69,9 +97,10 @@ return {
       npc.menu:close(player)
       player.freeze = false
       end)
-    elseif Quest.alreadyCompleted(telescopejuan, player, telescope.alien) then
+    elseif Quest.alreadyCompleted(npc, player, telescope.alien) then
       Quest:activate(npc, player, quests.alienobject)
     end
+    player.freeze = false
     end,
   },
   talk_responses = {

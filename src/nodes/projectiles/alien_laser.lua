@@ -25,7 +25,12 @@ return{
   end,
 
   collide = function(node, dt, mtv_x, mtv_y,projectile)
-    if node.isEnemy then return end
+    if node.isEnemy then 
+      if node.props.name == 'goat' then 
+        node:hurt(projectile.damage, projectile.special_damage, 0) 
+        projectile:die()
+        else return end
+    end
     if node.hurt then
       node:hurt(projectile.damage, projectile.special_damage, 0)
       projectile:die()

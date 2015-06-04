@@ -279,7 +279,7 @@ return {
     local player_dist= {x = 1, y = 1 }
 
     if enemy.shake and level.trackPlayer == false then
-      shake = (math.random() * 4)-2/player_dist.x
+      shake = (math.random(0,0.5) * 4)-2/player_dist.x
       camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
     end
 

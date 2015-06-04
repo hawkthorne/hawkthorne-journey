@@ -9,6 +9,7 @@ local Quest = require 'quest'
 
 return {
   name = 'alien_ranged',
+  die_sound = 'alien_hurt',
   height = 48,
   width = 48,
   damage = 25,
@@ -65,6 +66,7 @@ return {
     local level = enemy.containerLevel
     level:addNode(laser)
     sound.playSfx( 'alien_laser' )
+    laser.burn = true
     laser.velocity.x = 310*direction
     laser.position.x = enemy.position.x + 15
     laser.position.y = enemy.position.y + 17
