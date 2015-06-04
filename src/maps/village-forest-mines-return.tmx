@@ -166,17 +166,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="movingplatform" x="1824" y="552" width="120" height="24">
-   <properties>
-    <property name="drop" value="false"/>
-    <property name="line" value="platform2"/>
-    <property name="singleuse" value="true"/>
-    <property name="speed" value="0.13"/>
-    <property name="sprite" value="images/platforms/tunnelcart.png"/>
-    <property name="start" value="0"/>
-    <property name="touchstart" value="true"/>
-   </properties>
-  </object>
   <object name="door1" type="door" x="1248" y="528" width="48" height="48">
    <properties>
     <property name="key" value="minecarts"/>
@@ -191,10 +180,21 @@
     <property name="to" value="door1"/>
    </properties>
   </object>
+  <object type="movingplatform" x="1824" y="552" width="120" height="24">
+   <properties>
+    <property name="drop" value="false"/>
+    <property name="line" value="platform"/>
+    <property name="singleuse" value="true"/>
+    <property name="speed" value="0.13"/>
+    <property name="sprite" value="images/platforms/tunnelcart.png"/>
+    <property name="start" value="0"/>
+    <property name="touchstart" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#535355" name="movement" width="300" height="30">
-  <object name="platform2" x="1849" y="446">
-   <polyline points="4966,138 -79,117"/>
+  <object name="platform" x="1872" y="566">
+   <polyline points="4969,-4 7,0"/>
   </object>
  </objectgroup>
 </map>

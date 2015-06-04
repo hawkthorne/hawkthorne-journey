@@ -55,7 +55,7 @@
    <properties>
     <property name="info" value="The door is locked, the Lotus member must have locked it with his magic!"/>
     <property name="level" value="village-forest-mines-2"/>
-    <property name="quest" value="To Slay An Acorn - Return to Tilda"/>
+    <property name="quest" value="To Slay an Acorn - Return to Tilda"/>
     <property name="to" value="room"/>
    </properties>
   </object>

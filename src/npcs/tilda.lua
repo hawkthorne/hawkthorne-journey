@@ -8,6 +8,8 @@ require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
+local utils = require 'utils'
+local app = require 'app'
 
 return {
     width = 32,
@@ -32,26 +34,18 @@ return {
     },
         talk_commands = {
         ['Talk about quests']=function(npc, player)
-             npc.walking = false
-            
+        npc.walking = false
+        local check = app.gamesaves:active():get("bosstriggers.acorn", false)
+        if check ~= false then
+        Dialog.new("Thank you for defeating the Acorn King adventurer, you have saved us all!", function()
+        npc.menu:close(player)
+        end)
+        return end
           if player.quest ~= nil and player.questParent ~= 'Tilda' then
             Dialog.new("You already have a quest, you cannot do more than one quest at a time!", function()
             npc.walking = true
             npc.menu:close(player)
             end)
-          --[[elseif player.quest=='To Slay An Acorn - Collect Mushroom for the Old Man' then
-            script2 = {
-            "You say you are collecting the green mushroom for the Old Man?",
-            "At the bottom of the mountain, before the bridge to the Valley of Laziness, there is a secret door high up in the treetops.",
-            "You will enter the top of the treeline through that door. The {{green_light}}green mushroom{{white}} should grow somewhere inside.",
-            }
-
-            Dialogue = Dialog.create(script2)
-                    Dialogue:open(function()
-                        Dialog.finished = true
-                        end)
-            npc.walking = true
-            npc.menu:close(player)]]
 
           elseif player.quest=='To Slay An Acorn - Explore the Mines for a Map to the Acorn King' then
             script3 = {
@@ -60,13 +54,13 @@ return {
             }
 
             Dialogue = Dialog.create(script3)
-                    Dialogue:open(function()
-                        Dialog.finished = true
-                        end)
+            Dialogue:open(function()
+            Dialog.finished = true
+            end)
             npc.walking = true
             npc.menu:close(player)
 
-         elseif player.quest=='To Slay An Acorn - Return to Tilda' then
+         elseif player.quest=='To Slay an Acorn - Return to Tilda' then
             script4 = {
             "The map is gone?! That is troubling news, how will the Acorn King be defeated now?",
             "Wait...I have one more idea.",
@@ -77,10 +71,10 @@ return {
             "Please, you must hurry!",
             }             
             Dialogue = Dialog.create(script4)
-                    Dialogue:open(function()
-                        Dialog.finished = true
-                        player.quest = 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' 
-                        end)
+            Dialogue:open(function()
+            Dialog.finished = true
+            player.quest = 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' 
+            end)
             npc.walking = true
             npc.menu:close(player)
          elseif player.quest=='To Slay an Acorn - Find the Old Hermit at Stonerspeak' then
@@ -100,7 +94,7 @@ return {
             end)
           else
               Dialog.new("Please adventurer, I fear there is a sinister plot going on in these woods, one that may result in the very destruction of the Village. Will you not help me?", function()
-                npc.prompt = prompt.new("Accept quest {{red_dark}}'To Slay An Acorn'?{{white}}", function(result)
+                npc.prompt = prompt.new("Accept quest {{red_light}}'To Slay An Acorn'?{{white}}", function(result)
                   if result == 'Yes' then
                     local Dialogue = require 'dialog'
                     player.quest = 'To Slay An Acorn - Ask Around the Village about the Acorn King'

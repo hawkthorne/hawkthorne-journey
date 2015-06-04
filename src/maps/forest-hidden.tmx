@@ -221,5 +221,10 @@
    </properties>
   </object>
   <object name="mushroom" type="material" x="1008" y="192" width="24" height="24"/>
+  <object name="rusted_brass" type="key" x="288" y="168" width="24" height="24">
+   <properties>
+    <property name="info" value="It's a {{orange}}rusted brass key{{white}}! Wonder what it opens..."/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
