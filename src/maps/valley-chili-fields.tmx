@@ -422,5 +422,10 @@
     <property name="category" value="recipe"/>
    </properties>
   </object>
+  <object name="alien" type="npc" x="768" y="432" width="48" height="48">
+   <properties>
+    <property name="exist" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

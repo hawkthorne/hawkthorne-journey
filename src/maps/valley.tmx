@@ -288,5 +288,221 @@
     <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
    </properties>
   </object>
+  <object type="enemy" x="2904" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2808" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2400" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2208" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2064" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2304" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2040" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2640" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2760" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2856" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2736" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2520" y="624" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1944" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1776" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1728" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1608" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1536" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1512" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1416" y="504" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1320" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1392" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2472" y="264" width="144" height="24">
+   <properties>
+    <property name="enemytype" value="qfo"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="624" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="552" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="456" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="888" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3144" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3264" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3288" y="144" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3072" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3432" y="96" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2736" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2472" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

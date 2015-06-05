@@ -368,6 +368,7 @@ function NPC.new(node, collider)
               npc)
 
   npc.emotion = Emotion.new(npc)
+  npc.exist = node.properties.exist 
 
   return npc
 end

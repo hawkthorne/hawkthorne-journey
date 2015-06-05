@@ -6,6 +6,9 @@ local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
 local Sprite = require 'nodes/sprite'
+local Dialog = require 'dialog'
+local player = require 'player'
+local Player = player.factory()
 
 local window = require 'window'
 local camera = require 'camera'
@@ -25,11 +28,12 @@ return {
   antigravity = true,
   bb_width = 218,
   bb_height = 15,
+  chargeUpTime = 0,
   --bb_offset = { x = -40, y = 10},
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
-  hp = 80,
+  hp = 50,
   tokens = 15,
   hand_x = -40,
   hand_y = 70,
@@ -77,10 +81,11 @@ return {
   end,
 
   die = function( enemy )
-    enemy.props.spawn_pilot(enemy, direction)
+    enemy.db:set("bosstriggers.qfo", true)
   end,
 
   draw = function( enemy )
+    if enemy.quest and Player.quest ~= enemy.quest then return end
     fonts.set( 'small' )
 
     love.graphics.setStencil( )
@@ -212,7 +217,7 @@ return {
     enemy.containerLevel:addNode(spawnedAlienElite)
   end,
 
-  spawn_pilot = function( enemy, direction)
+ --[[ spawn_pilot = function( enemy)
     local node = {
       x = enemy.position.x,
       y = enemy.position.y-25,
@@ -223,20 +228,19 @@ return {
     }
     local spawnedPilot = Enemy.new(node, enemy.collider, enemy.type)
     enemy.containerLevel:addNode(spawnedPilot)
-  end,
+  end,]]
 
 
   update = function( dt, enemy, player, level )
-    if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
-    end
+
     if enemy.dead then return end
 
     local direction = player.position.x > enemy.position.x + 40 and -1 or 1
     local offset = math.random(0,200)
-    
+    if enemy.hp < enemy.props.hp and Player.quest ~= 'Aliens! - Destroy the QFO!' then
+      enemy.hp = enemy.hp + 1
+    end
 
-    
     if not enemy.hatched then
       enemy.state = 'default'
     elseif not enemy.hatched and enemy.position.y >= enemy.dropmax then
@@ -285,9 +289,9 @@ return {
         enemy.props.spawn_beam(enemy, direction, offset)
         enemy.last_attack = 0
       end
-      if enemy.hp <=0 then
-        enemy.props.spawn_pilot(enemy, direction)
-      end
+      --if enemy.hp <=0 then
+      --  enemy.props.spawn_pilot(enemy, direction)
+      --end
     end
   end
 }

@@ -38,7 +38,7 @@ return {
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.state = 'default'
     enemy.beamIn = false
-    enemy.collider:setGhost(self.bb)
+    enemy.collider:setGhost(enemy.bb)
   end,
 
   update = function( dt, enemy, player, level )
