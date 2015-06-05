@@ -4,6 +4,7 @@ local sound = require 'vendor/TEsound'
 local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'
+local telescope = require 'npcs/quests/telescopejuanquest'
 local quests = require 'npcs/quests/alienquest'
 local player = require 'player'
 local Player = player.factory()
@@ -58,15 +59,15 @@ return {
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
-    local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
+    local check = app.gamesaves:active():get("bosstriggers.qfo", true) 
     if player.quest == 'Aliens! - Destroy the QFO!' and Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
       npc.menu:close(player)
       end)
     elseif player.quest == 'Aliens! - Destroy the QFO!' then
-      if check ~= false then
+      if check == true then
       local script3 = {
-      "You...you've done it! You've deafeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
+      "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
       "What, the aliens didn't automatically die when the mothership blew up? Well, I guess that's pretty realistic, I don't know what I was thinking.",
       "I know I've treated you unfairly human, but you have my gratitude.",
       "As a token of thanks, I'll give you my standard issue alien pistol, you'll need it more than I do. Here's some gold as well.",

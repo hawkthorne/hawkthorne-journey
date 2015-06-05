@@ -167,15 +167,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="spawn" x="792" y="168" width="144" height="24">
-   <properties>
-    <property name="enemytype" value="qfo"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="1"/>
-    <property name="spawnType" value="proximity"/>
-    <property name="y_Proximity" value="550"/>
-   </properties>
-  </object>
   <object name="goatfarm" type="building" x="504" y="24" width="216" height="312"/>
   <object type="enemy" x="864" y="288" width="48" height="48">
    <properties>
