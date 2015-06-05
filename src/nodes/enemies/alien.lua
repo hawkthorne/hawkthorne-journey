@@ -2,8 +2,6 @@ local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local player = require 'player'
-local Player = player.factory()
 local Quest = require 'quest'
 
 return {

@@ -1,7 +1,5 @@
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local player = require 'player'
-local Player = player.factory()
 local Quest = require 'quest'
 
 return {
@@ -48,9 +46,7 @@ return {
   end,
 
   update = function ( dt, enemy, player )
-    if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
-    end
+
     if enemy.dead then return end
     local direction 
     local velocity = enemy.props.speed

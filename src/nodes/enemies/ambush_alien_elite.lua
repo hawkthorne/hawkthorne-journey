@@ -2,8 +2,6 @@ local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local player = require 'player'
-local Player = player.factory()
 local Quest = require 'quest'
 local gamestate = require 'vendor/gamestate'
 
@@ -52,35 +50,12 @@ return {
     },
   },
 
-
-  die = function( enemy )
-  --in the special quest fighting aliens
-  --drop the special quest item
-    if enemy.drop and Player.quest == enemy.quest then
-      local NodeClass = require('nodes/key')
-      local node = {
-        type = 'key',
-        name = enemy.drop,
-        x = enemy.position.x + enemy.width / 2 + enemy.bb_offset.x,
-        y = enemy.position.y + enemy.height - 24,
-        width = 24,
-        height = 24,
-        properties = {info = "This must be the alien technology that Juan wants!"},
-      }
-      local spawnedNode = NodeClass.new(node, enemy.collider)
-      local level = gamestate.currentState()
-      level:addNode(spawnedNode)
-    end
-  end,
   enter = function( enemy )
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.maxx = enemy.position.x + 48
     enemy.minx = enemy.position.x - 48
   end,
   update = function ( dt, enemy, player )
-    if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
-    end
     local direction
     local velocity = enemy.props.speed
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 30 then

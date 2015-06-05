@@ -3,8 +3,6 @@ local gamestate = require 'vendor/gamestate'
 local Projectile = require 'nodes/projectile'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
-local player = require 'player'
-local Player = player.factory()
 local Quest = require 'quest'
 
 return {
@@ -64,9 +62,7 @@ return {
     end)
   end,
   update = function( dt, enemy, player, level )
-    if enemy.quest and Player.quest ~= enemy.quest then
-      enemy:die()
-    end
+
   if math.abs(enemy.position.x - player.position.x) < 300 then
       if enemy.position.x > player.position.x then
       enemy.direction = 'left'

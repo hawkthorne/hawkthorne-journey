@@ -47,16 +47,28 @@ local quests = {
       "It's the same drill as before. It's usually the {{blue_light}}Elite Alien{{white}} carrying important equipment, so target those guys first.",
       "Oh, you wanna know what I want to do with this alien technology? Well, that I'll tell you if you come back alive. Now go!",
     },
-    completeQuestFail = "The aliens are still camped up in the {{orange_light}}Hills{{white}} area. Chop chop!",
+    completeQuestFail = "The aliens are still camped up in the {{orange}}Hills{{white}} area. Chop chop!",
     completeQuestSucceed = {
-    "Holy burrito",
-    "Alright, I got another task for you. Talk to me when you're ready.",
+    "Ooh, I almost forgot to take with me the device you brought!",
+    "Alright, toodles!",
     },
     reward = {affection = 1},
   },
-  dianemail = {
+  regroup = {
     infinite = false,
-    questName = 'Aliens! - Fight off the QFO!',
+    questName = 'Aliens! - Regroup with the alien at Chili Fields',
+    questParent = 'alien',
+    collect = {name = 'office_key', type = 'key'},
+    giveQuestSucceed = {
+      "I have an important document that I need to send to a certain Diane.",
+      "I would send an e-mail, but there is some trouble with campus wi-fi and the IT lady is nowhere to be seen.",
+    },
+    successPrompt = "Could you deposit this document into the mailbox? And no montages!",
+    completeQuestFail = "What the hell are you still doing here? Go hold those aliens off!",
+  },
+  qfo = {
+    infinite = false,
+    questName = 'Aliens! - Destroy the QFO!',
     questParent = 'alien',
     collect = {name = 'office_key', type = 'key'},
     giveQuestSucceed = {

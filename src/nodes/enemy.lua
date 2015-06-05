@@ -22,6 +22,8 @@ local utils = require 'utils'
 local window = require 'window'
 local camera = require 'camera'
 local app = require 'app'
+local player = require 'player'
+local Player = player.factory()
 
 
 local Enemy = {}
@@ -132,7 +134,9 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.quest = node.properties.quest
   enemy.drop = node.properties.drop
-
+    if enemy.quest and Player.quest ~= enemy.quest then
+    enemy:die()
+    end
   if enemy.props.passive then
     collider:setGhost(enemy.bb)
   end
@@ -253,6 +257,21 @@ end
 
 function Enemy:die()
   if self.props.die then self.props.die( self ) end
+  if self.drop and Player.quest == self.quest and not Player.inventory:hasKey(self.drop) then
+    local NodeClass = require('nodes/key')
+    local node = {
+        type = 'key',
+        name = self.drop,
+        x = self.position.x,
+        y = self.position.y + self.height - 24,
+        width = 24,
+        height = 24,
+        properties = {info = "This must be the technology that the alien wants!"},
+      }
+      local spawnedNode = NodeClass.new(node, self.collider)
+      local level = gamestate.currentState()
+      level:addNode(spawnedNode)
+    end
   self.dead = true
   self.collider:remove(self.bb)
   self.collider:remove(self.attack_bb)

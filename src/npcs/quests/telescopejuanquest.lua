@@ -20,7 +20,6 @@ local quests = {
     completeQuestFail = "The entrance to the goat farm is right beside Juan with the {{purple}}purple sombrero{{white}}. Ask him for the key to get inside!",
     completeQuestSucceed = {
       "Ooh, this alien thing looks amazing. This is definite proof that aliens are among us!",
-      "What, you say you heard a weird voice telling you to come to Chili Fields? I dunno man, sounds dangerous, but do what you'd like.",
       "Here's some money for your troubles, thanks again!",
     },
     completed = "Man, that alien thing was weird!",
