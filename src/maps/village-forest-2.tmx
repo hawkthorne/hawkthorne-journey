@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="60" height="50" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="24" tileheight="24" nextobjectid="20">
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
@@ -142,15 +142,15 @@
    eJzt1k0KgCAQhuF2njyoUwT9nKGOl1CCRBMYlZPzPjCLdo6fjlUVAAAAAAAoTee2Gn1NLvdqvme1b+u5h/5hR8jc8rmX+l72fZkL3RPrub8x76Qz0/jv1ld9UiUJfeYUz7RjxnfzlvIrjYb8JL1f1yDkmiLOUqOn5pLmLJ+koc/lJLPjW3D1BqTUl+78/2jI4w28Af+k6T4BAAAAQE4rerFDPQ==
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="60" height="50" opacity="0.9">
-  <object name="tilda" type="npc" x="761" y="720" width="48" height="48"/>
-  <object name="main" type="door" x="48" y="816" width="48" height="48"/>
-  <object type="scenetrigger" x="552" y="262" width="24" height="504">
+ <objectgroup color="#000000" name="nodes" opacity="0.9">
+  <object id="1" name="tilda" type="npc" x="761" y="720" width="48" height="48"/>
+  <object id="2" name="main" type="door" x="48" y="816" width="48" height="48"/>
+  <object id="3" type="scenetrigger" x="552" y="262" width="24" height="504">
    <properties>
     <property name="cutscene" value="tilda"/>
    </properties>
   </object>
-  <object type="door" x="0" y="624" width="24" height="240">
+  <object id="4" type="door" x="0" y="624" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest"/>
@@ -158,12 +158,12 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="624" y="744" width="24" height="24"/>
-  <object name="rock" type="material" x="809" y="744" width="24" height="24"/>
-  <object name="rock" type="material" x="168" y="432" width="24" height="24"/>
-  <object name="stick" type="material" x="240" y="624" width="24" height="24"/>
-  <object name="leaf" type="material" x="504" y="696" width="24" height="24"/>
-  <object type="sprite" x="684" y="739" width="24" height="24">
+  <object id="5" name="rock" type="material" x="624" y="744" width="24" height="24"/>
+  <object id="6" name="rock" type="material" x="809" y="744" width="24" height="24"/>
+  <object id="7" name="rock" type="material" x="168" y="432" width="24" height="24"/>
+  <object id="8" name="stick" type="material" x="240" y="624" width="24" height="24"/>
+  <object id="9" name="leaf" type="material" x="504" y="696" width="24" height="24"/>
+  <object id="10" type="sprite" x="684" y="739" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -171,7 +171,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="680" y="739" width="24" height="24">
+  <object id="11" type="sprite" x="680" y="739" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -179,7 +179,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="686" y="736" width="24" height="24">
+  <object id="12" type="sprite" x="686" y="736" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -187,7 +187,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="door" x="0" y="72" width="24" height="336">
+  <object id="13" type="door" x="0" y="72" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-acornpeak"/>
@@ -195,9 +195,9 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="acornpeak" type="door" x="24" y="360" width="24" height="48"/>
-  <object name="mines" type="door" x="1368" y="552" width="48" height="48"/>
-  <object type="door" x="1416" y="360" width="24" height="240">
+  <object id="14" name="acornpeak" type="door" x="24" y="360" width="24" height="48"/>
+  <object id="15" name="mines" type="door" x="1368" y="552" width="48" height="48"/>
+  <object id="16" type="door" x="1416" y="360" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-mines-entrance"/>
@@ -205,7 +205,8 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="168" y="696" width="24" height="24"/>
-  <object name="stick" type="material" x="1008" y="672" width="24" height="24"/>
+  <object id="17" name="stick" type="material" x="168" y="696" width="24" height="24"/>
+  <object id="18" name="stick" type="material" x="1008" y="672" width="24" height="24"/>
+  <object id="19" name="clouds" type="door" x="0" y="0" width="288" height="48"/>
  </objectgroup>
 </map>

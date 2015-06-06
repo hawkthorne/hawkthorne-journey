@@ -5,6 +5,7 @@ local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
+local app = require 'app'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -83,6 +84,11 @@ return {
   enter = function( enemy )
     enemy.direction ='left'
     enemy.speed = enemy.props.speed
+    local db = app.gamesaves:active()
+    local show = db:get('acornKingVisible', false)
+    if show ~= true then
+      enemy.state = 'hidden'
+    end
   end,
 
   die = function( enemy )
