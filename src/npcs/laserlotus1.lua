@@ -7,6 +7,7 @@ local Gamestate = require 'vendor/gamestate'
 return {
   width = 24,
   height = 48, 
+  nocommands = 'I only take commands from a laser lotus above level 7 or the Great Buddha himself!',
   animations = {
     default = {
       'loop',{'1,1','1,1','1,1','1,1','1,1','1,1','1,1','1,1','2,1','1,1','1,1','1,1','1,1','1,1','1,1','4-5,1'},.25,
@@ -27,7 +28,7 @@ return {
   },
   talk_responses = {
     ["inventory"]={
-      "These are my wares, take a look!",
+      "These are my wares.  Every laser lotus above level five must carry a licensed sacred Buddha incense holder!",
       "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
     },
     ["Who are you?"]={
@@ -36,7 +37,7 @@ return {
     },
     ["What cult is this?"]={
       "It is not a cult, it's a way of life!",
-      "When Buddha arrived in a meteor, he taught us forgiveness and love and lasers!",
+      "When Buddha arrived in a meteor, he taught us forgiveness, love and lasers!",
       "When he returns, we shall bathe in the shimmering ocean of knowledge together!",
     },
     ["Why are you in a cave?"]={

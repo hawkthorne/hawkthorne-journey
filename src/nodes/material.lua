@@ -21,8 +21,10 @@ function Material.new(node, collider)
   setmetatable(material, Material)
   material.name = node.name
   material.type = 'material'
+  material.width = node.width or 24
+  material.height = node.height or 24
   material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
-  material.image_q = love.graphics.newQuad( 0, 0, 24, 24, material.image:getWidth(),material.image:getHeight() )
+  material.image_q = love.graphics.newQuad( 0, 0, material.width, material.height, material.image:getWidth(),material.image:getHeight() )
   material.foreground = node.properties.foreground
   material.collider = collider
   material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)

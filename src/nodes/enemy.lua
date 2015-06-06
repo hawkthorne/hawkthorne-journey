@@ -167,6 +167,7 @@ function Enemy:leave()
 end
 
 function Enemy:animation()
+  if self.state == 'hidden' then return end
   if self.animations[self.state] == nil then
     print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
     return self.animations["default"][self.direction]
@@ -176,7 +177,7 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage, special_damage, knockback )
-  if self.dead or self.invulnerable then return end
+  if self.dead or self.invulnerable or self.state == 'hidden'  then return end
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
@@ -332,6 +333,7 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+  if self.state == 'hidden' then return end
   function attack()
     if self.props.attack_sound then
       if not self.attackingWorld then
@@ -436,8 +438,9 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player, map )
+  if self.state == 'hidden' then return end
   local level = gamestate.currentState()
-  if level.scene or player.inventory.visible then return end
+  if level.scene or player.inventory.visible or self.state == 'hidden' then return end
   
   if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
      self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
@@ -501,6 +504,8 @@ function Enemy:updatePosition(map, dx, dy)
 end
 
 function Enemy:draw()
+  if self.state == 'hidden' then return end
+
   local r, g, b, a = love.graphics.getColor()
 
   if self.flash then
