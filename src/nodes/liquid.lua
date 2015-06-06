@@ -36,6 +36,8 @@ function Liquid.new(node, collider)
   local liquid = {}
   setmetatable(liquid, Liquid)
 
+  liquid.name = node.name
+
   liquid.collider = collider
   liquid.width = node.width
   liquid.height = node.height

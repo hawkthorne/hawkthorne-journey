@@ -7,7 +7,7 @@ return{
   type = 'projectile',
   friction = 1,
   width = 24,
-  height = 16,
+  height = 72,
   frameWidth = 24,
   frameHeight = 72,
   solid = true,
@@ -19,9 +19,7 @@ return{
   velocity = { x = 0, y = game.gravity }, --initial velocity
   throwVelocityX = 200,
   throwVelocityY = 0,
-  drawoffset = { x = 0, y = -43 },
   offset = { x = 0, y = 0 },
-  handle_y = 50,
   stayOnScreen = false,
   thrown = false,
   damage = 5,
@@ -38,7 +36,76 @@ return{
     finish = {'once', {'15,1'}, 1},
   },
 
-  collide = function(node, dt, mtv_x, mtv_y,projectile)
+  dissolveRock = function(projectile, node)
+    Timer.add(math.random(1,1.5), function()
+      if not node.dead then
+        node:hurt(1)
+        projectile.props.dissolveRock(projectile, node)
+      end
+    end)
+  end,
+
+  formRock = function(projectile, x, y)
+    local level = projectile.containerLevel
+    local BreakableBlock = require 'nodes/breakable_block'
+    local SpriteClass = require 'nodes/sprite'
+    x = math.floor(x / level.map.tilewidth) * level.map.tilewidth
+    y = math.floor(y / level.map.tileheight) * level.map.tileheight
+    local node = {
+      x = x,
+      y = y,
+      width = level.map.tilewidth,
+      height = level.map.tileheight,
+      name = "lavarock",
+      properties = {
+        hp = 5,
+        sprite = "lava-rock"
+      }
+    }
+    local lavarock = BreakableBlock.new( node, projectile.collider, level )
+    local node = {
+      x = x,
+      y = y - level.map.tileheight,
+      width = level.map.tilewidth,
+      height = level.map.tileheight,
+      properties = {
+        animation = "1-4,1",
+        speed = "0.25",
+        sheet = 'images/steam.png',
+        width = level.map.tilewidth,
+        height = level.map.tileheight,
+        mode = 'loop'
+      }
+    }
+    local steam = SpriteClass.new(node)
+    level:addNode(steam)
+    Timer.add(math.random(3,5), function()
+      level:removeNode(steam)
+    end)
+    level:addNode(lavarock)
+    projectile.props.dissolveRock(projectile, lavarock)
+  end,
+
+  update = function(dt, projectile)
+    local isLava = false
+    local isLavaRock = false
+
+    local shapes = projectile.collider:shapesAt( projectile.position.x, projectile.position.y + projectile.height + 5 )
+    for _, shape in ipairs(shapes) do
+      if shape.node then
+        if shape.node.isLiquid and shape.node.name == "lava" then isLava = true end
+        if shape.node.isWall and shape.node.node.name == "lavarock" then isLavaRock = true end
+      end
+    end
+    if isLava and not isLavaRock then
+      projectile.props.formRock(projectile, projectile.position.x, projectile.position.y + projectile.height)
+    end
+  end,
+
+  collide = function(node, dt, mtv_x, mtv_y, projectile)
+    if node.isLiquid then
+      node.containerLevel:removeNode(node)
+    end
     if node.isPlayer then return end
     if node.isEnemy then
       Timer.add(.1, function () 
@@ -52,7 +119,7 @@ return{
         projectile:die()
       end)
     end
-    if node.hurt then
+    if node.hurt and not (node.isWall and node.node.name == "lavarock") then
       node:hurt(projectile.damage, projectile.special_damage, 0)
     end
   end,

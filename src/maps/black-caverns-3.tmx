@@ -86,14 +86,16 @@
     <property name="foreground" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2016" y="240" width="312" height="96">
+  <object name="lava" type="liquid" x="2016" y="240" width="312" height="96">
    <properties>
+    <property name="death" value="true"/>
     <property name="drag" value="true"/>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object type="liquid" x="960" y="252" width="384" height="96">
+  <object name="lava" type="liquid" x="960" y="252" width="384" height="96">
    <properties>
+    <property name="death" value="true"/>
     <property name="drag" value="true"/>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>

@@ -43,40 +43,32 @@ return {
   actionwalk = "wieldaction3",
   actionjump = "wieldaction3",
 
-  wield = function( weapon )
-    weapon.player.wielding = true
-    --changes the animation is weapon is charged
-    weapon.player.character:animation():gotoFrame(1)
-    weapon.player.character:animation():resume()
+  update = function( weapon, dt, player, map)
+    if not weapon.player and
+       weapon.position.x == 1728 and
+       weapon.position.y == 141 and
+       math.abs(player.position.x - weapon.position.x) < 60 then
+      weapon.charged = true
+      weapon.animation = weapon.defaultChargedAnimation
+    end
+  end,
 
-    if weapon.animation then
-      if weapon.charged then
-        weapon.animation = weapon.wieldChargedAnimation
-        weapon.charged = false
-        weapon:weaponShake(weapon)
-        weapon:throwProjectile(weapon)
-      else
-        weapon.animation = weapon.wieldAnimation
-      end
-      weapon.animation:gotoFrame(1)
-      weapon.animation:resume()
-    end
-    --changes the wield action between ranged and melee if the weapon is charged or not
+  trigger = function( weapon )
+    weapon.charged = true
+    weapon.animation = weapon.defaultChargedAnimation
+  end,
+
+  wield = function( weapon )
     if weapon.charged then
-      if weapon.player:isWalkState(weapon.player.character.state) then
-        weapon.player.character.state = weapon.actionwalk
-      elseif weapon.player:isJumpState(weapon.player.character.state) then
-        weapon.player.character.state = weapon.actionjump
-      else
-        weapon.player.character.state = weapon.action
-      end
-      weapon.player.character:animation():gotoFrame(1)
-      weapon.player.character:animation():resume()
+      weapon.animation = weapon.wieldChargedAnimation
+      weapon.charged = false
+      weapon:weaponShake(weapon)
+      weapon:throwProjectile(weapon)
     else
-      weapon.collider:setSolid(weapon.bb)
-      weapon.player.character.state = weapon.action
+      weapon.animation = weapon.wieldAnimation
     end
-    
+    weapon.animation:gotoFrame(1)
+    weapon.animation:resume()
 
     if weapon.attackAudioClip then
       sound.playSfx( weapon.attackAudioClip )
@@ -89,7 +81,7 @@ return {
         type = 'projectile',
         name = 'waterSpout',
         x = weapon.position.x+weapon.hand_x,
-        y = weapon.position.y+(weapon.bbox_height),
+        y = weapon.player.position.y - weapon.player.height + 17,
         width = 24,
         height = 16,
         properties = {}
@@ -109,19 +101,11 @@ return {
       weapon.camera.ty = camera.y
       current.trackPlayer = false
       current.player.freeze = true
+      Timer.add(1, function()
+        weapon.shake = false
+        current.trackPlayer = true
+        current.player.freeze = false
+      end)
     end)
-    Timer.add(1.25, function()
-      weapon.shake = false
-      current.trackPlayer = true
-      current.player.freeze = false
-    end)
-  end,
-
-  update = function( dt, weapon, player, level )
-    local current = gamestate.currentState()
-    if weapon.shake and current.trackPlayer == false then
-      local shake = (math.random() * 4) - 2
-      camera:setPosition(weapon.camera.tx + shake, weapon.camera.ty + shake)
-    end
   end,
 }
