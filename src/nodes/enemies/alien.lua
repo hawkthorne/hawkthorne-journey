@@ -47,9 +47,6 @@ return {
   },
 
   update = function ( dt, enemy, player )
-    if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
-    end
     local direction 
     local velocity = enemy.props.speed
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
