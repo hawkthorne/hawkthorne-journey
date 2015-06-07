@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="80" height="25" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="80" height="20" tilewidth="24" tileheight="24">
  <properties>
-  <property name="offset" value="11"/>
+  <property name="offset" value="6"/>
   <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="tacotown"/>
  </properties>
@@ -11,106 +11,106 @@
  <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="sky" width="80" height="25">
+ <layer name="sky" width="80" height="20">
   <properties>
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0EENgFAQA9HfDQIQgAAEIB8BCEAAAhDAERdsJ/QlY2DGiIiIiK/t4uag+0H+5R81B4e4OTjFzcElbg5ucXPwiJuDqbg5mIubg6W4OViLm4OtuDnofpB/+UfNQfeD/Pv3vxeC4aaD
+   eJzt0FENgEAQxcDbDQIQgAAEIB8BCEAAAhDAJy6gTd4kNdAxIiIi4mt7eSP4+0H+5Z81gqO8EZzljeAqbwR3eSN4yhvB1N4I5vZGsLQ3grW9EWztjeAFWsJ08Q==
   </data>
  </layer>
- <layer name="nacho_mountains_bg" width="80" height="25">
+ <layer name="nacho_mountains_bg" width="80" height="20">
   <properties>
    <property name="parallax" value="0.56"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0jkSwjAQRFHNyWyWzGbJDMb3PwcdEBAILUiAgN9VL3GV5FnkHCGEENJeOnOul5WsZSNb+3RV35NBsxplJ3s5yDFzfi3voH+yttSeJn07yVlmuchiefe0sIPQeV9tnYXPpPQ03ebms2Te88odlJwfH9Q2WPifsZ5Cs7ufYck9tXZQct5X1xzpLdZTyuxSZ/uOHdR4C7+odJe13gIAAAAAAPhvV0Gw3ss=
+   eJztkjsSgzAQQ70n45cOQ+hIDPc/R1RQUDj+YIcYRpp5DTO7rCQrRVEURVHlqRKlatCAFnTgIf++6jrqkZUGAxjBE0yR+ZXcQX3wtlBPM769wBsYsIBV4vaU0IFr3nZbJe6ZEE/zlpuNNXLPLztImddfbuvF/U+fJ1d2+wxT9uTqIGXedpfxePN5CskuNNszOsjxFu5Iape53gIhhBBCCLkPH/FLUis=
   </data>
  </layer>
- <layer name="nacho_mountains" width="80" height="25">
+ <layer name="nacho_mountains" width="80" height="20">
   <properties>
    <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0EsKwzAMRVFnWU0/s/Q3a5tm/0vpGxqDLVVO6KD3wYGAsCIpJUIIIYR4sxtSGmUvBznKafj1VOtmyx0n9TnLRa5yk/sKvaMz195Z/Vr1nh2t/z70/ZSXzPKWxTlXXi/Tmjmyq3WDVr1nR6vvXLE43uf1Mq2ZI7taN2i969kx0jfv7527vF2kp2emWr9v3201T3Ruz+1Qx+36cDsAAAAAwD/4ANvsxbY=
+   eJztkMEKgzAQRONnqbU3q/ampv7/p3SOIZDd7UYpwgw8CCw7mdkQKIqiKIqyqm1C6EAPHmAAz+bfqc7VlR1H+LzABGawgPcJ3t7MpT3NT5rXdNT+XfHewA4i+IDDmCud55Iye7pqN5DmNR0131jgMOyn81xSZk9X7QbSXk1Hj2/qb82d387jaclU8vt176o83tyW25EyvF0dvB0hhBBC7sYX/DJA5g==
   </data>
  </layer>
- <layer name="mountains" width="80" height="25">
+ <layer name="mountains" width="80" height="20">
   <properties>
    <property name="parallax" value="0.7"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt09lOAkEQRuGpRxcRRKIiskQ2EQICIkYBZXk5zoTMnWS6L7Az8T/Jd0WFkKomipRSSiml0ruwKMpZ6F+R3W7Z3V3K/hqB95vc+BJ5XKGAIq5Rwo2FmXvKwNtLbnyPCh5QxSNqqNvxxiHmklxvUg6w7/jGLbTRQRc9PKOPFwwszJzvjZv29/se8R1jvGKCKWZ4wxzvWFi4uQ+PmwzNf9+uuz7VJ599YYkV1vjGDzbYYmfh5vaeu/b5T8X7dt11lvPZddw53vZ/6hxvW/2e666VUkoppZRS7h0AJs/iFg==
+   eJzt09lOAkEQQNGuT2ffguwSUVAhrApEQED4Oe+EzBuE7oehM5m6yXmiQkhVY4ymaZqmadr9UmJMWnz/ivhWZXdPd/b37Hm/4Y0zyCKHPAooooSy+Jl7icHbC29cQx0NNNFCGx253NjHXJjtTSoe9h3cuIdXvKGPAd7xgU8Mxc+c64278vh9j/mOCaaYYY4FvvCNJVbib27tcJORuO/bdte3+uGzDbbY4Rd7HHDEH07ib+7suGuX/1Swb9tdxzmXXQdF8baTVBRvW7ue7a41TdOS2j/KdeIW
   </data>
  </layer>
- <layer name="taco_bg" width="80" height="25">
+ <layer name="taco_bg" width="80" height="20">
   <properties>
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt07kOwjAQRVGHvWKv2Cv2Cgjw/1/GTWchxUbGJkR6TzrVaKQZj2yMoiiKoiiKovwujcyYJlpoo4MuelnVk32W95ld+6So9THAECOMMfH0/FPsmaeOfVLVZphjgSVWWHt6Qm+VIvbMG8c+qWpb7LDHAUecPD2htyoS+w/ZM58d+6SqXXDFDTnueHh6Qm9VJPYfsmd+OvZJVctLuHpCb1Uk9h8qm/+ffXOr2H+o6reoy9uX1areR0RERESkTl6tA93U
+   eJzt07kOwjAQRVGHvWKv2Cv2Cgjw/1/GTWchxUbBxkF6TzrVaKQZj2yMoiiKoiiKovwujcyYJlpoo4MuelnqyT7L+8yufWLU+hhgiBHGmHh66hR75qljn1i1GeZYYIkV1p6eqreKEXvmjWOfWLUtdtjjgCNOnp6qtyoS+g/ZM58d+8SqXXDFDTnueHh6qt6qSOg/ZM/8dOwTq5aXcPVUvVWR0H+obP46++ZWof9Q6rf4l7cvq6XeR0QklRcDBol0
   </data>
  </layer>
- <layer name="taco" width="80" height="25">
+ <layer name="taco" width="80" height="20">
   <properties>
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0rkKAkEUBdFu98g9co/cI/f//zIrNGwbR7CtAxUMD2bgMiFIkiRJkn5BLYZQpwY1qUVt6sQyblXr8o0e9WlAQxrROJZxq3rbCe+Z0ozmtKAlrWIZt9xtU3df87yhLe1oTwc6xjJuudum7n6iM13oSje606OQW+62qbuXLnfb1N3/2Sf+ab3vdVtJkvR9TxMWLsM=
+   eJzt0jkOwkAQRNFpwEAEGIjYIxZDxH7/k/FDwmawA5r60guslmyp5JSUUkoppZRSSv1CLUupjQ4KdNFD32Lcmm7AN4YYocQYE0wtxq3pbWe8Z44FllhhjY3FuOVu6919y/MOexxQ4YiTxbjlbuvd/YwLrrjhjgeeQW6523p3j17utt7d/7k6/mn1ee/bqu96Ab8rLsM=
   </data>
  </layer>
- <layer name="bg_buildings" width="80" height="25">
+ <layer name="bg_buildings" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0jEOgCAQRFGOzvnEWqzFWjyCawWhAgIiyX/JFBbEgYxSAAAAwLwWiUmyDm00l01ik+xDG7UjO9AmpMsuDolLcpZ1++1mZQfahnTZRe37Rd1+u1m5h3YhWfcqVft+UbfsM1+7pZ8Peb+buyQ+Sc5/Zng/AAAAAEC9ByLcS7k=
+   eJzt0jEOgCAQRFGOzvnUWqzFWjyCaywgVEBAIfkvmcKCOJBRCgAAABjXJJmjLL82GssqMVG2XxvVIzvQs0+TXewSG+XI69btZmUH2vg02UXp+wXdut2s3ENbn6R75Sp9v6Bb8pmvXdLP+Tzf1Z0SFyXlPyO8HwAAeN3C1ku5
   </data>
  </layer>
- <layer name="bushes" width="80" height="25">
+ <layer name="bushes" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0rEJgEAMQNFwk7iJ9g7geo5yoxlBGxGxOe6K9yBFuvBJBAAAAC1sJZa1xHRP7rX3TaPLRvvday4Rz9HxW/ZZ3ro9JxtOvW8dzfl7f9pdf1h73wsAAEAbB+9tD3c=
+   eJzt0rEJwDAMBdGPJvEmdp8Bsl5G8WiRwW5MSNwEubgHKtSJQxIAAAAA4A+nqRymNMb3Gn3T7rzRNXplk+ah4zvvU566zeMNU/Stu2m/t9Ku/2GNvhcAAHy7AUIND3c=
   </data>
  </layer>
- <layer name="smallfence" width="80" height="25">
+ <layer name="smallfence" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0VsKgCAQQNFwc/mvC5qlh+HEMGpECAbdAwM9xW7bBgAAAOBPYjhHVu9jNdugHPsmvUalXa6j56OWMbza09T1ZtP9lTENRJvoPb3mGl/t6j09Ls82/fPge0eN7taz+10pm1baJ7sufmJo2ol5T9z4d2WvHXbX3Pyrpt1glut948t5uo6k2i/115DO+Wf7AQAAAACeOQDfl0kZ
+   eJztkV0KgCAQBsPL5XseaI8ehhvLqhEhGDgDH/i7rOO2AQAAAADASsRwRWb3MRvrII+9k5aj7C6V6LznMoZPPQ2tNxrtL8c4EHWie7rmHN/uyp6O89nKf+q8t+foqZ7tdybJuFI/yXnxiaFyJ+aeuPi7shcPu3Nu/qpy18l0Wm/8mLd15Cj+jnYNacx/6w8AAGBFTuiQSRk=
   </data>
  </layer>
- <layer name="bg_fence" width="80" height="25">
+ <layer name="bg_fence" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOwCAMQNGG222enWdHX3EEswRRzHvJF1WURgAAAMC/u8Vb2ZXN7+c8dtjutCf/U1lf7pfz2GG709wPAACACh8+OFfH
+   eJzt0LENgDAMBEArTAc9zMPoOF1ER4pYSHfSF67edgQAAAB/shX1Hi3uldkzY3/OfYfpVLvynpU5X//Lue8wnWr+BwB89QCj9VfK
   </data>
  </layer>
- <layer name="buildings" width="80" height="25">
+ <layer name="buildings" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzkENACAMBLDLMI6ducQBDz4LSaugCQAAAD9Z0wHgqit7+gAAAMCbA3myAS8=
+   eJztzkENADAIBLALymcHhzznYF+ypFXQBAAAgJ/MdgB46srZPgAAyQXQtwIk
   </data>
  </layer>
- <layer name="features" width="80" height="25">
+ <layer name="features" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlEEOgjAQRSe4V9fudeNKXXgAL8ZFcKs9gN7JA5iwdGqYBElbB1uKJP8lk5CB8v/8CRABAAAAAEyLoqkF13JkL/9OVVDZ7c06NbUczzyTa66UVI2GUeQndRzS0Kc3m0HMeedcKbnz+2898zsNaagFe3pn+CsyW99ztafv26dPR/KqaZz82JP1FoVJ+A2H9unSkaweXFvKm5/1aSKzs1x5psuX/OZKndA+XTqS1ZPy58derCcVu8Bzmv/fSqnj2+ee+4fWvTVfbxLsHgAAAAAAAABAHl6ZGS6+
+   eJztlDEOwjAMRa2yAzM7LIgBGDhAL8ZFygo5ANyJAyAx4qBaKlUSHJK2VPpPslS5Tf/3t1oiAAAAAIBxUdQ145oP7OXfqQo6tnuTVo0txxPP5JorJ1WtYRT5SR26NPTpzWaQct45V05u/P5rZH5ll4YasKd3hr8is8Wee3r6vn36dCSvDQ2TH3uy3pIwGb/h0D5dOpLVnWtN/eZnfZrE7CwXnun8Jb+pUie0T5eOZPWg/vNjL9aTim3gOc3/b6HU8e1zx/19496Sr1cZdg8AAACAeF5+ji3z
   </data>
  </layer>
- <layer name="fence" width="80" height="25">
+ <layer name="fence" width="80" height="20">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz8EJACAQA8FgP9amJVi6NiGHOAP7TxIAAABe0qsH8KXZsm42TtUfAQAAYAMhVRfP
+   eJztz1EJACAQBcGHhb0IRtcE/smBzMAG2AQAAADgrkbWy+ap+xEA+MsGUeQXog==
   </data>
  </layer>
- <layer name="floor" width="80" height="25">
+ <layer name="floor" width="80" height="20">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztzbEJADAIAEEh8zhA9l8sG6QRtbmHqz9CkiRJkiTpXzbY+m64lBwAAIAhD/iNJ6w=
+   eJztzbEJADAIAEEh8zhA9l8sG6RQxOYOvv4IAAAAgL8caOu70VWrI0lSoQeUhiL8
   </data>
  </layer>
- <layer name="collision" width="80" height="25">
+ <layer name="collision" width="80" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwCAQRFFh+z9Yh5ekwwiyCJ6SzCaH9T+YAvyopQB5VRvDO/R7rtmc92vLcA/3T5O9n7+no+/84JzZ+62iO+7Wz0X98bv2i0I/Df009NNk71eNKQMAAACAv1xNAEW7
+   eJzt1MEJwCAQRFFh+z9YhxfTYYSwCJKDZDaX9T+YAvyopQDAu2rPsK/ZnPdry7CH+6fJ3s/fUx+7fjhn9n6r6I6n9XNRf/yp/aLQT0M/Df002ftVY8oAAPjiBs6ERJM=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="80" height="25" opacity="0.9">
+ <objectgroup color="#000000" name="nodes" width="80" height="20" opacity="0.9">
   <object name="main" type="door" x="1488" y="288" width="24" height="48">
    <properties>
     <property name="level" value="valley-tacotown"/>
@@ -167,7 +167,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="goatfarm" type="building" x="504" y="24" width="216" height="312"/>
+  <object name="goatfarm" type="building" x="504" y="48" width="216" height="288"/>
   <object type="enemy" x="864" y="288" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien_elite"/>
@@ -228,5 +228,6 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="1752" y="312" width="24" height="24"/>
  </objectgroup>
 </map>

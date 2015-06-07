@@ -16,6 +16,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'qfo',
+  die_sound = 'explosion_quiet',
   isBoss = true,
   attackDelay = 1,
   height = 60,
@@ -34,7 +35,7 @@ return {
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
   hp = 50,
-  tokens = 15,
+  tokens = 20,
   hand_x = -40,
   hand_y = 70,
   dyingdelay = 2,
@@ -81,7 +82,9 @@ return {
   end,
 
   die = function( enemy )
+  if enemy.quest and Player.quest == enemy.quest then
     enemy.db:set("bosstriggers.qfo", true)
+  end
   end,
 
   draw = function( enemy )
@@ -229,7 +232,18 @@ return {
     local spawnedPilot = Enemy.new(node, enemy.collider, enemy.type)
     enemy.containerLevel:addNode(spawnedPilot)
   end,]]
-
+ spawn_pilot = function( enemy)
+    local node = {
+      x = enemy.position.x,
+      y = enemy.position.y-25,
+      type = 'enemy',
+      properties = {
+          enemytype = 'alien_pilot'
+      }
+    }
+    local spawnedPilot = Enemy.new(node, enemy.collider, enemy.type)
+    enemy.containerLevel:addNode(spawnedPilot)
+  end,
 
   update = function( dt, enemy, player, level )
 
@@ -250,48 +264,58 @@ return {
       --Timer.add(2, function() enemy.hatched = true end)
     elseif enemy.hatched then
       --move the qfo up and down ( roughly a figure 8 )
-      if enemy.position.x > enemy.maxx then
-        enemy.direction = 'left'
-      elseif enemy.position.x < enemy.minx then
-          enemy.direction = 'right'
-      end
-      if enemy.position.y > enemy.maxy then
-          enemy.directiony = 'down'
-        elseif enemy.position.y < enemy.miny then
-          enemy.directiony = 'up'
-      end
-
-      if enemy.direction == 'left' then
-        enemy.velocity.x = 50
+      if enemy.state ~= 'hurt' then enemy.idletime = enemy.idletime + dt end
+      if enemy.idletime >= 10 then
+        if enemy.velocity.y > 0 then
+        sound.playSfx( 'qfo_land' )
+        end
+        enemy.velocity.x = 0
+        enemy.velocity.y = 100
+        enemy.directiony = 'down'
+        Timer.add(2, function()
+          enemy.idletime = 0
+        end)
       else
-        enemy.velocity.x = -50 
-      end
-      
-      if enemy.directiony == 'up' then
-        enemy.velocity.y = 15
-      else
-        enemy.velocity.y = -15 
-      end
+        if enemy.position.x > enemy.maxx then
+          enemy.direction = 'left'
+        elseif enemy.position.x < enemy.minx then
+            enemy.direction = 'right'
+        end
+        if enemy.position.y > enemy.maxy then
+            enemy.directiony = 'down'
+          elseif enemy.position.y < enemy.miny then
+            enemy.directiony = 'up'
+        end
 
-      --deal with enemy attacks
-      enemy.last_attack = enemy.last_attack + dt
-
-      local pause = 3
-    
-      if enemy.hp < 10 then
-        pause = 1
-      elseif enemy.hp < 50 then
-        pause = 2
-      end
+        if enemy.direction == 'left' then
+          enemy.velocity.x = 50
+        else
+          enemy.velocity.x = -50 
+        end
         
+        if enemy.directiony == 'up' then
+          enemy.velocity.y = 40
+        else
+          enemy.velocity.y = -40
+        end
 
-      if enemy.last_attack > pause then
-        enemy.props.spawn_beam(enemy, direction, offset)
-        enemy.last_attack = 0
+        --deal with enemy attacks
+        enemy.last_attack = enemy.last_attack + dt
+
+        local pause = 4
+      
+        if enemy.hp < 10 then
+          pause = 2
+        elseif enemy.hp < 50 then
+          pause = 3
+        end
+          
+
+        if enemy.last_attack > pause then
+          enemy.props.spawn_beam(enemy, direction, offset)
+          enemy.last_attack = 0
+        end
       end
-      --if enemy.hp <=0 then
-      --  enemy.props.spawn_pilot(enemy, direction)
-      --end
     end
   end
 }

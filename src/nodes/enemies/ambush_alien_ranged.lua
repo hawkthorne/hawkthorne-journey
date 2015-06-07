@@ -16,9 +16,10 @@ return {
   hand_y = -24,
   bb_width = 31,
   bb_height = 48,
+  range = math.random(180,220),
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
-  hp = 10,
+  hp = 14,
   vulnerabilities = {'slash'},
   speed = math.random(60,70),
   tokens = 6,
@@ -37,6 +38,10 @@ return {
       left = {'loop', {'1,1','5,1','2,1'}, 0.2}
     },
     hurt = {
+      right = {'loop', {'4,2'}, 0.2},
+      left = {'loop', {'4,1'}, 0.2}
+    },
+    dying = {
       right = {'loop', {'4,2'}, 0.2},
       left = {'loop', {'4,1'}, 0.2}
     },
@@ -67,6 +72,7 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
+    laser.burn = true
     sound.playSfx( 'alien_laser' )
     laser.velocity.x = 310*direction
     laser.position.x = enemy.position.x + 15
@@ -80,7 +86,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
       if math.abs(enemy.position.x - player.position.x) < 350 then
-        if math.abs(enemy.position.x - player.position.x) < 200 then
+        if math.abs(enemy.position.x - player.position.x) < enemy.range then
           if math.abs(enemy.position.x - player.position.x) < 2 then
           velocity = 0
           elseif enemy.position.x < player.position.x then
@@ -89,6 +95,13 @@ return {
           else
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
+          end
+        elseif math.abs(enemy.position.x - player.position.x) == enemy.range then
+          velocity = 0
+          if enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+          else
+            enemy.direction = 'left'      
           end
         else
           if enemy.position.x < player.position.x then
@@ -101,7 +114,7 @@ return {
         end
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 then
+        if enemy.idletime >= 2 and enemy.state ~= 'hurt' then
           enemy.props.laserAttack(enemy, direction, player)
           enemy.idletime = 0
         end
@@ -113,6 +126,13 @@ return {
       end
       velocity = enemy.props.speed
       end 
+      if enemy.velocity.x == 0  then
+        if enemy.position.x < player.position.x then
+          enemy.direction = 'right'
+        else
+          enemy.direction = 'left'      
+        end
+      end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

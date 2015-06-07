@@ -192,7 +192,7 @@
   <object name="bone" type="material" x="1632" y="888" width="24" height="24"/>
   <object name="bone" type="material" x="2256" y="600" width="24" height="24"/>
   <object name="bone" type="material" x="2904" y="648" width="24" height="24"/>
-  <object name="bone" type="material" x="3960" y="624" width="24" height="24"/>
+  <object name="bone" type="material" x="3936" y="624" width="24" height="24"/>
   <object name="bone" type="material" x="3816" y="288" width="24" height="24"/>
   <object type="door" x="0" y="552" width="24" height="240">
    <properties>

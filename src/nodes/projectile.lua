@@ -110,6 +110,8 @@ function Projectile.new(node, collider)
   proj.canPlayerStore = proj.props.canPlayerStore
   proj.usedAsAmmo = proj.props.usedAsAmmo
   proj.magical = proj.props.magical or false
+  proj.throw_x = proj.props.throw_x
+  proj.throw_y = proj.props.throw_y
   proj.burn = false
   if proj.props.new then
     proj.props.new(proj)

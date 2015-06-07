@@ -14,11 +14,12 @@ return {
   damage = 8,
   jumpkill = false,
   chargeUpTime = 0,
+  range = math.random(200,220),
   bb_width = 32,
   bb_height = 48,
   bb_offset = {x=0, y=0},
   speed = math.random(40,50),
-  hp = 8,
+  hp = 12,
   vulnerabilities = {'slash'},
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
@@ -63,6 +64,7 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
+    laser.burn = true
     laser.velocity.x = 250*direction
     laser.velocity.y = math.random(-10,10)
     laser.position.x = enemy.position.x +15
@@ -77,7 +79,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
       if math.abs(enemy.position.x - player.position.x) < 350 then
-        if math.abs(enemy.position.x - player.position.x) < 200 then
+        if math.abs(enemy.position.x - player.position.x) < enemy.range then
           if math.abs(enemy.position.x - player.position.x) < 2 then
           velocity = 0
           elseif enemy.position.x < player.position.x then
@@ -86,6 +88,13 @@ return {
           else
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
+          end
+        elseif math.abs(enemy.position.x - player.position.x) == enemy.range then
+          velocity = 0
+          if enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+          else
+            enemy.direction = 'left'      
           end
         else
           if enemy.position.x < player.position.x then
@@ -98,7 +107,7 @@ return {
         end
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 0.1 then
+        if enemy.idletime >= 0.1 and enemy.state ~= 'hurt' then
           if enemy.chargeUpTime >= 1 then
             Timer.add(1, function()
               enemy.idletime = 0
@@ -118,6 +127,13 @@ return {
       end
       velocity = enemy.props.speed
       end 
+      if enemy.velocity.x == 0  then
+        if enemy.position.x < player.position.x then
+        enemy.direction = 'right'
+        else
+        enemy.direction = 'left'      
+        end
+      end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

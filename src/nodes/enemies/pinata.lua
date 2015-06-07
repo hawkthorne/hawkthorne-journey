@@ -5,6 +5,8 @@ return {
   die_sound = 'acorn_crush',
   height = 39,
   width = 19,
+  bb_height = 14,
+  bb_offset = { x = 0, y = 10},
   antigravity = true,
   hp = 1,
   vulnerabilities = {'blunt'},

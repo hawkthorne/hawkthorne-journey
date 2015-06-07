@@ -57,7 +57,9 @@ function Enemy.new(node, collider, enemytype)
   enemy.node_properties = node.properties
   enemy.node = node
   enemy.collider = collider
-  
+  enemy.maxx = 0
+  enemy.minx = 0
+  enemy.range = enemy.props.range or 0
   enemy.dead = false
   enemy.dying = false
   enemy.idletime = 0
@@ -514,7 +516,7 @@ function Enemy:wall_pushback()
     self.props.wall_pushback(self)
   else
     if self.attackingWorld then return end
-    self.direction = self.direction == 'left' and 'right' or 'left'
+    --self.direction = self.direction == 'left' and 'right' or 'left'
     self.velocity.x = 0
     self:moveBoundingBox()
   end

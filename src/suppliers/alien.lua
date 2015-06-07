@@ -2,10 +2,10 @@
 
 return {
   weapons = {
-    {"lasercell",99,25},
+    {"lasercell",99,20},
   },
   consumables = {
-    {"red_potion",10,80},
     {"tacomeat",0,800},
   },
+
 }
