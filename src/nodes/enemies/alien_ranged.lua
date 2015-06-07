@@ -75,47 +75,13 @@ return {
 
     local direction 
     local velocity = enemy.props.speed
-    if enemy.quest then
-      if math.abs(enemy.position.x - player.position.x) < 350 then
-        if math.abs(enemy.position.x - player.position.x) < 200 then
-          if math.abs(enemy.position.x - player.position.x) < 2 then
-          velocity = 0
-          elseif enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed * -1
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed * -1       
-          end
-        else
-          if enemy.position.x < player.position.x then
-            enemy.direction = 'right'
-            velocity = enemy.props.speed 
-          else
-            enemy.direction = 'left'   
-            velocity = enemy.props.speed     
-          end
-        end
-        enemy.state = 'default'
-        enemy.idletime = enemy.idletime + dt
-        --laser attack
-        local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 and enemy.state ~= 'hurt' then
-          enemy.props.laserAttack(enemy, direction, player)
-          enemy.idletime = 0
-        end
-      else  
-      enemy.state = 'standing'
-      velocity = 0
-      end 
-    else
     if player.position.y + player.height < enemy.position.y + enemy.props.height and math.abs(enemy.position.x - player.position.x) < 50 then
         velocity = enemy.props.speed
     else
       enemy.idletime = enemy.idletime + dt
       --laser attack
       local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 then
+        if enemy.idletime >= 2 and enemy.state ~= 'hurt' then
           enemy.props.laserAttack(enemy, direction, player)
           enemy.idletime = 0
         end
@@ -129,6 +95,13 @@ return {
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
           end
+        elseif math.abs(enemy.position.x - player.position.x) == 200 then
+          velocity = 0
+          if enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+          else
+            enemy.direction = 'left'      
+          end
         else
           if enemy.position.x < player.position.x then
             enemy.direction = 'right'
@@ -138,8 +111,14 @@ return {
             velocity = enemy.props.speed     
           end
         end
+        if enemy.velocity.x == 0  then
+          if enemy.position.x < player.position.x then
+          enemy.direction = 'right'
+          else
+          enemy.direction = 'left'      
+        end
+      end
     end
-  end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

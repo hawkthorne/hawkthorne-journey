@@ -38,7 +38,7 @@ return {
     { ['text']='i am done with you' },
     { ['text']='Who are you?' },
     { ['text']='What do you do here?' },
-    { ['text']='Talk about quests'},
+    { ['text']='Talk about quests', freeze= true},
   },
   enter = function(npc, previous)
   npc.shake = false
@@ -59,7 +59,7 @@ return {
   talk_commands = {
     ['Talk about quests']= function(npc, player)
     local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
-    if player.quest == 'Aliens! - Destroy the QFO!' and Quest.alreadyCompleted(npc, player, quests.qfo) then
+    if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
       npc.menu:close(player)
       end)
@@ -153,7 +153,7 @@ return {
       local start = {
       "Well done, human, you saved me! Say, you're tougher than you look. You know what? I think I'm gonna let you help me.",
       "Here, take this alien trinket and give it to that buffoon with the telescope. Maybe then he'll stop poking his nose around here.",
-      "After that, come back and talk to me. I've got an extremely important mission I need your help with.",
+      "After that, {{red_dark}}come back and talk to me{{white}}. I've got an extremely important mission I need your help with.",
       }
       local Dialogue = require 'dialog'
       Dialogue = Dialog.create(start)
@@ -181,13 +181,15 @@ return {
       "My name is {{green_light}}Juan{{white}}, an alien from another planet.",
       "I've' fallen in love with the Mexican food on this planet, so I've changed my name and decided to live among you.",
     },
-    ['Any useful info for me?']={
+    ['What do you do here?']={
       "Shhh, I'm hiding here from my other alien brethren!",
       "If they find me, they'll kill me and make sure I never taste another burrito again...oh, the horror!",
     },
   },
   inventory = function(npc, player)
+  if Quest.alreadyCompleted(npc, player, quests.qfo) then
     local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
     Gamestate.stack("shopping", player, screenshot, "alien")
+  end
   end,
 }

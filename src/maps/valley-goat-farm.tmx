@@ -76,17 +76,17 @@
  </layer>
  <layer name="bg_fence" width="80" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt0CEOwCAMQNGG222enWdHX3EEswRRzHvJF1WURgAAAMC/u8Vb2ZXN7+c8dtjutCf/U1lf7pfz2GG709wPAACACh8+OFfH
+   eJzt0DEOgEAIBECir9Ne33NPl+uM5RUQk5lkC6oFIgAAAPiTvan33GJU5si8+3OeOyyn2533VOb6/C/nucNyuvkfAAAAFR5yoFfK
   </data>
  </layer>
  <layer name="buildings" width="80" height="25">
   <data encoding="base64" compression="zlib">
-   eJztzkENACAMBLDLMI6ducQBDz4LSaugCQAAAD9Z0wHgqit7+gAAAMCbA3myAS8=
+   eJztzkENACAMBLDLlGMHh3vigAefhaRV0AQAAICf9HQAuNqVNX0AAADgzQEyiQIk
   </data>
  </layer>
  <layer name="features" width="80" height="25">
   <data encoding="base64" compression="zlib">
-   eJztlEEOgjAQRSe4V9fudeNKXXgAL8ZFcKs9gN7JA5iwdGqYBElbB1uKJP8lk5CB8v/8CRABAAAAAEyLoqkF13JkL/9OVVDZ7c06NbUczzyTa66UVI2GUeQndRzS0Kc3m0HMeedcKbnz+2898zsNaagFe3pn+CsyW99ztafv26dPR/KqaZz82JP1FoVJ+A2H9unSkaweXFvKm5/1aSKzs1x5psuX/OZKndA+XTqS1ZPy58derCcVu8Bzmv/fSqnj2+ee+4fWvTVfbxLsHgAAAAAAAABAHl6ZGS6+
+   eJztlDEOwjAMRa2yAzM7LIgBGDhAL8ZFygo5ANyJAyAxYqNaKlUSUpKmVPpPslS5Tf/3t1oiAAAAAIBxUdQ145oP7OXfqQo6tnuTVo0txxPPZJsrJVWtYQLy0zr0aejTm2QQc946V0pu/P5rx/zKPg01YE/vDH9FZ+t67unou/bp0tG8NjRMfuxJvEVhEn7Dvn3adDSrO9ea8uYnPk1kdsKFZzp/yW8aqOPbp01Hs3pQ/vzYi3gKYut5LuT/twjUce1zx/19496Sr1cJdg8AAAAAAAAAIA8vvh8t8w==
   </data>
  </layer>
  <layer name="fence" width="80" height="25">
@@ -94,7 +94,7 @@
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz8EJACAQA8FgP9amJVi6NiGHOAP7TxIAAABe0qsH8KXZsm42TtUfAQAAYAMhVRfP
+   eJztz0ENACAMBMFLDYMEpIOC/ho+M8kK2AQAAACgtytnsvX6/QgAAAAXDxAXog==
   </data>
  </layer>
  <layer name="floor" width="80" height="25">
@@ -228,5 +228,7 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="1752" y="312" width="24" height="24"/>
+  <object name="farm_key" type="key" x="1296" y="312" width="24" height="24"/>
  </objectgroup>
 </map>

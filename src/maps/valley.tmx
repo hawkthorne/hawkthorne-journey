@@ -83,7 +83,7 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2e0KgjAUgGHB+/8RlF1E0McdptChGBpn25luZ+8D/ixSX7e5hgEA6nAbj/4F8G5pjM4A1IaxCTFyW6E3iNQO7vPnHuO3pbUD0JKegBQy5jw/DdETUq3NX/QEDc26iDUStBh3YCmnp3CNBTA+IZfluug06o5pPq50C6VTZCv01Tfte2BsV4K+fMvdf0rtStCXb6nr9tyuxERb+GHV1ZG25vxlv+RlcH6xe8slDqtz2UvLXWnH6PCetPwfxB59WXTeclexStyT8/x9F+VejeVeTi39b13TnroSFn1JTyW0+C4UXtMeuxIpfZXsKdRyXz13FWPPnkJWfWnmS6v5lK7+O7KnkOX4VXpN5rUrq/V0jUrMj1aN1fQcWvJ6XmtS+ir1/uj1uns9Lw2LPQ6P43qOnnvqBc8JAAAAAACw8gZPgdGQ
+   eJzt2VsKgzAQQFHB/X8IrV1EoY8dVsGhRbRMkokmk3vAz5aq1ySmXQcAZbj3Z/8CeDc3RmcASsPYhBCprdAbRGwHj+lzz/7b0tYBaElPQAwZc15LQ/SEWFvzFz1BQ7MuYo0ELcYdWErpab3GAhifkMpyXTT0umOcjhvdQmkIbIW+2qZ9DwztStCXb6n7T7FdCfryLXbdntqVGGkLP6y6OtPenD/vl7wNzi90bznHYXUuR6m5K+0Yvb4nNf8HcURfFp3X3FWoHPfkMn3fVblXY7mXU0r/e9e0pa6ERV+WPXnYK1xf0xa7EjF95ezJU18tdxXiyJ5y9aWZL63mU7r6T3oqgeX4lXtN5rUrq/GlRDnmR6vGSnoOLXk9ry0xfeV6f/R63b2el8YZa74axvUULffUCp4TAAAAAABg5QNoPPzs
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="0" height="0">
@@ -395,7 +395,7 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
-  <object type="enemy" x="1656" y="360" width="144" height="24">
+  <object type="enemy" x="1656" y="288" width="144" height="24">
    <properties>
     <property name="enemytype" value="qfo"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>
@@ -476,6 +476,12 @@
   <object type="enemy" x="1848" y="432" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1752" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>
    </properties>
   </object>

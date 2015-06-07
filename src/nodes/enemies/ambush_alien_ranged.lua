@@ -40,6 +40,10 @@ return {
       right = {'loop', {'4,2'}, 0.2},
       left = {'loop', {'4,1'}, 0.2}
     },
+    dying = {
+      right = {'loop', {'4,2'}, 0.2},
+      left = {'loop', {'4,1'}, 0.2}
+    },
     standing = {
       right = {'loop', {'3,2'}, 0.2},
       left = {'loop', {'3,1'}, 0.2}
@@ -91,6 +95,13 @@ return {
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
           end
+        elseif math.abs(enemy.position.x - player.position.x) == 200 then
+          velocity = 0
+          if enemy.position.x < player.position.x then
+            enemy.direction = 'right'
+          else
+            enemy.direction = 'left'      
+          end
         else
           if enemy.position.x < player.position.x then
             enemy.direction = 'right'
@@ -114,6 +125,13 @@ return {
       end
       velocity = enemy.props.speed
       end 
+      if enemy.velocity.x == 0  then
+        if enemy.position.x < player.position.x then
+          enemy.direction = 'right'
+        else
+          enemy.direction = 'left'      
+        end
+      end
     direction = enemy.direction == 'left' and 1 or -1
     enemy.velocity.x = velocity * direction
   end

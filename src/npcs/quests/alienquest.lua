@@ -20,12 +20,12 @@ local quests = {
       "The aliens are camped up to the east of Tacotown, on the way to the giant fence.",
       "I found out that one of the alien soldiers is carrying an alien technology that I need for my plan to bring them down.",
       "It's usually the blue {{blue_light}}Elite Alien{{white}} carrying important equipment, so target those guys first.",
-      "I'll explain what I need the item for later. Be prepared for a fight, and try not to die alright? Good luck then.",
+      "I'll explain what I need the item for later. Be prepared for a fight, and try not to die eh?. Good luck then.",
     },
     completeQuestFail = "The aliens are still camped up to the east of Tacotown. I need the alien equipment that they're carrying!",
     completeQuestSucceed = {
     "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
-    "Alright, I got another task for you. Talk to me when you're ready.",
+    "Okay, I got another task for you. Talk to me when you're ready.",
     },
     reward = {affection = 1},
   },
@@ -39,7 +39,7 @@ local quests = {
     giveQuestSucceed = {
       "Ughhhh...the things I would do for a burrito right now--oh shoot, you're back already?",
     },
-    successPrompt = "Alright, you ready for the next task?",
+    successPrompt = "So, you ready for the next task?",
     promptExtra = {
       "Okay, listen up underlin--oh alright fine, I guess you're my partner.",
       "So there's an even bigger group of aliens camped up by the {{orange}}Hills{{white}} area, who are in possession of another important alien equipment.",
@@ -60,10 +60,6 @@ local quests = {
     questName = 'Aliens! - Regroup with the alien at Chili Fields',
     questParent = 'alien',
     collect = {name = 'office_key', type = 'key'},
-    giveQuestSucceed = {
-      "I have an important document that I need to send to a certain Diane.",
-      "I would send an e-mail, but there is some trouble with campus wi-fi and the IT lady is nowhere to be seen.",
-    },
     successPrompt = "Could you deposit this document into the mailbox? And no montages!",
     completeQuestFail = "What the hell are you still doing here? Go hold those aliens off!",
   },

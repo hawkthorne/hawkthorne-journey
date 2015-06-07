@@ -518,7 +518,7 @@ function Enemy:wall_pushback()
     self.props.wall_pushback(self)
   else
     if self.attackingWorld then return end
-    self.direction = self.direction == 'left' and 'right' or 'left'
+    --self.direction = self.direction == 'left' and 'right' or 'left'
     self.velocity.x = 0
     self:moveBoundingBox()
   end
