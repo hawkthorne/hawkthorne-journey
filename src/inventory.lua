@@ -259,7 +259,11 @@ function Inventory:draw( playerPosition )
     fonts.set('small')
     
     love.graphics.print('Item', pos.x + 9, pos.y + 8)
-    love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+    if self.currentPageName ~= 'armours' then
+      love.graphics.print(self.currentPageName:gsub("^%l", string.upper), pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+    else
+      love.graphics.print('armour', pos.x + 18, pos.y + 21, 0, 0.9, 0.9)
+    end
     if self:currentPage()[self:slotIndex(self.cursorPos)] then
       local jump = controls:getKey("JUMP")
       tastyjump = fonts.tasty.new('press {{peach}}' .. jump .. '{{white}} to view information', pos.x + 9, pos.y + 103, 90, love.graphics.getFont(), fonts.colors)
