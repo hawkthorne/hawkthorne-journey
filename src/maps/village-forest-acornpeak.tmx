@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="78" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="78" tilewidth="24" tileheight="24" nextobjectid="92">
  <properties>
   <property name="offset" value="64"/>
   <property name="soundtrack" value="mountains"/>
@@ -162,118 +162,118 @@
    eJzt3UtrGzEUBlDv/MtD+oCs+oBuAum2XbeFPv5aZYjBTEaRNNaMNdI5IIhD7GRifblXmrFzOAAAAAAAAMBtPB0Ph69hPD4PQB4AYG/ujunxLoz36ju8apqbrfwcrP+ersMfrcl34xb56Nm38Hv8bl+qG9NcnJ7PH57TLHN1gb5sWTd6yp4sjEF/BWk5+14l4zWjrc/hUq+1aMnfApjqdc7MHVevx8p6YnNmzfV5ac+2pMeTD2pYY860sGaJ5cM1CZSIzaPac2jr/eKc3FuTkJLqQ/Y6h3J/5rlj3ePxsp7pfEjdvvx8q/3Kkv3t88fywaVr8jG9vefrj+WDOTnzPOd+qe/Rel7kgzl3k/2my0zUysfcfdc875/rTXict8eXxwxnpfPhd/j6Pzdex9bKZu3Hpj+58+GcixZcm4+1Hpv+nObD3zD+RfY6fz2PlpT0YNPXfMgHS/XUgy/tn3o4dtbTWq1YKnXexvqDkS2tE/LBCNQPiJMPiNNfQZz6AXHyAXGl/VXN67qgdaX1QzYYiXxAXEl/pbdiNCX1QzYYTcn+lHwwmpz6Ufv1iLAXNed8C+95BzW1UhNkixa1ko9r9fS/imjHKR8PYdybW/BCjfcQmhstv4cXtKJGTqxN6F1sf7h2zUllSdZoVe45R70ZIyo9Jy8njGTpOfnUXsCt99/sLdMq175AWsneMzBv7XzYH2OP1A+I21surPnZkutnYHtyA+Vq5kSvRa/OdeVTGJ/D+BLGhzA+Lqw79scYmf4M0uQE0lwLAAAAAAAAAJz9BzsmCFA=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="200" height="78">
-  <object name="main" type="door" x="4704" y="1584" width="48" height="48"/>
-  <object type="enemy" x="3456" y="1344" width="48" height="48">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="4704" y="1584" width="48" height="48"/>
+  <object id="2" type="enemy" x="3456" y="1344" width="48" height="48">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2448" y="1176" width="48" height="48">
+  <object id="3" type="enemy" x="2448" y="1176" width="48" height="48">
    <properties>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3936" y="1248" width="48" height="48">
+  <object id="4" type="enemy" x="3936" y="1248" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3432" y="1200" width="48" height="48">
+  <object id="5" type="enemy" x="3432" y="1200" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3168" y="1104" width="48" height="48">
+  <object id="6" type="enemy" x="3168" y="1104" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="2809" y="1044" width="48" height="48">
+  <object id="7" type="enemy" x="2809" y="1044" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="2571" y="1008" width="48" height="48">
+  <object id="8" type="enemy" x="2571" y="1008" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3912" y="1440" width="48" height="48">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="enemytype" value="giantacorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="3744" y="1440" width="48" height="48">
+  <object id="9" type="enemy" x="3912" y="1440" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2568" y="1176" width="48" height="48">
+  <object id="10" type="enemy" x="3744" y="1440" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3096" y="1296" width="48" height="48">
+  <object id="11" type="enemy" x="2568" y="1176" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4224" y="1296" width="48" height="48">
+  <object id="12" type="enemy" x="3096" y="1296" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="13" type="enemy" x="4224" y="1296" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3696" y="1224" width="48" height="48">
+  <object id="14" type="enemy" x="3696" y="1224" width="48" height="48">
    <properties>
     <property name="enemytype" value="bird"/>
    </properties>
   </object>
-  <object type="enemy" x="3048" y="1296" width="24" height="24">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="enemytype" value="acorn"/>
-   </properties>
-  </object>
-  <object type="enemy" x="2568" y="1200" width="24" height="24">
+  <object id="15" type="enemy" x="3048" y="1296" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3408" y="1368" width="24" height="24">
+  <object id="16" type="enemy" x="2568" y="1200" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4032" y="1488" width="24" height="24">
+  <object id="17" type="enemy" x="3408" y="1368" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4392" y="1536" width="24" height="24">
+  <object id="18" type="enemy" x="4032" y="1488" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4176" y="1488" width="48" height="48">
+  <object id="19" type="enemy" x="4392" y="1536" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="20" type="enemy" x="4176" y="1488" width="48" height="48">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="giantacorn"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="2265" y="1040" width="24" height="24">
+  <object id="21" name="bomb" type="spawn" x="2265" y="1040" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -285,7 +285,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="2265" y="968" width="24" height="24">
+  <object id="22" name="bomb" type="spawn" x="2265" y="968" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -297,7 +297,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="2265" y="896" width="24" height="24">
+  <object id="23" name="bomb" type="spawn" x="2265" y="896" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -309,7 +309,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="2265" y="824" width="24" height="24">
+  <object id="24" name="bomb" type="spawn" x="2265" y="824" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="1"/>
@@ -321,7 +321,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="2147" y="1206" width="24" height="24">
+  <object id="25" name="bomb" type="spawn" x="2147" y="1206" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -333,7 +333,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="3538" y="1468" width="24" height="24">
+  <object id="26" name="bomb" type="spawn" x="3538" y="1468" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -345,7 +345,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="3295" y="1349" width="24" height="24">
+  <object id="27" name="bomb" type="spawn" x="3295" y="1349" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -357,73 +357,73 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object type="climbable" x="2191" y="743" width="9" height="423"/>
-  <object type="enemy" x="1824" y="624" width="24" height="24">
+  <object id="28" type="climbable" x="2191" y="743" width="9" height="423"/>
+  <object id="29" type="enemy" x="1824" y="624" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1584" y="624" width="24" height="24">
+  <object id="30" type="enemy" x="1584" y="624" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1680" y="600" width="24" height="24">
+  <object id="31" type="enemy" x="1680" y="600" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1704" y="648" width="24" height="24">
+  <object id="32" type="enemy" x="1704" y="648" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1560" y="576" width="24" height="24">
+  <object id="33" type="enemy" x="1560" y="576" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1464" y="600" width="24" height="24">
+  <object id="34" type="enemy" x="1464" y="600" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1368" y="552" width="24" height="24">
+  <object id="35" type="enemy" x="1368" y="552" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1368" y="600" width="24" height="24">
+  <object id="36" type="enemy" x="1368" y="600" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1272" y="576" width="24" height="24">
+  <object id="37" type="enemy" x="1272" y="576" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1392" y="576" width="24" height="24">
+  <object id="38" type="enemy" x="1392" y="576" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="504" width="24" height="24">
+  <object id="39" type="enemy" x="1008" y="504" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="1008" y="552" width="24" height="24">
+  <object id="40" type="enemy" x="1008" y="552" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="960" y="528" width="24" height="24">
+  <object id="41" type="enemy" x="960" y="528" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="919" y="776" width="24" height="24">
+  <object id="42" name="bomb" type="spawn" x="919" y="776" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -435,7 +435,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="1015" y="756" width="24" height="24">
+  <object id="43" name="bomb" type="spawn" x="1015" y="756" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -447,7 +447,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="972" y="673" width="24" height="24">
+  <object id="44" name="bomb" type="spawn" x="972" y="673" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="2"/>
@@ -459,47 +459,47 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object type="enemy" x="744" y="384" width="24" height="24">
+  <object id="45" type="enemy" x="744" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="720" y="408" width="24" height="24">
+  <object id="46" type="enemy" x="720" y="408" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="648" y="384" width="24" height="24">
+  <object id="47" type="enemy" x="648" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="576" y="360" width="24" height="24">
+  <object id="48" type="enemy" x="576" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="504" y="408" width="24" height="24">
+  <object id="49" type="enemy" x="504" y="408" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="552" y="336" width="24" height="24">
+  <object id="50" type="enemy" x="552" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="384" width="24" height="24">
+  <object id="51" type="enemy" x="432" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="312" width="24" height="24">
+  <object id="52" type="enemy" x="432" y="312" width="24" height="24">
    <properties>
     <property name="enemytype" value="acornpod"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="312" y="391" width="24" height="24">
+  <object id="53" name="bomb" type="spawn" x="312" y="391" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="4"/>
@@ -511,7 +511,7 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object name="bomb" type="spawn" x="313" y="368" width="24" height="24">
+  <object id="54" name="bomb" type="spawn" x="313" y="368" width="24" height="24">
    <properties>
     <property name="infinite" value="true"/>
     <property name="lastspawn" value="3"/>
@@ -523,26 +523,26 @@
     <property name="y_Proximity" value="400"/>
    </properties>
   </object>
-  <object type="enemy" x="2662" y="256" width="48" height="48">
+  <object id="55" type="enemy" x="2662" y="256" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="hippy-ranged"/>
    </properties>
   </object>
-  <object type="enemy" x="2448" y="120" width="48" height="48">
+  <object id="56" type="enemy" x="2448" y="120" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="hippy-ranged"/>
    </properties>
   </object>
-  <object type="enemy" x="2376" y="288" width="48" height="48">
+  <object id="57" type="enemy" x="2376" y="288" width="48" height="48">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="hippy-normal"/>
    </properties>
   </object>
-  <object type="climbable" x="2648" y="-1" width="6" height="162"/>
-  <object type="door" x="1872" y="0" width="1632" height="48">
+  <object id="58" type="climbable" x="2648" y="-1" width="6" height="162"/>
+  <object id="59" type="door" x="2592" y="0" width="144" height="48">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-stonerspeak"/>
@@ -550,7 +550,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="door" x="4776" y="1296" width="24" height="336">
+  <object id="60" type="door" x="4776" y="1296" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-2"/>
@@ -558,26 +558,26 @@
     <property name="to" value="acornpeak"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="4608" y="1608" width="24" height="24"/>
-  <object name="stick" type="material" x="4704" y="1368" width="24" height="24"/>
-  <object name="stick" type="material" x="3816" y="1224" width="24" height="24"/>
-  <object name="stick" type="material" x="3936" y="1320" width="24" height="24"/>
-  <object name="stick" type="material" x="3192" y="1320" width="24" height="24"/>
-  <object name="stick" type="material" x="2520" y="1056" width="24" height="24"/>
-  <object name="stick" type="material" x="1416" y="528" width="24" height="24"/>
-  <object name="stick" type="material" x="1968" y="576" width="24" height="24"/>
-  <object name="stick" type="material" x="936" y="216" width="24" height="24"/>
-  <object name="stick" type="material" x="288" y="288" width="24" height="24"/>
-  <object name="rock" type="material" x="336" y="288" width="24" height="24"/>
-  <object name="rock" type="material" x="1968" y="720" width="24" height="24"/>
-  <object name="rock" type="material" x="2280" y="1200" width="24" height="24"/>
-  <object name="rock" type="material" x="3168" y="1320" width="24" height="24"/>
-  <object name="rock" type="material" x="3840" y="1464" width="24" height="24"/>
-  <object name="rock" type="material" x="2472" y="288" width="24" height="24"/>
-  <object name="leaf" type="material" x="4056" y="1320" width="24" height="24"/>
-  <object name="leaf" type="material" x="3120" y="1224" width="24" height="24"/>
-  <object name="leaf" type="material" x="1632" y="432" width="24" height="24"/>
-  <object name="red_potion" type="spawn" x="1008" y="288" width="24" height="24">
+  <object id="61" name="rock" type="material" x="4608" y="1608" width="24" height="24"/>
+  <object id="62" name="stick" type="material" x="4704" y="1368" width="24" height="24"/>
+  <object id="63" name="stick" type="material" x="3816" y="1224" width="24" height="24"/>
+  <object id="64" name="stick" type="material" x="3936" y="1320" width="24" height="24"/>
+  <object id="65" name="stick" type="material" x="3192" y="1320" width="24" height="24"/>
+  <object id="66" name="stick" type="material" x="2520" y="1056" width="24" height="24"/>
+  <object id="67" name="stick" type="material" x="1416" y="528" width="24" height="24"/>
+  <object id="68" name="stick" type="material" x="1968" y="576" width="24" height="24"/>
+  <object id="69" name="stick" type="material" x="936" y="216" width="24" height="24"/>
+  <object id="70" name="stick" type="material" x="288" y="288" width="24" height="24"/>
+  <object id="71" name="rock" type="material" x="336" y="288" width="24" height="24"/>
+  <object id="72" name="rock" type="material" x="1968" y="720" width="24" height="24"/>
+  <object id="73" name="rock" type="material" x="2280" y="1200" width="24" height="24"/>
+  <object id="74" name="rock" type="material" x="3168" y="1320" width="24" height="24"/>
+  <object id="75" name="rock" type="material" x="3840" y="1464" width="24" height="24"/>
+  <object id="76" name="rock" type="material" x="2472" y="288" width="24" height="24"/>
+  <object id="77" name="leaf" type="material" x="4056" y="1320" width="24" height="24"/>
+  <object id="78" name="leaf" type="material" x="3120" y="1224" width="24" height="24"/>
+  <object id="79" name="leaf" type="material" x="1632" y="432" width="24" height="24"/>
+  <object id="80" name="red_potion" type="spawn" x="1008" y="288" width="24" height="24">
    <properties>
     <property name="message" value="It's a yes-yes juice! "/>
     <property name="nodeType" value="consumable"/>
@@ -586,11 +586,11 @@
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object name="acornpeak" type="savepoint" x="2736" y="960" width="48" height="312"/>
-  <object type="killing_floor" x="2784" y="1327" width="96" height="17"/>
-  <object name="leaf" type="material" x="923" y="524" width="24" height="24"/>
-  <object name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>
-  <object type="door" x="0" y="48" width="24" height="240">
+  <object id="81" name="acornpeak" type="savepoint" x="2736" y="960" width="48" height="312"/>
+  <object id="82" type="killing_floor" x="2784" y="1327" width="96" height="17"/>
+  <object id="83" name="leaf" type="material" x="923" y="524" width="24" height="24"/>
+  <object id="84" name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>
+  <object id="85" type="door" x="0" y="48" width="24" height="240">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest-acornpeak-2"/>
@@ -598,6 +598,10 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="next" type="door" x="24" y="240" width="24" height="48"/>
+  <object id="86" name="next" type="door" x="24" y="240" width="24" height="48"/>
+  <object id="87" name="clouds1" type="door" x="2784" y="0" width="744" height="48"/>
+  <object id="88" name="clouds" type="door" x="2310" y="0" width="210" height="48"/>
+  <object id="89" name="clouds2" type="door" x="3528" y="0" width="648" height="48"/>
+  <object id="91" name="clouds3" type="door" x="4176" y="24" width="624" height="48"/>
  </objectgroup>
 </map>

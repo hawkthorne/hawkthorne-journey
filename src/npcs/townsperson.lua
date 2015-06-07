@@ -16,7 +16,16 @@ return {
 
   walking = true,
   walk_speed = 36,
- 
+
+  enter = function(npc, previous)
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    if show == true then
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+    end
+  end,
+
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='What are you carrying?'},

@@ -2,6 +2,7 @@ local game = require 'game'
 
 local Climbable = {}
 Climbable.__index = Climbable
+Climbable.isClimbable = true
 
 function Climbable.new(node, collider)
   local climbable = {}

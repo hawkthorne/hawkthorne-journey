@@ -9,6 +9,8 @@ local quests = require 'npcs/quests/lotusquest'
 return {
   width = 24,
   height = 48, 
+  nocommands = 'No one commands me but the Great Buddha himself!',
+  noinventory = "I don't have anything to sell at the moment, sorry!",
   animations = {
     default = {
       'loop',{'2,1','1,1','1,1','1,1','1,1','1,1','1,1','1,1','2,1','1,1','1,1','1,1'},.25,
@@ -28,9 +30,6 @@ return {
 
   },
   talk_responses = {
-    ["inventory"]={
-      "I don't have anything to sell at the moment, sorry!",
-    },
     ["Who are you?"]={
       "I am a follower of the {{blue_light}}Reformed Neo Buddhism Church{{white}}!",
       "I am merely a level 3 laser lotus at the moment, but I'll get there!",

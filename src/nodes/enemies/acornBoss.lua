@@ -5,6 +5,7 @@ local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local sound = require 'vendor/TEsound'
 local utils = require 'utils'
+local app = require 'app'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -83,6 +84,13 @@ return {
   enter = function( enemy )
     enemy.direction ='left'
     enemy.speed = enemy.props.speed
+    local db = app.gamesaves:active()
+    local show = db:get('acornKingVisible', false)
+    local dead = db:get("bosstriggers.benzalk", false)
+    if show ~= true or dead == true then
+      enemy.state = 'hidden'
+      enemy.collider:setGhost(enemy.bb)
+    end
   end,
 
   die = function( enemy )
@@ -98,6 +106,9 @@ return {
     acorn.maxx = enemy.position.x
     acorn.minx = enemy.position.x + enemy.width
     enemy.containerLevel:addNode( acorn )
+
+    enemy.db:set("bosstriggers.acorn", true)
+    enemy.db:set('acornKingVisible', false)
   end,
 
   draw = function( enemy )
