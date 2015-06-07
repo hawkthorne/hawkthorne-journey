@@ -263,31 +263,6 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="enemy" x="1584" y="480" width="48" height="48">
-   <properties>
-    <property name="drop" value="alien_object2"/>
-    <property name="enemytype" value="ambush_alien_elite"/>
-    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1512" y="480" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="ambush_alien"/>
-    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1632" y="480" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="ambush_alien"/>
-    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
-   </properties>
-  </object>
-  <object type="enemy" x="1704" y="480" width="48" height="48">
-   <properties>
-    <property name="enemytype" value="ambush_alien_ranged"/>
-    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
-   </properties>
-  </object>
   <object type="enemy" x="2904" y="216" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien_elite"/>
@@ -420,7 +395,7 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
-  <object type="enemy" x="2472" y="264" width="144" height="24">
+  <object type="enemy" x="1656" y="360" width="144" height="24">
    <properties>
     <property name="enemytype" value="qfo"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>
@@ -492,13 +467,13 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
-  <object type="enemy" x="2736" y="288" width="48" height="48">
+  <object type="enemy" x="1992" y="432" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien_elite"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>
    </properties>
   </object>
-  <object type="enemy" x="2472" y="648" width="48" height="48">
+  <object type="enemy" x="1848" y="432" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>

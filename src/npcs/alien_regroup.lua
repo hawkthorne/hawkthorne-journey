@@ -19,7 +19,6 @@ local camera = require 'camera'
 return {
   width = 29,
   height = 48,
-  greeting = 'An adventurer! You might just be what I need...',
   animations = {
     default = {
       'loop',{'1,2'},.5,
@@ -42,9 +41,12 @@ return {
   },
   enter = function(npc, previous)
   npc.shake = false
-  if Quest.alreadyCompleted(npc, player, quests.aliencamp) == true and Quest.alreadyCompleted(npc, player, quests.qfo) == false then
-  npc.busy = true
-  npc.state = 'hidden'
+  if Player.quest ~= 'Aliens! - Regroup with the alien at Chili Fields' then
+    if Player.quest == 'Aliens! - Destroy the QFO!' then
+    else
+    npc.busy = true
+    npc.state = 'hidden'
+  end
   end
   end,
   update = function(dt, npc, player)
@@ -59,7 +61,7 @@ return {
   talk_commands = {
     ['Talk about quests']= function(npc, player)
     local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
-    if player.quest == 'Aliens! - Destroy the QFO!' and Quest.alreadyCompleted(npc, player, quests.qfo) then
+    if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
       npc.menu:close(player)
       end)
@@ -91,6 +93,8 @@ return {
       table.insert(completed_quests, {questParent = 'alien', questName = 'Aliens! - Destroy the QFO!'})
       gamesave:set( 'completed_quests', json.encode( completed_quests ) )
       end)
+      player.quset = nil
+      player.questParent = nil
       else
         Dialog.new("Come on, human. The {{orange}}QFO{{white}} is just outside! Its shields are down, now is the time to attack!", function()
           npc.menu:close(player)

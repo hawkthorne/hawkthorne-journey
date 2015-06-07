@@ -16,12 +16,13 @@ local quests = {
     },
     successPrompt = "Earthling, would you like to have the honor of serving under me in my fight against the invading aliens?",
     promptExtra = {
-      "Good, good. Your first task is to hijack an item from a group of alien soldiers up near the {{blue_light}}coast{{white}} to Village Forest.",
+      "Good, good. Your first task is to hijack an item from a group of alien soldiers camped up nearby.",
+      "The aliens are camped up to the east of Tacotown, on the way to the giant fence.",
       "I found out that one of the alien soldiers is carrying an alien technology that I need for my plan to bring them down.",
       "It's usually the blue {{blue_light}}Elite Alien{{white}} carrying important equipment, so target those guys first.",
       "I'll explain what I need the item for later. Be prepared for a fight, and try not to die alright? Good luck then.",
     },
-    completeQuestFail = "The aliens are still camped up by the coast. I need the alien equipment that they're carrying!",
+    completeQuestFail = "The aliens are still camped up to the east of Tacotown. I need the alien equipment that they're carrying!",
     completeQuestSucceed = {
     "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
     "Alright, I got another task for you. Talk to me when you're ready.",

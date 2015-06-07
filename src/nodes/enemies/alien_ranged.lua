@@ -100,7 +100,7 @@ return {
         enemy.idletime = enemy.idletime + dt
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 then
+        if enemy.idletime >= 2 and enemy.state ~= 'hurt' then
           enemy.props.laserAttack(enemy, direction, player)
           enemy.idletime = 0
         end

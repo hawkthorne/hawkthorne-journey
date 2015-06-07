@@ -63,6 +63,7 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
+    laser.burn = true
     laser.velocity.x = 250*direction
     laser.velocity.y = math.random(-10,10)
     laser.position.x = enemy.position.x +15
@@ -98,7 +99,7 @@ return {
         end
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 0.1 then
+        if enemy.idletime >= 0.1 and enemy.state ~= 'hurt' then
           if enemy.chargeUpTime >= 1 then
             Timer.add(1, function()
               enemy.idletime = 0

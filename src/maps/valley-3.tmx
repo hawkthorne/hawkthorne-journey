@@ -632,6 +632,31 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
+  <object type="enemy" x="1416" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1296" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1248" y="480" width="48" height="48">
+   <properties>
+    <property name="drop" value="alien_object2"/>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1344" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Bring back alien technology from hostile aliens"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="0" height="0">
   <object name="platform1" x="1104" y="240">

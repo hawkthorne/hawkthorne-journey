@@ -17,7 +17,9 @@ return{
   throwVelocityX = 600, 
   throwVelocityY = 0,
   thrown = false,
-  damage = 4,
+  damage = 5,
+  throw_x = -2,
+  throw_y = -11,
   special_damage = {stab = 1},
   horizontalLimit = 800,
   animations = {

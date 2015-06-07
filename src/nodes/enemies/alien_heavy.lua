@@ -97,7 +97,7 @@ return {
         enemy.state = 'default'
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 0.1 then
+        if enemy.idletime >= 0.1 and enemy.state ~= 'hurt' then
           if enemy.chargeUpTime >= 1 then
             Timer.add(1, function()
               enemy.idletime = 0

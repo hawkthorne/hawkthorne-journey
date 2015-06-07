@@ -108,6 +108,8 @@ function Projectile.new(node, collider)
   proj.enemyCanPickUp = proj.props.enemyCanPickUp
   proj.canPlayerStore = proj.props.canPlayerStore
   proj.usedAsAmmo = proj.props.usedAsAmmo
+  proj.throw_x = proj.props.throw_x
+  proj.throw_y = proj.props.throw_y
 
   proj.burn = false
 

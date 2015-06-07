@@ -67,6 +67,7 @@ return {
     local laser = Projectile.new( node, enemy.collider )
     local level = enemy.containerLevel
     level:addNode(laser)
+    laser.burn = true
     sound.playSfx( 'alien_laser' )
     laser.velocity.x = 310*direction
     laser.position.x = enemy.position.x + 15
@@ -101,7 +102,7 @@ return {
         end
         --laser attack
         local direction = player.position.x > enemy.position.x and 1 or -1
-        if enemy.idletime >= 2 then
+        if enemy.idletime >= 2 and enemy.state ~= 'hurt' then
           enemy.props.laserAttack(enemy, direction, player)
           enemy.idletime = 0
         end
