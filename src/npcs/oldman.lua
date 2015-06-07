@@ -10,6 +10,16 @@ return {
       'loop',{'1,1','2,1'},.5,
     },
   },
+
+  enter = function(npc, previous)
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    if show == true then
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+    end
+  end,
+
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='Any useful info for me?' },

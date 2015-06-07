@@ -1,21 +1,41 @@
 local utils = require 'utils'
 local app = require 'app'
 local Dialog = require 'dialog'
+local Emotion = require 'nodes/emotion'
 
 return {
-  width = 32,
-  height = 48,   
+  width = 70,
+  --bb_width = 40,
+  height = 55,
   greeting = 'My name is {{red_light}}Sir Merek{{white}}, I became a knight to protect this {{olive}}village{{white}} from the dangers of the forest.',
+  special_enemy = {'acornBoss'},
   animations = {
     default = {
-      'loop',{'1,1','11,1'},.5,
+      'loop',{'1,1'},.5,
     },
     walking = {
-      'loop',{'1,1','2,1','3,1'},.2,
+      'loop',{'1-4,1'},.2,
+    },
+    draw_sword = {
+      'once',{'5-10,1'},.2,   
+    },
+    attack = {
+      'loop',{'11-12,1'},.2,   
     },
   },
 
   stare = true,
+  enter = function(npc, previous)
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    if show == true then
+        npc.emotion = Emotion.new(npc, "exclaim")
+        npc.angry = true
+        npc.stare = false
+        npc.state = 'attack'
+        npc.attackingEnemy = true
+    end
+  end,
 
   talk_items = {
     { ['text']='i am done with you' },
@@ -25,7 +45,7 @@ return {
   },
   talk_commands = {
     ['Talk about the Acorn King'] = function (npc, player)
-      local check = app.gamesaves:active():get("bosstriggers.acorn", false)
+      local check = npc.db:get("bosstriggers.acorn", false)
       if check ~= false then
           Dialog.new("Hooray to the great slayer of acorns! Thank you for saving us from destruction!", function()
           npc.menu:close(player)
@@ -49,4 +69,5 @@ return {
     },
 
   },
+
 }
