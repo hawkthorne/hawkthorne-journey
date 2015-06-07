@@ -5,6 +5,7 @@ local sound = require 'vendor/TEsound'
 return{
   name = 'waterSpout',
   type = 'projectile',
+  explode_sound = 'waterspout',
   friction = 1,
   width = 24,
   height = 72,
