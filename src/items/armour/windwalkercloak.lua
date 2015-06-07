@@ -1,6 +1,6 @@
 return{
   name = "windwalkercloak",
-  description = "Cloak of Windwalking",
+  description = "Windwalker",
   type = "armour",
   subtype = 'secondary',
   info = 'Elven cloak. Still reeks of a naked 67 year old man.',

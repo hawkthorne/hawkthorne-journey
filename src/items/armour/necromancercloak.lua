@@ -1,9 +1,9 @@
 return{
   name = "necromancercloak",
-  description = "Cloak of the Necromancer",
+  description = "Necrocloak",
   type = "armour",
   subtype = 'secondary',
-  info = 'This may look like a normal shirt, but its far more mystical.',
+  info = 'The name may be gross, but this cloak isn\'t.',
   MAX_ITEMS = 5,
   quantity = 1,
   defense = 4,

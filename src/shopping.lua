@@ -47,7 +47,7 @@ function state:init()
   self.categories[2] = "materials"
   self.categories[3] = "consumables"
   self.categories[4] = "keys"
-  self.categories[5] = "armor"
+  self.categories[5] = "armour"
   self.categories[6] = "misc"
 
   -- used for centering text below boxes
@@ -56,7 +56,7 @@ function state:init()
   self.shift["materials"] = 0
   self.shift["consumables"] = 0
   self.shift["keys"] = 8
-  self.shift["armor"] = 6
+  self.shift["armour"] = 5
   self.shift["misc"] = 9
 
   self.categoriespic = {}
@@ -577,6 +577,9 @@ function state:getItemStats( item )
   end
   if item.damage ~= nil and item.damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
+  end
+  if item.defense ~= nil and item.defense ~= "nil" then
+    itemStats = itemStats .. "{{white}}\ndefense: {{blue_light}}" .. tostring(item.defense)
   end
   if item.special_damage ~= nil and item.special_damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
