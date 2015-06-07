@@ -6,7 +6,7 @@ local Gamestate = require 'vendor/gamestate'
 return {
   name = 'squirrel',
   --attack_sound = 'manicorn_running',
-  die_sound = 'squeek',
+  die_sound = 'squirrel_death',
   position_offset = { x = 0, y = 0 },
   height = 30,
   width = 44,
