@@ -471,6 +471,7 @@ end
 function NPC:update(dt, player)
   if self.state == 'hidden' then return end
   if self.menu.state ~= "closed" then self.menu:update(dt) end
+  if self.menu.state ~= "closed" and self.busy then self.menu:close(player) end
   self:animation():update(dt)
   self:handleSounds(dt)
 
