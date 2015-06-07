@@ -107,7 +107,7 @@
  </layer>
  <layer name="collision" width="80" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwCAQRFFh+z9Yh5ekwwiyCJ6SzCaH9T+YAvyopQB5VRvDO/R7rtmc92vLcA/3T5O9n7+no+/84JzZ+62iO+7Wz0X98bv2i0I/Df009NNk71eNKQMAAACAv1xNAEW7
+   eJzt1EEKgCAURVHB/Q9ah5PaYUFIIA2Ebw30HHgL8KKmBPBuy/foV/Kz2q80o4/7FzN7v/qe9mvHB+ecvV9rdMfV+lWj/vhV+42iX4x+MfrFzN5vyxYZAADAX05+Z0ST
   </data>
  </layer>
  <objectgroup color="#000000" name="nodes" width="80" height="25" opacity="0.9">
@@ -167,7 +167,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="goatfarm" type="building" x="504" y="24" width="216" height="312"/>
+  <object name="goatfarm" type="building" x="504" y="48" width="216" height="288"/>
   <object type="enemy" x="864" y="288" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien_elite"/>
