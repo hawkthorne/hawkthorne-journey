@@ -5,7 +5,7 @@ local Gamestate = require 'vendor/gamestate'
 
 return {
   name = 'hemp',
-  die_sound = 'karramba_pop',
+  die_sound = 'hemp',
   bb_offset = { x = 2, y = 6},
   bb_width = 30,
   bb_height = 36,

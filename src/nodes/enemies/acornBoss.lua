@@ -86,8 +86,10 @@ return {
     enemy.speed = enemy.props.speed
     local db = app.gamesaves:active()
     local show = db:get('acornKingVisible', false)
-    if show ~= true then
+    local dead = db:get("bosstriggers.benzalk", false)
+    if show ~= true or dead == true then
       enemy.state = 'hidden'
+      enemy.collider:setGhost(enemy.bb)
     end
   end,
 
@@ -104,6 +106,9 @@ return {
     acorn.maxx = enemy.position.x
     acorn.minx = enemy.position.x + enemy.width
     enemy.containerLevel:addNode( acorn )
+
+    enemy.db:set("bosstriggers.acorn", true)
+    enemy.db:set('acornKingVisible', false)
   end,
 
   draw = function( enemy )

@@ -48,6 +48,7 @@ return {
     }
   },
   walking = true,
+
   enter = function(npc, previous)
     -- If the blacksmith is dead and Hilda hasn't cried yet
     if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false then
@@ -101,6 +102,14 @@ return {
       npc.minx = npc.x - 48
       npc.maxx = npc.x + 48
     end
+    -- hide hilda if acornboss is out
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    if show == true then
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+    end
+
 
     if previous and previous.name ~= 'town' then
       return

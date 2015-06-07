@@ -15,6 +15,17 @@ return {
 
   walking = true,
   walk_speed = 10,
+  foreground = true,
+
+  enter = function(npc, previous)
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    local bldgburned = npc.db:get('house_building_burned', false )
+    if show == true or bldgburned == true then
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+    end
+  end,
 
   talk_items = {
     { ['text']='i am done with you' },
