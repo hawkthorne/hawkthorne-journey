@@ -70,12 +70,11 @@ return {
     end
     weapon.animation:gotoFrame(1)
     weapon.animation:resume()
-    sound.playSfx( weapon.attackAudioClip )
-    
+    Timer.add(.5, function() sound.playSfx( weapon.props.attackAudioClip ) end)
   end,
 
   throwProjectile = function( weapon )
-    Timer.add(.5, function()
+    Timer.add(.3, function()
       local node = {
         type = 'projectile',
         name = 'waterSpout',
