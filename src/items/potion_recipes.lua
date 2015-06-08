@@ -1,48 +1,72 @@
 -----------------------------------------
 -- potion_recipes.lua
--- Contains all the potion recipies that the player can use
+-- Contains all the potion recipes that the player can use
 -- Created by Nicko21
 -----------------------------------------
 
 return {
   {
   --jump boost potion
-    recipe={stone = 3, peanut = 2, frog = 2, eye = 4},
-    name='blue_potion',
+  --in game (valley-chili-fields)
+    recipe      = {stone = 3, peanut = 2, frog = 2, eye = 4},
+    info        = '3 stones + 2 peanuts + 2 frogs + 4 eyes',
+    name        = 'blue_potion',
+    description = 'Jump Boost Potion Recipe',
   },
   {
   --invulnerability potion
-    recipe={boulder =2, star = 1, ember = 3, fire = 3},
-    name='green_potion',
+  --in game (forest)
+    recipe      = {boulder = 2, star = 1, ember = 3, fire = 3},
+    info        = '2 boulders + 1 star + 3 emebers + 3 fires',
+    name        = 'green_potion',
+    description = 'Invunerability Potion Recipe', 
   },
   {
   --speed boost potion
-    recipe={bone = 2, mushroom = 1, duck = 2, frog = 1},--
-    name='orange_potion',
+  --in game (gay-island-2)
+    recipe      = {bone = 2, mushroom = 1, duck = 2, frog = 1},
+    info        = '2 bones + 1 mushroom + 2 ducks + 1 frog',
+    name        = 'orange_potion',
+    description = 'Speed Boost Potion Recipe',
   },
   {
   --max health potion
-    recipe={peanut = 2, frog = 1, arm = 2, ember = 1},
-    name='pink_potion',
+  --in game (black-caverns)
+    recipe      = {peanut = 2, frog = 1, arm = 2, ember = 1},
+    info        = '2 peanuts + 1 frog + 2 arms + 1 ember',
+    name        = 'pink_potion',
+    description = 'Max Health Potion Recipe',
   },
   {
   --punch damage potion
-    recipe={stick = 1, rock = 2, leaf = 2},
-    name='purple_potion',
+  --in game (treeline)
+    recipe      = {stick = 1, rock = 2, leaf = 2},
+    info        = '1 stick + 2 rocks + 2 leaves',
+    name        = 'purple_potion',
+    description = 'Punch Damage Potion Recipe',
   },
   {
   --health potion
-    recipe={leaf = 2, mushroom = 1, stick = 1, bone = 1},
-    name='red_potion',
+  --in game (blacksmith-upstairs)
+    recipe      = {leaf = 2, mushroom = 1, stick = 1, bone = 1},
+    info        = '2 leaves + 1 mushroom + 1 stick + 1 bone',
+    name        = 'red_potion',
+    description = 'Health Potion Recipe',
   },
   {
   --greater health potion
-    recipe={leaf = 3, mushroom = 1, stick = 2, duck = 1},
-    name='white_potion',
+  --in game (valley-sandpits-2)
+    recipe      = {leaf = 3, mushroom = 1, stick = 2, duck = 1},
+    info        = '3 leaves + 1 mushrrom + 2 sticks + 1 duck',
+    name        = 'white_potion',
+    description = 'Greater Health Potion Recipe',
   },
   {
   --money potion
-    recipe={boulder = 3, frog = 1, star = 2, fire = 1},--
-    name='yellow_potion',
+  --in game (village-treeline)
+    recipe       = {boulder = 3, frog = 1, star = 2, fire = 1},
+    info         = '3 boulders + 1 frog + 2 stars + 1 fire',
+    name         = 'yellow_potion',
+    description  = 'Money Potion Recipe',
   }
 }

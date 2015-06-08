@@ -291,10 +291,9 @@
   <object id="34" name="mushroom" type="material" x="1104" y="696" width="24" height="24"/>
   <object id="35" name="mushroom" type="material" x="3408" y="648" width="24" height="24"/>
   <object id="36" name="peanut" type="material" x="1728" y="264" width="24" height="24"/>
-  <object id="37" type="info" x="1440" y="360" width="24" height="24">
+  <object id="37" name="orange_potion" type="detail" x="1440" y="360" width="24" height="24">
    <properties>
-    <property name="info" value="Speed Boost Potion Recipe = | 2 bones + 1 mushroom + 2 ducks + 1 frog"/>
-    <property name="sprite" value="note"/>
+    <property name="category" value="recipe"/>
    </properties>
   </object>
   <object id="38" name="cherrypopper" type="spawn" x="192" y="840" width="24" height="24">

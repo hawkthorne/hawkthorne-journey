@@ -103,7 +103,7 @@
    eJzt2EsOwjAMBFCr4f534wJ81lyAPwxiE0UqcimtPWWeNPuoEydRzUREREREYqyK2aGLXoUs0RH76oSckUv33meesHittZToVQzTdsJmiecVeydejPPCdibNYcgM6vv9t/pevyI35I48tCcoZOns05kTda9kPdfm7Oybb8/6hptyn2WZszF+2SvDu2EJnXmM6TXbm7/uTPq1vXn/3UTPbMb7KNsM9NlgnVtkh+yRtTNZsb4zam0nEm+qTrzzpvCeSSJi9gQwlKfJ
   </data>
  </layer>
- <objectgroup color="#0000ff" name="nodes" width="105" height="25" visible="0">
+ <objectgroup color="#0000ff" name="nodes">
   <object name="main" type="door" x="96" y="480" width="48" height="48"/>
   <object type="door" x="2472" y="0" width="48" height="168">
    <properties>
@@ -128,10 +128,9 @@
   <object name="rock" type="material" x="1488" y="504" width="24" height="24"/>
   <object name="stick" type="material" x="1776" y="192" width="24" height="24"/>
   <object name="rock" type="material" x="2016" y="408" width="24" height="24"/>
-  <object type="info" x="1104" y="120" width="24" height="24">
+  <object name="purple_potion" type="detail" x="1104" y="120" width="24" height="24">
    <properties>
-    <property name="info" value="Punch Damage Potion Recipe = | 1 stick + 2 rocks + 2 leaves"/>
-    <property name="sprite" value="note"/>
+    <property name="category" value="recipe"/>
    </properties>
   </object>
   <object name="flowers" type="material" x="1368" y="504" width="24" height="24">

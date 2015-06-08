@@ -67,7 +67,8 @@ function Inventory.new( player )
     keys = {'materials','armors'},
     materials = {'consumables','keys'},
     consumables = {'scrolls','materials'},
-    scrolls = {'weapons','consumables'}
+    scrolls = {'details','consumables'},
+    details = {'weapons','scrolls'}
   } --Each key's value is a table with this format: {nextpage, previouspage} 
 
   inventory.pages = {} --These are the pages in the inventory that hold items
@@ -1037,6 +1038,8 @@ function Inventory:loadSaveData( gamesave )
         itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}
       elseif saved_item.type == Item.types.ITEM_ARMOR then
         itemNode = {type = saved_item.type, name = saved_item.name, subtype = saved_item.props.subtype, quantity = saved_item.quantity, MAX_ITEMS = saved_item.MaxItems}
+      elseif saved_item.type == Item.types.ITEM_DETAIL then
+        itemNode = {type = saved_item.type, name = saved_item.name, MAX_ITEMS = saved_item.MaxItems, quantity = saved_item.quantity}        
       else
         print( "Warning: unhandled saved item type: " .. saved_item.type )
       end
