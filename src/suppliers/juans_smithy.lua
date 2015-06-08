@@ -18,7 +18,6 @@ return {
     {"lightarmour",1,375},
     {"pruneplackart",1,375},
     {"tinytarge",1,525},
-    {"spiderburgonet",1,450},
   },
   materials = {
     {"leaf",10,55},
