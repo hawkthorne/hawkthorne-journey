@@ -25,14 +25,12 @@ return {
   dropHeight = 44,
   damage = 12,
   projectile = "waterSpout",
-  attackAudioClip = 'jump_boom',
   throwDelay = 0.24,
   special_damage = {water = 6, epic = 100},
   bbox_width = 18,
   bbox_height = 18,
   bbox_offset_x = {4,19,25,19},
-  bbox_offset_y = {4,9,22,9},  
-  hitAudioClip = 'epic_hit',
+  bbox_offset_y = {4,9,22,9},
   magical = true,
   animations = {
     default = {'once', {'1,1'}, 1},
@@ -70,7 +68,7 @@ return {
     end
     weapon.animation:gotoFrame(1)
     weapon.animation:resume()
-    Timer.add(.5, function() sound.playSfx( weapon.props.attackAudioClip ) end)
+    Timer.add(.5, function() sound.playSfx( 'epic_hit' ) end)
   end,
 
   throwProjectile = function( weapon )
