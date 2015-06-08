@@ -74,10 +74,6 @@
   </object>
   <object name="vent" type="door" x="29" y="266" width="22" height="40"/>
   <object name="main" type="door" x="168" y="240" width="23" height="45"/>
-  <object name="bone" type="material" x="528" y="240" width="24" height="24"/>
-  <object name="stone" type="material" x="480" y="240" width="24" height="24"/>
-  <object name="bone" type="material" x="552" y="240" width="24" height="24"/>
-  <object name="rock" type="material" x="504" y="240" width="24" height="24"/>
  </objectgroup>
  <objectgroup name="floorspace" width="29" height="14">
   <object name="table" x="112" y="275">

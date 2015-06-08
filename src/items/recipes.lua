@@ -26,6 +26,16 @@ return {
     { type='material', name='fire' },
   },
   {
+    { type='material', name='rock' },
+    { type='material', name='star' },
+    { type='material', name='stardust' },
+  },
+  {
+    { type='material', name='fire' },
+    { type='material', name='stardust' },
+    { type='weapon', name='fireball' },
+  },
+  {
     { type='material', name='bone' },
     { type='material', name='bone' },
     { type='weapon', name='boneclub' },
