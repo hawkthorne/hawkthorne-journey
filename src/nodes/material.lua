@@ -8,6 +8,7 @@ local game = require 'game'
 local collision  = require 'hawk/collision'
 local Item = require 'items/item'
 local utils = require 'utils'
+local file = require 'items/materials'
 
 local Material = {}
 Material.__index = Material
@@ -21,8 +22,9 @@ function Material.new(node, collider)
   setmetatable(material, Material)
   material.name = node.name
   material.type = 'material'
-  material.width = node.width or 24
-  material.height = node.height or 24
+  local file = utils.require( 'nodes/materials/' .. material.name)
+  material.width = file.width or 24
+  material.height = file.height or 24
   material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
   material.image_q = love.graphics.newQuad( 0, 0, material.width, material.height, material.image:getWidth(),material.image:getHeight() )
   material.foreground = node.properties.foreground
@@ -38,7 +40,7 @@ function Material.new(node, collider)
   material.height = node.height
   material.bb_offset_x = (24 - node.width) / 2 -- positions bb for materials smaller than 24px
 
-  material.touchedPlayer = nil
+  material.touchedPlayer = nilma
   material.exists = true
   material.dropping = false
 
