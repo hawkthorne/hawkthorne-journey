@@ -1483,7 +1483,7 @@
   <object name="spiderburgonet" type="spawn" x="1848" y="1056" width="24" height="24">
    <properties>
     <property name="message" value="Time to become... The Spider King!"/>
-    <property name="nodeType" value="armour"/>
+    <property name="nodeType" value="armor"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>

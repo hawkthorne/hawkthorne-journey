@@ -78,7 +78,7 @@ function Player.new(collider)
   plyr.punchDamage = 1
 
   plyr.inventory = Inventory.new( plyr )
-  plyr.currentArmour = {primary = 0, secondary = 0}
+  plyr.currentArmor = {primary = 0, secondary = 0}
   plyr.defense = 0
 
   plyr.money = plyr.startingMoney   
@@ -263,12 +263,12 @@ function Player:switchWeapon()
   self:selectWeapon(self.inventory:tryNextWeapon())
 end
 
--- Set the current armour.
+-- Set the current armor.
 -- @return nil
-function Player:selectArmour(armour)
-  self.currentArmour[armour.subtype] = armour.defense
+function Player:selectArmor(armor)
+  self.currentArmor[armor.subtype] = armor.defense
   self.defense = 0
-  for _, defns in pairs(self.currentArmour) do
+  for _, defns in pairs(self.currentArmor) do
     self.defense = self.defense + defns
   end
 end
@@ -621,7 +621,7 @@ function Player:hurt(damage)
   damage = damage * (1 - self.defense / 100)
   --Minimum damage is 5%
   --Prevents damage from falling off small heights.
-  if damage < self.min_damage or damage < self.defense then return end
+  if damage < self.min_damage then return end
   if self.invulnerable or self.godmode or self.dead then
     return
   end

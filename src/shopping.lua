@@ -47,7 +47,7 @@ function state:init()
   self.categories[2] = "materials"
   self.categories[3] = "consumables"
   self.categories[4] = "keys"
-  self.categories[5] = "armour"
+  self.categories[5] = "armor"
   self.categories[6] = "misc"
 
   -- used for centering text below boxes
@@ -56,7 +56,7 @@ function state:init()
   self.shift["materials"] = 0
   self.shift["consumables"] = 0
   self.shift["keys"] = 8
-  self.shift["armour"] = 5
+  self.shift["armor"] = 6
   self.shift["misc"] = 9
 
   self.categoriespic = {}

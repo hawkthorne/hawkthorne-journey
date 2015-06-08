@@ -1,11 +1,9 @@
 return{
   name = "pruneplackart",
   description = "Prune Plackart",
-  type = "armour",
+  type = "armor",
   subtype = 'primary',
   info = 'A good source of defense and fiber.',
-  MAX_ITEMS = 5,
-  quantity = 1,
-  defense = 5,
-  directory = 'armour/',
+  defense = 10,
+  directory = 'armor/',
 }

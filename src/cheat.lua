@@ -27,7 +27,7 @@ local function setCheat(cheatName, turnOn)
       'sword','battleaxe','boneclub','switch','longsword',
       'mace','mallet','crimson_sword','torch','bow','icicle',
       'throwingaxe','throwingknife','arrow'}},
-    give_armour = {armour = {
+    give_armor = {armor = {
       'ajaxshield', 'berserkerbarbute', 'femininefaulds',
       'greenguard', 'hagshat', 'ivoryheadpiece', 'lightarmour',
       'necromancercloak', 'platemail', 'pruneplackart',

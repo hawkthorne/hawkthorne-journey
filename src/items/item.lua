@@ -17,7 +17,7 @@ Item.types = {
   ITEM_CONSUMABLE = "consumable",
   ITEM_MATERIAL   = "material",
   ITEM_SCROLL     = "scroll",
-  ITEM_ARMOUR     = "armour"
+  ITEM_ARMOR     = "armor"
 }
 
 Item.MaxItems = 10000

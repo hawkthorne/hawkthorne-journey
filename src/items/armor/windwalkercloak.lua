@@ -1,11 +1,9 @@
 return{
   name = "windwalkercloak",
   description = "Windwalker",
-  type = "armour",
+  type = "armor",
   subtype = 'secondary',
   info = 'Elven cloak. Still reeks of a naked 67 year old man.',
-  MAX_ITEMS = 5,
-  quantity = 1,
-  defense = 3,
-  directory = 'armour/',
+  defense = 6,
+  directory = 'armor/',
 }

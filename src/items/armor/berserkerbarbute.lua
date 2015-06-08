@@ -1,11 +1,9 @@
 return{
   name = "berserkerbarbute",
   description = "Berserker Barbute",
-  type = "armour",
-  subtype = 'primary',
+  type = "armor",
+  subtype = 'secondary',
   info = 'A Barbute fabled to make it\'s wearer berserk.',
-  MAX_ITEMS = 5,
-  quantity = 1,
-  defense = 4,
-  directory = 'armour/',
+  defense = 8,
+  directory = 'armor/',
 }

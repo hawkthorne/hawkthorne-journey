@@ -15,7 +15,7 @@ return {
     {"bow",3,200},
     {"arrow",50,5},
   },
-  armour = {
+  armor = {
     {"ajaxshield",1,225},
     {"berserkerbarbute",1,300},
     {"hagshat",1,150},

@@ -12,7 +12,7 @@ return {
     {"arrow",30,6},
     {"crimson_sword",1,450},
   },
-  armour = {
+  armor = {
     {"ajaxshield",1,225},
     {"greenguard",1,600},
     {"lightarmour",1,375},

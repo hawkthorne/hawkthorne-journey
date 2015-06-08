@@ -12,7 +12,7 @@ return {
     {"bow",3,230},
     {"arrow",25,8},
   },
-  armour = {
+  armor = {
     {"femininefaulds",1,450},
     {"lightarmour",1,375},
     {"windwalkercloak",1,225},
