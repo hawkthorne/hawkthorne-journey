@@ -10,9 +10,9 @@
   <property name="title" value="Black Caverns"/>
  </properties>
  <tileset firstgid="1" name="black-caverns" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/black-caverns.png" width="360" height="432"/>
+  <image source="../images/tilesets/black-caverns.png" width="360" height="672"/>
  </tileset>
- <tileset firstgid="271" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="421" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="125" height="37" opacity="0.93">
@@ -42,7 +42,7 @@
  </layer>
  <layer name="doors" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztzrsJwDAQREGlqkb9t6OP67ACFSAw3AWegWXTVwoAAAAAAAAA/FPNDiDU2JvZEYRa55/UCiL1vXYeAAAA+KZlBwAAAAAA114ssgW+
+   eJzt0bEJwCAURdHfZhrXS5nODbKuEXQAQYjFP6e57YMXAQAAAAAAAAA5XacH8Ks74mmjJFH757Mk8fbPyygAAACwqZweAAAAAAAs+wCuZQYR
   </data>
  </layer>
  <layer name="extras" width="125" height="37">
@@ -52,7 +52,7 @@
  </layer>
  <layer name="collision" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmEsOwyAMBdMT5By5/wWrLCqlql2D/AW/kVhUSXHMBDA5X8dxOrR/aP8P6jHiXLru3YAtWufeZMffETjvB5z3o4pzbg+Hc3sya6gRz9Z1X0TNifqVh8tJm6vkfCUo/9diOdxI7zGc/1Jpv/NYs7ydr7huWux3VnuM1dhp97F7vfu0HffKzHnu4XxFB9FEz3MuNvVbmw+giRwjOK8BnPcj2rl3Daft41m/SW1VMuZFZecUu3nPWgtXcr4bnZ1nnbGzz/XdnXP/m30fpPup615jL52T4fz7ebgxmvn2wDnXPOsoFzGuEXFHqObcklnn1jUhnNvcq32GqHk+0i+c2wPn4+zkXPr+5BW/8n5OsYvz7Phw7htPA5zDeVS/2Xk/6e589szG3Q/nvvE0YJ7DeVS/2Xk/gfOYfrPzftLRuVeT4lahm/MsKuUN5zFUyhvOY6iUN5z78gbP1SNb
+   eJztmEsOwyAMBdP7nyPnyNWqLCqlql2D/AW/kVhUSXHMBDA5X8dxOrR/aP8P6jHiXLru3YAtWufeZMffETjvB5z3o4pzbg+Hc3sya6gRz9Z1X0TNifqVh8tJm6vkfCUo/9diOdxI7zGc/1Jpv/NYs7ydr7huWux3VnuM1dhp97F7vfu0HffKzHnu4XxFB9FEz3MuNvVbmw+giRwjOK8BnPcj2rl3Daft41m/SW1VMuZFZecUu3nPWgtXcr4bnZ1nnbGzz/XdnXP/m30fpPup615jL52T4fz7ebgxmvn2wDnXPOsoFzGuEXFHqObcklnn1jUhnNvcq32GqHk+0i+c2wPn4+zkXPr+5BW/8n5OsYvz7Phw7htPA5zDeVS/2Xk/6e589szG3Q/nvvE0YJ7DeVS/2Xk/gfOYfrPzftLRuVeT4lahm/MsKuUN5zFUyhvOY6iUN5z78gYRVE9q
   </data>
  </layer>
  <objectgroup color="#0000ff" name="nodes" visible="0">
