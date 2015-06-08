@@ -730,6 +730,14 @@ function Inventory:hasKey( keyName )
   end
 end
 
+function Inventory:hasDetail(detailName)
+  for slot,detail in pairs(self.pages.details) do
+    if detail.name == detailName then
+      return true
+    end
+  end
+end
+
 function Inventory:hasMaterial( materialName )
   for slot,material in pairs(self.pages.materials) do
     if material.name == materialName then

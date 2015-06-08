@@ -37,7 +37,8 @@ function Item.new(node, count)
   item.props = node
   local imagePage
   if item.type == "detail" then
-    imagePath = 'images/details/'..node.category..'.png'
+    local category = node.category or 'recipe'
+    imagePath = 'images/details/'..category..'.png'
   else
     imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
   end
