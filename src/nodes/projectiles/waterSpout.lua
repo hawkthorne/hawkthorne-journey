@@ -121,7 +121,13 @@ return{
       end)
     end
     if node.hurt and not (node.isWall and node.node.name == "lavarock") then
-      node:hurt(projectile.damage, projectile.special_damage, 0)
+      if node.isEnemy then
+        Timer.add(0.5, function()
+          node:hurt(projectile.damage, projectile.special_damage, 0)
+        end)
+      else
+        node:hurt(projectile.damage, projectile.special_damage, 0)
+      end
     end
   end,
 }
