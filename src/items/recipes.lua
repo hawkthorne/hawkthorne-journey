@@ -11,6 +11,16 @@ return {
     { type='weapon', name='throwingknife' },
   },
   {
+    { type='material', name='bone' },
+    { type='material', name='rock' },
+    { type='weapon', name='throwingboneknife' },
+  },
+  {
+    { type='material', name='bubblegum' },
+    { type='material', name='stone' },
+    { type='weapon', name='bublegumclub' },
+  },
+  {
     { type='material', name='ember' },
     { type='material', name='leaf' },
     { type='material', name='fire' },
@@ -21,9 +31,19 @@ return {
     { type='weapon', name='boneclub' },
   },
   {
+    { type='material', name='bone' },
+    { type='material', name='stone' },
+    { type='weapon', name='bonemallet' },
+  },
+  {
     { type='material', name='fire' },
     { type='material', name='stick' },
     { type='weapon', name='torch' },
+  },
+  {
+    { type='material', name='fire' },
+    { type='material', name='duck' },
+    { type='weapon', name='burningduck' },
   },
   {
     { type='material', name='rock' },
