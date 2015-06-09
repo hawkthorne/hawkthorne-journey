@@ -229,6 +229,5 @@
    </properties>
   </object>
   <object name="bone" type="material" x="1752" y="312" width="24" height="24"/>
-  <object name="farm_key" type="key" x="1296" y="312" width="24" height="24"/>
  </objectgroup>
 </map>
