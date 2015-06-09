@@ -36,7 +36,6 @@ return {
   tokens = 15,
   hand_x = -40,
   hand_y = 70,
-  fall_on_death = true,
   speed = 150,
   dyingdelay = 1,
   vulnerabilities = {'epic'},
@@ -280,7 +279,7 @@ return {
   end,
 
   dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 0.4
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 8
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 

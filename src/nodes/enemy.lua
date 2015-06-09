@@ -391,12 +391,7 @@ function Enemy:update( dt, player, map )
       self:die()
   end
   
-  if self.dead then
-    if self.props.fall_on_death then
-      self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
-    end
-    return
-  end
+  if self.dead then return end
 
   if not self.flashing then
     self:cancel_flash()
@@ -405,6 +400,7 @@ function Enemy:update( dt, player, map )
   self:animation():update(dt)
   if self.state == 'dying' then
     if self.props.dyingupdate then
+      self.velocity.y = 0
       self.props.dyingupdate( dt, self )
     end
     return
