@@ -54,7 +54,7 @@ function Item.new(node, count)
   item.quantity = count or node.quantity or 1
   item.isHolding = node.isHolding
   item.subtype = node.subtype or "item"
-  if item.type == "detail" then
+  if item.type == "detail" and node.category == 'recipe' then
     for _,currentRecipe in pairs(recipes) do
       if currentRecipe.name == item.name then
         item.description = currentRecipe.description or "Potion Recipe"

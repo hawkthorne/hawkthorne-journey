@@ -579,6 +579,7 @@ function Inventory:drop()
   local slotIndex = self:slotIndex(self.cursorPos)
   if self.pages[self.currentPageName][slotIndex] then
     local item = self.pages[self.currentPageName][slotIndex]
+    if item.name == 'quest' then return end -- Can't drop quests
     self:dropItem(item, slotIndex, self.currentPageName)
     sound.playSfx('click')
   end
