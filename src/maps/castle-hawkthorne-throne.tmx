@@ -69,7 +69,7 @@
    <properties>
     <property name="info" value="Only a coward runs from the mighty {{grey}}King Cornelius{{white}}!"/>
     <property name="key" value="greendale"/>
-    <property name="level" value="castle-hawkthorne"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>
@@ -167,13 +167,9 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="21" type="spawn" x="456" y="624" width="72" height="72">
+  <object id="21" type="enemy" x="456" y="624" width="72" height="72">
    <properties>
     <property name="enemytype" value="benzalkBoss"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="1"/>
-    <property name="spawnType" value="proximity"/>
-    <property name="x_Proximity" value="350"/>
    </properties>
   </object>
   <object id="22" name="throne_barrier" type="door" x="600" y="624" width="24" height="72">

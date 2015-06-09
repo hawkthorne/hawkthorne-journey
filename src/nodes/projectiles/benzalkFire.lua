@@ -18,11 +18,11 @@ return{
   thrown = false,
   damage = 10,
   special_damage = {fire = 10},
-  horizontalLimit = 600,
+  horizontalLimit = 1000,
   throw_sound = 'fireball',
   animations = {
     default = {'once', {'1,1'},1},
-    thrown = {'once', {'1-4,1'}, .25},
+    thrown = {'loop', {'1-4,1'}, .25},
     finish = {'once', {'4,1'}, 1},
   },
   collide = function(node, dt, mtv_x, mtv_y,projectile)

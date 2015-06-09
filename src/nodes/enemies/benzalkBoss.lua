@@ -21,7 +21,6 @@ return {
   damage = 40,
   attack_bb = true,
   jumpkill = false,
-  guarding = true,
   knockback = 0,
   chargeUpTime = 0.25,
   player_rebound = 200,
@@ -36,7 +35,6 @@ return {
   tokens = 15,
   hand_x = -40,
   hand_y = 70,
-  fall_on_death = true,
   speed = 150,
   dyingdelay = 1,
   vulnerabilities = {'epic'},
@@ -70,6 +68,9 @@ return {
   },
 
   enter = function( enemy )
+    if enemy.db:get("bosstriggers.benzalk", false) then
+      enemy:die()
+    end
     enemy.direction = 'left'
     enemy.state = 'default'
     enemy.jump_speed = {x = -150,
@@ -77,7 +78,6 @@ return {
     enemy.fly_speed = 75
     enemy.swoop_distance = 150
     enemy.swoop_ratio = 0.75
-    enemy.props.guarding = false
     enemy.props.attackFire(enemy)
 
     if not enemy.props.original_pos then
@@ -136,22 +136,17 @@ return {
     fonts.revert()
   end,
 
-  guard = function( enemy )
-    enemy.props.guarding = true
-    enemy.direction = enemy.props.original_pos.x < enemy.position.x and "left" or "right"
-  end,
-
   recoil = function( enemy )
     enemy.props.recoiling = true
     local direction = enemy.direction == "left" and -1 or 1
-    enemy.velocity.x = 200 * direction
+    enemy.velocity.x = 150 * direction
     Timer.add(0.10, function()
       enemy.props.recoiling = false
     end)
   end,
 
   attackFire = function( enemy )
-    if enemy.dead or enemy.props.guarding then return end
+    if enemy.dead or enemy.dying then return end
 
     enemy.state = 'attack'
     local node = {
@@ -165,7 +160,6 @@ return {
     }
 
     Timer.add(enemy.props.chargeUpTime, function()
-      if enemy.props.guarding then return end
       local benzalkFire = Projectile.new( node, enemy.collider )
       benzalkFire.enemyCanPickUp = true
 
@@ -189,12 +183,7 @@ return {
   jump = function ( enemy, player, direction )
     local direction = enemy.direction == "left" and 1 or -1
 
-    if enemy.props.guarding then
-      direction = enemy.props.original_pos.x > enemy.position.x and -1 or 1
-      if math.abs(enemy.props.original_pos.x - enemy.position.x) < 100 then return end
-    end
-
-    if not enemy.props.guarding and enemy.direction == "right" and enemy.position.x >= enemy.maxx then return end
+    if enemy.direction == "right" and enemy.position.x >= enemy.maxx then return end
 
     sound.playSfx( 'benzalk_growl' )
     enemy.state = 'jump'
@@ -280,7 +269,7 @@ return {
   end,
 
   dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 0.4
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 8
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 
@@ -288,12 +277,6 @@ return {
     local level = enemy.containerLevel
     local shake = 0
     local player_dist= {x = 1, y = 1 }
-
-    if player.position.x < 350 then
-      enemy.props.guard( enemy )
-    else
-      enemy.props.guarding = false
-    end
 
     if enemy.shake and level.trackPlayer == false then
       shake = (math.random() * 4)-2/player_dist.x
@@ -306,9 +289,7 @@ return {
     if player.position.x > enemy.position.x + 50 then
       enemy.direction = 'right'
     else
-      if not enemy.props.guarding then
-        enemy.direction = 'left'
-      end
+      enemy.direction = 'left'
     end
 
     enemy.last_jump = enemy.last_jump + dt
@@ -330,7 +311,7 @@ return {
     if enemy.last_jump > 4 and enemy.state ~= 'attack' then
       enemy.props.jump( enemy, player, enemy.direction )
     end
-    if not enemy.props.guarding and enemy.last_attack > pause and enemy.last_jump > 2 and enemy.state ~= 'jump' and not enemy.shake then
+    if enemy.last_attack > pause and enemy.last_jump > 2 and enemy.state ~= 'jump' and not enemy.shake then
       local rand = math.random()
       if enemy.hp >= 70 and rand > 0.6 then
         enemy.props.attackFire(enemy)

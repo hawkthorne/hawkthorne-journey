@@ -308,10 +308,13 @@ function Weapon:update(dt, player, map)
       --print(string.format("Need hand offset for %dx%d", player.frame[1], player.frame[2]))
     end
     if self.magical then
-      self.chargeUpTime = self.chargeUpTime + dt
-      if self.chargeUpTime >= 10 then
-        self.chargeUpTime = 0
-        self.charged = true
+      if not self.charged then
+        self.chargeUpTime = self.chargeUpTime + dt
+        if self.chargeUpTime >= 10 then
+          self.chargeUpTime = 0
+          self.charged = true
+        end
+      else
         self.animation = self.defaultChargedAnimation
       end
     end

@@ -175,7 +175,7 @@ function Enemy:hurt( damage, special_damage, knockback )
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
-  if self.hp <= 0 then
+  if self.hp <= 0 and not self.dying then
     self.state = 'dying'
     self.dying = true
     self:cancel_flash()
@@ -391,12 +391,7 @@ function Enemy:update( dt, player, map )
       self:die()
   end
   
-  if self.dead then
-    if self.props.fall_on_death then
-      self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
-    end
-    return
-  end
+  if self.dead then return end
 
   if not self.flashing then
     self:cancel_flash()
@@ -405,6 +400,7 @@ function Enemy:update( dt, player, map )
   self:animation():update(dt)
   if self.state == 'dying' then
     if self.props.dyingupdate then
+      self.velocity.y = 0
       self.props.dyingupdate( dt, self )
     end
     return
