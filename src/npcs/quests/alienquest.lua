@@ -25,7 +25,7 @@ local quests = {
     completeQuestFail = "The aliens are still camped up to the east of {{orange}}Tacotown{{white}}. I need the alien equipment that they're carrying!",
     completeQuestSucceed = {
     "Wow, impressive! You fought off all those aliens? You are tougher than you look.",
-    "Okay, I got another task for you. Talk to me when you're ready.",
+    "Okay, I have another task for you. Talk to me when you're ready.",
     },
     reward = {affection = 1},
   },

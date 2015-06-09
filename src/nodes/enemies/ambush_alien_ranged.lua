@@ -16,6 +16,7 @@ return {
   hand_y = -24,
   bb_width = 31,
   bb_height = 48,
+  range = math.random(180,220),
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
   hp = 14,
@@ -85,7 +86,7 @@ return {
     local direction 
     local velocity = enemy.props.speed
       if math.abs(enemy.position.x - player.position.x) < 350 then
-        if math.abs(enemy.position.x - player.position.x) < 200 then
+        if math.abs(enemy.position.x - player.position.x) < enemy.range then
           if math.abs(enemy.position.x - player.position.x) < 2 then
           velocity = 0
           elseif enemy.position.x < player.position.x then
@@ -95,7 +96,7 @@ return {
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
           end
-        elseif math.abs(enemy.position.x - player.position.x) == 200 then
+        elseif math.abs(enemy.position.x - player.position.x) == enemy.range then
           velocity = 0
           if enemy.position.x < player.position.x then
             enemy.direction = 'right'

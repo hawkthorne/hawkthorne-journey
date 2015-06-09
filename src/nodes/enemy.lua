@@ -57,7 +57,9 @@ function Enemy.new(node, collider, enemytype)
   enemy.node_properties = node.properties
   enemy.node = node
   enemy.collider = collider
-  
+  enemy.maxx = 0
+  enemy.minx = 0
+  enemy.range = enemy.props.range or 0
   enemy.dead = false
   enemy.dying = false
   enemy.idletime = 0

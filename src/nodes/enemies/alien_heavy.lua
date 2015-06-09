@@ -13,6 +13,7 @@ return {
   width = 48,
   damage = 8,
   jumpkill = false,
+  enemy.range = math.random(200,220),
   chargeUpTime = 0,
   bb_width = 32,
   bb_height = 48,
@@ -90,7 +91,7 @@ return {
           enemy.idletime = 0
           end
         end
-        if math.abs(enemy.position.x - player.position.x) < 200 then
+        if math.abs(enemy.position.x - player.position.x) < enemy.range then
           if math.abs(enemy.position.x - player.position.x) < 2 then
           velocity = 0
           elseif enemy.position.x < player.position.x then
@@ -100,7 +101,7 @@ return {
             enemy.direction = 'left'   
             velocity = enemy.props.speed * -1       
           end
-        elseif math.abs(enemy.position.x - player.position.x) == 200 then
+        elseif math.abs(enemy.position.x - player.position.x) == enemy.range then
           velocity = 0
           if enemy.position.x < player.position.x then
             enemy.direction = 'right'

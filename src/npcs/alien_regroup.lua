@@ -111,7 +111,7 @@ return {
       "The aliens' main source of power is the {{orange}}QFO{{white}}, a giant spaceship that can teleport and transport them in numbers.",
       "If the {{orange}}QFO{{white}} is destroyed, all the aliens will inexplicably die as well for some really convenient reason. Thank god, huh?",
       "My device, which I've completed just seconds ago, will shut down the shields protecting the ship, enabling you to attack and kill it.",
-      "The {{orange}}QFO{{white}} is just right outside the {{red_light}}Chili Fields{{white}} right now. Now is the perfect time to go attack it.",
+      "The {{orange}}QFO{{white}} is just right outside the {{red_light}}Chili Fields{{white}} near the coast right now. Now is the perfect time to go attack it.",
       "Alright, this will be your final mission. Good luck huh, human? I believe in you. Go destroy that {{orange}}QFO{{white}}!",
       }
       Dialog.new(script2, function()

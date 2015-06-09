@@ -148,11 +148,6 @@
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3415" y="104" width="9" height="46">
-   <properties>
-    <property name="blockTop" value="true"/>
-   </properties>
-  </object>
   <object type="enemy" x="1866" y="393" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
