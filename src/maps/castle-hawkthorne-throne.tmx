@@ -69,7 +69,7 @@
    <properties>
     <property name="info" value="Only a coward runs from the mighty {{grey}}King Cornelius{{white}}!"/>
     <property name="key" value="greendale"/>
-    <property name="level" value="castle-hawkthorne"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>

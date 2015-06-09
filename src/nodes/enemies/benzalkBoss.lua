@@ -68,6 +68,9 @@ return {
   },
 
   enter = function( enemy )
+    if enemy.db:get("bosstriggers.benzalk", false) then
+      enemy:die()
+    end
     enemy.direction = 'left'
     enemy.state = 'default'
     enemy.jump_speed = {x = -150,
@@ -136,7 +139,7 @@ return {
   recoil = function( enemy )
     enemy.props.recoiling = true
     local direction = enemy.direction == "left" and -1 or 1
-    enemy.velocity.x = 200 * direction
+    enemy.velocity.x = 150 * direction
     Timer.add(0.10, function()
       enemy.props.recoiling = false
     end)
