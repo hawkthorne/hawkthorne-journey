@@ -60,72 +60,21 @@ return {
   talk_commands = {
     ['Talk about quests']= function(npc, player)
     npc.walking = false
-    local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
     if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
       npc.menu:close(player)
-      end)
-    elseif player.quest == 'Aliens! - Destroy the QFO!' then
-      if check ~= false then
-      local script3 = {
-      "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
-      "What, the aliens didn't automatically die when the mothership blew up? Well, I guess that's pretty realistic, I don't know what I was thinking.",
-      "I know I've treated you unfairly human, but you have my gratitude.",
-      "As a token of thanks, I'll give you my standard issue alien pistol, you'll need it more than I do. Here's some gold as well.",
-      "Whenever you run out of ammo for the pistol, come back to me, I will sell some to you.",
-      "It was nice working with you partner. We've defeated them!",
-      }
-      Dialog.new(script3, function()
-      npc.menu:close(player)
-      local Item = require 'items/item'
-      local itemNode = require ('items/weapons/laser_pistol')
-      local item = Item.new(itemNode, 1)
-      local itemNode2 = require ('items/weapons/lasercell')
-      local item2 = Item.new(itemNode2, 10)
-      player.inventory:addItem(item, true)
-      player.inventory:addItem(item2, true)
-      player.money = player.money + 150
-      local gamesave = app.gamesaves:active()
-      local completed_quests = gamesave:get( 'completed_quests' ) or {}
-      if completed_quests and type(completed_quests) ~= 'table' then
-      completed_quests = json.decode( completed_quests )
-      end
-      table.insert(completed_quests, {questParent = 'alien', questName = 'Aliens! - Destroy the QFO!'})
-      gamesave:set( 'completed_quests', json.encode( completed_quests ) )
-      end)
-      else
-        Dialog.new("Come on, human. The {{orange}}QFO{{white}} is just outside! Its shields are down, now is the time to attack!", function()
-          npc.menu:close(player)
-          npc.walking = true
-          end)
-      end
-    elseif player.quest == 'Aliens! - Regroup with the alien at Chili Fields' then
-      local script2 = {
-      "Howdy there partner! So glad to see you alive.",
-      "Oh man you look angry...okay, I guess it wasn't right leaving you behind like that but hey! You made it!",
-      "Alright, so I'll tell you my plan for defeating those aliens. You've earned it.",
-      "The aliens' main source of power is the {{orange}}QFO{{white}}, a giant spaceship that can teleport and transport them in numbers.",
-      "If the {{orange}}QFO{{white}} is destroyed, all the aliens will inexplicably die as well for some really convenient reason. Thank god, huh?",
-      "I don't know if you've tried attacking the spaceship yet but you would have noticed that it will not take any damage thanks to its shield.",
-      "My device, which I've completed just seconds ago, will shut down the shields enabling you to attack and kill it.",
-      "The {{orange}}QFO{{white}} is just right outside the {{red_light}}Chili Fields{{white}} right now. Now is the perfect time to go attack it.",
-      "Alright, this will be your final mission. Good luck huh, human? I believe in you. Go destroy that {{orange}}QFO{{white}}!",
-      }
-      Dialog.new(script2, function()
-      npc.menu:close(player)
-      player.quest = 'Aliens! - Destroy the QFO!'
-      player.questParent = 'alien'
-      Quest:save(quests.qfo)
       end)
     elseif player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
       Quest:activate(npc, player, quests.aliencamp)      
       Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
       local level = npc.containerLevel
       npc.shake = true
+      player.freeze = true
       sound.playSfx( "quake" )
       level.trackPlayer = false
       Timer.add(2.5, function()
         npc.shake = false
+        player.freeze = false
         level.trackPlayer = true
         local script = {
       "Holy crap, what the hell is that???",
@@ -146,9 +95,6 @@ return {
       end)
       end)
       end)
-      npc.walking = true
-      
-      
     elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
       Quest:activate(npc, player, quests.aliencamp)
     elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
@@ -176,6 +122,7 @@ return {
       Quest:activate(npc, player, quests.alienobject)
     end
     player.freeze = false
+    npc.walking = true
     end,
   },
   talk_responses = {
@@ -188,14 +135,18 @@ return {
       "If they find me, they'll kill me and make sure I never taste another burrito again...oh, the horror!",
     },
     ["inventory"]={
-      "Alright human, wanna see what I have?",
-      "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
+      "Uhh, you say you want to trade?",
     },
   },
   inventory = function(npc, player)
   if Quest.alreadyCompleted(npc, player, quests.qfo) then
     local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
     Gamestate.stack("shopping", player, screenshot, "alien")
+  else      
+      Dialog.new("Too bad, I'm not selling anything to some Earthling like you!", function()
+      npc.menu:close(player)
+      player.freeze = false
+      end)
   end
   end,
 }

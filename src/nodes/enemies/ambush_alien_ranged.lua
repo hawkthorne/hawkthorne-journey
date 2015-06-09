@@ -18,7 +18,7 @@ return {
   bb_height = 48,
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
-  hp = 10,
+  hp = 14,
   vulnerabilities = {'slash'},
   speed = math.random(60,70),
   tokens = 6,

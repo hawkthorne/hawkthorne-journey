@@ -62,13 +62,13 @@ return {
   talk_commands = {
     ['Talk about quests']= function(npc, player)
     npc.walking = false
-    local check = app.gamesaves:active():get("bosstriggers.qfo", true) 
+    local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
     if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
       npc.menu:close(player)
       end)
     elseif player.quest == 'Aliens! - Destroy the QFO!' then
-      if check == true then
+      if check ~= false then
       local script3 = {
       "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
       "What, the aliens didn't automatically die when the mothership blew up? Well, I guess that's pretty realistic, I don't know what I was thinking.",

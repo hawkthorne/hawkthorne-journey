@@ -82,7 +82,9 @@ return {
   end,
 
   die = function( enemy )
+  if enemy.quest and Player.quest == enemy.quest then
     enemy.db:set("bosstriggers.qfo", true)
+  end
   end,
 
   draw = function( enemy )

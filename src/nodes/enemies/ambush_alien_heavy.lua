@@ -18,7 +18,7 @@ return {
   bb_height = 48,
   bb_offset = {x=0, y=0},
   speed = math.random(40,50),
-  hp = 8,
+  hp = 12,
   vulnerabilities = {'slash'},
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1

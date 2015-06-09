@@ -351,7 +351,7 @@
   <object name="bone" type="material" x="984" y="816" width="24" height="24"/>
   <object name="bone" type="material" x="360" y="816" width="24" height="24"/>
   <object name="bone" type="material" x="2064" y="744" width="24" height="24"/>
-  <object type="enemy" x="344" y="773" width="14" height="25">
+  <object type="enemy" x="351" y="752" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
@@ -455,6 +455,12 @@
     <property name="message" value="A health potion!"/>
     <property name="nodeType" value="consumable"/>
     <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1032" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
    </properties>
   </object>
  </objectgroup>
