@@ -109,7 +109,9 @@ return{
       if node.isEnemy then
         if projectile.props.hurting then return end
         projectile.props.hurting = true
-        projectile.velocity.x =0
+        projectile.velocity.x = 0
+        -- water spout gets moved to exactly the center of the enemy
+        projectile.position.x = node.position.x + (node.width / 2) - (projectile.width / 2)
         sound.playSfx( 'explosion_quiet' )
         projectile.animation = projectile.explodeAnimation
         Timer.add(projectile.explodeTime, function()
