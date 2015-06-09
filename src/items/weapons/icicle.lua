@@ -12,7 +12,7 @@ return{
   damage = '2',
   special_damage = 'stab= 1',
   info = 'a set of 5 very sharp icicles',
-  MAX_ITEMS = 10,
+  MAX_ITEMS = 99,
   quantity = 5,
   directory = 'weapons/',
 }
