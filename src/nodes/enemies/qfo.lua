@@ -35,7 +35,7 @@ return {
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
   hp = 50,
-  tokens = 15,
+  tokens = 20,
   hand_x = -40,
   hand_y = 70,
   dyingdelay = 2,

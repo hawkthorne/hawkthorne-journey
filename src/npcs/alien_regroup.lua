@@ -61,6 +61,7 @@ return {
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
+    npc.walking = false
     local check = app.gamesaves:active():get("bosstriggers.qfo", true) 
     if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
@@ -121,6 +122,7 @@ return {
       end)
     end
     player.freeze = false
+    npc.walking = true
     end,
   },
   talk_responses = {

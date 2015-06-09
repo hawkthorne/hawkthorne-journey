@@ -3,7 +3,7 @@
  <properties>
   <property name="offset" value="26"/>
   <property name="overworldName" value="valley_1"/>
-  <property name="soundtrack" value="valley"/>
+  <property name="soundtrack" value="valley2"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/valley.png" width="288" height="1824"/>

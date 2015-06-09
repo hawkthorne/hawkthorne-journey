@@ -10,6 +10,7 @@ local player = require 'player'
 local Player = player.factory()
 local json  = require 'hawk/json'
 local app = require 'app'
+local controls = require('inputcontroller').get()
 local Gamestate = require 'vendor/gamestate'
 
 
@@ -58,6 +59,7 @@ return {
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
+    npc.walking = false
     local check = app.gamesaves:active():get("bosstriggers.qfo", false) 
     if Quest.alreadyCompleted(npc, player, quests.qfo) then
       Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
@@ -127,11 +129,11 @@ return {
         level.trackPlayer = true
         local script = {
       "Holy crap, what the hell is that???",
-      "Damn it, you stupid human! The aliens followed you when you were coming back here, and now they've found us! We're under attack!",
+      "Damn it, you stupid human! The aliens followed you when you were coming back here, and now they've found us! {{red_light}}We're under attack!{{white}}",
       "No, no, no, no, the device was so close to being complete! Then you had to go and mess it all up!",
       "Okay, well, survival first eh? Come meet me at the {{red_light}}Chili Fields{{white}}, we gotta regroup!",
-      "Erm so, unfortunately, I've only got room for one in this teleporter, and I'm not good with spaces-- so you're gonna have to make it there on foot.",
-      "The whole Valley will be crawling with alien soldiers trying to find us...well, to find you. Of course, I'll be at Chili Fields. Anyways, good luck!",
+      "Erm so, unfortunately, I've only got room for one in this teleporter, and I'm not good with spaces-- so you're gonna have to {{red_dark}}make it there on foot.{{white}}",
+      "The whole Valley will be {{green_light}}crawling with alien soldiers{{white}} trying to find us...well, to find you. Of course, I'll be at Chili Fields. Anyways, good luck!",
       "Ooh, I almost forgot to take with me the device you brought. I'll take that...",
       "Alright, toodles!",
       }
@@ -144,7 +146,7 @@ return {
       end)
       end)
       end)
-      npc.walking = false
+      npc.walking = true
       
       
     elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
@@ -152,7 +154,7 @@ return {
     elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
       local start = {
       "Well done, human, you saved me! Say, you're tougher than you look. You know what? I think I'm gonna let you help me.",
-      "Here, take this alien trinket and give it to that buffoon with the telescope. Maybe then he'll stop poking his nose around here.",
+      "Here, take this alien trinket and give it to that {{teal}}buffoon with the telescope{{white}}. Maybe then he'll stop poking his nose around here.",
       "After that, {{red_dark}}come back and talk to me{{white}}. I've got an extremely important mission I need your help with.",
       }
       local Dialogue = require 'dialog'
@@ -179,11 +181,15 @@ return {
   talk_responses = {
     ['Who are you?']={
       "My name is {{green_light}}Juan{{white}}, an alien from another planet.",
-      "I've' fallen in love with the Mexican food on this planet, so I've changed my name and decided to live among you.",
+      "I've fallen in love with the Mexican food on this planet, so I've changed my name and decided to live among you.",
     },
     ['What do you do here?']={
       "Shhh, I'm hiding here from my other alien brethren!",
       "If they find me, they'll kill me and make sure I never taste another burrito again...oh, the horror!",
+    },
+    ["inventory"]={
+      "Alright human, wanna see what I have?",
+      "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
     },
   },
   inventory = function(npc, player)
