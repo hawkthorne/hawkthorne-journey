@@ -104,26 +104,17 @@ return{
   end,
 
   collide = function(node, dt, mtv_x, mtv_y, projectile)
-    if node.isLiquid then
-      node.containerLevel:removeNode(node)
-    end
     if node.isPlayer then return end
-    if node.isEnemy then
-      Timer.add(.1, function () 
-        projectile.velocity.x =0
-        if projectile.props.explode_sound then
-          sound.playSfx( projectile.props.explode_sound )
-        end
-      end)
-      projectile.animation = projectile.explodeAnimation
-      Timer.add(projectile.explodeTime, function () 
-        projectile:die()
-      end)
-    end
     if node.hurt and not (node.isWall and node.node.name == "lavarock") then
       if node.isEnemy then
         if projectile.props.hurting then return end
         projectile.props.hurting = true
+        projectile.velocity.x =0
+        sound.playSfx( 'explosion_quiet' )
+        projectile.animation = projectile.explodeAnimation
+        Timer.add(projectile.explodeTime, function()
+          projectile:die()
+        end)
         Timer.add(0.5, function()
           node:hurt(projectile.damage, projectile.special_damage, 0)
           projectile.props.hurting = false

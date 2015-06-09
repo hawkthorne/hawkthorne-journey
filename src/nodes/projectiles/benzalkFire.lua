@@ -22,7 +22,7 @@ return{
   throw_sound = 'fireball',
   animations = {
     default = {'once', {'1,1'},1},
-    thrown = {'once', {'1-4,1'}, .25},
+    thrown = {'loop', {'1-4,1'}, .25},
     finish = {'once', {'4,1'}, 1},
   },
   collide = function(node, dt, mtv_x, mtv_y,projectile)

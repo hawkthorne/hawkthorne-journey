@@ -150,7 +150,7 @@ return {
   end,
 
   attackFire = function( enemy )
-    if enemy.dead or enemy.props.guarding then return end
+    if enemy.dead or enemy.dying or enemy.props.guarding then return end
 
     enemy.state = 'attack'
     local node = {
