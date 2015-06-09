@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="101" height="14" tilewidth="24" tileheight="24" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="14" tilewidth="24" tileheight="24" nextobjectid="9">
  <properties>
   <property name="Title" value="Black Caverns 3"/>
   <property name="autosave" value="false"/>
@@ -16,66 +16,66 @@
  <tileset firstgid="421" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="bg" width="101" height="14">
+ <layer name="bg" width="106" height="14">
   <properties>
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwwENAAAMw6D6lzoVF3JIWDVVVVVVVd88Xj0MyA==
+   eJztwwENAAAMw6D6lzoVF3JIWDVVVVVVVX3+ANmkTMQ=
   </data>
  </layer>
- <layer name="bg_pillar" width="101" height="14">
+ <layer name="bg_pillar" width="106" height="14">
   <properties>
    <property name="parallax" value="0.8"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0VEKwjAQBNDxctYLqBdQD6Dt/+LJnQ+FJVCWdDGkYQpD8tqUbpnpAJsURYmC03d/5H4w7+X/4H1hrjRXO49nWzECt54X3nfmQXO123i2FSNw63nhPTMLzdVezJPxDp5n3//398rzPyPw5v/baHj76817nbt23vJ8rbPzptzDDOpEnagTdaJO1Ekj185bnq91dt6Ue5hBnaiTXjv5AG2qWdk=
+   eJztkV0KwkAMhOPlrBdQL6AewJ/30JM7DwqysIYmscRlCsPul27pt8y0EZ0YhsmK7F77LfaD8b/cTyw+IEfMsOp+PNYOi8Fr+4rFZ+SCGVY9jcfaYTF4bV+x+I48MMOqN+SKfLLxPvr9r//Xnn+zGOy+n5PlG7fPjHlxXurbnl/KUd9UruLBntiTk6O+qVzFgz2xJydHfVO5igd7Yk9OjvqmchUP9tTnJ894czE=
   </data>
  </layer>
- <layer name="bgwall" width="101" height="14">
+ <layer name="bgwall" width="106" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1LENACAMA8EwARtk/zEpUFoqChd3UiZ4OVW87HWPDNOjNYkxTewkx2zETnJokmea+F057CSPJnlaEwDgowMCYQJk
+   eJzt1LENACAMA0GYgA3Yf0wKlJbaQXdSJng5Y/Cy5j1yVaOtU7TqZE/Zakv2lE2nHqqTv5fNnnrQqYetEwDwgQPGyAJk
   </data>
  </layer>
- <layer name="floor" width="101" height="14">
+ <layer name="floor" width="106" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkUsKwjAQhqdb3fmC1o3Pva+Vgl5AeqYcxfP4OoBW99VL+NcqlFAKnaYm0vzwkTSFZGY+Iptk1g7RBjRAE7RAG3Tic4H/QneNVYyP+ffBAAzBCIyd97nQXVtVEzmZgCmYgTlYWCda46fMP/q2TvTFOjEv1ol52VonxqUmzb+OvXymOhdwJRJYS3vjn+N+5r/EfgU87N2SnYTgAR9hRZ0cwBGcwBncmcgJmPUEsYtMJx7z7qzsKf8sbkS9J9Yi4I4dd+Z5nHzr5cxGrjEtXc7FGeH4KNJjMmU6UVXvL2vU1aOufq0T8/pV5eQFn5AUGA==
+   eJztk0sOgjAURR9TnflLwInfub+RJroBw5pYiuvxtwBF5+gmvFiIpkEToKRU30lOqDWxr5xIxLyztIhWsAbrsAGbsCX2PXzv6Z6REbho0oU92IcDOLSe+57u2ZgXYacRHMMJnMIZdyodbkKT8DN3KhfcyQy4kxmsuZMRVKQmVazlPdWcPuydxbOwc03GjprMsV5AB2tbw/8pgDc0Cv600w7u4QEe4TWjMr7CGX3R52snR+F5MVtK/34uRJ07nnnEb2yydkjTKZ4394uKkOdOoq3qsIgsjVTdu8hORcyrY+4y3Js7mXHvX+n0AJ9DFHI=
   </data>
  </layer>
- <layer name="background" width="101" height="14">
+ <layer name="background" width="106" height="14">
   <data encoding="base64" compression="zlib">
-   eJztlUFOwkAUhl+XJnIBZK8nAFZCdO8J1AsU9wRYzK5R9g1yGm5gdO3eTeEK+CedIS90ykxDp6B5X/Jnwpu/ncf805Yo5yEiRR6cylcHPmsN4RlAt9BG1zAqXg/aJEMyKfp4JlWurwvJpOiTTMJTpad76E77zXtLMqkfeU4kk2ORTIq+pjO5KOnDxX/PJIM6Ea2uoLWuYVQ3uPYaygL1NsYa23zcwfvdz4tKfIfw8c3heYNeG8gljohGWAej+sDvTyZOG/Mt5HEJmVoftR7U1bmE6C/Rz2LCamYPbXmRxefC5tvfiyU879CCeX+Y/9tnIQfmHhNkMsU6k4a/Cb6k2PevfNxh9tCWl8Gc69jxv14wP/LwCeU8Y++eoEco1ZmkFp85166zNsP8OZ9JQRD+Pr/51YCv
+   eJztlTFOwzAUhl/GSuUClL2cgDJBRfeeALhA0h0FhmxR2z2iPU1vUMHMzlK4AvyS/SKTGOxIcSDifdIvK89/+hz/TkqkmEeUkQe/5WsDn15TeC6hC+hd1zBmZj3oIh1ITnWfmVOT+0MiOdV9klNzXxs0WdMMutJ+/uZJTt0g71N4XxtITuF9bdDHnAaVa8lJcYBOItqNoDddw5id4t4xdAi6wq/coe+HGkvMZ6hmSN/4fsLHt4ZnBS07yCqOiBL0wZjtcf1kyOQY80fIaAhx7Ry1CXSmswq9VibX73Fu1HhfbRmSxefC5qvuzxaeDfRoeF8N/4tPIwf8Gylyukef9A/8x/hSIItnNZbwvtoyZPj8x45nXWA+8fAJzbjFft5A11ChcyosPj7/rjP5gPm+nV1BEP4Pn64NgK8=
   </data>
  </layer>
- <layer name="foreground" width="101" height="14">
+ <layer name="foreground" width="106" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1UEKgCAQheE5V3W4jtYRwisU5KoL1KJZFIVgLZwM8v/goQyKAwqKAAD+ZD7H9ss+AABAmin4yytNrWmCdV6zaNY8bWXT76O71GLzFO4h1mek7rfqCbbu7uiojSLdoIm9NR+pv/k2AZRtA21OLfU=
+   eJzt1sEJgDAMheHMpQ7naI4gXUHBnlxADwZUlEIUtLUe/g8eLaHQQHOoCAAAq/FY65x9AACA/xuC/0KhKTVVcM5rJs38TVtZtdvqTjVr/4a7Sew7YknRJ9K7ere91os0ncaaSW/UU84wADy1AAVqLfU=
   </data>
  </layer>
- <layer name="super foreground" width="101" height="14">
+ <layer name="super foreground" width="106" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt07ENgDAMRFFnATZgV0/GDCgDZBaudIEo7AQh8Z90SlLYuiZmAAAAAIAvOJVeiOb99dIL9XDe3bdmtrf8fs26dnh+w7OhHOGd6bu649+MkJkq/zYbAKi6ACAoMT0=
+   eJzt08EJwCAMheG4QDforpmsMxQHcBZzKeRQKiRoD/4fPNRDwrsoAgAAAADA2G2pidi8Li+9WHXn2/0oImeJ77dZtR0a3/CtWS73zvZ9zO69m+YyW+bPRwMAf+p7HDE9
   </data>
  </layer>
- <layer name="collision" width="101" height="14" visible="0" opacity="0.9">
+ <layer name="collision" width="106" height="14" opacity="0.9">
   <data encoding="base64" compression="zlib">
-   eJztmDsKgDAQBc39L2Gz8RZ6NS0EQcQUeboPMgPT5jek2SjTHOgkmLHSxA6a+EETP2jiB038oIkfNHlnK5d/MXKTetw9BC7iN8xoonqLXpX0rvvl2VpU0X6u8wdVk9PsGc/opv0TeObeZgeaMzXS
+   eJzt2LsNwCAMRVGz/xJpIGNkNYoogiJRCp6FZd0jvYYCYT4FrsWOSiLF3sYAAAAAILKrjGCPdv8nl3MmPUPV/qxGyWNez/X+aUnv3sPznD76SW7RVRKPsr6d7yk78Xua+7LWAXTX3jI=
   </data>
  </layer>
- <objectgroup color="#a41f05" name="nodes" visible="0">
+ <objectgroup color="#a41f05" name="nodes">
   <object id="1" name="main" type="door" x="114" y="228" width="36" height="60">
    <properties>
     <property name="level" value="black-caverns-2"/>
     <property name="to" value="black-cavenrs-3"/>
    </properties>
   </object>
-  <object id="2" name="seabluff" type="door" x="2376" y="192" width="24" height="48">
+  <object id="2" name="seabluff" type="door" x="2490" y="192" width="36" height="48">
    <properties>
     <property name="level" value="seabluff"/>
     <property name="to" value="main"/>
@@ -86,7 +86,7 @@
     <property name="foreground" value="true"/>
    </properties>
   </object>
-  <object id="4" name="lava" type="liquid" x="2016" y="240" width="312" height="96">
+  <object id="4" name="lava" type="liquid" x="2016" y="240" width="432" height="96">
    <properties>
     <property name="death" value="true"/>
     <property name="drag" value="true"/>
