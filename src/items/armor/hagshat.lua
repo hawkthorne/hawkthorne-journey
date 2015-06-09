@@ -1,6 +1,6 @@
 return{
   name = "hagshat",
-  description = "Hags Hat",
+  description = "Hag\'s Hat",
   type = "armor",
   subtype = 'secondary',
   info = 'A hat thats perfect for any occasion.',

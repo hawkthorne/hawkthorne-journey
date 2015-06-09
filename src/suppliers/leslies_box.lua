@@ -19,7 +19,7 @@ return {
     {"ajaxshield",1,225},
     {"berserkerbarbute",1,300},
     {"hagshat",1,150},
-    {"lightarmour",1,375},
+    {"lightarmor",1,375},
     {"necromancercloak",1,300},
     {"platemail",1,750}
   },

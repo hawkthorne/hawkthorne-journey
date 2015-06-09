@@ -14,7 +14,7 @@ return {
   },
   armor = {
     {"femininefaulds",1,450},
-    {"lightarmour",1,375},
+    {"lightarmor",1,375},
     {"windwalkercloak",1,225},
     {"ajaxshield",1,225},
     {"berserkerbarbute",1,300},

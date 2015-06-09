@@ -3,7 +3,7 @@ return{
   description = "Berserker Barbute",
   type = "armor",
   subtype = 'secondary',
-  info = 'A Barbute fabled to make it\'s wearer berserk.',
+  info = 'A Barbute fabled to make its wearer berserk.',
   defense = 8,
   directory = 'armor/',
 }

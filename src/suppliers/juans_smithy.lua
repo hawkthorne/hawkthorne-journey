@@ -15,7 +15,7 @@ return {
   armor = {
     {"ajaxshield",1,225},
     {"greenguard",1,600},
-    {"lightarmour",1,375},
+    {"lightarmor",1,375},
     {"pruneplackart",1,375},
     {"tinytarge",1,525},
   },

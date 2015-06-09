@@ -29,7 +29,7 @@ local function setCheat(cheatName, turnOn)
       'throwingaxe','throwingknife','arrow'}},
     give_armor = {armor = {
       'ajaxshield', 'berserkerbarbute', 'femininefaulds',
-      'greenguard', 'hagshat', 'ivoryheadpiece', 'lightarmour',
+      'greenguard', 'hagshat', 'ivoryheadpiece', 'lightarmor',
       'necromancercloak', 'platemail', 'pruneplackart',
       'spiderburgonet', 'tinytarge', 'windwalkercloak'}},
     give_scrolls = {misc = {'lightning', 'ghost_pepper'}},
