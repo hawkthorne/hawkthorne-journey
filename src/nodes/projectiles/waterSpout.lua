@@ -122,8 +122,11 @@ return{
     end
     if node.hurt and not (node.isWall and node.node.name == "lavarock") then
       if node.isEnemy then
+        if projectile.props.hurting then return end
+        projectile.props.hurting = true
         Timer.add(0.5, function()
           node:hurt(projectile.damage, projectile.special_damage, 0)
+          projectile.props.hurting = false
         end)
       else
         node:hurt(projectile.damage, projectile.special_damage, 0)

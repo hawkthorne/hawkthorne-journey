@@ -175,7 +175,7 @@ function Enemy:hurt( damage, special_damage, knockback )
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
-  if self.hp <= 0 then
+  if self.hp <= 0 and not self.dying then
     self.state = 'dying'
     self.dying = true
     self:cancel_flash()
