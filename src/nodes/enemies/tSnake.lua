@@ -85,8 +85,8 @@ return {
     local node = {
       type = 'key',
       name = 'ferry',
-      x = player.position.x+48,--2592,
-      y = player.position.y+24,--742,
+      x = 1490,
+      y = 463,--742,
       width = 24,
       height = 24,
       properties = {},
