@@ -119,7 +119,6 @@ return{
         end)
         Timer.add(0.5, function()
           node:hurt(projectile.damage, projectile.special_damage, 0)
-          projectile.props.hurting = false
         end)
       else
         node:hurt(projectile.damage, projectile.special_damage, 0)
