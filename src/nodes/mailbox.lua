@@ -31,6 +31,8 @@ function Mailbox:keypressed( button, player )
           player.inventory:removeManyItems(1, {name='document',type='key'})
             Dialog.new("Document successfuly deposited into the mailbox! Cue montage and return to Frankie.", function()
             player.quest = 'Save Greendale - Return to Frankie'
+            Quest.removeQuestItem(player)
+            Quest.addQuestItem(quests.dianereturn, player)
             Quest:save(quests.dianereturn)
             end)
           end

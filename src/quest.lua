@@ -89,12 +89,12 @@ function Quest.giveQuestSucceed(npc, player, quest)
         player.quest = quest.questName
         player.questParent = quest.questParent
         Quest:save(quest)
+        Quest.addQuestItem(quest, player)
       end
       npc.menu:close(player)
       npc.prompt = nil
     end)
   end)
-  Quest.addQuestItem(quest, player)
 end
 
 function Quest.addQuestItem(quest, player)
@@ -106,7 +106,7 @@ function Quest.addQuestItem(quest, player)
   player.inventory:addItem(item, true)
 end
 
-function Quest.removeQuestItem(quest, player)
+function Quest.removeQuestItem(player)
   local itemNode = utils.require( 'items/details/quest' )
   itemNode.type = 'detail'
   local item = Item.new(itemNode)
@@ -122,6 +122,7 @@ function Quest.giveQuestFail(npc, player, quest)
       if result == 'Yes' then
         player.quest = nil
         player.questParent = quest.questParent
+        Quest.removeQuestItem(player)
       end
       npc.menu:close(player)
       npc.prompt = nil
@@ -190,7 +191,7 @@ function Quest.completeQuestSucceed(npc, player, quest)
     if quest.collect then
       player.inventory:removeManyItems(1, quest.collect)
     end
-    Quest.removeQuestItem(quest, player)
+    Quest.removeQuestItem(player)
     player.quest = nil
     Quest:save({})
     npc.menu:close(player)
