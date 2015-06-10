@@ -44,7 +44,7 @@ function Quest:activate(npc, player, quest, condition)
   local completed = self.alreadyCompleted(npc,player,quest)
   if completed and not quest.infinite then
     -- If we've already done this quest, give the player the congrats message without reward
-    Dialog.new(quest.completeQuestSucceed, function()
+    Dialog.new(quest.completed or quest.completeQuestSucceed, function()
       npc.menu:close(player)
     end)
     return
@@ -86,9 +86,15 @@ function Quest.giveQuestSucceed(npc, player, quest)
       if result == 'Yes' then
         player.quest = quest.questName
         player.questParent = quest.questParent
+        --if there is an extra info message for player after quest prompt, display it
+        if quest.promptExtra then
+          Dialog.new(quest.promptExtra, function()
+          npc.menu:close(player)
+          end)
+        end
         Quest:save(quest)
       end
-      npc.menu:close(player)
+      --npc.menu:close(player)
       npc.prompt = nil
     end)
   end)

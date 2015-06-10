@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="24" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="4"/>
+  <property name="soundtrack" value="valley2"/>
+ </properties>
+ <tileset firstgid="1" name="valley-sandpits" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley-sandpits.png" width="288" height="984"/>
+ </tileset>
+ <tileset firstgid="493" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="floor" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzLY2BoyBvFA4b5GBkYRvHAYhkglqah+RpArE5D802A2JhGZucC0ygt8UDnv1E8igcSAwBNCix5
+  </data>
+ </layer>
+ <layer name="Tile Layer 4" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0TsOg0AMRVEvLStiDVna2waf0EGADpJQc0fuRqN0QOMnHY1lW27GLPIvldnzLOn+bvZYseGDL37YnahFT8zEjlZX3M/76f7CO2DEGxNmLE7UoidmYkeDK+7n/XS/563RoEWHF3onatETM7Gj2hX38/5dfx6JRCJX5ACzOG4E
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4CBIROIs2hofikQl9HQ/EYgbqKh+aNgFIyCUUBtAAD30wLC
+  </data>
+ </layer>
+ <layer name="features" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztjzsOgzAUBH2WwF3IsbganwANf/q4hz4pGUsuEFL8JAii8UjT7L6VbKU8d5IoFRf4whwzTNHkFZYnepPXOGCPHbbY2HzC8URvctffNP3bcSP1Egvb2bGXegm9ed8DAwx/9Ef45/sjfO6yL9vPbs9NHNlM6j0ez7Wsi8heNQ==
+  </data>
+ </layer>
+ <layer name="dark" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxbwsigsAGCFywB4hlA3APEDUBcAsQZQBwDxAEQzEAqXjJq/qj5o+YPWfNH8SgexbTDAIUu8s0=
+  </data>
+ </layer>
+ <layer name="collision" width="24" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF+MBbRtriUTA0ADsTAo8kMJr+R8EooB0AAA+0LLw=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="24" height="20">
+  <object name="main" type="door" x="31" y="193" width="30" height="71">
+   <properties>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object type="enemy" x="192" y="216" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Investigate Goat Farm"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="31" y="104" width="12" height="47"/>
+  <object type="killing_floor" x="53" y="93" width="12" height="47"/>
+  <object type="killing_floor" x="23" y="96" width="143" height="30"/>
+  <object type="killing_floor" x="95" y="90" width="23" height="50"/>
+  <object type="killing_floor" x="288" y="94" width="13" height="52"/>
+  <object type="killing_floor" x="343" y="84" width="9" height="53"/>
+  <object type="killing_floor" x="321" y="99" width="9" height="53"/>
+  <object type="killing_floor" x="218" y="90" width="9" height="53"/>
+  <object type="killing_floor" x="152" y="83" width="9" height="53"/>
+  <object type="killing_floor" x="75" y="78" width="9" height="53"/>
+  <object type="killing_floor" x="247" y="81" width="9" height="53"/>
+  <object type="killing_floor" x="267" y="82" width="9" height="53"/>
+  <object type="killing_floor" x="227" y="91" width="17" height="20"/>
+  <object type="killing_floor" x="296" y="98" width="17" height="20"/>
+  <object type="killing_floor" x="410" y="106" width="17" height="20"/>
+  <object type="killing_floor" x="439" y="109" width="11" height="23"/>
+  <object type="killing_floor" x="458" y="107" width="39" height="27"/>
+  <object type="killing_floor" x="465" y="120" width="8" height="29"/>
+  <object type="killing_floor" x="513" y="93" width="11" height="33"/>
+  <object type="killing_floor" x="534" y="97" width="17" height="45"/>
+  <object type="killing_floor" x="485" y="70" width="17" height="45"/>
+  <object type="killing_floor" x="399" y="111" width="6" height="31"/>
+  <object type="scenetrigger" x="24" y="120" width="48" height="144">
+   <properties>
+    <property name="cutscene" value="alien"/>
+   </properties>
+  </object>
+  <object name="alien" type="npc" x="432" y="216" width="48" height="48"/>
+  <object type="killing_floor" x="558" y="93" width="14" height="35"/>
+  <object type="killing_floor" x="5" y="97" width="14" height="35"/>
+  <object type="enemy" x="288" y="216" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Investigate Goat Farm"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

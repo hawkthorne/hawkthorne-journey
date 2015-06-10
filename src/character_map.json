@@ -167,6 +167,18 @@
   "shootarrowjump": {
     "left": [ "loop", [ "9-12,11" ], 0.12 ], 
     "right": [ "loop", [ "9-12,12" ], 0.12 ]
+  },  
+  "laserpistol": {
+    "left": [ "loop", [ "9,9" ], 0.12 ], 
+    "right": [ "loop", [ "9,10" ], 0.12 ]
+  },
+  "laserpistolwalk": {
+    "left": [ "loop", [ "10-11,9" ], 0.12 ], 
+    "right": [ "loop", [ "10-11,10" ], 0.12 ]
+  },
+  "laserpistoljump": {
+    "left": [ "loop", [ "12,9" ], 0.12 ], 
+    "right": [ "loop", [ "12,10" ], 0.12 ]
   },
   "slide": {
     "left": [ "once", [ "8,3" ], 1 ], 
