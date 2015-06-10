@@ -35,7 +35,7 @@ function HUD.new(level)
   hud.invincibleAnimation:pause()
 
   hud.restricted = false
-  hud.restrictedImage = love.graphics.newImage('images/hud/restricted.png')
+  hud.restrictedImage = love.graphics.newImage('images/hud/Restricted.png')
   local h = anim8.newGrid(19, 19, hud.restrictedImage:getDimensions())
   hud.restrictedAnimation = anim8.newAnimation('loop', h('1-2,1'), 0.1, {[2] = 0.4})
   hud.restrictedAnimation:pause()
