@@ -29,11 +29,13 @@ return {
     local show = npc.db:get('acornKingVisible', false)
     local acornDead = npc.db:get("bosstriggers.acorn", true)
     if show == true then
-        npc.emotion = Emotion.new(npc, "exclaim")
-        npc.angry = true
-        npc.stare = false
-        npc.state = 'attack'
-        npc.attackingEnemy = true
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+        --[[npc.emotion = Emotion.new(npc, "exclaim")
+            npc.angry = true
+            npc.stare = false
+            npc.state = 'attack'
+            npc.attackingEnemy = true]]
     end
   end,
 

@@ -11,10 +11,11 @@ return {
     },
   },
 
-  enter = function(npc, previous)
+ enter = function(npc, previous)
     local show = npc.db:get('acornKingVisible', false)
     local acornDead = npc.db:get("bosstriggers.acorn", true)
-    if show == true then
+    local bldgburned = npc.db:get('house_building_burned', false )
+    if show == true or bldgburned == true then
       npc.state = 'hidden'
       npc.collider:setGhost(npc.bb)
     end

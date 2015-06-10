@@ -51,7 +51,7 @@ return {
 
   enter = function(npc, previous)
     -- If the blacksmith is dead and Hilda hasn't cried yet
-    if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false then
+    if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false or npc.db:get('blacksmith_building_burned', false ) and npc.db:get('hilda-cried', false) == false then
       -- Hilda will come from just off-screen when the player leaves the blacksmith level
       npc.position.x = 900
       npc.x = 900
