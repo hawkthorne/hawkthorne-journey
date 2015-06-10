@@ -24,8 +24,8 @@ function HUD.new(level)
 
   hud.saving = false
   hud.savingImage = love.graphics.newImage('images/hud/saving.png')
-  local h = anim8.newGrid(17, 16, hud.savingImage:getDimensions())
-  hud.savingAnimation = anim8.newAnimation('loop', h('1-7,1'), 0.1, {[7] = 0.4})
+  local h = anim8.newGrid(36, 36, hud.savingImage:getDimensions())
+  hud.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), 0.1, {[8] = 0.4})
   hud.savingAnimation:pause()
   
   hud.invincible = false
@@ -113,7 +113,7 @@ function HUD:draw( player )
     255
   )
 
-  love.graphics.print(player.health .. '%', x+17, y + 6)
+  love.graphics.print(player.health, x+17, y + 6)
   love.graphics.setColor( 255, 255, 255, 255 )
 
   -- MONEY

@@ -11,6 +11,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'turkeyBoss',
+  isBoss = true,
   attackDelay = 1,
   height = 115,
   width = 215,
@@ -92,48 +93,6 @@ return {
     local spawnedNode = NodeClass.new(node, enemy.collider)
     local level = gamestate.currentState()
     level:addNode(spawnedNode)
-  end,
-
-  draw = function( enemy )
-    fonts.set( 'small' )
-
-    love.graphics.setStencil( )
-
-    local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
-    local bossChevron = love.graphics.newImage('images/enemies/bossHud/bossChevron.png')
-    local bossPic = love.graphics.newImage('images/enemies/bossHud/turkeyBoss.png')
-
-    energy:setFilter('nearest', 'nearest')
-    bossChevron:setFilter('nearest', 'nearest')
-    bossPic:setFilter('nearest', 'nearest')
-
-    x, y = camera.x + window.width - 130 , camera.y + 10
-
-    love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.draw( bossChevron, x , y )
-    love.graphics.draw( bossPic, x + 69, y + 10 )
-
-    love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "TURKEY", x + 15, y + 15, 52, 'center' )
-    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
-
-    energy_stencil = function( x, y )
-      love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
-    end
-    love.graphics.setStencil(energy_stencil, x, y)
-    local max_hp = 100
-    local rate = 55/max_hp
-    love.graphics.setColor(
-      math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
-      math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
-      0,
-      255
-    )
-    love.graphics.draw(energy, x + ( max_hp - enemy.hp ) * rate, y)
-
-    love.graphics.setStencil( )
-    love.graphics.setColor( 255, 255, 255, 255 )
-    fonts.revert()
   end,
 
   attackBasketball = function( enemy )
