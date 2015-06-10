@@ -87,6 +87,17 @@ function Item:draw(position, scrollIndex, hideAmount)
   end
 end
 
+---
+-- Draws the item in the hud
+-- @param position the location in the inventory
+-- @return nil
+function Item:drawHud(x, y, quantity)
+  love.graphics.draw(self.image, self.image_q, x, y-2)
+  if quantity and self.quantity > 1 then
+    love.graphics.print("x" .. self.quantity, x + 22, y + 2)
+  end
+end
+
 --this is the action the item takes when it is selected in the inventory
 function Item:select(player)
   
