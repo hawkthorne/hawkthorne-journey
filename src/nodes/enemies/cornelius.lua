@@ -34,8 +34,8 @@ return {
   knockback = 0,
   player_rebound = 400,
   antigravity = true,
-  bb_width = 124,
-  bb_height = 182,
+  bb_width = 220,
+  bb_height = 200,
   bb_offset = { x = 0, y = 8},
   attack_width = 40,
   velocity = {x = 0, y = 10},
@@ -50,9 +50,10 @@ return {
     "{{grey}}Welcome{{white}}, you are the first to make it to the {{orange}}Throne of Hawkthorne{{white}}.",
     "Let me take a look at you...",
     "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} " .. Player.character.name:gsub("^%l", string.upper) .. "{{white}}.",
+    "{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}.",
   }, 
   deathScript ={
-    "{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}.",
+    
     "Why record myself breathing weird and letting you destroy me?",
     "Because I am a man of {{red}}Honor!{{white}}",
     "So you've earned the pleasure of my death!",

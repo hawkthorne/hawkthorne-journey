@@ -354,7 +354,9 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
 
     if self.props.damage ~= 0 then
       if self.attackingWorld then return end
-      self.attackingWorld = true
+      if not self.type == "cornelius" then
+        self.attackingWorld = true
+      end
       node:hurt(self.props.damage, self.props.special_damage)
       Timer.add(1.25, function()
         self.attackingWorld = false
