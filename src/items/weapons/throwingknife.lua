@@ -11,7 +11,7 @@ return{
   damage = '1',
   special_damage = 'stab= 1',
   info = 'a set of 5 throwing knives',
-  MAX_ITEMS = 15,
+  MAX_ITEMS = 99,
   quantity = 5,
   directory = 'weapons/',
 }

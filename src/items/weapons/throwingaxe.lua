@@ -11,7 +11,7 @@ return{
   damage = '2',
   special_damage = 'slash= 1',
   info = 'a set of 4 throwing axes',
-  MAX_ITEMS = 12,
+  MAX_ITEMS = 99,
   quantity = 4,
   directory = 'weapons/',
 }
