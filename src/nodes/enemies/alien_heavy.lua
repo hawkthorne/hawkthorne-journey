@@ -13,7 +13,7 @@ return {
   width = 48,
   damage = 8,
   jumpkill = false,
-  enemy.range = math.random(200,220),
+  range = math.random(200,220),
   chargeUpTime = 0,
   bb_width = 32,
   bb_height = 48,

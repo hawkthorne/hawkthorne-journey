@@ -16,7 +16,7 @@ return {
   hand_y = -24,
   bb_width = 31,
   bb_height = 48,
-  enemy.range = math.random(180,210),
+  range = math.random(180,210),
   --bb_offset = {x=0, y=0},
   velocity = {x = 0, y = 0},
   hp = 14,
