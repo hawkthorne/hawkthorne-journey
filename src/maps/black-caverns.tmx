@@ -34,7 +34,7 @@
    eJztnEFy20AMBJ3/v8Pv8Dvym5QPOoTF5QIEFjPYna7CJRIpYNCmJMfS95+vr2+VSnVUMcOSDbqPU2s35OmZe++GPJWnJyBPxQ6g/ZKnwgLaLzkqLKAdk6dj0DlUPvbsvGjH5OkYdA7y9AzP3oLeB1MxZCLuQbvBVAyZiP9BO8FYyGzEPWgnWHbL4KkY0yn76v3KUzwdM5On59ExK3nq77UrnX+mV/Z8dz55ikOezs89ezw2T7vu8wl56ju3PF1P9XPPajJ7RjsZnWOHfX6Qp/ZzMNSKOTogT+3nYKqK3jOyQmaO4CeY25tjmKtilkjep3o6mmd2e9VO0a6i9ozOYHdPfwhyZPe0eyG59nJ9PeDpFZ2jPD3HU+/tT/ftVr98fk7RvTDWWy8ymD2epZ9ddvs0t8q261WMHmfUj+dc3WqnWVD5RNzwHGf1WJ6eVzt4usv7/V1ew6DyqfJU7/f3mAWVT5WnT/ebgc6xYg9dqztRT9H5y9NaT63/357NaJ671yGW49lqdU6ihln+T7d1eO9UlZNYSzR/tIcIT0/h9zp0reg53iJP/XOKeiJ7/UvgoTyNc3fdzLoOzh7Diq6n/jlFPfLUP+cOoPdSvXN0TxFPR/e5/vv19xozrs9plT9PVtB7kad+Ty3HRpxi8hS9D3k673n2twtRT0fvC+SpPI3s33qs93m/W0bIHbzhVE+92YyIXE93rmzkqS0bL+gM0JWNPL1Hz/vytIOn1zm9oDNAVzby1JaNF3QG6MrmVE9X/04enQG6sjnVU+882bnuXtnIU3m6cgezv5eKfofk7p6u/swPOgN0veHp7/5O8vTHcJ8s0BmgqzpP1h1E510NOh90VefJuoPovHre59zP2zxZdxCddzXofFB5e+5v+ezLp07yNPqZbg/ofDp4mpnnm2OYcsvsvepxGCsLzzX01OtptPeqx2EsNPJUnspTrkw7fOcQa7F7wN6ftecuvbMWe5bs/Vl77tI7a7Fnyd7fXaG+rzMbdI4jDxi/J549P2vPHUHn2MkD9v7kqTzo0J88rc3U+zmIbjuv7Hm316esoN3s7ukusM+DdnPlzjv2jIJ1ni7v9yN07BkF+zxoNyt2vrLnld/lXYk83dvTJyp8zcpOnuI9XTmrhxXXW28f6B2MuMsF7SPKYda+Mmfy3t9zvOe4t7d5emWsDNAzrJgN3TtbPuheM1xF9y9P5WmXGdiz6Q56Dxl7QffMlsddNt1B7+F0T1cjT3l2iO6zu6eIvryg9yRP43NajvGelw30nk731DNvpacZP1eZoHeTkQu6R3RZssnKDwU6Y3mqUqlU/esfqEuuDQ==
   </data>
  </layer>
- <objectgroup color="#f9f9ff" name="nodes" visible="0">
+ <objectgroup color="#f9f9ff" name="nodes">
   <object id="1" type="climbable" x="248" y="1078" width="8" height="188"/>
   <object id="2" name="main" type="door" x="48" y="1488" width="24" height="48">
    <properties>
@@ -2886,10 +2886,9 @@
   <object id="300" name="ember" type="material" x="2424" y="2088" width="24" height="24"/>
   <object id="301" name="ember" type="material" x="2736" y="1440" width="24" height="24"/>
   <object id="302" name="watermelon" type="consumable" x="324" y="1860" width="24" height="24"/>
-  <object id="303" type="info" x="2520" y="2088" width="24" height="24">
+  <object id="303" name="pink_potion" type="detail" x="2520" y="2088" width="24" height="24">
    <properties>
-    <property name="info" value="Max Health Potion Recipe = | 2 peanuts + 1 frog + 2 arms + 1 ember"/>
-    <property name="sprite" value="note"/>
+    <property name="category" value="recipe"/>
    </properties>
   </object>
  </objectgroup>
