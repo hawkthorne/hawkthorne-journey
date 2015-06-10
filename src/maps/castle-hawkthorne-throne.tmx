@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="115" height="37" tilewidth="24" tileheight="24" nextobjectid="21">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="86" height="37" tilewidth="24" tileheight="24" nextobjectid="26">
  <properties>
   <property name="blue" value="223"/>
   <property name="green" value="181"/>
@@ -14,71 +14,66 @@
  <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="bg_leaves2" width="115" height="37">
+ <layer name="bg_leaves2" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1dENgjAUQNGO4iiO5iisxQiM4J/4QfKiNbTgg0TPSV7ih6L20lIKAAAAAAAAEE2lXJ5zn+fs38I+Y5gtTef3D1PDuFfyjeWt563n81PlGrXpvS79jmq57HvneZ61luEMrTboaWmP5qqtdWwWW9U693Z83aNpf+wPra31p/20p2MccrSs/bJn567XrU20PEbj+TjE13u+g3yZZ6SW58l6xml5rm821RIAAACAX/QAWjKzlg==
+   eJzt1MsNgzAQQMEthVJSWkpJWykhJeQWI0ACZCQT/mJG2hsH87R2BAAAAAAAe/tGvD4Fk76rjj7rlaRm8S6Y9N3zoCNeUmnXtm1Vj91ttHc522NOV7s7NNWjflvnNh3v7j5/cE65rkua9ufO+h26tyA1fvzbR9dG5g6vsqu6bjd3NtVC1/XY1+1pCgAAsMwPSQW+0Q==
   </data>
  </layer>
- <layer name="bg_leaves" width="115" height="37">
+ <layer name="bg_leaves" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1ssNgzAQBcAthVJSGqWkFOpICS6BU7CUgxU5SLB8cpiRfMAgeeXHGiIAAAAAAAAAAM5XIoa7a+D/zBHP0hnL/HR3bWyz5BavziiyvEw9Z+uYE+dt7clejk2e+vUCX3u+K9O1HFfynfLV0+rs8dje//RRqm97a8ryeBv6aKzPL5k+sv+/sjzHxnNxaK8za3K8Pd+6TJbZ94Dfrs4SAAAAgL435Rl7SQ==
+   eJzt1MEJwyAUgOE3iqN0tI7SUTJHR3CEnvpCCvVgcogBW/g+EIIHkZ9nIgAAAAAAAJjlFfGonZX7y+y7/bNsGM/Oqrqets5qr2nT1hyfcNT0oPUy466/JBuUnK9y1Xm6bj4d7ut39r3Vwca6bpq3W9q3PHIe+//IkbO4tisAAABfb6A6TVs=
   </data>
  </layer>
- <layer name="background" width="115" height="37">
+ <layer name="background" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="pillar" width="115" height="37">
+ <layer name="pillar" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmjFOw0AQRbch96CDki6U6aClgpaK3AC6vUI4RLhRzsNEEMmyJt7Z9XrXM/OfNIr015YtPX1rrTgEX7ysLAfleHJ5Q7PpcN1WeHJpHbi0A1zaAS7tAJd2gEs7eHZJ7yeR3lNi7/uohWeX1oBLO1h2eUxk3LpmPLm07PGMdZdT893gHlri2aW1bnp1GQJctnJZ4/8puOyb1yT1XPXmctwPbS4vv7mjEcu9HFPiVJPX2m7m9pjjjuZekEn5CSEe/8bUc1hDL7c0j4IsF0kf4bI853iieRZkuQhdxpmXaYYGl680b4Isl9Te6H8tzrxMM9bgMvUu+UGzF2S5jJ+lVyYelPics2cZnrNkLz9pvgRZCYJ9rDqXa8mH3AqOqcXQ3Xjgsiwf8jCxdhKcXwLXTbgsy89c+ri7sn4Ky7nUzNJ7mRKXqT7CJU+v/Sp3vLSPcMkz5WDDfHO4pHtpH+GS531FubSPcCmH62NP4NIOcAmAHX4BSXDNSw==
+   eJztljEOAVEYhLfhHjpKHaWOVkV0Km5A5wI4AU6AE+AWzmMaiWx2vZ/dyf6P+ZJpZt/a7JdJVpJUx9BZ/yvIKwd55SCvHOSVg7xykFcO8spBXjnIKwd55SCvHOSVg7xykFcO8srBq9caUg+c8YxXr7ETeu/0buTVhvbKoWxPRfedRRNpGTpPxLDXDtI1dJ6IwWsfGRg6T8TgdYSMDV0Wkw+eUyYevIb+q86QuaFLs0Y2yDZwjkGR783rPcy9LpCloUuzQ/bI4YNnlYWHvebRMJx5xxE5IeeCv/MNnr2231y7G+6/IFfkZjhbNh69Pnfay7l+T2xeq4T9HfrGa2in/+o1rw/5tu40dq9wsIKLlfV80d660xi8Th311p3G4DWLrJ1Wya949Ya8in/gAQyrbzk=
   </data>
  </layer>
- <layer name="floor" width="115" height="37">
+ <layer name="floor" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmklOwzAUhl2uQMuGBUi0iHkFrCMx7BHDvmI4RwQ3oNDcoL0GM1yHLWz4ozYlteLkJbGUV+d90iehykYmH3WTJkoVY6jU02BaD695BX+dNcbr8sZO1sdhbVyRlu4gLd1BWrqDtHQHaekO0tIdpKU7SEt+9FN8gHeGedKSH4MU72FPjboG2jxpyY+0lnGH2jxpyY+shthjfey1fl9TWvIjq+MtxF7rDzSlJT+KdJSWfMnbUVryJOr3qP6vRXoZHaUlT2LnqX7CXistZwy95fi1Uu/L+YZSTdiCC43sNSxhzDL8Joz9wZhfw7g6tzR91xM1M83LarmCY92GndgxX8PP63ADbsItuA13CP2o1Lmlvq+G3/XgvGfS0zSv6j12cS51XdJSJfZMJKvlgcX3Wh5catmELbhAHJ/UUu+ZRIDj05/WC2LH61RalqYNO3CVON7UktIzmh8y1PbjS2lZml24B/eJ49NaUnrGr2kKL9oiLrU8hEfwmDg+qyX1/cmlpbb3e5HBDLY8g+fwgjie0pLSk0tLl7iC1/CGOJ7aMquntLTDM3yBr/ANvsMP+EmYm6dl0vVK/Nyna+fPKUV3hv+n0jp+EebnbRn1jJ4diRs+R3JSsUHCffP+6H566ud91ZTtGFKkpUn9OZIqMNwjIJ2/VYWNjiF1acm1p62OIXVqya2nzY4hdWuZ9nnPQf3Z1TzUsSVnyxxDLuuwRZ1bCu7wB15uSH8=
+   eJztlDtOxDAURd+wBqChGAqggwqoUwz0SECPBKwjgh0ASnaQbGP4sx1aaLjRxIIizBjFF1vRPdJpZpwX+0hxZTatzLIaWmDqdnbr1Ml4V2pU6kpBXTmoKwd15aCuHNSVg7pyUFcO6spBXTmoKwd15aCuHNSVg7pyUFcO6sqhq+t4ZLYO30eLn//Ams9f1qnrrOs2+ux4tPRFXfvdA2tL3b+rq+7XRSzDFbjquV5d/diAm3DLc32Bc8KsVNe57MI9uB97IzasrhN4AA9jbwSUs2/BmTkZ3wabY3gCT2NvZGCcwwt4GXsjA+AePsBH+ASf4Qt8/cOMM8K+MDMnjP0X5jV983i+aMWdZ0eBxcy86PAO/133PzqNvk0bqtaasD/MzN38n97AK0uzbYimDTG6pto2VNOGWF1TaxuyaUPMrq7trX3f8ylZ9jh77K4p26eJunK6Cg5fnxTeTA==
   </data>
  </layer>
- <layer name="features" width="115" height="37">
+ <layer name="features" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt18ENgkAUhOG9c+PKSTvADqjDZmxArUCtQK1ALQatQL37iEtiTEiW7Orj6f8lE8FwmGQConMAACDUVLsAkphLFpKldhFEW0nWko12EUTbSnaSvXYRRDtIjpKTdhF81Ui7AJIptQsgSBZwTfXxFkih0C4AAMBAyX+MWei1Ie9G0FP22JJ3o2GremwJAMA/yzqOYU/RcQwAAGBFLTlLLpK7chfEu2kXQJTafzb3I1va1T5Xc3/Olva8/jY2+43992xpz9U9d8sdW/6CdkO2tO99y4ljS8CqB+3cJKs=
+   eJzt1MEJgDAQAMGrISVYgv13o1ag/o0YQfyJgUCYgUP0dSyJEQAAAAAAAAAAAHwx5ZnzLHn2xrv0Zmu9QEem8jzPqa513Hc/lXdd/3n+S8+WQ/mu6z9rXA1T6Frb3VPXut5dx9CV/hzTrxlK
   </data>
  </layer>
- <layer name="collision" width="115" height="37">
+ <layer name="collision" width="86" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmWsOgkAMBkk4iXgMz2G8/02MMUYFtrvsi68wk/RPCYV2CMtjGPK4jGm53oTOQeHcSmnVAy77g0s77wlc2nlP4NLOewKXdt4TuLTznsClnfcELu28J2I9vLbP4/4Tjw2zUZjXmV2mcBvfEaurMC9c1qmrMC9chplW7sGfqH2sGuByncnYF5f9ye3B8hiqqzAvXP4T8xiqqzAvXH6fVefPq1vqKswLl3XqKswLl3XqKszrzC7X3jWurJeS5PYQ84nL/pT0YPnEZX9Kewj5TP0W1Btc2qSsnyrgMo4Xn7hMw4PP0L0fl0s8+DwqLa5HfLYn9K+xBfhsR8q/jdpYa5NieLj+9vDoFWWfeNyOok885qPkE4/l7L1+H+W9FwDgDDwBoSImvw==
+   eJzt1VsKgCAUAFGhlWT732NE+NnTxldzwK+giyNZCLt5Cp87eicxq7S7e7DrM3Zl2JVhV4ZdGXZl2JVhV4ZdGXZl2JVhV4ZdGXZl2JVhV4ZdGXZl2JVhV4ZdGXZlXO1he55Wqdl/6Fpjtl3zZx+t3o2whxbZNV8c9JurKb7sd3YHkmvp4LzfNq2t5ba9Nk1abNt706SltqM0TWrd8/7jJVFWZ74aow==
   </data>
  </layer>
  <objectgroup name="nodes">
-  <object id="1" type="liquid" x="0" y="840" width="480" height="48">
+  <object id="2" type="liquid" x="-336" y="816" width="888" height="72">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="2" type="liquid" x="480" y="816" width="768" height="72">
+  <object id="3" type="liquid" x="552" y="864" width="1176" height="24">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="3" type="liquid" x="1248" y="864" width="1176" height="24">
+  <object id="4" type="liquid" x="1728" y="840" width="336" height="48">
    <properties>
     <property name="sprite" value="images/liquid/lava.png"/>
    </properties>
   </object>
-  <object id="4" type="liquid" x="2424" y="840" width="336" height="48">
-   <properties>
-    <property name="sprite" value="images/liquid/lava.png"/>
-   </properties>
-  </object>
-  <object id="5" name="main" type="door" x="35" y="132" width="51" height="84">
+  <object id="5" name="main" type="door" x="12" y="618" width="48" height="78">
    <properties>
     <property name="info" value="Only a coward runs from the mighty {{grey}}King Cornelius{{white}}!"/>
     <property name="key" value="greendale"/>
-    <property name="level" value="castle-hawkthorne"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object id="6" type="sprite" x="288" y="192" width="24" height="24">
+  <object id="8" type="sprite" x="1680" y="600" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -86,7 +81,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="7" type="sprite" x="0" y="360" width="24" height="24">
+  <object id="9" type="sprite" x="1632" y="648" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -94,7 +89,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="8" type="sprite" x="2376" y="600" width="24" height="24">
+  <object id="10" type="sprite" x="1584" y="696" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -102,29 +97,13 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="9" type="sprite" x="2328" y="648" width="24" height="24">
-   <properties>
-    <property name="animation" value="1-3,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/castle/flame.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object id="10" type="sprite" x="2280" y="696" width="24" height="24">
-   <properties>
-    <property name="animation" value="1-3,1"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/castle/flame.png"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object id="11" name="greendale" type="key" x="2496" y="624" width="24" height="24"/>
-  <object id="12" type="scenetrigger" x="2472" y="504" width="24" height="144">
+  <object id="11" name="greendale" type="key" x="1800" y="624" width="24" height="24"/>
+  <object id="12" type="scenetrigger" x="1776" y="504" width="24" height="144">
    <properties>
     <property name="cutscene" value="throne"/>
    </properties>
   </object>
-  <object id="13" type="sprite" x="2448" y="768" width="24" height="24">
+  <object id="13" type="sprite" x="1752" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -132,7 +111,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="14" type="sprite" x="2496" y="720" width="24" height="24">
+  <object id="14" type="sprite" x="1800" y="720" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -140,7 +119,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="15" type="sprite" x="2496" y="744" width="24" height="24">
+  <object id="15" type="sprite" x="1800" y="744" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -148,7 +127,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="16" type="sprite" x="2496" y="768" width="24" height="24">
+  <object id="16" type="sprite" x="1800" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -156,7 +135,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="17" type="sprite" x="2496" y="792" width="24" height="24">
+  <object id="17" type="sprite" x="1800" y="792" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -164,7 +143,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="18" type="sprite" x="2496" y="816" width="24" height="24">
+  <object id="18" type="sprite" x="1800" y="816" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -172,7 +151,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="19" type="sprite" x="2448" y="792" width="24" height="24">
+  <object id="19" type="sprite" x="1752" y="792" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -180,7 +159,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="20" type="sprite" x="2448" y="816" width="24" height="24">
+  <object id="20" type="sprite" x="1752" y="816" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -188,16 +167,12 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="spawn" x="1008" y="624" width="72" height="72">
+  <object id="21" type="enemy" x="456" y="624" width="72" height="72">
    <properties>
     <property name="enemytype" value="benzalkBoss"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="1"/>
-    <property name="spawnType" value="proximity"/>
-    <property name="x_Proximity" value="350"/>
    </properties>
   </object>
-  <object name="throne_barrier" type="door" x="1296" y="624" width="24" height="72">
+  <object id="22" name="throne_barrier" type="door" x="600" y="624" width="24" height="72">
    <properties>
     <property name="aniframes2" value="1-12,1"/>
     <property name="anispeed2" value="0.05"/>
