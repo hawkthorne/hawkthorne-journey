@@ -109,7 +109,7 @@
    eJzt21EKgkAQBmDrxWNkx6j7X6c7hJhgkKtta6u73wf7FEjQzPg3ZdMA5HM9h0+78HrOAwDAuz4jXSrJSZ1MyA75zlK2tqIZO5ruBWrWBvYjAABHkSvPdq8sBVASv33Df/S9cdMfWZlTgxp3wwDA/tSUSewUgTmlzAc7D1KpKR8clX6HsPG/mbHPr0LNUmTjewG9VMI8yP05zOWVT+8rVbb5pX49SzbIXTd8b2lelbLzIE7MfF1TM/YGxFpTX9cK59bWPeX+Tmpb1Gzomu476zPddCc2PbCFx6m8QzmezAhHUg==
   </data>
  </layer>
- <objectgroup color="#070707" name="nodes" width="56" height="100">
+ <objectgroup color="#070707" name="nodes">
   <object name="main" type="door" x="24" y="2280" width="24" height="48">
    <properties>
     <property name="level" value="village-forest"/>
@@ -355,10 +355,9 @@
   <object name="rock" type="material" x="723" y="1705" width="23" height="23"/>
   <object name="mushroom" type="material" x="120" y="960" width="25" height="27"/>
   <object name="mushroom" type="material" x="432" y="1512" width="25" height="27"/>
-  <object type="info" x="1224" y="96" width="24" height="24">
+  <object name="yellow_potion" type="detail" x="1224" y="96" width="24" height="24">
    <properties>
-    <property name="info" value="Money Potion Recipe = | 3 boulders + 1 frog + 2 stars + 1 fire"/>
-    <property name="sprite" value="note"/>
+    <property name="category" value="recipe"/>
    </properties>
   </object>
  </objectgroup>

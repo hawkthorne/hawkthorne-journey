@@ -60,9 +60,10 @@ return {
         Dialog.new(quests.pool.giveQuestSucceed, function()
         npc.prompt = prompt.new(quests.pool.successPrompt, function(result)
           if result == 'Yes' then
-            Quest:save(quests.pool)
             player.quest = 'Save Greendale - Find out what the delay with pool repairs is'
             player.questParent = 'frankie'
+            Quest.addQuestItem(quests.pool, player)
+            Quest:save(quests.pool)
             npc.menu:close(player)
           end     
           npc.menu:close(player)
@@ -92,6 +93,7 @@ return {
             player.quest = nil
             player.questParent = nil
             player.freeze = false
+            Quest.removeQuestItem(player)
             Quest:save({})
             npc.menu:close(player)
           end)    
@@ -101,6 +103,7 @@ return {
         Dialog.new(abandon, function()
         npc.prompt = prompt.new("Abandon current quest?", function(result)
         if result == 'Yes' then
+          Quest.removeQuestItem(player)
           Quest:save({})
           player.quest = nil
           player.questParent = nil
@@ -142,6 +145,8 @@ return {
           player.inventory:addItem(item, true)
           player.quest = 'Save Greendale - Mail Diane'
           player.questParent = 'frankie'
+          Quest.addQuestItem(quests.dianemail, player)
+          Quest:save({})
           npc.menu:close(player)
         end
         npc.menu:close(player)
@@ -170,6 +175,7 @@ return {
           player.quest = nil
           player.questParent = nil
           player.freeze = false
+          Quest.removeQuestItem(player)
           Quest:save({})
           npc.menu:close(player)
         end)
@@ -181,6 +187,7 @@ return {
           if result == 'Yes' then
             player.quest = nil
             player.questParent = nil
+            Quest.removeQuestItem(player)
             Quest:save({})
           end
           npc.menu:close(player)
