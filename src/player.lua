@@ -637,6 +637,7 @@ function Player:hurt(damage)
   sound.playSfx( "damage" )
   self.rebounding = true
   self.invulnerable = true
+  self.showDamageText = true
 
   local color = self.color
   self.color = {255, 0, 0, 255}
@@ -664,6 +665,7 @@ function Player:hurt(damage)
   Timer.add(1.5, function() 
     self.invulnerable = false
     self.rebounding = false
+    self.showDamageText = false
     self.color = color
   end)
 
@@ -830,9 +832,9 @@ function Player:draw()
     self.currently_held:draw()
   end
 
-  local health = math.ceil(self.damageTaken * -1 / 10)
-
-  if self.rebounding and self.damageTaken > 0 then
+  if self.showDamageText then
+    local health = self.damageTaken
+    if health > 0 then health = health * -1 end
     love.graphics.setColor( 255, 0, 0, 255 )
     love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
   end
