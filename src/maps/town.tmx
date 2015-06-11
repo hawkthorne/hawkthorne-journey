@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="24" tileheight="24" nextobjectid="23">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="24" tileheight="24" nextobjectid="24">
  <properties>
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
@@ -86,8 +86,11 @@
   </object>
   <object id="4" name="tavern" type="door" x="360" y="216" width="24" height="48">
    <properties>
+    <property name="hideable" value="true"/>
+    <property name="invisible" value="true"/>
     <property name="level" value="tavern"/>
     <property name="to" value="main"/>
+    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object id="5" name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
@@ -97,14 +100,20 @@
   </object>
   <object id="6" name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
+    <property name="hideable" value="true"/>
+    <property name="invisible" value="true"/>
     <property name="level" value="blacksmith"/>
     <property name="to" value="main"/>
+    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object id="7" name="house" type="door" x="768" y="216" width="24" height="48">
    <properties>
+    <property name="hideable" value="true"/>
+    <property name="invisible" value="true"/>
     <property name="level" value="house"/>
     <property name="to" value="main"/>
+    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object type="climbable" x="567" y="165" width="1" height="100"/>
@@ -131,7 +140,7 @@
    </properties>
   </object>
   <object id="18" name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
-  <object id="19" type="enemy" x="240" y="192" width="71" height="70">
+  <object id="19" type="enemy" x="1530" y="192" width="71" height="70">
    <properties>
     <property name="enemytype" value="acornBoss"/>
    </properties>

@@ -87,7 +87,7 @@
    eJzt3clq3EAQxnHf5skNcfIGvhjs5JoFfDHEyTUL5JnSQ2hQRLfUS/VS1f8fFJhBI8ma/tSLxvjmBoBFt5fRZwCgNXIO2EfOAfvIOWAfOQfsI+eAfeQcsI+cA/aRc8A+cg7Y9cbl+46MA+b4bNOHY0UPl39lFX03UGfme8QtfTcQNHNuc5FxYIztHDlU7119iOTz0b3+FHhPDDkHZMTyGquzfXmf3c9fXD27+ujq0yW83VnOU48NrKB0vC6Zn9R9peYcgIxROaefxopyx8/XeuvqXWVOyDnQT017r7kHjMg5sKpWGTnL+4ic31/+L2AVrfvC2P5ZhwP6KX2WlbP/K78u79fmmZ+jtRbrStZI57zV/nP2Rc7X0roP08zPXS3mHGsh53HS12CmnLMOF+e/G/yyq2+uviu9VjU5t34/aDU/T31d8hhH21n+DEN8jh8ideZF4fWSyLn1dmI156t8fltW/o6wJ98+rLYTy/PzVXM+mrbx/wrjPsvz85V8ddfkdcK59vZ8Yq+PPt+anGvpR7TMz0v6ZuvrcNtsH5kh7zl6n+++PeW0VW3j/VlyLjnW1jYe2/fJv1z9dvVnUz9c/UzIdoi2vPfo40PtIjfnGvpzjfPzVDX3jNA4ODT+rNVqv6nH1LKu3mp8X5tzLaTnzUc57/39hZJjSbb90L0CckLX8+jZWmob7J3z/fm0+L6ulnGHBvtcoz+p+V7PPMSO1Srv1vRahyPX85DKaMl6Umkuz44lkXfp+flMtK3Dod6InJe+N3f7mrxrav+5812+J4NSNTnPeX/utn77VveSkXy+c9Gfo9TMOS95z6j2f7RmJfXch5xjlJT5es3/65R4rtBarzWr0b8ncDVL7gAAAAAAAAAAAABA2l9a1Dbx
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" visible="0">
+ <objectgroup color="#000000" name="nodes">
   <object id="1" type="movingplatform" x="3061" y="849" width="48" height="24">
    <properties>
     <property name="line" value="platform_4"/>
@@ -422,46 +422,6 @@
     <property name="level" value="forest"/>
     <property name="quest" value="asdsad"/>
     <property name="to" value="main"/>
-   </properties>
-  </object>
-  <object id="82" type="door" x="1968" y="1116" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds2"/>
-   </properties>
-  </object>
-  <object id="83" type="door" x="3888" y="1116" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds3"/>
-   </properties>
-  </object>
-  <object id="84" type="door" x="288" y="1116" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds1"/>
-   </properties>
-  </object>
-  <object id="85" type="door" x="0" y="1116" width="96" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds"/>
-   </properties>
-  </object>
-  <object id="86" type="door" x="5568" y="1116" width="432" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-2"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds"/>
    </properties>
   </object>
  </objectgroup>

@@ -5,6 +5,8 @@ local app = require 'app'
 return {
   width = 32,
   height = 48,  
+  run_speed = 50,
+  run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}},
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
@@ -15,13 +17,21 @@ return {
   },
 
   walking = true,
-  walk_speed = 36,
+  --walk_speed = 36,
 
  enter = function(npc, previous)
     local show = npc.db:get('acornKingVisible', false)
     local acornDead = npc.db:get("bosstriggers.acorn", true)
     local bldgburned = npc.db:get('house_building_burned', false )
-    if show == true or bldgburned == true then
+    if show == true and not npc.hidden then
+      print('run away')
+      npc.state = 'walking'
+      npc.collider:setGhost(npc.bb)
+      npc.run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}}
+      npc.flee = true
+      npc.hidden = true
+    elseif bldgburned == true then
+      npc.flee = false
       npc.state = 'hidden'
       npc.collider:setGhost(npc.bb)
     end
@@ -60,4 +70,9 @@ return {
       "You can find him at the last house on the street.",
     },
   },
+  update = function(dt, npc, player)
+    if npc.flee then
+      npc:run(dt, player)
+    end
+  end,
 }
