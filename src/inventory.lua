@@ -62,13 +62,13 @@ function Inventory.new( player )
   inventory.tooltipAnnexKeyWasDown = false
 
   inventory.pageList = {
-    weapons = {'armors','scrolls'},
-    armors = {'keys', 'weapons'},
-    keys = {'materials','armors'},
-    materials = {'consumables','keys'},
-    consumables = {'scrolls','materials'},
-    scrolls = {'details','consumables'},
-    details = {'weapons','scrolls'}
+    consumables = {'materials','details'},
+    materials = {'weapons','consumables'},
+    weapons = {'scrolls','materials'},
+    scrolls = {'armors','weapons'},
+    armors = {'keys', 'scrolls'},
+    keys = {'details','armors'},
+    details = {'consumables','keys'},
   } --Each key's value is a table with this format: {nextpage, previouspage} 
 
   inventory.pages = {} --These are the pages in the inventory that hold items
