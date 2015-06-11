@@ -18,8 +18,8 @@ Item.types = {
   ITEM_CONSUMABLE = "consumable",
   ITEM_MATERIAL   = "material",
   ITEM_SCROLL     = "scroll",
-  ITEM_ARMOR     = "armor"
-  ITEM_DETAIL     = "detail"
+  ITEM_ARMOR     = "armor",
+  ITEM_DETAIL     = "detail",
 }
 
 Item.MaxItems = 10000
