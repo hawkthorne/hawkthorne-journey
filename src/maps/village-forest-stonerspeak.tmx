@@ -417,46 +417,6 @@
    </properties>
   </object>
   <object id="68" name="boulder" type="material" x="5856" y="240" width="24" height="24"/>
-  <object id="84" type="door" x="1968" y="1080" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds2"/>
-   </properties>
-  </object>
-  <object id="82" type="door" x="288" y="1080" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds1"/>
-   </properties>
-  </object>
-  <object id="83" type="door" x="0" y="1080" width="96" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds"/>
-   </properties>
-  </object>
-  <object id="86" type="door" x="3888" y="1080" width="1680" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-acornpeak"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds3"/>
-   </properties>
-  </object>
-  <object id="85" type="door" x="5568" y="1080" width="432" height="48">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-2"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="clouds"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup color="#a7a7a7" name="movement">
   <object id="69" name="platform_1" x="1560" y="696">

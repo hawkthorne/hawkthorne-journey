@@ -285,6 +285,9 @@ function NPC.new(node, collider)
   npc.walk_speed = npc.props.walk_speed or 18
   npc.wasWalking = false
   npc.velocity = {x=0, y=0}
+  --npcs running away
+  npc.flee = npc.props.flee or false
+  npc.hidden = false
   
   npc.run_speed = npc.props.run_speed or 100
 

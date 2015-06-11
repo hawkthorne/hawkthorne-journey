@@ -7,6 +7,8 @@ return {
   width = 70,
   --bb_width = 40,
   height = 55,
+  run_offsets = {{x=5, y=0}, {x=-1200, y=0}, {x=-1190, y=0}},
+  run_speed = 50,
   greeting = 'My name is {{red_light}}Sir Merek{{white}}, I became a knight to protect this {{olive}}village{{white}} from the dangers of the forest.',
   special_enemy = {'acornBoss'},
   animations = {
@@ -28,13 +30,26 @@ return {
   enter = function(npc, previous)
     local show = npc.db:get('acornKingVisible', false)
     local acornDead = npc.db:get("bosstriggers.acorn", true)
-    if show == true then
-        npc.emotion = Emotion.new(npc, "exclaim")
-        npc.angry = true
-        npc.stare = false
-        npc.state = 'attack'
-        npc.attackingEnemy = true
+    local bldgburned = npc.db:get('blacksmith_building_burned', false )
+    if show == true and not npc.hidden then 
+        --[[npc.emotion = Emotion.new(npc, "exclaim")
+      npc.angry = true
+      npc.stare = false
+      npc.state = 'attack'
+      npc.attackingEnemy = true]]
+      npc.state = 'walking'
+      npc.walking = true
+      npc.stare = false
+      npc.collider:setGhost(npc.bb)
+      npc.run_offsets = {{x=5, y=0}, {x=-1200, y=0}, {x=-1190, y=0}}
+      npc.flee = true
+      npc.hidden = true
+    elseif bldgburned == true then
+      npc.flee = false
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
     end
+    
   end,
 
   talk_items = {
@@ -69,5 +84,10 @@ return {
     },
 
   },
+  update = function(dt, npc, player)
+    if npc.flee then
+      npc:run(dt, player)
+    end
+  end,
 
 }
