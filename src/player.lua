@@ -80,6 +80,8 @@ function Player.new(collider)
   plyr.inventory = Inventory.new( plyr )
   plyr.currentArmor = {primary = 0, secondary = 0}
   plyr.defense = 0
+  plyr.protection_per_armor = 5 -- Amount of protection for each piece of armor
+  plyr.protection = 0 -- A set amount of damage that is always defended against
 
   plyr.money = plyr.startingMoney   
   plyr.slideDamage = 8
@@ -268,8 +270,12 @@ end
 function Player:selectArmor(armor)
   self.currentArmor[armor.subtype] = armor.defense
   self.defense = 0
+  self.protection = 0
   for _, defns in pairs(self.currentArmor) do
     self.defense = self.defense + defns
+    if defns > 0 then
+      self.protection = self.protection + self.protection_per_armor
+    end
   end
 end
 
@@ -617,19 +623,16 @@ end
 -- @param damage The amount of damage to deal to the player
 --
 function Player:hurt(damage)
-  --Apply defense as a percentage of player health
-  damage = damage * (1 - self.defense / 100)
   --Minimum damage is 5%
   --Prevents damage from falling off small heights.
   if damage < self.min_damage then return end
   if self.invulnerable or self.godmode or self.dead then
     return
   end
+  --Apply defense as a percentage of player health
+  damage = (damage - self.protection) * (1 - self.defense / 100)
 
   damage = math.floor(damage)
-  if damage == 0 then
-    return
-  end
 
   sound.playSfx( "damage" )
   self.rebounding = true
