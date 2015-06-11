@@ -418,7 +418,7 @@ function state:draw()
   love.graphics.draw( self.background, xcorner, ycorner , 0 )
   
   if self.window == "itemsWindow" or self.window == "purchaseWindow" then
-    self.tooltip:draw(xcorner, ycorner, self.items[self.itemSelection], "shopping")
+    self.tooltip:draw(xcorner, ycorner + self.background:getHeight(), self.items[self.itemSelection], "shopping")
   end
   
   if self.window == "categoriesWindow" then

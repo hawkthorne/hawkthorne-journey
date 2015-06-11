@@ -1,10 +1,27 @@
 local anim8 = require 'vendor/anim8'
 local fonts = require 'fonts'
 
+local function drawSeparator(x, y, width)
+  
+  y = y + 2
+
+  --draw dividing line
+  love.graphics.setColor(112, 28, 114)
+  love.graphics.line(x, y, x + width, y)
+  
+  --draw yellow squares on the ends of the dividing line
+  love.graphics.setColor(219, 206, 98)
+  love.graphics.rectangle("fill", x, y - 1, 2, 2)
+  love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
+
+  -- set color back to white
+  love.graphics.setColor(255, 255, 255)
+end
+
 local Tooltip = {}
 Tooltip.__index = Tooltip
 
-function Tooltip.new() --TODO: include arguments?
+function Tooltip.new()
   local tooltip = {}
   setmetatable(tooltip, Tooltip)
   
@@ -43,51 +60,39 @@ end
 function Tooltip:draw(x, y, selectedItem, parent)
   if not self.visible then return end
   
-  love.graphics.draw( self.background, x + 116, y - 32 )
+  if parent == 'shopping' then y = y - 6 end
+  if parent == 'inventory' then x = x - 6 end
+  
+  love.graphics.draw( self.background, x, y)
 
 --draws the tooltip information
-  local textX = x + 130
-  local textY = y - 24
+  local textX = x + 8
+  local textY = y + 14
+  local textWidth = 100
 
   local item = parent == "shopping" and selectedItem.item or selectedItem
     
   local lineHeight = love.graphics.getFont():getHeight("line height")
 
-  local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 64)
-  love.graphics.printf(item.description, textX, textY, 64, "left", 0, 0.9, 0.9)
+  local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, textWidth)
+  love.graphics.printf(item.description, textX, textY, textWidth, "left")
 
-  drawSeparator(textX, textY + (descriptionWrap * lineHeight), 64)
+  drawSeparator(textX, textY + (descriptionWrap * lineHeight), textWidth)
   local statWrap = 0
 
   -- Get additional item stats if they exist
   itemStats = self:getItemStats(item)
   if itemStats ~= "" then
-    tastytext = fonts.tasty.new(itemStats, textX, textY + (descriptionWrap * lineHeight), 64, love.graphics.getFont(), fonts.colors, lineHeight)
+    tastytext = fonts.tasty.new(itemStats, textX, textY + (descriptionWrap * lineHeight), textWidth, love.graphics.getFont(), fonts.colors, lineHeight)
     statWrap = tastytext.lines
     tastytext:draw()
-      drawSeparator(textX, textY + (descriptionWrap + statWrap) * lineHeight, 64)
+    drawSeparator(textX, textY + (descriptionWrap + statWrap) * lineHeight, textWidth)
   end
   
   -- Lastly, insert our item information after everything else
-  love.graphics.printf("\n" .. item.info, textX, textY + (descriptionWrap + statWrap) * lineHeight, 64, "left", 0, 0.9, 0.9)
+  love.graphics.printf("\n" .. item.info, textX, textY + (descriptionWrap + statWrap) * lineHeight, textWidth, "left")
   love.graphics.setColor(255, 255, 255)
 
-end
-
-function drawSeparator(x, y, width)
-  y = y + 3 -- for padding around the text
-
-  --draw dividing line
-  love.graphics.setColor(112, 28, 114)
-  love.graphics.line(x, y, x + width, y)
-  
-  --draw yellow squares on the ends of the dividing line
-  love.graphics.setColor(219, 206, 98)
-  love.graphics.rectangle("fill", x, y - 1, 2, 2)
-  love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
-
-  -- set color back to white
-  love.graphics.setColor(255, 255, 255)
 end
 
 return Tooltip

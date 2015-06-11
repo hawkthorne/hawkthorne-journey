@@ -46,7 +46,7 @@ function Inventory.new( player )
   
   inventory.player = player
   
-  inventory.tooltip = tooltip:new() --TODO: is this in the wrong place?
+  inventory.tooltip = tooltip:new()
 
   --These variables keep track of whether the inventory is open, and whether the crafting annex is open.
   inventory.visible = false
@@ -283,11 +283,13 @@ function Inventory:draw( playerPosition )
     end
 
     --Draw the tooltip window
-    if self.tooltip.visible and self:currentPage()[self:slotIndex(self.cursorPos)] then
+    if self.tooltip.visible and self:currentPage()[self:slotIndex(self.cursorPos)] and not self.craftingVisible then
       local slotIndex = self:slotIndex(self.cursorPos)
       local item = nil
       if self.cursorPos.x < 2 then
         item = self.pages[self.currentPageName][slotIndex]
+      --TODO: add tooltip back in for crafting annex 
+      --[[
       elseif self.cursorPos.x == 2 and self.currentIngredients.a and self.currentIngredients.b then
         local result = self:findResult(self.currentIngredients.a, self.currentIngredients.b)
         if result then
@@ -297,8 +299,11 @@ function Inventory:draw( playerPosition )
         item = require ('items/' .. self.currentIngredients.a.type .. 's/' .. self.currentIngredients.a.name)
       elseif self.cursorPos.x == 4 and self.currentIngredients.b then
         item = require ('items/' .. self.currentIngredients.b.type .. 's/' .. self.currentIngredients.b.name)
+      ]]--
+      else
+        return
       end
-      self.tooltip:draw(pos.x, pos.y, item, "inventory")
+      self.tooltip:draw(pos.x + 100, pos.y, item, "inventory")
     end
 
 
@@ -397,9 +402,9 @@ end
 
 	-- Opens the tooltip annex		
 -- @return nil		
-function Inventory:tooltipAnnexOpen()		
+function Inventory:tooltipAnnexOpen()
   if self:currentPage()[self:slotIndex(self.cursorPos)] then		
-    self.tooltip:open()		
+    self.tooltip:open()
   end
 end
 
