@@ -15,7 +15,9 @@ Item.types = {
   ITEM_WEAPON     = "weapon",
   ITEM_KEY        = "key",
   ITEM_CONSUMABLE = "consumable",
-  ITEM_MATERIAL   = "material"
+  ITEM_MATERIAL   = "material",
+  ITEM_SCROLL     = "scroll",
+  ITEM_ARMOR     = "armor"
 }
 
 Item.MaxItems = 10000
@@ -48,6 +50,7 @@ function Item.new(node, count)
   item.subtype = node.subtype or "item"
   item.info = node.info or "unknown info"
   item.damage = node.damage or "nil"
+  item.defense = node.defense or "nil"
   item.special_damage = node.special_damage or "nil"    
 
   return item

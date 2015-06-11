@@ -12,6 +12,13 @@ return {
     {"arrow",30,6},
     {"crimson_sword",1,450},
   },
+  armor = {
+    {"ajaxshield",1,225},
+    {"greenguard",1,600},
+    {"lightarmor",1,375},
+    {"pruneplackart",1,375},
+    {"tinytarge",1,525},
+  },
   materials = {
     {"leaf",10,55},
     {"stone",10,60},

@@ -1480,6 +1480,13 @@
   <object name="digging" type="savepoint" x="1296" y="96" width="24" height="192"/>
   <object name="diggingdone" type="savepoint" x="2064" y="840" width="24" height="96"/>
   <object name="finalplatforms" type="savepoint" x="3240" y="576" width="24" height="216"/>
+  <object name="spiderburgonet" type="spawn" x="1848" y="1056" width="24" height="24">
+   <properties>
+    <property name="message" value="Time to become... The Spider King!"/>
+    <property name="nodeType" value="armor"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement" width="210" height="53">
   <object name="platform_1" x="975" y="1129">

@@ -578,6 +578,9 @@ function state:getItemStats( item )
   if item.damage ~= nil and item.damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
   end
+  if item.defense ~= nil and item.defense ~= "nil" then
+    itemStats = itemStats .. "{{white}}\ndefense: {{blue_light}}" .. tostring(item.defense)
+  end
   if item.special_damage ~= nil and item.special_damage ~= "nil" then
     itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
   end
