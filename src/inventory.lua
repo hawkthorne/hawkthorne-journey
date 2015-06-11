@@ -659,6 +659,7 @@ function Inventory:dropItem(item, slotIndex, page)
   -- Don't show any box if the item is dropped
   if self.selectedArmorIndices[itemProps.subtype] == slotIndex then
     self.selectedArmorIndices[itemProps.subtype] = -1
+    self.player:selectArmor({defense = 0, subtype = itemProps.subtype})
   end
 
   local NodeClass = require('/nodes/' .. itemProps.type)
