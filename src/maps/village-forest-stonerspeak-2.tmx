@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="24" tileheight="24" nextobjectid="9">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="24" tileheight="24" nextobjectid="11">
  <properties>
   <property name="offset" value="26"/>
   <property name="soundtrack" value="forest"/>

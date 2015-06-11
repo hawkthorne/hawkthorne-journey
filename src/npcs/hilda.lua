@@ -57,6 +57,7 @@ return {
       npc.x = 900
       npc.minx = 1250
       npc.maxx = 1250 + (48 * 2)
+      npc.flee = false
 
       -- Hilda waits until she notices the fire
       Timer.add(5, function()
@@ -106,11 +107,11 @@ return {
     local show = npc.db:get('acornKingVisible', false)
     local acornDead = npc.db:get("bosstriggers.acorn", true)
     if show == true then
-      npc.state = 'hidden'
+      npc.state = 'walking'
       npc.collider:setGhost(npc.bb)
+      npc.run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}}
+      npc.flee = true
     end
-
-
     if previous and previous.name ~= 'town' then
       return
     end
@@ -762,6 +763,9 @@ return {
     -- she is running to the blacksmith
     if npc.state == 'yelling' then
       npc:run(dt, player)
+    end
+    if npc.flee then
+    	npc:run(dt, player)
     end
 
     if npc.state == 'sad' then
