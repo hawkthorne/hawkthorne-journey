@@ -154,14 +154,11 @@ function HUD:draw( player )
   local icons = 0
   local iconline = 0
 
-  if player.godmode or player.invulnerable then --TODO: don't show up when getting hurt
-    if player.consuming then
-      self.invincible = true
-      self.invincibleAnimation:draw(self.invincibleImage, iconX + 20*icons, iconY+(iconline*19))
-      self.invincibleAnimation:resume()
-      icons = icons + 1
-      print(iconline)
-    end
+  if player.godmode or player.activeInvulnEffect  then --TODO: don't show up when getting hurt
+    self.invincible = true
+    self.invincibleAnimation:draw(self.invincibleImage, iconX + 20*icons, iconY+(iconline*19))
+    self.invincibleAnimation:resume()
+    icons = icons + 1
   end
   
   if player.jumpFactor  > 1 then
