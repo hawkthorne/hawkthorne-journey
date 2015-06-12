@@ -42,17 +42,17 @@
  </layer>
  <layer name="floor" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmb0uRFEURvd4hqFRmAKFv8qop8AToFFJmOeYF0A8ANONCk+AoUDtZ95DS+OTnBs3IkNkn/vlzPlWspK5k5t9dlZOd83icWrW75m1gv1C/N+KeKwIqD8X9eei/lzUn4v6c1F/LurPRf25qD8X9eei/lzUn4v6c1F/LurPRf25qP//mKqZNeBr7fd33/DO+x/eEz8zh3bzcAEuwiW1TI7JMfYGYtSpw3E4wV4kU6bhDJxlL5Ipy7AJV9iLZMoqXIPr7EUyZQNuwi32IpmyC/dgm71IRtzAW/gUnp/hHbx3Pmfbed4oULR/DM8v9tX+wfGcfXgADx1nps6we+/Z/pNjeAK7znNTpap7X3AGz+FFhNmpUeW9L7iEV/A6wuwds06EsVGo+t4LIcxK36TcwcxO6ftXcg4iNPlOL3hU+u1l6O8+tyoHQ/TiAxYpKwo=
+   eJztmb0uREEYhr91DWgUuwUKlsqqt8AVoFFJrOvYG2CjoUJ3VLgCrJ/gCtyHlsZ7ZE6ykfUTmZk3s/M+yZOcnEy++fK0YxaOM7N+YdZ29ivxvx3wWuFQfy7qz0X9uag/F/Xnov5c1J+L+nNRfy7qz0X9uag/F/Xnov5c1J+L+nNR//9Rr5k14Gvt97NvOPP+h3NiOHNoNw+bcAEuqmVyTI2xNxCjzjicgJPsRTJlGs7AWfYimbIEW3CZvUimrMBVuMZeJFPW4QbcZC+SKTuwA3fZi2TELbyD984H+AifPN+z5XneKPBT+2eP9+zBfdjzODN1YrUvOYYn8NTz3FSJ2b7kHF7AywCzUyN2+5IreA1vAszeNusGGBsERnsxnEN4xF4iYwr7fDuKdVf1JuUdzOwOvH8lZdnjJUCTrxTOg4FvX7r+3ufGsOr/nb74AJAFMRg=
   </data>
  </layer>
  <layer name="features" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJhDAQQNGpwRIsYTuydrWC1bsRFWTZ6ySI78EckkMI/zARAAAAAAAAAAAAAGQay0xl5jJr47+81dL6Ay+nf13XzunOs/513Hf93rw/7zP6DwlvPt03jtZd5Pfnv6u7/m389v+E/jXp31b2/tkAG5ceVQ==
+   eJzt1MEJgDAQAMHUYAmWYEfWrlag/o0QEcTvJYgzcEg+EpZwKQEAAAAAAAAAAAAQacoz51ny7I3v8ldb6wv8nP51XTunK2f965jK99z1Z/O+nCP6jwH//Lo13e8+uj/vru76t/HsPyT9a9K/rej9cwCxnx1h
   </data>
  </layer>
  <layer name="collision" width="96" height="37" visible="0">
   <data encoding="base64" compression="zlib">
-   eJzt1zEKgDAQAEHBl/j/T4qFYCsYl4MZuCbFEbZKtm2dY393zrf0b+nf0r+lf0v/lv4t/Vv6t/Rv6d/Sv6V/S/+W/i39W/q39AcAAICZrr/7PQAAMM3K9+xz99T50+S7T3UC/hMPnQ==
+   eJzt1zEKgDAQAEHBl5j/P9LCRuwEdYnMwDXpbqvLsrxnW++98yz9W/q39G/p39K/pX9L/5b+Lf1b+rf0b+nf0r+lf0v/lv4t/QEAAGAuYz3+7efhG0PrjPYd7Tvad7RvuW1aX/Z/85693sszTeEPO8xmB12uEJ8=
   </data>
  </layer>
  <objectgroup name="nodes">
@@ -1222,38 +1222,6 @@
     <property name="sprite" value="castle-top"/>
    </properties>
   </object>
-  <object id="766" type="breakable_block" x="1656" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="767" type="breakable_block" x="1680" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-top"/>
-   </properties>
-  </object>
-  <object id="768" type="breakable_block" x="1704" y="792" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-corner"/>
-   </properties>
-  </object>
-  <object id="769" type="breakable_block" x="1704" y="816" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="cornelius"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-side"/>
-   </properties>
-  </object>
   <object id="771" type="breakable_block" x="1632" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
@@ -1278,23 +1246,7 @@
     <property name="sprite" value="castle-bottom"/>
    </properties>
   </object>
-  <object id="776" type="breakable_block" x="1656" y="816" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
   <object id="777" type="breakable_block" x="1608" y="816" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="castle-bottom"/>
-   </properties>
-  </object>
-  <object id="781" type="breakable_block" x="1680" y="816" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
@@ -1924,174 +1876,12 @@
     <property name="sprite" value="castle-side"/>
    </properties>
   </object>
-  <object id="1036" type="breakable_block" x="1632" y="792">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
-  <object id="1037" type="breakable_block" x="1656" y="768">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
-  <object id="1038" type="breakable_block" x="1680" y="744">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
-  <object id="1039" type="breakable_block" x="1704" y="720">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
-  <object id="1040" type="breakable_block" x="1728" y="696">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
-  <object id="1041" type="breakable_block" x="1752" y="672">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="flipX" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-center"/>
-    <property name="tile_id" value="105"/>
-   </properties>
-   <polygon points="0,0 24,0 24,-24"/>
-  </object>
   <object id="1042" type="breakable_block" x="504" y="792" width="24" height="24">
    <properties>
     <property name="brokenBy" value="fire"/>
     <property name="explode" value="true"/>
     <property name="hp" value="5000"/>
     <property name="sprite" value="bridge"/>
-   </properties>
-  </object>
-  <object id="1081" type="breakable_block" x="1656" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1082" type="breakable_block" x="1680" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1083" type="breakable_block" x="1704" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1084" type="breakable_block" x="1728" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1085" type="breakable_block" x="1752" y="672" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1086" type="breakable_block" x="1776" y="648" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-carpet-right"/>
-   </properties>
-  </object>
-  <object id="1087" type="breakable_block" x="1800" y="648" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
-   </properties>
-  </object>
-  <object id="1088" type="breakable_block" x="1776" y="672" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
-   </properties>
-  </object>
-  <object id="1089" type="breakable_block" x="1752" y="696" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
-   </properties>
-  </object>
-  <object id="1090" type="breakable_block" x="1728" y="720" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
-   </properties>
-  </object>
-  <object id="1091" type="breakable_block" x="1704" y="744" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
-   </properties>
-  </object>
-  <object id="1092" type="breakable_block" x="1680" y="768" width="24" height="24">
-   <properties>
-    <property name="brokenBy" value="fire"/>
-    <property name="explode" value="true"/>
-    <property name="hp" value="5000"/>
-    <property name="sprite" value="stair-center"/>
    </properties>
   </object>
   <object id="1093" type="breakable_block" x="480" y="792" width="24" height="24">

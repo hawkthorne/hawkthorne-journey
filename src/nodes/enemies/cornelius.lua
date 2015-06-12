@@ -19,7 +19,6 @@ local Firework = require 'nodes/firework'
 local Player = require 'player'
 Player = Player.factory()
 local playersinsult = Insults[Player.character.name]
-playersinsult = playersinsult[math.random(#playersinsult)]
 
 return {
   name = 'cornelius',
@@ -28,7 +27,6 @@ return {
   height = 220,
   width = 200,
   damage = 30,
-  special_damage = {cornelius = 5000},
   --attack_bb = true,
   jumpkill = false,
   knockback = 0,
@@ -40,6 +38,8 @@ return {
   attack_width = 40,
   velocity = {x = 0, y = 10},
   hp = 200,
+  rage = false,
+  freeze = false,
   tokens = 100,
   dyingdelay = 2,
   fadeIn = true,
@@ -50,11 +50,10 @@ return {
     "{{grey}}Welcome{{white}}, you are the first to make it to the {{orange}}Throne of Hawkthorne{{white}}.",
     "Let me take a look at you...",
     "According to your {{olive}}complexion{{white}}, I think you might be...{{purple}} " .. Player.character.name:gsub("^%l", string.upper) .. "{{white}}.",
-    "{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}.",
   }, 
   deathScript ={
-    
-    "Why record myself breathing weird and letting you destroy me?",
+    "{{grey}}*heavy breathing*{{white}} I suppose you're wondering,{{purple}} player{{white}}.",
+    "Why program myself dying and letting you destroy me?",
     "Because I am a man of {{red}}Honor!{{white}}",
     "So you've earned the pleasure of my death!",
   },
@@ -93,16 +92,10 @@ return {
     },
   },
 
-  enter = function( enemy, player )
-    enemy.playerHealthStart = Player.health
-    print(enemy.playerHealthStart)
-    enemy.direction = math.random(2) == 1 and 'left' or 'right'
-    enemy.directionY = math.random(2) == 1 and 'up' or 'down'
-    enemy.state = 'default'
+  enter = function( enemy )
     enemy.typicalY = enemy.position.y
     enemy.maxy = enemy.position.y - 25
     enemy.miny = enemy.position.y + 25
-    enemy.hatched = false
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
@@ -113,16 +106,14 @@ return {
     enemy.fly_speed = 75
     enemy.swoop_distance = 150
     enemy.swoop_ratio = 0.25
+
+    if enemy.props.hatched then return end
+
     sound.playMusic("cornelius-transforms")
     -- cheat:fairfight()
 
-    --remove this after testing
-    --enemy.rage = true
-    --enemy.velocity.x = 100
-
-    --shake
     enemy.props.shake( enemy, camera )
-    --sparkles
+
     enemy.props.sparkleRotated( enemy, 45, 0 )
     enemy.props.sparkleRotated( enemy, 50, 60 )
     enemy.props.sparkleRotated( enemy, 110, 150 )
@@ -141,15 +132,16 @@ return {
     end)
 
     --enter dialog
-    if enemy.enterScript then
+    if enemy.props.enterScript then
       for i= 0, #playersinsult do
-        table.insert(enemy.enterScript, playersinsult[i])
+        table.insert(enemy.props.enterScript, playersinsult[i])
       end
-      table.insert(enemy.enterScript, "You don't deserve my fortune!")
+      table.insert(enemy.props.enterScript, "I bequeath my fortune to no inferiors!")
       enemy.state = 'talking'
-      Dialog.new(enemy.enterScript, function()
+      Dialog.new(enemy.props.enterScript, function()
+        enemy.props.hatched = true
         enemy.state = 'attack'
-        enemy.rage = true
+        enemy.props.rage = true
         enemy.velocity.x = 125
         enemy.velocity.y = 5
         sound.playMusic("cornelius-attacks")
@@ -292,33 +284,6 @@ return {
 
   end,
 
-  -- Compares vulnerabilities to a weapons special damage and sums up total damage
-  calculateDamage = function(self, damage, special_damage)
-    if not special_damage then
-      if self.state =='teleport' then
-        print('double damage')
-        damage = 2*damage
-        return damage
-      else
-        print('regular damage')
-        return damage
-      end
-    end
-    for _, value in ipairs(self.vulnerabilities) do
-      if special_damage[value] ~= nil then
-        if self.state =='teleport' then
-          damage = (damage + special_damage[value])*2
-          print('double damage')
-        else
-          damage = damage + special_damage[value]
-          print('regular damage')
-        end
-      end
-    end
-
-    return damage
-  end,
-
   die = function( enemy )
     if enemy.dead then return end
     for _,node in pairs(enemy.containerLevel.nodes) do
@@ -327,9 +292,10 @@ return {
       end
     end
     enemy.falling = true
-    enemy.freeze = true
+    enemy.props.freeze = true
     sound.playMusic("cornelius-forfeiting")
-    Dialog.new(enemy.deathScript, function()
+
+    Dialog.new(enemy.props.deathScript, function()
       enemy:die()
       sound.playSfx("cornelius-ending")
       sound.stopMusic()
@@ -408,13 +374,11 @@ return {
     end
 
     --this is where cornelius's attacks are controlled
-    if enemy.state == 'talking' and not enemy.hatched then
-      
-    elseif enemy.state == 'attack' and not enemy.hatched then
-      enemy.hatched = true
+    if enemy.state == 'attack' and not enemy.props.hatched then
+      enemy.props.hatched = true
       enemy.props.fireball( enemy, player )
-    elseif enemy.hatched and not enemy.freeze then
-      enemy.rage = true
+    elseif enemy.props.hatched and not enemy.props.freeze then
+      enemy.props.rage = true
       enemy.last_teleport = enemy.last_teleport + dt
       enemy.last_attack = enemy.last_attack + dt
       enemy.last_fireball = enemy.last_fireball + dt 

@@ -65,7 +65,6 @@ function Enemy.new(node, collider, enemytype)
   enemy.idletime = 0
   enemy.db = app.gamesaves:active()
   assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
-  enemy.special_damage = enemy.props.special_damage or {}
 
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
   assert( tonumber(enemy.props.hp),"Hp must be a number" )
@@ -111,12 +110,12 @@ function Enemy.new(node, collider, enemytype)
 
   enemy.attackingWorld = false
   enemy.cameraShake = enemy.props.cameraShake or false
-      enemy.camera = {
-        tx = 0,
-        ty = 0,
-        sx = 1,
-        sy = 1,
-      }
+  enemy.camera = {
+    tx = 0,
+    ty = 0,
+    sx = 1,
+    sy = 1,
+  }
 
   enemy.fadeIn = enemy.props.fadeIn or false
   enemy.fade = {255, 255, 255, 0}
@@ -153,10 +152,6 @@ function Enemy.new(node, collider, enemytype)
     collider:setGhost(enemy.attack_bb)
     enemy.last_attack = 0
   end
-  enemy.enterScript = enemy.props.enterScript or false
-  enemy.deathScript = enemy.props.deathScript or false
-  enemy.rage = false
-  enemy.freeze = false
 
   enemy.foreground = node.properties.foreground or enemy.props.foreground or false
   enemy.db = app.gamesaves:active()
@@ -164,9 +159,9 @@ function Enemy.new(node, collider, enemytype)
   return enemy
 end
 
-function Enemy:enter( player )
+function Enemy:enter()
   if self.props.enter then
-    self.props.enter(self, player)
+    self.props.enter(self)
   end
 end
 
@@ -184,7 +179,6 @@ function Enemy:hurt( damage, special_damage, knockback )
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
-  --local state = self.state
   self.state = 'hurt'
   
   -- Subtract from hp total damage including special damage
@@ -205,9 +199,10 @@ function Enemy:hurt( damage, special_damage, knockback )
     if self.currently_held then
       self.currently_held:die()
     end
-    Timer.add(self.dyingdelay, function() 
-      --if self.props.die then self.props.die( self ) else self:die() end
-        self:die()
+    Timer.add(self.dyingdelay, function()
+      local level = gamestate.currentState()
+      if self.containerLevel and self.containerLevel.name ~= level.name then return end
+      self:die()
     end)
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
@@ -228,10 +223,6 @@ end
 
 -- Compares vulnerabilities to a weapons special damage and sums up total damage
 function Enemy:calculateDamage(damage, special_damage)
-  if self.props.calculateDamage then
-    self.props.calculateDamage(self, damage, special_damage)
-  end
-  
   if not special_damage then
     return damage
   end
@@ -252,7 +243,7 @@ function Enemy:start_flash()
   end
   if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
   self.reviveTimer = Timer.add( self.revivedelay, function()
-                                if self.rage then self.state = 'attack' print('return to attack') else self.state = 'default' end
+                                self.state = 'default'
                                 self:cancel_flash()
                                 self.flashing = false
                                 end )
@@ -340,11 +331,9 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
       self.props.attack(self,self.props.attackDelay)
     elseif self.animations['attack'] then
       self.state = 'attack'
-      if not self.rage then
-        Timer.add(1, function()
-          if self.state ~= 'dying' then self.state = 'default' end
-        end)
-      end
+      Timer.add(1, function()
+        if self.state ~= 'dying' then self.state = 'default' end
+      end)
     end
   end
 
@@ -414,16 +403,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   attack()
 
   if self.props.damage ~= 0 then
-    if node.isPlayer then
-      player:hurt(self.props.damage)
-      player.top_bb:move(mtv_x, mtv_y)
-      player.bottom_bb:move(mtv_x, mtv_y)
-      player.velocity.y = -450
-      player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
-    elseif node.isWall then
-      node:hurt(self.props.damage)
-      --print('enemy hurts wall')
-    end
+    player:hurt(self.props.damage)
+    player.top_bb:move(mtv_x, mtv_y)
+    player.bottom_bb:move(mtv_x, mtv_y)
+    player.velocity.y = -450
+    player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
   end
 end
 
@@ -508,9 +492,9 @@ function Enemy:draw()
 
   if self.flash then
     love.graphics.setColor(255, 0, 0, 255)
-  elseif self.fadeIn  then 
+  elseif self.fadeIn then
     tween(2, self.fade, {255, 255, 255, 255}, 'outQuad', function() self.fadeIn = false end)
-    love.graphics.setColor(unpack(self.fade))  
+    love.graphics.setColor(unpack(self.fade))
   else
     love.graphics.setColor(255, 255, 255, 255)
   end
@@ -520,6 +504,7 @@ function Enemy:draw()
   end
 
   love.graphics.setColor(r, g, b, a)
+
   if self.props.draw then
     self.props.draw(self)
   end
