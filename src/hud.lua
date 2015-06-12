@@ -107,7 +107,7 @@ function HUD:draw( player )
   -- HEALTH 
   love.graphics.draw(self.heart_full, x+4 , y + 4)
 
-  --Draw black outline using 16s
+  --Draw black outline using offsets
   love.graphics.setColor( 0, 0, 0, 255 )
   love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
   love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
@@ -125,7 +125,7 @@ function HUD:draw( player )
 
   -- MONEY
 
-  --Draw black outline using 16s
+  --Draw black outline using offsets
   love.graphics.setColor( 0, 0, 0, 255 )
   love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
   love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
