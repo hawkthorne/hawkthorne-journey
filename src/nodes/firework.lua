@@ -18,21 +18,18 @@ local states = {
 ---
 -- Creates a new Firework object
 -- @param parent the parent node that the firework are added to
-function Firework.new( x, y )
+function Firework.new( node )
   local firework = {}
   setmetatable(firework, Firework)
 
   firework.state = 'explode'
 
-  firework.x = x
-  firework.y = y
-  
+  firework.x = node.x
+  firework.y = node.y
+
+  sound.playSfx('firework')
 
   return firework
-end
-
-function Firework:enter()
-	sound.playSfx('firework')
 end
 
 function Firework:update(dt)

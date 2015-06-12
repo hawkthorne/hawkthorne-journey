@@ -219,7 +219,6 @@ return {
   --throws a fireball that will spawn fire to the right and left as well as eat away the floor.
   fireball = function( enemy, player )
     if not enemy.dead then
-      print('fireball')
       enemy.last_fireball = 0 
       enemy.last_attack = 0
       local Fireball = require('nodes/fire_cornelius_big')
@@ -240,7 +239,6 @@ return {
 
   --cornelius teleports to behind the player
   teleport = function ( enemy, player, dt )
-    print('teleport')
     enemy.state = 'teleport'
     enemy.last_teleport = 0 
     enemy.last_attack = 0
@@ -272,7 +270,6 @@ return {
 
   --cornelius dives at the player
   startDive = function ( enemy )
-    print('dive')
     enemy.diving = true
     enemy.velocity.x = 0
     enemy.last_attack = 0
@@ -289,7 +286,9 @@ return {
 
   die = function( enemy )
     if enemy.dead then return end
-    for _,node in pairs(enemy.containerLevel.nodes) do
+    local level = enemy.containerLevel
+
+    for _,node in pairs(level.nodes) do
       if node.name == "lava" and node.oscillating then
         node.dormant = true
       end
@@ -297,6 +296,15 @@ return {
     enemy.falling = true
     enemy.props.freeze = true
     sound.playMusic("cornelius-forfeiting")
+
+    local NodeClass = require('nodes/firework')
+    local node = {
+      x = enemy.position.x,
+      y = 500,
+      properties = {},
+    }
+    local firework = NodeClass.new(node, enemy.collider)
+    level:addNode(firework)
 
     Dialog.new(enemy.props.deathScript, function()
       enemy:die()
@@ -319,7 +327,6 @@ return {
         },
       }
       local spawnedNode = NodeClass.new(node, enemy.collider)
-      local level = gamestate.currentState()
       level:addNode(spawnedNode)
       --add firework
       --local firework = Firework.new(2300, 700)
