@@ -85,18 +85,20 @@ return {
     enemy.direction ='left'
     enemy.speed = enemy.props.speed
     local db = app.gamesaves:active()
-    local show = db:get('acornKingVisible', true)
+    local show = db:get('acornKingVisible', false)
     local dead = db:get("bosstriggers.benzalk", false)
     if show ~= true or dead == true then
       enemy.state = 'hidden'
       enemy.collider:setGhost(enemy.bb)
     end
 
-    for _,door in pairs(enemy.containerLevel.nodes) do
-      if door.isDoor then
-        door.key = "boss"
-        door.open = false
-        door.info = "Nope!"
+    if show == true then
+      for _,door in pairs(enemy.containerLevel.nodes) do
+        if door.isDoor and not door.instant then
+          door.key = "boss"
+          door.open = false
+          door.info = "Nope!"
+        end
       end
     end
   end,
