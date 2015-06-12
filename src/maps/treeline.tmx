@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="110" height="25" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="110" height="25" tilewidth="24" tileheight="24" nextobjectid="20">
  <properties>
   <property name="blue" value="247"/>
   <property name="green" value="216"/>
@@ -113,61 +113,52 @@
    eJztmLkSwjAMRF3kp+iAgqNOx31TwP/XbEGaDMR27CSSsm9me8WrK3KOEEIIISSdd+FcCb2KoSMhxE+Vr4T0wQa5toV237zzadIgLWicByfEe4Yu0LVF7BL9sdjrUn2qI9G3f2isq7KjHNTkWwgxtdrVm/aBNd+k8GuX2EMH6DiyPmmJG979Dj2gp6C9pKlfDTWnJPfEWB9z+tbGD627Y9e555u9GvtkTq+17iYafWtDitcS/z/G4ltu6l6G3KZy1rb1+SaxVupMEd8MmnvujlrvkBVad5mKBWJfQitorfg7rNO3TzE1S9npZ4SQcD4Tl0ET
   </data>
  </layer>
- <objectgroup name="block" width="110" height="25"/>
- <objectgroup color="#0000ff" name="nodes" width="110" height="25" visible="0">
-  <object name="main" type="door" x="24" y="480" width="48" height="48"/>
-  <object type="door" x="2592" y="0" width="48" height="168">
+ <objectgroup name="block"/>
+ <objectgroup color="#0000ff" name="nodes">
+  <object id="1" name="main" type="door" x="24" y="480" width="48" height="48"/>
+  <object id="2" type="door" x="2592" y="0" width="48" height="168">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="village-forest"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="719" y="504" width="24" height="24"/>
-  <object name="rock" type="material" x="96" y="504" width="24" height="24"/>
-  <object name="leaf" type="material" x="647" y="191" width="24" height="24"/>
-  <object name="stick" type="material" x="529" y="228" width="24" height="24"/>
-  <object name="stick" type="material" x="1000" y="119" width="24" height="24"/>
-  <object type="door" x="0" y="264" width="24" height="264">
+  <object id="3" name="rock" type="material" x="719" y="504" width="24" height="24"/>
+  <object id="4" name="rock" type="material" x="96" y="504" width="24" height="24"/>
+  <object id="5" name="leaf" type="material" x="647" y="191" width="24" height="24"/>
+  <object id="6" name="stick" type="material" x="529" y="228" width="24" height="24"/>
+  <object id="7" name="stick" type="material" x="1000" y="119" width="24" height="24"/>
+  <object id="8" type="door" x="0" y="264" width="24" height="264">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="town"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="next" type="door" x="2544" y="120" width="24" height="48"/>
-  <object name="rock" type="material" x="1488" y="504" width="24" height="24"/>
-  <object name="stick" type="material" x="1776" y="192" width="24" height="24"/>
-  <object name="rock" type="material" x="2016" y="408" width="24" height="24"/>
-  <object name="purple_potion" type="detail" x="1104" y="120" width="24" height="24">
+  <object id="9" name="next" type="door" x="2544" y="120" width="24" height="48"/>
+  <object id="10" name="rock" type="material" x="1488" y="504" width="24" height="24"/>
+  <object id="11" name="stick" type="material" x="1776" y="192" width="24" height="24"/>
+  <object id="12" name="rock" type="material" x="2016" y="408" width="24" height="24"/>
+  <object id="13" name="purple_potion" type="detail" x="1104" y="120" width="24" height="24">
    <properties>
     <property name="category" value="recipe"/>
    </properties>
   </object>
-  <object name="flowers" type="material" x="1368" y="504" width="24" height="24">
+  <object id="14" name="flowers" type="material" x="1368" y="504" width="24" height="24">
    <properties>
     <property name="persistent" value="true"/>
    </properties>
   </object>
-  <object name="flowers" type="material" x="1800" y="504" width="24" height="24">
+  <object id="15" name="flowers" type="material" x="1800" y="504" width="24" height="24">
    <properties>
     <property name="persistent" value="true"/>
    </properties>
   </object>
-  <object name="flowers" type="material" x="1944" y="264" width="24" height="24">
+  <object id="16" name="flowers" type="material" x="1944" y="264" width="24" height="24">
    <properties>
     <property name="persistent" value="true"/>
    </properties>
   </object>
-  <object name="next2" type="door" x="2557" y="473" width="24" height="48"/>
-  <object type="door" x="2592" y="288" width="48" height="240">
-   <properties>
-    <property name="instant" value="true"/>
-    <property name="level" value="village-forest-3"/>
-    <property name="sound" value="false"/>
-    <property name="to" value="main"/>
-   </properties>
-  </object>
-  <object name="stick" type="material" x="408" y="504" width="24" height="24"/>
+  <object id="19" name="stick" type="material" x="408" y="504" width="24" height="24"/>
  </objectgroup>
 </map>
