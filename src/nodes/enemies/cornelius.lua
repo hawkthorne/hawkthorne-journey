@@ -26,8 +26,8 @@ return {
   attackDelay = 1,
   height = 220,
   width = 200,
+  special_damage = {cornelius = 5000},
   damage = 30,
-  --attack_bb = true,
   jumpkill = false,
   knockback = 0,
   player_rebound = 400,
@@ -46,6 +46,12 @@ return {
   cameraScale = 0,
   cameraOriginalScale = {scaleX = camera.scaleX,
                          scaleY = camera.scaleY},
+  camera = {
+    tx = 0,
+    ty = 0,
+    sx = 1,
+    sy = 1,
+  },
   enterScript ={
     "{{grey}}Welcome{{white}}, you are the first to make it to the {{orange}}Throne of Hawkthorne{{white}}.",
     "Let me take a look at you...",
@@ -62,9 +68,9 @@ return {
     { item = 'health', v = 1, p = 1 }
   },
   animations = {
-     default = {
-      right = {'loop', {'1,1'}, 0.25},
-      left = {'loop', {'1,1'}, 0.25}
+    default = {
+      right = {'loop', {'1-3,2','2,2'}, 0.1},
+      left = {'loop', {'1-3,2','2,2'}, 0.1}
     },
     talking = {
       right = {'loop', {'1-3,1','2,1'}, 0.15},
@@ -199,8 +205,8 @@ return {
 
   --shakes the camera when cornelius enters
   shake = function ( enemy, camera )
-    enemy.camera.tx = camera.x
-    enemy.camera.ty = camera.y
+    enemy.props.camera.tx = camera.x
+    enemy.props.camera.ty = camera.y
     enemy.shake = true
     local current = gamestate.currentState()
     current.trackPlayer = false
@@ -346,7 +352,7 @@ return {
       if enemy.props.cameraScale < 4 then
         enemy.props.cameraScale = enemy.props.cameraScale + dt
         local newOffset = enemy.containerLevel.offset - enemy.props.cameraScale
-        if newOffset > 400 then
+        if newOffset > 432 then
           enemy.containerLevel.offset = newOffset
         end
         camera:setScale(enemy.props.cameraOriginalScale.scaleX + (enemy.props.cameraScale / 2 / 10),
@@ -370,7 +376,7 @@ return {
     local shake = 0
     if enemy.shake and current.trackPlayer == false then
       shake = (math.random() * 4) - 2
-      camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
+      camera:setPosition(enemy.props.camera.tx + shake, enemy.props.camera.ty + shake)
     end
 
     --this is where cornelius's attacks are controlled

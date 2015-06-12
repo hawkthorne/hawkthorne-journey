@@ -6,8 +6,8 @@ camera.x = 0
 camera.y = 0
 camera.min = {x=0, y=0}
 camera.max = {x=math.huge, y=0}
-camera.scaleX = 0.5
-camera.scaleY = 0.5
+camera.scaleX = 1
+camera.scaleY = 1
 camera.rotation = 0
 
 function camera:set()

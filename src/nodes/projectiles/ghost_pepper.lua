@@ -17,7 +17,6 @@ return{
   throwVelocityX = 100,
   throwVelocityY = 0,
   offset = { x = 20, y = -15},
-  stayOnScreen = false,
   thrown = false,
   damage = 5,
   special_damage = {ice = 2, fire = 2},

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="96" height="37" tilewidth="24" tileheight="24" nextobjectid="1227">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="96" height="37" tilewidth="24" tileheight="24" nextobjectid="1228">
  <properties>
   <property name="autosave" value="false"/>
   <property name="blue" value="223"/>
@@ -32,7 +32,7 @@
  </layer>
  <layer name="pillar" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJztmDFuwkAQRd2Ee6QLJV1SmgpaKmhTwQ2SjlP6PMxKWELWDh5g13/G/CeNVozWSDy+dkduGhw7Z/13g/6x0D8W+sdC/1joHwv9Y6F/LPSPhf6xzMH/h9Si4PdNicXP7e/z6D8ypX0Os0j/95nD+RMZ+sdC/1iSh9z8gPZfYqaJMBcx/1hqzzP0fx/mH0uE+f9LamnoRSRC/r+lfgw9C97u5Aj+N1JbQy8iEfzvpQ6GXkQ8+B87E45SJ0MvIq/cmzXei+b4k/o39CLiIf8an4Y90fHsfzX43F4r0SnPeJtvxvDov899O1jX1+oa3b8FT/9R7fv0Gf997teZtYR/T6DmnNx+Lfe3a6p38S+uzuLsbN3/al/LfaJr9Px7Ok8e5ddRX8t973uO+c+Ry/0U5M77RKcUKctY/um/Lsw/Fi3/tbkAdG5vFA==
+   eJztmLEOgkAMhln0Pdx0dNMRJl2ddHXSN9CNp+R57CWQEHKFKod/C/2S5mJzmPj5564hy3BclPWXhvvH4v6xuH8s7h+L+8fi/rG4fyzuH4v7xzIH/yuqdcLv+ycSP+3fp9G/ZVL77GbR/fczh/PHMu4fi/vHEjzE5ge0/xQzjYW5yPOPZep5xv334/nHYmH+31LtBD2LWMj/geoo6EnQdidb8H+iOgt6FrHg/0p1E/QsosH/0JnwoHoKehYZc29O8V40xovqLehZREP+OTaCPdbR7H/f+ZzXFaiYZ7TNN0No9N/kPu+sRV1VxvuXoOk/mvo+/cV/k/sisqbwrwnUnBPbz+W+vYZain9yVZKzUrp/bJ/LfaDK+PxrOk++RdP5z+W+8b2U/IfcI/zHzvtAxdQcuCvqD+V/jv41scT8a4LL/9R8APBVcmc=
   </data>
  </layer>
  <layer name="ground" width="96" height="37">
@@ -50,9 +50,9 @@
    eJzt1MEJgDAQAMHUYAmWYEfWrlag/o0QEcTvJYgzcEg+EpZwKQEAAAAAAAAAAAAQacoz51ny7I3v8ldb6wv8nP51XTunK2f965jK99z1Z/O+nCP6jwH//Lo13e8+uj/vru76t/HsPyT9a9K/rej9cwCxnx1h
   </data>
  </layer>
- <layer name="collision" width="96" height="37" visible="0">
+ <layer name="collision" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1zEKgDAQAEHBl5j/P9LCRuwEdYnMwDXpbqvLsrxnW++98yz9W/q39G/p39K/pX9L/5b+Lf1b+rf0b+nf0r+lf0v/lv4t/QEAAGAuYz3+7efhG0PrjPYd7Tvad7RvuW1aX/Z/85693sszTeEPO8xmB12uEJ8=
+   eJzt2cEJACEMRUHBSrT/Iq1Ab+7fyAykAN8pwdYAAAAAAKCW0ffDffpn6Q8AAAC1TPd7zNQ7Rvsc7XO0z9E+y36T9WX/mzvt6f/r75PwwhuqWdvLDl8=
   </data>
  </layer>
  <objectgroup name="nodes">

@@ -40,9 +40,6 @@ function Fire.new(node, collider, position)
   fire.bb.node = fire
   collider:setSolid(fire.bb)
 
-  fire.hp = 1
-  fire.hurtBy = {'water'}
-  fire.dead = false
   fire.damage = 6
   fire.special_damage = {fire = 10 }
   fire.enterTimer = false
@@ -50,30 +47,46 @@ function Fire.new(node, collider, position)
   return fire
 end
 
-function Fire:enter()
-  print('enter')
-  Timer.add(2, function()
-    self.dead = true
-    end)
+function Fire:die()
+  self.dead = true
+  self.collider:remove(self.bb)
+
+  local level = self.node.containerLevel
+  local SpriteClass = require 'nodes/sprite'
+  local node = {
+    x = self.x,
+    y = self.y,
+    width = level.map.tilewidth,
+    height = level.map.tileheight,
+    properties = {
+      animation = "1-4,1",
+      speed = "0.25",
+      sheet = 'images/steam.png',
+      width = level.map.tilewidth,
+      height = level.map.tileheight,
+      mode = 'loop'
+    }
+  }
+  local steam = SpriteClass.new(node)
+  level:addNode(steam)
+  Timer.add(math.random(3,5), function()
+    level:removeNode(steam)
+  end)
 end
 
 function Fire:collide(node, dt, mtv_x, mtv_y, collider)
   if self.dead or node.isSpawn then return end
   if not node.isEnemy or node.isSpawn then 
     if not self.enterTimer then
-        Timer.add(10, function() self.dead = true self.collider:remove(self.bb) end)
-        self.enterTimer = true
+      Timer.add(10, function()
+        self:die()
+      end)
+      self.enterTimer = true
     end
     if node.hurt then
       node:hurt(self.damage, self.special_damage)
     end
-    if node.burn then
-      node:burn(self.x,self.y)
-      self:spawn()
-    end
   end
-  
-
 end
 
 function Fire:floor_pushback(node, new_y)
@@ -82,14 +95,11 @@ function Fire:floor_pushback(node, new_y)
   self:update_bb()    
 end
 
-function Fire:spawn()
-end
-
 function Fire:update(dt, player, map)
 	if self.dead then return end
 	
   if self.velocity.y > game.max_y then
-      self.velocity.y = game.max_y
+    self.velocity.y = game.max_y
   end
   
   self:update_bb()
@@ -100,53 +110,20 @@ function Fire:update(dt, player, map)
   local nx, ny = collision.move(map, self, self.x, self.y,
                                   self.width, self.height, 
                                   self.velocity.x * dt, self.velocity.y * dt)
-    self.x = nx
-    self.y = ny
+  self.x = nx
+  self.y = ny
 
-    -- X velocity won't need to change
-    self.velocity.y = self.velocity.y + game.gravity*dt
-end
-
-function Fire:hurt( damage, special_damage )
-    self.hp = self.hp - self:calculateDamage(damage, special_damage)
-    if self.hp <= 0 then
-        self.dead = true
-        self.collider:remove(self.bb)
-    end
-end
-
-function Fire:calculateDamage(damage, special_damage, player)
-    if not self:specialDamageCheck(special_damage) then 
-        return 0 
-
-    end
-
-    return damage
-end
-
-function Fire:specialDamageCheck( special_damage )
-    if not self.hurtBy or self.hurtBy == {} then 
-        return true 
-    end
-
-    if special_damage and special_damage[self.hurtBy] ~= nil then
-      print('fire is hurt')
-        return true
-    end
-
-    return false
+  -- X velocity won't need to change
+  self.velocity.y = self.velocity.y + game.gravity*dt
 end
 
 function Fire:update_bb()
-    self.bb:moveTo(self.x + self.width / 2 , self.y + self.height / 2)
-    --[[local x1,y1,x2,y2 = self.bb:bbox()
-            self.bb:moveTo( self.x + (x2-x1)/2 ,
-                            self.y + (y2-y1)/2 )]]
+  self.bb:moveTo(self.x + self.width / 2 , self.y + self.height / 2)
 end
 
 function Fire:draw()
 	if self.dead then return end
-    states[self.state]:draw(image, self.x, self.y)
+  states[self.state]:draw(image, self.x, self.y)
 end
 
 return Fire

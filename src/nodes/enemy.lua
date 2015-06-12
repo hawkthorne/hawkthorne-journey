@@ -20,7 +20,6 @@ local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
 local window = require 'window'
-local camera = require 'camera'
 local app = require 'app'
 local player = require 'player'
 local Player = player.factory()
@@ -109,13 +108,6 @@ function Enemy.new(node, collider, enemytype)
   enemy.vulnerabilities = enemy.props.vulnerabilities or {}
 
   enemy.attackingWorld = false
-  enemy.cameraShake = enemy.props.cameraShake or false
-  enemy.camera = {
-    tx = 0,
-    ty = 0,
-    sx = 1,
-    sy = 1,
-  }
 
   enemy.fadeIn = enemy.props.fadeIn or false
   enemy.fade = {255, 255, 255, 0}
@@ -338,19 +330,19 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   end
 
   if node.isWall then
-    if not self.type == "benzalkBoss" then
+    if self.type ~= "benzalkBoss" then
       attack()
     end
 
     if self.props.damage ~= 0 then
       if self.attackingWorld then return end
-      if not self.type == "cornelius" then
+      if self.type ~= "cornelius" then
         self.attackingWorld = true
+        Timer.add(1.25, function()
+          self.attackingWorld = false
+        end)
       end
       node:hurt(self.props.damage, self.props.special_damage)
-      Timer.add(1.25, function()
-        self.attackingWorld = false
-      end)
     end
   end
 
@@ -426,12 +418,7 @@ function Enemy:update( dt, player, map )
       self:die()
   end
   
-  if self.dead then
-    if self.props.fall_on_death then
-      self:updatePosition(map, self.velocity.x * dt, self.velocity.y * dt)
-    end
-    return
-  end
+  if self.dead then return end
 
   if not self.flashing then
     self:cancel_flash()
@@ -532,7 +519,7 @@ function Enemy:wall_pushback()
   else
     if self.attackingWorld then return end
     self.direction = self.direction == 'left' and 'right' or 'left'
-    self.velocity.x = 0
+    -- self.velocity.x = 0
     self:moveBoundingBox()
   end
 end

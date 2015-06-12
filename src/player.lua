@@ -42,7 +42,6 @@ function Player.new(collider)
 
   plyr.haskeyboard = true
 
-  plyr.cheatsEnabled = true
   plyr.invulnerable = false
   plyr.godmode = false
   plyr.actions = {}

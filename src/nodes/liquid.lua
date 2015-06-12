@@ -59,6 +59,7 @@ function Liquid.new(node, collider)
   liquid.original_position = {x=node.x, y=node.y}
   liquid.direction = -1
   liquid.moving = "up"
+  liquid.wait = 0
 
   liquid.death = np.death == 'true'
   liquid.oscillating = np.oscillating == 'true'
@@ -152,17 +153,32 @@ function Liquid:update(dt, player)
     player.position.y = player.position.y + 20 * dt
   end
   if self.dormant and self.position.y < self.original_position.y + 36 then
-    self.position.y = self.position.y + (dt * 10)
+    self.position.y = self.position.y + (dt * 12)
   end
   if self.oscillating and not self.dormant then
-    self.position.y = self.position.y + (dt * self.direction * 10)
+    if self.waiting then
+      self.wait = self.wait + dt
+      if self.wait > 4 then
+        self.waiting = false
+        self.wait = 0
+      end
+      if self.direction > 0 then
+        self.position.y = self.original_position.y - 12
+      else
+        self.position.y = self.original_position.y + 12
+      end
+      return
+    end
+    self.position.y = self.position.y + (dt * self.direction * 8)
     if self.moving == "up" then
       if self.position.y < self.original_position.y - 12 then
+        self.waiting = true
         self.moving = "down"
         self.direction = 1
       end
     else
-      if self.position.y > self.original_position.y + 24 then
+      if self.position.y > self.original_position.y + 12 then
+        self.waiting = true
         self.moving = "up"
         self.direction = -1
       end

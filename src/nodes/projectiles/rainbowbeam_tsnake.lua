@@ -17,7 +17,6 @@ return{
   velocity = { x = -230, y = 0 }, --initial vel isn't used since this is insantly picked up
   throwVelocityX = 400, 
   throwVelocityY = 0,
-  stayOnScreen = false,
   damage = 15,
   idletime = 0,
   throw_sound = 'manicorn_beam',
