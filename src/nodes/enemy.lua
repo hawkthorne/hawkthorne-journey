@@ -146,11 +146,6 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.foreground = node.properties.foreground or enemy.props.foreground or false
   enemy.db = app.gamesaves:active()
-  enemy.isBoss = enemy.props.isBoss or false
-  if enemy.isBoss then
-    --enemy.hudSprite = love.graphics.newImage('images/enemies/'..type..'_hud.png')
-  end
-
   
   return enemy
 end
@@ -452,31 +447,8 @@ function Enemy:updatePosition(map, dx, dy)
   self.position.y = ny - offset_y
 end
 
-function Enemy:drawBossHud()
-
-  local x, y = camera.x, camera.y
-  --[[love.graphics.draw(self.hudSprite, x + 17, y + 70)
-    
-      local heartValue = self.maxHealth / 10
-      local tracker = 0
-      
-      for i = 1,2 do
-        for j = 1,5 do
-          if tracker + heartValue <= self.hp then
-            love.graphics.draw(self.health_full, x + 58 + 13*(j-1), y + 78 + 13*(i - 1))
-          elseif tracker < self.hp then
-            love.graphics.draw(self.health_empty, x + 58 + 13*(j-1), y + 78 + 13*(i - 1))
-          end
-          tracker = tracker + heartValue
-        end
-      end]]
-end
-
 function Enemy:draw()
   local r, g, b, a = love.graphics.getColor()
-  if self.isBoss then
-    self:drawBossHud()
-  end
 
   if self.flash then
     love.graphics.setColor(255, 0, 0, 255)
