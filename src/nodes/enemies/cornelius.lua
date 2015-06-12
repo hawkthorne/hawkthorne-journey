@@ -321,6 +321,11 @@ return {
 
   die = function( enemy )
     if enemy.dead then return end
+    for _,node in pairs(enemy.containerLevel.nodes) do
+      if node.name == "lava" and node.oscillating then
+        node.dormant = true
+      end
+    end
     enemy.falling = true
     enemy.freeze = true
     sound.playMusic("cornelius-forfeiting")

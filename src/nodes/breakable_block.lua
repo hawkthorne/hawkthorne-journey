@@ -35,6 +35,7 @@ function Wall.new(node, collider, level)
     node.width = max_x - min_x
     node.height = max_y - min_y
     node.y = node.y + min_y
+    node.x = node.x + min_x
   else
     wall.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
     wall.bb.polyline = nil
@@ -56,6 +57,9 @@ function Wall.new(node, collider, level)
   wall.position = {x = node.x, y = node.y}
   wall.width = node.width
   wall.height = node.height
+  wall.flipped = node.properties.flipped == 'true'
+  wall.flippedY = node.properties.flippedY or false
+  wall.explode = node.properties.explode or false
   
   -- used for collision detection
   wall.map = level.map
@@ -96,9 +100,6 @@ function Wall.new(node, collider, level)
   
   wall.destroyAnimation = anim8.newAnimation('once', g('1-'..frames..',1'), 0.9 / (frames / wall.hp))
 
-  wall.explode = node.properties.explode or false
-  wall.flipY = node.properties.flipY or false
-  wall.flipX = node.properties.flipX or false
 
   
   return wall
@@ -112,7 +113,7 @@ end
 
 function Wall:update(dt, player)
   if not self.dead then return end
-  self.dying_animation:update(dt)
+  if self.dying_animation then self.dying_animation:update(dt) end
 end
 
 function Wall:explosion()
@@ -196,29 +197,21 @@ function Wall:die()
   end
 end
 
-function Wall:draw( special_damage)
-	local scalex = 1
-	local scaley = 1
-	local offsetX = 0
-	local offsetY = 0
-	if self.flipX then
-		scalex = -1
-		offsetX = self.width
-	end
-	if self.flipY then
-		scaley = -1
-		offsetY = self.height
-	end
+function Wall:draw()
+  local scalex = self.flipped and -1 or 1
+  local scaley = self.flippedY and -1 or 1
+  local offset = self.flipped and self.node.width or 0
+  local offsety = self.flippedY and self.node.width or 0
 
   if self.crack then
-    love.graphics.draw(self.sprite, self.node.x + offsetX, self.node.y+ offsetY, 0, scalex, scaley)
-    if self:specialDamageCheck(special_damage) then
-    	self.destroyAnimation:draw(crack, self.node.x, self.node.y)
-    end
+    love.graphics.draw(self.sprite, self.node.x + offset, self.node.y + offsety, 0, scalex, scaley)
+  if self:specialDamageCheck() then
+    self.destroyAnimation:draw(crack, self.node.x + offset, self.node.y + offsety, 0, scalex, scaley)
+  end
   elseif not self.dead then
-    self.destroyAnimation:draw(self.sprite, self.node.x, self.node.y)
+    self.destroyAnimation:draw(self.sprite, self.node.x + offset, self.node.y + offsety, 0, scalex, scaley)
   else
-    self.dying_animation:draw(self.dying_image, self.node.x, self.node.y)
+    self.dying_animation:draw(self.dying_image, self.node.x + offset, self.node.y + offsety, 0, scalex, scaley)
   end
 end
 

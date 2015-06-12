@@ -56,8 +56,12 @@ function Liquid.new(node, collider)
   liquid.animation_bottom = anim8.newAnimation( liquid.animation_mode, liquid.g( liquid.animation_bottom_frames ), liquid.animation_speed )
 
   liquid.position = {x=node.x, y=node.y}
+  liquid.original_position = {x=node.x, y=node.y}
+  liquid.direction = -1
+  liquid.moving = "up"
 
   liquid.death = np.death == 'true'
+  liquid.oscillating = np.oscillating == 'true'
   liquid.injure = np.injure == 'true'
   liquid.drown = np.drown == 'true'
   liquid.drag = np.drag == 'true'
@@ -147,6 +151,24 @@ function Liquid:update(dt, player)
   if self.died and player.position.y + player.height < self.position.y + self.height then
     player.position.y = player.position.y + 20 * dt
   end
+  if self.dormant and self.position.y < self.original_position.y + 36 then
+    self.position.y = self.position.y + (dt * 10)
+  end
+  if self.oscillating and not self.dormant then
+    self.position.y = self.position.y + (dt * self.direction * 10)
+    if self.moving == "up" then
+      if self.position.y < self.original_position.y - 12 then
+        self.moving = "down"
+        self.direction = 1
+      end
+    else
+      if self.position.y > self.original_position.y + 24 then
+        self.moving = "up"
+        self.direction = -1
+      end
+    end
+  end
+  self.bb:moveTo( self.position.x + self.width / 2, self.position.y + self.height / 2 )
 end
 
 function Liquid:draw()
