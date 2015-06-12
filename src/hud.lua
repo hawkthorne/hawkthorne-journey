@@ -106,6 +106,14 @@ function HUD:draw( player )
 
   -- HEALTH 
   love.graphics.draw(self.heart_full, x+4 , y + 4)
+
+  --Draw black outline using 16s
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, -0.5, 0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, -0.5, -0.5)
+  
   love.graphics.setColor(
     math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
     math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
@@ -114,9 +122,17 @@ function HUD:draw( player )
   )
 
   love.graphics.print(player.health, x+17, y + 6)
-  love.graphics.setColor( 255, 255, 255, 255 )
 
   -- MONEY
+
+  --Draw black outline using 16s
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, -0.5, 0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, -0.5, -0.5)
+  
+  love.graphics.setColor( 255, 255, 255, 255 )
   love.graphics.print(player.money, x+60, y + 6)
   love.graphics.draw(self.money, x+50 , y + 4)
 
