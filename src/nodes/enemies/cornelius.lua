@@ -99,9 +99,6 @@ return {
   },
 
   enter = function( enemy )
-    enemy.typicalY = enemy.position.y
-    enemy.maxy = enemy.position.y - 25
-    enemy.miny = enemy.position.y + 25
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
@@ -336,12 +333,11 @@ return {
   end,
 
   hurt = function ( enemy )
-    print(enemy.hp)
   end,
 
   --this updates Cornelius's position when he dies so that he drops off the screen
   dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 0.4
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 2
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 
@@ -362,9 +358,6 @@ return {
 
     --move cornelius up if near the bridge
     --still not sure how to handle this and this is not the niceset solution
-    if enemy.position.x < 1320 then
-      enemy.typicalY = 531
-    end
     if not enemy.diving and not player.jumping then 
       enemy.position.y = player.position.y - (enemy.height+55)
     end
@@ -391,7 +384,7 @@ return {
       enemy.last_dive = enemy.last_dive + dt 
       enemy.props.targetDive( enemy, player, -direction )
 
-      if enemy.diving and enemy.position.y <= enemy.typicalY then 
+      if enemy.diving and enemy.position.y <= 200 then 
         enemy.velocity.y = 0
         enemy.diving = false
       end
@@ -406,16 +399,8 @@ return {
         elseif enemy.position.x <= player.position.x - 250 and enemy.position.x <= player.position.x then
           enemy.velocity.x = -125
         end
-      --[[this bit would be for cornelius bobbing up and down
-            
-                    if enemy.position.y <= enemy.maxy then
-                      enemy.velocity.y = 10
-                      print('down')
-                    elseif enemy.position.y >= miny then
-                      enemy.velocity.y = -10
-                      print('up')
-        end]]
       end
+
       --each attack should have a different chance of occuring
       --fireball is probally the most common attack followed by the dive and then the teleport.
       --They values change based on cornelius's hp

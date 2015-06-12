@@ -9,7 +9,6 @@ require 'utils'
 
 local Spawn = {}
 Spawn.__index = Spawn
-Spawn.isSpawn = true
 
 function Spawn.new(node, collider)
   --temporary to make sure it's not being used

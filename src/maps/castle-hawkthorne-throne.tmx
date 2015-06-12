@@ -2028,26 +2028,6 @@
     <property name="sprite" value="bridge"/>
    </properties>
   </object>
-  <object id="1153" type="enemy" x="456" y="720" width="72" height="72">
-   <properties>
-    <property name="enemytype" value="benzalkBoss"/>
-   </properties>
-  </object>
-  <object id="1154" name="throne_barrier" type="door" x="576" y="720" width="24" height="72">
-   <properties>
-    <property name="aniframes2" value="1-12,1"/>
-    <property name="anispeed2" value="0.05"/>
-    <property name="hideable" value="true"/>
-    <property name="obstruct" value="true"/>
-    <property name="offset_hidden_y" value="0"/>
-    <property name="show_sfx" value="throne_door"/>
-    <property name="sound" value="false"/>
-    <property name="sprite" value="throneroom_door"/>
-    <property name="sprite_height" value="72"/>
-    <property name="sprite_width" value="24"/>
-    <property name="trigger" value="bosstriggers.benzalk"/>
-   </properties>
-  </object>
   <object id="1155" type="breakable_block" x="24" y="96" width="24" height="24">
    <properties>
     <property name="brokenBy" value="cornelius"/>
@@ -2620,6 +2600,26 @@
     <property name="flipY" value="true"/>
     <property name="hp" value="1"/>
     <property name="sprite" value="castle-bottom"/>
+   </properties>
+  </object>
+  <object id="1153" type="enemy" x="456" y="720" width="72" height="72">
+   <properties>
+    <property name="enemytype" value="benzalkBoss"/>
+   </properties>
+  </object>
+  <object id="1154" name="throne_barrier" type="door" x="576" y="720" width="24" height="72">
+   <properties>
+    <property name="aniframes2" value="1-12,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="obstruct" value="true"/>
+    <property name="offset_hidden_y" value="0"/>
+    <property name="show_sfx" value="throne_door"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="throneroom_door"/>
+    <property name="sprite_height" value="72"/>
+    <property name="sprite_width" value="24"/>
+    <property name="trigger" value="bosstriggers.benzalk"/>
    </properties>
   </object>
  </objectgroup>

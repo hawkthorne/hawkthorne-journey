@@ -1,6 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local app = require 'app'
 local game = require 'game'
+local gamestate = require 'vendor/gamestate'
 local utils = require 'utils'
 local collision  = require 'hawk/collision'
 local Timer = require 'vendor/timer'
@@ -42,16 +43,18 @@ function Fire.new(node, collider, position)
 
   fire.damage = 6
   fire.special_damage = {fire = 10 }
-  fire.enterTimer = false
 
   return fire
 end
 
 function Fire:die()
+  local current = gamestate.currentState()
+  local level = self.node.containerLevel
+
+  if level.name ~= current.name or not level.map then return end
   self.dead = true
   self.collider:remove(self.bb)
 
-  local level = self.node.containerLevel
   local SpriteClass = require 'nodes/sprite'
   local node = {
     x = self.x,
@@ -75,14 +78,8 @@ function Fire:die()
 end
 
 function Fire:collide(node, dt, mtv_x, mtv_y, collider)
-  if self.dead or node.isSpawn then return end
-  if not node.isEnemy or node.isSpawn then 
-    if not self.enterTimer then
-      Timer.add(10, function()
-        self:die()
-      end)
-      self.enterTimer = true
-    end
+  if self.dead then return end
+  if not node.isEnemy then
     if node.hurt then
       node:hurt(self.damage, self.special_damage)
     end
@@ -97,6 +94,13 @@ end
 
 function Fire:update(dt, player, map)
 	if self.dead then return end
+
+  if not self.dying then
+    self.dying = true
+    Timer.add(math.random(8,10), function()
+      self:die()
+    end)
+  end
 	
   if self.velocity.y > game.max_y then
     self.velocity.y = game.max_y

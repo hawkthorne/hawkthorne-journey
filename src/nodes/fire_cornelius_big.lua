@@ -48,8 +48,8 @@ function Fireball.new(node, collider, level)
 end
 
 function Fireball:collide(node, dt, mtv_x, mtv_y, collider, level)
-  if self.dead or node.isSpawn then return end
-  if not node.isEnemy or node.isSpawn then
+  if self.dead then return end
+  if not node.isEnemy then
     if node.hurt then
       node:hurt(self.damage, self.special_damage)
     end
