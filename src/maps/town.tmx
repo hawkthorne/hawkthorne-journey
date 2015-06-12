@@ -86,11 +86,8 @@
   </object>
   <object id="4" name="tavern" type="door" x="360" y="216" width="24" height="48">
    <properties>
-    <property name="hideable" value="true"/>
-    <property name="invisible" value="true"/>
     <property name="level" value="tavern"/>
     <property name="to" value="main"/>
-    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object id="5" name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
@@ -100,20 +97,14 @@
   </object>
   <object id="6" name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
-    <property name="hideable" value="true"/>
-    <property name="invisible" value="true"/>
     <property name="level" value="blacksmith"/>
     <property name="to" value="main"/>
-    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object id="7" name="house" type="door" x="768" y="216" width="24" height="48">
    <properties>
-    <property name="hideable" value="true"/>
-    <property name="invisible" value="true"/>
     <property name="level" value="house"/>
     <property name="to" value="main"/>
-    <property name="triggerClose" value="acornKingVisible"/>
    </properties>
   </object>
   <object type="climbable" x="567" y="165" width="1" height="100"/>

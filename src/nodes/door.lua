@@ -42,43 +42,37 @@ function Door.new(node, collider, level)
   door.width = node.width
   door.node = node
   door.key = node.properties.key
-  door.quest = node.properties.quest
-  door.minesDoor = node.properties.minesDoor
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
-  door.triggerClose = node.properties.triggerClose or '' -- Used to hide hideable doors based on gamesave triggers.
 
   door.inventory = node.properties.inventory    
   door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
-  door.open = app.gamesaves:active():get(door.trigger, false) or app.gamesaves:active():get(door.triggerClose, true)
-  door.invisible = node.properties.invisible or false --used for doors that just need to lock
+  door.open = app.gamesaves:active():get(door.trigger, false)
 
   -- generic support for hidden doors
   if door.hideable then
     -- necessary for opening/closing doors with a trigger
     door.hidden = true
-    if not door.invisible then
-      door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
-      door.sprite_width = tonumber( node.properties.sprite_width )
-      door.sprite_height = tonumber( node.properties.sprite_height )
-      door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())
-      door.animode = node.properties.animode and node.properties.animode or 'once'
-      door.anispeed = node.properties.anispeed and tonumber( node.properties.anispeed ) or 1
-      door.aniframes = node.properties.aniframes and node.properties.aniframes or '1,1'
-      door.animation = anim8.newAnimation(door.animode, door.grid(door.aniframes), door.anispeed)
-      door.anispeed2 = node.properties.anispeed2 and tonumber( node.properties.anispeed2 ) or 1
-      door.aniframes2 = node.properties.aniframes2 and node.properties.aniframes2 or '1,1'
-      door.animation2 = anim8.newAnimation(door.animode, door.grid(door.aniframes2), door.anispeed2)
-      door.position_hidden = {
-        x = node.x + ( node.properties.offset_hidden_x and tonumber( node.properties.offset_hidden_x ) or 0 ),
-        y = node.y + ( node.properties.offset_hidden_y and tonumber( node.properties.offset_hidden_y ) or 0 )
-      }
-      door.position_shown = {
-        x = node.x + ( node.properties.offset_shown_x and tonumber( node.properties.offset_shown_x ) or 0 ),
-        y = node.y + ( node.properties.offset_shown_y and tonumber( node.properties.offset_shown_y ) or 0 )
-      }
-      door.position = utils.deepcopy(door.position_hidden)
-      door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
-    end
+    door.sprite = love.graphics.newImage('images/hiddendoor/' .. node.properties.sprite .. '.png')
+    door.sprite_width = tonumber( node.properties.sprite_width )
+    door.sprite_height = tonumber( node.properties.sprite_height )
+    door.grid = anim8.newGrid( door.sprite_width, door.sprite_height, door.sprite:getWidth(), door.sprite:getHeight())
+    door.animode = node.properties.animode and node.properties.animode or 'once'
+    door.anispeed = node.properties.anispeed and tonumber( node.properties.anispeed ) or 1
+    door.aniframes = node.properties.aniframes and node.properties.aniframes or '1,1'
+    door.animation = anim8.newAnimation(door.animode, door.grid(door.aniframes), door.anispeed)
+    door.anispeed2 = node.properties.anispeed2 and tonumber( node.properties.anispeed2 ) or 1
+    door.aniframes2 = node.properties.aniframes2 and node.properties.aniframes2 or '1,1'
+    door.animation2 = anim8.newAnimation(door.animode, door.grid(door.aniframes2), door.anispeed2)
+    door.position_hidden = {
+      x = node.x + ( node.properties.offset_hidden_x and tonumber( node.properties.offset_hidden_x ) or 0 ),
+      y = node.y + ( node.properties.offset_hidden_y and tonumber( node.properties.offset_hidden_y ) or 0 )
+    }
+    door.position_shown = {
+      x = node.x + ( node.properties.offset_shown_x and tonumber( node.properties.offset_shown_x ) or 0 ),
+      y = node.y + ( node.properties.offset_shown_y and tonumber( node.properties.offset_shown_y ) or 0 )
+    }
+    door.position = utils.deepcopy(door.position_hidden)
+    door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
     door.obstruct = node.properties.obstruct or false
     door.show_sfx = node.properties.show_sfx or 'reveal'
     --used if the closed door should obstruct the player's movement
@@ -117,60 +111,38 @@ function Door:switch(player)
   if math.abs(wy2 - py2) > 10 or player.jumping then
     return
   end
-  if not self.minesDoor or (self.minesDoor and player.minesDoor == true) then
-    if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
-      if not self.quest or (self.quest and player.quest == self.quest) then 
-        if self.sound ~= false and not self.instant then
-          sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
-        end
-        local current = Gamestate.currentState()
-        if current.name ~= self.level then
-          current:exit(self.level, self.to)
-        else
-          local destDoor = current.doors[self.to]
-          player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
-          player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
-        end
-      else
-        sound.playSfx('locked')
-        player.freeze = true
-        message = {self.info}
-        local callback = function(result)
-        self.prompt = nil
-        player.freeze = false
-        end
-        local options = {'Exit'}
-        self.prompt = Prompt.new(message, callback, options)
-      end
-    else
-      sound.playSfx('locked')
-      player.freeze = true
-      if player.inventory:hasKey(self.key) and self.closedinfo then
-        message = {self.closedinfo}
-      elseif self.info then
-        message = {self.info}
-      else
-        message = {'You need a "'..self.key..'" key to open this door.'}
-      end
 
-      local callback = function(result)
-        self.prompt = nil
-        player.freeze = false
-      end
-      local options = {'Exit'}
-      self.prompt = Prompt.new(message, callback, options)
+  if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
+    if self.sound ~= false and not self.instant then
+      sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
+    end
+    local current = Gamestate.currentState()
+    if current.name ~= self.level then
+      current:exit(self.level, self.to)
+    else
+      local destDoor = current.doors[self.to]
+      player.position.x = destDoor.x+destDoor.node.width/2-player.character.bbox.width/2
+      player.position.y = destDoor.y+destDoor.node.height-player.character.bbox.height
     end
   else
-        sound.playSfx('locked')
-        player.freeze = true
-        message = {self.info}
-        local callback = function(result)
-        self.prompt = nil
-        player.freeze = false
-        end
-        local options = {'Exit'}
-        self.prompt = Prompt.new(message, callback, options)
+    sound.playSfx('locked')
+    player.freeze = true
+    
+    if player.inventory:hasKey(self.key) and self.closedinfo then
+      message = {self.closedinfo}
+    elseif self.info then
+      message = {self.info}
+    else
+      message = {'You need a "'..self.key..'" key to open this door.'}
     end
+
+    local callback = function(result)
+      self.prompt = nil
+      player.freeze = false
+    end
+    local options = {'Exit'}
+    self.prompt = Prompt.new(message, callback, options)
+  end
 end
 
 function Door:collide(node)
@@ -224,9 +196,7 @@ function Door:show(previous)
       self.open = true
     end
     sound.playSfx( self.show_sfx )
-    if not self.invisible then
-      Tween.start( self.movetime, self.position, self.position_shown )
-    end
+    Tween.start( self.movetime, self.position, self.position_shown )
     if self.obstruct then
       local tw = self.map.tilewidth
   
@@ -245,13 +215,9 @@ function Door:hide(previous)
   -- level check is to allow door to close on re-entry or close command
   if self.hideable and ( (previous and previous.name == self.level) or not self.hidden ) then
     self.hidden = true
-    if not self.invisible then
-      self.position = utils.deepcopy(self.position_shown)
-    end
+    self.position = utils.deepcopy(self.position_shown)
     sound.playSfx( 'unreveal' )
-    if not self.invisible then
-      Tween.start( self.movetime, self.position, self.position_hidden )
-    end
+    Tween.start( self.movetime, self.position, self.position_hidden )
   end
 end
 
@@ -265,8 +231,7 @@ function Door:update(dt)
   end
 
   local trg = app.gamesaves:active():get(self.trigger, false)
-  local trgClose = app.gamesaves:active():get(self.triggerClose, true)
-  if trg ~= false or trgClose == false and not self.open then
+  if trg ~= false and not self.open then
     self:show()
     self.open = true
   end
@@ -277,9 +242,9 @@ function Door:draw()
 
   if not self.hideable then return end
 
-  if self.open and not self.invisible then
+  if self.open then
     self.animation2:draw(self.sprite, self.position.x, self.position.y)   
-  elseif  not self.invisible then
+  else
     self.animation:draw(self.sprite, self.position.x, self.position.y)
   end
 end
