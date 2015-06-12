@@ -37,6 +37,9 @@ return {
     ["What?"]={
       "Speak up! I can't hear a thing you're sayin'!",
     },
+    ["Pardon?"]={
+      "Speak up! I can't hear a thing you're sayin'!",
+    },
     ["Say again?"]={
       "Speak up! I can't hear a thing you're sayin'!",
     },
