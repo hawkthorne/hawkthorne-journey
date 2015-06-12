@@ -632,7 +632,8 @@ function Player:hurt(damage)
   --Apply defense as a percentage of player health
   damage = (damage - self.protection) * (1 - self.defense / 100)
 
-  damage = math.floor(damage)
+  -- Verify that damage >= 0 and an integer
+  damage = math.floor(math.max(damage, 0))
 
   sound.playSfx( "damage" )
   self.rebounding = true
