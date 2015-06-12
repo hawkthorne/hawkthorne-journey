@@ -156,7 +156,7 @@ function Quest.testSuccess(player, quest)
     local level = Gamestate.get(quest.removeall.level)
     for _,node in pairs(level.nodes) do
             if node.name == quest.removeall.name then
-              success = false
+              return
             else
               success = true
             end
