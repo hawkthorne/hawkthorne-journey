@@ -65,7 +65,7 @@ return {
       npc.menu:close(player)
       end)
     elseif player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
-      player.inventory:removeManyItems(1, 'alien_object3')    
+      player.inventory:removeManyItems(1, {name='alien_object3',type='key'})    
       Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
       local level = npc.containerLevel
       npc.shake = true
