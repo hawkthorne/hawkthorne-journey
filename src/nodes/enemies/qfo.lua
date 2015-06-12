@@ -34,7 +34,7 @@ return {
   --attack_width = 40,
   --attack_offset = { x = -40, y = 10},
   velocity = {x = 20, y = 50},
-  hp = 50,
+  hp = 60,
   tokens = 20,
   hand_x = -40,
   hand_y = 70,
@@ -115,8 +115,8 @@ return {
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
     end
     love.graphics.setStencil(energy_stencil, x, y)
-    local max_hp = 50
-    local rate = 55/max_hp
+    local max_hp = 60
+    local rate = 60/max_hp
     love.graphics.setColor(
       math.min(utils.map(enemy.hp, max_hp, max_hp / 2 + 1, 0, 255 ), 255), -- green to yellow
       math.min(utils.map(enemy.hp, max_hp / 2, 0, 255, 0), 255), -- yellow to red
