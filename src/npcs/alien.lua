@@ -65,7 +65,7 @@ return {
       npc.menu:close(player)
       end)
     elseif player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
-      Quest:activate(npc, player, quests.aliencamp)      
+      player.inventory:removeManyItems(1, 'alien_object3')    
       Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
       local level = npc.containerLevel
       npc.shake = true
@@ -90,8 +90,9 @@ return {
       npc.menu:close(player)
       player.quest = 'Aliens! - Regroup with the alien at Chili Fields'
       player.questParent = 'alien'
+      Quest.removeQuestItem(player)
       Quest.addQuestItem(quests.regroup, player)
-      Quest:save({})
+      Quest:save(quests.regroup)
       npc.state = 'hidden'
       end)
       end)
