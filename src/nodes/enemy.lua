@@ -22,7 +22,7 @@ local utils = require 'utils'
 local window = require 'window'
 local camera = require 'camera'
 local app = require 'app'
-
+local fonts = require 'fonts'
 
 local Enemy = {}
 Enemy.__index = Enemy
@@ -50,7 +50,9 @@ function Enemy.new(node, collider, enemytype)
   enemy.sprite = love.graphics.newImage( sprite_sheet )
   enemy.sprite:setFilter('nearest', 'nearest')
   
-  enemy.grid = anim8.newGrid( enemy.props.width, enemy.props.height, enemy.sprite:getWidth(), enemy.sprite:getHeight() )
+  enemy.grid = anim8.newGrid( enemy.props.width, enemy.props.height, enemy.sprite:getDimensions())
+  
+  enemy.isBoss = enemy.props.isBoss or false
   
   enemy.node_properties = node.properties
   enemy.node = node
@@ -65,6 +67,16 @@ function Enemy.new(node, collider, enemytype)
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
   assert( tonumber(enemy.props.hp),"Hp must be a number" )
   enemy.hp = tonumber(enemy.props.hp)
+  
+  if enemy.isBoss then
+    enemy.maxHealth = enemy.hp
+    enemy.hudSheet = love.graphics.newImage('images/enemies/bossHud/' .. type .. '.png')
+    enemy.circle = love.graphics.newImage('images/enemies/bossHud/circle.png')
+    enemy.health = love.graphics.newImage('images/enemies/bossHud/health.png')
+    enemy.hudSheet:setFilter('nearest', 'nearest')
+    enemy.circle:setFilter('nearest', 'nearest')
+    enemy.health:setFilter('nearest', 'nearest')
+  end
   
   enemy.height = enemy.props.height
   enemy.width = enemy.props.width
@@ -449,6 +461,10 @@ end
 
 function Enemy:draw()
   local r, g, b, a = love.graphics.getColor()
+  
+  if self.isBoss then
+    self:drawBossHud()
+  end
 
   if self.flash then
     love.graphics.setColor(255, 0, 0, 255)
@@ -467,6 +483,32 @@ function Enemy:draw()
   end
 
 end
+
+function Enemy:drawBossHud()
+  local x = camera.x + window.width - 70
+  local y = camera.y + 30
+  love.graphics.draw(self.circle, x + 20, y - 20)
+  love.graphics.draw(self.hudSheet, x + 20, y - 20)
+
+  fonts.set('small')
+  
+  -- draws boss name
+  
+  -- draws health
+  local health = self.hp > 0 and self.hp or 0
+  -- draws black outline around text
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.printf(self.hp, x, y, 16, 'left', 0, 1, 1, 0.5, 0.5)
+  love.graphics.printf(self.hp, x, y, 16, 'left', 0, 1, 1, 0.5, -0.5)
+  love.graphics.printf(self.hp, x, y, 16, 'left', 0, 1, 1, -0.5, 0.5)
+  love.graphics.printf(self.hp, x, y, 16, 'left', 0, 1, 1, -0.5, -0.5)
+  
+  love.graphics.print("King Trouser Snake", x - 100, y - 10)
+  
+  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.print(self.hp, x, y)
+end
+
 
 function Enemy:ceiling_pushback()
   if self.props.ceiling_pushback then
