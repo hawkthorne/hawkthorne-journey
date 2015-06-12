@@ -97,6 +97,8 @@ return {
       end)
       player.quest = nil
       player.questParent = nil
+      Quest.removeQuestItem(player)
+      Quest:save({})
       else
         Dialog.new("Come on, human. The {{orange}}QFO{{white}} is just outside! Its shields are down, now is the time to attack!", function()
           npc.menu:close(player)
@@ -116,9 +118,11 @@ return {
       }
       Dialog.new(script2, function()
       npc.menu:close(player)
+      Quest.removeQuestItem(player)
+      Quest.addQuestItem(quests.qfo, player)
       player.quest = 'Aliens! - Destroy the QFO!'
       player.questParent = 'alien'
-      Quest:save(quests.qfo)
+      Quest:save({})
       end)
     end
     player.freeze = false

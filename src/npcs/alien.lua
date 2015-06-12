@@ -90,7 +90,8 @@ return {
       npc.menu:close(player)
       player.quest = 'Aliens! - Regroup with the alien at Chili Fields'
       player.questParent = 'alien'
-      Quest:save(quests.regroup)
+      Quest.addQuestItem(quests.regroup, player)
+      Quest:save({})
       npc.state = 'hidden'
       end)
       end)

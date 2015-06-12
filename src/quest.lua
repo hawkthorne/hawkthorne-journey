@@ -97,7 +97,7 @@ function Quest.giveQuestSucceed(npc, player, quest)
         Quest:save(quest)
         Quest.addQuestItem(quest, player)
       end
-      --npc.menu:close(player)
+      npc.menu:close(player)
       npc.prompt = nil
     end)
   end)
