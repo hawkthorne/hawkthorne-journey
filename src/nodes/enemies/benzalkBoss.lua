@@ -269,7 +269,7 @@ return {
   end,
 
   dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 8
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 6
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 

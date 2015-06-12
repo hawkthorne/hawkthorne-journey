@@ -326,7 +326,6 @@ end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
   function attack()
-    -- attack
     if self.props.attack_sound then
       if not self.attackingWorld then
         if type(self.props.attack_sound) == 'table' then
@@ -350,7 +349,9 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   end
 
   if node.isWall then
-    attack()
+    if not self.type == "benzalkBoss" then
+      attack()
+    end
 
     if self.props.damage ~= 0 then
       if self.attackingWorld then return end
@@ -455,6 +456,7 @@ function Enemy:update( dt, player, map )
   self:animation():update(dt)
   if self.state == 'dying' then
     if self.props.dyingupdate then
+      self.velocity.y = 0
       self.props.dyingupdate( dt, self )
     end
     return
