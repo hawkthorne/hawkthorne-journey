@@ -31,7 +31,7 @@ def next_major_version():
 def next_version():
     if is_major():
         return next_major_version()
-    if is_release():
+    elif is_release():
         return next_minor_version()
     else:
         return next_bugfix_version()
