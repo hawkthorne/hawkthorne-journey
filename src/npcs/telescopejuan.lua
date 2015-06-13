@@ -2,6 +2,8 @@ local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
 local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
+local Quest = require 'quest'
+local quests = require 'npcs/quests/telescopejuanquest'
 
 return {
   width = 48,
@@ -34,18 +36,22 @@ return {
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='Any useful info for me?' },
-    { ['text']='Who?' },
+    { ['text']='So you believe in aliens?' },
     { ['text']='Hello!' },
   },
+
+  talk_commands = {
+    ['So you believe in aliens?']= function(npc, player)
+      Quest:activate(npc, player, quests.alien)
+      end,
+  },
+
   talk_responses = {
     ["Hello!"]={
-      "Careful, they are here. Stay low, stay hidden!",
-    },
-    ["Who?"]={
-      "The aliens. I saw a QFO, but no one believes me.",
+      "Careful, the aliens are here. Stay low, stay hidden!",
     },
     ["Any useful info for me?"]={
-      "Be careful, the QFO could attack at any time!",
+      "Be careful, the aliens could attack at any time!",
       "You will need many weapons and potions if you are to survive its attacks.",
     },
   },

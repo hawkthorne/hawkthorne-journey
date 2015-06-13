@@ -22,6 +22,8 @@ local utils = require 'utils'
 local window = require 'window'
 local camera = require 'camera'
 local app = require 'app'
+local player = require 'player'
+local Player = player.factory()
 
 
 local Enemy = {}
@@ -55,11 +57,13 @@ function Enemy.new(node, collider, enemytype)
   enemy.node_properties = node.properties
   enemy.node = node
   enemy.collider = collider
-  
+  enemy.maxx = 0
+  enemy.minx = 0
+  enemy.range = enemy.props.range or 0
   enemy.dead = false
   enemy.dying = false
   enemy.idletime = 0
-  
+  enemy.db = app.gamesaves:active()
   assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
@@ -70,7 +74,6 @@ function Enemy.new(node, collider, enemytype)
   enemy.width = enemy.props.width
   enemy.bb_width = enemy.props.bb_width or enemy.width
   enemy.bb_height = enemy.props.bb_height or enemy.height
-  
   enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
   
   -- Height to be used when offsetting an enemy to its node
@@ -91,6 +94,7 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.jumpkill = enemy.props.jumpkill
   if enemy.jumpkill == nil then enemy.jumpkill = true end
+  enemy.jumpBounce = enemy.props.jumpBounce or false
   
   enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
   enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
@@ -129,7 +133,12 @@ function Enemy.new(node, collider, enemytype)
                                    enemy.props.bb_height or enemy.props.height)
   enemy.bb.node = enemy
   enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
-
+  
+  enemy.quest = node.properties.quest
+  enemy.drop = node.properties.drop
+    if enemy.quest and Player.quest ~= enemy.quest then
+    enemy:die()
+    end
   if enemy.props.passive then
     collider:setGhost(enemy.bb)
   end
@@ -250,6 +259,21 @@ end
 
 function Enemy:die()
   if self.props.die then self.props.die( self ) end
+  if self.drop and Player.quest == self.quest and not Player.inventory:hasKey(self.drop) then
+    local NodeClass = require('nodes/key')
+    local node = {
+        type = 'key',
+        name = self.drop,
+        x = self.position.x,
+        y = self.position.y + self.height - 24,
+        width = 24,
+        height = 24,
+        properties = {info = "This must be the technology that the alien wants!"},
+      }
+      local spawnedNode = NodeClass.new(node, self.collider)
+      local level = gamestate.currentState()
+      level:addNode(spawnedNode)
+    end
   self.dead = true
   self.collider:remove(self.bb)
   self.collider:remove(self.attack_bb)
@@ -352,7 +376,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     self:hurt(player.jumpDamage)
     -- reset fall damage when colliding with an enemy
     player.fall_damage = 0
-    player.velocity.y = -450 * player.jumpFactor
+    if self.jumpBounce then
+      player.velocity.y = -750 * player.jumpFactor
+    else
+      player.velocity.y = -450 * player.jumpFactor
+    end
   end
 
   if cheat:is('god') then
@@ -488,7 +516,7 @@ function Enemy:wall_pushback()
     self.props.wall_pushback(self)
   else
     if self.attackingWorld then return end
-    self.direction = self.direction == 'left' and 'right' or 'left'
+    --self.direction = self.direction == 'left' and 'right' or 'left'
     self.velocity.x = 0
     self:moveBoundingBox()
   end

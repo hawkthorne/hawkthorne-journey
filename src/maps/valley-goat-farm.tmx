@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="80" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="6"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="tacotown"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
+ </tileset>
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="sky" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0FENgEAQxcDbDQIQgAAEIB8BCEAAAhDAJy6gTd4kNdAxIiIi4mt7eSP4+0H+5Z81gqO8EZzljeAqbwR3eSN4yhvB1N4I5vZGsLQ3grW9EWztjeAFWsJ08Q==
+  </data>
+ </layer>
+ <layer name="nacho_mountains_bg" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0.56"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkjsSgzAQQ70n45cOQ+hIDPc/R1RQUDj+YIcYRpp5DTO7rCQrRVEURVHlqRKlatCAFnTgIf++6jrqkZUGAxjBE0yR+ZXcQX3wtlBPM769wBsYsIBV4vaU0IFr3nZbJe6ZEE/zlpuNNXLPLztImddfbuvF/U+fJ1d2+wxT9uTqIGXedpfxePN5CskuNNszOsjxFu5Iape53gIhhBBCCLkPH/FLUis=
+  </data>
+ </layer>
+ <layer name="nacho_mountains" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkMEKgzAQRONnqbU3q/ampv7/p3SOIZDd7UYpwgw8CCw7mdkQKIqiKIqyqm1C6EAPHmAAz+bfqc7VlR1H+LzABGawgPcJ3t7MpT3NT5rXdNT+XfHewA4i+IDDmCud55Iye7pqN5DmNR0131jgMOyn81xSZk9X7QbSXk1Hj2/qb82d387jaclU8vt176o83tyW25EyvF0dvB0hhBBC7sYX/DJA5g==
+  </data>
+ </layer>
+ <layer name="mountains" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0.7"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt09lOAkEQQNGuT2ffguwSUVAhrApEQED4Oe+EzBuE7oehM5m6yXmiQkhVY4ymaZqmadr9UmJMWnz/ivhWZXdPd/b37Hm/4Y0zyCKHPAooooSy+Jl7icHbC29cQx0NNNFCGx253NjHXJjtTSoe9h3cuIdXvKGPAd7xgU8Mxc+c64278vh9j/mOCaaYYY4FvvCNJVbib27tcJORuO/bdte3+uGzDbbY4Rd7HHDEH07ib+7suGuX/1Swb9tdxzmXXQdF8baTVBRvW7ue7a41TdOS2j/KdeIW
+  </data>
+ </layer>
+ <layer name="taco_bg" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt07kOwjAQRVGHvWKv2Cv2Cgjw/1/GTWchxUbBxkF6TzrVaKQZj2yMoiiKoiiKovwujcyYJlpoo4MuelnqyT7L+8yufWLU+hhgiBHGmHh66hR75qljn1i1GeZYYIkV1p6eqreKEXvmjWOfWLUtdtjjgCNOnp6qtyoS+g/ZM58d+8SqXXDFDTnueHh6qt6qSOg/ZM/8dOwTq5aXcPVUvVWR0H+obP46++ZWof9Q6rf4l7cvq6XeR0QklRcDBol0
+  </data>
+ </layer>
+ <layer name="taco" width="80" height="20">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jkOwkAQRNFpwEAEGIjYIxZDxH7/k/FDwmawA5r60guslmyp5JSUUkoppZRSSv1CLUupjQ4KdNFD32Lcmm7AN4YYocQYE0wtxq3pbWe8Z44FllhhjY3FuOVu6919y/MOexxQ4YiTxbjlbuvd/YwLrrjhjgeeQW6523p3j17utt7d/7k6/mn1ee/bqu96Ab8rLsM=
+  </data>
+ </layer>
+ <layer name="bg_buildings" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEOgCAQRFGOzvnUWqzFWjyCaywgVEBAIfkvmcKCOJBRCgAAABjXJJmjLL82GssqMVG2XxvVIzvQs0+TXewSG+XI69btZmUH2vg02UXp+wXdut2s3ENbn6R75Sp9v6Bb8pmvXdLP+Tzf1Z0SFyXlPyO8HwAAeN3C1ku5
+  </data>
+ </layer>
+ <layer name="bushes" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0rEJwDAMBdGPJvEmdp8Bsl5G8WiRwW5MSNwEubgHKtSJQxIAAAAA4A+nqRymNMb3Gn3T7rzRNXplk+ah4zvvU566zeMNU/Stu2m/t9Ku/2GNvhcAAHy7AUIND3c=
+  </data>
+ </layer>
+ <layer name="smallfence" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztkV0KgCAQBsPL5XseaI8ehhvLqhEhGDgDH/i7rOO2AQAAAADASsRwRWb3MRvrII+9k5aj7C6V6LznMoZPPQ2tNxrtL8c4EHWie7rmHN/uyp6O89nKf+q8t+foqZ7tdybJuFI/yXnxiaFyJ+aeuPi7shcPu3Nu/qpy18l0Wm/8mLd15Cj+jnYNacx/6w8AAGBFTuiQSRk=
+  </data>
+ </layer>
+ <layer name="bg_fence" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0LENgDAMBEArTAc9zMPoOF1ER4pYSHfSF67edgQAAAB/shX1Hi3uldkzY3/OfYfpVLvynpU5X//Lue8wnWr+BwB89QCj9VfK
+  </data>
+ </layer>
+ <layer name="buildings" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzkENADAIBLALymcHhzznYF+ypFXQBAAAgJ/MdgB46srZPgAAyQXQtwIk
+  </data>
+ </layer>
+ <layer name="features" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlDEOwjAMRa2yAzM7LIgBGDhAL8ZFygo5ANyJAyAx4qBaKlUSHJK2VPpPslS5Tf/3t1oiAAAAAIBxUdQ145oP7OXfqQo6tnuTVo0txxPP5JorJ1WtYRT5SR26NPTpzWaQct45V05u/P5rZH5ll4YasKd3hr8is8Wee3r6vn36dCSvDQ2TH3uy3pIwGb/h0D5dOpLVnWtN/eZnfZrE7CwXnun8Jb+pUie0T5eOZPWg/vNjL9aTim3gOc3/b6HU8e1zx/19496Sr1cZdg8AAACAeF5+ji3z
+  </data>
+ </layer>
+ <layer name="fence" width="80" height="20">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztz1EJACAQBcGHhb0IRtcE/smBzMAG2AQAAADgrkbWy+ap+xEA+MsGUeQXog==
+  </data>
+ </layer>
+ <layer name="floor" width="80" height="20">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzbEJADAIAEEh8zhA9l8sG6RQxOYOvv4IAAAAgL8caOu70VWrI0lSoQeUhiL8
+  </data>
+ </layer>
+ <layer name="collision" width="80" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJwCAQRFFh+z9YhxfTYYSwCJKDZDaX9T+YAvyopQDAu2rPsK/ZnPdry7CH+6fJ3s/fUx+7fjhn9n6r6I6n9XNRf/yp/aLQT0M/Df002ftVY8oAAPjiBs6ERJM=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="80" height="20" opacity="0.9">
+  <object name="main" type="door" x="1488" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-tacotown"/>
+    <property name="to" value="farm"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="312" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="216" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="120" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="288" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object type="enemy" x="360" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+   </properties>
+  </object>
+  <object name="door1" type="door" x="648" y="288" width="24" height="48">
+   <properties>
+    <property name="info" value="The door requires a key to get in!"/>
+    <property name="key" value="farm_key"/>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="door2"/>
+   </properties>
+  </object>
+  <object name="door2" type="door" x="528" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-goat-farm"/>
+    <property name="to" value="door1"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="48" y="288" width="24" height="48">
+   <properties>
+    <property name="level" value="valley-goat-cave"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="goatfarm" type="building" x="504" y="48" width="216" height="288"/>
+  <object type="enemy" x="864" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="936" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="456" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="360" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="744" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1176" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="168" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="624" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="1752" y="312" width="24" height="24"/>
+ </objectgroup>
+</map>
