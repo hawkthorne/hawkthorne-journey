@@ -26,7 +26,7 @@ def next_minor_version():
 
 def next_major_version():
     x, y, z = current_version_tuple()
-    return "{0}.0.0".format(x+1)
+    return "{0}.0.0".format(int(x)+1)
 
 def next_version():
     if is_major():
