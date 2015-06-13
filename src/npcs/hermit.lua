@@ -28,14 +28,16 @@ return {
   },
   talk_commands = {
     ['Talk about quests']=function(npc, player)
-      Quest:activate(npc, player, quests.berry)--[[
-              if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' then
-                Quest:activate(npc, player, quests.flowers)
+              if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' or not player.quest then
+                player.quest = nil
+                Quest:activate(npc, player, quests.berry)
+              elseif player.quest == 'To Slay An Acorn - Collect the Special Berry' then
+                Quest:activate(npc, player, quests.berry)
               else 
                 Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
                   npc.menu:close(player)
                   end)
-              end]]
+              end
   end,
   },
   talk_responses = {
