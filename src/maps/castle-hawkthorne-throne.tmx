@@ -2,11 +2,11 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="96" height="37" tilewidth="24" tileheight="24" nextobjectid="1228">
  <properties>
   <property name="autosave" value="false"/>
-  <property name="blue" value="223"/>
-  <property name="green" value="181"/>
+  <property name="blue" value="0"/>
+  <property name="green" value="0"/>
   <property name="offset" value="23"/>
   <property name="overworldName" value="caverns"/>
-  <property name="red" value="9"/>
+  <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
  </properties>
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
@@ -15,6 +15,11 @@
  <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
+ <layer name="sky" width="96" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6Hzb7Fm9p4HSFg1VVVVVVVVVVVVVVVVVfU9HAPfRg==
+  </data>
+ </layer>
  <layer name="bg_leaves2" width="96" height="37">
   <data encoding="base64" compression="zlib">
    eJzt1NEJwyAUQFFHySgdraNkqkJH6Aj9q4EUpFiiialUzgEhHxKSK74QAAAAAAAAABjdM4T5UbDivqn3t44otg33ghX3XTt94tBK+69nMC3LXaizzpBst5r+7sI+37ots7+2/edd+M0f/Ldc/yPt08W2tNd7BsWzuOztqH+dzOyY0+cj72Nb6/mhf52zZvaI/W8nv7/lOehPa/r3pT8ArbwAXDeE+A==
