@@ -173,12 +173,12 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage, special_damage, knockback )
-  if self.dead then return end
+  if self.dead or self.invulnerable then return end
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
   self.state = 'hurt'
-  
+
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
@@ -191,11 +191,14 @@ function Enemy:hurt( damage, special_damage, knockback )
       table.insert(self.containerLevel.nodes, 5, self.props.splat(self))
     end
 
-    if self.props.before_death then
-      self.props.before_death( self )
-      if self.hp > 0 then
-        self.state = 'hurt'
+    if self.props.prevent_death then
+      local alive = self.props.prevent_death( self )
+      if alive then
+        self.state = 'before_death'
         self.dying = false
+        self.dead = false
+        self.invulnerable = true
+        self.hp = 1
         return
       end
     end
