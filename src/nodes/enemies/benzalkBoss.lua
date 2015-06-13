@@ -43,6 +43,13 @@ return {
     { item = 'health', v = 1, p = 1 }
   },
 
+  camera = {
+    tx = 0,
+    ty = 0,
+    sx = 1,
+    sy = 1,
+  },
+
   animations = {
     jump = {
       right = {'loop', {'1-3,4','2,4'}, 0.25},
@@ -242,8 +249,8 @@ return {
       enemy.props.jumpWind( enemy )
       enemy.state = 'default'
 
-      enemy.camera.tx = camera.x
-      enemy.camera.ty = camera.y
+      enemy.props.camera.tx = camera.x
+      enemy.props.camera.ty = camera.y
 
       sound.playSfx( 'jump_boom' )
 
@@ -269,7 +276,7 @@ return {
   end,
 
   dyingupdate = function ( dt, enemy )
-    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 8
+    enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 6
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 
@@ -280,7 +287,7 @@ return {
 
     if enemy.shake and level.trackPlayer == false then
       shake = (math.random(0,0.5) * 4)-2/player_dist.x
-      camera:setPosition(enemy.camera.tx + shake, enemy.camera.ty + shake)
+      camera:setPosition(enemy.props.camera.tx + shake, enemy.props.camera.ty + shake)
     end
 
     if enemy.dead or enemy.state == 'attack' then return end

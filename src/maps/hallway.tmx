@@ -55,7 +55,7 @@
     <property name="sprite_height" value="72"/>
     <property name="sprite_width" value="24"/>
     <property name="to" value="main"/>
-    <property name="trigger" value="cuttriggers.throne"/>
+    <property name="trigger" value="cornelius-dead"/>
    </properties>
   </object>
   <object type="ceiling_hippy" x="528" y="24" width="48" height="24">

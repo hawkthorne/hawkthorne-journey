@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="98" height="40" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="98" height="40" tilewidth="24" tileheight="24" nextobjectid="16">
  <properties>
   <property name="blue" value="0"/>
   <property name="green" value="0"/>
@@ -34,14 +34,14 @@
    eJzt2VsOgzAMRFGkrqR0Gd3/vlqpmv+QOHRs3yPx73ARj3AcAAAAAFDT+zF+AMAu5/ce81w4Xtyjlp1B55AW86IaCC2ui24gtBi3q4F0azH7fL1Dl2f97mv6H7K1qNhAsrSo3EDcW3RoIA4t2Ff74TwAqGxlHzPz902k1f3gqG/Xzi3c3hE7tnBrIJ1auDaQDi3cG0jlFlkaSGSLiPeRiHmyNRC3ta/Mk7WBuK19Zp7sDcRt7VfmqdJA3NY+Mk+1BuL0f3pkHgDo7APh2BwZ
   </data>
  </layer>
- <objectgroup color="#a41f05" name="nodes" width="98" height="40" visible="0">
-  <object name="main" type="door" x="1189" y="672" width="49" height="72">
+ <objectgroup color="#a41f05" name="nodes">
+  <object id="1" name="main" type="door" x="1189" y="672" width="49" height="72">
    <properties>
     <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="next" type="door" x="1166" y="120" width="47" height="72">
+  <object id="2" name="next" type="door" x="1166" y="120" width="47" height="72">
    <properties>
     <property name="info" value="You need a {{red}}Throne Room{{white}} key to open this door."/>
     <property name="key" value="throneroom"/>
@@ -49,7 +49,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="sprite" x="1032" y="648" width="24" height="24">
+  <object id="3" type="sprite" x="1032" y="648" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -57,7 +57,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1344" y="648" width="24" height="24">
+  <object id="4" type="sprite" x="1344" y="648" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -65,7 +65,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1680" y="768" width="24" height="24">
+  <object id="5" type="sprite" x="1680" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -73,7 +73,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="648" y="768" width="24" height="24">
+  <object id="6" type="sprite" x="648" y="768" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -81,7 +81,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="240" y="504" width="24" height="24">
+  <object id="7" type="sprite" x="240" y="504" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -89,7 +89,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="2088" y="504" width="24" height="24">
+  <object id="8" type="sprite" x="2088" y="504" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -97,7 +97,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1272" y="96" width="24" height="24">
+  <object id="9" type="sprite" x="1272" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -105,7 +105,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="1080" y="96" width="24" height="24">
+  <object id="10" type="sprite" x="1080" y="96" width="24" height="24">
    <properties>
     <property name="animation" value="1-3,1"/>
     <property name="height" value="24"/>
@@ -113,19 +113,19 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="room1" type="door" x="133" y="528" width="47" height="72">
+  <object id="11" name="room1" type="door" x="133" y="528" width="47" height="72">
    <properties>
     <property name="level" value="castle-hawkthorne-room-1"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="room2" type="door" x="2173" y="528" width="47" height="72">
+  <object id="12" name="room2" type="door" x="2173" y="528" width="47" height="72">
    <properties>
     <property name="level" value="castle-hawkthorne-room-2"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="room3" type="door" x="711" y="312" width="47" height="72">
+  <object id="13" name="room3" type="door" x="711" y="312" width="47" height="72">
    <properties>
     <property name="info" value="You need a {{red}}Tower{{white}} key to open this door."/>
     <property name="key" value="tower"/>
@@ -133,7 +133,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="room4" type="door" x="1600" y="312" width="47" height="72">
+  <object id="14" name="room4" type="door" x="1600" y="312" width="47" height="72">
    <properties>
     <property name="info" value="You need a {{red}}Blue Tower{{white}} key to open this door."/>
     <property name="key" value="bluetower"/>
@@ -141,5 +141,6 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object id="15" name="castle-throneroom" type="savepoint" x="1152" y="0" width="72" height="192"/>
  </objectgroup>
 </map>

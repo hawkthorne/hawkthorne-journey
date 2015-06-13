@@ -6,6 +6,7 @@
 local Item = require 'items/item'
 local Prompt = require 'prompt'
 local utils = require 'utils'
+local Gamestate = require 'vendor/gamestate'
 
 local Key = {}
 Key.__index = Key
@@ -65,6 +66,9 @@ function Key:keypressed( button, player )
       self.prompt = nil
       player.freeze = false
       player.invulnerable = false
+      if self.name == 'greendale' then
+        Gamestate.stack("credits", self.containerLevel)
+      end
     end
     local options = {'Exit'}
     player.freeze = true

@@ -21,7 +21,6 @@ return{
   throwVelocityX = 200,
   throwVelocityY = 0,
   offset = { x = 0, y = 0 },
-  stayOnScreen = false,
   thrown = false,
   damage = 5,
   special_damage = {water= 6, epic = 100},
@@ -123,6 +122,9 @@ return{
       else
         node:hurt(projectile.damage, projectile.special_damage, 0)
       end
+    end
+    if node.isFire and node.die then
+      node:die()
     end
   end,
 }
