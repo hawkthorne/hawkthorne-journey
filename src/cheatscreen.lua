@@ -150,6 +150,7 @@ function cheatscreen:keypressed( button )
         ['i want tbd'] = {'give_scrolls', 'Scrolls granted'},
         ['no no juice'] = {'give_potions', 'Potions granted'},
         ['dan harmon'] = {'give_master_key', 'Key granted'},
+        ['recipes'] = {'give_recipes', 'Recipes granted'},
       }
       if codes.quits[self.cmd.current] then
         cheatscreen:exit()

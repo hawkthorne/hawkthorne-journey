@@ -12,7 +12,7 @@ function Token.new( node, collider)
   setmetatable(token, Token)
 
   token.item = require ( 'tokens/' .. node.name )
-  token.value = node.properties.value or token.item.value
+  token.value = token.item.value
   assert(token.value,"Token requires a value")
   assert(tonumber(token.value),"Token value must be a number")
 

@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="24" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" width="35" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="88"/>
   <property name="green" value="113"/>
   <property name="red" value="168"/>
   <property name="title" value="dorm lobby"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="Tile Layer 1" width="24" height="14">
+ <layer name="Tile Layer 1" width="35" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYKQhZmJgYKAxPkBLzEAjUAMMGxCm1Jw0YCCnA3EGIxUchQXUAc2tB+IGAuZfAuLLZJg/DWjudCCeQcD8V0D8mgzz1wHNXQ/EG8gIn2wkjI2PCyQC7UpCs08GGIQyVDK/Emh2FZr5JkDzTQjoIwXUQDHzEMeMNMYAn2gt+Q==
+   eJxjZGBwYBwkmImBgWEQ4QODBTPQCNQAw5xUTKmdacCITgfiDEYqeIBCUAd0Qz0QN1DRLZeA+DIZ+qYB3TAdiGdQ0S2vgPg1GfrWAd2wHog3kOAWLwaGB8xAGoaJAdlIGBufXEDILTLAKJcZJG4xAbrFhEI7kEENHozuFpg48yjGihkHEQYAllhIBw==
   </data>
  </layer>
- <layer name="Tile Layer 2" width="24" height="14">
+ <layer name="Tile Layer 2" width="35" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF+EANA4NDNRDXkIGx6QOKHQDRyHYko/GJBcnYxRqIUTdqPqq6DCjGBXKw8KnpfnLNB6Ylhmo0PrEYpO8BED8E4kcIsYYaItw7CiAAAE/8KLg=
+   eJxjYBgFgx3UMDA4VANxDRkYmz6g2AEQjc9OkBpc/GQCenGBZOxiDUToa8DFx2bmcHNLOCMDQwTj4HBLPtAdBTjc4gXFnkCM7pYMKMYFcrDwqRFHiVjcQghQ2y1VUFyJ5BZg/gPlKTioIQGD9D0A4odA/Agh1lBDwC0gNZOgeCIQVxPh/lEwOAAA0mpCug==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="24" height="14">
+ <layer name="Tile Layer 3" width="35" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBj6wJ+6ZjXgk1egol3IIJ2A+d4kmIEP4DKfWgCb+ZGMDAxRQBzNSF3za5AwNj4pQAmIlYHYAspfiyaficZvgNIbgHgjEG8C4s1E2pUGxEfRxBrR+HVQ+gQQnwTiU0B8mkjzzYH4LgM4HBxgeCoafxqS+ulAPAOIHxNp/ihAAAAvEhmz
+   eJxjYBgFuIA/dc1qoJYbFChyCXVAOpRWwCHvTYIZxAJCZiqQaB4xQACIBYFYCIiFSdAHcstjRgaGJ4wIsUggOwqIoxlx6UIFD4HqHhGplpBbfgPN+QPENQwIzMCAyccFfgL1/qLALUpArAzEFlD+WjT5TDR+A5TeAMQbgXgTEG9Gkl8JxKuAeDUQrwHij0D8iQx3pQHxUTSxRjR+HZQ+AcQngfgUEJ9Gkj8IxIeA+DAQHwFiTmA4cZERVuZAfJcBHBcOMDwVjT8NSf10IJ4BxI+R9N8E4ltAfBuI7wDxZCSMrAdGj4KhAQCx9zFz
   </data>
  </layer>
- <layer name="collision" width="24" height="14">
+ <layer name="collision" width="35" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8JCGeBSMglEwdME3RtrioQ4AXc8sWQ==
+   eJyLZGJgiKQhHgWjYBSMglEweEEe0+DBowA7AADi7hfZ
   </data>
  </layer>
- <objectgroup name="nodes" width="24" height="14" visible="0">
+ <objectgroup name="nodes" width="35" height="14" visible="0">
   <object name="main" type="door" x="48" y="216" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>

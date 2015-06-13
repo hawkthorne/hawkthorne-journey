@@ -40,7 +40,9 @@ end
 
 function Savepoint:collide(node)
   if node.isPlayer and not self.visited then
+    self.level.hud:startSave()
     save:saveGame(self.level, self.name)
+    self.level.hud:endSave()
     self.visited = true
   end
 end

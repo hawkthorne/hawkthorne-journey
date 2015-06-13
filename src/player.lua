@@ -50,6 +50,9 @@ function Player.new(collider)
   plyr.married = false
   plyr.quest = nil
   plyr.questParent = nil
+
+  plyr.minesDoor = false
+
   plyr.affection = {}
 
   plyr.controlState = Statemachine.create({
@@ -78,6 +81,10 @@ function Player.new(collider)
   plyr.punchDamage = 1
 
   plyr.inventory = Inventory.new( plyr )
+  plyr.currentArmor = {primary = 0, secondary = 0}
+  plyr.defense = 0
+  plyr.protection_per_armor = 5 -- Amount of protection for each piece of armor
+  plyr.protection = 0 -- A set amount of damage that is always defended against
 
   plyr.money = plyr.startingMoney   
   plyr.slideDamage = 8
@@ -259,6 +266,20 @@ end
 -- @return true if this function captured the keypress
 function Player:switchWeapon()
   self:selectWeapon(self.inventory:tryNextWeapon())
+end
+
+-- Set the current armor.
+-- @return nil
+function Player:selectArmor(armor)
+  self.currentArmor[armor.subtype] = armor.defense
+  self.defense = 0
+  self.protection = 0
+  for _, defns in pairs(self.currentArmor) do
+    self.defense = self.defense + defns
+    if defns > 0 then
+      self.protection = self.protection + self.protection_per_armor
+    end
+  end
 end
 
 function Player:keypressed( button, map )
@@ -611,15 +632,16 @@ function Player:hurt(damage)
   if self.invulnerable or self.godmode or self.dead then
     return
   end
+  --Apply defense as a percentage of player health
+  damage = (damage - self.protection) * (1 - self.defense / 100)
 
-  damage = math.floor(damage)
-  if damage == 0 then
-    return
-  end
+  -- Verify that damage >= 0 and an integer
+  damage = math.floor(math.max(damage, 0))
 
   sound.playSfx( "damage" )
   self.rebounding = true
   self.invulnerable = true
+  self.showDamageText = true
 
   local color = self.color
   self.color = {255, 0, 0, 255}
@@ -647,6 +669,7 @@ function Player:hurt(damage)
   Timer.add(1.5, function() 
     self.invulnerable = false
     self.rebounding = false
+    self.showDamageText = false
     self.color = color
   end)
 
@@ -813,9 +836,9 @@ function Player:draw()
     self.currently_held:draw()
   end
 
-  local health = math.ceil(self.damageTaken * -1 / 10)
-
-  if self.rebounding and self.damageTaken > 0 then
+  if self.showDamageText then
+    local health = self.damageTaken
+    if health > 0 then health = health * -1 end
     love.graphics.setColor( 255, 0, 0, 255 )
     love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
   end

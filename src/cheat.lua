@@ -6,6 +6,7 @@ local app = require 'app'
 local Cheat = {}
 
 local cheatList ={}
+local cheatEnabled = true
 
 --if turnOn is true the cheat is enabled
 -- if turnOn is false the cheat is disabled
@@ -24,9 +25,14 @@ local function setCheat(cheatName, turnOn)
       'tacomeat','baggle','brekwich','chickenfinger','deepfrieddud',
       'ironcrepe','keynana','alcohol','watermelon'}},
     give_weapons = {weapons = {
-      'sword','battleaxe','boneclub','switch','longsword',
-      'mace','mallet','crimson_sword','torch','bow','icicle',
+      'sword','battleaxe','boneclub','bow','longsword',
+      'mace','mallet','crimson_sword','torch','laser_pistol','lasercell',
       'throwingaxe','throwingknife','arrow'}},
+    give_armor = {armor = {
+      'ajaxshield', 'berserkerbarbute', 'femininefaulds',
+      'greenguard', 'hagshat', 'ivoryheadpiece', 'lightarmor',
+      'necromancercloak', 'platemail', 'pruneplackart',
+      'spiderburgonet', 'tinytarge', 'windwalkercloak'}},
     give_scrolls = {misc = {'lightning', 'ghost_pepper'}},
     give_materials = {materials = {
       'blade','bone','boulder','crystal','ember','fire',
@@ -39,6 +45,9 @@ local function setCheat(cheatName, turnOn)
       'yellow_potion'}},
     give_fryables = {materials = {
       'bubblgum','carkeys','fries','pancake','toast'}},
+    give_recipes = {details = {
+      'blue_potion','green_potion','orange_potion','pink_potion',
+      'purple_potion','red_potion','white_potion', 'yellow_potion'}},
   }
   local activations = {
     give_money = function() player.money = player.money + 10000 end,
@@ -93,11 +102,23 @@ function Cheat:is(cheatName)
 end
 
 function Cheat:on(cheatName)
-  setCheat(cheatName,true)
+  if cheatEnabled then
+    setCheat(cheatName,true)
+  end
 end
 
 function Cheat:off(cheatName)
   setCheat(cheatName,false)
+end
+
+function Cheat:fairfight()
+  cheatEnabled = false
+  local cheats = false
+  for cheat,_ in pairs(cheatList) do
+    if self:is(cheat) then cheats = true end
+    self:off(cheat)
+  end
+  return cheats
 end
 
 function Cheat:toggle(cheatName)

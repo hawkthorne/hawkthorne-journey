@@ -1,7 +1,10 @@
 local game = require 'game'
+local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local Climbable = {}
 Climbable.__index = Climbable
+Climbable.isClimbable = true
 
 function Climbable.new(node, collider)
   local climbable = {}
@@ -18,8 +21,26 @@ function Climbable.new(node, collider)
   climbable.climb_speed = 100
   climbable.prev_state = 'default'
   climbable.grabbed = false
+  climbable.trigger = node.properties.trigger or '' -- Used to show hideable climbables based on gamesave triggers.
+  climbable.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(climbable.trigger, false)
+  climbable.open = app.gamesaves:active():get(climbable.trigger, false)
+
+  if climbable.hideable then
+    climbable.sprite = love.graphics.newImage('images/' .. node.properties.sprite .. '.png')
+    climbable.hidden = true
+  end
 
   return climbable
+end
+
+function Climbable:enter( )
+  if self.hideable and self.hidden then
+    local trg = app.gamesaves:active():get(self.trigger, false)
+    if trg ~= false and not self.open then
+      self.open = true
+    end
+
+  end
 end
 
 function Climbable:collide( node, dt, mtv_x, mtv_y )
@@ -103,5 +124,14 @@ function Climbable:release( player )
   player:setSpriteStates(state)
   player.isClimbing = false
 end
+
+function Climbable:draw()
+  if self.hideable and self.open then
+    love.graphics.draw(self.sprite, self.position.x, self.position.y)
+    --self:draw(self.sprite, self.position.x, self.position.y)  
+ end 
+  
+end
+
 
 return Climbable

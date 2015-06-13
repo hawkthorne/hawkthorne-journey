@@ -20,6 +20,9 @@ local token = require 'nodes/token'
 local game = require 'game'
 local utils = require 'utils'
 local window = require 'window'
+local app = require 'app'
+local player = require 'player'
+local Player = player.factory()
 
 
 local Enemy = {}
@@ -53,11 +56,13 @@ function Enemy.new(node, collider, enemytype)
   enemy.node_properties = node.properties
   enemy.node = node
   enemy.collider = collider
-  
+  enemy.maxx = 0
+  enemy.minx = 0
+  enemy.range = enemy.props.range or 0
   enemy.dead = false
   enemy.dying = false
   enemy.idletime = 0
-  
+  enemy.db = app.gamesaves:active()
   assert( enemy.props.damage, "You must provide a 'damage' value for " .. type )
 
   assert( enemy.props.hp, "You must provide a 'hp' ( hit point ) value for " .. type )
@@ -68,7 +73,6 @@ function Enemy.new(node, collider, enemytype)
   enemy.width = enemy.props.width
   enemy.bb_width = enemy.props.bb_width or enemy.width
   enemy.bb_height = enemy.props.bb_height or enemy.height
-  
   enemy.position_offset = enemy.props.position_offset or {x=0,y=0}
   
   -- Height to be used when offsetting an enemy to its node
@@ -89,6 +93,7 @@ function Enemy.new(node, collider, enemytype)
   
   enemy.jumpkill = enemy.props.jumpkill
   if enemy.jumpkill == nil then enemy.jumpkill = true end
+  enemy.jumpBounce = enemy.props.jumpBounce or false
   
   enemy.dyingdelay = enemy.props.dyingdelay and enemy.props.dyingdelay or 0.75
   enemy.revivedelay = enemy.props.revivedelay and enemy.props.revivedelay or .5
@@ -101,8 +106,14 @@ function Enemy.new(node, collider, enemytype)
   enemy.chargeUpTime = enemy.props.chargeUpTime
   enemy.player_rebound = enemy.props.player_rebound or 300
   enemy.vulnerabilities = enemy.props.vulnerabilities or {}
+
   enemy.attackingWorld = false
 
+  enemy.burn = false
+  enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
+
+  enemy.fadeIn = enemy.props.fadeIn or false
+  enemy.fade = {255, 255, 255, 0}
   enemy.animations = {}
   
   for state, data in pairs( enemy.props.animations ) do
@@ -117,7 +128,12 @@ function Enemy.new(node, collider, enemytype)
                                    enemy.props.bb_height or enemy.props.height)
   enemy.bb.node = enemy
   enemy.bb_offset = enemy.props.bb_offset or {x=0,y=0}
-
+  
+  enemy.quest = node.properties.quest
+  enemy.drop = node.properties.drop
+  if enemy.quest and Player.quest ~= enemy.quest then
+    enemy:die()
+  end
   if enemy.props.passive then
     collider:setGhost(enemy.bb)
   end
@@ -131,8 +147,9 @@ function Enemy.new(node, collider, enemytype)
     collider:setGhost(enemy.attack_bb)
     enemy.last_attack = 0
   end
-  
+
   enemy.foreground = node.properties.foreground or enemy.props.foreground or false
+  enemy.db = app.gamesaves:active()
   
   return enemy
 end
@@ -143,7 +160,14 @@ function Enemy:enter()
   end
 end
 
+function Enemy:leave()
+  if self.props.leave then
+    self.props.leave(self)
+  end
+end
+
 function Enemy:animation()
+  if self.state == 'hidden' then return end
   if self.animations[self.state] == nil then
     print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
     return self.animations["default"][self.direction]
@@ -153,12 +177,14 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage, special_damage, knockback )
-  if self.dead then return end
+  if self.dead or self.invulnerable or self.state == 'hidden'  then return end
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
-  self.state = 'hurt'
   
+  if not self.rage then
+    self.state = 'hurt'
+  end
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
@@ -171,26 +197,41 @@ function Enemy:hurt( damage, special_damage, knockback )
       table.insert(self.containerLevel.nodes, 5, self.props.splat(self))
     end
 
+    if self.props.prevent_death then
+      local alive = self.props.prevent_death( self )
+      if alive then
+        self.state = 'before_death'
+        self.dying = false
+        self.dead = false
+        self.invulnerable = true
+        self.props.peaceful = true
+        self.hp = 1
+        return
+      end
+    end
+
     self.collider:setGhost(self.bb)
     self.collider:setGhost(self.attack_bb)
     
     if self.currently_held then
       self.currently_held:die()
     end
-    Timer.add(self.dyingdelay, function() 
+    Timer.add(self.dyingdelay, function()
+      local level = gamestate.currentState()
+      if self.containerLevel and self.containerLevel.name ~= level.name then return end
       self:die()
     end)
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
   else
-    if knockback and not self.knockbackActive then
+    if knockback and not self.knockbackDisabled and not self.knockbackActive then
       self.knockbackActive = true
       tween.start(0.5, self.position,
               {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
               'outCubic',
               function() self.knockbackActive = false end)
     end
-    if not self.flashing then
+    if not self.flashing and not self.rage then
       self:start_flash()
     end
     if self.props.hurt then self.props.hurt( self ) end
@@ -237,6 +278,23 @@ end
 
 function Enemy:die()
   if self.props.die then self.props.die( self ) end
+
+  if self.drop and Player.quest == self.quest and not Player.inventory:hasKey(self.drop) then
+    local NodeClass = require('nodes/key')
+    local node = {
+      type = 'key',
+      name = self.drop,
+      x = self.position.x,
+      y = self.position.y + self.height - 24,
+      width = 24,
+      height = 24,
+      properties = {info = "This must be the technology that the alien wants!"},
+    }
+    local spawnedNode = NodeClass.new(node, self.collider)
+    local level = gamestate.currentState()
+    level:addNode(spawnedNode)
+  end
+
   self.dead = true
   self.collider:remove(self.bb)
   self.collider:remove(self.attack_bb)
@@ -275,8 +333,8 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+  if self.state == 'hidden' then return end
   function attack()
-    -- attack
     if self.props.attack_sound then
       if not self.attackingWorld then
         if type(self.props.attack_sound) == 'table' then
@@ -286,6 +344,8 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         end
       end
     end
+
+    if (node.isPlayer or node.isWall) and self.type == "cornelius" and self.hp == 1 then return end
 
     if self.props.attack then
       self.props.attack(self,self.props.attackDelay)
@@ -298,15 +358,19 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
   end
 
   if node.isWall then
-    attack()
+    if self.type ~= "benzalkBoss" then
+      attack()
+    end
 
     if self.props.damage ~= 0 then
       if self.attackingWorld then return end
-      self.attackingWorld = true
-      node:hurt(self.props.damage)
-      Timer.add(1.25, function()
-        self.attackingWorld = false
-      end)
+      if self.type ~= "cornelius" then
+        self.attackingWorld = true
+        Timer.add(1.25, function()
+          self.attackingWorld = false
+        end)
+      end
+      node:hurt(self.props.damage, self.props.special_damage)
     end
   end
 
@@ -339,7 +403,11 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     self:hurt(player.jumpDamage)
     -- reset fall damage when colliding with an enemy
     player.fall_damage = 0
-    player.velocity.y = -450 * player.jumpFactor
+    if self.jumpBounce then
+      player.velocity.y = -750 * player.jumpFactor
+    else
+      player.velocity.y = -450 * player.jumpFactor
+    end
   end
 
   if cheat:is('god') then
@@ -370,17 +438,16 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player, map )
+  if self.state == 'hidden' then return end
   local level = gamestate.currentState()
-  if level.scene or player.inventory.visible then return end
+  if level.scene or player.inventory.visible or self.state == 'hidden' then return end
   
   if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
      self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
       self:die()
   end
   
-  if self.dead then
-    return
-  end
+  if self.dead then return end
 
   if not self.flashing then
     self:cancel_flash()
@@ -389,6 +456,7 @@ function Enemy:update( dt, player, map )
   self:animation():update(dt)
   if self.state == 'dying' then
     if self.props.dyingupdate then
+      self.velocity.y = 0
       self.props.dyingupdate( dt, self )
     end
     return
@@ -436,10 +504,15 @@ function Enemy:updatePosition(map, dx, dy)
 end
 
 function Enemy:draw()
+  if self.state == 'hidden' then return end
+
   local r, g, b, a = love.graphics.getColor()
 
   if self.flash then
     love.graphics.setColor(255, 0, 0, 255)
+  elseif self.fadeIn then
+    tween(2, self.fade, {255, 255, 255, 255}, 'outQuad', function() self.fadeIn = false end)
+    love.graphics.setColor(unpack(self.fade))
   else
     love.graphics.setColor(255, 255, 255, 255)
   end
@@ -453,7 +526,6 @@ function Enemy:draw()
   if self.props.draw then
     self.props.draw(self)
   end
-
 end
 
 function Enemy:ceiling_pushback()
@@ -477,7 +549,7 @@ function Enemy:wall_pushback()
   else
     if self.attackingWorld then return end
     self.direction = self.direction == 'left' and 'right' or 'left'
-    self.velocity.x = 0
+    -- self.velocity.x = 0
     self:moveBoundingBox()
   end
 end

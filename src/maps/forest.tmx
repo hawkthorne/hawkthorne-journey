@@ -113,7 +113,7 @@
    eJzt2cGNwkAMheGBE5BjIq3gRB2cqIJzSqEUStlSKAWPSCCMYLUhTjyY/5MsxEoMZpnH4BDCZ1tJzZKSvx3HXL95jl+lddR6hQ9lCCfZF9u25P723bXIRx6qEPaFvI+xqp7/GzySPbHX2iNj56O8rlenVfZ8Du/5kFyEeVOFk9dkJc1H372WrDXZnvsZ8Fjy8V2a70i36vMdKeZDu5/2c117XS1/nEO1dW8ayMddzMazz8L/ZmSMfHyKZbN3lsZ9aCMfd0NnVsnReazecreRvbO+3roiM3nMxTlWRT5UrunAl4XkYmHdRAa8z5p4z9T5kHPqVHSqGvA7gaY4a76YP46GbcHY1Pnozjy5zT3pGcLZAYPz4zbz5Db3pNcrv/ns2Fk3kIl47cHbdQcAfnXPsPa+bUfw6GDdAAAAAAAAAAAAgJILc0sucQ==
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="200" height="22">
+ <objectgroup color="#0007a4" name="nodes">
   <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
   <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
   <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
@@ -356,10 +356,9 @@
     <property name="sprite" value="boulder"/>
    </properties>
   </object>
-  <object type="info" x="2040" y="144" width="24" height="24">
+  <object name="green_potion" type="detail" x="2040" y="144" width="24" height="24">
    <properties>
-    <property name="info" value="Invulnerability Potion Recipe =| 2 boulders + 1 star + 3 embers + 3 fires"/>
-    <property name="sprite" value="note"/>
+    <property name="category" value="recipe"/>
    </properties>
   </object>
   <object type="enemy" x="2112" y="144" width="24" height="24">
@@ -372,22 +371,22 @@
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="tutorial" x="2376" y="408" width="24" height="24">
+  <object type="tutorial" x="2325" y="431" width="24" height="24">
    <properties>
     <property name="type" value="climbing"/>
    </properties>
   </object>
-  <object type="tutorial" x="2784" y="96" width="24" height="24">
+  <object type="tutorial" x="2796" y="106" width="24" height="24">
    <properties>
     <property name="type" value="dropping"/>
    </properties>
   </object>
-  <object type="tutorial" x="2808" y="264" width="24" height="24">
+  <object type="tutorial" x="2795" y="275" width="24" height="24">
    <properties>
     <property name="type" value="crawling"/>
    </properties>
   </object>
-  <object type="tutorial" x="2568" y="336" width="24" height="24">
+  <object type="tutorial" x="2595" y="342" width="24" height="24">
    <properties>
     <property name="type" value="digging"/>
    </properties>
@@ -459,7 +458,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="welcome_to_hawkthorne" width="200" height="22">
+ <objectgroup name="welcome_to_hawkthorne">
   <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
   <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
   <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>

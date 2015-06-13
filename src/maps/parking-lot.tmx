@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="47" height="18" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
   <property name="green" value="154"/>
@@ -60,7 +59,7 @@
    eJztw7EJAAAIA7D6/+TH3tBRSCAJAAD0dv6G1gEsLBrP
   </data>
  </layer>
- <objectgroup color="#0007a4" name="nodes" width="47" height="18" visible="0">
+ <objectgroup color="#0007a4" name="nodes" width="47" height="18">
   <object name="left" type="door" x="0" y="288" width="24" height="48">
    <properties>
     <property name="instant" value="true"/>
@@ -72,9 +71,16 @@
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="to" value="parking-lot"/>
+    <property name="to" value="parking-lot-2"/>
    </properties>
   </object>
   <object name="main" type="door" x="48" y="288" width="24" height="48"/>
+  <object name="bone" type="material" x="528" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="696" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="960" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="984" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="936" y="312" width="24" height="24"/>
+  <object name="bone" type="material" x="912" y="312" width="24" height="24"/>
+  <object name="main2" type="door" x="1056" y="288" width="24" height="48"/>
  </objectgroup>
 </map>

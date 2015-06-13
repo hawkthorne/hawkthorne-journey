@@ -6,8 +6,8 @@ local camera = require 'camera'
 local fonts = require 'fonts'
 local HUD = require 'hud'
 local utils = require 'utils'
-local anim8 = require 'vendor/anim8'
 local Item = require 'items/item'
+local tooltip = require 'tooltip'
 
 
 --instantiate this gamestate
@@ -33,14 +33,11 @@ function state:init()
   self.background = love.graphics.newImage( 'images/shopping/background.png' )
   self.backgroundc = love.graphics.newImage( 'images/shopping/backgroundcategories.png' )
   self.backgroundp = love.graphics.newImage( 'images/shopping/backgroundpurchase.png' )
-  self.backgroundt = love.graphics.newImage( 'images/shopping/backgroundtooltip.png' )
 
   self.selectionbox = love.graphics.newImage ('images/shopping/selection.png' )
   self.noselection = love.graphics.newImage ('images/shopping/noselection.png' )
 
   self.arrow = love.graphics.newImage("images/menu/small_arrow.png")
-
-  local backgroundtGrid = anim8.newGrid(87, 130, self.backgroundt:getWidth(), self.backgroundt:getHeight())
 
   self.categories = {}
   self.categories[1] = "weapons"
@@ -80,17 +77,6 @@ function state:init()
 
   self.window = "categoriesWindow"
   self.player = nil
-  self.tooltipVisible = false
-
-    --This is all pretty much identical to the corresponding lines for the main inventory, but applies to the tooltip annex.
-  self.tooltipState = 'closing'
-  self.tooltipAnimations = {
-    opening = anim8.newAnimation('once', backgroundtGrid('1-8,1'),0.04),
-    open = anim8.newAnimation('once', backgroundtGrid('8,1'), 1),
-    closing = anim8.newAnimation('once', backgroundtGrid('1-8,1'),0.06)
-  }
-  self.tooltipAnimations['closing'].direction = -1
-  self.tooltipAnimations['closing'].position = 8
 
 end
 
@@ -103,6 +89,8 @@ function state:enter(previous, player, screenshot, supplierName)
   self.player = player
   self.screenshot = screenshot
   self.hud = HUD.new(previous)
+  
+  self.tooltip = tooltip:new()
   
   self.message = nil
 
@@ -155,6 +143,10 @@ function state:keypressed( button )
     self.sellAmount = 1
   end
   
+  if button == "INTERACT" and (self.window == "itemsWindow" or self.window == "purchaseWindow") then
+    if self.tooltip.visible then self.tooltip:shut() else self.tooltip:open() end
+  end
+  
   if self.window=="categoriesWindow" then
     self:categoriesWindowKeypressed(button)
   elseif self.window=="itemsWindow" then
@@ -163,8 +155,6 @@ function state:keypressed( button )
     self:purchaseWindowKeypressed(button)
   elseif self.window=="messageWindow" then
     self:messageWindowKeypressed(button)
-  --[[elseif self.window=="tooltip" then
-    self:tooltipWindowKeypressed(button)]]
   end
 
 end
@@ -235,10 +225,7 @@ function state:itemsWindowKeypressed( button )
   elseif button == "ATTACK" then
     self.window = "categoriesWindow"
     sound.playSfx('confirm')
-    self.tooltipVisible = false
-
-  elseif button == "INTERACT" then
-    if self.tooltipVisible then self:tooltipClose() else self:tooltipOpen() end
+    self.tooltip:shut()
   end
 
 end
@@ -278,9 +265,6 @@ function state:purchaseWindowKeypressed( button )
     self.buyAmount = 1
     self.sellAmount = 1
     sound.playSfx('confirm')
-
-  elseif button == "INTERACT" then
-    if self.tooltipVisible then self:tooltipClose() else self:tooltipOpen() end
 
   elseif button == "LEFT" then
     if (self.purchaseSelection == 1 and self.buyAmount > 1 )then
@@ -327,7 +311,7 @@ function state:buySelectedItem()
   local cost = itemInfo[3]
   local item = itemInfo.item
 
-  self:tooltipClose()
+  self.tooltip:shut()
 
   if self.player.money < cost*self.buyAmount then
     self.message = "You don't have enough money to make this purchase."
@@ -378,7 +362,7 @@ function state:sellSelectedItem()
 
   local playerItem, pageIndex, slotIndex = self.player.inventory:search(item)
 
-  self:tooltipClose()
+  self.tooltip:shut()
 
   if iamount <= 0 or not playerItem then
     self.message = "You don't have any of these to sell."
@@ -406,7 +390,7 @@ end
 
 --called when the player leaves this gamestate
 function state:leave()
-  if self.tooltipVisible then self.tooltipVisible = false end
+  self.tooltip:shut()
 end
 
 
@@ -432,46 +416,11 @@ function state:draw()
   local ycorner = camera.y + height*2/5 - self.background:getHeight()/2
 
   love.graphics.draw( self.background, xcorner, ycorner , 0 )
-
-  --Draw the tooltip annex, if it's open
-  if self.tooltipVisible then
-    self:tooltipAnimation():draw( self.backgroundt, xcorner + 116, (ycorner - 32) )
+  
+  if self.window == "itemsWindow" or self.window == "purchaseWindow" then
+    self.tooltip:draw(xcorner, ycorner + self.background:getHeight(), self.items[self.itemSelection], "shopping")
   end
-
-  --draws the tooltiop information
-  if self.tooltipState == 'open' and (self.window == "itemsWindow" or self.window == "purchaseWindow") and self.tooltipVisible then
-    local tooltipText = {
-        x = xcorner + 130,
-        y = ycorner -24
-      }
-
-    local itemInfo = self.items[self.itemSelection]
-    local name = itemInfo.name
-    local item = itemInfo.item
-    local lineHeight = love.graphics.getFont():getHeight("line height")
-
-    --love.graphics.draw( self.backgroundt, xcorner + 116, (ycorner - 32), 0 )
-    local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, 64)
-    love.graphics.printf(item.description, tooltipText.x, tooltipText.y, 64, "left", 0, 0.9, 0.9)
-
-    drawSeparator(tooltipText.x, tooltipText.y + (descriptionWrap * lineHeight), 64)
-    local statWrap = 0
-
-    -- Get additional item stats if they exist
-    itemStats = self:getItemStats(item)
-    if itemStats ~= "" then
-      tastytext = fonts.tasty.new(itemStats, tooltipText.x, tooltipText.y + (descriptionWrap * lineHeight), 64, love.graphics.getFont(), fonts.colors, lineHeight)
-      statWrap = tastytext.lines
-      tastytext:draw()
-        drawSeparator(tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64)
-    end
-    
-    -- Lastly, insert our item information after everything else
-    love.graphics.printf("\n" .. item.info, tooltipText.x, tooltipText.y + ((descriptionWrap + statWrap) * lineHeight), 64, "left", 0, 0.9, 0.9)
-    --set color back to white
-    love.graphics.setColor(255, 255, 255)
-  end
-
+  
   if self.window == "categoriesWindow" then
 
     love.graphics.draw( self.backgroundc, xcorner, ycorner , 0 )
@@ -567,86 +516,7 @@ function state:draw()
 
 end
 
----
--- Compiles item stats as string
--- @return item stats as string
-function state:getItemStats( item )
-  local itemStats = ""
-  if item.subtype ~= nil and item.subtype ~= "item" then
-    itemStats = itemStats .. "{{white}}\ntype: {{teal}}" .. item.subtype
-  end
-  if item.damage ~= nil and item.damage ~= "nil" then
-    itemStats = itemStats .. "{{white}}\ndamage: {{red}}" .. tostring(item.damage)
-  end
-  if item.special_damage ~= nil and item.special_damage ~= "nil" then
-    itemStats = itemStats .. "{{white}}\nspecial: {{red}}" .. item.special_damage
-  end
-  return itemStats
-end
-
-function drawSeparator(x, y, width)
-  y = y + 3 -- for padding around the text
-
-  --draw dividing line
-  love.graphics.setColor(112, 28, 114)
-  love.graphics.line(x, y, x + width, y)
-  
-  --draw yellow squares on the ends of the dividing line
-  love.graphics.setColor(219, 206, 98)
-  love.graphics.rectangle("fill", x, y - 1, 2, 2)
-  love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
-
-  -- set color back to white
-  love.graphics.setColor(255, 255, 255)
-end
-
---called every update cycle
--- dt the amount of seconds since this was last called
 function state:update(dt)
-  assert(type(dt)=="number", "update time (dt) must be a number")
-
-  --update the animations
-  self:tooltipAnimation():update(dt)
-
-  self:animUpdate()
-end
-
-function state:animUpdate()
-  if self:tooltipAnimation().status == "finished" then
-    if self.tooltipState == "closing" then
-      self:tooltipAnimation():gotoFrame(8)
-      self:tooltipAnimation():pause()
-      self.tooltipVisible = false
-    elseif self.tooltipState == "opening" then
-      self:tooltipAnimation():gotoFrame(1)
-      self:tooltipAnimation():pause()
-      self.tooltipState = "open"
-    end
-  end
-end
-
--- Gets the tooltip annex's animation
--- @return the tooltip annex's animation
-function state:tooltipAnimation()
-  return self.tooltipAnimations[self.tooltipState]
-end
-
----
--- Opens the tooltip annex
--- @return nil
-function state:tooltipOpen()
-  self.tooltipVisible = true
-  self.tooltipState = 'opening'
-  self:tooltipAnimation():resume()
-end
-
----
--- Begins closing the tooltip annex
--- @return nil
-function state:tooltipClose()
-  --self.tooltipVisible = false
-  self.tooltipState = 'closing'
-  self:tooltipAnimation():resume()
 end
 
 return state

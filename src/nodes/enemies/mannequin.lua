@@ -40,8 +40,8 @@ return {
   update = function( dt, enemy, player )
     if enemy.state == 'attack' then return end
 
-    if player.position.y + player.height - 5 <= enemy.position.y + enemy.props.height
-       and math.abs(enemy.position.x - player.position.x) < 200 then
+    --if player.position.y + player.height - 5 <= enemy.position.y + enemy.props.height and
+       if math.abs(enemy.position.x - player.position.x) < 100 then
         enemy.state = 'move' 
         enemy.direction = 'right'
         if enemy.position.x > player.position.x then

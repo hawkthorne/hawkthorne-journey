@@ -645,12 +645,6 @@
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="2016" y="408" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1920" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -669,18 +663,6 @@
     <property name="sprite" value="sand-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1992" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block"/>
-   </properties>
-  </object>
-  <object type="breakable_block" x="2016" y="384" width="24" height="24">
-   <properties>
-    <property name="hp" value="1"/>
-    <property name="sprite" value="sand-block"/>
-   </properties>
-  </object>
   <object type="breakable_block" x="1920" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
@@ -692,6 +674,14 @@
     <property name="hp" value="1"/>
     <property name="sprite" value="sand-block"/>
    </properties>
+  </object>
+  <object type="breakable_block" x="2040" y="432">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="castle-angle"/>
+    <property name="tile_id" value="106"/>
+   </properties>
+   <polygon points="0,0 0,24 24,24"/>
   </object>
  </objectgroup>
  <objectgroup name="movement" width="200" height="37">

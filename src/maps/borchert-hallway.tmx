@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="39" height="14" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
   <property name="red" value="104"/>
@@ -9,9 +8,9 @@
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-hallways.png" width="576" height="480"/>
+  <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="481" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="39" height="14">
@@ -26,12 +25,12 @@
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5AL/gXYAFADd0YBNnIOGdipQoNcbqj+dDL349HhDaVxmazIyMGgBsTYjfjsUyHAXsQCX2Y5ANzkBsTMd3BYJxFFAHA3EMUAcC8RxVDCbWP2RQD9GAXE0Fr8WAnEREBcDcQkQlwJxGdRsRaB6JTQ9nEDMRYSdFmh8JSBWxqE2E4jroeyVQLyKCLMtge6yIhB3IPAfRKCpCwDio1D2Wjx6QW5qAOJGKP8gEB8iYB/I7DQgriPsNAZxoLsk0NxmDsR3oeypSOJTUZUxTEHj3wTiWzjsCQfiCCRzpiHJTQfiGUg0MkC3cxQMHwAA2IQfgA==
+   eJztkU1OAkEQhXsGNcgFZIm4Qg8guBOXLHSnA+pS41IQlop3EOEKmnAITDiEJO5BhSvI10mZtB3mJ2PQhPCSb7p7purV64xSS8XV4X8HEJGjOet9co4zM7/oLUn/ZYzeoJ6SrH7eOUepbdhxgmdkYuSKKu09ZP4I3uEDPmEfinDwB9k8KEMFTuEMzr+9XaUccCEBK25036jZPO5YhsqMu15DFWpwA3VoiPcm9VmrZx1Slscqmdck95j6CeStmixs+eS7gjvZP8FzyH20d4EZeyH/TutLP6y6I+jLvhvQqzM14V7OPXgJmae9L+A2PJraIFfayrYLb7JvGe9bP8vUg3V+hYHPnGM4MXwejW9t6BirKXvmUoujKWB8Jhc=
   </data>
  </layer>
  <layer name="collision" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7yMjA8HCQ4lEwCkbBKBgFhMFvRuyYXkCIiX52fWMcvHgUkAcAbV1ODA==
+   eJyLZGJgiBykeBSMglEwCkYBYVDMhB3TC3TR0a48psGLRwF5AAAC+SI4
   </data>
  </layer>
  <objectgroup name="nodes" width="39" height="14">

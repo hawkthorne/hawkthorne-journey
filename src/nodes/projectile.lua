@@ -45,6 +45,8 @@ function Projectile.new(node, collider)
   proj.bb = collider:addRectangle(node.x, node.y, proj.props.width + 1, proj.props.height + 1 )
   proj.bb.node = proj
   proj.start_x = node.x
+  proj.start_y = node.y
+
   proj.explosive = false or proj.props.explosive
   proj.explodeTime = proj.props.explodeTime or 0 
 
@@ -94,8 +96,10 @@ function Projectile.new(node, collider)
   proj.width = proj.props.width
   proj.height = proj.props.height
   proj.offset = proj.props.offset or {x=0, y=0}
+  proj.angle = 0
   proj.complete = false --updated by finish()
   proj.damage = proj.props.damage or 0
+  proj.knockback = proj.props.knockback or 250
   -- Damage that does not affect all enemies ie. stab, fire
   -- Don't forget to pass this into hurt functions in the props file
   proj.special_damage = proj.props.special_damage or {}
@@ -106,8 +110,11 @@ function Projectile.new(node, collider)
   proj.playerCanPickUp = proj.props.playerCanPickUp
   proj.enemyCanPickUp = proj.props.enemyCanPickUp
   proj.canPlayerStore = proj.props.canPlayerStore
-
   proj.usedAsAmmo = proj.props.usedAsAmmo
+
+  if proj.props.new then
+    proj.props.new(proj)
+  end
   
   return proj
 end
@@ -126,11 +133,13 @@ end
 
 function Projectile:draw()
   if self.dead then return end
-  local scalex = 1
+  local scaley = 1
+  local angle = self.angle
   if self.velocity.x < 0 or self.defaultDirection == "left" then
-    scalex = -1
+    scaley = -1
+    angle = angle - math.pi
   end
-  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, 0, scalex, 1)
+  self.animation:draw(self.sheet, math.floor(self.position.x), self.position.y, angle, 1, scaley)
 end
 
 function Projectile:update(dt, player, map)
@@ -217,7 +226,7 @@ function Projectile:keypressed( button, player)
         item:select(player)
       end
     end
-    player.inventory:addItem(item, false, callback)
+    player.inventory:addItem(item, true, callback)
   end
 end
 
@@ -249,6 +258,7 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
      (node.isEnemy and self.enemyCanPickUp and not self.holder) then
     node:registerHoldable(self)
   end
+
   if self.props.collide then
     self.props.collide(node, dt, mtv_x, mtv_y,self)
   end

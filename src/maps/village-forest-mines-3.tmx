@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="22" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+ <properties>
+  <property name="offset" value="8"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="bg" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJx1lUsOxSAIRZsY2IS4/22+DjQ5nkcHxio/LxfoGs+z3hV7L3zPd+U+55ZNyGOfj13BfkIn9/ncHZ8BG8qq8bmkd/wFvgu+F+TnDcRErB1envPDNzEW7oiPd9XEqEY/x42zy8nBQH6oN/F9dJlzykO2XW5o0/ngeUqXmOb4rzO+gz7JKflm3RAX8+gY9J/jzuMcN+6Er9nEK/lkbbnurOPe6fJTzTrxnEfWWCh2NHHYo3wLcVP+pc98M28d54zNfPqOdcj6JvaQDd/slePmkvtSfMYw193c8bzq+sF1HbJn739xbm6Ie427bt3LU7Zdz5FP9gznAW3JjXksxehmsuenuUvFcQ37bfy/mEPH8Izs/j0hOee1a9q9nNrd++xf5+qcf3f3KmQ=
+  </data>
+ </layer>
+ <layer name="pillar" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEFsxYBClQN2ruqLmj5o6aO2ruqLmj5uJXBwCJ9gol
+  </data>
+ </layer>
+ <layer name="floor" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxrZmZoYKAyaGYG41FzR80dNZcIcxcxgzFe+/CpwWXuHmYwxmsuPjX0CocFQP5CZuqbmwPk59LA3DYgv52K5poAaWri4ZIvRqK5ADTqMR4=
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALKwUxmBoZZzAwNQLoBxLdkZGCwYgTTDUjyJIPNQD1bgGZuhpobDDQzhBFMNyDJkwzOAvWcA5p5Foe5UHmSwXOgnhdAM5/jMBcqPwpGAQYAAO+XGOs=
+  </data>
+ </layer>
+ <layer name="dark" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzt07dRHUAUhtE3bIw3LQgPLQiQELSANy3ghGkBK4kW8KYFvGkBK0EDeDejk2y+KEDJC87MDb75s/uWk8m8ZWV9gBtuueOeBx554pkXXt/Rxd3ckMnkkU8BhRRRTAmllIX0Lu5+cpdTQSVVVFNDLXXUh/Qu7n52N9BIE1/4SjPfaKE1pHdxt83dTgeddNFND7300R/Su7g74B5kiGFG+M4oY4wzEdK7uDvpnmKaGWaZ4wc/+cV8SO/i7oJ7kSWWWWGVNdbZYDOkd3F3y73NDrvssc8BhxxxHNK7uHviPuWMcy645Dd/uOI6pHf/+8+z/t1flwqF/A==
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="22">
+  <data encoding="base64" compression="zlib">
+   eJxrZWegOmhlh+BRc0fNHTV31NxRc/GbSytMK/eOmks7cwH8kSMB
+  </data>
+ </layer>
+ <objectgroup color="#ffffff" name="nodes" width="22" height="22">
+  <object type="enemy" x="360" y="336" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="laserlotusBoss"/>
+   </properties>
+  </object>
+  <object type="scenetrigger" x="72" y="216" width="72" height="168">
+   <properties>
+    <property name="cutscene" value="laserlotus"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="72" y="336" width="48" height="48">
+   <properties>
+    <property name="info" value="The door is locked, the Lotus member must have locked it with his magic!"/>
+    <property name="level" value="village-forest-mines-2"/>
+    <property name="quest" value="To Slay an Acorn - Return to Tilda"/>
+    <property name="to" value="room"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

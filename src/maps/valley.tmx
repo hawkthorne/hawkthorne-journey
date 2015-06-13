@@ -6,9 +6,9 @@
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="150" height="38">
@@ -21,23 +21,23 @@
  </layer>
  <layer name="nacho_mountains_bg" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.4"/>
+   <property name="parallax" value="0.5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1UtugzAUQFG8sn5n/c6StF1Mll5H6qBFgI36XFx0jvQmAYsIX5lhAAAAAAAAAOC76zQMN3lu89ylrf8NPflNG4/5/qc8z3leZtZqr29Xqc0eLbWx9Lx87/mYfzvlecvzPtNWTXts5yHF71GpjbnnXdadvtaNp3Sftv7G1Dl0P/HuD/m3mvPhouZcK7Ux19zSuvH6mvZoY+oceh2990NhD8dK51pNG61HW21NnUMf6ef1NXtU+rb10JS22lpqJl871zS15tvTU1PaamNNM3sfbcXQlLaiaUpb0TSlrWia0lY0TWkrmqa0FU1T2oqmKW1F05S2omlKW9E0pa1omtJWNE1pK5qmtBVNU9vP3trSVD+zl7Y01d/8h7Y+Af7+gWY=
+   eJzt1ctqwzAQQFHry5o+dulrl6Ttx+TTO4FCqbEtmY4aU86B2cQWDtZFHgYAAAAAAAAAAIBvuzIMtzF3Mffl2v+GLflNG49x/1PMc8zLzFrtbdtN6bNHS20sPS/uPR/jt1PMW8z7TFst7XE9+5K/R7U25p53WXf6Wjee2n3a+htT59DDxLs/xG8t58NFy7lWa2OuuaV14/Ut7dHH1Dn0Onrvh8oejtXOtZY2eo+2+po6hz7Kz+tr9qj2bdtCU9rqa6mZuHZuaWrNt2dLTWmrjzXN/PfRVg5NaSubprSVTVPayqYpbWXTlLayaUpb2TSlrWya0lY2TWkrm6a0lU1T2sqmKW1l05S2smlKWy0+AQ2ZGBI=
   </data>
  </layer>
  <layer name="nacho_mountains" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.45"/>
+   <property name="parallax" value="0.55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztltkKwjAUBetnub7V7c31e/rpXq0FlRhz25uktTMwIFhByNCTogAAAAAAAAAAAAAAAAAAGDfTSVHMxLm4EJfiapL7X8HQKaWhtbgRt+JO3H/pigYhlIN0cRRP4lm8iNcvrWgahPFyeLbk0tWWpkH4D7Qb5WvK1ZZ8rjQNQjy63kc0v9dsVEhTr834mqKt9HS9j2hbCdkoTVMa2cR0/DrrX+8ji1bkuyrkOStpKy5NE42uNnzvI8tW7s+naIq24lHW5/joyGdz1q7m+tgKm5iXvp51DmnLhub9k/s8+yRttedz+3KfZd+krXawfbRlDdsXJnf5MNi+dtKWH7aPtqxh+7rJJr7D9tlKWzVsH21Zw/bRliVsH23FgO1L45ju8mxfev+5LbaPtmLA9uV1SJt4A1kGJYs=
+   eJzt1tmKg0AQRmF9rKx3Zrsz2/P46KnECElo2y4tbaPngx8GJgMDHlImCQAAAAAAAAAAAAAAAIC5WKRJspStZGvZRrZNY/9X+HeZNLST7WUH2VF2qumKBhEqly7OsovsKrvJ7jWtaBrEfOXvllxztaVpENOgvVG+plxtyc+FpkH0p+v7iObvNTcqpKnPZnxN0dbwur6PaFsJuVGapjTjJg6n6Vk3fR9ZtCK/K0I+ZzXa6lfVRDVXG77vI8tWnp8foina6k9WPsdXR75Vz9rV3Bhb4SbGNdZnHWO0ZaP6/on9PMc02mrv9/bFfpZjG221w+2jLWvcvrDxLh+G29dutOXH7aMta9y+buMmfuP22Y62Stw+2rLG7aMtS9w+2uoDt2+YTeVd/gGaLsWc
   </data>
  </layer>
  <layer name="mountains_bg" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.5"/>
+   <property name="parallax" value="0.6"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztl8dOA0EQBdf//03kJHKSiQZEMOlA5s47YGlkIbOe6Q29UyXVdcZSl9o7RQEAAAAAAAAAAAAAAAAAAAAAuTDTK4pZOSfn5YJclEtyWa7IVbnWa/qXgifW1cuG3JRbclvuyF25J/flgTykKyjBaE/15ZE8lifyVJ7JczmQF/JSXtEVlGC0p67ljbyVd3Io7+WDfJRPQVsA/9EPmnqRr/JNvsuP376+5DdtdZKqvqvDpv7aU8Mxacsei9nGnlHFd/WkPfUZ7CnaqhaL2caeYf1dHTY13k0ZacsOi9nGnmH5XZ3aFG3ZYjHbmDPK/l9Nc39qU7Rlg8VsY86YtoOy91s0RVtpWMw25oznyA4s7qetyaS+4WLnkbJzrOdc1/05tZXyhrN4M8XuHKs5131/Lm2lvr+a6MG7ObSV+v5qekZe7XJbdby/MK+26nx/YR5tsXPaZRfaoql26rktmmq3HtuiKR96aoumfOmhLZryaZva+gHKPsG4
@@ -45,7 +45,7 @@
  </layer>
  <layer name="mountains" width="150" height="38">
   <properties>
-   <property name="parallax" value="0.55"/>
+   <property name="parallax" value="0.65"/>
   </properties>
   <data encoding="base64" compression="zlib">
    eJztmNdOw0AQRZ1PpzfRm+gBRC8SNZCv4yIRabGB7Npjb7ycI52nlebFV3dGzjIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqJuxTpaNywk5KafktJyRs3JOzsuFTjNzIA0W9Z2X5LJckatyTa7LDbkptzyy4Dtnm1yNPBYdsaO3Xbkn9+WBPJRHsiuP5Yk8HZIHqzkQH4uOONPbubyQl/JKXssbeSvvnEz8hdUciE+ZjnC7a5CFR/kkn+WLfJU9+Sbff8mE1Rywp+oeK9MRg+5ys9DzMD/Lag7YE7rHLDris7tCs/BTJqzmgD2he8yiI8pmIT/Lag7ZKtL0HrPoiIcKWXBnWc25J1cFmt5jFh1RJQd1SG8VaXqPWXTEKEq2vtPkHkvdlLIVch/l76QYeyx1U7m3Qu4j905ij9Wbrbb3Vsh9VPWfDf6fbPncR24vkymyNQzf+6j/lS0yFSdbbbq3QjPSJ1NRs9WG3qJ32mfsbH0AcVa95g==
@@ -83,10 +83,10 @@
  </layer>
  <layer name="collision" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJzt2e0KwiAYhuFgRz2odRBBH2eb/ZBCtnjVx82P+wJ/Fm3dqbPTCQDqcJuO/gTo3acxOgNQG+YmxMhthd7gpXZwd697TN+W1gZg5XsCFOgJqdbWL3qChWVfxB4JVsw7UKInKNETcin3RfNkG4sbV7qF0RzZCn2NzfocGNuVR199yz1/Su3Ko6++pe7bc7vyFtrCD1VXR9pa859uvATXF3u2XGKormUvLXdlnaPD76Tl/yD26EvRectdxSrxnZzd+12MZzXKs5xa+t+6pyN15Sn68j2V0OKzUHhPR+zKS+mrZE+hlvsauasYe/YUUvVlWS9V6yld/XdkTyHl/FV6T9ZrV6r9dI1KrI+qxmr6HSr1el1rUvoq9fzY633v9bosFGccPc7rOUbuaRT8TgAAAAAAgMobSD6vEg==
+   eJzt2VsKgzAQQFHB/X8IrV1EoY8dVsGhRbRMkokmk3vAz5aq1ySmXQcAZbj3Z/8CeDc3RmcASsPYhBCprdAbRGwHj+lzz/7b0tYBaElPQAwZc15LQ/SEWFvzFz1BQ7MuYo0ELcYdWErpab3GAhifkMpyXTT0umOcjhvdQmkIbIW+2qZ9DwztStCXb6n7T7FdCfryLXbdntqVGGkLP6y6OtPenD/vl7wNzi90bznHYXUuR6m5K+0Yvb4nNf8HcURfFp3X3FWoHPfkMn3fVblXY7mXU0r/e9e0pa6ERV+WPXnYK1xf0xa7EjF95ezJU18tdxXiyJ5y9aWZL63mU7r6T3oqgeX4lXtN5rUrq/GlRDnmR6vGSnoOLXk9ry0xfeV6f/R63b2el8YZa74axvUULffUCp4TAAAAAABg5QNoPPzs
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="150" height="38">
+ <objectgroup color="#000000" name="nodes" width="0" height="0">
   <object name="main" type="door" x="72" y="696" width="48" height="48"/>
   <object type="enemy" x="975" y="607" width="14" height="25">
    <properties>
@@ -148,11 +148,6 @@
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="climbable" x="3415" y="104" width="9" height="46">
-   <properties>
-    <property name="blockTop" value="true"/>
-   </properties>
-  </object>
   <object type="enemy" x="1866" y="393" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
@@ -166,7 +161,7 @@
   <object type="door" x="0" y="456" width="48" height="288">
    <properties>
     <property name="instant" value="true"/>
-    <property name="level" value="village-forest-3"/>
+    <property name="level" value="village-forest-4"/>
     <property name="sound" value="false"/>
     <property name="to" value="valley"/>
    </properties>
@@ -261,6 +256,228 @@
   <object type="info" x="6768" y="432" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="enemy" x="2904" y="216" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2808" y="264" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2400" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2208" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2064" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2304" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2040" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2640" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2760" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2856" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2736" y="456" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2520" y="624" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1944" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1776" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1728" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1608" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1536" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1512" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1416" y="504" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1320" y="552" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1392" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="816" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1656" y="288" width="144" height="24">
+   <properties>
+    <property name="enemytype" value="qfo"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="624" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="552" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="456" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="888" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="408" y="696" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1056" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3144" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3264" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_ranged"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3288" y="144" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3072" y="192" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="3432" y="96" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1992" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_elite"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1848" y="432" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1752" y="480" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="ambush_alien_heavy"/>
+    <property name="quest" value="Aliens! - Destroy the QFO!"/>
    </properties>
   </object>
  </objectgroup>
