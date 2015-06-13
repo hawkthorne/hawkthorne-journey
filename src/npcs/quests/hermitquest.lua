@@ -8,7 +8,7 @@ local quests = {
     collect = {name = 'berry', type = 'material'},
     --prompt: 'flowers'
     giveQuestSucceed = {
-        "I know why you are here adventurer, you are here seeking my advice on how to defeat the Acorn King.",
+        "I know why you are here adventurer, you are seeking my advice on how to defeat the Acorn King.",
         "You think you'd go unnoticed while you stomped around the mountain? I've heard about you and your quest, adventurer.",
         "Fear not, I am on your side. I can tell you exactly where you can find the Acorn King.",
         "He lives in a magically protected hideout in the mountains, but it's unreachable by foot. You're going to need a {{orange}}special potion{{white}}.",
