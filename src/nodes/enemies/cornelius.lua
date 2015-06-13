@@ -37,7 +37,7 @@ return {
   bb_offset = { x = 0, y = 8},
   attack_width = 40,
   velocity = {x = 0, y = 10},
-  hp = 200,
+  hp = 20,
   rage = false,
   freeze = false,
   tokens = 100,
@@ -46,6 +46,7 @@ return {
   cameraScale = 0,
   cameraOriginalScale = {scaleX = camera.scaleX,
                          scaleY = camera.scaleY},
+  cameraOffset = 552,
   camera = {
     tx = 0,
     ty = 0,
@@ -152,6 +153,11 @@ return {
     end
   end,
 
+  leave = function(enemy)
+    camera:setScale(enemy.props.cameraOriginalScale.scaleX,
+                    enemy.props.cameraOriginalScale.scaleY)
+  end,
+
   --draws a rotated sparke, used when cornelius appears
   sparkleRotated = function(enemy, offsetX, offestY)
     local node = {
@@ -213,7 +219,6 @@ return {
       current.trackPlayer = true
       current.player.freeze = false
     end)
-
   end,
 
   --throws a fireball that will spawn fire to the right and left as well as eat away the floor.
@@ -258,7 +263,6 @@ return {
   -- adjusts values needed to initialize diving based on where the player is
   targetDive = function ( enemy, player, direction )
     enemy.fly_dir = direction
-    enemy.launch_y = enemy.position.y
     local p_x = player.position.x - player.character.bbox.x
     local p_y = player.position.y - player.character.bbox.y
     local e_x = enemy.position.x + (enemy.width/2)
@@ -275,7 +279,7 @@ return {
     enemy.last_attack = 0
     enemy.last_dive = 0
     enemy.velocity.y = enemy.swoop_speed
-  -- swoop ratio used to center bat on target
+    -- swoop ratio used to center bat on target
     enemy.velocity.x = -( enemy.swoop_speed * enemy.swoop_ratio ) * enemy.fly_dir
     Timer.add(.6, function()  
       enemy.velocity.y = -enemy.fly_speed
@@ -305,6 +309,8 @@ return {
     }
     local firework = NodeClass.new(node, enemy.collider)
     level:addNode(firework)
+
+    enemy.props.dying = true
 
     Dialog.new(enemy.props.deathScript, function()
       enemy:die()
@@ -342,32 +348,46 @@ return {
   hurt = function ( enemy )
   end,
 
+  before_death = function( enemy )
+    if not enemy.props.dying then
+      enemy.props.dying = true
+      enemy.dead = false
+      enemy.hp = 1
+    end
+  end,
+
   --this updates Cornelius's position when he dies so that he drops off the screen
   dyingupdate = function ( dt, enemy )
     enemy.velocity.y = enemy.velocity.y + game.gravity * dt * 2
     enemy.position.y = enemy.position.y + enemy.velocity.y * dt
   end,
 
+  updateCameraZoom = function( dt, enemy )
+    if not enemy.props.cameraZoom then return end
+    enemy.props.cameraScale = enemy.props.cameraScale + dt * enemy.props.cameraZoom / 10
+    camera:setScale(enemy.props.cameraOriginalScale.scaleX + enemy.props.cameraScale,
+                    enemy.props.cameraOriginalScale.scaleY + enemy.props.cameraScale)
+    enemy.props.updateCameraOffset( enemy )
+    enemy.props.cameraZoom = nil
+  end,
+
+  updateCameraOffset = function( enemy )
+    local newOffset = enemy.props.cameraOffset - (camera.scaleX - 0.5) * 500
+    enemy.containerLevel.offset = newOffset
+  end,
+
   update = function( dt, enemy, player, level )
+    if (enemy.props.dying or enemy.dead) and camera.scaleX > 0.5 then
+      enemy.props.cameraZoom = -1
+    end
+
     if enemy.dead then return end
 
-    if enemy.state == "talking" then
-      if enemy.props.cameraScale < 4 then
-        enemy.props.cameraScale = enemy.props.cameraScale + dt
-        local newOffset = enemy.containerLevel.offset - enemy.props.cameraScale
-        if newOffset > 432 then
-          enemy.containerLevel.offset = newOffset
-        end
-        camera:setScale(enemy.props.cameraOriginalScale.scaleX + (enemy.props.cameraScale / 2 / 10),
-                        enemy.props.cameraOriginalScale.scaleY + (enemy.props.cameraScale / 2 / 10))
-      end
+    if enemy.props.hatched and not enemy.props.dying and camera.scaleX < 0.65 then
+      enemy.props.cameraZoom = 1
     end
 
-    --move cornelius up if near the bridge
-    --still not sure how to handle this and this is not the niceset solution
-    if not enemy.diving and not player.jumping then 
-      enemy.position.y = player.position.y - (enemy.height+55)
-    end
+    enemy.props.updateCameraZoom( dt, enemy )
 
     local direction = player.position.x > enemy.position.x + 70 and -1 or 1
 
@@ -415,21 +435,6 @@ return {
       local fireballPause = 4
       local divePause = 6
       local teleportPause = 10
-      if enemy.hp >= 100 and enemy.hp < 150 then
-        local fireballPause = 3
-        local divePause = 4
-        local teleportPause = 8
-      elseif enemy.hp >= 50 and enemy.hp < 100 then
-        local pause = 2
-        local fireballPause = 3
-        local divePause = 3
-        local teleportPause = 6
-      elseif enemy.hp >= 1 and enemy.hp < 50 then
-        local pause = 0
-        local fireballPause = 1
-        local divePause = 2
-        local teleportPause = 3
-      end
 
       if enemy.last_attack > pause then
         if enemy.last_fireball > fireballPause then

@@ -163,7 +163,7 @@
     <property name="y_Proximity" value="550"/>
    </properties>
   </object>
-  <object id="268" name="lava" type="liquid" x="0" y="840" width="2304" height="72">
+  <object id="268" name="lava" type="liquid" x="0" y="840" width="2304" height="96">
    <properties>
     <property name="death" value="true"/>
     <property name="drag" value="true"/>

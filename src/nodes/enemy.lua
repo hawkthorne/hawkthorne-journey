@@ -157,6 +157,12 @@ function Enemy:enter()
   end
 end
 
+function Enemy:leave()
+  if self.props.leave then
+    self.props.leave(self)
+  end
+end
+
 function Enemy:animation()
   if self.animations[self.state] == nil then
     print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
@@ -183,6 +189,15 @@ function Enemy:hurt( damage, special_damage, knockback )
 
     if self.containerLevel and self.props.splat then
       table.insert(self.containerLevel.nodes, 5, self.props.splat(self))
+    end
+
+    if self.props.before_death then
+      self.props.before_death( self )
+      if self.hp > 0 then
+        self.state = 'hurt'
+        self.dying = false
+        return
+      end
     end
 
     self.collider:setGhost(self.bb)
