@@ -7,6 +7,7 @@ local app = require 'app'
 local utils = require 'utils'
 local Item = require 'items/item'
 local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local Quest = {}
 
@@ -177,6 +178,16 @@ function Quest.completeQuestFail(npc, player, quest)
   end)
 end
 
+function Quest.drug(npc, player, dbSet, level, door)
+  local db = app.gamesaves:active()
+  local value = dbSet
+  db:set(value, true)
+  local current = Gamestate.currentState()
+  if current.name ~= level then
+    current:exit(level, door)
+  end
+end
+
 function Quest.completeQuestSucceed(npc, player, quest)
   local gamesave = app.gamesaves:active()
   local completed_quests = gamesave:get( 'completed_quests' ) or {}
@@ -193,6 +204,12 @@ function Quest.completeQuestSucceed(npc, player, quest)
     end
     if quest.reward.money then
       player.money = player.money + quest.reward.money
+    end
+    if quest.reward.drug then
+      local dbSet = quest.reward.dbSet
+      local level = quest.reward.level
+      local door = quest.reward.door
+      Quest.drug(npc, player, dbSet, level, door)
     end
     if quest.collect then
       player.inventory:removeManyItems(1, quest.collect)

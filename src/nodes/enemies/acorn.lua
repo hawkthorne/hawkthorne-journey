@@ -8,6 +8,7 @@ return {
   position_offset = { x = 0, y = 0 },
   height = 20,
   width = 20,
+  bb_width = 14,
   damage = 10,
   hp = 1,
   speed = 20,

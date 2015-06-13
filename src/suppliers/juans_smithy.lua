@@ -31,6 +31,7 @@ return {
     {"eye",30,62},
     {"arm",30,60},
     {"frog",30,45},
+    {"bluemushroom",5,20},
   },
   consumables = {
     {"red_potion",10,80},

@@ -109,6 +109,9 @@ function Enemy.new(node, collider, enemytype)
 
   enemy.attackingWorld = false
 
+  enemy.burn = false
+  enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
+
   enemy.fadeIn = enemy.props.fadeIn or false
   enemy.fade = {255, 255, 255, 0}
   enemy.animations = {}
@@ -164,6 +167,7 @@ function Enemy:leave()
 end
 
 function Enemy:animation()
+  if self.state == 'hidden' then return end
   if self.animations[self.state] == nil then
     print( string.format( "Warning: No animation supplied for %s::%s", self.type, self.state ) );
     return self.animations["default"][self.direction]
@@ -173,12 +177,14 @@ function Enemy:animation()
 end
 
 function Enemy:hurt( damage, special_damage, knockback )
-  if self.dead or self.invulnerable then return end
+  if self.dead or self.invulnerable or self.state == 'hidden'  then return end
   if self.props.die_sound then sound.playSfx( self.props.die_sound ) end
 
   if not damage then damage = 1 end
-  self.state = 'hurt'
-
+  
+  if not self.rage then
+    self.state = 'hurt'
+  end
   -- Subtract from hp total damage including special damage
   self.hp = self.hp - self:calculateDamage(damage, special_damage)
 
@@ -218,14 +224,14 @@ function Enemy:hurt( damage, special_damage, knockback )
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
   else
-    if knockback and not self.knockbackActive then
+    if knockback and not self.knockbackDisabled and not self.knockbackActive then
       self.knockbackActive = true
       tween.start(0.5, self.position,
               {x = self.position.x + (knockback or 0) * (self.props.knockback or 1)},
               'outCubic',
               function() self.knockbackActive = false end)
     end
-    if not self.flashing then
+    if not self.flashing and not self.rage then
       self:start_flash()
     end
     if self.props.hurt then self.props.hurt( self ) end
@@ -327,6 +333,7 @@ function Enemy:dropTokens()
 end
 
 function Enemy:collide(node, dt, mtv_x, mtv_y)
+  if self.state == 'hidden' then return end
   function attack()
     if self.props.attack_sound then
       if not self.attackingWorld then
@@ -431,8 +438,9 @@ function Enemy:collide_end( node )
 end
 
 function Enemy:update( dt, player, map )
+  if self.state == 'hidden' then return end
   local level = gamestate.currentState()
-  if level.scene or player.inventory.visible then return end
+  if level.scene or player.inventory.visible or self.state == 'hidden' then return end
   
   if(self.position.x < self.minimum_x or self.position.x > self.maximum_x or
      self.position.y < self.minimum_y or self.position.y > self.maximum_y) then
@@ -496,6 +504,8 @@ function Enemy:updatePosition(map, dx, dy)
 end
 
 function Enemy:draw()
+  if self.state == 'hidden' then return end
+
   local r, g, b, a = love.graphics.getColor()
 
   if self.flash then
@@ -516,7 +526,6 @@ function Enemy:draw()
   if self.props.draw then
     self.props.draw(self)
   end
-
 end
 
 function Enemy:ceiling_pushback()

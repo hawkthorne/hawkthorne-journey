@@ -48,14 +48,16 @@ return {
     }
   },
   walking = true,
+
   enter = function(npc, previous)
     -- If the blacksmith is dead and Hilda hasn't cried yet
-    if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false then
+    if npc.db:get('blacksmith-dead', false) and npc.db:get('hilda-cried', false) == false or npc.db:get('blacksmith_building_burned', false ) and npc.db:get('hilda-cried', false) == false then
       -- Hilda will come from just off-screen when the player leaves the blacksmith level
       npc.position.x = 900
       npc.x = 900
       npc.minx = 1250
       npc.maxx = 1250 + (48 * 2)
+      npc.flee = false
 
       -- Hilda waits until she notices the fire
       Timer.add(5, function()
@@ -101,7 +103,15 @@ return {
       npc.minx = npc.x - 48
       npc.maxx = npc.x + 48
     end
-
+    -- hide hilda if acornboss is out
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    if show == true then
+      npc.state = 'walking'
+      npc.collider:setGhost(npc.bb)
+      npc.run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}}
+      npc.flee = true
+    end
     if previous and previous.name ~= 'town' then
       return
     end
@@ -112,6 +122,7 @@ return {
   { ['text']='madam, i am on a quest', ['option']={
     { ['text']='more...', ['option']={
       { ['text']='i am done with you' },
+      { ['text']='Talk about the Acorn King' },
       { ['text']='frog extinction' },
       { ['text']='ostrich' },
       { ['text']='other parrot' },
@@ -220,7 +231,6 @@ return {
           Dialog.currentDialog = nil
           npc.menu:close(player)
         end)
-
       elseif player.married == 'hilda' then
         Dialog.new("I live in the village.  I love {{orange}}" .. player.character.name .. "{{white}}." , function()
           npc.walking = true
@@ -568,6 +578,11 @@ return {
     ['extra large swords']={
       "You have successfully rubbed your balls on his sword.",
     },
+    ['Talk about the Acorn King']={
+      "The Acorn King is a giant acorn living in the mountains that terrorizes our village.",
+      "He appeared around the time when Cornelius first took power.",
+      "Some people believe that Cornelius may have had something to do with his appearance.",
+    },
   },
   tickImage = love.graphics.newImage('images/npc/hilda_heart.png'),
   command_items = {
@@ -748,6 +763,9 @@ return {
     -- she is running to the blacksmith
     if npc.state == 'yelling' then
       npc:run(dt, player)
+    end
+    if npc.flee then
+    	npc:run(dt, player)
     end
 
     if npc.state == 'sad' then
