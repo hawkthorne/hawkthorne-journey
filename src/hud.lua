@@ -4,18 +4,13 @@ local fonts = require 'fonts'
 local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local anim8 = require 'vendor/anim8'
+local gamestate = require 'vendor/gamestate'
 
 local HUD = {}
 HUD.__index = HUD
 
-local lens = love.graphics.newImage('images/hud/lens.png')
-local chevron = love.graphics.newImage('images/hud/chevron.png')
-local energy = love.graphics.newImage('images/hud/energy.png')
 local savingImage = love.graphics.newImage('images/hud/saving.png')
 
-lens:setFilter('nearest', 'nearest')
-chevron:setFilter('nearest', 'nearest')
-energy:setFilter('nearest', 'nearest')
 savingImage:setFilter('nearest', 'nearest')
 
 function HUD.new(level)
@@ -24,22 +19,47 @@ function HUD.new(level)
 
   local character = level.player.character
 
-  hud.sheet = level.player.character:sheet()
-  hud.character_quad = love.graphics.newQuad(0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight())
+  hud.money = love.graphics.newImage('images/hud/money.png')
+  hud.heart_full = love.graphics.newImage('images/hud/health_full.png')
 
-  hud.character_stencil = function( x, y )
-    love.graphics.circle( 'fill', x + 31, y + 31, 21 )
-  end
+  hud.saving = false
+  hud.savingImage = love.graphics.newImage('images/hud/saving.png')
+  local h = anim8.newGrid(36, 36, hud.savingImage:getDimensions())
+  hud.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), 0.1, {[8] = 0.4})
+  hud.savingAnimation:pause()
+  
+  hud.invincible = false
+  hud.invincibleImage = love.graphics.newImage('images/hud/invincible.png')
+  local i = anim8.newGrid(16, 17, hud.invincibleImage:getDimensions())
+  hud.invincibleAnimation = anim8.newAnimation('loop', i('1-2,1'), 0.1, {[2] = 0.1})
+  hud.invincibleAnimation:pause()
 
-  hud.energy_stencil = function( x, y )
-    love.graphics.rectangle( 'fill', x + 50, y + 27, 59, 9 )
-  end
+  hud.restricted = false
+  hud.restrictedImage = love.graphics.newImage('images/hud/Restricted.png')
+  local h = anim8.newGrid(19, 19, hud.restrictedImage:getDimensions())
+  hud.restrictedAnimation = anim8.newAnimation('loop', h('1-2,1'), 0.1, {[2] = 0.4})
+  hud.restrictedAnimation:pause()
 
-    hud.saving = false
+  hud.punchDamage = false
+  hud.punchDamageImage = love.graphics.newImage('images/hud/punchDamage.png')
+  local i = anim8.newGrid(16, 17, hud.punchDamageImage:getDimensions())
+  hud.punchDamageAnimation = anim8.newAnimation('loop', i('1-2,1'), 0.1, {[2] = 0.1})
+  hud.punchDamageAnimation:pause()
 
-    local h = anim8.newGrid(36, 36, savingImage:getWidth(), savingImage:getHeight())
-    hud.savingAnimation = anim8.newAnimation('loop', h('1-8,1'), .25)
-    hud.savingAnimation:pause()
+  hud.jumpFactor = false
+  hud.jumpFactorImage = love.graphics.newImage('images/hud/jumpFactor.png')
+  local i = anim8.newGrid(16, 17, hud.jumpFactorImage:getDimensions())
+  hud.jumpFactorAnimation = anim8.newAnimation('loop', i('1-2,1'), 0.1, {[2] = 0.1})
+  hud.jumpFactorAnimation:pause()
+
+  hud.speedFactor = false
+  hud.speedFactorImage = love.graphics.newImage('images/hud/speedFactor.png')
+  local i = anim8.newGrid(16, 17, hud.speedFactorImage:getDimensions())
+  hud.speedFactorAnimation = anim8.newAnimation('loop', i('1-2,1'), 0.1, {[2] = 0.1})
+  hud.speedFactorAnimation:pause()
+
+
+  hud.quest = false 
 
   return hud
 end
@@ -58,37 +78,21 @@ function HUD:endSave()
 end
 
 function HUD:update(dt)
-    if self.saving then
-        self.savingAnimation:update(dt)
-    end
-end
-
--- Draw the quest badge in HUD
--- @param player the player
--- @return nil
-function HUD:questBadge( player )
-    local quest = player.quest
-    local questParent = player.questParent
-
-    local width = (love.graphics.getFont():getWidth( quest ) * 0.5) + 4
-    local height = 24
-    local margin = 20
-
-    local x = camera.x + 125
-    local y = camera.y + 23
-
-    -- Draw rectangle
-    love.graphics.setColor( 0, 0, 0, 180 )
-    love.graphics.rectangle('fill', x, y, width, height)
-
-    -- Draw text
-    love.graphics.setColor( 255, 255, 255, 255 )
-    love.graphics.print(quest, (x + 2), (y + 2), 0, 0.5, 0.5)
-    love.graphics.push()
-    love.graphics.printf("for " .. questParent, (x + 2), (y + 15), (width + 8), "left", 0, 0.5, 0.5)
-    love.graphics.pop()
-
-    love.graphics.setColor( 255, 255, 255, 255 )
+  if self.saving then
+    self.savingAnimation:update(dt) 
+  end
+  if self.invincible then
+    self.invincibleAnimation:update(dt)
+  end
+  if self.punchDamage then
+    self.punchDamageAnimation:update(dt)
+  end
+  if self.jumpFactor then
+    self.jumpFactorAnimation:update(dt)
+  end
+  if self.speedFactor then
+    self.speedFactorAnimation:update(dt)
+  end
 end
 
 function HUD:draw( player )
@@ -96,16 +100,20 @@ function HUD:draw( player )
     return
   end
 
-  self.sheet = player.character:sheet()
+  fonts.set('small')
 
-  fonts.set( 'big' )
+  local x, y = camera.x, camera.y
 
-  self.x, self.y = camera.x + 10, camera.y + 10
+  -- HEALTH 
+  love.graphics.draw(self.heart_full, x+4 , y + 4)
 
-  love.graphics.setStencil( )
-  love.graphics.setColor( 255, 255, 255, 255 )
-  love.graphics.draw( chevron, self.x, self.y)
-  love.graphics.setStencil( self.energy_stencil, self.x, self.y )
+  --Draw black outline using offsets
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, -0.5, 0.5)
+  love.graphics.printf(player.health, x + 17, y + 6, 16, 'left', 0, 1, 1, -0.5, -0.5)
+  
   love.graphics.setColor(
     math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
     math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
@@ -113,38 +121,85 @@ function HUD:draw( player )
     255
   )
 
-  love.graphics.draw(energy, self.x - (player.max_health - player.health) * .56, self.y)
-  love.graphics.setStencil(self.character_stencil, self.x, self.y)
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.print(player.health, x+17, y + 6)
 
+  -- MONEY
+
+  --Draw black outline using offsets
+  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, 0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, 0.5, -0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, -0.5, 0.5)
+  love.graphics.printf(player.money, x + 60, y + 6, 16, 'left', 0, 1, 1, -0.5, -0.5)
+  
+  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.print(player.money, x+60, y + 6)
+  love.graphics.draw(self.money, x+50 , y + 4)
+
+  -- WEAPONS
   local currentWeapon = player.inventory:currentWeapon()
   if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then
-    local position = {x = self.x + 22, y = self.y + 22}
-    currentWeapon:draw(position, nil,false)
-  else
-    love.graphics.draw(self.sheet, self.character_quad, self.x + 7, self.y + 17)
+    currentWeapon:drawHud(x + 100, y + 4, true)
   end
-  love.graphics.setStencil()
-  love.graphics.draw(lens, self.x, self.y)
-  love.graphics.setColor( 0, 0, 0, 255 )
-  love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
-  love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
-  if player.activeEffects then
-    love.graphics.setColor( 0, 0, 0, 255 )
-    for i,effect in ipairs(player.activeEffects) do
-      love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
-    end
+  
+  --SAVING
+  if self.saving then
+    self.savingAnimation:draw(self.savingImage, x + 120, y + 6)
+  end
+
+  --ACTIVE POTION & CONSUMABLE EFFECTS
+  love.graphics.setColor( 255, 255, 255, 255 )
+  
+  local iconX, iconY = x + 4, y + 20
+  local icons = 0
+  local iconline = 0
+
+  if player.godmode or player.activeInvulnEffect  then --TODO: don't show up when getting hurt
+    self.invincible = true
+    self.invincibleAnimation:draw(self.invincibleImage, iconX + 20*icons, iconY+(iconline*19))
+    self.invincibleAnimation:resume()
+    icons = icons + 1
+  end
+  
+  if player.jumpFactor  > 1 then
+    self.jumpFactor = true
+    self.jumpFactorAnimation:draw(self.jumpFactorImage, iconX + 20*icons, iconY+(iconline*19))
+    self.jumpFactorAnimation:resume()
+    icons = icons + 1
+  end
+  
+  if player.speedFactor  > 1 then
+    self.speedFactor = true
+    self.speedFactorAnimation:draw(self.speedFactorImage, iconX + 20*icons, iconY+(iconline*19))
+    self.speedFactorAnimation:resume()
+    icons = icons + 1
+  end
+
+  if player.jumpFactor == 0 or player.speedFactor == 0 then
+    self.restricted = true
+    self.restrictedAnimation:draw(self.restrictedImage, iconX + 20*icons, iconY+(iconline*19))
+    self.restrictedAnimation:resume()
+    icons = icons + 1
+  end
+  
+  if player.punchDamage > 1 then
+    self.punchDamage = true
+    self.punchDamageAnimation:draw(self.punchDamageImage, iconX + 20*icons, iconY+(iconline*19))
+    self.punchDamageAnimation:resume()
+    icons = icons + 1
   end
 
   if player.quest ~= nil then
-    self:questBadge( player )
+    local qParent = player.questParent
+    print(qParent)
+    local questIcon = love.graphics.newImage('images/hud/quest' .. player.questParent .. '.png')
+    self.quest = true
+    love.graphics.draw(questIcon,iconX + 20*icons, iconY+(iconline*19))
+    icons = icons + 1
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
-
-  if self.saving then
-    self.savingAnimation:draw(savingImage, self.x + camera:getWidth() - 60, self.y)
-  end
+  --TODO: add slide damage
+  
 
   fonts.revert()
 end
