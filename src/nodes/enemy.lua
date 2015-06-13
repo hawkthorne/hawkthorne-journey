@@ -198,6 +198,7 @@ function Enemy:hurt( damage, special_damage, knockback )
         self.dying = false
         self.dead = false
         self.invulnerable = true
+        self.props.peaceful = true
         self.hp = 1
         return
       end
@@ -336,6 +337,8 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
         end
       end
     end
+
+    if (node.isPlayer or node.isWall) and self.type == "cornelius" and self.hp == 1 then return end
 
     if self.props.attack then
       self.props.attack(self,self.props.attackDelay)

@@ -27,7 +27,7 @@
  </layer>
  <layer name="background" width="96" height="37">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="pillar" width="96" height="37">
@@ -60,7 +60,7 @@
    <properties>
     <property name="info" value="Only a coward would run from Cornelius!"/>
     <property name="key" value="greendale"/>
-    <property name="level" value="castle-hawkthorne"/>
+    <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="next"/>
    </properties>
   </object>
@@ -152,7 +152,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object id="130" type="spawn" x="1488" y="480" width="72" height="72">
+  <object id="130" type="spawn" x="1488" y="504" width="72" height="72">
    <properties>
     <property name="enemytype" value="cornelius"/>
     <property name="nodeType" value="enemy"/>

@@ -39,9 +39,7 @@ return {
   velocity = {x = 0, y = 0},
   hp = 200,
   rage = false,
-  freeze = false,
   tokens = 100,
-  dyingdelay = 2,
   fadeIn = true,
   dying = false,
   invulnerableTime = 0,
@@ -106,10 +104,11 @@ return {
   },
 
   enter = function( enemy )
+    local dead = enemy.db:get('cornelius-dead', false)
+    if dead then enemy:die() return end
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
-    enemy.falling = false
 
     if enemy.props.hatched then return end
 
@@ -143,7 +142,6 @@ return {
       table.insert(enemy.props.enterScript, "I bequeath my fortune to no inferiors!")
       enemy.state = 'talking'
       Dialog.new(enemy.props.enterScript, function()
-        enemy.props.hatched = true
         enemy.state = 'attack'
         enemy.props.rage = true
         enemy.velocity.x = 125
@@ -247,7 +245,7 @@ return {
     enemy.last_teleport = 0 
     enemy.last_attack = 0
     sound.playSfx("teleport")
-    Timer.add(.5, function()  
+    Timer.add(1.5, function()
       if enemy.position.x >= player.position.x then
         enemy.position.x = player.position.x - enemy.width
         enemy.state = 'attack'
@@ -260,42 +258,45 @@ return {
   end,
 
   die = function( enemy )
-    if enemy.dead then return end
+    if enemy.dead or enemy.db:get('cornelius-dead', false) then return end
     local level = enemy.containerLevel
+
+    enemy.db:set('cornelius-dead', true)
+
+    sound.stopMusic()
+    sound.playSfx("cornelius-ending")
+
+    local NodeClass = require('nodes/firework')
+    local node = {
+      x = enemy.position.x,
+      y = 480,
+      properties = {},
+    }
+    local firework = NodeClass.new(node, enemy.collider)
+    level:addNode(firework)
+  end,
+
+  deathspeeh = function( enemy )
+    local level = enemy.containerLevel
+
+    sound.playMusic("cornelius-forfeiting")
 
     for _,node in pairs(level.nodes) do
       if node.name == "lava" and node.oscillating then
         node.dormant = true
       end
+      if node.isFire and node.die then
+        node:die()
+      end
     end
-    enemy.falling = true
-    enemy.props.freeze = true
-    sound.playMusic("cornelius-forfeiting")
-
-    local NodeClass = require('nodes/firework')
-    local node = {
-      x = enemy.position.x,
-      y = 500,
-      properties = {},
-    }
-    local firework = NodeClass.new(node, enemy.collider)
-    level:addNode(firework)
-
-    enemy.props.dying = true
 
     Dialog.new(enemy.props.deathScript, function()
-      enemy:die()
-      sound.playSfx("cornelius-ending")
-      sound.stopMusic()
-      Timer.add(8, function()
-        sound.playMusic("castle")
-      end)
       local NodeClass = require('nodes/key')
       local node = {
         type = 'key',
         name = 'greendale',
-        x = 2472,
-        y = 616,
+        x = 1800,
+        y = 615,
         width = 24,
         height = 24,
         properties = {
@@ -343,7 +344,7 @@ return {
 
     if enemy.invulnerable then
       enemy.props.invulnerableTime = enemy.props.invulnerableTime + dt
-      if enemy.props.invulnerableTime < 5 then
+      if enemy.props.invulnerableTime > 5 then
         enemy.invulnerable = false
       end
     end
@@ -356,9 +357,22 @@ return {
 
     enemy.props.updateCameraZoom( dt, enemy )
 
-    if enemy.hp == 1 then
+    if enemy.hp <= 1 then
       enemy.state = 'before_death'
-      enemy.props.dying_update( dt, enemy )
+      enemy.velocity.x = 0
+
+      if enemy.position.y >= 574 then
+        enemy.velocity.y = 0
+        if not enemy.props.saidDeathSpeeh then
+          enemy.props.saidDeathSpeeh = true
+          Timer.add(2, function()
+            enemy.props.deathspeeh( enemy )
+          end)
+        end
+      else
+        enemy.props.dying_update( dt, enemy )
+      end
+      return
     end
 
     local direction = player.position.x > enemy.position.x + 70 and -1 or 1
@@ -367,7 +381,7 @@ return {
     if enemy.state == 'attack' and not enemy.props.hatched then
       enemy.props.hatched = true
       enemy.props.fireball( enemy, player )
-    elseif enemy.props.hatched and not enemy.props.freeze then
+    elseif enemy.props.hatched then
       enemy.props.rage = true
       enemy.last_teleport = enemy.last_teleport + dt
       enemy.last_attack = enemy.last_attack + dt
