@@ -40,7 +40,7 @@ function Material.new(node, collider)
   material.height = node.height
   material.bb_offset_x = (24 - node.width) / 2 -- positions bb for materials smaller than 24px
 
-  material.touchedPlayer = nilma
+  material.touchedPlayer = nil
   material.exists = true
   material.dropping = false
 

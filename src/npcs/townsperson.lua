@@ -24,7 +24,6 @@ return {
     local acornDead = npc.db:get("bosstriggers.acorn", true)
     local bldgburned = npc.db:get('house_building_burned', false )
     if show == true and not npc.hidden then
-      print('run away')
       npc.state = 'walking'
       npc.collider:setGhost(npc.bb)
       npc.run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}}
