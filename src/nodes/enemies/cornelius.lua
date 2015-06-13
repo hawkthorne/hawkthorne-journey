@@ -113,7 +113,8 @@ return {
     if enemy.props.hatched then return end
 
     sound.playMusic("cornelius-transforms")
-    -- cheat:fairfight()
+
+    local cheats = cheat:fairfight()
 
     enemy.props.shake( enemy, camera )
 
@@ -140,6 +141,9 @@ return {
         table.insert(enemy.props.enterScript, playersinsult[i])
       end
       table.insert(enemy.props.enterScript, "I bequeath my fortune to no inferiors!")
+      if cheats then
+        table.insert(enemy.props.enterScript, "... I'll not allow any cheating!")
+      end
       enemy.state = 'talking'
       Dialog.new(enemy.props.enterScript, function()
         enemy.state = 'attack'

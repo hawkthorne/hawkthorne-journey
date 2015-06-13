@@ -113,9 +113,12 @@ end
 
 function Cheat:fairfight()
   cheatEnabled = false
+  local cheats = false
   for cheat,_ in pairs(cheatList) do
+    if self:is(cheat) then cheats = true end
     self:off(cheat)
   end
+  return cheats
 end
 
 function Cheat:toggle(cheatName)
