@@ -268,6 +268,10 @@ function love.gamepadpressed(joystick, key)
   buttonpressed(key)
 end
 
+function love.joystickremoved(joystick)
+  controls:switch()
+end
+
 function love.joystickreleased(joystick, key)
   buttonreleased(tostring(key))
 end
