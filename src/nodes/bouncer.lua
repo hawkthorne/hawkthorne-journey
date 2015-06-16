@@ -17,9 +17,11 @@ function Bouncer.new(node, collider)
 end
 
 function Bouncer:collide(node, dt, mtv_x, mtv_y)
+  if node.playerAttack then return end -- player attack will cause a crash and can't bounce anyways
+
   -- spiders shouldn't interact with bouncers
   if node.props and node.props.name == 'spider' then return end
-  
+
   local node_y = node.position.y + node.height
   
   if node.isPlayer then
