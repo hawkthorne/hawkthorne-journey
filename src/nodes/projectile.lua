@@ -48,7 +48,7 @@ function Projectile.new(node, collider)
   proj.start_y = node.y
 
   proj.explosive = false or proj.props.explosive
-  proj.explodeTime = proj.props.explodeTime or 0 
+  proj.explodeTime = proj.props.explodeTime or 0
 
   local animations = proj.props.animations
   local g = anim8.newGrid( proj.props.frameWidth,
@@ -105,7 +105,7 @@ function Projectile.new(node, collider)
   proj.special_damage = proj.props.special_damage or {}
   proj.solid = proj.props.solid
   proj.dropping = false
-  proj.dropped = false
+  proj.dropped = (node.properties and node.properties.dropped) or false
 
   proj.playerCanPickUp = proj.props.playerCanPickUp
   proj.enemyCanPickUp = proj.props.enemyCanPickUp
@@ -260,6 +260,7 @@ function Projectile:collide(node, dt, mtv_x, mtv_y)
   end
 
   if self.props.collide then
+    if self.dropped then return end
     self.props.collide(node, dt, mtv_x, mtv_y,self)
   end
 end
