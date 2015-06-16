@@ -224,27 +224,27 @@ return {
 
   --throws a fireball that will spawn fire to the right and left as well as eat away the floor.
   fireball = function( enemy, player )
-    if not enemy.dead then
-      enemy.last_fireball = 0 
-      enemy.last_attack = 0
-      local Fireball = require('nodes/fire_cornelius_big')
-      local node = {
-        type = 'fire_cornelius_big',
-        name = 'fireball',
-        x = player.position.x,
-        y = enemy.position.y,
-        width = 34,
-        height = 110,
-        properties = {}
-      }
-      local fireball = Fireball.new( node, enemy.collider )
-      local level = enemy.containerLevel
-      level:addNode(fireball)
-    end
+    if enemy.props.dying or enemy.dead then return end
+    enemy.last_fireball = 0
+    enemy.last_attack = 0
+    local Fireball = require('nodes/fire_cornelius_big')
+    local node = {
+      type = 'fire_cornelius_big',
+      name = 'fireball',
+      x = player.position.x,
+      y = enemy.position.y,
+      width = 34,
+      height = 110,
+      properties = {}
+    }
+    local fireball = Fireball.new( node, enemy.collider )
+    local level = enemy.containerLevel
+    level:addNode(fireball)
   end,
 
   --cornelius teleports to behind the player
   teleport = function ( enemy, player, dt )
+    if enemy.props.dying or enemy.dead then return end
     enemy.state = 'teleport'
     enemy.last_teleport = 0 
     enemy.last_attack = 0
@@ -314,6 +314,7 @@ return {
   end,
 
   prevent_death = function( enemy )
+    enemy.state = 'before_death'
     if not enemy.props.dying then
       enemy.props.dying = true
       return true
@@ -341,6 +342,17 @@ return {
     enemy.containerLevel.offset = newOffset
   end,
 
+  floor_pushback = function( enemy )
+    if enemy.props.dying and enemy.velocity.y == 0 then
+      if not enemy.props.saidDeathSpeeh then
+        enemy.props.saidDeathSpeeh = true
+        Timer.add(2, function()
+          enemy.props.deathspeeh( enemy )
+        end)
+      end
+    end
+  end,
+
   update = function( dt, enemy, player, level )
     if (enemy.props.dying or enemy.dead) and camera.scaleX > 0.5 then
       enemy.props.cameraZoom = -1
@@ -361,21 +373,11 @@ return {
 
     enemy.props.updateCameraZoom( dt, enemy )
 
-    if enemy.hp <= 1 then
+    if enemy.props.dying then
       enemy.state = 'before_death'
       enemy.velocity.x = 0
 
-      if enemy.position.y >= 574 then
-        enemy.velocity.y = 0
-        if not enemy.props.saidDeathSpeeh then
-          enemy.props.saidDeathSpeeh = true
-          Timer.add(2, function()
-            enemy.props.deathspeeh( enemy )
-          end)
-        end
-      else
-        enemy.props.dying_update( dt, enemy )
-      end
+      enemy.props.dying_update( dt, enemy )
       return
     end
 
