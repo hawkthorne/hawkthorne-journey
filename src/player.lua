@@ -372,6 +372,7 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt, map)
+  if not map then return end -- because something is horribly wrong that shouldn't ever happen
   self.inventory:update( dt )
   self.attack_box:update()
 
