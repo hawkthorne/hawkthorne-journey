@@ -623,15 +623,6 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="spawn" x="4992" y="432" width="168" height="24">
-   <properties>
-    <property name="enemytype" value="qfo"/>
-    <property name="nodeType" value="enemy"/>
-    <property name="spawnMax" value="1"/>
-    <property name="spawnType" value="proximity"/>
-    <property name="y_Proximity" value="550"/>
-   </properties>
-  </object>
   <object type="enemy" x="1416" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="ambush_alien_ranged"/>
