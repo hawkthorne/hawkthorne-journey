@@ -9,7 +9,7 @@ local quests = {
     --prompt: 'flowers'
     giveQuestSucceed = {
         "Adventurer! If you had time, I was wondering if you could help me out with a small problem?",
-        "Just on the other side of the mountains on the way to {{orange}}Valley of Laziness{{white}}, there's a hidden door leading to the treetops. you may have noticed {{teal}}flowers{{white}} growing beside the road. from the {{olive}}forest{{white}} beyond the {{green_light}}blacksmith{{white}} but ever since {{grey}}Hawkthorne{{white}} started ruling the {{olive}}forests{{white}} haven't been safe.",
+        "Just on the other side of the mountains on the way to {{orange}}Valley of Laziness{{white}}, there's a hidden door leading to the treetops.",
         "Recently, an invasive species of {{blue_light}}blue mushrooms{{white}} have begun growing there, threatening local plants!",
       },
     successPrompt = "Could you go remove ALL of those {{blue_light}} mushrooms{{white}} on the treetops? I will pay you handsomely!",
