@@ -31,6 +31,11 @@ return {
     { type='material', name='stardust' },
   },
   {
+    { type='material', name='stick' },
+    { type='material', name='stardust' },
+    { type='weapon', name='magicwand' },
+  },
+  {
     { type='material', name='fire' },
     { type='material', name='stardust' },
     { type='weapon', name='fireball' },
