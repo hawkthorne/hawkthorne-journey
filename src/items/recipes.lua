@@ -66,6 +66,36 @@ return {
     { type='material', name='stone' },
   },
   {
+    { type='material', name='berry' },
+    { type='material', name='bluemushroom' },
+    { type='material', name='bluejam' },
+  },
+  {
+    { type='material', name='leaf' },
+    { type='material', name='mushroom' },
+    { type='material', name='redjam' },
+  },
+  {
+    { type='material', name='redjam' },
+    { type='material', name='stardust' },
+    { type='material', name='magicred' },
+  },
+  {
+    { type='material', name='bluejam' },
+    { type='material', name='stardust' },
+    { type='material', name='magicgreen' },
+  },
+  {
+    { type='material', name='bluejam' },
+    { type='material', name='redjam' },
+    { type='consumable', name='brownjam' },
+  },
+  {
+    { type='material', name='magicred' },
+    { type='material', name='magicgreen' },
+    { type='weapon', name='magicbrown' },
+  },
+  {
     { type='material', name='stone' },
     { type='material', name='stick' },
     { type='weapon', name='throwingaxe' },
