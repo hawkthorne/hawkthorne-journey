@@ -12,7 +12,6 @@ local json  = require 'hawk/json'
 local app = require 'app'
 local Gamestate = require 'vendor/gamestate'
 
-
 local window = require 'window'
 local camera = require 'camera'
 
@@ -68,7 +67,7 @@ return {
       npc.menu:close(player)
       end)
     elseif player.quest == 'Aliens! - Destroy the QFO!' then
-      if check ~= false then
+      if check then
       local script3 = {
       "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
       "What, the aliens didn't automatically die when the mothership blew up? Well, I guess that's pretty realistic, I don't know what I was thinking.",
@@ -79,13 +78,36 @@ return {
       }
       Dialog.new(script3, function()
       npc.menu:close(player)
+      local level = npc.containerLevel
       local Item = require 'items/item'
       local itemNode = require ('items/weapons/laser_pistol')
       local item = Item.new(itemNode, 1)
       local itemNode2 = require ('items/weapons/lasercell')
       local item2 = Item.new(itemNode2, 10)
-      player.inventory:addItem(item, true)
-      player.inventory:addItem(item2, true)
+      if not player.inventory:addItem(item) then
+        local Weapon = require('/nodes/' .. itemNode.type)
+        itemNode.width = itemNode.width or item.image:getWidth()
+        itemNode.height = itemNode.height or item.image:getHeight() - 15
+
+        itemNode.x = level.player.position.x
+        itemNode.y = level.player.position.y + (level.player.height - itemNode.height)
+        itemNode.properties = {foreground = false}
+
+        local myNewNode = Weapon.new(itemNode, level.collider)
+        level:addNode(myNewNode)
+      end
+      if not player.inventory:addItem(item2) then
+        local Projectile = require('/nodes/projectile')
+        itemNode2.width = itemNode2.width or item.image:getWidth()
+        itemNode2.height = itemNode2.height or item.image:getHeight() - 15
+
+        itemNode2.x = level.player.position.x
+        itemNode2.y = level.player.position.y + (level.player.height - itemNode2.height)
+        itemNode2.properties = {foreground = false, dropped = true}
+
+        local myNewNode = Projectile.new(itemNode2, level.collider)
+        level:addNode(myNewNode)
+      end
       player.money = player.money + 150
       local gamesave = app.gamesaves:active()
       local completed_quests = gamesave:get( 'completed_quests' ) or {}

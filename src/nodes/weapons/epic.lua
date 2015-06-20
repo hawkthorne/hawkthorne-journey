@@ -100,6 +100,7 @@ return {
       current.trackPlayer = false
       current.player.freeze = true
       Timer.add(1, function()
+        if not current.player then return end
         weapon.shake = false
         current.trackPlayer = true
         current.player.freeze = false

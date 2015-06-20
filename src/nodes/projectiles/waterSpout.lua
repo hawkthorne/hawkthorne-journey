@@ -47,6 +47,7 @@ return{
 
   formRock = function(projectile, x, y)
     local level = projectile.containerLevel
+    if not level or not level.map then return end
     local BreakableBlock = require 'nodes/breakable_block'
     local SpriteClass = require 'nodes/sprite'
     x = math.floor(x / level.map.tilewidth) * level.map.tilewidth
