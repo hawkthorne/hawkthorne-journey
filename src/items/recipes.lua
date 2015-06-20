@@ -17,6 +17,11 @@ return {
   },
   {
     { type='material', name='bone' },
+    { type='material', name='boulder' },
+    { type='weapon', name='bonemace' },
+  },
+  {
+    { type='material', name='bone' },
     { type='material', name='rock' },
     { type='weapon', name='throwingboneknife' },
   },
