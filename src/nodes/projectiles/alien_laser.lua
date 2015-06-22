@@ -35,6 +35,9 @@ return{
       node:hurt(projectile.damage, projectile.special_damage, 0)
       projectile:die()
     end
+    if node.isBuilding then
+      node:burn(projectile.position.x, projectile.position.y)
+    end
   end,
 
   animations = {
