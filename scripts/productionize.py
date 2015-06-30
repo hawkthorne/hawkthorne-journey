@@ -8,7 +8,7 @@ import logging
 def create_conf_json(version):
     conf = json.load(open('src/config.json'))
 
-    if os.environ.get('TRAVIS_BRANCH', '') == 'release':
+    if os.environ.get('TRAVIS_BRANCH', '') != 'release':
         return
 
     conf.update({
