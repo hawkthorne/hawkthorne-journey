@@ -20,4 +20,8 @@ env:
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script: make deploy
 addons:
-  artifacts: true
+  artifacts:
+    paths:
+      - ./build/hawkthorne-osx.zip
+      - ./build/hawkthorne-win-x86.zip
+      - ./build/hawkthorne.love
