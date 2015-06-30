@@ -1,5 +1,6 @@
 tweepy==2.3.0
-requests==1.0.4
+requests==2.7.0
 jinja2==2.7.3
 boto==2.8.0
 markdown==2.2.1
+uritemplate.py==0.3.0
