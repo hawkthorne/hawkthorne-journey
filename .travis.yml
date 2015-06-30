@@ -19,3 +19,9 @@ env:
   - secure: "rKCTAsDVeJijQglX0E48Vuqrpmx9uawA4ciObTWQ9uWhsiCZR72jg4lgh9QM\nDhSiHDRBWqC2RzuZzN2IpxAnRug8FzSecYJ9oaXvnbYJXt55UkcIv6ano1d6\nPc/VXa5kRnA8ozO9pvCnPYzT/o7mOxG/l16LOqCblXMsZf2n0IE="
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script: make deploy
+addons:
+  artifacts:
+    paths:
+      - ./build/hawkthorne-osx.zip
+      - ./build/hawkthorne-win-x86.zip
+      - ./build/hawkthorne.love

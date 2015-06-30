@@ -57,15 +57,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
+CI_TARGET=test validate maps productionize binaries
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 ifeq ($(TRAVIS_BRANCH), release)
 CI_TARGET=clean test validate maps productionize upload appcast social
-endif
-ifeq ($(TRAVIS_BRANCH), master)
-CI_TARGET=clean test validate maps productionize upload
 endif
 endif
 endif
