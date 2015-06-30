@@ -57,7 +57,7 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
+CI_TARGET=test validate maps binaries
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
