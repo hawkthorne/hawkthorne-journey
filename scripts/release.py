@@ -4,6 +4,7 @@ from collections import namedtuple
 
 import requests
 import uritemplate
+import boto
 
 import version
 
@@ -14,6 +15,7 @@ releases = [
 ]
 
 Release = namedtuple('Release', ['id', 'upload_url'])
+Asset = namedtuple('Asset', ['browser_download_url'])
 
 client = requests.Session()
 client.auth = ('token', os.environ['GITHUB_ACCESS_TOKEN'])
@@ -48,7 +50,11 @@ def upload_asset(release, name, path):
                            data=f.read())
         resp.raise_for_status()
 
+    blob = resp.json()
+    asset = Asset(blob['browser_download_url'])
+
     logging.info('Uploaded asset release={} name={}'.format(release.id, name))
+    return asset
 
 
 def main():
@@ -63,13 +69,21 @@ def main():
     if commit == '':
         return
 
+    c = boto.connect_s3()
+    b = c.get_bucket('files.projecthawkthorne.com')
     v = version.next_version()
 
     with open('post.md') as f:
         release = create_release(v, commit, f.read())
 
     for item in releases:
-        upload_asset(release, item, os.path.join('build', item))
+        asset = upload_asset(release, item, os.path.join('build', item))
+
+        k = b.get_key("releases/v{}/{}".format(v, item))
+        k.set_redirect(asset.browser_download_url)
+
+        k = b.get_key("releases/latest/{}".format(item))
+        k.set_redirect(asset.browser_download_url)
 
 
 if __name__ == "__main__":
