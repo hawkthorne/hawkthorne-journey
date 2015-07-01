@@ -5,6 +5,7 @@ from collections import namedtuple
 import requests
 import uritemplate
 import boto
+from boto.s3.connection import OrdinaryCallingFormat
 
 import version
 
@@ -69,7 +70,7 @@ def main():
     if commit == '':
         return
 
-    c = boto.connect_s3()
+    c = boto.connect_s3(calling_format=OrdinaryCallingFormat())
     b = c.get_bucket('files.projecthawkthorne.com')
     v = version.next_version()
 
@@ -79,7 +80,7 @@ def main():
     for item in releases:
         asset = upload_asset(release, item, os.path.join('build', item))
 
-        k = b.get_key("releases/v{}/{}".format(v, item))
+        k = b.new_key("releases/v{}/{}".format(v, item))
         k.set_redirect(asset.browser_download_url)
 
         k = b.get_key("releases/latest/{}".format(item))
