@@ -35,7 +35,7 @@ return{
       node:hurt(projectile.damage, projectile.special_damage, 0)
       projectile:die()
     end
-    if node.isBuilding then
+    if node.isBuilding and node.burn then
       node:burn(projectile.position.x, projectile.position.y)
     end
   end,
