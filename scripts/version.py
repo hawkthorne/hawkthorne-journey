@@ -1,11 +1,8 @@
 """
 Bump the version number
 """
-import boto
 import argparse
 import requests
-
-s3 = boto.connect_s3()
 
 
 def current_version():
