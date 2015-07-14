@@ -63,8 +63,6 @@ function Weapon.new(node, collider, plyr, weaponItem)
   weapon.bbox_offset_y = weapon.props.bbox_offset_y
   weapon.magical = weapon.props.magical or false
 
-  weapon.isFlammable = node.properties.isFlammable or weapon.props.isFlammable or false
-
   weapon.wield_rate = weapon.props.animations.wield[3]
 
   local g = anim8.newGrid(weapon.frameWidth, weapon.frameHeight,
@@ -206,10 +204,6 @@ function Weapon:collide(node, dt, mtv_x, mtv_y)
     sound.playSfx(self.hitAudioClip)
   end
 
-  --handles code for burning an object
-  if self.isFlammable and node.burn then
-    node:burn(self.position.x,self.position.y)
-  end
 end
 
 function Weapon:initializeBoundingBox(collider)

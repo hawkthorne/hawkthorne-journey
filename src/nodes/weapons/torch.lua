@@ -22,7 +22,6 @@ return{
   bbox_offset_x = {3,12,12,12} ,
   bbox_offset_y = {17,17,17,17},
   swingAudioClip = 'fire_thrown',
-  isFlammable = true,
   animations = {
     default = {'loop', {'1-6,1'}, 0.09},
     wield = {'once', {'7,1','8,1','7,1','8,1'},0.11},

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="24" tileheight="24" nextobjectid="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="24" tileheight="24" nextobjectid="29">
  <properties>
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
@@ -107,9 +107,9 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="climbable" x="567" y="165" width="1" height="100"/>
-  <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
-  <object type="door" x="0" y="0" width="24" height="264">
+  <object id="24" type="climbable" x="567" y="165" width="1" height="100"/>
+  <object id="25" name="rock" type="material" x="1776" y="240" width="24" height="24"/>
+  <object id="26" type="door" x="0" y="0" width="24" height="264">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="forest-2"/>
@@ -138,6 +138,6 @@
   </object>
   <object id="20" name="jumpinggirl" type="npc" x="582" y="120" width="24" height="48"/>
   <object id="21" name="tavern" type="building" x="264" y="144" width="144" height="120"/>
-  <object id="22" name="house" type="building" x="552" y="48" width="288" height="216"/>
+  <object id="22" name="house" type="building" x="552" y="24" width="288" height="240"/>
  </objectgroup>
 </map>
