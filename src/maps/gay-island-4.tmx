@@ -78,7 +78,7 @@
  </layer>
  <layer name="trees" width="85" height="24">
   <data encoding="base64" compression="zlib">
-   eJztl2kKgzAQhVO9RJcb9Sg9QH/nUHY5Qxe7nKHLLdq+IEKQMUzpIonvg4dkopB8xgGNIYSQMJvMmC2yQ/ZZ16tJgws8XpEbcqfTr/CAx6dzmRszyLteTRoM4XGEjJGJ55Q9Qc9c8FM79Qn1BMm3ttYXJKehniD51tZSocB+FsgSWVVXi7FF3bp5yWlbT3BIvrW1WGk6KLGvA3JETtXVYmzLgNNQXfKtrcVK4X1n07w6n6HU+3ZneO092+a0bU5bixHhXKri7j3T6U+h0/eYKfZJp/+lduW/G98f+rht1gghnyP9YxJCCCGkf7wAxmNZ4A==
+   eJztl1sKgzAQRVPdRB/77HcWZW3X0Id9rKGPXbS9QYQg4zAfthK9By4hE4XkEAd0jhBCdPaZcwfkiJyyoXczDu7w+ECeyItOe+ENj5/gMndulg+9m3Ewh8cFskRWkVP2BDtrwU/jNEbrCZJva20qSE61niD5ttbGQoHzbJAS2dajx9yj7sO65LSrJwQk39ZaqrQdVDjXGbkg13r0mPtKcarVJd/WWqoUre+szPQ05w53eBe92+W0a81aSxHhXpoSnr3R6U+h0/6h0/9Cp4QMg/SPSQghhJDp8QXutFfs
   </data>
  </layer>
  <layer name="collision" width="85" height="24">

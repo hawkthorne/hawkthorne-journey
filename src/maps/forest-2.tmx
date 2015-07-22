@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="24" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="24" tilewidth="24" tileheight="24" nextobjectid="47">
  <properties>
   <property name="blue" value="250"/>
   <property name="green" value="222"/>
@@ -57,6 +57,16 @@
    eJzt0rEJwDAMAEFN4z20WUYP6dIaLATy3QRffAQAwCwZ8XQ3MEuGrzjr+8lXnPb/KrtjGMNXVPAVFXwFAAAAAADsWN0BjOQrKviKCr66zwvbKAwv
   </data>
  </layer>
+ <layer name="tree fade" width="150" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIA0H8a0EkCyMjLOQueQdNIwAAAIAPsoMNOQQb7IoLPgsAAAAAAAAAYFb/CwrB
+  </data>
+ </layer>
+ <layer name="Copy of tree fade" width="150" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIA0H8a0EkCyMjLOQueQdNIwAAAIAPsoMNOQQb7IoLPgsAAAAAAAAAYFb/CwrB
+  </data>
+ </layer>
  <layer name="leaves3" width="150" height="24">
   <data encoding="base64" compression="zlib">
    eJzt2EEKgkAUgOGBXLTIpS08nUfpKB7Fo3SU3lDCZIalERHfB4+GyUWLn4eUEv+kKgbe1aTUH2LmvtMVa+SmdvE5zpSuWCP2VNIVnxb76mlX3q/YotxZcR7Ge12xRd5Z0VOXJ85dvht7qlM655n2Fc+e9teBRXVxPkY35X11/9ygK14RHfW5nbn/HMauij2mKxY1t6byzL3DH9NjV2101X73ZwIAAAAAAAAA/IQLzeQPKA==
@@ -82,107 +92,107 @@
    eJztmFEOgjAMhvFBY4jRhz1LeNJrcBSOwlE4CkfxKHYBDC6dS3FsA/4vaUhwrM360xazDPgmJztYjH5rQvjTfkL4BuFIVVcKuooGnX1FOSmnRvdKyR6hdaUsflCr0sGmCYm2QuuK86mgKxFDPWlHk9YSFzZNSPLC1Y+le5H2STG+tI0+uHtbhNFEJ11v5j137CHFh66G2D85DZXb8wq1o/rcimeNKfR8JdEEt17n/UTnd+yvyeoqBJcsq7XFjmMOg55a44ydtYaDqTWNYz2rqxs9d+2v3nVl62Fb7iMx+PH+dv/uNUdXZt5960oz9LB6NGjKPz51Zc4crnzZ+uY078j5Ook5b6RYN8xvibkzwd7BvPGN5b/tLmZMa0U6F20Z6MofKfajWEBXYAm4uWDP7xnwB75HAQAAFFT/72RF7EDApniSph5kz9iBAAAAAAAAsAPeP4dHoQ==
   </data>
  </layer>
- <layer name="collision" width="150" height="24">
+ <layer name="collision" width="150" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1wEKgzAMQNHe/1A7h8dwPYETFESatkusxvY/CAzmTFiyZoYAAAAAAAAAAMA1pl/Mmffjds0xMJZz/1PhsSYvtaKNb9D1c/1MvLiW3pT2Qo62L4DGfq5HQ6T2g3V3HGti9/yn9L2z4zGy1HMZc+9DaZdo95LHM8/yPxHw7OM8tJ4+M3qh7ZGld6O68/dhyVlbU67WUu1vnSuP52Lr61vdQ7qf9Lom71vn6g7MlZyHudJjruQ8zJUecyXn6XWuFmUL3Kk=
   </data>
  </layer>
- <objectgroup name="nodes" width="150" height="24">
-  <object name="main" type="door" x="36" y="432" width="24" height="49"/>
-  <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
-  <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
-  <object name="leaf" type="material" x="2737" y="383" width="24" height="24"/>
-  <object name="stick" type="material" x="1271" y="287" width="24" height="24"/>
-  <object name="rock" type="material" x="1823" y="431" width="24" height="24"/>
-  <object name="rock" type="material" x="2425" y="408" width="24" height="24"/>
-  <object name="stick" type="material" x="1893" y="294" width="24" height="24"/>
-  <object name="stick" type="material" x="1674" y="155" width="23" height="24"/>
-  <object name="stick" type="material" x="1732" y="96" width="23" height="24"/>
-  <object name="stick" type="material" x="2118" y="84" width="23" height="24"/>
-  <object name="stick" type="material" x="992" y="216" width="23" height="24"/>
-  <object type="door" x="3576" y="0" width="24" height="408">
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="36" y="432" width="24" height="49"/>
+  <object id="2" name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
+  <object id="3" name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
+  <object id="4" name="leaf" type="material" x="2737" y="383" width="24" height="24"/>
+  <object id="5" name="stick" type="material" x="1271" y="287" width="24" height="24"/>
+  <object id="6" name="rock" type="material" x="1823" y="431" width="24" height="24"/>
+  <object id="7" name="rock" type="material" x="2425" y="408" width="24" height="24"/>
+  <object id="8" name="stick" type="material" x="1893" y="294" width="24" height="24"/>
+  <object id="9" name="stick" type="material" x="1674" y="155" width="23" height="24"/>
+  <object id="10" name="stick" type="material" x="1732" y="96" width="23" height="24"/>
+  <object id="11" name="stick" type="material" x="2118" y="84" width="23" height="24"/>
+  <object id="12" name="stick" type="material" x="992" y="216" width="23" height="24"/>
+  <object id="13" type="door" x="3576" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="town"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="enemy" x="1200" y="288" width="24" height="24">
+  <object id="14" type="enemy" x="1200" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1608" y="336" width="24" height="24">
+  <object id="15" type="enemy" x="1608" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1728" y="288" width="24" height="24">
+  <object id="16" type="enemy" x="1728" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1632" y="336" width="24" height="24">
+  <object id="17" type="enemy" x="1632" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1992" y="432" width="24" height="24">
+  <object id="18" type="enemy" x="1992" y="432" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1944" y="216" width="24" height="24">
+  <object id="19" type="enemy" x="1944" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2352" y="408" width="24" height="24">
+  <object id="20" type="enemy" x="2352" y="408" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2400" y="408" width="24" height="24">
+  <object id="21" type="enemy" x="2400" y="408" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2976" y="216" width="24" height="24">
+  <object id="22" type="enemy" x="2976" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2784" y="384" width="24" height="24">
+  <object id="23" type="enemy" x="2784" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2557" y="456" width="48" height="48">
+  <object id="24" type="enemy" x="2557" y="456" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="2244" y="480" width="48" height="48">
+  <object id="25" type="enemy" x="2244" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="2088" y="480" width="48" height="48">
+  <object id="26" type="enemy" x="2088" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="1272" y="480" width="48" height="48">
+  <object id="27" type="enemy" x="1272" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="enemy" x="1440" y="480" width="48" height="48">
+  <object id="28" type="enemy" x="1440" y="480" width="48" height="48">
    <properties>
     <property name="enemytype" value="fish"/>
    </properties>
   </object>
-  <object type="liquid" x="1200" y="480" width="384" height="96">
+  <object id="29" type="liquid" x="1200" y="480" width="384" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -190,7 +200,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2087" y="480" width="48" height="96">
+  <object id="30" type="liquid" x="2087" y="480" width="48" height="96">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -198,7 +208,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2231" y="480" width="72" height="96">
+  <object id="31" type="liquid" x="2231" y="480" width="72" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -206,7 +216,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="2519" y="456" width="120" height="120">
+  <object id="32" type="liquid" x="2519" y="456" width="120" height="120">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -214,15 +224,15 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="door" x="0" y="0" width="24" height="480">
+  <object id="33" type="door" x="0" y="0" width="24" height="480">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="forest"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="next" type="door" x="3504" y="360" width="24" height="48"/>
-  <object type="liquid" x="624" y="504" width="264" height="72">
+  <object id="34" name="next" type="door" x="3504" y="360" width="24" height="48"/>
+  <object id="35" type="liquid" x="624" y="504" width="264" height="72">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -230,44 +240,44 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="864" y="360" width="24" height="24">
+  <object id="36" type="enemy" x="864" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="984" y="360" width="24" height="24">
+  <object id="37" type="enemy" x="984" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="432" y="456" width="24" height="24">
+  <object id="38" type="enemy" x="432" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="stick" type="material" x="240" y="240" width="23" height="24"/>
-  <object name="stick" type="material" x="144" y="288" width="24" height="24"/>
-  <object name="rock" type="material" x="360" y="408" width="24" height="24"/>
-  <object name="hidden" type="door" x="2808" y="144" width="72" height="96">
+  <object id="39" name="stick" type="material" x="240" y="240" width="23" height="24"/>
+  <object id="40" name="stick" type="material" x="144" y="288" width="24" height="24"/>
+  <object id="41" name="rock" type="material" x="360" y="408" width="24" height="24"/>
+  <object id="42" name="hidden" type="door" x="2808" y="144" width="72" height="96">
    <properties>
     <property name="level" value="forest-hidden"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="792" y="360" width="24" height="24"/>
-  <object type="enemy" x="720" y="312" width="24" height="24">
+  <object id="43" name="rock" type="material" x="792" y="360" width="24" height="24"/>
+  <object id="44" type="enemy" x="720" y="312" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object type="enemy" x="240" y="360" width="24" height="24">
+  <object id="45" type="enemy" x="240" y="360" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object type="enemy" x="2160" y="168" width="24" height="24">
+  <object id="46" type="enemy" x="2160" y="168" width="24" height="24">
    <properties>
     <property name="direction" value="right"/>
     <property name="enemytype" value="monkey"/>

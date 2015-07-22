@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24" nextobjectid="17">
  <properties>
   <property name="overworldName" value="town_1"/>
   <property name="soundtrack" value="blacksmith"/>
@@ -19,7 +19,7 @@
  </layer>
  <layer name="pillar_bottom" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJyzYWBgECEByyOxbRgYGhiQADLfZgiaq8DAsIBYTIq5pAB5KE0rc9HNIdXcLCDOBuIcKplrhUMcZG4GVD855rrhMTedAnPxgWISzE1mYDhAqvnUdi+1zU0m0VwgXkAmxmkuAKFjNok=
+   eJyzYWBgECEByyOxbRgYGhiQADLfZgiaq8DAsIBYTIq5pAB5KE0rc9HNGczmZkD1U9vcdBqYCwLFJJibzMBwgFTzqe1eapubTKK5QLyATIzTXABLozTI
   </data>
  </layer>
  <layer name="pillar_top" width="22" height="14">
@@ -28,19 +28,19 @@
   </data>
  </layer>
  <objectgroup color="#a47533" name="floorspace">
-  <object x="360" y="264">
+  <object id="1" x="360" y="264">
    <properties>
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 -48,-48 -336,-48 -336,48 0,48"/>
   </object>
-  <object x="48" y="287">
+  <object id="2" x="48" y="287">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,2 8,-7 24,-7 15,2"/>
   </object>
-  <object x="112" y="239">
+  <object id="3" x="112" y="239">
    <properties>
     <property name="height" value="24"/>
    </properties>
@@ -48,7 +48,7 @@
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="nodes">
-  <object type="sprite" x="48" y="264" width="24" height="24">
+  <object id="4" type="sprite" x="48" y="264" width="24" height="24">
    <properties>
     <property name="depth" value="2"/>
     <property name="height" value="24"/>
@@ -56,7 +56,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="48" y="216" width="120" height="48">
+  <object id="5" type="sprite" x="48" y="216" width="120" height="48">
    <properties>
     <property name="depth" value="18"/>
     <property name="flip" value="true"/>
@@ -65,7 +65,7 @@
     <property name="width" value="95"/>
    </properties>
   </object>
-  <object type="sprite" x="24" y="192" width="24" height="48">
+  <object id="6" type="sprite" x="24" y="192" width="24" height="48">
    <properties>
     <property name="flip" value="true"/>
     <property name="height" value="48"/>
@@ -73,21 +73,21 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="main" type="door" x="318" y="180" width="17" height="62">
+  <object id="7" name="main" type="door" x="318" y="180" width="17" height="62">
    <properties>
     <property name="button" value="RIGHT"/>
     <property name="level" value="blacksmith"/>
     <property name="to" value="upstairs"/>
    </properties>
   </object>
-  <object name="pot" type="throwable" x="288" y="264" width="24" height="24"/>
-  <object name="pot" type="throwable" x="299" y="276" width="24" height="24"/>
-  <object name="duck" type="material" x="216" y="228" width="24" height="24"/>
-  <object name="red_potion" type="detail" x="264" y="216" width="24" height="24">
+  <object id="8" name="pot" type="throwable" x="288" y="264" width="24" height="24"/>
+  <object id="9" name="pot" type="throwable" x="299" y="276" width="24" height="24"/>
+  <object id="10" name="duck" type="material" x="216" y="228" width="24" height="24"/>
+  <object id="11" name="red_potion" type="detail" x="264" y="216" width="24" height="24">
    <properties>
     <property name="category" value="recipe"/>
    </properties>
   </object>
-  <object name="blacksmith_wife" type="npc" x="168" y="252" width="48" height="48"/>
+  <object id="12" name="blacksmith_wife" type="npc" x="168" y="252" width="48" height="48"/>
  </objectgroup>
 </map>
