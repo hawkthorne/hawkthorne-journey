@@ -5,11 +5,15 @@ return {
   width = 32,
   height = 32,  
   run_speed = 36,
+  walking = true,
   run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}},
   greeting = 'Bah! Go away.',
   animations = {
     default = {
-      'loop',{'1,1','2,1'},.5,
+      'loop',{'9,1'},.5,
+    },
+    walking = {
+      'loop',{'1-9,1'},.1,
     },
   },
 
