@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="42" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="autosave" value="false"/>
+  <property name="blue" value="249"/>
+  <property name="green" value="154"/>
+  <property name="red" value="125"/>
+  <property name="soundtrack" value="greendale-alt"/>
+  <property name="title" value="Borchert Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="pool" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/pool.png" width="240" height="288"/>
+ </tileset>
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="city_little_clouds" width="42" height="14">
+  <properties>
+   <property name="parallax" value="0.25"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztkcEKACEIRPvZpW7q/1+2g4dh2JWCqA4+GNB0VKiUe3g2eVb6V3Lill07Z/bc9Cej1K5G+Yjnj/aRV/BE3qhmLulSj9Ul8C4goxr2G8QK8w1yoR7eLSQN7k+SJDnFC1emGSY=
+  </data>
+ </layer>
+ <layer name="hedge_big_clouds" width="42" height="14">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAtKILgBnL1p0Ew2fqpCSj1C7UAMWFCi3CjhpmDJQxHKsgcIngUjIJRMAoGGwAAEscalw==
+  </data>
+ </layer>
+ <layer name="background" width="42" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztlEsKgDAMRAP+ll6jC0ErPZDrrj1Aj+5AdVMqVJoBBQuPIYvAoyFxIuIIWJHNg10pGY6X54rUgumJfxAtmJ6YmWjB9LQxVSDP/RN7pOmZ++MlEtLaIBvQgg70YACmsL+mzt2AORLS2pxOOUr6a+onniPyjjd5ltzjieTJeIy9/D11OQDj86HI
+  </data>
+ </layer>
+ <layer name="Water" width="42" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DkAfWBdsAoGAVowB2IPYDYE4gTB9gto4D+QJsGmBYgYIi4M4oG7gQAX1YMSg==
+  </data>
+ </layer>
+ <layer name="pool edge" width="42" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRQA2gxMCwQAKI0Wli9HoBsTcQ+wCxLxD7AbE/ldwlCKUFoDTQTQzSDAwN0ki0JJJ6VyTsBMSOQDUwuRAgDgXiMCAOB+IIII6kkjvVoLQq1D4lKFsViVaGqpEDYj0sWA6qNw6I44E4Aao+CYiTqeTOIBrgYCq5DRmY0ADHjmB3AgC4VSJI
+  </data>
+ </layer>
+ <layer name="fade" width="42" height="14" opacity="0.75">
+  <data encoding="base64" compression="zlib">
+   eJzTZmBg0KYBpjaghRtH3TnqzlF3Dk53joJRMApGwWADAI/+Gd8=
+  </data>
+ </layer>
+ <layer name="Chairs" width="42" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjBTgSiM8CogD5kBsAcSWQGwFxNYD6xycwBGInaDYZYDdMgpGwWABAIUPCBU=
+  </data>
+ </layer>
+ <layer name="collision" width="42" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjBSwgkaY2mAyjfAoIA6gh9tqPHIDBQYynitphIcCGEru7KMyBgA4UDrL
+  </data>
+ </layer>
+ <objectgroup name="nodes">
+  <object name="main" type="door" x="120" y="216" width="96" height="48">
+   <properties>
+    <property name="level" value="borchert-hallway"/>
+    <property name="to" value="pool"/>
+   </properties>
+  </object>
+  <object type="liquid" x="528" y="264" width="480" height="72">
+   <properties>
+    <property name="drag" value="true"/>
+    <property name="opacity" value="0.7"/>
+    <property name="speed" value="0.2"/>
+    <property name="sprite" value="images/liquid/water2.png"/>
+   </properties>
+  </object>
+  <object type="info" x="288" y="210" width="108" height="24">
+   <properties>
+    <property name="info" value="State-of-the-art judge's table, which has its own built-in sound system,| so take that Yale."/>
+   </properties>
+  </object>
+  <object type="bouncer" x="541" y="180" width="60" height="30">
+   <properties>
+    <property name="dbval" value="1420"/>
+   </properties>
+  </object>
+  <object type="climbable" x="486" y="216" width="12" height="48"/>
+  <object type="info" x="48" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="You can faintly hear the sound of water running and someone singing."/>
+   </properties>
+  </object>
+  <object type="info" x="0" y="216" width="24" height="48">
+   <properties>
+    <property name="info" value="You can faintly hear the sound of water running and someone singing."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

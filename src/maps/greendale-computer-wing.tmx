@@ -15,7 +15,7 @@
  </tileset>
  <layer name="background" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJzTYmBg0BpAzAjETEDMDMQsA4C5gZhngOwGYTYoZkVigzAHFjF8mFi16OoEoJgfiEWR+EJQMRBbDEkcF+bHIyeBQ50oHv0yBMwkxX586tiheNR+VHG1AbLfBoIbDJDEePGYJwjEAUTYn0LAfkkglgJiNwhukIaKgWhxKI0LRyGpxYXzoDTMHpg43wjHA1n3gDAASeAh2A==
+   eJzTYmBg0BpAzAjETEDMDMQsA4C5gZhngOwGYTYoZkVigzAHFjF8mFi16OoEoJgfiEWR+EJQMRBbDEkcF+bHIyeBQ50oHv0yBMwkxX586tiheNR+VHG1AbLfBoIbkNXy4jFPEIgDiLA/hYD9kkAsBcRuENwgDRUD0eJQGheOQlKLC+dBaZg9MHG+EY4Hsu4BYQD80SG4
   </data>
  </layer>
  <layer name="foreground" width="32" height="14">
@@ -35,20 +35,6 @@
  </layer>
  <objectgroup name="nodes">
   <object name="main" type="door" x="6" y="216" width="48" height="60"/>
-  <object name="bathroom-mens" type="door" x="216" y="216" width="24" height="60">
-   <properties>
-    <property name="level" value="mens-bathroom"/>
-    <property name="to" value="main"/>
-   </properties>
-  </object>
-  <object name="bathroom-womans" type="door" x="408" y="216" width="24" height="60">
-   <properties>
-    <property name="info" value="To use this bathroom, you must have a key to the ladies room."/>
-    <property name="key" value="ladiesroom"/>
-    <property name="level" value="womens-bathroom"/>
-    <property name="to" value="main"/>
-   </properties>
-  </object>
   <object type="info" x="72" y="216" width="24" height="48">
    <properties>
     <property name="info" value="Hello, rich people?"/>
@@ -61,6 +47,22 @@
     <property name="level" value="greendale-lounge"/>
     <property name="sound" value="false"/>
     <property name="to" value="vendingmachine"/>
+   </properties>
+  </object>
+  <object type="firealarm" x="144" y="216" width="24" height="48"/>
+  <object type="info" x="216" y="216" width="24" height="60">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="408" y="216" width="24" height="60">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object type="info" x="624" y="216" width="24" height="60">
+   <properties>
+    <property name="info" value="This door is locked."/>
    </properties>
   </object>
  </objectgroup>

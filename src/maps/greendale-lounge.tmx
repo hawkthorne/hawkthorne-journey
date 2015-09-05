@@ -102,7 +102,7 @@
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="to" value="admin3"/>
+    <property name="to" value="admin4"/>
    </properties>
   </object>
   <object name="vendingmachine" type="door" x="508" y="152" width="44" height="64">
@@ -208,6 +208,11 @@
   <object type="info" x="210" y="150" width="30" height="30">
    <properties>
     <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
+   </properties>
+  </object>
+  <object type="info" x="228" y="216" width="36" height="30">
+   <properties>
+    <property name="info" value="I've made a terrible mistake coming here.  Maybe it's not too late to get out of my contract..."/>
    </properties>
   </object>
  </objectgroup>
