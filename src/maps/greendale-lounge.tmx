@@ -87,7 +87,7 @@
  <objectgroup name="nodes">
   <object type="info" x="126" y="102" width="36" height="24">
    <properties>
-    <property name="info" value="1812: Homesteading begins in the area then known as Verdant Valley.  Settlers find that moniker at odds with the poor soil conditions and perpetual plagues of locusts, so they consider other names, including “scab Canyon”, “Harmon’s Heartbreak,” and “Racist Meadows” before agreeing on the less emotionally charged “Greendale.”"/>
+    <property name="info" value="1609 - The land now known as Greendale is discovered by the Portuguese explorer known as Sir English Memorial while searching for a cure for syphilis."/>
    </properties>
   </object>
   <object type="sprite" x="61" y="256" width="69" height="56">
@@ -110,7 +110,7 @@
     <property name="background" value="true"/>
     <property name="hideable" value="true"/>
     <property name="key" value="bronze"/>
-    <property name="level" value="valley-sandpits-entrance"/>
+    <property name="level" value="greendale-computer-wing"/>
     <property name="offset_hidden_x" value="0"/>
     <property name="offset_shown_x" value="-44"/>
     <property name="sound" value="false"/>
@@ -175,19 +175,39 @@
     <property name="width" value="88"/>
    </properties>
   </object>
-  <object type="info" x="252" y="126" width="36" height="18">
+  <object type="info" x="222" y="126" width="66" height="18">
    <properties>
-    <property name="info" value="1979 - Greendale Air Conditioning Repair School is founded and the prophecy of the Truest Repairman is foretold by its founder, Steve."/>
+    <property name="info" value="1979 - The Greendale Air Conditioning Repair School is founded and the prophecy of the truest repair man is foretold by its founder, Steve."/>
    </properties>
   </object>
-  <object type="info" x="222" y="99" width="48" height="18">
+  <object type="info" x="312" y="96" width="48" height="18">
    <properties>
-    <property name="info" value="1977 - Greendale Community College gets a roof."/>
+    <property name="info" value="2000 - Greendale Community College gets a roof."/>
    </properties>
   </object>
-  <object type="info" x="102" y="162" width="36" height="24">
+  <object type="info" x="156" y="156" width="36" height="30">
    <properties>
-    <property name="info" value="The land now know as Greendale is occupied by Portuguese explorers while searching for a cure for syphilis "/>
+    <property name="info" value="1812 - Homesteading begins in the area then known as Verdant Valley. Settlers find that name at odds with the poor soil conditions and perpetual plagues of locusts."/>
+   </properties>
+  </object>
+  <object type="info" x="186" y="96" width="84" height="24">
+   <properties>
+    <property name="info" value="1974 - Greendale Community College is founded. It is established after a bet between two senile identical twin industrialists on the site of an abandoned rendering plant."/>
+   </properties>
+  </object>
+  <object type="info" x="240" y="150" width="42" height="12">
+   <properties>
+    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
+   </properties>
+  </object>
+  <object type="info" x="285" y="150" width="72" height="36">
+   <properties>
+    <property name="info" value="1990 - Manuel Noriega is granted an honorary degree."/>
+   </properties>
+  </object>
+  <object type="info" x="210" y="150" width="30" height="30">
+   <properties>
+    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
  </objectgroup>
