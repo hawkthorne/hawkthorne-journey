@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="red" value="104"/>
+  <property name="soundtrack" value="greendale-alt"/>
+  <property name="title" value="Borchert Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
+ </tileset>
+ <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="background" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxzZ2BgcKchZqExFgDiAChNbQw0t2HU/FHzKTU/CojzaICB5jZUAOkUIOajAQaa20Ars+mFaVm2gTAAhx0vVw==
+  </data>
+ </layer>
+ <layer name="foreground" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgwWIQmkxBoYGcs2QoI5T6A4SILhhDZBei0PNViDeBsTbgXgHEOsAsS4Q6yGpCcRtvgMQH8BnPggcAOKDeOR5ofQhID4MxEeA+CgWdXJI7GggjsFjJjIQh9JngPgsEJ8D4vNY1Gkgsa8Bwy2NSPOJBUZUNo8U0ADEjUDchEO+HIh9gNiXXg7CAwBjdReP
+  </data>
+ </layer>
+ <layer name="fade" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7xMDAcGkUj+JRPIpHMckYANr7E7A=
+  </data>
+ </layer>
+ <layer name="collision" width="24" height="14">
+  <data encoding="base64" compression="zlib">
+   eJz7yMDA8JGGeBSMguEIFBgZGBQZiVdPiloYUAHq4QZiZSx6uckwjxxAy7JhOJQPAFpkLfc=
+  </data>
+ </layer>
+ <objectgroup name="nodes">
+  <object name="main" type="door" x="288" y="192" width="24" height="72">
+   <properties>
+    <property name="level" value="greendale-computer-wing"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="wing2"/>
+   </properties>
+  </object>
+  <object type="info" x="372" y="204" width="42" height="36">
+   <properties>
+    <property name="info" value="They're just a bunch of basketball cards with white people on them."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

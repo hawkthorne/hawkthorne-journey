@@ -8,29 +8,34 @@
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="384"/>
+  <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
  </tileset>
- <tileset firstgid="161" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJzTYmBg0BpAzAjETEDMDMQsA4C5gZhngOwGYTYoZkVigzAHFjF8mFi16OoEoJgfiEWR+EJQMRBbDEkcF+bHIyeBQ50oHv0yBMwkxX586tiheNR+VHG1AbLfBoIbkNXy4jFPEIgDiLA/hYD9kkAsBcRuENwgDRUD0eJQGheOQlKLC+dBaZg9MHG+EY4Hsu4BYQD80SG4
+   eJxzZ2BgcB9AzAjETEDMDMQsA4C5gZhngOwGYTYoZkVigzAHFjF8mFi16OoEoJgfiEWR+EJQMRBbDEkcF+bHIyeBQ50oHv0yBMwkxX586tiheNR+VHG1AbLfBoIbkNXyEjCTlwj7eQnYLwnEUkDsBsEN0lAxEC0OpXFhcSS1+NRII9kDE+cb4Xgg6x4QBgAfwSfD
   </data>
  </layer>
  <layer name="foreground" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjdLBEEYBuCrrW1PPQNqaw6YFU89FRNoYS7MmBVzYW71D/sUU0yxrNcJsi887MzHOzOby2XJkuWv8sgTzb/0qqmhQC111NOQcmaVNdZTOh98cs9DGf+7wSZbbEfzVtpop4NOdthlL+p10U0PvXzxzRvvHHOS8v4+BxxyFM376GeAQYY45Yzz0KlimBFGGUu4/4Zb7sI+H74lprngkiuuo3PjFJlgkqkwr4g6TdF6htmE95954TXsGxM6SZljngUWWQrzyqjTEq2XWSnz7v+cH8ngHOE=
+   eJztzrtzQUEUx3G1WksQgs6QxCPj3XgWQUqvKEgwXgnjXQla/mHfzGyxc2fuNSqF+5v5zO49e87uNRj06NFzq6yxgedC3wOssMGORzjg1JipoIqaRs8eByyxkupP0v5d2tfRwCea0rkfz3jBKwJooY0vaT6IEMJ4wxEn/GGHPgbwqvzvNzrooifVI4gihjgSGGKEseixIImUyt3/mWGOhfg2izWPAn7wiwmmitk0MsgiJ2pG6dyt8a4yW7G6rpgpooQyPkTNJJ37rrjrXnIGYoYaYw==
   </data>
  </layer>
- <layer name="Tile Layer 3" width="32" height="14">
+ <layer name="rope" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFnKP2j9o/av+ItV94gO0fBQMHAF2jAFw=
+   eJxjYBgFnKP2j9o/av+Ist8FiF2hbOEBsN8PiP0HwF4YiADiyAG0f7AAABdUAjM=
+  </data>
+ </layer>
+ <layer name="fade" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7xMDAcGkUj+JRPIpH8SgeYRgAcYdvkA==
   </data>
  </layer>
  <layer name="collision" width="32" height="14">
   <data encoding="base64" compression="zlib">
-   eJxbyMDAsHAA8SgYBaNgeIELQHxxoB1BJtgNxFeA+DKUfwGJvgilLyCpRQaXsJh3AYmNrh4Etg0wHukAADXKNg0=
+   eJz7yMDA8HEA8SgYBaNgeAEFRgYGRcaBdgV5gBvobhUgVoa6XwGJBvlJgREhxo3mRyUsflZAEkNWz8EIKf/YGAcGczGOlr8gAABMxCKD
   </data>
  </layer>
  <objectgroup name="nodes">
@@ -49,20 +54,23 @@
     <property name="to" value="vendingmachine"/>
    </properties>
   </object>
-  <object type="firealarm" x="144" y="216" width="24" height="48"/>
-  <object type="info" x="216" y="216" width="24" height="60">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
-  <object type="info" x="408" y="216" width="24" height="60">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object type="info" x="624" y="216" width="24" height="60">
    <properties>
     <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object name="wing3" type="door" x="408" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-computer-wing-3"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="wing2" type="door" x="216" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-computer-wing-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>
