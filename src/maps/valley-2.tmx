@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="42" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="42" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="28"/>
   <property name="overworldName" value="valley_1"/>
@@ -83,7 +83,7 @@
  </layer>
  <layer name="foreground" width="200" height="42">
   <data encoding="base64" compression="zlib">
-   eJzt28tu1DAUxnEr7Z4VFGk23NqsuGiGlwGegyUo2/IOSOygr1b6EBzTWoqseDJNfMmx/z/JqmY6ynhifzlxMmMMACC2n13pHgDbZLNxQz6ASTfkAwj6Ldn4E8jHtzNjvp/l7Q+wNaH6cS3Z+EE+AAAAAMzYKdsukIudw32ibafaLpDLpbSriee/rrzPkTJ3gHah3AG4V7J+PJX690zahbTnFd3zZ02HGF5KJl5Jey3tTUX5sMecnSEnsZXan2vXMUu9lfd9J+29tA8K8xEaL5uPg7SPGfuiwefutPalm56Ta851Pp343lMNy/jjtX/4SzbSsPt7P/sq3e6MGe5KdyISdx7lP+aaYBqpjzsydkPCzTfHHy+bi9quCdZ+vB6T8Rtyf95baX/N/7pRHb9OnFI/ztN1J7qt1sK9rAkOkdcFtnbIcW24pIZE488dV0+2OKeW6E09n2WOjNtwIBtRTdWPqee1aikfVj/KR8prybf3bZh7HbattrXUHJsPt0b3r70ArfG/s2Hz4WpIzmv0D2v0obWaUuvx57zScRyvz1s6rywlxT5Oce2mVf53NsbrjyVjp+naZGlbvTYKbEFra9tYaj0n1SLn/qd+PA41N49jGVi6/7V9X11TXx1qbh7HMrA0H5rGTvNxWGu/NQnd21k7b7SMncuyxhqC9EL3dtbOGy35sPgNCkKOzeM188ZtV8P9MU1ZRl6jeRz8X61cbaz9cwKPZX/bU9t3iIFY3PrK1k3yAQBoWd+ZX7tRk8cvSvcJKM3l4klnjN/ICFrWB3LhmuRmKN3HrfsHx3dEpQ==
+   eJzt201u1DAYxnErPUBXQKXZlI+SFQXNcBngHCxB2ZY7ILErvVrpIXjd1lJkxZM28Ude+/+TrGpG1YwT58kbOxljAACx/e5K9wDYJpuNG/IBTLohH0DQtWTjbyAfP06M+XmStz/A1oTqx5Vk4xf5AAAAADBjp+xzgVzsMdwn+uxUnwvkciHt/cT731fe50iZO0C7UO4APChZP15I/Xsp7ZW0s4ru+TOnQwyvJRNvpL2V9q6ifNhzzs6Qk9hK7c+185ilPsj3Xkr7KO2TwnyExsvm4yDtc8a+aPC1e1r71k0fk2uudb488bunGpbxx2v/+JdspGH39372v3S7M2a4K92JSNx1lP+aNcE0Up93ZOyGhB/fHH+8bC5qWxOs/Xw9JuM35N7eW2n/zH3dqI5fJ2qrH1vdlr3MCQ6R5wW2dsh5bbighkTjHzuunmzxmFqiN/VsyxwZt+FANqKaqh9T72vVUj6sfpSPlGvJtw9tmPs/bFttc6k5Nh9uju6vvQCt8Z/ZsPlwNSTnGv3jHH1oraZw/tFlPD9v6bqylBT7OMXaTav8ZzbG8w/ykdZW10aBLWhtbhsL16Rl5dz/1I/noebmcSwDS/e/tufVNfXVoebmcSwDS/Ohaew0n4e19luT0L2dtceNlrFzWdZYQ5Be6N7O2uNGSz4sfoOCkGPH8ZrjRlM+NPUVeaWYf2jhamPt2wk8l/1tT23PEAOxjNfYyAcAoGV9Z/7sRk1en5fuE1Cay8VpZ4zfyAha1gdy4ZrkZijdx637DySgQ40=
   </data>
  </layer>
  <layer name="shrubs" width="200" height="42">
@@ -91,12 +91,12 @@
    eJzt27sNgzAQAFDEAAyQHnrIghk9btJEsn0IkA16r3ZhIZ3O92EYAAAAoE/T2PoG0K9XMD7mdG4RSwAAAFClFwV5tV7UGoyfLZ17izU4lR4wQDvRNxAAlKiVAQAo0X+IS9/q0/oOwDH2NrjKknLEfPM8Ef2HCACA4+zkqc94plJtuGduf1Z9ZlcAAIDeqAUhz6wOAOiZtzzk/d7ytbnM/4zYHAeAJ9mb1+xOAQAAcIUvyN4JXQ==
   </data>
  </layer>
- <layer name="collision" width="200" height="42">
+ <layer name="collision" width="200" height="42" visible="0">
   <data encoding="base64" compression="zlib">
    eJztmltqwzAQAAO5/0chbQ8RaNob9Cf3qqEIFGNZtvah1wwIQoSjJOuxdte+XAAAAAAAAAD65Pf6PwAAYB6+luv+Yxl34/G9jB/2GOiE4IU3dxyBhgnXcwAAAJAR10kAALPh1YeiPwU9UasPlWLLky13vXzacxrGpTUv1hw9Dy2ciT8Pxme2a9/ovw+gJm/X8gHt89zYL57RCO9txfdjGZ8Kcdao9z1r9nhf5TyHHKWeWNQ13r0t/ICjHPXEo97X9GSvFsOPcfCqt/c88a6Ht9Zb53MSl2bxI1VDaeXYM9Lif7fnZ4m7M/mRep9+g4wWPclxdK/t7bwo7YXkfmft/8F6X/PIvXr0JEft8+IMkviW+OHZV9xav9f8r8fvnKrRe/JDgnT/sPZkb31rT6yuAz16sgY/js0HrDw5sr7HPVo8eaV1P7Tur2rXH9q5fEkc4mO09xhtTyTPadQeI5GKaw/1ueQYq5jyfN+YrD3R9CPuoWmh4Yfks2BOgicaflg+N2HphyT3ui3HvA+YZ8ArEj88niey9iOVe6XcWXuBH2NT6odX/m3tR24uV5fix3la69tJ+hC141/bjzNrwTla8UQSw9rxx4/xsfQkzoctcoBUzu7lPn7Mg9c9Gms/Yqw9wQ/QxtOPgJUn+AHa1PAjntfcD/EDtKnph4Qe/YD+wI/86zNzMBb4kX99Zg50+QNxpHH2
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="200" height="42">
+ <objectgroup color="#000000" name="nodes">
   <object name="main" type="door" x="51" y="770" width="46" height="51"/>
   <object type="enemy" x="329" y="800" width="14" height="25">
    <properties>
@@ -190,9 +190,7 @@
   <object name="bone" type="material" x="576" y="840" width="24" height="24"/>
   <object name="bone" type="material" x="792" y="624" width="24" height="24"/>
   <object name="bone" type="material" x="1632" y="888" width="24" height="24"/>
-  <object name="bone" type="material" x="2256" y="600" width="24" height="24"/>
   <object name="bone" type="material" x="2904" y="648" width="24" height="24"/>
-  <object name="bone" type="material" x="3936" y="624" width="24" height="24"/>
   <object name="bone" type="material" x="3816" y="288" width="24" height="24"/>
   <object type="door" x="0" y="552" width="24" height="240">
    <properties>
@@ -516,8 +514,38 @@
     <property name="quest" value="Aliens! - Regroup with the alien at Chili Fields"/>
    </properties>
   </object>
+  <object name="bone" type="material" x="216" y="840" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="744" y="816" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="1104" y="480" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="1704" y="888" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="2280" y="600" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="3960" y="624" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="movement" width="200" height="42">
+ <objectgroup name="movement">
   <object name="platform_1" x="2017" y="828">
    <polyline points="8,0 -72,-1"/>
   </object>

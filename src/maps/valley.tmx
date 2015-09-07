@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="38" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="38" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="24"/>
   <property name="overworldName" value="valley_1"/>
@@ -73,7 +73,7 @@
  </layer>
  <layer name="foreground" width="150" height="38">
   <data encoding="base64" compression="zlib">
-   eJztm0tOwzAQhq2KNezphk3bDSC15QBecogKtgW2LXRpWHKK3oZjcAA4BDN1RzhRnEfr1m7yf9IoUZ1ORvbv8SOJUgA055nsJXYQoHXMyXTsIEDrWCirqxXZK9lb1GhAWzDK6kpHjQKkzAPZY81r38k+yGYKugLFkJYMacpotZkvmSb/1SqrKxoHDY2HZtXQD2gfc6upja4W0AMIxMLRlYGuQCCMoysA9mXYU2ZANu5ZXfFvMj9aIm8BAAAAoAH9xPyEgudJIfxck92Q3eaOebsPcbMWMQroJzVtgXiE1NVWWyaQyyjQmpDXhq3lWO3TNM/44pqS3Vl/JhVtvVAcz4nEkgqjivoINeaIHuri043kqiHZIJG21BTHPHYQCcHtU6UrbsdJgHuxn/OaeX9Sohv2Q/o001zZeaD58y5oimUR6+YJIu3jG+s5V41VcZ6p046yt8znrIfLmroq0o0w+j9mysm3GfXUum/tis6v6t1tfzTFYkrK6/anrkD5Qg09ZZcR80Nq6Iryuv2pS+TXcYda44+duv/0XOPmv12Y0D2mvf39lIE9kN0QnaH+snB98Dw01H5KmynSjuwXoP6yyJwB/S4Lz3nzc13fnpNvLn8KhG5veZ+Yz0Vb6HcW1tQFzTvYXG359pxOWVNN2lvei5qVXJP/lo/9F9VbKnu4x4J0pEVTYrJOd9vg015buIbnOffZUaPeDTefNGFm9ZX5Tm+p1JqP8i2f2vr19cWUng8cg/5WV12h6b4/owt+k/1145SX7cuk9Hzg0HCuih1DTDjHVj3/5bHwSW2+K86Mh+7+unbO8+Msv0dzpqqflwHQJb4r+oPsCYL28xPIfsm+kGcBAAAAAAAAAIBO8wfyvHS+
+   eJztm0tOwzAQhq0eAPZ0w4Z2A0hpOYCXHKKCbSnb8lgalpyC23AMDgCHYKbuqE4U59Ga2nX/Txo1qtPJyP4ztieNUgD0Z0H2GDsIkB1zMh07CJAdS2V19Ur2TPYSNRqQC0ZZXemoUYCUuSO773juG9k72UxBV6Ae0pIhTRmtVusl0+e3WpV1RfOgofnQvPb0A/JjbjW10tUSegCBWDq6MtAVCIRxdAXArowGylyQFQOrK/5O1kdPyFsAAAAA6MEwMT+h4HVSCD+XZFdk15XPqt2GuFhGjAP6SU1bIB4hdbXWlgnkMgq0J+S9Ybbsa3z65hlfXFOyG+vPpKKtR4pjkUgsqTBu6Y9Qc47ooSs+3UiuGpFdJDKWmuKYxw4iIXh82nTF4zgJcC32c9Ix708adMN+SJ9mWmk7CbR+3gZNsSxjXTxBZHx8cz3nqkLV55ku4yi1ZT5mPZx11FWdboTx5rPUTr7NeKA+h9bO6fi829V2R1MspqG96/10LFC+UCNP21nE/JAauqW96/10TFT3cf+1xy+cvv/wnOPmv22Y0DWmg939NIEayHaIztB/Zbg/eB0aqp6SM3XakXoB+q+MrBlw35XhNW91reurOfnW8odA6PGW/xPzsWgL952FNXVK6w42V1u+mtMha6rPeMv/omYN51Tf5WP/df2WSg13X5COtGhKTPbp7hh82HNr9/DFgex33HzSh5nVV+k9vSelPvlT3uVTa7++ezGl5wP7YLjW1bHQt+7P6JrvpL5unPamukxKzwf+G85VsWOITdvzX54LH9TqveLSfOjW17VzXJ1ni01d2OwSJwA58d1yP0hNEOTPTyD7JftCngUAAAAAAAAAAI6aP9d9dLI=
   </data>
  </layer>
  <layer name="singposts" width="150" height="38">
@@ -81,12 +81,12 @@
    eJzt1EkKAlEQRMFP38BZEOcJZ/GEHt08ROuXJgLevhZJlQIAAAAA39FrSumnQRo2ta+hK+bZ0iIt08quaMkpWzqnS7raFfDnRvlT4zRJUz+LlqyzpU3app1d0ZJbtnRPj/RMh6a896n2XQAAAAAAwG/Nah9AJx1rH0DnvIpd0b59OtQ+AgAAAAAA4A99AAROBXI=
   </data>
  </layer>
- <layer name="collision" width="150" height="38">
+ <layer name="collision" width="150" height="38" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt2VsKgzAQQFHB/X8IrV1EoY8dVsGhRbRMkokmk3vAz5aq1ySmXQcAZbj3Z/8CeDc3RmcASsPYhBCprdAbRGwHj+lzz/7b0tYBaElPQAwZc15LQ/SEWFvzFz1BQ7MuYo0ELcYdWErpab3GAhifkMpyXTT0umOcjhvdQmkIbIW+2qZ9DwztStCXb6n7T7FdCfryLXbdntqVGGkLP6y6OtPenD/vl7wNzi90bznHYXUuR6m5K+0Yvb4nNf8HcURfFp3X3FWoHPfkMn3fVblXY7mXU0r/e9e0pa6ERV+WPXnYK1xf0xa7EjF95ezJU18tdxXiyJ5y9aWZL63mU7r6T3oqgeX4lXtN5rUrq/GlRDnmR6vGSnoOLXk9ry0xfeV6f/R63b2el8YZa74axvUULffUCp4TAAAAAABg5QNoPPzs
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="0" height="0">
+ <objectgroup color="#000000" name="nodes">
   <object name="main" type="door" x="72" y="696" width="48" height="48"/>
   <object type="enemy" x="975" y="607" width="14" height="25">
    <properties>
@@ -108,10 +108,7 @@
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object name="bone" type="material" x="1152" y="624" width="24" height="24"/>
   <object name="bone" type="material" x="1560" y="456" width="24" height="24"/>
-  <object name="bone" type="material" x="1848" y="504" width="24" height="24"/>
-  <object name="bone" type="material" x="2688" y="312" width="24" height="24"/>
   <object name="bone" type="material" x="3264" y="312" width="24" height="24"/>
   <object type="climbable" x="2742" y="596" width="10" height="99">
    <properties>
@@ -478,6 +475,21 @@
    <properties>
     <property name="enemytype" value="ambush_alien_heavy"/>
     <property name="quest" value="Aliens! - Destroy the QFO!"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="1224" y="624" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="2304" y="672" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="2928" y="672" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
    </properties>
   </object>
  </objectgroup>
