@@ -4,7 +4,6 @@ local tween = require 'vendor/tween'
 local character = require 'character'
 local Gamestate = require 'vendor/gamestate'
 local utils = require 'utils'
-require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
@@ -27,26 +26,24 @@ return {
     { ['text']='Talk about quests' },
   },
   talk_commands = {
-    ['Talk about quests']=function(npc, player)
-              if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' or not player.quest then
-                player.quest = nil
-                Quest:activate(npc, player, quests.berry)
-              elseif player.quest == 'To Slay An Acorn - Collect the Special Berry' then
-                Quest:activate(npc, player, quests.berry)
-              else 
-                Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
-                  npc.menu:close(player)
-                  end)
-              end
-  end,
+    ['Talk about quests'] = function(npc, player)
+      if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' or
+         player.quest == 'To Slay An Acorn - Collect the Special Berry' then
+        Quest:activate(npc, player, quests.berry)
+      else
+        Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
+          npc.menu:close(player)
+        end)
+      end
+    end,
   },
   talk_responses = {
-  ["Any useful info for me?"]={
-    "There's a buncha' chests hidden around these parts for some reason, check them out to see what you get!",
-  },
-  ["Why do you live out here?"]={
-    "The nature, the trees, the wee-I mean, the water.",
-     "Though it's getting dangerous these days with all them angry acorns out and about...",
-  },
+    ["Any useful info for me?"]={
+      "There's a buncha' chests hidden around these parts for some reason, check them out to see what you get!",
+    },
+    ["Why do you live out here?"]={
+      "The nature, the trees, the wee-I mean, the water.",
+      "Though it's getting dangerous these days with all them angry acorns out and about...",
+    },
   },
 }

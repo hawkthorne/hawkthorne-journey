@@ -8,7 +8,6 @@ local Dialog = require 'dialog'
 local player = require 'player'
 local Player = player.factory()
 local Quest = require 'quest'
-local quests = require 'npcs/quests/tildaquest'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -78,9 +77,10 @@ return {
 
   die = function( enemy )
   if Player.quest == 'To Slay An Acorn - Explore the Mines for a Map to the Acorn King' then
-      Dialog.new("With the laser wielding man dead, you're not sure what to do...maybe Tilda has an idea of what to do next.", function()
-      Player.quest = 'To Slay an Acorn - Return to Tilda'
+    Dialog.new("With the laser wielding man dead, you're not sure what to do...maybe Tilda has an idea of what to do next.", function()
       Quest.removeQuestItem(Player)
+      Player.quest = 'To Slay an Acorn - Return to Tilda'
+      Player.questParent = 'Tilda'
       Quest.addQuestItem({questParent = 'Tilda',
                           questName = 'To Slay an Acorn - Return to Tilda'}, Player)
     end)

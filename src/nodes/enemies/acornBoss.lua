@@ -86,7 +86,7 @@ return {
     enemy.speed = enemy.props.speed
     local db = app.gamesaves:active()
     local show = db:get('acornKingVisible', false)
-    local dead = db:get("bosstriggers.benzalk", false)
+    local dead = db:get("bosstriggers.acorn", false)
     if show ~= true or dead == true then
       enemy.state = 'hidden'
       enemy.collider:setGhost(enemy.bb)
