@@ -394,12 +394,16 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
   -- Scan through all moving platforms
   for _, platform in ipairs(map.moving_platforms) do
     if x + width >= platform.x and x <= platform.x + platform.width then
-      local foot = y + height - 2
+      -- Only apply platform dy when the platform is moving up
+      local foot = y + height - 2 + math.min(0, platform.dy)
       local above_tile = foot <= platform.y
       
       if above_tile and platform.y <= (new_y + height + 2) and
          direction == 'down' then
-          
+        
+        -- Dropping is not allowed on moving platforms
+        player.platform_dropping = false
+        
         if player.floor_pushback then
           player:floor_pushback()
         end
