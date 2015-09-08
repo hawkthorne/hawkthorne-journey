@@ -10,7 +10,7 @@
  <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
  </tileset>
- <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="24" height="14">
@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="24" height="14" visible="0">
   <data encoding="base64" compression="zlib">
-   eJz7yMDA8JGGeBSMglFAGCgwQjAIKDIixFWAbCVGiJgyI3a93IyoeqgJaFk2DIfyAQDIli5R
+   eJx7zsDA8JyGeBSMglFAGIgxQjAIiDMixKWAbAlGiJgkI3a9jIyoeqgJaFk2DIfyAQCT9CwX
   </data>
  </layer>
  <objectgroup name="nodes">
@@ -41,27 +41,28 @@
     <property name="to" value="wing3"/>
    </properties>
   </object>
-  <object name="jukebox" type="door" x="114" y="198" width="36" height="70">
-   <properties>
-    <property name="hideable" value="true"/>
-    <property name="level" value="greendale-computer-wing"/>
-    <property name="offset_hidden_x" value="0"/>
-    <property name="offset_shown_x" value="-44"/>
-    <property name="sound" value="false"/>
-    <property name="sprite" value="jukebox"/>
-    <property name="sprite_height" value="70"/>
-    <property name="sprite_width" value="36"/>
-    <property name="to" value="main"/>
-    <property name="trigger" value="doortriggers.jukeboxtrigger"/>
-   </properties>
-  </object>
   <object type="hiddendoortrigger" x="114" y="204" width="36" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Do you want to select a song?"/>
     <property name="sprite" value="jukeboxtrigger"/>
     <property name="target" value="jukebox"/>
-    <property name="width" value="24"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object name="jukebox" type="door" x="76" y="192" width="69" height="49">
+   <properties>
+    <property name="aniframes2" value="1-9,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="level" value="greendale-computer-wing"/>
+    <property name="show_sfx" value="throne_door"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="jukebox"/>
+    <property name="sprite_height" value="69"/>
+    <property name="sprite_width" value="46"/>
+    <property name="to" value="main"/>
+    <property name="trigger" value="bosstriggers.jukeboxtrigger"/>
    </properties>
   </object>
  </objectgroup>
