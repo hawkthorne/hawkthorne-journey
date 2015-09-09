@@ -51,7 +51,7 @@
    eJztmrtOwzAUht0NxFJ4AobCBlJbbmWg6RDB0qFv0IUXgBfIi1TqBgs7CIbuVAJxmWHkIRg4LjExluO4Tsil/J/0q5Fv58Tx77RWGQMAAAAAAACkxWfMazI25qLrSdH5AADs4N7VlE3yzwSUkSXa0w116/llAlR8w7PBu3hx4Xu27bOFf8tLM7l+kkceVcX/VlB0HvMgf99SPUx+nGSkcc639S8x+ZfqhlVbm3mzXLH5yeu3EvybD/z9wX2qCr5dTHx9WZB1nKr5l/IdmnKe5pgLKAd10ipprehEFOQ9m3uX8gsoz6Cu+HiXtEfaJx3MGSPJv2qstJR1rkExXJNuwusz0rnDGA3SBmlzjj5PpGfSC+nVIaYLlF9AeQb8LKrN2LsQr5PvXa5LUpJ/Gxn712WuF40VQ91VzHUSLv10eVyQLi3b2tQJWuH5aSvDc1Q5bierQeeMGzfXcXPSydhPrt+f4/Iz7aGiD5/rwxQxXHAZK238j5jydspxTYxI94Z6cYbCz1famvJb0l1UNvuvCb825XzimKsNI8u4/YzGTGp/Sv6zeX5xc9IP/Svenz1Nmx6zfwe7+lfcw8Ci7SBcG6KPugfvJMSYWu5Z6nORx3VZY+3f1z9ztlVjbLsWlfH8pmGe4eeMz5hxjzVluufoypvlmCIPT5rfB9Kj1MYL63U5q+P8NU1prXZTxI3zjAmPRfNkE9fUhp/hWAxhhat/RX5dhz4Cj0Vr40jj0bTrQvafy1i2faYaAQAAAAAAAAAA/4EvZhePNA==
   </data>
  </layer>
- <layer name="collision" width="240" height="18" visible="0">
+ <layer name="collision" width="240" height="18">
   <data encoding="base64" compression="zlib">
    eJzt2c0OwiAMwHF4/5PP4bz4eVZ5MPGwZIljLdtgK/5/SY86WiiwzDkAAABYcPbOXWJcY9xi3GM8/NajApAy7NmUkr189NPRojDI791ojv+u5NrV9GwK53KeIOxP9LA90nyWPIvCimuFdbcfmn0iJ/Y+t6X2xa5SHy6x1hxbNjb/pdZsy3VsDfdLYH1L7hdz92V6GV+cv/b1vYy6cvftvb/39cJgrFM5SqzXQSs0lBPvv/mWvC9Tx1+vmPfTaO7MHwC0L0yc9VufYdLzc8aXe7/VfOc5Cf9Xq37Sc6TcU78fq4GUs1bp2my9dufolHU+eIIgrAYAAAAAvQ9AM0Xc
   </data>
@@ -221,6 +221,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
+  <object name="officercackowski" type="npc" x="540" y="288" width="24" height="48"/>
  </objectgroup>
  <objectgroup name="movement">
   <object name="airline" x="3763" y="85">

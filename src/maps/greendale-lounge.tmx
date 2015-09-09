@@ -17,7 +17,7 @@
  </layer>
  <layer name="Foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzk0LRFAUxnGpYWOBGTZjvJQZDF9omKy8ZO/757+wkJK5UlLz1K/u6dyejiSdPwrUySwfdYhAtKMP+CEmrrjBgr3w74N8Q/8DLjz4CGb7EhdUqGEI9sdI8EaKbLbvoKPAF45g/1p63NGgRbRTb4jn+H7t1PnPtgz2aAcb
+   eJztzssKglAUhWERsgYOtLKJ10BNqxfygiMvOPf98R84EEH0hCBCCz44m31YbEk6fs64jGZ5r0MEou59wIpcccMdBh4z/xKkUAT7bThw4eE52Rc4oUQFXbA/Qow3PvhO9i00ZMhhCfYvpYOJGg1eG/X6CIZ3uFHnP7+lBxEjByM=
   </data>
  </layer>
  <layer name="Tile Layer 3" width="24" height="14">
@@ -98,7 +98,7 @@
     <property name="width" value="69"/>
    </properties>
   </object>
-  <object name="main" type="door" x="6" y="215" width="16" height="50">
+  <object name="main" type="door" x="0" y="192" width="24" height="72">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
@@ -109,7 +109,7 @@
    <properties>
     <property name="background" value="true"/>
     <property name="hideable" value="true"/>
-    <property name="key" value="bronze"/>
+    <property name="key" value="rope"/>
     <property name="level" value="greendale-computer-wing"/>
     <property name="offset_hidden_x" value="0"/>
     <property name="offset_shown_x" value="-44"/>
@@ -213,6 +213,15 @@
   <object type="info" x="228" y="216" width="36" height="30">
    <properties>
     <property name="info" value="I've made a terrible mistake coming here.  Maybe it's not too late to get out of my contract..."/>
+   </properties>
+  </object>
+  <object name="bathroom" type="door" x="72" y="168" width="24" height="72">
+   <properties>
+    <property name="button" value="LEFT"/>
+    <property name="info" value="It looks like the light is broken.  You need a flashlight to see anything."/>
+    <property name="key" value="flashlight"/>
+    <property name="level" value="greendale-lounge-bathroom"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

@@ -10,7 +10,7 @@
  <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
  </tileset>
- <tileset firstgid="241" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="background" width="24" height="14">
@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJz7yMDA8JGGeBSMguEIFBgZGBQZiVdPiloYUAHq4QZiZSx6uckwjxxAy7JhOJQPAFpkLfc=
+   eJx7zsDA8JyGeBSMguEIxBgZGMQZiVdPiloYkALqYQRiSSx6GckwjxxAy7JhOJQPADtSK9E=
   </data>
  </layer>
  <objectgroup name="nodes">

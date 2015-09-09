@@ -28,7 +28,7 @@
    eJy7xMDAcGkUj+JRPIpHMckYANr7E7A=
   </data>
  </layer>
- <layer name="collision" width="24" height="14" visible="0">
+ <layer name="collision" width="24" height="14">
   <data encoding="base64" compression="zlib">
    eJx7zsDA8JyGeBSMglFAGIgxQjAIiDMixKWAbAlGiJgkI3a9jIyoeqgJaFk2DIfyAQCT9CwX
   </data>
@@ -41,28 +41,31 @@
     <property name="to" value="wing3"/>
    </properties>
   </object>
-  <object type="hiddendoortrigger" x="114" y="204" width="36" height="24">
+  <object type="hiddendoortrigger" x="144" y="204" width="36" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Do you want to select a song?"/>
     <property name="sprite" value="jukeboxtrigger"/>
     <property name="target" value="jukebox"/>
-    <property name="width" value="72"/>
+    <property name="width" value="36"/>
    </properties>
   </object>
-  <object name="jukebox" type="door" x="76" y="192" width="69" height="49">
+  <object name="jukebox" type="door" x="114" y="194" width="36" height="72">
    <properties>
-    <property name="aniframes2" value="1-9,1"/>
-    <property name="anispeed2" value="0.05"/>
+    <property name="aniframes2" value="1-10,1"/>
+    <property name="anispeed2" value=".35"/>
     <property name="hideable" value="true"/>
     <property name="level" value="greendale-computer-wing"/>
+    <property name="movetime" value="2.7"/>
+    <property name="offset_hidden_x" value="0"/>
+    <property name="offset_shown_x" value="-50"/>
     <property name="show_sfx" value="throne_door"/>
     <property name="sound" value="false"/>
     <property name="sprite" value="jukebox"/>
-    <property name="sprite_height" value="69"/>
-    <property name="sprite_width" value="46"/>
+    <property name="sprite_height" value="46"/>
+    <property name="sprite_width" value="38"/>
     <property name="to" value="main"/>
-    <property name="trigger" value="bosstriggers.jukeboxtrigger"/>
+    <property name="trigger" value="doortriggers.jukeboxtrigger"/>
    </properties>
   </object>
  </objectgroup>

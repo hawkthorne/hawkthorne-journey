@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="39" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="39" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
@@ -25,7 +25,7 @@
  </layer>
  <layer name="Tile Layer 3" width="39" height="14">
   <data encoding="base64" compression="zlib">
-   eJztkU1OAkEQhXsGNcgFZIm4Qg8guBOXLHSnA+pS41IQlop3EOEKmnAITDiEJO5BhSvI10mZtB3mJ2PQhPCSb7p7purV64xSS8XV4X8HEJGjOet9co4zM7/oLUn/ZYzeoJ6SrH7eOUepbdhxgmdkYuSKKu09ZP4I3uEDPmEfinDwB9k8KEMFTuEMzr+9XaUccCEBK25036jZPO5YhsqMu15DFWpwA3VoiPcm9VmrZx1Slscqmdck95j6CeStmixs+eS7gjvZP8FzyH20d4EZeyH/TutLP6y6I+jLvhvQqzM14V7OPXgJmae9L+A2PJraIFfayrYLb7JvGe9bP8vUg3V+hYHPnGM4MXwejW9t6BirKXvmUoujKWB8Jhc=
+   eJztkUtOAkEURasbJeAGdIg4QhbgZ6YOGehM/kMJQ/wNBfcA7kETFyEJi8DEuYCyBT2VPJKm0t3VaaImpl9yuj55795baaWSilunfx1Aihw9v/vMD3rmVpgtyXwrxmzYTEnWIO2Co9QuFJ1wj1yMXFFLa7/jP4EpzOADjuAYTn4hWwWqUIM6NKC50HaVcsCFFKy50XWjZqvwxirUfN7agUu4gmu4gVvR3qY/b8xkYcPQWCdzWnJ/0j+HfaMnDzsB+drQlf0jPFneo7UP8Di0/DtdX/pj9J3BSPbPIbM6Uw/u5fwCQ4uf1r6AO3s0tUmuLSPbHrzJfuC5Hyy3qb5xHsNrgM85lD06DxGy+Xkm9X/qG8VZI7k=
   </data>
  </layer>
  <layer name="collision" width="39" height="14">
@@ -33,7 +33,7 @@
    eJyLZGJgiBykeBSMglEwCkYBYVDMhB3TC3TR0a48psGLRwF5AAAC+SI4
   </data>
  </layer>
- <objectgroup name="nodes" width="39" height="14">
+ <objectgroup name="nodes">
   <object name="main" type="door" x="144" y="216" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -60,11 +60,6 @@
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="720" y="216" width="96" height="48">
-   <properties>
-    <property name="info" value="The pool is currently closed for refurbishment."/>
-   </properties>
-  </object>
   <object type="info" x="384" y="192" width="48" height="72">
    <properties>
     <property name="info" value="That's good no-no juice."/>
@@ -73,6 +68,38 @@
   <object type="info" x="72" y="216" width="24" height="48">
    <properties>
     <property name="info" value="Hello, rich people?"/>
+   </properties>
+  </object>
+  <object name="pool" type="door" x="720" y="240" width="48" height="36">
+   <properties>
+    <property name="hideable" value="true"/>
+    <property name="info" value="The pool is currently closed for refurbishment."/>
+    <property name="level" value="borchert-pool"/>
+    <property name="movetime" value="2.7"/>
+    <property name="offset_hidden_x" value="0"/>
+    <property name="offset_shown_x" value="-50"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="closedsign"/>
+    <property name="sprite_height" value="24"/>
+    <property name="sprite_width" value="48"/>
+    <property name="to" value="main"/>
+    <property name="trigger" value="borchertpool"/>
+   </properties>
+  </object>
+  <object name="pool2" type="door" x="768" y="240" width="48" height="36">
+   <properties>
+    <property name="hideable" value="true"/>
+    <property name="info" value="The pool is currently closed for refurbishment."/>
+    <property name="level" value="borchert-pool"/>
+    <property name="movetime" value="2.7"/>
+    <property name="offset_hidden_x" value="0"/>
+    <property name="offset_shown_x" value="50"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="closedsign"/>
+    <property name="sprite_height" value="24"/>
+    <property name="sprite_width" value="48"/>
+    <property name="to" value="main"/>
+    <property name="trigger" value="borchertpool"/>
    </properties>
   </object>
  </objectgroup>
