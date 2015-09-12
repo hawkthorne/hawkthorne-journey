@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7zsDA8JyGeBSMglFAGIgxQjAIiDMixKWAbAlGiJgkI3a9jIyoeqgJaFk2DIfyAQCT9CwX
+   eJx7zsDA8JyGmAGJphUYNX/U/KFuvhgjBIOAOCNCXArIlmCEiEkyYtf7HE0PNQEtywZahzs9AAAxuDUb
   </data>
  </layer>
  <objectgroup name="nodes">
@@ -41,7 +41,7 @@
     <property name="to" value="wing3"/>
    </properties>
   </object>
-  <object type="hiddendoortrigger" x="144" y="204" width="36" height="24">
+  <object type="hiddendoortrigger" x="114" y="204" width="36" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Do you want to select a song?"/>
@@ -55,7 +55,7 @@
     <property name="aniframes2" value="1-10,1"/>
     <property name="anispeed2" value=".35"/>
     <property name="hideable" value="true"/>
-    <property name="level" value="greendale-computer-wing"/>
+    <property name="level" value="greendale-secret-lab"/>
     <property name="movetime" value="2.7"/>
     <property name="offset_hidden_x" value="0"/>
     <property name="offset_shown_x" value="-50"/>

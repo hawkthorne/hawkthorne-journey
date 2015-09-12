@@ -20,7 +20,7 @@
  </layer>
  <layer name="foreground" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgwWIQmkxBoYGcs2QoI5T6A4SILhhDZBei0PNViDeBsTbgXgHEOsAsS4Q6yGpCcRtvgMQH8BnPggcAOKDeOR5ofQhID4MxEeA+CgWdXJI7GggjsFjJjIQh9JngPgsEJ8D4vNY1Gkgsa8Bwy2NSPOJBUZUNo8U0ADEjUDchEO+HIh9gNiXXg7CAwBjdReP
+   eJxjYBgFgwWIQmkxBoYGcs2QoI5T6A4SILhhDZBei0PNViDeBsTbgXgHEOsA8TEgPo6kJhC3+Q5AfACf+SBwAIgPIvEvAPFFJD4vlD4ExIeB+AgQH8VijhwSOxqIY/DYiQzEofQZID4LxOeA+DwWdRpI7GvAcEsj0nxigRGVzSMFNABxIxA34ZAvB2IfIPall4PwAADRRxpi
   </data>
  </layer>
  <layer name="fade" width="24" height="14">
@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7zsDA8JyGeBSMguEIxBgZGMQZiVdPiloYkALqYQRiSSx6GckwjxxAy7JhOJQPADtSK9E=
+   eJx7zsDA8JyGmAGJphUYNX/UfFqZz8gIwehADCgmjkUcl/nEqkUGUlC7JbHoRXYTLcOHlmUDreOVHgAA5HQ02w==
   </data>
  </layer>
  <objectgroup name="nodes">

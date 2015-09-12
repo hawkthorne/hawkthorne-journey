@@ -8,4 +8,6 @@ return {
   oldman = {0, 0, 0, false},
   juanita = {0, 0, 0, false},
   frankie = {0, 0, 0, false},
+  raquel = {0, 0, 0, false},
+  borchert = {0, 0, 0, false},
 }
