@@ -45,7 +45,7 @@ function Door.new(node, collider, level)
   door.trigger = node.properties.trigger or '' -- Used to show hideable doors based on gamesave triggers.
 
   door.inventory = node.properties.inventory    
-  door.hideable = node.properties.hideable == 'true' and not app.gamesaves:active():get(door.trigger, false)
+  door.hideable = node.properties.hideable == 'true'
   door.open = app.gamesaves:active():get(door.trigger, false)
 
   -- generic support for hidden doors
@@ -93,6 +93,12 @@ function Door.new(node, collider, level)
                               node.y + y * tw, tw, tw, 0)
         end
       end
+    end
+    -- Keep door opening when re-entering a level
+    if app.gamesaves:active():get(door.trigger, false) then
+      door.position = door.position_shown
+      door.hidden = false
+      door.open = true
     end
   end
 
@@ -208,16 +214,6 @@ function Door:show(previous)
     end
   end
     end
-  end
-end
-
-function Door:hide(previous)
-  -- level check is to allow door to close on re-entry or close command
-  if self.hideable and ( (previous and previous.name == self.level) or not self.hidden ) then
-    self.hidden = true
-    self.position = utils.deepcopy(self.position_shown)
-    sound.playSfx( 'unreveal' )
-    Tween.start( self.movetime, self.position, self.position_hidden )
   end
 end
 

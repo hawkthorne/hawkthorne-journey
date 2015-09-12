@@ -54,10 +54,6 @@ end
 function HiddenDoorTrigger:update(dt)
 end
 
-function HiddenDoorTrigger:enter(previous)
-  Gamestate.currentState().doors[self.target].node:hide(previous)
-end
-
 function HiddenDoorTrigger:draw()
   if self.fixed or self.open then
     self.opened:draw(self.image, self.x, self.y)
@@ -82,6 +78,7 @@ function HiddenDoorTrigger:keypressed( button, player )
         if result == 'Yes' then
           Gamestate.currentState().doors[self.target].node:show()
           app.gamesaves:active():set(self.key, true)
+          self.open = true
         end
         player.freeze = false
         self.fixed = result == 'Yes'
