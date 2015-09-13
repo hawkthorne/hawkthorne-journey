@@ -13,6 +13,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'acornBoss',
+  isBoss = true,
   attack_sound = 'acorn_growl',
   hurt_sound = 'acorn_crush',
   height = 75,
@@ -145,8 +146,8 @@ return {
     end
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "ACORN", x + 15, y + 15, 52, 'center' )
-    love.graphics.printf( "KING", x + 15, y + 41, 52, 'center'  )
+    love.graphics.printf( "ACORN KING", x + 15, y + 15, 100, 'left', 0, 0.9, 0.9 )
+    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center'  )
 
     energy_stencil = function( x, y )
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )

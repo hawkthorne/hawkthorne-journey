@@ -11,6 +11,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'turkeyBoss',
+  isBoss = true,
   attackDelay = 1,
   height = 115,
   width = 215,
@@ -114,7 +115,7 @@ return {
     love.graphics.draw( bossPic, x + 69, y + 10 )
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "TURKEY", x + 15, y + 15, 52, 'center' )
+    love.graphics.printf( "JIVE MOTHER", x + 15, y + 15, 100, 'left', 0, 0.9, 0.9 )
     love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
     energy_stencil = function( x, y )

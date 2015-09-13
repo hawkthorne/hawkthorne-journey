@@ -132,7 +132,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.quest = node.properties.quest
   enemy.drop = node.properties.drop
   if enemy.quest and Player.quest ~= enemy.quest then
-    enemy:die()
+    enemy:die(true)
   end
   if enemy.props.passive then
     collider:setGhost(enemy.bb)
@@ -276,8 +276,14 @@ function Enemy:cancel_flash()
   self.flash = false
 end
 
-function Enemy:die()
+-- The hide variable will be set to true when the die function is being
+-- used to hide the enemy and they player didn't actually kill it
+function Enemy:die(hide)
   if self.props.die then self.props.die( self ) end
+  
+  if self.props.isBoss and not hide then
+    Player:bossKilled(self.type == 'cornelius')
+  end
 
   if self.drop and Player.quest == self.quest and not Player.inventory:hasKey(self.drop) then
     local NodeClass = require('nodes/key')

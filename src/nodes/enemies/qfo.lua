@@ -16,6 +16,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'qfo',
+  isBoss = true,
   die_sound = 'explosion_quiet',
   isBoss = true,
   attackDelay = 1,
@@ -76,7 +77,6 @@ return {
       enemy.minx = enemy.position.x - 48
       enemy.maxy = enemy.position.y + 5
       enemy.miny = enemy.position.y - 5
-      print('timer')
       enemy.hatched = true
      end)
   end,
@@ -260,7 +260,6 @@ return {
     elseif not enemy.hatched and enemy.position.y >= enemy.dropmax then
       enemy.hatched = true
       enemy.velocity.y = 0
-      print('hatched')
       --Timer.add(2, function() enemy.hatched = true end)
     elseif enemy.hatched then
       --move the qfo up and down ( roughly a figure 8 )

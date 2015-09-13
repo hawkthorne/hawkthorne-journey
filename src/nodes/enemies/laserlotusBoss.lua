@@ -14,6 +14,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'laserlotusBoss',
+  isBoss = true,
   attackDelay = 1,
   height = 48,
   width = 48,
@@ -102,8 +103,8 @@ return {
     love.graphics.draw( bossPic, x + 69, y + 10 )
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "LASER", x + 15, y + 15, 52, 'center' )
-    love.graphics.printf( "LOTUS", x + 15, y + 41, 52, 'center' )
+    love.graphics.printf( "LASER LOTUS", x + 15, y + 15, 100, 'left', 0, 0.9, 0.9 )
+    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
     energy_stencil = function( x, y )
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
