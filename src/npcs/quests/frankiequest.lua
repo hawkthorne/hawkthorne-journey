@@ -82,6 +82,10 @@ local quests = {
     infinite = false,
     questName = 'Save Greendale - Return back to Frankie',
     questParent = 'frankie',
+    giveQuestSucceed = {
+      "Oh geez, you actually went ahead and found my wrench and wires...alright fine I guess we'll do some work or something...",
+    },
+    successPrompt = "Can you tell Ms. Dart that we will have the pool open soon?",
     completeQuestSucceed = "Thank you for getting the repair guys back to work again! Hopefully the pool should be back up and running.",
     completeQuestFail = {
       "Well, the pool is actually somehow electrified at the moment. We'd fix it, but we're running low on some supplies.",
@@ -102,7 +106,7 @@ local quests = {
     },
     successPrompt = "Could you deposit this document into the mailbox? And no montages!",
     completeQuestFail = "Have you deposited it into the mailbox yet? The mailbox is at the west end of the campus. And no wasting time with montages!",
-    complete = "",
+    complete = "Thank you for depositing the mail!",
   },
   dianereturn = {
     infinite = false,

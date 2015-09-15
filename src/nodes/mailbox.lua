@@ -27,13 +27,13 @@ function Mailbox:keypressed( button, player )
     if player.quest == 'Save Greendale - Mail Diane' and player.inventory:hasKey('document') then
       self.prompt = prompt.new("Deposit document into mailbox?", function(result)
         if result == 'Yes' then
-        player.freeze = true
-        player.inventory:removeManyItems(1, {name='document',type='key'})
+          player.freeze = true
+          player.inventory:removeManyItems(1, {name='document',type='key'})
           Dialog.new("Document successfuly deposited into the mailbox! Cue montage and return to Frankie.", function()
-          player.quest = 'Save Greendale - Return to Frankie'
-          Quest.removeQuestItem(player)
-          Quest.addQuestItem(quests.dianereturn, player)
-          Quest:save(quests.dianereturn)
+            Quest.removeQuestItem(player)
+            Quest.addQuestItem(quests.dianereturn, player)
+            player.quest = 'Save Greendale - Return to Frankie'
+            Quest:save(quests.dianereturn)
           end)
         end
         player.freeze = false
@@ -47,7 +47,7 @@ function Mailbox:keypressed( button, player )
       end)
     else
       player.freeze = true
-      Dialog.new("You don't have any business with the mailbox right now.", function()
+      Dialog.new("You don't have anything to mail right now.", function()
         player.freeze = false
         Dialog.currentDialog = nil
       end)

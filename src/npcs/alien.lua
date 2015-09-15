@@ -74,16 +74,12 @@ return {
             npc.shake = false
             player.freeze = false
             level.trackPlayer = true
-            local script = {
-              "Damn it, you stupid human! The aliens followed you back here! {{red_light}}We're under attack!{{white}}",
-              "Survival first, come meet me at the {{red_light}}Chili Fields{{white}}, we gotta regroup!",
-            }
-            Dialog.new(script, function()
-              npc.menu:close(player)
-              Quest.removeQuestItem(player)
-              Quest:activate(npc, player, quests.regroup)
-              npc.state = 'hidden'
-            end)
+            Quest.removeQuestItem(player)
+            player.quest = nil
+            player.questParent = nil
+            npc.menu:close(player)
+            Quest:activate(npc, player, quests.regroup)
+            npc.state = 'hidden' 
           end)
         end)
       elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then

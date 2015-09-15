@@ -70,7 +70,6 @@ return {
       if check then
       local script3 = {
       "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
-      "What, the aliens didn't automatically die when the mothership blew up? Well, I guess that's pretty realistic, I don't know what I was thinking.",
       "I know I've treated you unfairly human, but you have my gratitude.",
       "As a token of thanks, I'll give you my standard issue {{blue_light}}alien pistol{{white}}, you'll need it more than I do. Here's some gold as well.",
       "Whenever you run out of ammo for the pistol, come back to me, I will sell some to you.",
@@ -129,13 +128,11 @@ return {
     elseif player.quest == 'Aliens! - Regroup with the alien at Chili Fields' then
       local script2 = {
       "Howdy there partner! So glad to see you alive.",
-      "Oh man you look angry...okay, I guess it wasn't right leaving you behind like that but hey! You made it!",
       "Alright, so I'll tell you my plan for defeating those aliens. You've earned it.",
       "The aliens' main source of power is the {{orange}}QFO{{white}}, a giant spaceship that can teleport and transport them in numbers.",
-      "If the {{orange}}QFO{{white}} is destroyed, all the aliens will inexplicably die as well for some really convenient reason. Thank god, huh?",
-      "My device, which I've completed just seconds ago, will shut down the shields protecting the ship, enabling you to attack and kill it.",
+      "My device, completed with the parts you brought me, will shut down the shields protecting the ship, enabling you to attack and kill it.",
       "The {{orange}}QFO{{white}} is just right outside the {{red_light}}Chili Fields{{white}} near the coast right now. Now is the perfect time to go attack it.",
-      "Alright, this will be your final mission. Good luck huh, human? I believe in you. Go destroy that {{orange}}QFO{{white}}!",
+      "Good luck huh, human? I believe in you. Go destroy that {{orange}}QFO{{white}}!",
       }
       Dialog.new(script2, function()
       npc.menu:close(player)

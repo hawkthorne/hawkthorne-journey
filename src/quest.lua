@@ -85,22 +85,32 @@ end
 function Quest.giveQuestSucceed(npc, player, quest)
   local script = quest.giveQuestSucceed
   Dialog.new (script, function()
-    npc.prompt = prompt.new(quest.successPrompt, function(result)
-      if result == 'Yes' then
-        player.quest = quest.questName
-        player.questParent = quest.questParent
-        --if there is an extra info message for player after quest prompt, display it
-        if quest.promptExtra then
-          Dialog.new(quest.promptExtra, function()
-          npc.menu:close(player)
-          end)
-        end
-        Quest:save(quest)
-        Quest.addQuestItem(quest, player)
-      end
+    if quest.skipPrompt then
+      
+      player.quest = quest.questName
+      player.questParent = quest.questParent
+      Quest:save(quest)
+      Quest.addQuestItem(quest, player)
       npc.menu:close(player)
       npc.prompt = nil
-    end)
+    else
+      npc.prompt = prompt.new(quest.successPrompt, function(result)
+        if result == 'Yes' then
+          player.quest = quest.questName
+          player.questParent = quest.questParent
+          --if there is an extra info message for player after quest prompt, display it
+          if quest.promptExtra then
+            Dialog.new(quest.promptExtra, function()
+            npc.menu:close(player)
+            end)
+          end
+          Quest:save(quest)
+          Quest.addQuestItem(quest, player)
+        end
+        npc.menu:close(player)
+        npc.prompt = nil
+      end)
+    end
   end)
 end
 
