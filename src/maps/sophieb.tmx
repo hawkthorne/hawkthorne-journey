@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="46" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="72" height="14" tilewidth="24" tileheight="24">
  <properties>
   <property name="soundtrack" value="asilaymedown"/>
  </properties>
@@ -9,133 +9,133 @@
  <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="sky" width="46" height="14">
+ <layer name="sky" width="72" height="14">
   <properties>
    <property name="parallax" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBiaYOkopivuH6J42RDFS0bxKB7Fo3gUD0k8VAEAbq1eog==
+   eJztwzERADAIBDD8L5hoq7MOfmEkuUsVydXBNn7GR1V1WbIP/A0k1w==
   </data>
  </layer>
- <layer name="stars" width="46" height="14">
+ <layer name="stars" width="72" height="14">
   <properties>
    <property name="parallax" value="0.1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztk0kKwzAMRXX/lW3JhvQU7Q3rgD+8qHRZaMAC4Wj+GmJ2T/LJMbms15OOcp3cJzd812TzZVd8/VKjI17+DT6SO94KW0DnyHPyWLZj8mPlFLaAP+MDr+oN9EAu8FNfqlkwH4cu7IpVeAYwK+45+YWeiCHsOjPZuCvFsOeArqQeiJlyQ13l6SmWtjzTmvzyfTnqtJRDexcW3kux665kF66OXOqVu+Nd5f4oK07z86TnTOTHGLfP3lmXcyTm8930O+K/fpdZ627zP7Jp06b/ozfkvYmx
+   eJztlMEKAyEMRPP/JzW60H5F+4f14MBbd9vTrlDIQNDE6OgYNQv8gner3dJoHTGfxunnbq1bGX35PmKak79wtGEZ+QU58hvajLFVPBUxxzpl6m8j79HtOdaXHtX2+/OJd8MZaAl5Opd4EvbgiIlrFY800Vk36MG+1nh1e0O7ZPu7kc96Ux71rIil6QzcM33W6ioerdOmuRyTftSTeWfvssC4hupYe2H9J9vXhMa1r2bH+rmbR5ryXvgeZx3pax7/BMapvfI4x+2oMXl5X2farOAJ/D/4F995p6t4roTe+/y3/CtPIBAIBK7BBwXn2ds=
   </data>
  </layer>
- <layer name="clouds" width="46" height="14">
+ <layer name="clouds" width="72" height="14">
   <properties>
    <property name="parallax" value="0.2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQwmsgOAGSs1ZycDgAMQHyNG7HI84ueYuR/ITLvPJAeSahU8fPj/iip/lOOIMlzgpZhOSGwWjYBSMglEwCggBACQBFO8=
+   eJxjYBgFAwlWQHDDQLuD2mAlA4MDEB8YaHfAALXCmV7+Wo7k1uWk68UpTq77KXEPEWYTLY4vHvH5jVw349OHzz5c7lyOw+24xAcS4Avr4VpujYJRMApGwSgYBaNgFAx2AACcciBP
   </data>
  </layer>
- <layer name="city" width="46" height="14">
+ <layer name="city" width="72" height="14">
   <properties>
    <property name="parallax" value=".3"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztz0k2Q0EYhuFbemGqj4iYiuibbEGzCM0iNIsIFkkQbUzFU0u4A6dw7nfOc/6avIPKsmK/afshyw445Cj8jTbuWHPCKWc5+1Rt3Lnmgkuucvap2riW5pobbnP2P9necU+bBx55osMzL7zyxjsfdPlM2MZ90YsPfwr00c8AgwwxzAijlBhjPKRr4ybcSaaYZoZZ5igzT4UFqixSYymka+OW3TorNFhljXU22GSLbXbYZY9mSNcWK/bf9w0u01Qc
+   eJzt0DlSAlEUheF+IJOQMigKiqkCCgq4BYRFMCwCYRGgi0RAmYRU+V/aWVf3pQneqfqqh6pzgmtZJibHSVNZ1htaaKvT2fara0+Hfhc99D2+j5ttv7r2DOi/Y4iRx/dxs+1X154x/Qk+8OnxfdxsS3Z/scMeU3xhhjkW+MYPllhhjQ22DruS21JdnXNuFkcCf3z/65+8KwQQxBlCCCOCKGLKWVdyW6qrc8uzgDskkUIaGVzgEllc4Ro55HGjnHUlt6W6OnWeDbziHg8oooQyHvGECqp4xgtqyllXcluqa2JiYuJnDuqXf/I=
   </data>
  </layer>
- <layer name="plants" width="46" height="14">
+ <layer name="plants" width="72" height="14">
   <properties>
    <property name="parallax" value=".5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMBTB6iGKDw1RfHOIYgYofYthFIwC3AAA3HxqSA==
+   eJztzTENACAQBMH3bwUXuAA1BANXPgUzydZbBQDwl6HYVGwp1un+dvMTXjqlYKVk
   </data>
  </layer>
- <layer name="main" width="46" height="14">
+ <layer name="main" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJwTYGBgEBiCWHoYYGyAkDy11Iy6e9Tdo+4edfeou0cGlkfDsljEyMHEmEOJXRpIWBuIddDEQFgPiHWxiOPTQ6x+mBmaONTgMh/YRjkwFDEAhxJTJQ==
+   eJzt10lOAkEYhuHuG/SeELcQ0BN4CBAQPQEikycgzFyAWeECqIzuCZOgHIo3UTeGbqpDk0CqO3k2VV/9lfp2rSmKotl0OQxUVON90ayZOefkWP3s+vbtW5Wx+7H7OaV+rgXJ2o8PftwggCBCuEUYd7iXuJ8IHhDFI2KII4EkUniSuJ/0bz8ZZJFDHgUUUUJZ4n6qqKGOBppo4RkvaKMjcT+veMM7euhjgCFGGOPDZD/n5MJAl3fNMMcCS3xihTW+8I2N+pM1mvN/zbnnblEicw65y2WRqSqe9cC7Y/0KlybPiJ7/m+HWyejN5x9sYtO3BTRDuVo=
   </data>
  </layer>
- <layer name="lamps" width="46" height="14">
+ <layer name="lamps" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiaQBmIVSiQp7c5MGAFxNYUyNPbnMEG1gLxOjQ8FMARID6KhocCGHU3fcGou+kLRt1NX3AbiO+g4VEweAAAtz0mRQ==
+   eJzt0MEJgDAQRNH0EqswNWsVWoUWk7kF9jCX4BLwP/inhT1MKVhBVdvEPftPtl21iXv2n7861BnCcKk7hIF9PPbx2MdjH499PPbxHvWGgK90mGEmRQ==
   </data>
  </layer>
- <layer name="banners" width="46" height="14">
+ <layer name="banners" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztk0sOQEAQRAeXMFY4gr8j+Nu4j6MrSwk9bUgI85K3q+50MjVCGP6IFGK+e8ZVzPswgCGRiWAMkzOHEVSwhs2FHTksYElk5IX9OniMTA8HODKyrkYfjqBus6ANHSLD6cAd7/oFVH9uhdtNVQdSmDF3vYkWdk8fYdhlevoAw4YF7doJPg==
+   eJxjYBgFo2AUEAskGRgaBtoNuAAht0kQ0K8AxIpArIRHjREQGwOxCSkOGwTAGxg2XhCabGAOxBZAbIlHjSQF5g9mIEWEGj8g9gfiACLUSgzifIQL4AsDRiBmAmJmPGqIyTueQExpOsUHcoE4D4jz0cTTGHHrKaaRWwYjaAHiViBuQxOvxRM+XVjEHgDxQyQ+obIXBIgtOwjlHVMgNiPSLFLBbCCeA8RzKTTnOxD/oNw5ZAEfIPYdILuJBXzA9MaPJ82NgqEBQgfaAaNgWAMAIXUUHg==
   </data>
  </layer>
- <layer name="tables" width="46" height="14">
+ <layer name="tables" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4CBIRaI4/DgwQpKgLgUDx6sYNTd9AWj7qYvGMnu1gdiAwrkiVWDDKjhbjcgdqdAnlg1yKAbiHvw4FFAXwAAnw4nSw==
+   eJzt0McNwjAUgGF7A8oQlAtMQLnAFDAFTAFLsANtB8oQlCEoB34pipSLnxLHiZDyfuk7xHYs6xmjaZpvM8wFVW+BpaDq6XzkdD5yOh+5suazxQ57HALeW3RlzeeEMy64Bry36Hzms3Gsd60xLbTRsdF33A13PPD0fGsP/Rz7ac8k85nP0bE+Zh4DDDGy0XfcC2988M3wvmQTTHPspz2TbIW1oGbd/2atzl0NNAPeqf13P6j0OIM=
   </data>
  </layer>
- <layer name="stage" width="46" height="14">
+ <layer name="stage" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDASoAuJqIK4B4lo0ejCDeCBOwoEHOxiK7h6p4W1DK0cRAJSGdzCN3EUIlAFxORBXYsGDGfQCcR8OPAroCwARPBe3
+   eJzt0sEJgEAMRNEpzC4sQLAIxVVL0Jod2Jts8OAhLPwHnxwDIRIAIEtxuzvc+ZqQJjcHoeI+Mf7nWw/3GZL29vI/Y9Lexa1uawTpcncQ8McDIHkXtw==
   </data>
  </layer>
- <layer name="door" width="46" height="14">
+ <layer name="door" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALiwW4g3jPQjiADXALiywPtCDLAaHjTHyTgELdlYGiwpadDKADqQLeqATGIHQKkQwbYPbQGdqSrb6CFO4YyAADxKQsE
+   eJxjYBgFo2AUjIJRMAoGJ9gNxHsG2hGDGFwC4ssD7YhBDEbTD34wmn4Ig4QBtt+WgaHBdoDdQCxQB7pVDYjpaWcI0L4Qelo4jIEd6eobaOGOUUAYAAAKuwsE
   </data>
  </layer>
- <layer name="text" width="46" height="14">
+ <layer name="text" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzssJwCAURNHXq0KisQbjp3FvsIFsxBDmwoFZjplakYM3K256tlK/6cCJgIgLaeujd2XcKKho6DsPKaXURxpFCQhu
+   eJztzssJgDAUBdHXawR/qUGjNp6RFOBK42IODNzljZCeJRoiSmrdW5I+MdJEMy20Uu766F822qnQQSddPQ9JkqTXVD0yCG4=
   </data>
  </layer>
- <layer name="windowshapes" width="46" height="14">
+ <layer name="windowshapes" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztVMENwyAQuy8opStklI7CKFmiap+skb4YhVHqSo10sa5tyKNJJCz5cXfGGIQQadgKTuQSRPJE1L0xnxG9TJrk0dc0fF6aPJE9anECgyLqQc/RK7wmUCZvaNCLvI9X5H1qwbk405LcC8+WqI41OQ3/QnV1pg48Ezu6zz3mPup9f3jfrElUx5qcRoZCdf9tbmm2yO1k/p84epc8f2sia5Bj0LR89H/CHv/CCD5+aK4rvW/gfeXahoYn0T4sdA==
+   eJztVcENwjAM9LdRCSswCqNklC6B4Jk14JVROgqHRCXnCLSNkNqCT7qH7bMTW1EsYjBsC43I0YukgbAPhXhG+BJpooNfs1DnoUkDucZasQO9IuxOx+HrOcdT766ggS/wOU6Rz1kruH/ufcp8Js4wkh3m3HMpfGM+LbgntvQ+/nk+9n5ecjLNm/+HNZHsMOeeS8Hm8xnYs9n+aujf4PhTE1iDfjvNUh29v7jGr+EK3kY0p8raZ/BSmWswGOpwB9BMLHQ=
   </data>
  </layer>
- <layer name="streamersunder" width="46" height="14">
+ <layer name="streamersunder" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgeIAWIkxkYGmDsFBxiIH4ykr5kBlSArC4ViFPw2JcKwQ3YzB0Fo2AUjIJRMApGwSgYKgAA/dgMFA==
+   eJztzUEKACAIRNG5q3aPjp4RgUG1rcV/MJCiJuFHHjGpzrcfer22tGda5bkS8ct/ZaTu7gIAAAAA3mrjnQwU
   </data>
  </layer>
- <layer name="streamers" width="46" height="14">
+ <layer name="streamers" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJztztENABAQA9DOhCWOMRjE6HrBAL6E9CVNGyIBvKkAPbM9xm1r53mHxLPI9gTusHa69HZvEflTZdrsfvkrIiLHBjBcE3o=
+   eJztzsEJwCAQRNGpSW0iWkZSiKVnRIXcBePhPxhmWVhYCacoUs3uy+0oj3iv5F10twTPYczpc7fzds4AAKy6nad3/fkVAACO9gL8YhMw
   </data>
  </layer>
- <layer name="streamersovelap" width="46" height="14">
+ <layer name="streamersovelap" width="72" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBiaIAWKkxkYGpKRxJOxqMUmBtOLzMamjgFJjpA6mFmpOORwiY+CUTAKRg6QGmgHjDBgAy3nyQH2FOilFARTYHfYALqbmiAcDUcMEbGhCgAwxRzN
+   eJxjYBgFgwEkA3EKhG5IRhPHphYdwPQis7GpY0CSI6QOZlYqDjlc4qNgFIyCUTAKRgEtgBQVzfJiZGjwZITUm6MAEyQCwyZhmIWPDQP5/rFH01sBDJvyYRY+wRSETxia3n5g2PQNs/ChJogA4nA0PCqGEBsF+AEAATMtEA==
   </data>
  </layer>
- <layer name="litter" width="46" height="14">
+ <layer name="litter" width="72" height="14">
   <properties>
    <property name="foreground" value="true"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBfiA6kA7gMYAACpwACY=
+   eJzt0LERABAQAMFXjGJ0oQupCtQslEkZdiu4uQgAAFhKin664WbVn63mz9b49E8+HfCICUV2A9g=
   </data>
  </layer>
- <layer name="collision" width="46" height="14">
+ <layer name="collision" width="72" height="14" visible="0">
   <data encoding="base64" compression="zlib">
-   eJx7wsjA8GQI4lEwCkbBKBgFo2CwAVEmBgYRJvLliVUzXIA40J//GLHjn0MUD1UAAPQCXK0=
+   eJx7wsjA8GQU48SjYBSMglEwCkbBKBgFo4AyIMw00C6gPfiHo90I8rso1P8iTJhhIUph2ID0i+Axg5A8sWoGCogzQcJWbJC6DxeAuRsb/jmK8eJRgB8AAIW6kAU=
   </data>
  </layer>
- <objectgroup color="#a41b00" name="nodes" width="46" height="14">
-  <object type="info" x="418" y="239" width="28" height="30">
+ <objectgroup color="#a41b00" name="nodes">
+  <object type="info" x="1042" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
    </properties>
   </object>
-  <object type="info" x="667" y="207" width="16" height="60">
+  <object type="info" x="1291" y="207" width="16" height="60">
    <properties>
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="0" y="240" width="48" height="60">
+  <object name="main" type="door" x="624" y="240" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="956" y="208" width="48" height="48"/>
-  <object type="sprite" x="144" y="241" width="48" height="48">
+  <object name="sophieb" type="npc" x="1580" y="208" width="48" height="48"/>
+  <object type="sprite" x="768" y="241" width="48" height="48">
    <properties>
     <property name="animation" value="1-15,1"/>
     <property name="height" value="48"/>
@@ -143,14 +143,75 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="info" x="144" y="240" width="47" height="47">
+  <object type="info" x="768" y="240" width="47" height="47">
    <properties>
     <property name="info" value="Who cares if the dance is over?|There's stil plenty of fun to be had!|Wheeee!"/>
    </properties>
   </object>
-  <object type="info" x="864" y="249" width="23" height="52">
+  <object type="info" x="1488" y="249" width="23" height="52">
    <properties>
     <property name="info" value="You find a crumpled note here.|It appears to be a set of lyrics for a song called 'Dean, Wish I Was Your Lover'|...You can see why it's been crumpled and left here."/>
+   </properties>
+  </object>
+  <object type="sprite" x="431" y="164" width="27" height="53">
+   <properties>
+    <property name="animation" value="1-11,1|1-11,2|1-11,3|1-11,4|1-11,5|"/>
+    <property name="height" value="53"/>
+    <property name="sheet" value="images/sprites/greendale/soda-sign.png"/>
+    <property name="width" value="27"/>
+   </properties>
+  </object>
+  <object name="sandwich-shop" type="door" x="576" y="21" width="24" height="276">
+   <properties>
+    <property name="aniframes2" value="1-2,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="info" value="Shirley's Sandwiches still needs some funding before it can open.  Talk to the Greendale Bursar in the Administrative building if you are interested in investing."/>
+    <property name="obstruct" value="true"/>
+    <property name="offset_hidden_y" value="0"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="closedsign-iso"/>
+    <property name="sprite_height" value="288"/>
+    <property name="sprite_width" value="24"/>
+    <property name="trigger" value="sandwich-shop"/>
+   </properties>
+  </object>
+  <object type="info" x="120" y="240" width="24" height="48">
+   <properties>
+    <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
+   </properties>
+  </object>
+  <object name="sandwich-shop" type="door" x="193" y="183" width="27" height="114">
+   <properties>
+    <property name="aniframes2" value="1-6,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="offset_hidden_y" value="0"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="sandwich-curtain"/>
+    <property name="sprite_height" value="114"/>
+    <property name="sprite_width" value="27"/>
+    <property name="trigger" value="sandwich-curtain"/>
+   </properties>
+  </object>
+  <object type="info" x="528" y="204" width="48" height="48">
+   <properties>
+    <property name="info" value="Today’s special is the 'Troy-jan Horse.'  | NOTE: The 'Troy-jan Horse' contains no actual horse meat."/>
+   </properties>
+  </object>
+  <object name="sandwich-shop" type="door" x="25" y="21" width="24" height="276">
+   <properties>
+    <property name="aniframes2" value="1-2,1"/>
+    <property name="anispeed2" value="0.05"/>
+    <property name="hideable" value="true"/>
+    <property name="info" value="Coming soon..."/>
+    <property name="obstruct" value="true"/>
+    <property name="offset_hidden_y" value="0"/>
+    <property name="sound" value="false"/>
+    <property name="sprite" value="closedsign-iso"/>
+    <property name="sprite_height" value="288"/>
+    <property name="sprite_width" value="24"/>
+    <property name="trigger" value="hunger-deans"/>
    </properties>
   </object>
  </objectgroup>
