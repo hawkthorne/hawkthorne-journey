@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="78" tilewidth="24" tileheight="24" nextobjectid="92">
+ <properties>
+  <property name="offset" value="64"/>
+  <property name="soundtrack" value="mountains"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="sky" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1+PThscVB+CTIqntNrad1N3abVLbTNqkdpsT1LZt29ratm3buNr7H3i+Pe8z8/twzezsHsw9u/fM7nHbVB0XERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERH/d3ysxbr3PfJ/bGXr3vfI/7GVrXvfI//HVrbufY/8H1vZuvc98n9sZeve98j/sZWte98j/8dWtu59j9U8ctuqR/FoHsNjeRyP5wk8kSfxZJ7CU3kaT+cZizZuc22txbTYltNyW41Wq9VstVuP1qv1bL37ETych/FQHsKDOYWTOYkTF2Vc5spaiSmxJafklhql1sZ8z7r3PVbzYmfiJbyUl/FyXsEreRWv5jW8ltfxet7AG3nToo3bXFtrMS225bTcVqPVajVb7daj9Wo9W+9+ES/kBTyf5/FcnsOzeRbPXJRxmStrJabElpySW2qUWhvzPeve91jNe52Jyft4Px/gg3yID/MRPsrH+Dif4JN8ik8v2rjNtbUW02JbTsttNVqtVrPVbj1ar9az9e738G7exTt5B2/nbbyVt/DmRRmXubJWYkpsySm5pUaptTHfs+59j9V8zZn4Ot/gm3yLb/Mdvsv3+D4/4If8iB/zE366aOM219ZaTIttOS231Wi1Ws1Wu/VovVrP1ru/ylf4Ml/ii3yBz/M5PstnFmVc5spaiSmxJafklhql1sZ8z7r3PVbzB2fij/yJP/MX/srf+Dv/4J/8i3/zH2q7qm041aKN21xbazEttuW03Faj1Wo1W+3Wo/VqPVvv/j2/47f8hl/zK37JL/g5P1uUcZkrayWmxJackltqlFob8z3r3vdYzZmdibNwVs7G2TkH5+RcnJvzcF7Ox/m5ABfkQos2bnNtrcW02JbTcluNVqvVbLVbj9ar9Wy9+0yckTNwek7HdmzLaTkNp16UcZkrayWmxJackltqlFob8z3r3vdYzZ7OxF7szT7sy37szwEcyEEczCEcymEczhGLNm5zba3FtNiW03JbjVar1Wy1W4/Wq/VsvXsPdmc3dmUXdmYndmQHtl+UcZkrayWmxJackltqlFob8z3r3vdYzaWdictwWS7H5bkCV+RKXJmrcFWuxtW5BtfkqEUbt7m21mJabMtpua1Gq9VqttqtR+vVerbePbgUl+QSXJyLcVEuwoU5clHGZa6slZgSW3JKbqlRam3M96x732M1N3YmbsJNuRk35xbckltxa27Dbbkdt+cO3JFjFm3c5tpai2mxLaflthqtVqvZarcerVfr2Xr3jbghN+D6XI/rch2uzbU4elHGZa6slZgSW3JKbqlRam3M96x732M193Qm7sW9uQ/35X7cnwfwQB7ECTQnchInc8qijdtcW2sxLbbltNxWo9VqNVvt1qP1aj1b774Hd+du3JW7cPz/zg935k4cuyjjMlfWSkyJLTklt9QotTbme9a977Hy/zHs7bDHw14Pez7s/XAGhrMwnInhbAxnZDgrw5kZzs5whsYpi2k8zU1rU8wUO+VMuVONqdZUc6o99Zh6TT2n3tN5ms7TdJ6m8zSdp+k8TedpOk/TeZrHLobxMDesDTFD7JAz5A41hlpjU75n3fseq3EnGO4Gwx1huCsMd4bh7jDcIYa7xHCnGO4Wwx1juGsMd47h7jHcQcYxi2k8zU1rU8wUO+VMuVONqdZUc6o99Zh6TT2n3tN9ZLqPTPeR6T4y3Uem+8h0H5nuI9N9ZB69GMbD3LA2xAyxQ86QO9QYao1N+Z5173usxptyeFsOb8zhrTm8OYe35/AGHd6iw5t0eJsOb9ThrTq8WYe36/CGHUctpvE0N61NMVPslDPlTjWmWlPNqfbUY+o19Zx6T+/Z6T07vWen9+z0np3es9N7dnrPTu/ZeeRiGA9zw9oQM8QOOUPuUGOoNTble9a977GaPZ2JvdibfdiX/difAziQgziYQziUwzicIxbTeJqb1qaYKXbKmXKnGlOtqeZUe+ox9Zp6Tr3nHuzObuzKLuzMTuzIDmy/GMbD3LA2xAyxQ86QO9QYao1N+Z5173tERERERERERERsvv8CVa1wBQ==
+  </data>
+ </layer>
+ <layer name="mountains3" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.2"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt10EOgjAQQNEexTPJBT2quiAxRIRSYMr4XjIrIWExP7WlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABc272UR/Q3QK+GohGYM5T2Rl7v3jRGRkNpa+Tdxh6NQY+GMt/I0rnw2UZrY9qiR9P9Hnd86Vz41saaRqYtOH/o2dyOL50rNc9/e2/a4BmNOKeotbaPXzu9V1NHNuKcYouaPrZMbVNbdtg9iaMc3UdrW+N3zu2mexJHim6g9vxZ+s+W4Z5EP6L3f49man9vbUoj/yN613uZM+5JXE/0XmYYjeQVvVtZRiM5Re9VptFIPtE7lW00kkv0PmUcjeQRvUtZRyM5RO9R5tHI9UXvUPbRyLU9AbTKm4Q=
+  </data>
+ </layer>
+ <layer name="clouds4" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.22"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1zEKwEAIBMC9lyRP9elJl3BV4AohNwMWdhaKbAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMkxkvOpuvvqngkAAOg3ZQWZAYBlX3+LHwR9XvdX7o4/m3fdzgPsTQYBAAAAAHZwATxODsA=
+  </data>
+ </layer>
+ <layer name="mountains2" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.25"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EFqw0AQBEAdkrw7T09EbBBCK3mlFR0PVTAn48GHbhbPNAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAsY+/+b664+t3x9U9kLKV3TnXn485m+3ljit7IGmd3XWu97LdemO2dpzZ0zLibYNXLLPbyvVWtltvzN6Onj3Lz1v7dYS77WW5le3WG3PUjVf3PH/bugs9bxuM0NOPeeb/273f6d3T0zUd4U4jsv4f5uhO5h7HGelcjx73OEZK5/nujiTucdSRzvKdHUnc46glneN0h6Zp3D2OetIZTc+oe5yO1JTOZ6XRkXrSmao2OlJLOk8VR0fqSGep6uhIDekcVR4deX/pDFUfHXlvP99QMWw=
+  </data>
+ </layer>
+ <layer name="clouds3" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.27"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1rEJwCAQBdCMltEcLfskQ0RJYyMkEPHE9+AXNofFfXTbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJWdOdeTVJLPafCVIIzch/16cpTk8zH6TvA37wC0zf4O6DeR9N7Hev6b2bP3mzm1etB7H+v5dp2ovvbAPwfaIv1zdBXaInUVAAAAAFjLDd28aIk=
+  </data>
+ </layer>
+ <layer name="mountains" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.35"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2MsOgjAQBVB24l/z6droAkmnlIdi4ZzkRgMTV3NDsesAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFjj9spQe33pDLQm7fX9udcp/fN7333u+e19bXp9+htzM9Ca8V5Pk/Y8d3+6/6UZzx1aFnVjLuP9L8ykz/RMGmaeO8UZOMrafqSMz2NBhnGC505xJmfLOxIssaUfFRmi/c91o9SRPd6RYKlf96N/7Xh4751w93PnvJp3JFjjiH5UpLj7tfn2Wc157vz+uR975FtntdoZ/Wnb2ftR2v3c3Nb/s3MzOtKuK/SjtPtLOzbXr2hGR9p0lX7skYr/s4szOtKeH+z6afqxR3SkLfqhI8T0Q0eI6YeOEDt6R64eHflvD1fgqhw=
+  </data>
+ </layer>
+ <layer name="clouds2" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.4"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt10EKgCAQQFGP1tE8WlfIEzVJUC1aCIIW74E4K3HjB1MCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID/2mKVlHLsefRdYDbxLpZ4H2vs6+i7wOFsdu12uebmjvc6B2ZyNrt2u1xzc8d7nQO93dut1fC0aTV8jj8JvPMnAQAAABhrBxwWR4k=
+  </data>
+ </layer>
+ <layer name="clouds" width="200" height="78">
+  <properties>
+   <property name="parallax" value="0.42"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EsKgCAUQFGX1tJcmluwFeWsNII+RgnnwJs4cuDjgiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBzucxcTyxn8dNLwU+UXZjmelI5S1/fC962aUPUCKht2pCuNqLZrWjHYNXsVrqzY8Bez/boGCNq/r2qN9qzPTrGiPILb/SgFfoA4bAV+gAAAMBpCz/WhMU=
+  </data>
+ </layer>
+ <layer name="bg_bushes4" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt07ENwCAQBMErhaqJXYLrcFVYQp+R26AZ6YLPPtkEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgTE9y3UmrvXf7+if4i76YTmBa9VHTCEzVBAAAAAAAAAAAAAAAAAAAAAAAALCPASjHD50=
+  </data>
+ </layer>
+ <layer name="bg_Trees" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3dFtgkAcwOGbhFkczTV4cwTTCXjuBK7RDXqGkKD1L60FDs7vS4iXAHIvvxBOE1ICAADYn8+UDueUTtctj7vS84EtyV0cRuOu3Exge/QBMX1A7Hw7PpaaB2xRfiZPTe6i6cfHNm8fedwWnhdsxdDHlT7glj4gpg+I6QOe0wdM0wfEhj4AgGmXfN+8lJ4EzGCJZyR9UIv/9DE+d3y+PqiFPiCmD4jpA5ahD3hOHzDtvo9S8wAAAACW0aTUNdOHwVvSB8T0ATF9QEwfENMHxPQBt8b/Db7vw/8feXf6gJg+IKYPiOkDYvqAmD5g2m/68PsI7+wvfQz72v79qD+491CbNfrwrhZqsUYf4/Ov53z1n7A7a/cx7IuuAVtSuo987ZP1AfagUB8vrZ9ZK2BtU31EHvUx/k59UJM5nw30QW2WfG5+pY9Hx+iDWq3Vh4bYK33APPQBsbn70A010QfE5l4D1gfoA16hD3hOHwAAAAAAAAAAAABQl29IRT9J
+  </data>
+ </layer>
+ <layer name="bg_bushes3" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3cFx4jAUBmCVQikpJaW4h93NmQYClMAtJBXskVJWSqwgtCZrB1gb/H0zGhJnHHTgH8tG814IAAAAt+81hId1CIv4uh17LjAFT+1I2fgVX/OQETjkY13lYy0fIB/whSIfocpHM+K0YBI2ITymEe83QnX/0Yw6MZiYlJF43di/jj0RAACACXgL4WETwvLN82c4krKRn0c/ffy+HXL+Lp6/CmGxK857iceeY97iWLzIHDdsU+VjM+DznLLxM77mkTKSsvEj/lwOGeFWPVWjrzYbTTE+M1Ln41k+uFHfzcfqRD5W3floLjxt+C/ieipU66umz3kxB+FEPpqO9VWv/wlTE+/HUyb2ebz1/CzHdVRnPuLxJuYhXTP2acgGc5UyEq8Xj+3Y72QBYFbimmrZfj+4GHsuMBU5F9X3g4txZwXTUD/bHfJ8F+7dreTjNV7j1h8j1YFZjD0f5mPq+ahrwKgDAwd1jQt1LuBAPuC0ugaMOjBwUNeAUQcGjuUaMOuPmknN2PMBAAAAgCFy/a7NYZ/+duw5wRTU9buG1iiCe1bX7yrzYb8vc1fXXyn3IOfv22tpT3DXHmB1Vrk3dT766Nonf26dVZiiVJ/ou/ko9wF31AHbdp0Lt6b8bJdOra++2icvH9ybtsbde8/HfKzcF1/uhz91PJMP5qDY87sv9/yeOp4V9x9//Q3m6nfMQxxhSI1VmIucj2vJfYTiWO6s3bgx18xH3Uco90m50tvBxV0zH20viKOx6l8nf7myB4CR1floa68uLlFv9Zx8tH2I9ufOAc6R83GNmsRtr5R6fdX0OTf36Trn/eGSuuqunpuRot9W72tHe17Zx+69f1063t7vL93vM5ZL1lwtegkN6iNU9bH7zNaquOdfyQczVfboSrnayQf8k3zAaeUzsSH3MzAH7bprry8qAAAAAAAAAAAAAAAAAABc1h9Hm2iB
+  </data>
+ </layer>
+ <layer name="bg_bushes2" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3dtx4jAABVCVQikpJaWkh13+aSDQgv8SukgpK8coURTJPBawx5wzoyGAg8WML8KSJUIAAAAAAAAAAAAAAIDl24ew2YWwSiXeX01dp1t6C+HpNb7nWFbx727q+jA/eSbW8X5ZlpqVPht/4m1eZIRcn41aJlplSRl5reTjVT7gU8xCqOTjZco6wVzE71K/8vEmH/Clz0hsMz76IhsAj+XQ/7bZO7eGLykXWT90N3GVYBZiNp6OjNV0U9YPphQz8CMXpcNYTXfPOsFclPloZQQeTe27FQAAAADQ1vep1a5xyeYnbsy94lEVc8i6/jHzE2FQXOPS9Y+ZnwgD+YC68lqX3WGelfm78Hm+0WfiI5W9fMBR5rfDuLH57e8hbLaH8r6gdZPgf/XZ+Btv8yIjMIhtRijzsdW3xcJsL5zLe2k+0jh9baw+W6didW594Nry/tz+uD0nJ5fmY5fNDcvXo2itE5s/v8Q1lJmvxvrEXXp+LDPxXONXPt5P6Nuq5eOR11BmvkaOvy6fAzyWkdhmPPfllGz08rHINA65a6zl0ipwL2d8ZnfX2F8+FpnGIfdn1EM+mMI6u22VW67NlXKT7eu5L42svlx7/3CpW7YnpX34efwfcvMjKzBHtWsY7ynPSl/uvX845pzP8DSesdTft4PSKdlIYxX6ZqHt3H4n7Q3Ujf32sJzAwJg5tJ0yLrh3DSMPbuy8xTgIXI/2Btqyc305gYqxc/1a+5L6mu9VP5jasfOZ3ff4yyZtd8l1Zod1K1bm47Mktfxk38u6U16jXLeilpG07stuyNBJrwtzVZy/dK3tamu6bA/XcaY2ZZttE8L3nOSUmVu9B7ilLCNda5t4fD/lx34IXxlZlblJZT08vyn/Dx5BnoXaY2UB2pkBBtoPAAAAAAAAAKj7BxP1mjg=
+  </data>
+ </layer>
+ <layer name="bg_bushes " width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3d1twjAUBlCPwigdpaMwQ9UBGAAxQ58QI/DYUZqoRLJC7JjwE5ycI10VWhB56KdrEusmBAAAAAAAAAAAeLxTCLtDVM3zzdzHBHPrcvHdPO6XnMC/oXx0JSOsXS4fTR/5me/IYH65fOghrN1YPmSENSvJh4wAAAAArZP9L3BlaB+MjLB2uf1ht2TkVLD3Um+iJqdMLuJqpf6vU/mKX6s3sSS37BM75F+f7E2X9+olVC/XF0r3BYz1J1g7mYA0+YA02YA02QAAAAAAAAAAAAAAYIlK5zycQ9ien384T3UM4WMfwq6to/vFMKI3B2LTViorteejzcZX8zMuGSEnMzNlE1ebmdrzsR/Ix14+yLhlPsoC8hEG8rGd85h4b1PmCHXrr8u8uuR67N3IB/cqzUibi9rmODbfNa7ycZQPJpjSV0p7Sdd3xuYMP0OTh9/9pZrHn6/6XJZpQk62XW/pHKKZ26k5qWakUrt7550W9iA5YRGekQ85gbwuW/0599G9Uao5ZwaPljqXPPV8AKxFah0nK1B+7TLmfnSsXbTm2sa/76/Lhu5X11YIdVzjhFukzn2NXWvp/6173ts7o+dAJM6K7zdQpqZ9ZvBqte3FBAAAAAAAAAAAAOj7A5KhUeg=
+  </data>
+ </layer>
+ <layer name="filler2" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3b1twlAUgNGLJ/E+SRMYI7BDdnCZxgs4M6RzCobKQ9hKYjCkAPx3jnSb13CbT09IiBcBAAAAAAAwL1VEXqcZeg8Yo6KZ1EnZjF6gUfTMr140w2L19dHTjE6go9uJRgAAbucli1in2WRDbwLj85q62KbZ6QMAAAAAAADgj2LoBZit9+xnpkofTM3TKuJ59ZjP0gf30t4bl+6Psd8t+mBIe32wAOkeeBt6h3vQB7ewv9DHHL6nw63oAQAAAAAAAAAAAAAAAGCePiLyL2+kAgAAAAAAAAAwMessYuM/k+HENjvOTh8wOXVEWftNJ5w4tHF4p6iK+Oyep7O80g4L1bbRTttB97x950srLE23g+pMG93z6ni3lMNsDI93rolrA0ukDwAAAAAAAAD4v2/zwlzD
+  </data>
+ </layer>
+ <layer name="filler" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3UFq1FAYwPHXnKILB6rrmZ2iqAsXMoL0DJ6lRW8g1EW78ALewZ3X8gUmkIn5Mk1N5yWd3w8+0sUwZOD9eUkJMykBAAAAAAAAACzHTZU+1FP6PGCOtAHAQ9xWKT3P86IqfSZEtskeX8rb3MW7PO/1MVtrfUBoXfoEYMa2u6NOILY9/BKAUW6qdFX6HGCu9AExfcCwupEfnhVhAp/PSp8BlLVJrjkg8inoo3mWZYnPtPxJ6eevPPd57XW1P9DWXR/N1M+y3Obr9PoYvWaO66lu43s+1nOX7zXq5wrHDDSG1kneV363j1Otqa95vj3CZ2n2jKYNffC/htbJZtfFZqCPj6U/QOrvQh9MYeza6c6Xgfc4ltzGP13ogym09oHR66j0ehraNx7aB7S19oFwHa3T/nFJ62kprbMc7R5q285xSTTB1JbcQ9ehLvTBKbN/QMx9B/S7dm8Oofv2AadKH9DPdRXE9AExfUDM/64gpg+I6QNi+oCYPiA2po87jXBi9AExfUBMHzDM/TkAwOlpvscrz0X++6L0+fRZnaWrZ3lWfu+CI7rMa677nXZzbGTXR9IH7HuZm3iVx/4B/VxfQUwfEGv6eJ37eDNRI+f5/c71xhPwGPuHPngq9AExfcCwlT4gpA84Hn1ATB8Qq589u9QHAAAAAAAAABz0F4zbO9k=
+  </data>
+ </layer>
+ <layer name="floor" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJztnctx2zAQhiFW4jKSG0tJBXYaoAdJEaBnnINL8CgHOzfew4uTEpKUkcfCIiKKAsSHKO4C/P+ZbyQ/hwb3E5YkTCmFIAiCIAiCIAiCIAiCIAiCIAiCIDx5ypR6Jj4QHzPurUEQGSEXtHXihbjPVG75RHBvF4JICLlQ3e/I4QeCHAZ+8OVr1s9nmt+3BPe2rjXwgy8m86I7qJoe284UOD68WLa71yQ7zrqNG/O39PwNXq8WScCPoCvkSUX7Ki/w+jVLvmyUfiaeiMfGg3o/7gf7osSYL56xftA+Uu/JkRvimuDe/pjSmhcUuaC25MR34hvxsnkd2yMnGnJLiTl78Uz0Q5Mf+hpz/OAUh/OC9s0F9D1VvXOhck5Ymjm7wpy9fCb0VxrHH+NT7mpen/LDhuaYnOaY/GvjBD2vtpin2TLAj5OezMEaXBvqByIrU/2Yk1T76sLzGlI0Ywk/4sgIPy7mS6p+dOcM5wX8iCdn+DGXJ2olflgvcvgRVxj8OPqZlfhhn1fNcZvGmoQ4ItWPIoEaKvde/PejhcK5QPlh6K26P+ftr9y1sphrqM8P97V2r1VE/PemGAY/jrAOdOuhey051IMVgvuVolmL465lhGhf9ys9ziB8keCHr8ca6kf7+1xv30WiO6HAD1k5048pDnk/7/PDrYWsT6w9OrFm6YA6El/gh6ws4McguvVfNH3HTabeFVl47VF57N0gQnPNGOY6RmivW3RrtOCHjHB7EfKjL66mOP+Gc85Lt6+tt9ctOtfhh4xwezG01q4z9WAfnRedmhK5zadSZr3HY/n0347MFW4vHDbt4wLy4ap9rpP6rIfOGnH2bR7So7kerHve9oQfCn7ICXeN+Wqu8eHK1ZC7BlIL2L6xuDnGnet1x1GYP+IId/14iNqHkB/dFK1zcyY77hPhh4xw10/q+Pyg3tHOj/b/MNvX2Cv4IS/c9ZM6Pdf93RwJP4SGu35SZ2B/BT+Ehrt+Ugf9Vdzhrp/UQX8Vd7jrJ3Wm9Fc17uUjJtz1kzpj+yu4ISvc9ZM6Y/sr9FWywl0/qTO2v4IfssJdP6kzor/K0VvJC3f9pM6I/irH3CEv3PWTOj3/96jNvreCHwLDXT+p03f80QK9lcBw10/qpHrvu7WEu35SB37EHe76SR34EXe46yd18H5bcYe7flJnjvsIxX7Pu5jDXT/gPPfgyWXDvY/BPJ7YOeU2O96/t/v7bMGlCeHet2A+7jx+3HXu/YA5Z1y49ylY1g94Mi7c+xTMh+89hfvukdR3/mDt70PCvU/B7OgOZ/2+euWeCNifIAKGnqdOzSPucQdpkdp6Ae7xBGlQe94rLoVwjytIg9TmDRfucQVp0Dl35js2CX3N+/1Szj1zjytYDdr4z6f5PveK75zA0t4IGDewDrQZ6UeIJa9tChg3sA60mckPh5tfHun5j41SP4lfG6XpUdPH9vNnrz0TMG5gHWgzsx8Oe27gN7nxh/hLXtCjpo91972Np8w7AsYNrANtLuiHL6H3/h7jiYBxA+tAGyF+OIasCRAwbmAdaCPMDwAEoQ38ACCENvADgBDawA8AQmgDPwAIoQ38ACCENvADgBDawA8AQmgToR//AI30j5k=
+  </data>
+ </layer>
+ <layer name="trees" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3Utu1EAUQFF7ExAJkLKDQBIEQ6b5LIKleMo0K0DKlC2QIeuiqomlluVnHP+dPkcqJemkP4O+euVWZBcFe/Rj7RcAG6YPiOkDYvqAmD4gpg+IPa79AgAAYCUfyqJKC2gxZx9vysOq5nl0mF+fPvLfvC8PX19EH+zd3H18TPe90Ag7ZX5Au+v0/v3c432vD07VXPPj4t/eSh/s2lx93JTmB3RxfA6xen7cTNRHfrxPL5xJ78rDmuT5YUpD+ujak/2vj7N0+1ljD6gPtmjo8XmfPqI9W9THl7S++h8aNmTo8XnXMcvx/GibSeYHe3M7cH403//1PLK/4pRFfdTzKPfRbKA2pI/8mG87HhO2JM2b1plT99H1XtYHp+xWHzDYfergXh8wGX1ATB8Qy8c0d+VhbwYM5JyHENMHxPQBMX1ATB8Q0wfE9AExfUBMHxDTB8T0ATF9QEwfENMHxMb0MeY8xM5hzB7oA2Jj+xh6nm59sAePI+47dn5McQ581ylmq+baXzV/F/1t3+uEwRrazjvU1xR9ZOYHr9ESfTiHC3vVNXuaxyan1MefoviZ1vnar4Pteun8SMcg1XVw3Yjcx2VaVxtvJHfxK62H9H1e6ftzndDmFPdXqYfiobHSbdWar4ll/C6Kb09p1V/73Od479W1F9MHxObuI587f4nGmn0831bN+6y8dl195LlzN+Iz6GypPtKxhj7YnaX6yI5nyPPP1fzPCsMt2UeeIamJ73nN/2ww3pJ9NO3p8wVO05LXibhKLV42PtfWB7TTB8T0Ae3qvZY+oN2e/n8MlmZ/BTHXWAUAAAAAAACA2F9njJG3
+  </data>
+ </layer>
+ <layer name="leaves" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3VFS6jAYBtAshaW4FJbSLdzrXYDvgmvwBXAZLOUmI9UY01KhQIvnzGRgsFQf8tnkD6QhAAAAAPdgF8JDbK+3/jtgalI2HuPj4/vz1zHPvY3nXoXwlNpW/pihdZaPdU8ffovHvYSweBvYz1M2/sbHvMkIc3PIR5NaVz5SNv7Fx7YNyciqko+VfDAzMRMhu340tWNeiny8DMtHkA/mLs45Qjb/aGrHxDyEIh/V43JxLPUtH9sB74Op2YXubCSn5CNJGYnXjGVqssG9ivONlIll2970dZiktmasFgZflTXjIRlJ6zvrmKfUrIEyd339uawZl/Www7VlkVrKTr72eak1ULiWY/25rBnn+aitRx5q101+vq4aNkzdupKP9cB81NZb5IN7ckI+mq6fpbYrztW3xgNTl6/l1/7f5+sp5ZpK13rk7v0c+9RkgznL+/Ipfdp6JIyvrXtZU4GvTllTgd/i2JoK/GZ9NTH47cq6l3k9fNXWvWQDAAAAAAAAAAAAmAv3CYK6Me4TtInn2MgVd+ic+wSlXDyHsPgTn6eWnssJ9+ScfMQ8PLTZyDLSnPJ3HPZtXaRmj1WmYgr5sA8xU9Vxn7lmyHvjWGpf5KOJry3zY9L8pp3PHMZjT6nl47Bj+1Lm9QM1BK7p8N3dfd5+8j3e2M/TNWOf2qZ4Xz73T326vNa0Genbl7JWP7DPEfcgH7utKvl4PvTxvn2Ia+M/+xxxD4p8NF35SLruU1wb/42dD+M3biHv2x35aNpjD3sbL1PbDcvHxzHnMH7jVvK9u7aVfJTzlWPnuMQ+YMZv3NI2fPblvrl8n7H2kGzXMzdH7lskH8xJ331VhtoUazVtRuQDvq9lPssHfKjko0mvX3r+D3PQlY9y7Hap+3ttPj83sBjzvDCG2DdH+RzlT7W5KH73Qk6YklQ7+2lteQy1z3BeM58wVFtfvlY2QpAP6CMf0K2c98gHfCrnPdee/8DU5Z+rufb8BwAAAAAAAAAAAAAAgPP8B5fm+CU=
+  </data>
+ </layer>
+ <layer name="trees2" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3DERACEQBMHDBaIQha3XgSEQwEUEfBXdCjaZdCMAAAAAAAAAAAAAAAAAAAAAAAAAAADOfeX2AvivoQ8AAAAAAAAAAAAAAAAAAAAAAAB4Xi3Rq28y2NIH5PQBOX1Arq0+mj4AAAAAAAAAAAAAAAAAAAAA2Ji7gwVx
+  </data>
+ </layer>
+ <layer name="leaves2" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3cFtwkAQBdARlaQUGkhqyI2U4RaSCnKHInKBOlJKZkEgK9gCLJm14T1pZAvZ0l6+dmclsxEAAAAAAAAAAAAAAMCU7CKWm4iXUnn/U3s8MBUlG195bZeMwEHOGfE/H/lbU3NMMBXyAf1yLXWWj518wEnJSM4Z76VkAwAAAAAAAACGeVtEkwUAAAAAAAAAAAAAcNE2YrmO+C619d/DcFKy8ZnXdskIHKw78rGWD9jLLIR8QLeefDQ1xwRTkb3GWT628kFFr4v9N+sXle/a89lm7PGUjOSc8VvqmA1nzlHLKrPxcUU+8plmdYd8dNm0zp3byAczde1cdKv2uVrO02Kurp2LbuXMIAD6jLU2g0cw1toMnsm99plhjmruMwMAPLMhfcrxHT0Oj25In3J8p+td+8/Qz/4zDGM9Bv3sOQNQi/4f+un/AQAAAAAAgOIPldll4Q==
+  </data>
+ </layer>
+ <layer name="vines" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3TEKgzAUgOF4LwevY09RsNewZ+2DdAjq69ChVfJ94JBMIvwY32IpAAAAAAAAAAAAANdwK+U+x/Xv+7iScfC8evGINhZ9pKIFOqYPyOkDcvoAADgvs2LI+ZaB3DPaWPUBh759f7Tnsrmugbe2q6Wud3RDr9pz2VrXO1k30JMPfUzRx7TdNzODvA8zMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgF8bh+D+qsQ8AAAAAAAAAAABwOi97NCcn
+  </data>
+ </layer>
+ <layer name="vines2" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt2U1qwzAQBlAfLddpT2FIVu0Z0lV7D/dmHUgGBmFR6A8yynsgkG0laOGPGeRlAQAAAAAAAAAAYKSnGM+jNwEHdY5xGb0JOKi9fEQ9WaOurO3a3n2Y1TXG232evVbkZT3fc1Azkff1ZMwu3/FaP3Je81HnkaP1ervWkzG1fMdr/fguHzmvvwEAABjNGRf0/faMy7cWZvaTM65ac+q52R754dHUmpPfWurzmp94vsXzrf0PfR2zqjVnr37U/PS+5ff6ulz3EuP1LzcNB1Hzk/WjzUOvr8t17zE+/nWXMN7llo2tzUNcn+L61K7PdVuMz0UPBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPI4vOq1QiQ==
+  </data>
+ </layer>
+ <layer name="features" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt2rFtwkAUBuCTlyEJUxCSEhaAkBJqkgEyAKwR1oDN+NO4QCSAArKB75P+wnfNFX56lt+VAgAAAAAAAAAAAAAAAHDfBlUpw+rw2in7cCumec9n1eG1U/YBAACAdhhW5WuQNH0OaKNZamOqPuCs9B34nb4D53FMr9md9e+b/Xfy/JA8Jk9J1+yTG3BMr9md9e+b/ffy/Jz0k5fkVX1AbZR6GCdvySR5Vx9Q+/lOm6cmPpJPtcEFXPOdXv8EuDR3egEAAAAAAAAAAAAAAAAA/rZIlk0fAlrqO1k1fQhoqXWyafoQAAAAAAAAAAAAAAAAAAAAAAAAAPBPWztmHvc=
+  </data>
+ </layer>
+ <layer name="foregroundstuff" width="200" height="78">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztm+WTXFUQR4fF3d3dsrhrI0lwdwvuJMEdluDuwd3dCc4P/QL/Dy5neUzVsMymFpZik805Vaeq997ufnOrcufJvEybo1Xv4fv4QWOIw1im4bv4Dr6Nb+Gb+Aa+jq/hq/hKYxEXY8VckVPkFjVFbdGj6FXTBhzvQ/wIP8ZP8FMMfoaf4xf4JX6FXzeGOIyFuZATckNNqA09Qq/QM/SO63E9w1nPI/goPoaPN4Y4jIW5PIwP4YP4AN6P9+FUvBfvwbsbi7gYK+aKnCK3qClqix71cJfjPYFP4lP4ND6Dz+Jz+Dy+gC/iS/hyY4jDWJgLOSE31ITa0CP0Cj1D77ge1zOc9VyN1+C1eF1jiMNYmMsUvAr78Eq8Ai/Hy/BSvAQvbiziYqyYK3KK3KKmqC161JQux7seb8Ab8Sa8GW/BW/E2vB3vwDvxrsYQh7EwF3JCbqgJtaFH6BV6ht5xPa5nOOs5DU/HM/DMxhCHsTCXU/EUPBlPwhPxBDwej8NjcUJjERdjxVyRU+QWNUVt0aNO7XK8s3AiTsLJeDaeg+fieXg+XoAX4kWNIQ5jYS7khNxQE2pDj9Ar9Ay943pcz3DWsy/uh/vjAY0hDmNhLvvg3rgX7ol74O64G47HcTi2sYiLsWKuyClyi5qituhR+3Q53oF4EB6Mh+CheBgejkfgkXgUHo3HNIY4jIW5kBNyQ02oDT1Cr9Az9I7rcT3DWc/muAVuiVs1hjiMhblshpviJrgxboQb4gbYi2Nw/cYiLsaKuSKnyC1qitqiR23W5Xhb4za4LW6H2+MOuCMW7oQ74y64a2OIw1iYCzkhN9SE2tAj9Ao9Q++4HtcznPUsjyvgirhSY4jDWJjLcrgsLoNL41K4JC6Bi+NiuGhjERdjxVyRU+QWNUVt0aOW63K8lXEVXBVXw9VxDVwT18K1cR1cF9drDHEYC3MhJ+SGmlAbeoReoWfoHdfjeoazntmwB2fHORpDHMbCXFr42+yt/Iq/4M/4E/6IP+D3+F1jERdjxVyRU+QWNUVt0aNaXY43J86Fc+M8OC/Oh/PjArggLoQL4yKNIQ5jYS7khNxQE2pDj9Ar9Ay943pcz3DW0xIRERGR/5QxQ3CXVqtvPRypzygyUowbgmPZG7ti557pHZmPKzLDMYG9cQx27pnxI/yZRGZU2B/F/qiR/hwiMyJcX1Wv+0OkK95/iAxO+/5jKM++hqJ7TUYjQ3n2NRS91xcRERERkZGEe/Y+32sR6Q737H2d77X4jEtmZbr9++98r2WwZ1y9zf7xXCOjmn/7jHd8s386zzVtff9Y5E86zjVtB33/2P0iowXOD/mnNRP+/vdf3j/u9r6+v/vLzET/vuh/R3hM865wBr4vzPd//3ngX9HtfX1/95eZCb6b035HuDNu7wu+//vPAyKzDAPvC3oHPNvtba6L/tgXfP//7TpKZDTTvi9o74fxHc92x/z5t/tCZlXa9wXt/dDJuJH4QCIzKKN9P1ze08o3Pa36tsf/hynSycSeVmsSTsb7evwdRmQgnD/6OH+0OH+IyAC8vhLpjtdXItPH6yuRwfH6SqQ7Xl+JTB+vr0QGx+srke54fSUyfby+Ehmc/vPG1MaM9GcRERERERERmRWYzH34JJzos1wREREREREREZH/HJ+/iYiIiIiIiMw8eB8vIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi/ze/AwHYKks=
+  </data>
+ </layer>
+ <layer name="collision" width="200" height="78">
+  <data encoding="base64" compression="zlib">
+   eJzt3UtrGzEUBlDv/MtD+oCs+oBuAum2XbeFPv5aZYjBTEaRNNaMNdI5IIhD7GRifblXmrFzOAAAAAAAAMBtPB0Ph69hPD4PQB4AYG/ujunxLoz36ju8apqbrfwcrP+ersMfrcl34xb56Nm38Hv8bl+qG9NcnJ7PH57TLHN1gb5sWTd6yp4sjEF/BWk5+14l4zWjrc/hUq+1aMnfApjqdc7MHVevx8p6YnNmzfV5ac+2pMeTD2pYY860sGaJ5cM1CZSIzaPac2jr/eKc3FuTkJLqQ/Y6h3J/5rlj3ePxsp7pfEjdvvx8q/3Kkv3t88fywaVr8jG9vefrj+WDOTnzPOd+qe/Rel7kgzl3k/2my0zUysfcfdc875/rTXict8eXxwxnpfPhd/j6Pzdex9bKZu3Hpj+58+GcixZcm4+1Hpv+nObD3zD+RfY6fz2PlpT0YNPXfMgHS/XUgy/tn3o4dtbTWq1YKnXexvqDkS2tE/LBCNQPiJMPiNNfQZz6AXHyAXGl/VXN67qgdaX1QzYYiXxAXEl/pbdiNCX1QzYYTcn+lHwwmpz6Ufv1iLAXNed8C+95BzW1UhNkixa1ko9r9fS/imjHKR8PYdybW/BCjfcQmhstv4cXtKJGTqxN6F1sf7h2zUllSdZoVe45R70ZIyo9Jy8njGTpOfnUXsCt99/sLdMq175AWsneMzBv7XzYH2OP1A+I21surPnZkutnYHtyA+Vq5kSvRa/OdeVTGJ/D+BLGhzA+Lqw79scYmf4M0uQE0lwLAAAAAAAAAJz9BzsmCFA=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="4704" y="1584" width="48" height="48"/>
+  <object id="2" type="enemy" x="3456" y="1344" width="48" height="48">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="3" type="enemy" x="2448" y="1176" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="4" type="enemy" x="3936" y="1248" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="5" type="enemy" x="3432" y="1200" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="6" type="enemy" x="3168" y="1104" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="7" type="enemy" x="2809" y="1044" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="8" type="enemy" x="2571" y="1008" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="9" type="enemy" x="3912" y="1440" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="10" type="enemy" x="3744" y="1440" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="11" type="enemy" x="2568" y="1176" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="12" type="enemy" x="3096" y="1296" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="13" type="enemy" x="4224" y="1296" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="14" type="enemy" x="3696" y="1224" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="bird"/>
+   </properties>
+  </object>
+  <object id="15" type="enemy" x="3048" y="1296" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="16" type="enemy" x="2568" y="1200" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="17" type="enemy" x="3408" y="1368" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="18" type="enemy" x="4032" y="1488" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="19" type="enemy" x="4392" y="1536" width="24" height="24">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="acorn"/>
+   </properties>
+  </object>
+  <object id="20" type="enemy" x="4176" y="1488" width="48" height="48">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="enemytype" value="giantacorn"/>
+   </properties>
+  </object>
+  <object id="21" name="bomb" type="spawn" x="2265" y="1040" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="22" name="bomb" type="spawn" x="2265" y="968" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="23" name="bomb" type="spawn" x="2265" y="896" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="24" name="bomb" type="spawn" x="2265" y="824" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="1"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="25" name="bomb" type="spawn" x="2147" y="1206" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="500"/>
+    <property name="x_Proximity" value="2000"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="26" name="bomb" type="spawn" x="3538" y="1468" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="500"/>
+    <property name="x_Proximity" value="2000"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="27" name="bomb" type="spawn" x="3295" y="1349" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="500"/>
+    <property name="x_Proximity" value="2000"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="28" type="climbable" x="2191" y="743" width="9" height="423"/>
+  <object id="29" type="enemy" x="1824" y="624" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="30" type="enemy" x="1584" y="624" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="31" type="enemy" x="1680" y="600" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="32" type="enemy" x="1704" y="648" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="33" type="enemy" x="1560" y="576" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="34" type="enemy" x="1464" y="600" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="35" type="enemy" x="1368" y="552" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="36" type="enemy" x="1368" y="600" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="37" type="enemy" x="1272" y="576" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="38" type="enemy" x="1392" y="576" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="39" type="enemy" x="1008" y="504" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="40" type="enemy" x="1008" y="552" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="41" type="enemy" x="960" y="528" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="42" name="bomb" type="spawn" x="919" y="776" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="43" name="bomb" type="spawn" x="1015" y="756" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="-500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="44" name="bomb" type="spawn" x="972" y="673" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="2"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityY" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="45" type="enemy" x="744" y="384" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="46" type="enemy" x="720" y="408" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="47" type="enemy" x="648" y="384" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="48" type="enemy" x="576" y="360" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="49" type="enemy" x="504" y="408" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="50" type="enemy" x="552" y="336" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="51" type="enemy" x="432" y="384" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="52" type="enemy" x="432" y="312" width="24" height="24">
+   <properties>
+    <property name="enemytype" value="acornpod"/>
+   </properties>
+  </object>
+  <object id="53" name="bomb" type="spawn" x="312" y="391" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="4"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="2"/>
+    <property name="velocityX" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="54" name="bomb" type="spawn" x="313" y="368" width="24" height="24">
+   <properties>
+    <property name="infinite" value="true"/>
+    <property name="lastspawn" value="3"/>
+    <property name="nodeType" value="projectile"/>
+    <property name="spawnType" value="proximity"/>
+    <property name="spawntime" value="0"/>
+    <property name="velocityX" value="500"/>
+    <property name="x_Proximity" value="400"/>
+    <property name="y_Proximity" value="400"/>
+   </properties>
+  </object>
+  <object id="55" type="enemy" x="2662" y="256" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object id="56" type="enemy" x="2448" y="120" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="hippy-ranged"/>
+   </properties>
+  </object>
+  <object id="57" type="enemy" x="2376" y="288" width="48" height="48">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="enemytype" value="hippy-normal"/>
+   </properties>
+  </object>
+  <object id="58" type="climbable" x="2648" y="-1" width="6" height="162"/>
+  <object id="59" type="door" x="2592" y="0" width="144" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-stonerspeak"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object id="60" type="door" x="4776" y="1296" width="24" height="336">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="acornpeak"/>
+   </properties>
+  </object>
+  <object id="61" name="rock" type="material" x="4608" y="1608" width="24" height="24"/>
+  <object id="62" name="stick" type="material" x="4704" y="1368" width="24" height="24"/>
+  <object id="63" name="stick" type="material" x="3816" y="1224" width="24" height="24"/>
+  <object id="64" name="stick" type="material" x="3936" y="1320" width="24" height="24"/>
+  <object id="65" name="stick" type="material" x="3192" y="1320" width="24" height="24"/>
+  <object id="66" name="stick" type="material" x="2520" y="1056" width="24" height="24"/>
+  <object id="67" name="stick" type="material" x="1416" y="528" width="24" height="24"/>
+  <object id="68" name="stick" type="material" x="1968" y="576" width="24" height="24"/>
+  <object id="69" name="stick" type="material" x="936" y="216" width="24" height="24"/>
+  <object id="70" name="stick" type="material" x="288" y="288" width="24" height="24"/>
+  <object id="71" name="rock" type="material" x="336" y="288" width="24" height="24"/>
+  <object id="72" name="rock" type="material" x="1968" y="720" width="24" height="24"/>
+  <object id="73" name="rock" type="material" x="2280" y="1200" width="24" height="24"/>
+  <object id="74" name="rock" type="material" x="3168" y="1320" width="24" height="24"/>
+  <object id="75" name="rock" type="material" x="3840" y="1464" width="24" height="24"/>
+  <object id="76" name="rock" type="material" x="2472" y="288" width="24" height="24"/>
+  <object id="77" name="leaf" type="material" x="4056" y="1320" width="24" height="24"/>
+  <object id="78" name="leaf" type="material" x="3120" y="1224" width="24" height="24"/>
+  <object id="79" name="leaf" type="material" x="1632" y="432" width="24" height="24"/>
+  <object id="80" name="red_potion" type="spawn" x="1008" y="288" width="24" height="24">
+   <properties>
+    <property name="message" value="It's a yes-yes juice! "/>
+    <property name="nodeType" value="consumable"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object id="81" name="acornpeak" type="savepoint" x="2736" y="960" width="48" height="312"/>
+  <object id="82" type="killing_floor" x="2784" y="1327" width="96" height="17"/>
+  <object id="83" name="leaf" type="material" x="923" y="524" width="24" height="24"/>
+  <object id="84" name="stonerspeak" type="door" x="2616" y="144" width="24" height="48"/>
+  <object id="85" type="door" x="0" y="48" width="24" height="240">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="village-forest-acornpeak-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object id="86" name="next" type="door" x="24" y="240" width="24" height="48"/>
+  <object id="87" name="clouds1" type="door" x="2784" y="0" width="744" height="48"/>
+  <object id="88" name="clouds" type="door" x="2310" y="0" width="210" height="48"/>
+  <object id="89" name="clouds2" type="door" x="3528" y="0" width="648" height="48"/>
+  <object id="91" name="clouds3" type="door" x="4176" y="24" width="624" height="48"/>
+ </objectgroup>
+</map>

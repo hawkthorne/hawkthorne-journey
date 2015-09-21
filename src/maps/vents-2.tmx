@@ -1,0 +1,1816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="32" tilewidth="24" tileheight="24" backgroundcolor="#eaeaea">
+ <properties>
+  <property name="offset" value="18"/>
+  <property name="soundtrack" value="somewhereoutthere"/>
+ </properties>
+ <tileset firstgid="1" name="vents" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/vents.png" width="240" height="432"/>
+ </tileset>
+ <tileset firstgid="181" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="background" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzyESwCAMAMEUUZ4C/38hFtHMVBJmxboz1yOiAwAAAABHeD78aaoaif03ayqaif03aypqXO0F4EgL0f896g==
+  </data>
+ </layer>
+ <layer name="bg_vents2" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztl7EJwCAURK+PtQNkkoziaI7iaDFFioCgYvwh5z34nXD3+BYKcLEB8esOlsiXG/lyI19uVvL12dUt5LvSbi/ky418uZEvN/LlRr7cyLd4Jt2T/xdpfqt59O737/dBvty0+O7AUZuOvDBQdxjr/crXFvlOzwuWeYX8aJnn8Xy/tIx7Mb/F9wQHAynU
+  </data>
+ </layer>
+ <layer name="bg_vents" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztl1EOgyAQRPdfvvnuUXoUj9Kj7FE8ikfptrGNMcWiDGxp5iX7hczsIBAVIYQQQgghnkSR6yAyfSobm7z7Q2O5xtRYSKxDz+uyl7elRis889o8LfU+4Tl6aTBvfTzP3i/ntTtYt/cywFtLNU54jpnPaQVvuCbKk3nbeQN83mXn8pY5R9F9xE0vqQpo4ww89t6LvXWphWfeXJZ/n2eVavWQ13q8ALUUpVUL63EGailKqxaovI9vq9BBXutzHlZneF3xwF7v4d1+48jZZt7++Je8d8lMMEk=
+  </data>
+ </layer>
+ <layer name="vents" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztmF1ugzAMx32U3IHtPnntXkGa6PqA1r5sFUzddgCO0qPkKHMakCLLkADJChRLf6VN7DS/1PkAgOXZDkA+AdSt8Lu695hiWgjeEuOOAKJP6CNi9DtUaQDeyorvUjWC16ffqRrDe/Ho9zKC16ffJfHSfKU5vzZemq805+fKi+NUrn7PAMUr8tjCOmB86la0fS68mIcqiyjcU8WceGPbjuFNjZzzcAKTI1gWXMxMeSXzv2iJlseSsNma9ltdG7NQXsXV0/lwxUy4X9VZJNE7kScvyxaCtzLrQ8fLiKLrV3Hz0NfeVXds/i9beVNy9+Cv+KydXLG0b0ruHvyD9R8rY7Z4JeX9xfrPyDpE4tL7eII5TZU3ZWnxvnsI5+eKMdehewK1b2acGY5lqJjzt/Ydg+ccFrjui9C8Q8ZpG3NGeffjmzNr4cU7vaQ6M/vKWng5457hHowXkgfjTc3vTNKBPGPPmDfWuanPR6GVmzNU9Kn14e6TiWm7Kbc+23rpyNH/4rW1D+Tj8uN49budk8f7nbXwluZ5Qz1j7gRS7dJbIB+X35R1vtlmm93X/gAQslbU
+  </data>
+ </layer>
+ <layer name="platforms" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7BnIQn9UyFogMFsCZYAAMCqpL8PAAAAAMDdALrxAGM=
+  </data>
+ </layer>
+ <layer name="ladders/features" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztmEsOgjAQhuc8HECjK42Phe+Vr5Wvg3gRH1tYcgKP4lH81Q1RKIW2lDbzJX9CUhjmZ6AzgYhh6ktE9LSdg0uYel4xFBI9TMTWhcl3Bf7PpmIzajRRm0ZOfe5Yv3ENlYhtJ6AJ7ilyBLYT0IRs3/LFryyqfifQFJpBc2iRc77t/UPV7xJaQWtoA22p3jORqt8dtIcO0BE6lYiBvvzuz3/I7sFF5q7gG/dc9DqbjJHnr0aJ3FtQO+NaH/erHtTPWPPRr4gyfsOSa3WA6+s3Ov3aniVkcKW+umYYV/zqoiq/4ef3hZgqv4eownup0MUc1UnMUkMcD1Lmwgt0FcRJm2Fd2H8YhmFEvADqzS+u
+  </data>
+ </layer>
+ <layer name="collision" width="60" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlUESgCAIRb3/fTxHV2rTpiYTgY8EvBk3TYM+BGntX/RrPb9Z7YWmt/u+Gr59caHics/A8d39r4SMvhYOs3qL4jvrZU6vS0D6esTTO2px1x7v920PTh5G88hbjXJ8Z24HMc4OEL7UOKO41v2r6bvCrlrQvl9qvr3VPoKsvla9azF/NfeXnvnrvZLmDpFLlK9GrPKVE8WX2tdRfKlnyOqrOY+4M8PCF4HmPJLkPBMZfSMvRD6KorDhBIH9G68=
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="60" height="32">
+  <object type="sprite" x="-2" y="417" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="3" y="426" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="80" y="419" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="109" y="427" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="116" y="419" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="36" y="417" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="142" y="420" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="173" y="417" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="125" y="419" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="121" y="423" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="197" y="425" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="174" y="428" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="108" y="413" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="74" y="414" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="80" y="425" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="37" y="426" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="44" y="415" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="44" y="416" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="10" y="414" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="20" y="414" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="203" y="415" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="148" y="413" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="120" y="424" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="60" y="419" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="156" y="431" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="59" y="423" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="0" y="419" width="231" height="17"/>
+  <object type="sprite" x="943" y="333" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="956" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1066" y="336" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="767" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="750" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1209" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1241" y="339" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1267" y="341" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1244" y="338" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1238" y="336" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1235" y="336" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1328" y="338" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1273" y="338" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1267" y="336" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1275" y="337" width="27" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1310" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1293" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1201" y="340" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="1226" y="341" width="95" height="12"/>
+  <object type="sprite" x="1291" y="338" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="391" y="148" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="428" y="145" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="466" y="153" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="241" y="83" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="206" y="80" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="180" y="90" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="217" y="86" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="241" y="83" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="180" y="90" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="206" y="80" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="217" y="86" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="162" y="81" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="187" y="78" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="126" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="126" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="187" y="78" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="152" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="152" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="162" y="81" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="111" y="81" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="136" y="78" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="75" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="75" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="136" y="78" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="101" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="101" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="111" y="81" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="99" y="88" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="124" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="63" y="91" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="63" y="91" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="124" y="85" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="89" y="82" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="89" y="82" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="99" y="88" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="234" y="93" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="667" y="76" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="602" y="76" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="747" y="71" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="794" y="74" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="851" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="920" y="73" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="991" y="75" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1043" y="76" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="544" y="333" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="405" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="344" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="245" y="319" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="510" y="333" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="551" y="333" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="369" y="337" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="263" y="314" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="405" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="418" y="332" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="450" y="339" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="504" y="342" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="422" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="333" y="341" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="514" y="318" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="393" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="370" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="476" y="330" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="247" y="336" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="456" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="486" y="335" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="473" y="322" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="333" y="341" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="486" y="335" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="393" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="344" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="253" y="322" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="456" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="396" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="519" y="326" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="273" y="332" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="396" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="450" y="339" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="422" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="302" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="461" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="468" y="318" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="443" y="321" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="407" y="324" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="342" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="327" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="315" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="362" y="313" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="433" y="315" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="338" y="316" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="340" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="407" y="324" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="433" y="315" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="280" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="468" y="318" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="443" y="321" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="315" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="414" y="313" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="414" y="313" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="327" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="389" y="316" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="279" y="331" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="362" y="313" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="558" y="339" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="316" y="317" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="379" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="290" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="290" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="379" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="279" y="331" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="316" y="317" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="389" y="316" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="342" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="260" y="319" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="229" y="317" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="456" y="328" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="486" y="311" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="552" y="318" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="539" y="334" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="546" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="588" y="310" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="546" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="537" y="311" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="579" y="325" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="244" y="315" width="363" height="27"/>
+  <object name="main" type="door" x="1392" y="600" width="24" height="48"/>
+  <object type="door" x="1416" y="600" width="24" height="48">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="greendale-quad"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="vents"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1224" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1296" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1272" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="1056" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="984" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="864" y="600" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="climbable" x="1136" y="240" width="8" height="348"/>
+  <object type="enemy" x="768" y="336" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="rubberspider"/>
+   </properties>
+  </object>
+  <object type="enemy" x="960" y="600" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="rubberspider"/>
+   </properties>
+  </object>
+  <object type="enemy" x="192" y="312" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="rubberspider"/>
+   </properties>
+  </object>
+  <object type="enemy" x="912" y="72" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="rubberspider"/>
+   </properties>
+  </object>
+  <object type="sprite" x="500" y="579" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="456" y="576" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="369" y="580" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="315" y="571" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object name="watermelon" type="spawn" x="1320" y="360" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="consumable"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="door" x="0" y="432" width="24" height="72">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="vents"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="exit"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="24" y="456" width="24" height="48"/>
+  <object name="wrench" type="weapon" x="120" y="168" width="24" height="24"/>
+  <object type="enemy" x="408" y="576" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="rubberspider"/>
+   </properties>
+  </object>
+  <object type="sprite" x="552" y="576" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="529" y="579" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="563" y="583" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="500" y="579" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="484" y="589" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="459" y="588" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="524" y="588" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="590" y="579" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="527" y="585" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="527" y="585" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="480" y="581" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="sprite" x="480" y="581" width="30" height="11">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="10"/>
+    <property name="sheet" value="images/sprites/greendale/gascloud.png"/>
+    <property name="width" value="30"/>
+   </properties>
+  </object>
+  <object type="killing_floor" x="459" y="583" width="118" height="11"/>
+  <object name="chickenfinger" type="consumable" x="120" y="360" width="24" height="24"/>
+ </objectgroup>
+</map>

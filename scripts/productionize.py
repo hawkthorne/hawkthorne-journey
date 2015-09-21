@@ -8,7 +8,7 @@ import logging
 def create_conf_json(version):
     conf = json.load(open('src/config.json'))
 
-    if os.environ.get('TRAVIS_BRANCH', '') == 'master':
+    if os.environ.get('TRAVIS_BRANCH', '') != 'release':
         return
 
     conf.update({
@@ -35,10 +35,10 @@ def create_conf_lua(version):
 
 
 def main():
-    if os.environ.get('TRAVIS_BRANCH', '') == 'master':
-        v = "0.0.0"
-    else:
+    if os.environ.get('TRAVIS_BRANCH', '') == 'release':
         v = version.next_version()
+    else:
+        v = "0.0.0"
 
     logging.info("Creating osx/Info.plist")
     create_info_plist(v)

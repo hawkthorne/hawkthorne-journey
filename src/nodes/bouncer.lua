@@ -17,19 +17,25 @@ function Bouncer.new(node, collider)
 end
 
 function Bouncer:collide(node, dt, mtv_x, mtv_y)
-  if not node.isPlayer then return end
-  local player = node
+  if node.playerAttack then return end -- player attack will cause a crash and can't bounce anyways
+
+  -- spiders shouldn't interact with bouncers
+  if node.props and node.props.name == 'spider' then return end
+
+  local node_y = node.position.y + node.height
   
-  local player_y = player.position.y + player.character.bbox.height - player.character.bbox.y
+  if node.isPlayer then
+    node_y = node.position.y + node.character.bbox.height - node.character.bbox.y
+  end
   
-  if player_y > self.node.y + self.node.height then
+  if node_y > self.node.y + self.node.height then
     sound.playSfx('jump')
-    player.fall_damage = 0
-    player.jumping = true
+    node.fall_damage = 0
+    node.jumping = true
     if self.double_bounce then
-      player.velocity.y = self.dbval
+      node.velocity.y = self.dbval
     else
-      player.velocity.y = self.bval
+      node.velocity.y = self.bval
     end
   end
 end

@@ -7,4 +7,5 @@ return {
   leslie = {0, 0, 0, false},
   oldman = {0, 0, 0, false},
   juanita = {0, 0, 0, false},
+  frankie = {0, 0, 0, false},
 }

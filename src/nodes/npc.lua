@@ -258,7 +258,8 @@ function NPC.new(node, collider)
   npc.name = node.name
   npc.type = node.type
 
-  npc.busy = false
+  npc.shake = false
+  npc.busy = npc.props.busy or false
 
   --sets the position from the tmx file
   npc.position = {x = node.x, y = node.y}
@@ -285,6 +286,9 @@ function NPC.new(node, collider)
   npc.walk_speed = npc.props.walk_speed or 18
   npc.wasWalking = false
   npc.velocity = {x=0, y=0}
+  --npcs running away
+  npc.flee = npc.props.flee or false
+  npc.hidden = false
   
   npc.run_speed = npc.props.run_speed or 100
 
@@ -343,6 +347,8 @@ function NPC.new(node, collider)
 
   -- a special item is an item in the level that the player can steal or the npc reacts to the player having
   npc.special_items = npc.props.special_items or {}
+  -- a special enemy is an enemy ( typicall a boss ) that's presence will cause the npc to become angry and attack 
+  npc.special_enemy = npc.props.special_enemy or {}
   npc.greeting = npc.props.greeting or false
 
   -- store the original position, used in running
@@ -367,6 +373,7 @@ function NPC.new(node, collider)
               npc)
 
   npc.emotion = Emotion.new(npc)
+  npc.attackingEnemy = false
 
   return npc
 end
@@ -440,6 +447,12 @@ function NPC:collide(node, dt, mtv_x, mtv_y)
     self.wasWalking = true
     self.walking = false
   end
+  if self.attackingEnemy then
+  	if node.isEnemy then
+  		node:hurt(10)
+  		self.attackingEnemy = false
+  	end
+  end
 
   if self.props.collide then self.props.collide(self, node, dt, mtv_x, mtv_y) end
 end
@@ -471,6 +484,7 @@ end
 function NPC:update(dt, player)
   if self.state == 'hidden' then return end
   if self.menu.state ~= "closed" then self.menu:update(dt) end
+  if self.menu.state ~= "closed" and self.busy then self.menu:close(player) end
   self:animation():update(dt)
   self:handleSounds(dt)
 

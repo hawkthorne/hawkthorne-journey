@@ -1,8 +1,12 @@
--- inculdes
+local utils = require 'utils'
+local Dialog = require 'dialog'
+local app = require 'app'
 
 return {
   width = 32,
   height = 48,  
+  run_speed = 50,
+  run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}},
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
@@ -13,30 +17,49 @@ return {
   },
 
   walking = true,
-  walk_speed = 36,
- 
+  --walk_speed = 36,
+
+ enter = function(npc, previous)
+    local show = npc.db:get('acornKingVisible', false)
+    local acornDead = npc.db:get("bosstriggers.acorn", true)
+    local bldgburned = npc.db:get('house_building_burned', false )
+    if show == true and not npc.hidden then
+      npc.state = 'walking'
+      npc.collider:setGhost(npc.bb)
+      npc.run_offsets = {{x=5, y=0}, {x=-1000, y=0}, {x=-990, y=0}}
+      npc.flee = true
+      npc.hidden = true
+    elseif bldgburned == true then
+      npc.flee = false
+      npc.state = 'hidden'
+      npc.collider:setGhost(npc.bb)
+    end
+  end,
+
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='What are you carrying?'},
-    { ['text']='Hello!' },
-    { ['text']='This town is in ruins!', ['option'] ={
-        { ['text']='How ?', ['option']={
-            { ['text']='I will overthrow him'},
-            { ['text']='Seems too hard'},
-            { ['text']='I will think about it'},
-            { ['text']='How do you know'},
-             }},
-        { ['text']='He can not die' },
-        { ['text']='Lets overthrow him?' },
-        { ['text']='Get this town together!'},
-    }},
+    { ['text']='This town is in ruins!' },
+    { ['text']='Talk about the Acorn King'},
   },
-
+  talk_commands = {
+    ['Talk about the Acorn King'] = function (npc, player)
+      npc.walking = false
+      local check = app.gamesaves:active():get("bosstriggers.acorn", false)
+      if check ~= false then
+          Dialog.new("You saved us from the Acorn King! Thank you so much, adventurer!", function()
+          npc.menu:close(player)
+          npc.walking = true
+        end)
+      else
+        Dialog.new("The Acorn King? He's a monster! It's because of the acorn infestation that we had to close the mines, it got too dangerous!", function()
+          npc.menu:close(player)
+          npc.walking = true
+          end)
+      end
+      end,    
+      },
   talk_responses = {
-    ["Hello!"]={
-      "We don't take kindly to strangers these days,",
-      "I suggest you move on quickly.",
-    },
     ["This town is in ruins!"]={
       "Ever since that tyrant {{grey}}Hawkthorne{{white}} started ruling,",
       "our town started falling apart into pieces. If only he were overthrown!",
@@ -45,36 +68,10 @@ return {
       "It's a piece of wood. The town {{green_light}}blacksmith{{white}} needs it to make his weapons.",
       "You can find him at the last house on the street.",
     },
-    ["How ?"]={
-      "I hear he has a castle far off",
-      "It is a long and hard journey but rumor has it a big reward awaits an adventurer brave enough to try.",
-    },
-    ["He can not die"]={
-      "You are probably right. His reign seems to go on forever!",
-    },
-    ["Lets overthrow him?"]={
-      "I have a job carrying wood",
-      "I can't just pack up and leave",
-      "I am making money to support my family",
-    },
-    ["Get this town together!"]={
-      "That is rude but I forgive you",
-    },
-    ["I will overthrow him"]={
-      "Good luck just know",
-      "It wont be easy",
-    },
-    ["Seems too hard"]={
-      "true",
-      "might as well try?",
-    },
-    ["I will think about it"]={
-      "Think hard",
-      "For this Journey will change you",
-    },
-    ["How do you know"]={
-      "I just do",
-      "Dont question",
-    },
   },
+  update = function(dt, npc, player)
+    if npc.flee then
+      npc:run(dt, player)
+    end
+  end,
 }

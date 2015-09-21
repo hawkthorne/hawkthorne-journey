@@ -4,6 +4,10 @@ local Dialog = require 'dialog'
 local prompt = require 'prompt'
 local json  = require 'hawk/json'
 local app = require 'app'
+local utils = require 'utils'
+local Item = require 'items/item'
+local Gamestate = require 'vendor/gamestate'
+local app = require 'app'
 
 local Quest = {}
 
@@ -43,7 +47,7 @@ function Quest:activate(npc, player, quest, condition)
   local completed = self.alreadyCompleted(npc,player,quest)
   if completed and not quest.infinite then
     -- If we've already done this quest, give the player the congrats message without reward
-    Dialog.new(quest.completeQuestSucceed, function()
+    Dialog.new(quest.completed or quest.completeQuestSucceed, function()
       npc.menu:close(player)
     end)
     return
@@ -59,8 +63,11 @@ function Quest:activate(npc, player, quest, condition)
 end
 
 function Quest:save(quest)
+  local level = Gamestate.currentState()
+  level.hud:startSave()
   local gamesave = app.gamesaves:active()
   gamesave:set( 'quest', json.encode( quest ) )
+  level.hud:endSave()
 end
 
 function Quest:load(player)
@@ -82,12 +89,36 @@ function Quest.giveQuestSucceed(npc, player, quest)
       if result == 'Yes' then
         player.quest = quest.questName
         player.questParent = quest.questParent
+        --if there is an extra info message for player after quest prompt, display it
+        if quest.promptExtra then
+          Dialog.new(quest.promptExtra, function()
+          npc.menu:close(player)
+          end)
+        end
         Quest:save(quest)
+        Quest.addQuestItem(quest, player)
       end
       npc.menu:close(player)
       npc.prompt = nil
     end)
   end)
+end
+
+function Quest.addQuestItem(quest, player)
+  local itemNode = utils.require( 'items/details/quest' )
+  itemNode.type = 'detail'
+  itemNode.description = "Quest for " .. quest.questParent
+  itemNode.info = quest.questName
+  local item = Item.new(itemNode)
+  player.inventory:addItem(item, true)
+end
+
+function Quest.removeQuestItem(player)
+  local itemNode = utils.require( 'items/details/quest' )
+  itemNode.type = 'detail'
+  local item = Item.new(itemNode)
+  playerItem, pageIndex, slotIndex = player.inventory:search(item)
+  player.inventory:removeItem(slotIndex, pageIndex)
 end
 
 function Quest.giveQuestFail(npc, player, quest)
@@ -98,6 +129,7 @@ function Quest.giveQuestFail(npc, player, quest)
       if result == 'Yes' then
         player.quest = nil
         player.questParent = quest.questParent
+        Quest.removeQuestItem(player)
       end
       npc.menu:close(player)
       npc.prompt = nil
@@ -118,11 +150,24 @@ end
 function Quest.testSuccess(player, quest)
   local success = false
   if quest.collect then
+  --Quest type collect: collect and return a certain item for an NPC
     if quest.collect.type == 'consumable' then
       success = player.inventory:hasConsumable(quest.collect.name)
     elseif quest.collect.type == 'material' then
       success = player.inventory:hasMaterial(quest.collect.name)
+    elseif quest.collect.type == 'key' then
+      success = player.inventory:hasKey(quest.collect.name)
     end
+  elseif quest.removeall then
+  --Quest type removeall: empty a certain level of a certain node
+    local level = Gamestate.get(quest.removeall.level)
+    for _,node in pairs(level.nodes) do
+            if node.name == quest.removeall.name then
+              return false
+            else
+              success = true
+            end
+        end
   end
   return success
 end
@@ -131,6 +176,16 @@ function Quest.completeQuestFail(npc, player, quest)
   Dialog.new(quest.completeQuestFail, function()
     npc.menu:close(player)
   end)
+end
+
+function Quest.drug(npc, player, dbSet, level, door)
+  local db = app.gamesaves:active()
+  local value = dbSet
+  db:set(value, true)
+  local current = Gamestate.currentState()
+  if current.name ~= level then
+    current:exit(level, door)
+  end
 end
 
 function Quest.completeQuestSucceed(npc, player, quest)
@@ -147,9 +202,19 @@ function Quest.completeQuestSucceed(npc, player, quest)
       npc:affectionUpdate(quest.reward.affection)
       player:affectionUpdate(quest.questParent, quest.reward.affection)
     end
+    if quest.reward.money then
+      player.money = player.money + quest.reward.money
+    end
+    if quest.reward.drug then
+      local dbSet = quest.reward.dbSet
+      local level = quest.reward.level
+      local door = quest.reward.door
+      Quest.drug(npc, player, dbSet, level, door)
+    end
     if quest.collect then
       player.inventory:removeManyItems(1, quest.collect)
     end
+    Quest.removeQuestItem(player)
     player.quest = nil
     Quest:save({})
     npc.menu:close(player)

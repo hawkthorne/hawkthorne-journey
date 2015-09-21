@@ -12,6 +12,14 @@ return {
     {"bow",3,230},
     {"arrow",25,8},
   },
+  armor = {
+    {"femininefaulds",1,450},
+    {"lightarmor",1,375},
+    {"windwalkercloak",1,225},
+    {"ajaxshield",1,225},
+    {"berserkerbarbute",1,300},
+    {"platemail",5,750}
+  },
   materials = {
     {"leaf",30,30},
     {"rock",30,15},

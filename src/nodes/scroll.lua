@@ -40,6 +40,7 @@ function Scroll.new(node, collider)
   collider:setSolid(scroll.bb)
 
   scroll.dropping = false
+  scroll.dropped = false
 
   scroll.position = { x = node.x, y = node.y }
   scroll.velocity = { x = node.x, y = node.y }
@@ -65,6 +66,12 @@ function Scroll:update(dt, player, map)
     
     self.bb:moveTo(self.position.x + self.width / 2, self.position.y + self.height / 2)
   end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
+  end
 end
 
 function Scroll:keypressed( button, player)
@@ -86,7 +93,7 @@ function Scroll:keypressed( button, player)
         item:select(player)
       end
     end
-    player.inventory:addItem(item, false, callback)
+    player.inventory:addItem(item, true, callback)
   end
 end
 
@@ -103,11 +110,13 @@ function Scroll:drop(player)
   end
 
   self.dropping = true
+  self.dropped = true
 end
 
 function Scroll:floorspace_drop(player)
   self.dropping = false
   self.position.y = player.footprint.y - self.height
+  self.bb:moveTo(self.position.x + self.width / 2, self.position.y + self.height / 2)
 
   self.containerLevel:saveAddedNode(self)
 end
@@ -118,8 +127,6 @@ function Scroll:floor_pushback()
   self.dropping = false
   self.velocity.y = 0
   self.collider:setPassive(self.bb)
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 function Scroll:wall_pushback()

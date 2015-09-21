@@ -6,7 +6,7 @@
     }
   },
   "costumes": [
-    {"category": "base", "name": "Vaughn", "sheet": "base", "ow": 1}
+    {"category": "base", "name": "Vaughn Miller", "sheet": "base", "ow": 1}
   ], 
   "name": "vaughn",
   "bbox": {

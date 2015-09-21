@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="15" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="117"/>
   <property name="green" value="117"/>
   <property name="offset" value="1"/>
@@ -31,15 +30,15 @@
  </layer>
  <layer name="foreground2" width="30" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2D4Ac6BdgAVQDgQRwyAvUlAnDwA9uYCcR4NzHUGYhcS1JOSdoKAOBiIQ7DI+QGxPwlmkQJigTgOiOOxyEUCcRSN7MUHUoA4dQDspQYAAKmLBxU=
+   eJxjYBgFo2D4Ac6BdgAVQDgQRwyAvUlAnDwA9uYCcR4NzOUCYm4S1JOSdoKAOBiIQ7DIiQKxGAlmkQJigTgOiOOxyCkAsSKN7MUHUoA4dQDspQYAAHBRBb8=
   </data>
  </layer>
- <layer name="collision" width="30" height="15">
+ <layer name="collision" width="30" height="15" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo4B4MIVKZlDDHELmU2IHsn5qmEcpoNRuStyPTd8UIjEx6gcKkOL+kQaqBggPFAAAqPAmAQ==
   </data>
  </layer>
- <objectgroup name="nodes" width="30" height="15" visible="0">
+ <objectgroup name="nodes" width="30" height="15">
   <object name="next" type="door" x="600" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
@@ -57,6 +56,11 @@
   <object type="info" x="384" y="288" width="48" height="24">
    <properties>
     <property name="info" value="Time Desk: The Chronicles of Dean Dangerous"/>
+   </properties>
+  </object>
+  <object name="receipt" type="key" x="312" y="288" width="24" height="24">
+   <properties>
+    <property name="info" value="You found the {{orange}}receipt{{white}} for the peanut bar costume! It seems that the Dean wrote some rap lyics at the back: 'Well I'm a peanut bar, and I'm here to say...'"/>
    </properties>
   </object>
  </objectgroup>

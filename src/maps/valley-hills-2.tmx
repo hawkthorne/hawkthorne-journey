@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="150" height="40" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="26"/>
+  <property name="overworldName" value="valley_1"/>
+  <property name="soundtrack" value="valley"/>
+ </properties>
+ <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
+ </tileset>
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="sky" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0lENAkEQBcHbDQJOAAIQgHwEIOAEIAABfCLjzUyqknbQxwEAAAAAAAAAAABU8Vp9o670G76aKf2Gr2ZKv+Grmd6rb9R1rb5R12f1jbq+q2/U9Vt9o67b7ht1nbtv1HXffaOux+4bdT1336gr/YavZkq/4auZ0m/4aqb0G76aKf2Gr2ZKv+GrmdJv+Gqm9Bu+min9hq9m+gOBv84r
+  </data>
+ </layer>
+ <layer name="taco_mountains_bg" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztldlug0AQBOHLcr451xtOwsfMp6cjxxKyYHc2IWIGV0n94EMD9JTXXQcAAAAAAAAAAAAAAAAAAAAAAAAAsB03fdfdKnfKvfKgPPZx5u0J9WDqw9SLqR9TT6a+bOv7asWz44NePynPyovyqrz17XNa5l0r6sHUh6kXUz+mnuzwR69qrv7H79yz40Gvj8q78qF8KuMv3GuZN6X23Hs6/9SDqQ9TL6Z+TD3ZMONVy7lWc7Vld96uazseft6fy/R5va6Mp85m5y25VXvuPZx/w8mf7x5sLpfdtJxrNVdbfueerks7njxnMbXvTe+vdL2SWx73W86/iCz5tOSW91wruVrb3dK8UteeHa+VsW+7nvc+S3OzueXx6uzWWPj88hxyzKyeGxfzVtnxVlnjPjO55fXKk9p/aotXZ7c8/13XlCxurelVYzbfUeZEB69yJjp4lTPRwauciQ5e5Ux08CpnooNXORMdvMqZ6OBVzkQHr3ImOniVM9HBq5yJDl7lTHTwKmeig1c5E50vYNsxMw==
+  </data>
+ </layer>
+ <layer name="taco_mountains" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.55"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmNtugzAQBcln9frW61vSpt+zn95TiUhWamDtQPCSGem8BYfFc4ySrgMAAAAAAAAAAAAAAAAAAAAAAAAAgC1zt+ts7Xu4Fpq1u1celEflSXnerX1X2+TlhrzSrN2r8qa8Kx/K54BXOHgZ+xvySrN2B+VL+VaOys+AKyUOwn/0fG0Jt9RtU8dNXTd13tR9y71zr3Uu7HuXcsm5VeLgGvO0zp9XU255HUlRt00dN3Xd1HlT9y33zq05F0r3bsypnFulDl46zxY5eTXmlteRFD1/O/brqvN2GFi/5lwo2TuPU6kzpQ6WznMr51nq1ZBbXkfSz5+vm1u/9lzwuljiVGmGOjI1j6cTW3Bvau+9jng+n15Xey54XVzSqZxb3nk8ndjCu3Rs772OnNbqn+3kNX0W3bulnUrvb47vO5+z5jdDSxR4MOpWoVNur+bcu9YzNWek/4Tm8Koyq+9jxERxC6/iJYJbeBUzrYNXMdM6eBUzrYNXMdM6eBUzrYNXMdM6eBUzrYNXMdM6eBUzrYNXMdM6v7thZc0=
+  </data>
+ </layer>
+ <layer name="mountains_bg" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.6"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlWlv00AURS//nD/GUlaxbwo7VBTi0koUXOh3jtWMNBq8O27G5R7pSNHYzryXdzOWjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHG7JLbV3T1Fu7hTbyB1/EabnOf+3zfPbyLdzDsi1UNYk1cE/dU924VehE9id5Ej6JXXcS+/zPPmO1TfIKP8RE+xAdJrppy0TePr1h/iS/wOYZ9sapBrIlr4p7q3lrG5oNeRE+iN9Gj6FVD9h1D31ovKx+Y7Xt8h2/xDb7GVZKTplx05TGwz/pn/IQfMeyLVQ1iTVwT91T31jI0H2G29CJ6Er2JHkWvGrLvGPrWGrhsZ2rBbNcbv+HXKFtxTppy0ZXHQHj2CL/jIRbnis9iTUfRjGPG5iPMNjxDb6JHrTcWHftOoW+tgV2cqXMSMlXiL/yZZGu1yUeai755TJ89wz/4G0/PFZ/Fms4aZjw2H6vkGXoTPapMnm3at2Ls+6yu1rb/0C7O1DkJmTqMshJycoBfonMq5CLO1JA8rutV6rbyQe06aJhtmexZdGS67/usoqnWtv9QW61znalzUibnR5yTE/yBx5tcFEkmhuSxIVO1uUqzNSYf1Cxq10nLbMvI0x6Z7vM+izPV1FvaZ59a287UHGmZ9z+G3AX75rHjeyf/5nX5mOLYc2RopqbUljtDcjWTs81g6vyGnCPHF5CpuLbcca6Wae44V8s0d5yrZZo7ztUyzR3napnmjnO1THPHuVqmueNcLdPc+QvgCrOZ
+  </data>
+ </layer>
+ <layer name="mountains" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.65"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1NdqwzAYQGH70bsX6R50tykd6YLu9u16bgKBmtRRTGQp54MDIReSol+kKCRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJUurmyqKYpwVapKWyHWspzdl0WHedNmiTtmibdmiX9mifDmrsP85avsW/Ys9mhs+zZfVslmmFVmmtYv9DvjuiYzqhUzqjc7qgS+rSVY2zh6zV5N212bTN5prvbuiW7qhH9/RAj/Q0sOd/QtZq8u7aLNZs+v85k5xNf69XeqN3+qBP+qJv+ql5/tC1mnzXbRZrNp1ysrMZ3KtXo2HnD11r1N+bstxn0y1H32vY+cdZK+T3pir32TzTS8BeVecPPXdIqf9v5TybpmriDqbtbeU+m9RL9W3FvjfL823FvjPL823Fvi/L8239AvsQydQ=
+  </data>
+ </layer>
+ <layer name="bg_leaves" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1tFtgzAUQFErk7BJ+GcA1mEURslodUQtuQ1xBDUNbs+R3kdQlPDQjZUQAAAAAAAAAAAAAAAAAAAAACgZL+H27nvg7xkuYcpfx876eG2O06XRHltdY0N5N7GjPl7r7tfTDLpio9TOva1xaWpeG+cXWzzrqDTOL17Z01V+ftU+u8bls7+cj6WJ7+9qfv87ZDs/7N7qfnu7Ours+vx/F7ZMq88/9RR3mL5N8/tV6GqqeT97ukrT0rMf13ta7arF/c7SVfbb3dVUK7/twhn1sqsW9kvO0tVPzqmVZ1/lno4wLPdYaqrY1dn3S3T1u3SlqyP8l64+ALkr7SY=
+  </data>
+ </layer>
+ <layer name="bg_leaves_2" width="150" height="40">
+  <properties>
+   <property name="parallax" value="0.8"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1ssNgkAUBdAJDVjAbNjZhqVRiqVQmuAnIQiB0QVv9JzkbYyLdycXmJQAAAAAAAAAAAAAAAAAAAAAAADiOjfpmhdm+L09erdvPHO1C1N9togm533vz6lJaW2G//ZH7/uJYe/LsH+3MlVni2h23qt9ek2u9Ozzjl7Vmi2iXNirGp/rjXdVV3O2iBbOe1evns/2/O7VH51nbsw3ft83OvWWO2qeyKZ3163zLexZf3S2ufzYrahTkfNEVfI9+KNeLU7EPFFt3F31Sq+K7XhX6dUP9+oGep5n1w==
+  </data>
+ </layer>
+ <layer name="floor" width="150" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1rtNA0EUhtGxKABSHjlO7X4ogIBHCbQAXUCV3IAVkgV4l52rAd1zpD/bYEf6pJnWAAAAAACgjrOT9nQa2x3ZRew8Nvp/+duuPnrZL9yx/qaNPh9jbH/R1JKNPh9j6IoMuiLDd13F27zFG73tVo6aDruaetp3GjVtk3rSVU2XB/dV7550VdN1Yku6qktXZNAVGXRFBl2RQVf0dLNp7WHl7mL3G13x6TZ6eOy0OQ1SQ8+u5owadEUGXZFBV2TQFRmWdPUc37/EXleMGuZ0NfX01mHU8FNXPXvSVS1fdZXR07Q1d6j972X0ZGZmZmY5ewetbw0x
+  </data>
+ </layer>
+ <objectgroup color="#000000" name="nodes" width="150" height="40">
+  <object type="breakable_block" x="1728" y="600" width="48" height="48">
+   <properties>
+    <property name="hp" value="2"/>
+    <property name="sprite" value="sand-block-dark-four"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1752" y="576" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1752" y="528" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1296" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1128" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1752" y="552" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object name="main" type="door" x="24" y="792" width="48" height="48"/>
+  <object type="breakable_block" x="888" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1704" y="624">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark-up"/>
+    <property name="tile_id" value="105"/>
+   </properties>
+   <polygon points="0,0 24,-24 24,0"/>
+  </object>
+  <object type="breakable_block" x="1728" y="576" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1704" y="624" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2160" y="672" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1392" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_turret"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1680" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_heavy"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="600" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="600" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="240" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="240" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="624" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2304" y="624" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1920" y="696" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1992" y="624" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2280" y="648" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="2016" y="576" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="enemy" x="528" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_ranged"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2088" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_ranged"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1440" y="768" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_ranged"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2328" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="648" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2448" y="720" width="48" height="48">
+   <properties>
+    <property name="drop" value="alien_object3"/>
+    <property name="enemytype" value="alien_elite"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="2184" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_heavy"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1632" y="600" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_elite"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1752" y="720" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="1896" y="576" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1536" y="648" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="768" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="768" y="816">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark-up"/>
+    <property name="tile_id" value="105"/>
+   </properties>
+   <polygon points="0,0 24,-24 24,0"/>
+  </object>
+  <object type="breakable_block" x="792" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="816" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="816" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="enemy" x="1200" y="792" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="alien_heavy"/>
+    <property name="quest" value="Aliens! - Attack alien camp and bring back alien technology"/>
+   </properties>
+  </object>
+  <object type="door" x="0" y="552" width="24" height="288">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="valley-2"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="hills"/>
+   </properties>
+  </object>
+  <object name="bone" type="material" x="984" y="816" width="24" height="24"/>
+  <object name="bone" type="material" x="360" y="816" width="24" height="24"/>
+  <object name="bone" type="material" x="2064" y="744" width="24" height="24"/>
+  <object type="enemy" x="344" y="773" width="14" height="25">
+   <properties>
+    <property name="enemytype" value="pinata"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="792" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="816" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="816" y="768">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark-up"/>
+    <property name="tile_id" value="105"/>
+   </properties>
+   <polygon points="0,0 24,-24 24,0"/>
+  </object>
+  <object type="breakable_block" x="840" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="840" y="744" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="864" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="864" y="744" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="840" y="792" width="48" height="48">
+   <properties>
+    <property name="hp" value="2"/>
+    <property name="sprite" value="sand-block-dark-four"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="240" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="216" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="216" y="768" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="216" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="264" y="816" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="264" y="792" width="24" height="24">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark"/>
+   </properties>
+  </object>
+  <object type="breakable_block" x="192" y="840">
+   <properties>
+    <property name="hp" value="1"/>
+    <property name="sprite" value="sand-block-dark-up"/>
+    <property name="tile_id" value="105"/>
+   </properties>
+   <polygon points="0,0 24,-24 24,0"/>
+  </object>
+  <object name="red_potion" type="spawn" x="1824" y="744" width="24" height="24">
+   <properties>
+    <property name="message" value="A health potion!"/>
+    <property name="nodeType" value="consumable"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

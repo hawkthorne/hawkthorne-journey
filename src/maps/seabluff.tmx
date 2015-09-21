@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="57" height="23" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="57" height="23" tilewidth="24" tileheight="24" nextobjectid="25">
  <properties>
   <property name="blue" value="250"/>
   <property name="green" value="225"/>
@@ -104,23 +104,23 @@
    eJzt1bENwCAMBVHE/m0WIAmBKmswVv4EWEEusHRPuhZZLkxKQAxvngcAnqybww0CAEQ0+LtMR/5fVY9qqjvstuiNU13qXpjHysMOMwCI4QOukzIk
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="57" height="23" visible="0">
-  <object type="liquid" x="311" y="465" width="72" height="24">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" type="liquid" x="311" y="465" width="72" height="24">
    <properties>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
-  <object type="liquid" x="841" y="483" width="48" height="24">
+  <object id="2" type="liquid" x="841" y="483" width="48" height="24">
    <properties>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
-  <object type="liquid" x="794" y="458" width="48" height="24">
+  <object id="3" type="liquid" x="794" y="458" width="48" height="24">
    <properties>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
-  <object type="sprite" x="419" y="417" width="24" height="24">
+  <object id="4" type="sprite" x="419" y="417" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -130,20 +130,20 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="liquid" x="371" y="444" width="48" height="24">
+  <object id="5" type="liquid" x="371" y="444" width="48" height="24">
    <properties>
     <property name="foreground" value="false"/>
     <property name="sprite" value="images/sprites/castle/seabluffwave.png"/>
    </properties>
   </object>
-  <object name="main" type="door" x="180" y="360" width="58" height="48">
+  <object id="6" name="main" type="door" x="180" y="360" width="58" height="48">
    <properties>
-    <property name="level" value="black-caverns-2"/>
+    <property name="level" value="black-caverns-3"/>
     <property name="sound" value="false"/>
     <property name="to" value="seabluff"/>
    </properties>
   </object>
-  <object type="sprite" x="504" y="456" width="24" height="24">
+  <object id="7" type="sprite" x="504" y="456" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -153,7 +153,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="600" y="432" width="24" height="24">
+  <object id="8" type="sprite" x="600" y="432" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -163,7 +163,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="600" y="480" width="24" height="24">
+  <object id="9" type="sprite" x="600" y="480" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -173,7 +173,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="456" y="480" width="24" height="24">
+  <object id="10" type="sprite" x="456" y="480" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -183,7 +183,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="672" y="456" width="24" height="24">
+  <object id="11" type="sprite" x="672" y="456" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -193,7 +193,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="336" y="504" width="24" height="24">
+  <object id="12" type="sprite" x="336" y="504" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -203,7 +203,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="768" y="504" width="24" height="24">
+  <object id="13" type="sprite" x="768" y="504" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1|1,2"/>
     <property name="height" value="24"/>
@@ -213,7 +213,7 @@
     <property name="window" value="5"/>
    </properties>
   </object>
-  <object type="sprite" x="704" y="416" width="24" height="24">
+  <object id="14" type="sprite" x="704" y="416" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -223,7 +223,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="728" y="416" width="24" height="24">
+  <object id="15" type="sprite" x="728" y="416" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -233,18 +233,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="768" y="432" width="24" height="24">
-   <properties>
-    <property name="animation" value="1-4,1"/>
-    <property name="foreground" value="false"/>
-    <property name="height" value="24"/>
-    <property name="jumanji" value=""/>
-    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
-    <property name="speed" value="0.3"/>
-    <property name="width" value="24"/>
-   </properties>
-  </object>
-  <object type="sprite" x="744" y="432" width="24" height="24">
+  <object id="16" type="sprite" x="768" y="432" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -255,19 +244,30 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="312" y="408" width="577" height="48">
+  <object id="17" type="sprite" x="744" y="432" width="24" height="24">
+   <properties>
+    <property name="animation" value="1-4,1"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="24"/>
+    <property name="jumanji" value=""/>
+    <property name="sheet" value="images/sprites/castle/seabluffwave.png"/>
+    <property name="speed" value="0.3"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object id="18" type="sprite" x="312" y="408" width="577" height="48">
    <properties>
     <property name="sheet" value="images/sprites/castle/seabluffbridge.png"/>
    </properties>
   </object>
-  <object type="door" x="1344" y="0" width="24" height="408">
+  <object id="19" type="door" x="1344" y="0" width="24" height="408">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="castle-hawkthorne-entrance"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="sprite" x="450" y="392" width="24" height="24">
+  <object id="20" type="sprite" x="450" y="392" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -277,7 +277,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="655" y="393" width="24" height="24">
+  <object id="21" type="sprite" x="655" y="393" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -287,7 +287,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="679" y="393" width="24" height="24">
+  <object id="22" type="sprite" x="679" y="393" width="24" height="24">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="foreground" value="false"/>
@@ -297,8 +297,8 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object name="seabluff-to-castle" type="door" x="1296" y="360" width="24" height="48"/>
-  <object type="sprite" x="833" y="109" width="220" height="23">
+  <object id="23" name="seabluff-to-castle" type="door" x="1296" y="360" width="24" height="48"/>
+  <object id="24" type="sprite" x="833" y="109" width="220" height="23">
    <properties>
     <property name="animation" value="1,1-5"/>
     <property name="height" value="24"/>

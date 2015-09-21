@@ -50,6 +50,9 @@ function Player.new(collider)
   plyr.married = false
   plyr.quest = nil
   plyr.questParent = nil
+
+  plyr.minesDoor = false
+
   plyr.affection = {}
 
   plyr.controlState = Statemachine.create({
@@ -78,6 +81,10 @@ function Player.new(collider)
   plyr.punchDamage = 1
 
   plyr.inventory = Inventory.new( plyr )
+  plyr.currentArmor = {primary = 0, secondary = 0}
+  plyr.defense = 0
+  plyr.protection_per_armor = 5 -- Amount of protection for each piece of armor
+  plyr.protection = 0 -- A set amount of damage that is always defended against
 
   plyr.money = plyr.startingMoney   
   plyr.slideDamage = 8
@@ -113,6 +120,8 @@ function Player:refreshPlayer(collider)
     end
   end
 
+  self.currentLevel = Gamestate.currentState()
+
   self.invulnerable = false
   self.events = queue.new()
   self.rebounding = false
@@ -145,10 +154,13 @@ function Player:refreshPlayer(collider)
     self.currently_held:initializeBoundingBox(collider)
     self.currently_held.animation = self.currently_held.defaultAnimation
   elseif self.currently_held and (self.currently_held.isVehicle or self.currently_held.isProjectile or self.currently_held.isThrowable) then
-    if self.currently_held.isVehicle then
-      local vehicle = self.currently_held
-      vehicle:drop(self)
-      vehicle:pickup(self)
+    local holdable = self.currently_held
+    -- If we are returning to the same level, pickup the holdable again, otherwise drop it
+    if holdable.containerLevel.name == self.currentLevel.name then
+      holdable:pickup(player)
+    else
+      self:setSpriteStates('default')
+      self.currently_held = nil
     end
   else
     self:setSpriteStates('default')
@@ -180,8 +192,6 @@ function Player:refreshPlayer(collider)
   self.wielding = false
   self.prevAttackPressed = false
   self.previous_character_height = self.character.bbox.height
-
-  self.currentLevel = Gamestate.currentState()
 end
 
 ---
@@ -258,6 +268,20 @@ function Player:switchWeapon()
   self:selectWeapon(self.inventory:tryNextWeapon())
 end
 
+-- Set the current armor.
+-- @return nil
+function Player:selectArmor(armor)
+  self.currentArmor[armor.subtype] = armor.defense
+  self.defense = 0
+  self.protection = 0
+  for _, defns in pairs(self.currentArmor) do
+    self.defense = self.defense + defns
+    if defns > 0 then
+      self.protection = self.protection + self.protection_per_armor
+    end
+  end
+end
+
 function Player:keypressed( button, map )
   if self.dead then return end
 
@@ -324,15 +348,19 @@ function Player:keyreleased( button, map )
   end
 end
 
+function Player:canStand(map)
+  local dd = self.character.bbox.height - self.character.bbox.duck_height
+  return collision.stand(map, self, self.position.x, self.position.y + dd,
+                  self.character.bbox.width, self.character.bbox.duck_height, 
+                  self.character.bbox.height)
+end
+
 -- Called when the player has stopped holding the down key while crawling
 -- changes the state based on whether standing is possible or not
 -- @param map the collision map
 -- @return nil
 function Player:checkBlockedCrawl(map)
-  local dd = self.character.bbox.height - self.character.bbox.duck_height
-  if not collision.stand(map, self, self.position.x, self.position.y + dd,
-               self.character.bbox.width, self.character.bbox.duck_height, 
-               self.character.bbox.height) then
+  if not self:canStand(map) then
     self:setSpriteStates('crawling')
   elseif self.current_state_set == 'crawling' then
     self:setSpriteStates(self.previous_state_set)
@@ -344,13 +372,7 @@ end
 -- @param dt The time delta
 -- @return nil
 function Player:update(dt, map)
-
-  if Dialog.currentDialog then
-    self.controlState:inventory()
-  else
-    self.controlState:standard()
-  end
-
+  if not map then return end -- because something is horribly wrong that shouldn't ever happen
   self.inventory:update( dt )
   self.attack_box:update()
 
@@ -466,7 +488,8 @@ function Player:update(dt, map)
 
   if jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and not self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
     self.jumping = true
     self.velocity.y = -670 *self.jumpFactor
     sound.playSfx( "jump" )
@@ -475,7 +498,8 @@ function Player:update(dt, map)
     end
   elseif jumped and not self.jumping and self:solid_ground()
      and not self.rebounding and self.liquid_drag and
-     self.current_state_set ~= "crawling" then
+     self.current_state_set ~= "crawling" and
+     self:canStand(map) then
    -- Jumping through heavy liquid:
     self.jumping = true
     self.velocity.y = -270
@@ -505,7 +529,7 @@ function Player:update(dt, map)
   if self.character.state == 'crouch' or self.character.state == 'slide'
      or self.character.state == 'dig' or self.current_state_set == 'crawling' then
     if not crouching then
-      -- Need to ensure the player is in a position to can stand up
+      -- Need to ensure the player is in a position to stand up
       self:checkBlockedCrawl(map)
     end
   end
@@ -609,15 +633,16 @@ function Player:hurt(damage)
   if self.invulnerable or self.godmode or self.dead then
     return
   end
+  --Apply defense as a percentage of player health
+  damage = (damage - self.protection) * (1 - self.defense / 100)
 
-  damage = math.floor(damage)
-  if damage == 0 then
-    return
-  end
+  -- Verify that damage >= 0 and an integer
+  damage = math.floor(math.max(damage, 0))
 
   sound.playSfx( "damage" )
   self.rebounding = true
   self.invulnerable = true
+  self.showDamageText = true
 
   local color = self.color
   self.color = {255, 0, 0, 255}
@@ -645,6 +670,7 @@ function Player:hurt(damage)
   Timer.add(1.5, function() 
     self.invulnerable = false
     self.rebounding = false
+    self.showDamageText = false
     self.color = color
   end)
 
@@ -811,9 +837,9 @@ function Player:draw()
     self.currently_held:draw()
   end
 
-  local health = math.ceil(self.damageTaken * -1 / 10)
-
-  if self.rebounding and self.damageTaken > 0 then
+  if self.showDamageText then
+    local health = self.damageTaken
+    if health > 0 then health = health * -1 end
     love.graphics.setColor( 255, 0, 0, 255 )
     love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
   end
@@ -1049,18 +1075,20 @@ function Player:attack()
       self.attack_box:deactivate()
     end)
   elseif self.currently_held and self.currently_held.wield then
-    --wield your weapon
-    self.prevAttackPressed = true
-    self.currently_held:wield()
-    Timer.add(0.37, function()
-      self.prevAttackPressed = false
-    end)
+    if not self.crouching then
+      --wield your weapon
+      self.prevAttackPressed = true
+      self.currently_held:wield()
+      Timer.add(0.37, function()
+        self.prevAttackPressed = false
+      end)
+    end
   elseif self.currently_held then
     --do nothing if we have a nonwieldable
   elseif self.doBasicAttack then
     punch()
   elseif currentWeapon and (currentWeapon.props.subtype=='melee' or currentWeapon.props.subtype == 'ranged') then
-    if self.character.state == "crouch" then
+    if self.crouching then
       -- still allow the player to dig
       punch()
     else
