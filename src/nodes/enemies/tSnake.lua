@@ -117,7 +117,7 @@ return {
     love.graphics.draw( bossPic, x + 69, y + 10 )
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "Trouser Snake", x + 10, y + 15, 100, 'left' , 0, .8, .8)
+    love.graphics.printf( "TROUSER SNAKE", x + 10, y + 15, 100, 'left' , 0, .8, .8)
     love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
 
