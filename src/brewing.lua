@@ -7,35 +7,62 @@ local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'
 local HUD = require 'hud'
-local Timer = require 'vendor/timer'
 local potion_recipes = require 'items/potion_recipes'
 --instantiate this gamestate
 local state = Gamestate.new()
 
 local selectionSprite = love.graphics.newImage('images/inventory/selection.png')
 
-local ITEMS_ROW_AMT = 4
+local function nonzeroMod(a,b)
+  local m = a % b
+  if m ~= 0 then
+    return m
+  else
+    return b
+  end
+end
+
 bundle = {}
 
 --called once when the gamestate is initialized
 function state:init()
-  self.background = love.graphics.newImage('images/potions/potion_menu.png')
 end
 
 --called when the player enters this gamestate
 --enter may take additional arguments from previous as necessary
 --@param previous the actual gamestate that the player came from (not just its name)
-function state:enter(previous, player, screenshot, supplierName)
+function state:enter(previous, player, screenshot, cauldronName)
   fonts.set( 'arial' )
   sound.playMusic( "potionlab" )
   self.previous = previous
   self.screenshot = screenshot
+  self.cauldronName = cauldronName
   self.player = player
   self.offset = 0
+  
+  self.background = love.graphics.newImage('images/potions/potion_menu.png')
+  self.backgroundPlain = love.graphics.newImage('images/potions/potion_plain.png')
+  self.text = "Recipes can be found throughout the game. It's a good idea to collect them. "..
+              "If you don't follow the recipes, you'll make a Dud Potion, which has unpredictable side effects when consumed."
 
   self.hud = HUD.new(previous)
 
   local playerMaterials = self.player.inventory.pages.materials
+  
+  self.playerRecipes = {}
+  local count = 1
+  for _,currentRecipe in pairs(potion_recipes) do
+     if self.player.inventory:hasDetail(currentRecipe.name) then
+       self.playerRecipes[count] = {}
+       self.playerRecipes[count].name = currentRecipe.name
+       self.playerRecipes[count].description = currentRecipe.description
+       self.playerRecipes[count].info = currentRecipe.info
+       count = count + 1
+     end
+  end
+  
+  self.total = count - 1
+  self.count = 1
 
   -- This block creates a table of the players inventory with limits on items and also holds how many ingredients are added
   self.values = {}
@@ -100,8 +127,11 @@ function state:keypressed( button )
     sound.playSfx('click')
   elseif button == "JUMP" then
     self:check()
+  elseif button == "INTERACT" then
+    self.count = nonzeroMod(self.count + 1, self.total)
+  elseif button == "ATTACK" then
+    self.count = nonzeroMod(self.count - 1, self.total)
   end
-
   self.ingredients[self.values[self.overall].name] = self.current
 end
 
@@ -109,7 +139,7 @@ function state:brew( potion )
   local SpriteClass = require('nodes/sprite')
   local ItemClass = require('items/item')
 
-  sound.playSfx('potion_brew')
+  sound.playSfx( self.cauldronName == 'cauldron' and 'potion_brew' or self.cauldronName)
 
   for mat,amount in pairs(self.ingredients) do
     self.player.inventory:removeManyItems(amount, {name=mat, type="material"})
@@ -122,7 +152,7 @@ function state:brew( potion )
   self.player.freeze = true
   self.player.invulnerable = true
   self.player.character.state = "acquire"
-  local message = {'You brewed a '..item.description..'!'}
+  local message = 'You made a {{red}}'..item.description..'{{white}}!'
   local callback = function(result)
      self.prompt = nil
      self.player.freeze = false
@@ -153,9 +183,9 @@ function state:check()
   if notBlankBrew then
     local brewed = false
     Gamestate.switch(self.previous)
-    for _,currentRecipe in pairs(potion_recipes) do                             -- The logic behind my checking is to count the amount correct ingredients the player has         
+    for _,currentRecipe in pairs(potion_recipes) do                           -- The logic behind my checking is to count the amount correct ingredients the player has         
       local correctAmount = 0                                                 -- and compare that to the amount of ingredients in the recipe. If they are the same the
-      local recipeLenth = 0                                                   -- player has added in all the correct ingerdients and a potion can be brewed.
+      local recipeLenth = 0                                                   -- player has added in all the correct ingredients and a potion can be brewed.
       local recipe = currentRecipe.recipe
       for mat,amount in pairs(currentRecipe.recipe) do
         recipeLenth = recipeLenth + 1
@@ -227,6 +257,34 @@ function state:draw()
       love.graphics.printf(self.values[i+self.offset].description, firstcell_right + 25, firstcell_top + 3.5 + ((i-1) * 22), width, 'left')
     end
   end
+
+  -- draw introduction to potions & recipes
+  local x1 = menu_right - self.backgroundPlain:getWidth() - 25
+  love.graphics.draw (self.backgroundPlain, x1, menu_top)
+  love.graphics.printf(self.text, x1 + 16, menu_top + 10, 132, "center")
+  
+  local x2 = menu_right + self.background:getWidth() + 25
+  love.graphics.draw (self.backgroundPlain, x2, menu_top)
+
+    -- lists recipes players have in their inventory
+  if self.total == 0 then
+    love.graphics.printf("You don't have any recipes yet.", x2 + 16, menu_top + 50, 132, "center")
+  else
+    --love.graphics.print(self.playerRecipes[self.count], x2 + 16, menu_top + 10)
+    --love.graphics.print(self.count, x2 + 16, menu_top + 50)
+    for _,currentRecipe in pairs(potion_recipes) do
+      local recipe = self.playerRecipes[self.count]
+      if currentRecipe.name == recipe.name then
+        tastyDetails = fonts.tasty.new("{{teal}}" .. recipe.description .. "{{white}} \n\n" .. recipe.info, x2 + 16, menu_top + 10, 132, love.graphics.getFont(), fonts.colors)
+        tastyDetails:draw()
+        --instructions to scroll through recipes
+        if self.total > 1 then
+          recipeInstructions = fonts.tasty.new("Press {{red}}" .. self.player.controls:getKey('INTERACT') .. "{{white}} or {{red}}" .. self.player.controls:getKey('ATTACK') .. "{{white}} to view other recipes.", x2 + 16, menu_top + 100, 132, love.graphics.getFont(), fonts.colors)
+          recipeInstructions:draw()
+        end
+      end
+    end
+   end
 end
 
 --called every update cycle

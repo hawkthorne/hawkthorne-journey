@@ -87,6 +87,7 @@ function Weapon.new(node, collider, plyr, weaponItem)
   weapon.actionwalk = props.actionwalk or 'shootarrowwalk'
   weapon.actionjump = props.actionjump or 'shootarrowjump'
   weapon.dropping = false
+  weapon.dropped = false
 
   return weapon
 end
@@ -112,6 +113,12 @@ function Weapon:update(dt, player, map)
       
       self.velocity = { x = self.velocity.x,
                         y = self.velocity.y + game.gravity*dt }
+    end
+
+    -- Item has finished dropping in the level
+    if not self.dropping and self.dropped and not self.saved then
+      self.containerLevel:saveAddedNode(self)
+      self.saved = true
     end
   else
     --the weapon is being used by a player
@@ -160,7 +167,7 @@ function Weapon:keypressed( button, player)
         item:select(player)
       end
     end
-    player.inventory:addItem(item, false, callback)
+    player.inventory:addItem(item, true, callback)
   end
 end
 
@@ -194,6 +201,7 @@ end
 -- handles weapon being dropped in the real world
 function Weapon:drop(player)
   self.dropping = true
+  self.dropped = true
 
   self.player:setSpriteStates('default')
   self.player.currently_held = nil
@@ -229,8 +237,6 @@ function Weapon:floor_pushback()
 
   self.dropping = false
   self.velocity.y = 0
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 return Weapon

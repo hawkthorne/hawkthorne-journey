@@ -1,3 +1,4 @@
+local app = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
@@ -76,7 +77,11 @@ function state:keypressed( button )
     elseif self.option == 1 then
       Gamestate.switch('options', self.previous)
     elseif self.option == 2 then
-      Gamestate.switch('overworld')
+      if app.config.hardcore then
+        sound.playSfx( 'dbl_beep' )
+      else
+        Gamestate.switch('overworld')
+      end
     elseif self.option == 3 then
       Player.kill()
       self.previous:quit()

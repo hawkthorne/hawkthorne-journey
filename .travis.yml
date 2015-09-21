@@ -4,16 +4,17 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 install:
   - sudo apt-get install python-virtualenv lua5.1
-  - sudo make /usr/bin/love
+  - sudo add-apt-repository -y ppa:bartbes/love-stable
+  - sudo apt-get update -y -f
+  - sudo apt-get install -y love
   - mkdir -p $TRAVIS_BUILD_DIR/share/love/
 env:
   global:
-  - secure: "MA1+zHILO7O99n5+nj6jxuqVHUM0ZcGFfiZ9GT/4JyOG8nGkKWXopW/PbDzj\nRRFW3oknkm9jwVgCccvb2oSCPhEUVEUwcdo6xMuCFnskQNAA4q/SWAXXcZvm\nLjaJHNIb66Nnti+dhfAtfNvw8InzV7RzlmBxRrlH9M/0+X2gE5U="
-  - secure: "Ak9ffdd8c/3toP5hN+Y1YI0grtstT+pLcIyhYYUAKYnOZJNY+W+adSwIbT+D\n82KbHkntiBNZ6a5dPZ7j28bKAtIToNS0KHRqviqwpsPw8m2fJ1trbyBIuscF\nqLihmRq0ve+gWjJIDpTQh2BHTJ+9lHnDCGExkf8JCIrMK7lnU1w="
-  - secure: "trApdw22XK+5CuaDHnRnkp3qh2fRChaTSrH5mG+B+JCxpZMhT7pY98x6R/bj\nUOisRJODSxSveYWU5OgiG2YOk/LGxbc/YRRneNKUk9E+fiLySpT5dGCCrQgB\nnkM+vXOAr2wnW//0nZHC14caw5sc/yQJ6MLj1/6ofzvvffQbjNs="
-  - secure: "mp0ajWjr1kzxLdVb1wigp6ZzTQcpX9fU2WmplAjYTJnG4m58YZ3Ev+note9S\n0kfTyaQTJiUzbotxDXsUmBszCehnH7E8yP9PT1eli7bJS+b23D5dYnfaAYKf\nvf8E0JFhIvMm8MDFFnrIOESmFUNDj/T0aDN/ASu1x0QLmjRfmlA="
-  - secure: "ZcTu/33tHOnBiXqYr5ea0V2njReiHYe1LeBze8C224tU/V0ZvUaohIcJkF2E\nCb+7kLnf+HLCJtiD3XbLz6XJuwJnh80/Oq+ItwBWdWcH/AccexRFb1QKTeMR\naJvuecZ2yUxib251DYzlHnxtd1S9+M63atYWmllDpd6tM5ISbuI="
-  - secure: "OvdZg49UKSQ5zW/w/3R1coa4iIe1YWseI/7hhpOvv3ABpouI8AbPtmWFH9Ed\nIq1jTDu4Epm4dXs/wXEjcN7CXq2n8NF+a5x8SBSxmopFtjbDeOgwSHwnTxWn\nDMo5psEfZNoqMMnYQNvq0IV2W/2FPFRsIOCCg6oxgLfAJfrzKOE="
-  - secure: "rKCTAsDVeJijQglX0E48Vuqrpmx9uawA4ciObTWQ9uWhsiCZR72jg4lgh9QM\nDhSiHDRBWqC2RzuZzN2IpxAnRug8FzSecYJ9oaXvnbYJXt55UkcIv6ano1d6\nPc/VXa5kRnA8ozO9pvCnPYzT/o7mOxG/l16LOqCblXMsZf2n0IE="
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script: make deploy
+addons:
+  artifacts:
+    paths:
+      - ./build/hawkthorne-osx.zip
+      - ./build/hawkthorne-win-x86.zip
+      - ./build/hawkthorne.love

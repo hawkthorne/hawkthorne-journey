@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="33" height="15" tilewidth="24" tileheight="24" nextobjectid="11">
+<map version="1.0" orientation="orthogonal" width="33" height="15" tilewidth="24" tileheight="24">
  <properties>
-  <property name="autosave" value="false"/>
   <property name="blue" value="249"/>
   <property name="green" value="154"/>
   <property name="offset" value="1"/>
@@ -79,8 +78,8 @@
    eJxjYBgFtAZbmBgYZhOBR8EoGCmA2Dwx1PMFzJ+bh7g/cIFNQH9txOO3RhxyuMSRwRykNDAXST1IL6kYlxvIxYMBAAABqSJU
   </data>
  </layer>
- <objectgroup name="nodes">
-  <object id="1" type="liquid" x="299" y="282" width="149" height="97">
+ <objectgroup name="nodes" width="0" height="0">
+  <object type="liquid" x="299" y="282" width="149" height="97">
    <properties>
     <property name="drag" value="true"/>
     <property name="drown" value="false"/>
@@ -88,7 +87,7 @@
     <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
-  <object id="2" type="door" x="283" y="344" width="185" height="19">
+  <object type="door" x="283" y="344" width="185" height="19">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="secretwritersgarden"/>
@@ -96,8 +95,8 @@
     <property name="to" value="pipe"/>
    </properties>
   </object>
-  <object id="3" name="vent" type="door" x="0" y="288" width="24" height="24"/>
-  <object id="4" type="sprite" x="296" y="265" width="24" height="24">
+  <object name="vent" type="door" x="0" y="288" width="24" height="24"/>
+  <object type="sprite" x="296" y="265" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -105,7 +104,7 @@
     <property name="width" value="27"/>
    </properties>
   </object>
-  <object id="5" type="sprite" x="422" y="265" width="24" height="24">
+  <object type="sprite" x="422" y="265" width="24" height="24">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="height" value="24"/>
@@ -113,28 +112,28 @@
     <property name="width" value="27"/>
    </properties>
   </object>
-  <object id="6" type="info" x="262" y="276" width="26" height="17">
+  <object type="info" x="262" y="276" width="26" height="17">
    <properties>
     <property name="info" value="WARNING!|Please do not throw coins into the English Memorial Fountain.|There have been reports of 'Ouch!' being heard from underneath.| --Greendale Custodial Staff"/>
    </properties>
   </object>
-  <object id="7" type="info" x="673" y="241" width="46" height="45">
+  <object type="info" x="673" y="241" width="46" height="45">
    <properties>
     <property name="info" value="Closed for siesta time."/>
    </properties>
   </object>
-  <object id="8" type="door" x="168" y="264" width="24" height="48">
+  <object type="door" x="168" y="264" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="sound" value="false"/>
     <property name="to" value="emexit"/>
    </properties>
   </object>
-  <object id="9" type="info" x="-4" y="259" width="32" height="61">
+  <object type="info" x="-4" y="259" width="32" height="61">
    <properties>
     <property name="info" value="It's too difficult to squeeze back in."/>
    </properties>
   </object>
-  <object id="10" name="main" type="door" x="72" y="264" width="48" height="48"/>
+  <object name="main" type="door" x="24" y="264" width="48" height="48"/>
  </objectgroup>
 </map>

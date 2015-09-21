@@ -17,6 +17,7 @@ return {
   damage = 40,
   attack_bb = true,
   jumpkill = false,
+  hatched = false,
   knockback = 0,
   player_rebound = 1200,
   bb_width = 40,
@@ -70,9 +71,10 @@ return {
   },
 
   enter = function( enemy )
-    enemy.direction = math.random(2) == 1 and 'left' or 'right'
-    enemy.state = 'enter'
-    enemy.hatched = false
+    if not enemy.props.hatched then
+      enemy.direction = math.random(2) == 1 and 'left' or 'right'
+      enemy.state = 'enter'
+    end
   end,
 
   die = function( enemy )
@@ -199,12 +201,12 @@ return {
 
     local direction = player.position.x > enemy.position.x + 40 and -1 or 1
 
-    if enemy.velocity.y > 1 and not enemy.hatched then
+    if enemy.velocity.y > 1 and not enemy.props.hatched then
       enemy.state = 'enter'
-    elseif math.abs(enemy.velocity.y) < 1 and not enemy.hatched then
+    elseif math.abs(enemy.velocity.y) < 1 and not enemy.props.hatched then
       enemy.state = 'hatch'
-      Timer.add(2, function() enemy.hatched = true end)
-    elseif enemy.hatched then
+      Timer.add(2, function() enemy.props.hatched = true end)
+    elseif enemy.props.hatched then
 
       enemy.last_jump = enemy.last_jump + dt
       enemy.last_attack = enemy.last_attack + dt
@@ -238,7 +240,7 @@ return {
         end
         enemy.last_attack = -0
       end
-      if enemy.velocity.y == 0 and enemy.hatched and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
+      if enemy.velocity.y == 0 and enemy.props.hatched and enemy.state ~= 'attack' and enemy.state ~= 'charge' then
         enemy.state = 'default'
       end
 

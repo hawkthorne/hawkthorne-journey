@@ -7,6 +7,7 @@ local GS = require 'vendor/gamestate'
 local Weapon = require 'nodes/weapon'
 local rangedWeapon = require 'nodes/rangedWeapon'
 local playerEffects = require 'playerEffects'
+local recipes = require 'items/potion_recipes'
 
 local Item = {}
 Item.__index = Item
@@ -15,7 +16,10 @@ Item.types = {
   ITEM_WEAPON     = "weapon",
   ITEM_KEY        = "key",
   ITEM_CONSUMABLE = "consumable",
-  ITEM_MATERIAL   = "material"
+  ITEM_MATERIAL   = "material",
+  ITEM_SCROLL     = "scroll",
+  ITEM_ARMOR     = "armor",
+  ITEM_DETAIL     = "detail",
 }
 
 Item.MaxItems = 10000
@@ -31,8 +35,13 @@ function Item.new(node, count)
   item.name = node.name
   item.type = node.type
   item.props = node
-
-  local imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
+  local imagePage
+  if item.type == "detail" then
+    local category = node.category or 'recipe'
+    imagePath = 'images/details/'..category..'.png'
+  else
+    imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
+  end
 
   if not love.filesystem.exists(imagePath) then
     return nil
@@ -40,14 +49,25 @@ function Item.new(node, count)
 
   item.image = love.graphics.newImage(imagePath)
   local itemImageY = item.image:getHeight() - 15
-  item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getWidth(),item.image:getHeight() )
+  item.image_q = love.graphics.newQuad( 0,itemImageY, 15, 15, item.image:getDimensions() )
   item.MaxItems = node.MAX_ITEMS or 10000
   item.quantity = count or node.quantity or 1
   item.isHolding = node.isHolding
-  item.description = node.description or "item"
   item.subtype = node.subtype or "item"
-  item.info = node.info or "unknown info"
+  if item.type == "detail" and node.category == 'recipe' then
+    for _,currentRecipe in pairs(recipes) do
+      if currentRecipe.name == item.name then
+        item.description = currentRecipe.description or "Potion Recipe"
+        item.info = currentRecipe.info or "Unknown"
+        break
+      end
+    end
+  else
+    item.description = node.description or "item"
+    item.info = node.info or "unknown info"
+  end
   item.damage = node.damage or "nil"
+  item.defense = node.defense or "nil"
   item.special_damage = node.special_damage or "nil"    
 
   return item
@@ -154,8 +174,8 @@ function Item:use(player, thrower)
       end
       
       local node = require('nodes/projectiles/'..self.props.name)
-      node.x = player.position.x + player.character.bbox.width/2
-      node.y = player.position.y + hand_y - node.height/2 - player.character.bbox.y
+      if node.throw_x then node.x = player.position.x + player.character.bbox.width/2 + node.throw_x else node.x = player.position.x + player.character.bbox.width/2 end
+      if node.throw_y then node.y = player.position.y + hand_y - node.height/2 - player.character.bbox.y + node.throw_y else node.y = player.position.y + hand_y - node.height/2 - player.character.bbox.y end
       node.directory = self.type.."s/"
       local level = GS.currentState()
       local proj = require('nodes/projectile').new(node, level.collider)

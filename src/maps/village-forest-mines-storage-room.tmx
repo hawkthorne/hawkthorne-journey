@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="24" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+ <properties>
+  <property name="offset" value="10"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="bg" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJx1lVsOBCEIBCcxcAnx/tfc3USTspb5MDPKS5oG13ie9V2xv4X/+V2597llE/LY+2NXsJ/Qyb0/Z8dnwIayanwu6R1/gf+C7wX5uQNzYq5dvtzni2/mWDhjfjyrJkY1+jnuPDtMTg6sD/Um/o8uMac8ZNthQ5vOB/dTusxpjn+e8R70yZqy3uQN8yKOjkH/OW4c57jzTviaTbyST3LLvLOOe6fDp5p14hlHciwUO5o47FHehXlT/qZPvIlbV3PGJp4+Iw/Jb+YesuGdvXLcteR3KT5juNbd3PG86vrBvA7Zs/ffau7aMO81bt66l6dsu55jPdkznAe0ZW1cx1KMbiZ7frp2qTjmsO/G98U1dAzPyO7tCck5r81p93Lq695n/xorYkB++L0whjxnXY0Pc7Af34G4kRPm0+/sAxnQLmo=
+  </data>
+ </layer>
+ <layer name="pillar" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEFsxYBClQN2ruqLmj5o6aO2ruqLmj5g4vcwHYkwsR
+  </data>
+ </layer>
+ <layer name="floor" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzVVNsNwjAMDOpK/JQ16ECROgV8dgX47AplDRgDu9FFzsMJLQVEpFMs27lIuZz7xliz8eqbGX/He6L97MBxco9WF/mgBt4L7VcHjhPe486YzsFS7OviXHAWvNo5rIn6bg52EveKfFAD7532hwPHCa9WF/mgBt497Vuiplsuz7mCdjNquuXenXuVHg/wxroMFA+ZPLRSejw03UaKR0VPzik9Hp/WbY3XWnrHg4Ntoz8P3pLXNE1LHgVvzktYL3gtOQfeNV4ref8XumkzEDXpP/TFc7Lmtdx8RK+clfGcXDIDcSfukX3xnFwyA1GT/kPft+Zk/LfeXcz7BOphALA=
+  </data>
+ </layer>
+ <layer name="features" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFww0oQOl0Csy4hcQuZ2RoKANiKyi/kQj914hQMxFo5gQgxqdGnghzyAFDzVxLCvQSExfA+AXFM9F6iPUnMH5B8Uw0GMzxkoFFjJR4SQXiNCziTQzExRE2AMqn9UDcQKZ+EBjMYU5PcynJYyAAKydB7FsE1MIAtcrJgQIAr+UWqw==
+  </data>
+ </layer>
+ <layer name="dark" width="22" height="24">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt07dRHUAUhtE3bIw3LQgPLQiQELSANy3ghGkBK4kW8KYFvGkBK0EDeDejk2y+JCLQC87MDb75s/uWk8m8ZWX9Azfccsc9DzzyxDMvvL6ji7u5IZPJI58CCimimBJKKQvpXdz95C6ngkqqqKaGWuqoD+ld3P3sbqCRJr7wlWa+0UJrSO/ibpu7nQ466aKbHnrpoz+kd3F3wD3IEMOM8J1RxhhnIqR3cXfSPcU0M8wyxw9+8ov5kN7F3QX3Iksss8Iqa6yzwWZI7+LulnubHXbZY58DDjniOKR3cffEfcoZ51xwyW/+cMV1SO8++s+z/h9/ASLOsdA=
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxrZWegOmhlh+BRc0fNRTZ3PpXxUA2HoWbuaLwNTXNH421omksrTAv3AgBlhEwZ
+  </data>
+ </layer>
+ <objectgroup color="#ffffff" name="nodes" width="22" height="24">
+  <object name="main" type="door" x="168" y="120" width="24" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines-room"/>
+    <property name="to" value="next"/>
+   </properties>
+  </object>
+  <object name="stone" type="spawn" x="216" y="264" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a hunk of stone!"/>
+    <property name="nodeType" value="material"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="axe" type="spawn" x="48" y="504" width="24" height="24">
+   <properties>
+    <property name="message" value="You found an axe!"/>
+    <property name="nodeType" value="weapon"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="info" x="48" y="144" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="432" y="144" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="480" y="264" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="168" y="264" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="48" y="384" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="384" y="384" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="432" y="504" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object type="info" x="192" y="504" width="24" height="24">
+   <properties>
+    <property name="info" value="The chest is empty."/>
+   </properties>
+  </object>
+  <object name="minecarts" type="spawn" x="336" y="504" width="24" height="24">
+   <properties>
+    <property name="message" value="You found the {{orange}}Minecarts{{white}} key!"/>
+    <property name="nodeType" value="key"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object name="stick" type="spawn" x="360" y="144" width="24" height="24">
+   <properties>
+    <property name="message" value="You've found a stick!"/>
+    <property name="nodeType" value="material"/>
+    <property name="offset_x" value="20"/>
+    <property name="offset_y" value="-40"/>
+    <property name="spawnType" value="keypress"/>
+   </properties>
+  </object>
+  <object type="climbable" x="342" y="168" width="10" height="97"/>
+  <object type="climbable" x="150" y="288" width="10" height="97"/>
+  <object type="climbable" x="270" y="408" width="10" height="97"/>
+ </objectgroup>
+</map>

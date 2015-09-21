@@ -52,9 +52,13 @@ end
 
 function PlayerEffects:randEffect(player, effects)
   local rand = math.random()
-  for i,prob in ipairs(effects.p) do
-    if rand <= prob  then
-      self:doEffect(effects[i], player)
+  for i,prob in pairs(effects.p) do
+    if rand <= prob then
+      local effect = effects[i]
+      if not effect then
+        effect = effects[tostring(i)]
+      end
+      self:doEffect(effect, player)
       break
     end
   end

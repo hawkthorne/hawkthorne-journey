@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="24" tileheight="24" backgroundcolor="#000000">
+ <properties>
+  <property name="offset" value="6"/>
+  <property name="soundtrack" value="abeds-castle"/>
+ </properties>
+ <tileset firstgid="1" name="village-forest-mountains" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/village-forest-mountains.png" width="624" height="1776"/>
+ </tileset>
+ <tileset firstgid="1925" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="bg" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyNlEtuQzEMAwPkGLHvf81k0QDGZEbuwmhj6+lDkdzPx+P1Oftz1vH/9/f+uzvPOmLPuz28My9jzm+tH7tbyHfGnvXYH/tgfc7BPOebfc9vGL+fvxizLvtbeOMMUz7Dd0XMQg7uc8thfL2zlwkH62/aSe2a3xBT8oL4b3m3/S85ky4M0+KN1TYtMSe5wntqZNqncdA8gHqvfU0amXzDOGR3jLV9GDaG1W2XtcPaifGuuFz4MAd9wrzStFBYE1PbW2FsGrT48gzbr3n2zbeKV7VH9mT3hpnhbDspLzf9UNNT/eKd8aDmt5mrDmcoD6X/3PzTvObmX9O3t77JRZu5tGacM98kTmcM6/HevJ14nsf8gBqc9EVelvdMXm4xpuNJ39YfcZtqmodanzzcAePrr3Fl8in2ZjugV5XX295KV8VX25Hpo7Qw+VHNaPyYdjPFm75u/RZmVZeYmubIR8Yyj2Fjvjbt1/AsPUxeMnGfey0caubbjqfZTd/lFTYfuf2SN4u1Gbi7mp+atBrse5p50ljxfcKGvC0eTh7Ku3qrHOWbpRHzIeM2c5oezL8Le8O0PM10aXpZyFte/1+sa+8T3sTcvIP17RviWXlKV8xv3DQP/b69AeBVkWI=
+  </data>
+ </layer>
+ <layer name="rocks" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt00EKACAIBVHp/meOkGgjRIvISueB+z9EIgAAYKWWfhmMVntRzXojd2dsVhmb1Q/NO5ts06vvfGLTq3/Zc9PtVgB+GgP0SAE=
+  </data>
+ </layer>
+ <layer name="Tile Layer 10" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0tEJwDAIRVETF+0oGbWjRAgPOkCkgveAxE8vxAwAAAAdudsT82r/95p8w8/Mz6v+DtQfzWWNi7ept6r4fyujt2LzTLqtcnOmbr2AbH8ZA3s=
+  </data>
+ </layer>
+ <layer name="pillar" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztkssJwCAQRBe2D9OGhaSglB4NSDyE4MqIc5h38cPgvgHNMCQ3O/09525f7i+mPIp+Rnu/uqQPn115NG1G9n+XXflonxHqjMOfdeh9tvwM0f/Dlo/C5q++WNj81RcLm7/6YmHzV18sbP7qi4XNf3VfIcR6bg90IzE=
+  </data>
+ </layer>
+ <layer name="filler" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlNkJgDAQRBftSduzDy3EowuPLjxacEQEkQQMrgnKPJifhGz2sSQihBBCyLfJI8lC9+CTzfdIEYXu5n3OvqF78cFffQuLk4bvuca1Th7wjZh60p6vwVelrja2+bvi6lvGIhVSI0389Pb7aP3Trr4tHDukRwaPvlpc37LNN4FbiozIhMzIsq9l2DOeIYR8nxX3lDt1
+  </data>
+ </layer>
+ <layer name="floor" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlQsOgyAMhjtvtZ2u7hpwj+0a3GgSxNWmvHzEjfRP/oQItnxCK4BKpVKpetNzABwHAO9p3KVeE9c7MKJnNLPtn/DG8xkDB048yNfQc3SBD70jo59PvZtTjLvl3a0yw9pO2LsNfHENct447+YzrxWN6wK76CNrhfNK3JYwZnhXzxp4iz6yVlK8EvcZvEI/WGLROmq58zQmd4m3cM+beOn+U/0gju83gEewHy/1Uvof+ByOfTfmKl5WZ2KfK/FaOR/W8lKn8lTUSBNvy/nv4TXfviHmu5q3hrtH3ty9/wWfxatWX+EPCJei0Q==
+  </data>
+ </layer>
+ <layer name="features" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjALywSJmMG4YaHfQC+xhBuOGgXbHQIEFQP8vZB5oV9AP5AHjOo/K/h3MeaYD6K4OKvkXllaGep4hNr5okVZIBTGMDAyxjJSZQWx8UTOt4AKEwr4M6NdyCv07mACxYS8PpWcC1c+C4IaZQziPEQIw/24G+nULBDdsHgH+DQam7RAIbgCyG0Bi+OIcmPcbYhiHXrhYQunnQH+9gOCG51C/4YtzYN5vKBuC/h0Fo2AUUAYA8WszHQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 9" width="60" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt00sOQ1AYhuFjBbUHa1OsQml1E3qxMMUq9DLyDkXSAXGJnO9NnsRI/m9wjFFKKaXUHro4xmS4Oltfsk4Pdj5RWLI3YGeIyJK9CTtTnC3Zm7Pzhrsle8dU4oUKNZpNr1m+Fm988MVvwj98HBEgnO+0Rerv/ZfXexcHvt3BO4lxQoJ05vuUUvupAy8TGAI=
+  </data>
+ </layer>
+ <layer name="dark" width="60" height="20">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzV1cVRBUEUheEp3hqXFHBJAZcUcEkBlxRwSQGXFHBJAZcEHg4L/s1spqahb0/3PN7iq9n1vdNV53Qyw/OSKfCMF7ziDe/4wCe+8O1obpyzfJkJz8tCNnKQizzkowCFKEq4mR3nLF8x55egFGUoRwUqUYVq1DjaIc5ZvlrOr0M9GtCIJjSjBa1os7BDWGZczfpNO+d3oBNd6EYPetGHfgxE3EGVGRez/jLI+UMYxghGMYZxTGASUyE7SDpOlRndWTZNc/4MZjGHeSxgEUtYxkpgB2nHqTKjMytKXsLuf5Xz17CODWxiC9vYwS72AjtIO06VGZ1ZUfISdv/7fA9wiCMc4wSnOMM5LgI7SDtOlRmdWTok93/J9wrXuMEt7nCPBzziKbCDtONUmdGZpSPKG6OTA2nHqTJjq4NM3xjdHEg7TpUZW/9r+sbo5kDacarM2PpfkzdGkgOTjnPJ5I2R5MCk41wyvX/THKSa6f2b5iBdmeYgXf23HnIt7h76AdlkoT4=
+  </data>
+ </layer>
+ <layer name="collision" width="60" height="20" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztlEsKgDAMRLvryd3oIQQ/97QuijFobKNFTefBbAoJHTKJcwAAAKzR+70sMgRf4489Nn5TG9QdeLia4fo+Bc2Z/mNPTe2TnPmmSN418N14Y1dSfFukpG/pHtD55mSe99TmJPrW1t/NakpdifzTGyfdOfoHi2Df64Ln/gsCwBIL3mJIRw==
+  </data>
+ </layer>
+ <objectgroup color="#ffffff" name="nodes" width="60" height="20">
+  <object type="climbable" x="748" y="288" width="15" height="92"/>
+  <object name="main" type="door" x="1344" y="216" width="48" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines"/>
+    <property name="to" value="room"/>
+   </properties>
+  </object>
+  <object name="next" type="door" x="888" y="168" width="48" height="48">
+   <properties>
+    <property name="level" value="village-forest-mines-storage-room"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object name="laserlotus1" type="npc" x="864" y="336" width="24" height="48"/>
+  <object name="laserlotus2" type="npc" x="960" y="168" width="24" height="48"/>
+ </objectgroup>
+</map>

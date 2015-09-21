@@ -19,7 +19,9 @@ function module.platform_type(tile_id)
   if tile_id >= 26 and tile_id <= 51 then
     return 'oneway'
   end
-  if tile_id >= 0 and tile_id <= 25 then
+  -- Tile id 104 is a special block representing the breakable block
+  if (tile_id >= 0 and tile_id <= 25) or
+     (tile_id >= 104 and tile_id <= 129) then
     return 'block'
   end
 
@@ -29,11 +31,13 @@ end
 function module.is_sloped(tile_id)
   return (tile_id > 0 and tile_id < 21) or (tile_id > 26 and tile_id < 47)
          or (tile_id > 52 and tile_id < 73) or (tile_id > 78 and tile_id < 99)
+         or (tile_id > 104 and tile_id < 125)
 end
 
 function module.is_special(tile_id)
   return (tile_id > 20 and tile_id < 26) or (tile_id > 46 and tile_id < 52)
          or (tile_id > 72 and tile_id < 78) or (tile_id > 98 and tile_id < 104)
+         or (tile_id > 126 and tile_id < 130)
 end
 
 local _slopes = {
@@ -107,7 +111,7 @@ end
 -- Also, remember that tile ids are indexed startin at 1
 -- We assume that the tile at tile_index is sloped
 function module.is_adjacent(current_index, current_id, tile_index, tile_id, direction)
-  if tile_id ~= 0 and not module.is_special(tile_id) then
+  if tile_id ~= 0 and tile_id ~= 104 and not module.is_special(tile_id) then
     return false
   end
 
@@ -222,7 +226,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
         
           if new_x <= tile_x and tile_x <= x then
             if player.wall_pushback then
-              player:wall_pushback()
+              player:wall_pushback(tile)
             end
             return tile_x
           end
@@ -247,7 +251,7 @@ function module.move_x(map, player, x, y, width, height, dx, dy)
         
           if x <= tile_x and tile_x <= (new_x + width) then
             if player.wall_pushback then
-              player:wall_pushback()
+              player:wall_pushback(tile)
             end
             return tile_x - width
           end
@@ -321,7 +325,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- If the block is sloped, interpolate the y value to be correct
           if slope_y <= (new_y + height - tile_slope * dx + 2) and (slope_y >= y + height or not special) then
             if player.floor_pushback then
-              player:floor_pushback()
+              player:floor_pushback(tile)
             end
             return slope_y - height
           end
@@ -349,7 +353,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
             end
           
             if player.floor_pushback then
-              player:floor_pushback()
+              player:floor_pushback(tile)
             end
             return slope_y - height
           end
@@ -374,7 +378,7 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           if y > tile_y and tile_y >= new_y then
             player.velocity.y = 0
             if player.ceiling_pushback then
-              player:ceiling_pushback()
+              player:ceiling_pushback(tile)
             end
             return tile_y
           end
@@ -390,12 +394,16 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
   -- Scan through all moving platforms
   for _, platform in ipairs(map.moving_platforms) do
     if x + width >= platform.x and x <= platform.x + platform.width then
-      local foot = y + height
+      -- Only apply platform dy when the platform is moving up
+      local foot = y + height - 2 + math.min(0, platform.dy)
       local above_tile = foot <= platform.y
       
       if above_tile and platform.y <= (new_y + height + 2) and
          direction == 'down' then
-          
+        
+        -- Dropping is not allowed on moving platforms
+        player.platform_dropping = false
+        
         if player.floor_pushback then
           player:floor_pushback()
         end

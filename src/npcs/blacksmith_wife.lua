@@ -5,6 +5,8 @@ local sound = require 'vendor/TEsound'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local Emotion = require 'nodes/emotion'
+local Quest = require 'quest'
+local quests = require 'npcs/quests/wifequest'
 
 return {
   width = 48,
@@ -74,11 +76,12 @@ return {
     { ['text']='Anything happening here?' },
     { ['text']='Hello!' },
   },
+  talk_commands = {
+    ['Hello!'] = function (npc, player)
+      Quest:activate(npc, player, quests.mushroom)
+    end,
+  },
   talk_responses = {
-    ["Hello!"]={
-      "Hello, I am the blacksmith's wife.",
-      "You may have met my lovely daughter, Hilda.",
-    },
     
     ["Anything happening here?"]={
       "I've been trying to convince my husband to build us a new home.  I keep telling him it's a terrible idea to have his workshop inside a wooden house!",

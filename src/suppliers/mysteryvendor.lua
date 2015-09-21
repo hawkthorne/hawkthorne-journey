@@ -10,7 +10,7 @@ return {
     {"banana",99,100},
     {"toast",99,100},
     {"carkeys",99,100},
-    {"bubblgum",99,100},
+    {"bubblegum",99,100},
   },
   keys = {
     {"ladiesroom",1,1000},

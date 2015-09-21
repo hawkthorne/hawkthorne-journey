@@ -8,6 +8,7 @@ local game = require 'game'
 local collision  = require 'hawk/collision'
 local Item = require 'items/item'
 local utils = require 'utils'
+local file = require 'items/materials'
 
 local Material = {}
 Material.__index = Material
@@ -21,8 +22,11 @@ function Material.new(node, collider)
   setmetatable(material, Material)
   material.name = node.name
   material.type = 'material'
+  local file = utils.require( 'nodes/materials/' .. material.name)
+  material.width = file.width or 24
+  material.height = file.height or 24
   material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
-  material.image_q = love.graphics.newQuad( 0, 0, 24, 24, material.image:getWidth(),material.image:getHeight() )
+  material.image_q = love.graphics.newQuad( 0, 0, material.width, material.height, material.image:getWidth(),material.image:getHeight() )
   material.foreground = node.properties.foreground
   material.collider = collider
   material.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
@@ -66,7 +70,7 @@ function Material:keypressed( button, player )
     self.containerLevel:removeNode(self)
     self.collider:remove(self.bb)
   end
-  player.inventory:addItem(item, false, callback)
+  player.inventory:addItem(item, true, callback)
 end
 
 ---
@@ -105,6 +109,12 @@ function Material:update(dt, player, map)
     
     self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
   end
+
+  -- Item has finished dropping in the level
+  if not self.dropping and self.dropped and not self.saved then
+    self.containerLevel:saveAddedNode(self)
+    self.saved = true
+  end
 end
 
 function Material:drop(player)
@@ -114,11 +124,13 @@ function Material:drop(player)
   end
 
   self.dropping = true
+  self.dropped = true
 end
 
 function Material:floorspace_drop(player)
   self.dropping = false
   self.position.y = player.footprint.y - self.height
+  self.bb:moveTo(self.position.x + self.width / 2 + self.bb_offset_x, self.position.y + self.height / 2)
 
   self.containerLevel:saveAddedNode(self)
 end
@@ -129,8 +141,6 @@ function Material:floor_pushback()
   self.dropping = false
   self.velocity.y = 0
   self.collider:setPassive(self.bb)
-
-  self.containerLevel:saveAddedNode(self)
 end
 
 return Material

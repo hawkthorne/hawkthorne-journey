@@ -15,6 +15,14 @@ return {
     {"bow",3,200},
     {"arrow",50,5},
   },
+  armor = {
+    {"ajaxshield",1,225},
+    {"berserkerbarbute",1,300},
+    {"hagshat",1,150},
+    {"lightarmor",1,375},
+    {"necromancercloak",1,300},
+    {"platemail",1,750}
+  },
   materials = {
     {"mushroom",20,30},
     {"duck",20,34},

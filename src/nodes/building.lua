@@ -30,6 +30,10 @@ function Building.new(node, collider, level)
   building.state = 'default'
 
   building.tiles = {}
+  building.bb = collider:addRectangle(node.x, node.y, node.width, node.height)
+  building.node = node
+  building.bb.node = building
+  collider:setPassive(building.bb)
 
   building.tilewidth = level.map.tilewidth
   building.tileheight = level.map.tileheight
@@ -65,6 +69,14 @@ function Building:enter()
       table.insert(self.doors, door)
     end
   end
+  --Store all of the climbable nodes that are inside the building node
+  self.climbables = {}
+  for k,climbable in pairs(level.nodes) do
+    if climbable.isClimbable and (climbable.position.x >= self.x and climbable.position.x <= self.x + self.width)
+      and (climbable.position.y >= self.y and climbable.position.y <= self.y + self.height) then
+      table.insert(self.climbables, climbable)
+    end
+  end
 
   -- If the building has already been burned, go into burned state
   if gamesave:get(self.name .. '_building_burned', false) then
@@ -78,8 +90,7 @@ function Building:enter()
 
   -- If the npc trigger that shares the name of the
   -- building is dead and the building hasn't burned
-  if gamesave:get(self.trigger, false) and gamesave:get(self.name .. '_building_burned', false) == false then
-    self.state = 'burning'
+  if gamesave:get(self.trigger, false) and not gamesave:get(self.name .. '_building_burned', false) then
     self:burn()
   end
 end
@@ -95,11 +106,17 @@ function Building:burned()
   for k,door in pairs(self.doors) do
     level:removeNode(door)
   end
+  -- Remove all climbable nodes within the building node
+  for k,climbable in pairs(self.climbables) do
+    level:removeNode(climbable)
+  end
 end
 
 ---
 -- Start burning the building at the first row
 function Building:burn()
+  if self.state == 'burning' or self.state == 'burned' then return end
+  self.state = 'burning'
   self:burned()
   Timer.add(3, function()
     if self.containerLevel:hasNode(self) then
@@ -171,6 +188,14 @@ function Building:burn_tile(row, tile)
       end
       tile.state = 'burned'
     end)
+  end
+end
+---
+-- Called when the building collides with a burning enemy
+function Building:collide(node)
+  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', true) and self.state ~= 'burned'  then
+    self.state = 'burning'
+    self:burn()
   end
 end
 

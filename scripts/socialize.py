@@ -83,6 +83,7 @@ def update_twitter(version, post_url):
 def update_reddit(title, post, community=False):
     if 'TRAVIS' not in os.environ:
         logging.info('[DRYRUN] Posting {}'.format(title))
+        logging.info(post)
         return
 
     r = Reddit(os.environ['BRITTA_BOT_USER'])
@@ -110,7 +111,9 @@ def main():
     args = parser.parse_args()
     
     v = version.current_version()
-    post = args.input.read()
+    body = args.input.read()
+    template = open('templates/post.md').read()
+    post = template.format(body=body, version=v)
 
     post_url = update_reddit(title.format(v), post,
                              community=version.is_release())
