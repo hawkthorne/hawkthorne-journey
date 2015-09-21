@@ -12,8 +12,6 @@ local json  = require 'hawk/json'
 local app = require 'app'
 local controls = require('inputcontroller').get()
 local Gamestate = require 'vendor/gamestate'
-
-
 local window = require 'window'
 local camera = require 'camera'
 
@@ -32,8 +30,7 @@ return {
   walking = true,
   walk_speed = 36,
   hurt = function(npc)
-  Dialog.new("Ouch! Stop hittig me you stupid human!", function()
-      end)
+    Dialog.new("Ouch! Stop hitting me you stupid human!", function() end)
   end,
   talk_items = {
     { ['text']='i am done with you' },
@@ -42,89 +39,79 @@ return {
     { ['text']='Talk about quests', freeze= true},
   },
   enter = function(npc, previous)
-  npc.shake = false
-  if Quest.alreadyCompleted(npc, player, quests.aliencamp) == true and Quest.alreadyCompleted(npc, player, quests.qfo) == false then
-  npc.busy = true
-  npc.state = 'hidden'
-  end
+    npc.shake = false
+    if Quest.alreadyCompleted(npc, player, quests.aliencamp) == true and Quest.alreadyCompleted(npc, player, quests.qfo) == false then
+      npc.busy = true
+      npc.state = 'hidden'
+    end
   end,
   update = function(dt, npc, player)
-  local shakeval = 0
+    local shakeval = 0
 
-  if npc.shake == true then
-    local player_dist= {x = 1, y = 1 }
-    shakeval = (math.random() * 5)-2/player_dist.x
-    camera:setPosition(camera.x + shakeval, camera.y + shakeval)
-  end
+    if npc.shake == true then
+      local player_dist= {x = 1, y = 1 }
+      shakeval = (math.random() * 5)-2/player_dist.x
+      camera:setPosition(camera.x + shakeval, camera.y + shakeval)
+    end
   end,
   talk_commands = {
     ['Talk about quests']= function(npc, player)
-    npc.walking = false
-    if Quest.alreadyCompleted(npc, player, quests.qfo) then
-      Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
-      npc.menu:close(player)
-      end)
-    elseif player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and player.inventory:hasKey('alien_object3') then
-      player.inventory:removeManyItems(1, {name='alien_object3',type='key'})    
-      Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
-      local level = npc.containerLevel
-      npc.shake = true
-      player.freeze = true
-      sound.playSfx( "quake" )
-      level.trackPlayer = false
-      Timer.add(2.5, function()
-        npc.shake = false
-        player.freeze = false
-        level.trackPlayer = true
-        local script = {
-      "Holy crap, what the hell is that???",
-      "Damn it, you stupid human! The aliens followed you when you were coming back here, and now they've found us! {{red_light}}We're under attack!{{white}}",
-      "No, no, no, no, the device was so close to being complete! Then you had to go and mess it all up!",
-      "Okay, well, survival first eh? Come meet me at the {{red_light}}Chili Fields{{white}}, we gotta regroup!",
-      "Erm so, unfortunately, I've only got room for one in this teleporter, and I'm not good with spaces-- so you're gonna have to {{red_dark}}make it there on foot.{{white}}",
-      "The whole Valley will be {{green_light}}crawling with alien soldiers{{white}} trying to find us...well, to find you. Of course, I'll be at Chili Fields. Anyways, good luck!",
-      "Ooh, I almost forgot to take with me the device you brought. I'll take that...",
-      "Alright, toodles!",
-      }
-      Dialog.new(script, function()
-      npc.menu:close(player)
-      player.quest = 'Aliens! - Regroup with the alien at Chili Fields'
-      player.questParent = 'alien'
-      Quest.removeQuestItem(player)
-      Quest.addQuestItem(quests.regroup, player)
-      Quest:save(quests.regroup)
-      npc.state = 'hidden'
-      end)
-      end)
-      end)
-    elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
-      Quest:activate(npc, player, quests.aliencamp)
-    elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
-      local start = {
-      "Well done, human, you saved me! Say, you're tougher than you look. You know what? I think I'm gonna let you help me.",
-      "Here, take this alien trinket and give it to that {{teal}}buffoon with the telescope{{white}}. Maybe then he'll stop poking his nose around here.",
-      "After that, {{red_dark}}come back and talk to me{{white}}. I've got an extremely important mission I need your help with.",
-      }
-      local Dialogue = require 'dialog'
-      Dialogue = Dialog.create(start)
-      Dialogue:open(function()
-      npc.menu:close(player)
+      npc.walking = false
+      if Quest.alreadyCompleted(npc, player, quests.qfo) then
+        Dialog.new("Hello, human. Oh man, I could use some quesadillas right now.", function()
+          npc.menu:close(player)
+        end)
+      elseif player.quest == 'Aliens! - Attack alien camp and bring back alien technology' and
+             player.inventory:hasKey('alien_object3') then
+        player.inventory:removeManyItems(1, {name='alien_object3',type='key'})
+        Dialog.new("Wow, you made it out alive?! Really impressive, human. I suppose I can now tell you what I need the objects for--", function()
+          local level = npc.containerLevel
+          npc.shake = true
+          player.freeze = true
+          sound.playSfx( "quake" )
+          level.trackPlayer = false
+          Timer.add(2.5, function()
+            npc.shake = false
+            player.freeze = false
+            level.trackPlayer = true
+            local script = {
+              "Damn it, you stupid human! The aliens followed you back here! {{red_light}}We're under attack!{{white}}",
+              "Survival first, come meet me at the {{red_light}}Chili Fields{{white}}, we gotta regroup!",
+            }
+            Dialog.new(script, function()
+              npc.menu:close(player)
+              Quest.removeQuestItem(player)
+              Quest:activate(npc, player, quests.regroup)
+              npc.state = 'hidden'
+            end)
+          end)
+        end)
+      elseif Quest.alreadyCompleted(npc, player, quests.alienobject) then
+        Quest:activate(npc, player, quests.aliencamp)
+      elseif player.quest == 'Aliens! - Investigate Goat Farm' and not player.inventory:hasKey('alien_object') then
+        local start = {
+          "Well done human, you saved me! Say, you're tougher than you look. You know what? I think I'm gonna let you help me.",
+          "Here, take this alien trinket and give it to that {{teal}}buffoon with the telescope{{white}}. Maybe then he'll stop poking his nose around here.",
+          "After that, {{red_dark}}come back and talk to me{{white}}. I've got an extremely important mission I need your help with.",
+        }
+        Dialog.create(start):open(function()
+          npc.menu:close(player)
+          player.freeze = false
+          local Item = require 'items/item'
+          local itemNode = require ('items/keys/alien_object')
+          local item = Item.new(itemNode, 1)
+          player.inventory:addItem(item, true)
+        end)
+      elseif player.quest == 'Aliens! - Investigate Goat Farm' and player.inventory:hasKey('alien_object') then
+        Dialog.new("Human, what are you doing? Return to me at once after you get that telescope wielding buffoon off my case. I've got big plans with you!", function()
+          npc.menu:close(player)
+          player.freeze = false
+        end)
+      elseif Quest.alreadyCompleted(npc, player, telescope.alien) then
+        Quest:activate(npc, player, quests.alienobject)
+      end
       player.freeze = false
-      local Item = require 'items/item'
-      local itemNode = require ('items/keys/alien_object')
-      local item = Item.new(itemNode, 1)
-      player.inventory:addItem(item, true)
-      end)
-    elseif player.quest == 'Aliens! - Investigate Goat Farm' and player.inventory:hasKey('alien_object') then
-      Dialog.new("Human, what are you doing? Return to me at once after you get that telescope wielding buffoon off my case. I've got big plans with you!", function()
-      npc.menu:close(player)
-      player.freeze = false
-      end)
-    elseif Quest.alreadyCompleted(npc, player, telescope.alien) then
-      Quest:activate(npc, player, quests.alienobject)
-    end
-    player.freeze = false
-    npc.walking = true
+      npc.walking = true
     end,
   },
   talk_responses = {
@@ -141,14 +128,14 @@ return {
     },
   },
   inventory = function(npc, player)
-  if Quest.alreadyCompleted(npc, player, quests.qfo) then
-    local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-    Gamestate.stack("shopping", player, screenshot, "alien")
-  else      
+    if Quest.alreadyCompleted(npc, player, quests.qfo) then
+      local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
+      Gamestate.stack("shopping", player, screenshot, "alien")
+    else
       Dialog.new("Too bad, I'm not selling anything to some Earthling like you!", function()
-      npc.menu:close(player)
-      player.freeze = false
+        npc.menu:close(player)
+        player.freeze = false
       end)
-  end
+    end
   end,
 }

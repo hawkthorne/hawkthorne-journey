@@ -14,7 +14,6 @@ return {
     walking = {
       'loop',{'1,1','2,1','3,1'},.2,
     },
-
   },
 
   walking = true,
@@ -43,24 +42,22 @@ return {
             player.freeze = false
             player.inventory:removeManyItems(1, {name='wires',type='material'})
             player.inventory:removeManyItems(1, {name='wrench',type='weapon'})
-            player.quest = 'Save Greendale - Return back to Frankie'
             Quest.removeQuestItem(player)
-            Quest.addQuestItem(quests.poolreturn, player)
-            Quest:save(quests.poolreturn)
+            Quest:activate(npc, player, quests.poolreturn)
             npc.menu:close(player)
-          end) 
+          end)
         else
           Dialog.new(quests.poolreturn.completeQuestFail, function()
-              player.freeze = false
-              npc.menu:close(player)
-            end) 
+            player.freeze = false
+            npc.menu:close(player)
+          end)
         end
-      else 
+      else
         Dialog.new("There's an electric current running through the pool at the moment. Or I don't know, I'm a plumber not an electrician, pool's just not safe, okay?", function()
           player.freeze = false
           npc.menu:close(player)
-        end) 
+        end)
       end
-      end,
+    end,
   },
 }

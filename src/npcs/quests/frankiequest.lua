@@ -75,6 +75,8 @@ local quests = {
     },
     successPrompt = "Could you go find out what the delay is?",
     completeQuestFail = "Please go find out what is taking so long with the pool repairs!",
+    completeQuestSucceed = "Thank you for getting the repair guys back to work again! Hopefully the pool should be back up and running.",
+    complete = "Ugh, it seems that the pool is still not being fixed. They're distracted by murder mystery night or something...",
   },
   poolreturn = {
     infinite = false,
@@ -100,6 +102,7 @@ local quests = {
     },
     successPrompt = "Could you deposit this document into the mailbox? And no montages!",
     completeQuestFail = "Have you deposited it into the mailbox yet? The mailbox is at the west end of the campus. And no wasting time with montages!",
+    complete = "",
   },
   dianereturn = {
     infinite = false,

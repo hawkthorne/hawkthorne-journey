@@ -74,6 +74,13 @@ local quests = {
     },
     successPrompt = "Could you deposit this document into the mailbox? And no montages!",
     completeQuestFail = "What the hell are you still doing here? Go hold those aliens off!",
+    completeQuestSucceed = {
+      "You...you've done it! You've defeated the {{orange}}QFO{{white}}! Now I can eat Mexican food in peace, forever!",
+      "As a token of thanks, you can have my standard issue {{blue_light}}alien pistol{{white}}, you'll need it more than I do. Here's some gold as well.",
+      "Whenever you run out of ammo for the pistol come back to me and I will sell some to you.",
+      "It was nice working with you partner. We've defeated them!",
+    },
+    reward = {money = 150},
   },
 }
 

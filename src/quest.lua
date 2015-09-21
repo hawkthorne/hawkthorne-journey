@@ -118,7 +118,13 @@ function Quest.removeQuestItem(player)
   itemNode.type = 'detail'
   local item = Item.new(itemNode)
   playerItem, pageIndex, slotIndex = player.inventory:search(item)
+  -- check to make sure item exists to remove
+  if player.inventory:search(item) == false then
+    return
+  end
   player.inventory:removeItem(slotIndex, pageIndex)
+  player.quest = nil
+  player.questParent = nil
 end
 
 function Quest.giveQuestFail(npc, player, quest)
@@ -127,8 +133,6 @@ function Quest.giveQuestFail(npc, player, quest)
   Dialog.new(script, function()
     npc.prompt = prompt.new("Abandon current quest?", function(result)
       if result == 'Yes' then
-        player.quest = nil
-        player.questParent = quest.questParent
         Quest.removeQuestItem(player)
       end
       npc.menu:close(player)
@@ -136,7 +140,6 @@ function Quest.giveQuestFail(npc, player, quest)
     end)
   end)
 end
-
 
 function Quest:completeQuest(npc, player, quest)
   local success = self.testSuccess(player, quest)
@@ -162,12 +165,12 @@ function Quest.testSuccess(player, quest)
   --Quest type removeall: empty a certain level of a certain node
     local level = Gamestate.get(quest.removeall.level)
     for _,node in pairs(level.nodes) do
-            if node.name == quest.removeall.name then
-              return false
-            else
-              success = true
-            end
-        end
+      if node.name == quest.removeall.name then
+        return false
+      else
+        success = true
+      end
+    end
   end
   return success
 end
@@ -215,7 +218,6 @@ function Quest.completeQuestSucceed(npc, player, quest)
       player.inventory:removeManyItems(1, quest.collect)
     end
     Quest.removeQuestItem(player)
-    player.quest = nil
     Quest:save({})
     npc.menu:close(player)
   end)

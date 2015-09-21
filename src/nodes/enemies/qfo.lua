@@ -82,9 +82,9 @@ return {
   end,
 
   die = function( enemy )
-  if enemy.quest and Player.quest == enemy.quest then
-    enemy.db:set("bosstriggers.qfo", true)
-  end
+    if enemy.quest and Player.quest == enemy.quest then
+      enemy.db:set("bosstriggers.qfo", true)
+    end
   end,
 
   draw = function( enemy )
@@ -251,7 +251,7 @@ return {
 
     local direction = player.position.x > enemy.position.x + 40 and -1 or 1
     local offset = math.random(0,200)
-    if enemy.hp < enemy.props.hp and Player.quest ~= 'Aliens! - Destroy the QFO!' then
+    if enemy.hp < enemy.props.hp then
       enemy.hp = enemy.hp + 1
     end
 

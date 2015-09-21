@@ -995,6 +995,7 @@ function Inventory:search( item )
       return itemInSlot, page, i
     end
   end
+  return false
 end
 
 ---
