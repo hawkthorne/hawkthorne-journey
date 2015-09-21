@@ -266,6 +266,7 @@ return {
     local level = enemy.containerLevel
 
     enemy.db:set('cornelius-dead', true)
+    enemy.db:set('cornelius-beaten', true)
 
     sound.stopMusic()
     sound.playSfx("cornelius-ending")

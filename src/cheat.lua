@@ -54,7 +54,7 @@ local function setCheat(cheatName, turnOn)
     max_health = function() player.health = player.max_health end,
   give_gcc_key = function() 
     local gamesave = app.gamesaves:active()
-    gamesave:set('cornelius-dead', true)
+    gamesave:set('cornelius-beaten', true)
   end,
     unlock_levels = function()
     player.visitedLevels = {}
