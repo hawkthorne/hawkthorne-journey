@@ -63,6 +63,7 @@
     <property name="depth" value="2"/>
     <property name="hideable" value="true"/>
     <property name="level" value="lab"/>
+    <property name="movetime" value="1.5"/>
     <property name="offset_hidden_x" value="-12"/>
     <property name="offset_shown_x" value="-48"/>
     <property name="sound" value="false"/>

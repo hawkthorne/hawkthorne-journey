@@ -47,7 +47,6 @@
     <property name="hideable" value="true"/>
     <property name="key" value="greendale"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="movetime" value="0.01"/>
     <property name="offset_hidden_y" value="-24"/>
     <property name="offset_shown_x" value="24"/>
     <property name="offset_shown_y" value="-24"/>
