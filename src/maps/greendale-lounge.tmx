@@ -22,7 +22,7 @@
  </layer>
  <layer name="Tile Layer 3" width="24" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzLkKgDAQRdH5VK3dFdSYKFq4/bW3sUnndMJcOEUY8kQsy/p7m+JPKrImeN8VajRo0Sk2M+QoUEa3CR4BMxbFfo8BI1x023HgxIVbsf+1ByPRDRc=
+   eJxjYBgFo2AUDHXQSAMzi2lgJi1B6wDYCQCCNwF6
   </data>
  </layer>
  <objectgroup color="#000000" name="floorspace">
@@ -62,17 +62,17 @@
   </object>
   <object x="486" y="268">
    <properties>
-    <property name="height" value="8"/>
+    <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 18,18 54,18 36,0"/>
   </object>
   <object x="472" y="263">
    <properties>
-    <property name="height" value="12"/>
+    <property name="height" value="24"/>
    </properties>
    <polygon points="0,0 6,0 36,30 30,30"/>
   </object>
-  <object x="289.578" y="257.665" width="30" height="6">
+  <object x="304" y="258" width="16" height="6">
    <properties>
     <property name="height" value="12"/>
    </properties>
@@ -83,6 +83,41 @@
    </properties>
    <polygon points="0,0 24,0 72,12 60,18"/>
   </object>
+  <object x="375" y="258" width="16" height="6">
+   <properties>
+    <property name="height" value="12"/>
+   </properties>
+  </object>
+  <object x="391" y="258" width="16" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object x="288" y="258" width="16" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object x="513" y="261" width="14" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object x="546" y="288" width="18" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object x="542" y="288" width="4" height="6">
+   <properties>
+    <property name="height" value="36"/>
+   </properties>
+  </object>
+  <object x="45" y="240" width="5" height="4">
+   <properties>
+    <property name="height" value="39"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="nodes">
   <object type="info" x="126" y="102" width="36" height="24">
@@ -92,7 +127,7 @@
   </object>
   <object type="sprite" x="61" y="256" width="69" height="56">
    <properties>
-    <property name="depth" value="34"/>
+    <property name="depth" value="26"/>
     <property name="height" value="56"/>
     <property name="sheet" value="images/sprites/greendale/lounge-table.png"/>
     <property name="width" value="69"/>
@@ -108,6 +143,8 @@
   <object name="vendingmachine" type="door" x="508" y="152" width="44" height="64">
    <properties>
     <property name="background" value="true"/>
+    <property name="closedinfo" value="You need some rope to get down there."/>
+    <property name="hiddenKey" value="true"/>
     <property name="hideable" value="true"/>
     <property name="key" value="rope"/>
     <property name="level" value="greendale-computer-wing"/>
@@ -130,36 +167,18 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="204" y="258" width="36" height="38">
-   <properties>
-    <property name="depth" value="34"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="38"/>
-    <property name="sheet" value="images/sprites/greendale/lounge-cart.png"/>
-    <property name="width" value="36"/>
-   </properties>
-  </object>
   <object type="sprite" x="300" y="264" width="71" height="39">
    <properties>
-    <property name="depth" value="34"/>
+    <property name="depth" value="10"/>
     <property name="foreground" value="true"/>
     <property name="height" value="38"/>
     <property name="sheet" value="images/sprites/greendale/lounge-couch.png"/>
     <property name="width" value="71"/>
    </properties>
   </object>
-  <object type="sprite" x="289" y="240" width="32" height="24">
-   <properties>
-    <property name="depth" value="34"/>
-    <property name="foreground" value="true"/>
-    <property name="height" value="24"/>
-    <property name="sheet" value="images/sprites/greendale/lounge-chair-right.png"/>
-    <property name="width" value="32"/>
-   </properties>
-  </object>
   <object type="sprite" x="375" y="240" width="32" height="24">
    <properties>
-    <property name="depth" value="34"/>
+    <property name="depth" value="6"/>
     <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/greendale/lounge-chair.png"/>
@@ -168,7 +187,7 @@
   </object>
   <object type="sprite" x="476" y="247" width="88" height="48">
    <properties>
-    <property name="depth" value="34"/>
+    <property name="depth" value="20"/>
     <property name="foreground" value="true"/>
     <property name="height" value="48"/>
     <property name="sheet" value="images/sprites/greendale/lounge-booth.png"/>
@@ -210,7 +229,7 @@
     <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
-  <object type="info" x="228" y="216" width="36" height="30">
+  <object type="info" x="240" y="246" width="36" height="48">
    <properties>
     <property name="info" value="I've made a terrible mistake coming here.  Maybe it's not too late to get out of my contract..."/>
    </properties>
@@ -222,6 +241,34 @@
     <property name="key" value="flashlight"/>
     <property name="level" value="greendale-lounge-bathroom"/>
     <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object type="sprite" x="204" y="258" width="36" height="38">
+   <properties>
+    <property name="depth" value="4"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="38"/>
+    <property name="sheet" value="images/sprites/greendale/lounge-cart.png"/>
+    <property name="width" value="36"/>
+   </properties>
+  </object>
+  <object type="sprite" x="234" y="246" width="48" height="48">
+   <properties>
+    <property name="animation" value="1-5,1"/>
+    <property name="depth" value="2"/>
+    <property name="foreground" value="false"/>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/greendale/profCornwallis.png"/>
+    <property name="width" value="48"/>
+   </properties>
+  </object>
+  <object type="sprite" x="288" y="240" width="32" height="24">
+   <properties>
+    <property name="depth" value="6"/>
+    <property name="foreground" value="true"/>
+    <property name="height" value="24"/>
+    <property name="sheet" value="images/sprites/greendale/lounge-chair-right.png"/>
+    <property name="width" value="32"/>
    </properties>
   </object>
  </objectgroup>

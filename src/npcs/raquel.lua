@@ -19,6 +19,7 @@ return {
     }
   },
   stare = false,
+  donotfacewhentalking = true,
 
   talk_items = {
   { ['text']='i am done with you' },

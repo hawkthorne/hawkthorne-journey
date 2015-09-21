@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="18" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="240" height="18" tilewidth="24" tileheight="24" nextobjectid="39">
  <properties>
   <property name="blue" value="249"/>
   <property name="floor" value="12"/>
@@ -9,10 +9,10 @@
   <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Exterior"/>
  </properties>
- <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-exterior.png" width="480" height="480"/>
+ <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24" tilecount="380">
+  <image source="../images/tilesets/greendale-exterior.png" width="480" height="456"/>
  </tileset>
- <tileset firstgid="401" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="381" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="city_little_clouds" width="240" height="18">
@@ -38,7 +38,7 @@
  </layer>
  <layer name="foreground" width="240" height="18">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="leaves" width="240" height="18">
@@ -48,22 +48,22 @@
  </layer>
  <layer name="lampposts" width="240" height="18">
   <data encoding="base64" compression="zlib">
-   eJztmrtOwzAUht0NxFJ4AobCBlJbbmWg6RDB0qFv0IUXgBfIi1TqBgs7CIbuVAJxmWHkIRg4LjExluO4Tsil/J/0q5Fv58Tx77RWGQMAAAAAAACkxWfMazI25qLrSdH5AADs4N7VlE3yzwSUkSXa0w116/llAlR8w7PBu3hx4Xu27bOFf8tLM7l+kkceVcX/VlB0HvMgf99SPUx+nGSkcc639S8x+ZfqhlVbm3mzXLH5yeu3EvybD/z9wX2qCr5dTHx9WZB1nKr5l/IdmnKe5pgLKAd10ipprehEFOQ9m3uX8gsoz6Cu+HiXtEfaJx3MGSPJv2qstJR1rkExXJNuwusz0rnDGA3SBmlzjj5PpGfSC+nVIaYLlF9AeQb8LKrN2LsQr5PvXa5LUpJ/Gxn712WuF40VQ91VzHUSLv10eVyQLi3b2tQJWuH5aSvDc1Q5bierQeeMGzfXcXPSydhPrt+f4/Iz7aGiD5/rwxQxXHAZK238j5jydspxTYxI94Z6cYbCz1famvJb0l1UNvuvCb825XzimKsNI8u4/YzGTGp/Sv6zeX5xc9IP/Svenz1Nmx6zfwe7+lfcw8Ci7SBcG6KPugfvJMSYWu5Z6nORx3VZY+3f1z9ztlVjbLsWlfH8pmGe4eeMz5hxjzVluufoypvlmCIPT5rfB9Kj1MYL63U5q+P8NU1prXZTxI3zjAmPRfNkE9fUhp/hWAxhhat/RX5dhz4Cj0Vr40jj0bTrQvafy1i2faYaAQAAAAAAAAAA/4EvZhePNA==
+   eJztmr1OwzAUhd0NxFJ4AobCBlIb/spA0yGCpUPfoAsvAC+QF6nUDRZ2EAzZqQTiZ4aRh2DgusTEWI7jOiFtyvmkIyLbuffW8XFaC8YAAAAAAAAAeQkY85uMjbjoOpp1PQAAO7h3NW1R+ZWAeWSJ9nRD33p5lQCVwPBs8C5eXPiebfts4d/5pZndH5VRR1UJvhXOuo5pkL9vqR4mP0YFaVTyx/qXmPxLfYOqrc2yWa7Y/JT1Wwn+LQf+/uA+VQXfLiaBvi0sOk/V/Ev1Dkw1j0usBcwHddIqaW3WhSjIezb3LtUXUp1hXfHxLmmPtE86mDJHln/VXHmZ17kGs+GadBNfn5HOHWI0SBukzSnueSI9k15Irw45XaD6Qqoz5GdRHmPvQrxP/uxyX5ay/Nso2L8uc71orBj6rlKus3C5T1fHBenScqxNn6AVn5+2Cj5HFbnbRQa1zMlJm+u0OWkX7CfX789p9Zn2UHmuD3PkcMElVt78HyntXs64Joake0O/OEPh5yuepv2WdJe0Tf7XhF+baj5xrNWGYUa/yN0rMKZp/Cn5z+b5pc1JL/aveH92NWO6zP4d7Opf8Rn6FmP78doQ96h78E5GjrHlnqU+Fzmuyxrzfl//zNlWjbHtWtLG6xvHdcZ/J3ymxD3WtOmeoytvljFFHb40vw+kR2mMH/fralbj/DVNaa12cuRO84wJnyXzZJPTNIaf4ViEsMLVv6K+jnGU/h6Bz5K1caTxaN51IfvPJZbtPWONAAAAAAAAAACA/8AXY6+PNA==
   </data>
  </layer>
  <layer name="collision" width="240" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt2c0OwiAMwHF4/5PP4bz4eVZ5MPGwZIljLdtgK/5/SY86WiiwzDkAAABYcPbOXWJcY9xi3GM8/NajApAy7NmUkr189NPRojDI791ojv+u5NrV9GwK53KeIOxP9LA90nyWPIvCimuFdbcfmn0iJ/Y+t6X2xa5SHy6x1hxbNjb/pdZsy3VsDfdLYH1L7hdz92V6GV+cv/b1vYy6cvftvb/39cJgrFM5SqzXQSs0lBPvv/mWvC9Tx1+vmPfTaO7MHwC0L0yc9VufYdLzc8aXe7/VfOc5Cf9Xq37Sc6TcU78fq4GUs1bp2my9dufolHU+eIIgrAYAAAAAvQ9AM0Xc
+   eJzt2UsOwiAQgGE4uOewbnyuVY4oLpo0sZShFMrg/yWz1DIDAzQ1BgAAABqcrTEXH1cfNx93Hw+796gAhEx7NqRkLx/tcvTITfJ7d5rjvyu5diU9G8K5nMZF9id6WJ/YfJY8i9yGa4V11w7JPpESrc9tqX1xqNSHObaaY83m5r/Umu25jr3hfglsL+d+sXZfppfxxfmr39jLqCt13279vW/kJmNdyjFGex2kXEc58f6bLud9mTr+evm8n0pzZ/4AoH9u4azf+wyLPT9lfKn3W8l3npPg/2rUMPaMWO6h38/VQJKzROm67L121xiEdT5YgiC0BgAAAAC5D2jnHcg=
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes">
-  <object name="main" type="door" x="1848" y="264" width="48" height="48">
+  <object id="1" name="main" type="door" x="1848" y="264" width="48" height="48">
    <properties>
     <property name="level" value="hallway"/>
     <property name="to" value="hallway1"/>
    </properties>
   </object>
-  <object type="sprite" x="1214" y="166" width="53" height="53">
+  <object id="2" type="sprite" x="1214" y="166" width="53" height="53">
    <properties>
     <property name="animation" value="1-4,1"/>
     <property name="height" value="28"/>
@@ -71,109 +71,109 @@
     <property name="width" value="34"/>
    </properties>
   </object>
-  <object name="admin2" type="door" x="408" y="288" width="24" height="48">
+  <object id="3" name="admin2" type="door" x="408" y="288" width="24" height="48">
    <properties>
     <property name="level" value="deans-office"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bushes_right" type="door" x="1080" y="288" width="24" height="48">
+  <object id="4" name="bushes_right" type="door" x="1080" y="288" width="24" height="48">
    <properties>
     <property name="level" value="baseball"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="classHallway" type="door" x="2928" y="288" width="24" height="48">
+  <object id="5" name="classHallway" type="door" x="2928" y="288" width="24" height="48">
    <properties>
     <property name="level" value="class-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="borchert" type="door" x="3360" y="264" width="48" height="48">
+  <object id="6" name="borchert" type="door" x="3360" y="264" width="48" height="48">
    <properties>
     <property name="level" value="borchert-hallway"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="admin1" type="door" x="336" y="288" width="24" height="48">
+  <object id="7" name="admin1" type="door" x="336" y="288" width="24" height="48">
    <properties>
     <property name="level" value="admin-hallway"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="dorm" type="door" x="4176" y="288" width="48" height="48">
+  <object id="8" name="dorm" type="door" x="4176" y="288" width="48" height="48">
    <properties>
     <property name="level" value="dorm-lobby"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="1119" y="316" width="16" height="9">
+  <object id="9" type="info" x="1119" y="316" width="16" height="9">
    <properties>
     <property name="info" value="Luis Guzman"/>
    </properties>
   </object>
-  <object type="info" x="1515" y="292" width="16" height="40">
+  <object id="10" type="info" x="1515" y="292" width="16" height="40">
    <properties>
     <property name="info" value="No talking, the hats speak for themselves."/>
    </properties>
   </object>
-  <object type="info" x="77" y="316" width="60" height="18">
+  <object id="11" type="info" x="77" y="316" width="60" height="18">
    <properties>
     <property name="info" value="Greendale Community College: You're Already Accepted"/>
    </properties>
   </object>
-  <object type="info" x="4729" y="289" width="46" height="48">
+  <object id="12" type="info" x="4729" y="289" width="46" height="48">
    <properties>
     <property name="info" value="This door is locked from the outside.|If you listen closely, you can the sound of air conditioners running.|As you ponder another way in, you also hear a faint voice.|...'Nein...'..."/>
    </properties>
   </object>
-  <object name="admin3" type="door" x="672" y="288" width="24" height="48">
+  <object id="13" name="admin3" type="door" x="672" y="288" width="24" height="48">
    <properties>
     <property name="level" value="gazette-office"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="bushes" type="door" x="936" y="288" width="24" height="48">
+  <object id="14" name="bushes" type="door" x="936" y="288" width="24" height="48">
    <properties>
     <property name="level" value="trampoline"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="dean" type="door" x="5160" y="288" width="24" height="48"/>
-  <object type="info" x="5160" y="288" width="24" height="48">
+  <object id="15" name="dean" type="door" x="5160" y="288" width="24" height="48"/>
+  <object id="16" type="info" x="5160" y="288" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked from the outside."/>
    </properties>
   </object>
-  <object name="parking-lot" type="door" x="4496" y="288" width="52" height="48">
+  <object id="17" name="parking-lot" type="door" x="4496" y="288" width="52" height="48">
    <properties>
     <property name="level" value="parking-lot"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="emexit" type="door" x="540" y="288" width="24" height="48"/>
-  <object name="acexit" type="door" x="4728" y="288" width="48" height="48">
+  <object id="18" name="emexit" type="door" x="540" y="288" width="24" height="48"/>
+  <object id="19" name="acexit" type="door" x="4728" y="288" width="48" height="48">
    <properties>
     <property name="" value=""/>
    </properties>
   </object>
-  <object name="writersexit" type="door" x="1848" y="96" width="24" height="48"/>
-  <object name="cafeteria" type="door" x="2520" y="288" width="48" height="48">
+  <object id="20" name="writersexit" type="door" x="1848" y="96" width="24" height="48"/>
+  <object id="21" name="cafeteria" type="door" x="2520" y="288" width="48" height="48">
    <properties>
     <property name="level" value="sophieb"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="golfcart" type="vehicle" x="840" y="312" width="24" height="24"/>
-  <object name="golfcart" type="vehicle" x="4896" y="312" width="24" height="24"/>
-  <object type="movingplatform" x="4872" y="72" width="24" height="24">
+  <object id="22" name="golfcart" type="vehicle" x="840" y="312" width="24" height="24"/>
+  <object id="23" name="golfcart" type="vehicle" x="4896" y="312" width="24" height="24"/>
+  <object id="24" type="movingplatform" x="4872" y="72" width="24" height="24">
    <properties>
     <property name="anim_speed" value="0.5"/>
     <property name="animation" value="1,1-2"/>
@@ -186,48 +186,57 @@
     <property name="sfx" value="click"/>
     <property name="speed" value="0.08"/>
     <property name="sprite" value="images/sprites/greendale/airplane.png"/>
+    <property name="sprite2" value="images/sprites/greendale/airplane2.png"/>
+    <property name="spriteTrigger" value="greendale-airplane"/>
     <property name="start" value="0"/>
     <property name="width" value="168"/>
    </properties>
   </object>
-  <object name="frankie" type="npc" x="2352" y="288" width="24" height="48"/>
-  <object name="potato" type="material" x="4896" y="120" width="24" height="24"/>
-  <object name="potato" type="material" x="3480" y="24" width="24" height="24"/>
-  <object name="potato" type="material" x="4224" y="48" width="24" height="24"/>
-  <object type="mailbox" x="24" y="295" width="23" height="39"/>
-  <object name="parking-lot-2" type="door" x="5040" y="288" width="24" height="48">
+  <object id="25" name="frankie" type="npc" x="2352" y="288" width="24" height="48"/>
+  <object id="26" name="potato" type="material" x="4896" y="120" width="24" height="24"/>
+  <object id="27" name="potato" type="material" x="3480" y="24" width="24" height="24"/>
+  <object id="28" name="potato" type="material" x="4224" y="48" width="24" height="24"/>
+  <object id="29" type="mailbox" x="24" y="295" width="23" height="39"/>
+  <object id="30" name="parking-lot-2" type="door" x="5040" y="288" width="24" height="48">
    <properties>
     <property name="level" value="parking-lot"/>
     <property name="sound" value="false"/>
     <property name="to" value="main2"/>
    </properties>
   </object>
-  <object name="quad" type="door" x="3960" y="288" width="24" height="48">
+  <object id="31" name="quad" type="door" x="3960" y="288" width="24" height="48">
    <properties>
     <property name="level" value="greendale-quad"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="5544" y="264" width="48" height="48">
+  <object id="32" type="info" x="5544" y="264" width="48" height="48">
    <properties>
     <property name="info" value="This door is locked from the outside."/>
    </properties>
   </object>
-  <object name="admin4" type="door" x="744" y="288" width="24" height="48">
+  <object id="33" name="admin4" type="door" x="744" y="288" width="24" height="48">
    <properties>
     <property name="level" value="greendale-lounge"/>
     <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="officercackowski" type="npc" x="540" y="288" width="24" height="48"/>
+  <object id="34" name="officercackowski" type="npc" x="540" y="288" width="24" height="48"/>
+  <object id="37" name="hologram" type="npc" x="1670" y="275" width="48" height="61"/>
+  <object id="38" type="enemy" x="2126" y="288" width="48" height="48">
+   <properties>
+    <property name="enemytype" value="goat"/>
+    <property name="sheet" value="billy"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="movement">
-  <object name="airline" x="3763" y="85">
+  <object id="35" name="airline" x="3763" y="85">
    <polyline points="1998,-3 -3768,0"/>
   </object>
-  <object name="airline" x="3763" y="85">
+  <object id="36" name="airline" x="3763" y="85">
    <polyline points="1997,-2 -3768,0"/>
   </object>
  </objectgroup>

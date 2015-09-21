@@ -4,7 +4,7 @@
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
   <property name="red" value="104"/>
-  <property name="soundtrack" value="greendale-alt"/>
+  <property name="soundtrack" value="computer-wing"/>
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
@@ -45,7 +45,7 @@
     <property name="info" value="Hello, rich people?"/>
    </properties>
   </object>
-  <object type="climbable" x="24" y="30" width="12" height="228"/>
+  <object type="climbable" x="24" y="60" width="12" height="198"/>
   <object type="door" x="0" y="30" width="48" height="30">
    <properties>
     <property name="instant" value="true"/>
@@ -62,14 +62,12 @@
   <object name="wing3" type="door" x="408" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-computer-wing-3"/>
-    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>
   <object name="wing2" type="door" x="216" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-computer-wing-2"/>
-    <property name="sound" value="false"/>
     <property name="to" value="main"/>
    </properties>
   </object>

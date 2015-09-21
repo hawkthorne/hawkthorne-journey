@@ -4,7 +4,7 @@
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
   <property name="red" value="104"/>
-  <property name="soundtrack" value="greendale-alt"/>
+  <property name="soundtrack" value="computer-wing"/>
   <property name="title" value="Borchert Hallway"/>
  </properties>
  <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
@@ -37,7 +37,6 @@
   <object name="main" type="door" x="288" y="192" width="24" height="72">
    <properties>
     <property name="level" value="greendale-computer-wing"/>
-    <property name="sound" value="false"/>
     <property name="to" value="wing2"/>
    </properties>
   </object>

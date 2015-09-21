@@ -30,7 +30,7 @@
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBjaIJJpaONRMApGwSgYBQMDipkgeKDNoBR0Ae3vJOAGkJoOKManlhizYCCPaWjjUTCwAAD8ZCw+
+   eJxjYBjaIJJpaONRMApGwSgYBfhBBxMEUxsUM0EwLc2g1HxiQBfQjk4C9nQxIcIRn1pizIKBPKahjUfBwAIAizwtxw==
   </data>
  </layer>
  <objectgroup name="nodes">
@@ -82,11 +82,6 @@
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
-  <object type="info" x="336" y="216" width="24" height="48">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
   <object type="info" x="528" y="216" width="48" height="48">
    <properties>
     <property name="info" value="These doors are locked."/>
@@ -103,6 +98,17 @@
     <property name="sound" value="false"/>
     <property name="spawnType" value="keypress"/>
     <property name="sprite" value="wastebin"/>
+   </properties>
+  </object>
+  <object type="info" x="244" y="195" width="66" height="42">
+   <properties>
+    <property name="info" value="Do to a mix up in the records room all student records have been lost.  As you know, our student records are stored on a Microsoft Paint file, which the Dean was assured was future-proof. | Meanwhile, our extended warranty is not being honored by the restaurant that used to be Circuit City and we are asking every student to re-register for their classes."/>
+   </properties>
+  </object>
+  <object name="bursar" type="door" x="336" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-bursar"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

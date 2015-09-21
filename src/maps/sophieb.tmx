@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="72" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="72" height="14" tilewidth="24" tileheight="24" nextobjectid="16">
  <properties>
   <property name="soundtrack" value="asilaymedown"/>
  </properties>
- <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="sophiedance" tilewidth="24" tileheight="24" tilecount="483">
   <image source="../images/tilesets/sophiedance.png" width="552" height="504"/>
  </tileset>
- <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="484" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="72" height="14">
@@ -118,24 +118,24 @@
   </data>
  </layer>
  <objectgroup color="#a41b00" name="nodes">
-  <object type="info" x="1042" y="239" width="28" height="30">
+  <object id="1" type="info" x="1042" y="239" width="28" height="30">
    <properties>
     <property name="info" value="Someone left some potato chips here.|*Munch munch munch*|...Gross. These are Spwingles."/>
    </properties>
   </object>
-  <object type="info" x="1291" y="207" width="16" height="60">
+  <object id="2" type="info" x="1291" y="207" width="16" height="60">
    <properties>
     <property name="info" value="A photo of an unhappy cat in an old-timey dress.|It reads: 'This dance is dedicated to the memory of Susie B.'"/>
    </properties>
   </object>
-  <object name="main" type="door" x="624" y="240" width="48" height="60">
+  <object id="3" name="main" type="door" x="624" y="240" width="48" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="cafeteria"/>
    </properties>
   </object>
-  <object name="sophieb" type="npc" x="1580" y="208" width="48" height="48"/>
-  <object type="sprite" x="768" y="241" width="48" height="48">
+  <object id="4" name="sophieb" type="npc" x="1580" y="208" width="48" height="48"/>
+  <object id="5" type="sprite" x="768" y="241" width="48" height="48">
    <properties>
     <property name="animation" value="1-15,1"/>
     <property name="height" value="48"/>
@@ -143,17 +143,17 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="info" x="768" y="240" width="47" height="47">
+  <object id="6" type="info" x="768" y="240" width="47" height="47">
    <properties>
     <property name="info" value="Who cares if the dance is over?|There's stil plenty of fun to be had!|Wheeee!"/>
    </properties>
   </object>
-  <object type="info" x="1488" y="249" width="23" height="52">
+  <object id="7" type="info" x="1488" y="249" width="23" height="52">
    <properties>
     <property name="info" value="You find a crumpled note here.|It appears to be a set of lyrics for a song called 'Dean, Wish I Was Your Lover'|...You can see why it's been crumpled and left here."/>
    </properties>
   </object>
-  <object type="sprite" x="431" y="164" width="27" height="53">
+  <object id="8" type="sprite" x="431" y="164" width="27" height="53">
    <properties>
     <property name="animation" value="1-11,1|1-11,2|1-11,3|1-11,4|1-11,5|"/>
     <property name="height" value="53"/>
@@ -161,7 +161,7 @@
     <property name="width" value="27"/>
    </properties>
   </object>
-  <object name="sandwich-shop" type="door" x="576" y="21" width="24" height="276">
+  <object id="9" name="sandwich-shop" type="door" x="576" y="21" width="24" height="276">
    <properties>
     <property name="aniframes2" value="1-2,1"/>
     <property name="anispeed2" value="0.05"/>
@@ -176,30 +176,32 @@
     <property name="trigger" value="sandwich-shop"/>
    </properties>
   </object>
-  <object type="info" x="120" y="240" width="24" height="48">
+  <object id="10" type="info" x="120" y="240" width="24" height="48">
    <properties>
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="sandwich-shop" type="door" x="193" y="183" width="27" height="114">
+  <object id="11" name="sandwich-shop" type="door" x="193" y="183" width="27" height="114">
    <properties>
     <property name="aniframes2" value="1-6,1"/>
     <property name="anispeed2" value="0.05"/>
     <property name="hideable" value="true"/>
+    <property name="level" value="greendale-speakeasy"/>
     <property name="offset_hidden_y" value="0"/>
     <property name="sound" value="false"/>
     <property name="sprite" value="sandwich-curtain"/>
     <property name="sprite_height" value="114"/>
     <property name="sprite_width" value="27"/>
+    <property name="to" value="main"/>
     <property name="trigger" value="sandwich-curtain"/>
    </properties>
   </object>
-  <object type="info" x="528" y="204" width="48" height="48">
+  <object id="12" type="info" x="528" y="204" width="48" height="48">
    <properties>
     <property name="info" value="Today’s special is the 'Troy-jan Horse.'  | NOTE: The 'Troy-jan Horse' contains no actual horse meat."/>
    </properties>
   </object>
-  <object name="sandwich-shop" type="door" x="25" y="21" width="24" height="276">
+  <object id="13" name="hunger-deans" type="door" x="25" y="21" width="24" height="276">
    <properties>
     <property name="aniframes2" value="1-2,1"/>
     <property name="anispeed2" value="0.05"/>
@@ -214,5 +216,6 @@
     <property name="trigger" value="hunger-deans"/>
    </properties>
   </object>
+  <object id="14" name="todd-sandwich" type="npc" x="250" y="204" width="24" height="34"/>
  </objectgroup>
 </map>

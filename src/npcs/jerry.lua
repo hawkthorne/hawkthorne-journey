@@ -45,7 +45,7 @@ return {
             Quest:activate(npc, player, quests.poolreturn)
             npc.menu:close(player)
             npc.db:set('borchertpool', true)
-          end) 
+          end 
         else
           Dialog.new(quests.poolreturn.completeQuestFail, function()
             player.freeze = false

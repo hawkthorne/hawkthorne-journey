@@ -75,6 +75,9 @@ function Door.new(node, collider, level)
     door.movetime = node.properties.movetime and tonumber(node.properties.movetime) or 1
     door.obstruct = node.properties.obstruct or false
     door.show_sfx = node.properties.show_sfx or 'reveal'
+    --used if a hidden door still needs a key after being shown (Like a rope in the lounge)
+    door.hiddenKey = node.properties.hiddenKey or false
+
     --used if the closed door should obstruct the player's movement
     if door.obstruct and not door.open then
       -- used for collision detection
@@ -119,6 +122,22 @@ function Door:switch(player)
   end
 
   if not self.key or (player.inventory:hasKey(self.key) and not self.inventory) or self.open then
+    if self.hiddenKey and self.key and not player.inventory:hasKey(self.key) then 
+      if self.closedinfo then
+        message = {self.closedinfo}
+      elseif self.info then
+        message = {self.info}
+      else
+        message = {'You need a "'..self.key..'" key to open this door.'}
+      end 
+      local callback = function(result)
+          self.prompt = nil
+          player.freeze = false
+      end
+      local options = {'Exit'}
+      self.prompt = Prompt.new(message, callback, options)
+      return
+    end
     if self.sound ~= false and not self.instant then
       sound.playSfx( ( type(self.sound) ~= 'boolean' ) and self.sound or 'unlocked' )
     end
@@ -162,6 +181,22 @@ end
 
 function Door:keypressed( button, player)
   if player.freeze or player.dead then return end
+  if self.hiddable and self.open and self.hiddenKey and self.key and not player.inventory:hasKey(self.key) then
+    if self.closedinfo then
+      message = {self.closedinfo}
+    elseif self.info then
+      message = {self.info}
+    else
+      message = {'You need a "'..self.key..'" key to open this door.'}
+    end 
+    local callback = function(result)
+        self.prompt = nil
+        player.freeze = false
+    end
+    local options = {'Exit'}
+    self.prompt = Prompt.new(message, callback, options)
+    return
+  end
   if self.hideable and self.hidden and not self.inventory then 
     if self.obstruct then
       if not player.inventory:hasKey(self.key) and self.info then
