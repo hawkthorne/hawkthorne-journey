@@ -235,7 +235,7 @@ end
 function buttonpressed(key)
   if testing then return end
   if controls:isRemapping() then Gamestate.keypressed(key) return end
-  if key == 'f5' then debugger:toggle() end
+  if key == "f5" then debugger:toggle() end
   if key == "f6" and debugger.on then debug.debug() end
   local action = controls:getAction(key)
   local state = Gamestate.currentState().name or ""
@@ -273,15 +273,18 @@ function love.joystickremoved(joystick)
 end
 
 function love.joystickreleased(joystick, key)
+  if joystick:isGamepad() then return end
   buttonreleased(tostring(key))
 end
 
 function love.joystickpressed(joystick, key)
+  if joystick:isGamepad() then return end
   controls:switch(joystick)
   buttonpressed(tostring(key))
 end
 
 function love.joystickaxis(joystick, axis, value)
+  if joystick:isGamepad() then return end
   axisDir1, axisDir2, _ = joystick:getAxes()
   controls:switch(joystick)
   if axisDir1 < 0 then buttonpressed('dpleft') end
