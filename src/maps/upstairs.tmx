@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="jumping" value="false"/>
+  <property name="soundtrack" value="tavern"/>
+ </properties>
+ <tileset firstgid="1" name="inside" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/inside.png" width="288" height="288"/>
+ </tileset>
+ <layer name="background" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy1kcENgzAMRb8Q58AhA/QOlzIAYhRG8WiMwih1ii3SKHWbCA5P30jRy4/xACbmCdADWAOjzGnKjFwG2IEZWPyRGwMfwWcolzJnU+GOS3C781s778JakO+uk9zvIubIbexhl3d/pDrZQS7xqtsfDsqltYdvTqVhugosZ6Dlnd/kLXbyG7df3pqu7Z/evtxr/rPavtZ+h4u4wUnCpT1TXllfQEo=
+  </data>
+ </layer>
+ <layer name="foreground" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKANMGZgWEADMxnsgeZS02yomWBALbORzYQBSs3GZiay2fIMDAnkYFxmgoA8Ee6SQ8ICDAwOSHobCJlbCcRVQFwNxDVoarSQMJpegua2AnEbELcDcQd+55NkLjFAFwlT01wseg9gE+cAxikFxoL0M/BR2UxsZlPLTHSzAdkNGqY=
+  </data>
+ </layer>
+ <layer name="accents" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJyTZ2BoYKAykIfgUXPpZC6Q7UCBWQdwmUstMFjMdaeRuYxI7FogrgPieiqYy4tHDi3+B0X4DgZzATOvDhE=
+  </data>
+ </layer>
+ <objectgroup color="#ff0000" name="floorspace" width="0" height="0">
+  <object x="72" y="264">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="0,0 360,0 432,72 -72,72"/>
+  </object>
+  <object name="bed" x="405" y="317">
+   <properties>
+    <property name="height" value="27"/>
+   </properties>
+   <polygon points="-21,-4 81,-4 101,15 -5,15"/>
+  </object>
+  <object name="dresser" x="403" y="264">
+   <properties>
+    <property name="height" value="36"/>
+   </properties>
+   <polygon points="-21,-4 50,-4 55,10 -12,9"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="nodes" width="0" height="0">
+  <object name="main" type="door" x="264" y="216" width="24" height="50">
+   <properties>
+    <property name="level" value="town"/>
+    <property name="to" value="upstairs"/>
+   </properties>
+  </object>
+  <object type="sprite" x="384" y="285" width="120" height="48">
+   <properties>
+    <property name="depth" value="18"/>
+    <property name="height" value="47"/>
+    <property name="sheet" value="images/sprites/town/bed.png"/>
+    <property name="width" value="95"/>
+   </properties>
+  </object>
+  <object type="sprite" x="480" y="261" width="24" height="48">
+   <properties>
+    <property name="height" value="48"/>
+    <property name="sheet" value="images/sprites/town/bed_headboard.png"/>
+    <property name="width" value="24"/>
+   </properties>
+  </object>
+  <object type="sprite" x="380" y="228" width="72" height="48">
+   <properties>
+    <property name="depth" value="18"/>
+    <property name="flip" value="true"/>
+    <property name="height" value="44"/>
+    <property name="sheet" value="images/sprites/town/dresser.png"/>
+    <property name="width" value="72"/>
+   </properties>
+  </object>
+  <object type="sprite" x="14" y="226" width="120" height="72">
+   <properties>
+    <property name="height" value="72"/>
+    <property name="sheet" value="images/sprites/town/hay_left.png"/>
+    <property name="width" value="120"/>
+   </properties>
+  </object>
+  <object name="pot" type="throwable" x="192" y="264" width="24" height="24"/>
+  <object name="pot" type="throwable" x="204" y="276" width="24" height="24"/>
+ </objectgroup>
+</map>
