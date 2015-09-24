@@ -6,9 +6,9 @@ local Gamestate = require 'vendor/gamestate'
 local utils = require 'utils'
 local anim8 = require 'vendor/anim8'
 local Dialog = require 'dialog'
-local prompt = require 'prompt'
 local Quest = require 'quest'
 local quests = require 'npcs/quests/hermitquest'
+local prompt = require 'prompt'
 
 return {
   width = 24,
@@ -27,8 +27,10 @@ return {
   },
   talk_commands = {
     ['Talk about quests'] = function(npc, player)
-      if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' or
-         player.quest == 'To Slay An Acorn - Collect the Special Berry' then
+      if player.quest == 'To Slay an Acorn - Find the Old Hermit at Stonerspeak' then
+        Quest.removeQuestItem(player)
+        Quest:activate(npc, player, quests.berry)
+      elseif player.quest == 'To Slay An Acorn - Collect the Special Berry' then
         Quest:activate(npc, player, quests.berry)
       else
         Dialog.new("The woods here are dangerous these days, you gotta keep your wits about you!", function()
