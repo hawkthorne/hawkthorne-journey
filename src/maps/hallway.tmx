@@ -47,7 +47,6 @@
     <property name="hideable" value="true"/>
     <property name="key" value="greendale"/>
     <property name="level" value="greendale-exterior"/>
-    <property name="movetime" value="0.01"/>
     <property name="offset_hidden_y" value="-24"/>
     <property name="offset_shown_x" value="24"/>
     <property name="offset_shown_y" value="-24"/>
@@ -55,7 +54,7 @@
     <property name="sprite_height" value="72"/>
     <property name="sprite_width" value="24"/>
     <property name="to" value="main"/>
-    <property name="trigger" value="cornelius-dead"/>
+    <property name="trigger" value="cornelius-beaten"/>
    </properties>
   </object>
   <object type="ceiling_hippy" x="528" y="24" width="48" height="24">

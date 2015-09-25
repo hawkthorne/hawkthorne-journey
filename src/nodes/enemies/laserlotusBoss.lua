@@ -7,6 +7,7 @@ local utils = require 'utils'
 local Dialog = require 'dialog'
 local player = require 'player'
 local Player = player.factory()
+local Quest = require 'quest'
 
 local window = require 'window'
 local camera = require 'camera'
@@ -14,6 +15,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'laserlotusBoss',
+  isBoss = true,
   attackDelay = 1,
   height = 48,
   width = 48,
@@ -76,8 +78,12 @@ return {
 
   die = function( enemy )
   if Player.quest == 'To Slay An Acorn - Explore the Mines for a Map to the Acorn King' then
-      Dialog.new("With the laser wielding man dead, you're not sure what to do...maybe Tilda has an idea of what to do next.", function()
+    Dialog.new("With the laser wielding man dead, you're not sure what to do...maybe Tilda has an idea of what to do next.", function()
+      Quest.removeQuestItem(Player)
       Player.quest = 'To Slay an Acorn - Return to Tilda'
+      Player.questParent = 'Tilda'
+      Quest.addQuestItem({questParent = 'Tilda',
+                          questName = 'To Slay an Acorn - Return to Tilda'}, Player)
     end)
   end
   end,
@@ -102,8 +108,8 @@ return {
     love.graphics.draw( bossPic, x + 69, y + 10 )
 
     love.graphics.setColor( 0, 0, 0, 255 )
-    love.graphics.printf( "LASER", x + 15, y + 15, 52, 'center' )
-    love.graphics.printf( "LOTUS", x + 15, y + 41, 52, 'center' )
+    love.graphics.printf( "LASER LOTUS", x + 15, y + 15, 100, 'left', 0, 0.9, 0.9 )
+    love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
     energy_stencil = function( x, y )
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )

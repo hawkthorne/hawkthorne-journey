@@ -32,7 +32,7 @@ return {
   },
   talk_commands = {
     ['Peanut Costume']= function(npc, player)
-    local affection = player.affection.frankie or 0
+      local affection = player.affection.frankie or 0
       if affection >= 200 then
         Quest:activate(npc, player, quests.peanutcostume)
       else
@@ -41,78 +41,24 @@ return {
           npc.menu:close(player)
         end)
       end
-      end,
+    end,
     ['Bones in the parking lot']= function(npc, player)
       Quest:activate(npc, player, quests.bones)
-      end,
+    end,
     ['De-electrify pool']= function(npc, player)
-    local affection = player.affection.frankie or 0
-    if affection >= 200 then
-      local poolcompleted = Quest.alreadyCompleted(npc,player,quests.poolreturn)
-      -- If we've already done this quest, give the player the congrats message without reward    
-      if player.quest == nil and poolcompleted then
-      Dialog.new("Ugh, it seems that the pool is still not being fixed. They're distracted by murder mystery night or something...", function()
-        player.freeze = false
-        npc.menu:close(player)
-      end)
-        --if player doesn't have any quests, initiate quest
-      elseif player.quest == nil then
-        Dialog.new(quests.pool.giveQuestSucceed, function()
-        npc.prompt = prompt.new(quests.pool.successPrompt, function(result)
-          if result == 'Yes' then
-            player.quest = 'Save Greendale - Find out what the delay with pool repairs is'
-            player.questParent = 'frankie'
-            Quest.addQuestItem(quests.pool, player)
-            Quest:save(quests.pool)
-            npc.menu:close(player)
-          end     
-          npc.menu:close(player)
-          npc.prompt = nil
-        end)
-        player.freeze = false
-        end)
-        --if player already has accepted the quest, tell player to go work on the quest
-      elseif player.quest == 'Save Greendale - Find out what the delay with pool repairs is' then
-          Dialog.new(quests.pool.completeQuestFail, function()
+      local affection = player.affection.frankie or 0
+      if affection >= 200 then
+        local poolcompleted = Quest.alreadyCompleted(npc,player,quests.poolreturn)
+        -- If we've already done this quest, give the player the congrats message without reward
+        if poolcompleted then
+          Dialog.new(quests.pool.complete, function()
             player.freeze = false
             npc.menu:close(player)
-          end) 
-        --player completed the quest
-      elseif player.quest == 'Save Greendale - Return back to Frankie' then
-          Dialog.new(quests.poolreturn.completeQuestSucceed, function()
-            local gamesave = app.gamesaves:active()
-            local completed_quests = gamesave:get( 'completed_quests' ) or {}
-            if completed_quests and type(completed_quests) ~= 'table' then
-            completed_quests = json.decode( completed_quests )
-            end
-            table.insert(completed_quests, {questParent = player.questParent, questName = player.quest})
-            gamesave:set( 'completed_quests', json.encode( completed_quests ) )
-            npc:affectionUpdate(quests.poolreturn.reward.affection)
-            player:affectionUpdate(player.questParent, quests.poolreturn.reward.affection)
-            player.money = player.money +  quests.poolreturn.reward.money
-            player.quest = nil
-            player.questParent = nil
-            player.freeze = false
-            Quest.removeQuestItem(player)
-            Quest:save({})
-            npc.menu:close(player)
-          end)    
-      else
-        --if player already has a quest        
-        local abandon = "You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!"
-        Dialog.new(abandon, function()
-        npc.prompt = prompt.new("Abandon current quest?", function(result)
-        if result == 'Yes' then
-          Quest.removeQuestItem(player)
-          Quest:save({})
-          player.quest = nil
-          player.questParent = nil
-        end
-        npc.menu:close(player)
-        npc.prompt = nil
-        end)
-        end)
-        player.freeze = false
+          end)
+        elseif player.quest == 'Save Greendale - Return back to Frankie' then
+          Quest.completeQuestSucceed(npc, player, quests.poolreturn)
+        else
+          Quest:activate(npc, player, quests.pool)
         end
       else
         Dialog.new("Frankie doesn't trust you enough yet for this task! Complete other tasks first and increase her trust.", function()
@@ -120,94 +66,41 @@ return {
           npc.menu:close(player)
         end)
       end
-      end,
+    end,
     ['Lost office key!']= function(npc, player)
       Quest:activate(npc, player, quests.officekey)
-      end,
+    end,
     ['Mail Diane']= function(npc, player)
-    local dianecompleted = Quest.alreadyCompleted(npc,player,quests.dianereturn)
-    -- If we've already done this quest, give the player the congrats message without reward    
-    if player.quest == nil and dianecompleted then
-    Dialog.new("The wi-fi is still down apparently...but I got the document to Diane in time, so thank you for that.", function()
-      player.freeze = false
-      npc.menu:close(player)
-    end)
-    --if player doesn't have any quests, initiate quest
-    elseif player.quest == nil then
-    local Dialogue = require 'dialog'
-    Dialog.new(quests.dianemail.giveQuestSucceed, function()
-      npc.prompt = prompt.new(quests.dianemail.successPrompt, function(result)
-        if result == 'Yes' then
-          Quest:save(quests.dianemail)
+      local dianecompleted = Quest.alreadyCompleted(npc,player,quests.dianereturn)
+      -- If we've already done this quest, give the player the congrats message without reward
+      if dianecompleted then
+        Dialog.new(quests.dianemail.complete, function()
+          player.freeze = false
+          npc.menu:close(player)
+        end)
+      elseif player.quest == 'Save Greendale - Return to Frankie' then
+        Quest.completeQuestSucceed(npc, player, quests.dianereturn)
+      else
+        if player.inventory:hasKey('document') ~= true then
           local Item = require 'items/item'
           local itemNode = require ('items/keys/document')
           local item = Item.new(itemNode, 1)
           player.inventory:addItem(item, true)
-          player.quest = 'Save Greendale - Mail Diane'
-          player.questParent = 'frankie'
-          Quest.addQuestItem(quests.dianemail, player)
-          Quest:save({})
-          npc.menu:close(player)
         end
-        npc.menu:close(player)
-        npc.prompt = nil      
-      end)
-      player.freeze = false
-      end)
-    --if player already has accepted the quest, tell player to go work on the quest
-    elseif player.quest == 'Save Greendale - Mail Diane' and player.inventory:hasKey('document') then
-        Dialog.new(quests.dianemail.completeQuestFail, function()
-          player.freeze = false
-          npc.menu:close(player)
-        end)
-    --player completed the quest
-    elseif player.quest == 'Save Greendale - Return to Frankie' then
-        Dialog.new(quests.dianereturn.completeQuestSucceed, function()
-          local gamesave = app.gamesaves:active()
-          local completed_quests = gamesave:get( 'completed_quests' ) or {}
-          if completed_quests and type(completed_quests) ~= 'table' then
-          completed_quests = json.decode( completed_quests )
-          end
-          table.insert(completed_quests, {questParent = player.questParent, questName = player.quest})
-          gamesave:set( 'completed_quests', json.encode( completed_quests ) )
-          npc:affectionUpdate(quests.dianereturn.reward.affection)
-          player:affectionUpdate(player.questParent, quests.dianereturn.reward.affection)
-          player.quest = nil
-          player.questParent = nil
-          player.freeze = false
-          Quest.removeQuestItem(player)
-          Quest:save({})
-          npc.menu:close(player)
-        end)
-    --if player already has a quest 
-    else
-          local script = "You already have quest '" .. player.quest .. "' for {{red_light}}" .. player.questParent .. "{{white}}!"
-          Dialog.new(script, function()
-          npc.prompt = prompt.new("Abandon current quest?", function(result)
-          if result == 'Yes' then
-            player.quest = nil
-            player.questParent = nil
-            Quest.removeQuestItem(player)
-            Quest:save({})
-          end
-          npc.menu:close(player)
-          npc.prompt = nil
-        end)
-      end)
-      player.freeze = false
-    end
-      end,
+        Quest:activate(npc, player, quests.dianemail)
+      end
+    end,
     ['Potatoes on rooftops']= function(npc, player)
-    --check if there are still potatoes on campus rooftops
+      --check if there are still potatoes on campus rooftops
       Quest:activate(npc, player, quests.potatoes, function()
-          for _,node in pairs(npc.containerLevel.nodes) do
-            if node.name == 'potato' then
-              return true
-            end
+        for _,node in pairs(npc.containerLevel.nodes) do
+          if node.name == 'potato' then
+            return true
           end
-          return false
-        end)
-      end,
+        end
+        return false
+      end)
+    end,
   },
   talk_responses = {
     ['Save Greendale!']={

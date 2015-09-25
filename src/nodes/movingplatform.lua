@@ -67,6 +67,8 @@ function MovingPlatform.new(node, collider, level)
   mp.offset_x = node.properties.offset_x and node.properties.offset_x or 0
   mp.offset_y = node.properties.offset_y and node.properties.offset_y or 0
   mp.speed = node.properties.speed and node.properties.speed or 1
+  mp.dx = 0
+  mp.dy = 0
   mp.pos = node.properties.start and tonumber(node.properties.start) or 0.5 -- middle
   mp.showline = node.properties.showline == 'true'
   mp.moving = node.properties.touchstart ~= 'true'
@@ -190,7 +192,11 @@ function MovingPlatform:update(dt,player)
     self.x, self.y = x, p.y - (self.height / 2)
   else
     local p = self.bspline:eval( self.pos )
+    local ox = self.x
+    local oy = self.y
     self.x, self.y = p.x - (self.width / 2), p.y - (self.height / 2)
+    self.dx = self.x - ox
+    self.dy = self.y - oy
   end
   
   if self.animation then

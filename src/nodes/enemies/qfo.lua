@@ -16,6 +16,7 @@ local fonts = require 'fonts'
 
 return {
   name = 'qfo',
+  isBoss = true,
   die_sound = 'explosion_quiet',
   isBoss = true,
   attackDelay = 1,
@@ -76,15 +77,14 @@ return {
       enemy.minx = enemy.position.x - 48
       enemy.maxy = enemy.position.y + 5
       enemy.miny = enemy.position.y - 5
-      print('timer')
       enemy.hatched = true
      end)
   end,
 
   die = function( enemy )
-  if enemy.quest and Player.quest == enemy.quest then
-    enemy.db:set("bosstriggers.qfo", true)
-  end
+    if enemy.quest and Player.quest == enemy.quest then
+      enemy.db:set("bosstriggers.qfo", true)
+    end
   end,
 
   draw = function( enemy )
@@ -251,7 +251,7 @@ return {
 
     local direction = player.position.x > enemy.position.x + 40 and -1 or 1
     local offset = math.random(0,200)
-    if enemy.hp < enemy.props.hp and Player.quest ~= 'Aliens! - Destroy the QFO!' then
+    if enemy.hp < enemy.props.hp then
       enemy.hp = enemy.hp + 1
     end
 
@@ -260,7 +260,6 @@ return {
     elseif not enemy.hatched and enemy.position.y >= enemy.dropmax then
       enemy.hatched = true
       enemy.velocity.y = 0
-      print('hatched')
       --Timer.add(2, function() enemy.hatched = true end)
     elseif enemy.hatched then
       --move the qfo up and down ( roughly a figure 8 )

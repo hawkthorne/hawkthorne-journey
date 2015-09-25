@@ -105,7 +105,7 @@ return {
 
   enter = function( enemy )
     local dead = enemy.db:get('cornelius-dead', false)
-    if dead then enemy:die() return end
+    if dead then enemy:die(true) return end
     enemy.last_teleport = 0
     enemy.last_attack = 0
     enemy.last_fireball = 0 
@@ -266,6 +266,7 @@ return {
     local level = enemy.containerLevel
 
     enemy.db:set('cornelius-dead', true)
+    enemy.db:set('cornelius-beaten', true)
 
     sound.stopMusic()
     sound.playSfx("cornelius-ending")

@@ -69,14 +69,14 @@ function Building:enter()
       table.insert(self.doors, door)
     end
   end
-  --[[Store all of the climbable nodes that are inside the building node
-      self.climbables = {}
-      for k,climbable in pairs(level.nodes) do
-        if climbable.isClimbable and (climbable.node.x >= self.x and climbable.node.x <= self.x + self.width)
-          and (climbable.node.y >= self.y and climbable.node.y <= self.y + self.height) then
-          table.insert(self.climbables, climbable)
-        end
-      end]]
+  --Store all of the climbable nodes that are inside the building node
+  self.climbables = {}
+  for k,climbable in pairs(level.nodes) do
+    if climbable.isClimbable and (climbable.position.x >= self.x and climbable.position.x <= self.x + self.width)
+      and (climbable.position.y >= self.y and climbable.position.y <= self.y + self.height) then
+      table.insert(self.climbables, climbable)
+    end
+  end
 
   -- If the building has already been burned, go into burned state
   if gamesave:get(self.name .. '_building_burned', false) then
@@ -106,10 +106,10 @@ function Building:burned()
   for k,door in pairs(self.doors) do
     level:removeNode(door)
   end
-  --[[ Remove all climbable nodes within the building node
-      for k,climbable in pairs(self.climbables) do
-        level:removeNode(climbable)
-      end]]
+  -- Remove all climbable nodes within the building node
+  for k,climbable in pairs(self.climbables) do
+    level:removeNode(climbable)
+  end
 end
 
 ---
@@ -193,8 +193,7 @@ end
 ---
 -- Called when the building collides with a burning enemy
 function Building:collide(node)
-  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', true) and self.state ~= 'burned'  then
-    self.state = 'burning'
+  if (node.burn == true) and gamesave:get(self.name .. '_building_burned', false) == false and self.state ~= 'burned' then
     self:burn()
   end
 end

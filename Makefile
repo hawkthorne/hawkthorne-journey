@@ -57,15 +57,12 @@ bin/love.app/Contents/MacOS/love:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps
+CI_TARGET=test validate maps productionize binaries
 
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 ifeq ($(TRAVIS_BRANCH), release)
-CI_TARGET=clean test validate maps productionize upload appcast social
-endif
-ifeq ($(TRAVIS_BRANCH), master)
-CI_TARGET=clean test validate maps productionize upload
+CI_TARGET=clean test validate maps productionize upload social
 endif
 endif
 endif
@@ -111,16 +108,15 @@ productionize: venv
 
 binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
 
-upload: binaries venv
-	venv/bin/python scripts/upload_binaries.py
+upload: binaries post.md venv
+	venv/bin/python scripts/release.py
 
 appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
 	cat sparkle/appcast.json | python -m json.tool > /dev/null
 	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
-social: venv post.md notes.html
-	venv/bin/python scripts/upload_release_notes.py
+social: venv notes.html post.md
 	venv/bin/python scripts/socialize.py post.md
 
 notes.html: post.md

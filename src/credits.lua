@@ -182,6 +182,7 @@ state.credits = {
   'heikon',
   'hisfavouriteflavour',
   'holyhandgnade13',
+  'hottaimale',
   'icanhas',
   'idontusereddit',
   'igotaxmastime4me',

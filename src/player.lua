@@ -125,6 +125,7 @@ function Player:refreshPlayer(collider)
   self.invulnerable = false
   self.events = queue.new()
   self.rebounding = false
+  self.dancing = false
   self.damageTaken = 0
 
   self.jumping = false
@@ -283,7 +284,7 @@ function Player:selectArmor(armor)
 end
 
 function Player:keypressed( button, map )
-  if self.dead then return end
+  if self.dead or self.dancing then return end
 
   local controls = self.controls
 
@@ -568,7 +569,7 @@ function Player:update(dt, map)
     self.character.direction = 'right'
   end
 
-  if self.wielding or self.attacked then
+  if self.wielding or self.attacked or self.dancing then
     -- Don't do anything
   elseif self.jumping then
     self.character.state = self.jump_state
@@ -689,6 +690,30 @@ function Player:die()
     Dialog.currentDialog = nil
     Prompt.currentPrompt = nil
   end
+end
+
+function Player:bossKilled(cornelius)
+  self.dancing = true
+  -- Disable movement
+  self.controlState:inventory()
+  self.character.state = 'dance'
+  
+  local dancetime = 6
+  
+  if not cornelius then
+    dancetime = 2
+    sound.stopMusic()
+    sound.playSfx( 'boss-defeated' )
+    Timer.add(6, function()
+      sound.playMusic(self.currentLevel.music)
+    end)
+  end
+  
+  Timer.add(dancetime, function()
+    self.dancing = false
+    self.controlState:standard()
+  end)
+  
 end
 
 function Player:addEffectsTimer(timer)

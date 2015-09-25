@@ -43,7 +43,7 @@ return {
   talk_commands = {
     ['So you believe in aliens?']= function(npc, player)
       Quest:activate(npc, player, quests.alien)
-      end,
+    end,
   },
 
   talk_responses = {
