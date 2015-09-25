@@ -1,29 +1,32 @@
 """
 Bump the version number
 """
+import os
+import boto
 import argparse
 import requests
+import json
+
+s3 = boto.connect_s3()
 
 
 def current_version():
     x, y, z = current_version_tuple()
-    return "{0}.{1}.{2}".format(x, y, z)
+    return "{0}.{1}.{2}".format(x,y,z) 
 
 
 def next_bugfix_version():
     x, y, z = current_version_tuple()
-    return "{0}.{1}.{2}".format(x, y, int(z) + 1)
+    return "{0}.{1}.{2}".format(x,y,int(z) + 1) 
 
 
 def next_minor_version():
     x, y, z = current_version_tuple()
-    return "{0}.{1}.0".format(x, int(y)+1)
-
+    return "{0}.{1}.0".format(x,int(y)+1) 
 
 def next_major_version():
     x, y, z = current_version_tuple()
     return "{0}.0.0".format(int(x)+1)
-
 
 def next_version():
     if is_major():
@@ -36,20 +39,20 @@ def next_version():
 
 def prev_version():
     x, y, z = current_version_tuple()
-    return "{0}.{1}.{2}".format(x, y, int(z) - 1)
+    return "{0}.{1}.{2}".format(x,y,int(z) - 1) 
 
 
 def current_version_tuple():
-    url = ("https://api.github.com/repos/hawkthorne/"
-           "hawkthorne-journey/releases/latest")
-    resp = requests.get(url)
-    tag_name = resp.json()['tag_name']
-    return tuple(tag_name.replace('v', '').split('.'))
+    bucket = s3.get_bucket("files.projecthawkthorne.com", validate=False)
+    key = bucket.get_key("releases/latest/hawkthorne-osx.zip")
+    redirect = key.get_redirect()
+    _, _, version, _ = redirect.split('/')
+    return tuple(version.replace('v', '').split('.'))
 
 
 def is_release():
-    url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
-    resp = requests.get(url, params={'state': 'closed', 'base': 'release'})
+    pulls_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
+    resp = requests.get(pulls_url, params={'state': 'closed', 'base': 'release'})
 
     if not resp.ok:
         return False
@@ -61,10 +64,9 @@ def is_release():
 
     return 'release' in pulls[0].get('title', '').lower()
 
-
 def is_major():
-    url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
-    resp = requests.get(url, params={'state': 'closed', 'base': 'release'})
+    pulls_url = "https://api.github.com/repos/hawkthorne/hawkthorne-journey/pulls"
+    resp = requests.get(pulls_url, params={'state': 'closed', 'base': 'release'})
 
     if not resp.ok:
         return False
