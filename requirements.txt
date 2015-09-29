@@ -4,3 +4,6 @@ jinja2==2.7.3
 boto==2.38.0
 markdown==2.2.1
 uritemplate.py==0.3.0
+pyOpenSSL==0.13.1
+ndg-httpsclient==0.4.0
+pyasn1==0.1.9
