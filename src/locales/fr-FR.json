@@ -1,41 +1,16 @@
 {
-  "main menu": "menu principal",
-  {
-	"start": "commencer",
-	{
-		"a_space_or_enter: select slot": "%a %espace ou entrer: séléctionner la sauvegarde",
-		"d: delete slot": "%d effacer la sauvegarde",
-		
-		"slot 1": "sauvegarde 1",
-		"slot 2": "sauvegarde 2",
-		"slot 3": "sauvegarde 3",
-	}
-	"controls": "contrôles",
-	{
-	"escape: back to menu": "échap: retour au menu",
-	"a_space_or_enter: reassign control": "%a %espace ou entrer: réaffecter les contrôles par défaut",
-	
-	"move up_look"
-	"move down_duck"
-	"move left"
-	"move right"
-	"inventory"
-	"pause"
-	"jump_ok"
-	"attack"
-	"interact"
-	}
+  "start": "commencer",
+  "controls": "contrôles",
   "options": "options",
   "credits": "crédits",
   "exit": "quitter",
-  "space_a_or_enter_select_item": "%espace %a ou %entrer: valide le choix séléctionner",
-  }
   "load": "charger",
+  "s_or_s_select_item": "%s ou %s: valide le choix séléctionner",
   "FULLSCREEN": "plein écran",
-  "MUSIC VOLUME": "volume musique",
+  "MUSIC VOLUME": "volume de la musique",
   "SFX VOLUME": "volume sfx",
   "SHOW FPS": "montrer fps",
   "SEND PLAY DATA": "envoyer et lire les données du jeu",
-  "RESET SETTINGS AND EXIT": "RÉINITIALISER cadres et sortie",
-  "RESET + EXIT": "RÉINITIALISER + sortie"
+  "RESET SETTINGS AND EXIT": "réinitialiser paramètres et quitter",
+  "RESET + EXIT": "réinitialiser + quitter"
 }
