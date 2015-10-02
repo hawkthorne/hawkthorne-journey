@@ -28,7 +28,7 @@ return {
   },
   talk_responses = {
     ["inventory"]={
-      "These are my wares.  Every laser lotus above level five must carry a licensed sacred Buddha incense holder!",
+      "These are my wares. Every laser lotus above level five must carry a licensed sacred Buddha incense holder!",
       "Press {{yellow}}".. string.upper(controls:getKey('INTERACT')) .."{{white}} to view item information.",
     },
     ["Who are you?"]={
