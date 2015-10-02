@@ -76,7 +76,7 @@ function Door.new(node, collider, level)
     door.obstruct = node.properties.obstruct or false
     door.show_sfx = node.properties.show_sfx or 'reveal'
     --used if the closed door should obstruct the player's movement
-    if door.obstruct then
+    if door.obstruct and not door.open then
       -- used for collision detection
       door.bb = collider:addRectangle(node.x-5, node.y, node.width+10, node.height)
       door.bb.node = door
