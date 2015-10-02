@@ -11,7 +11,7 @@ local quests = {
     giveQuestSucceed = {
       "Someone's been leaving {{olive}}potatoes{{white}} on our rooftops as a weird prank of some sorts.",
     },
-    successPrompt = "Alright let's see...if you bring me a {{olive}}potato{{white}}, I'll give you 50 coins. How does that sound?",
+    successPrompt = "Alright let's see... If you bring me a {{olive}}potato{{white}}, I'll give you 50 coins. How does that sound?",
     completeQuestFail = "Found those {{olive}}potatoes{{white}} yet? They're still on the roofs I hear.",
     completeQuestSucceed = "Thank you for getting rid of those potatoes!",
     reward = {affection = 50, money = 50},
@@ -58,7 +58,7 @@ local quests = {
     collect = {name = 'office_key', type = 'key'},
     --prompt: 'You look very busy'
     giveQuestSucceed = {
-      "Last night, the Dean lost the spare office key in the Administration building while stalking a certain Mr. Winger.",
+      "Last night, the Dean lost the spare office key in the Administration building while stalking a certain Mr.Winger.",
       "Sometimes, I wonder which buffoon put the Dean in charge.",
     },
     successPrompt = "Can you go look for the lost key? It should still be on campus somewhere.",
@@ -83,9 +83,9 @@ local quests = {
     questName = 'Save Greendale - Return back to Frankie',
     questParent = 'frankie',
     giveQuestSucceed = {
-      "Oh geez, you actually went ahead and found my wrench and wires...alright fine I guess we'll do some work or something...",
+      "Oh geez, you actually went ahead and found my wrench and wires... Alright fine I guess we'll do some work or something...",
     },
-    successPrompt = "Can you tell Ms. Dart that we will have the pool open soon?",
+    successPrompt = "Can you tell Ms.Dart that we will have the pool open soon?",
     completeQuestSucceed = "Thank you for getting the repair guys back to work again! Hopefully the pool should be back up and running.",
     completeQuestFail = {
       "Well, the pool is actually somehow electrified at the moment. We'd fix it, but we're running low on some supplies.",
