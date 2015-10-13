@@ -37,15 +37,14 @@ return {
   talk_commands = {
     ["Why is the pool closed?"]=function(npc, player)
       if player.quest == 'Save Greendale - Find out what the delay with pool repairs is' then
-        if  player.inventory:hasMaterial('wires') and player.inventory:hasWeapon('wrench') then
-            player.freeze = false
-            player.inventory:removeManyItems(1, {name='wires',type='material'})
-            player.inventory:removeManyItems(1, {name='wrench',type='weapon'})
-            Quest.removeQuestItem(player)
-            Quest:activate(npc, player, quests.poolreturn)
-            npc.menu:close(player)
-            npc.db:set('borchertpool', true)
-          end 
+		    if player.inventory:hasMaterial('wires') and player.inventory:hasWeapon('wrench') then
+		       player.freeze = false
+		       player.inventory:removeManyItems(1, {name='wires',type='material'})
+		       player.inventory:removeManyItems(1, {name='wrench',type='weapon'})
+		       Quest.removeQuestItem(player)
+		       Quest:activate(npc, player, quests.poolreturn)
+		       npc.menu:close(player)
+		       npc.db:set('borchertpool', true) 
         else
           Dialog.new(quests.poolreturn.completeQuestFail, function()
             player.freeze = false

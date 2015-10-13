@@ -33,7 +33,7 @@ return {
   talk_items = {
     { ['text']='i am done with you' },
     { ['text']='How can I help?' },
-    { ['text']='Any useful info for me?' },
+    { ['text']='Any useful info?' },
     { ['text']='Hello!' },
   },
   talk_responses = {
@@ -45,10 +45,8 @@ return {
       "Hello, I'm Greendale's bursar.",
       "I deal with the (small amount of) money around here.",
     },
-    ["Anything happening here?"]={
-      "We used to have a cult leader that claimed to specialize in alchemy stay in the house next door.",
-      "What was odd was that he left with nothing and there was no alchemy equipment in the house at all.",
-      "We think that he was just lying in an attempt to obtain followers.",
+    ["Any useful info?"]={
+      "I keep forgetting to remind the Dean to submit the master list of students to the state for funding.  I'm sure he'll remember on his own though.",
     },
     ["How can I help?"]={
       

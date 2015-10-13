@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="39">
  <properties>
   <property name="blue" value="92"/>
   <property name="green" value="114"/>
@@ -7,7 +7,7 @@
   <property name="red" value="92"/>
   <property name="soundtrack" value="mash-theme"/>
  </properties>
- <tileset firstgid="1" name="greendale-lounge" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-lounge" tilewidth="24" tileheight="24" tilecount="154">
   <image source="../images/tilesets/greendale-lounge.png" width="264" height="336"/>
  </tileset>
  <layer name="Background" width="24" height="14">
@@ -26,106 +26,106 @@
   </data>
  </layer>
  <objectgroup color="#000000" name="floorspace">
-  <object x="58" y="309">
+  <object id="1" x="58" y="309">
    <properties>
     <property name="height" value="24"/>
    </properties>
    <polygon points="0,0 30,0 60,-30 30,-30"/>
   </object>
-  <object x="112" y="284" width="18" height="6">
+  <object id="2" x="112" y="284" width="18" height="6">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <ellipse/>
   </object>
-  <object x="88" y="308" width="18" height="6">
+  <object id="3" x="88" y="308" width="18" height="6">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <ellipse/>
   </object>
-  <object x="558" y="222">
+  <object id="4" x="558" y="222">
    <properties>
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 -54,0 -54,-6 -462,-6 -486,18 -534,18 -558,42 -558,90 18,90 18,18"/>
   </object>
-  <object x="234" y="283" width="6" height="6">
+  <object id="5" x="234" y="283" width="6" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="204" y="289" width="30" height="6">
+  <object id="6" x="204" y="289" width="30" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="486" y="268">
+  <object id="7" x="486" y="268">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 18,18 54,18 36,0"/>
   </object>
-  <object x="472" y="263">
+  <object id="8" x="472" y="263">
    <properties>
     <property name="height" value="24"/>
    </properties>
    <polygon points="0,0 6,0 36,30 30,30"/>
   </object>
-  <object x="304" y="258" width="16" height="6">
+  <object id="9" x="304" y="258" width="16" height="6">
    <properties>
     <property name="height" value="12"/>
    </properties>
   </object>
-  <object x="300" y="287">
+  <object id="10" x="300" y="287">
    <properties>
     <property name="height" value="21"/>
    </properties>
    <polygon points="0,0 24,0 72,12 60,18"/>
   </object>
-  <object x="375" y="258" width="16" height="6">
+  <object id="11" x="375" y="258" width="16" height="6">
    <properties>
     <property name="height" value="12"/>
    </properties>
   </object>
-  <object x="391" y="258" width="16" height="6">
+  <object id="12" x="391" y="258" width="16" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="288" y="258" width="16" height="6">
+  <object id="13" x="288" y="258" width="16" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="513" y="261" width="14" height="6">
+  <object id="14" x="513" y="261" width="14" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="546" y="288" width="18" height="6">
+  <object id="15" x="546" y="288" width="18" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object x="542" y="288" width="4" height="6">
+  <object id="16" x="542" y="288" width="4" height="6">
    <properties>
     <property name="height" value="36"/>
    </properties>
   </object>
-  <object x="45" y="240" width="5" height="4">
+  <object id="17" x="45" y="237" width="5" height="4">
    <properties>
     <property name="height" value="39"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup name="nodes">
-  <object type="info" x="126" y="102" width="36" height="24">
+  <object id="18" type="info" x="126" y="102" width="36" height="24">
    <properties>
     <property name="info" value="1609 - The land now known as Greendale is discovered by the Portuguese explorer known as Sir English Memorial while searching for a cure for syphilis."/>
    </properties>
   </object>
-  <object type="sprite" x="61" y="256" width="69" height="56">
+  <object id="19" type="sprite" x="61" y="256" width="69" height="56">
    <properties>
     <property name="depth" value="26"/>
     <property name="height" value="56"/>
@@ -133,14 +133,13 @@
     <property name="width" value="69"/>
    </properties>
   </object>
-  <object name="main" type="door" x="0" y="192" width="24" height="72">
+  <object id="20" name="main" type="door" x="20" y="182" width="24" height="84">
    <properties>
-    <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin4"/>
    </properties>
   </object>
-  <object name="vendingmachine" type="door" x="508" y="152" width="44" height="64">
+  <object id="21" name="vendingmachine" type="door" x="508" y="152" width="44" height="64">
    <properties>
     <property name="background" value="true"/>
     <property name="closedinfo" value="You need some rope to get down there."/>
@@ -158,7 +157,7 @@
     <property name="trigger" value="doortriggers.vendingmachinetrigger"/>
    </properties>
   </object>
-  <object type="hiddendoortrigger" x="480" y="174" width="72" height="24">
+  <object id="22" type="hiddendoortrigger" x="480" y="174" width="72" height="24">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Each year in the US, 6 people are crushed to death in vending machine accidents. Are you sure you want to move it?"/>
@@ -167,7 +166,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="300" y="264" width="71" height="39">
+  <object id="23" type="sprite" x="300" y="264" width="71" height="39">
    <properties>
     <property name="depth" value="10"/>
     <property name="foreground" value="true"/>
@@ -176,7 +175,7 @@
     <property name="width" value="71"/>
    </properties>
   </object>
-  <object type="sprite" x="375" y="240" width="32" height="24">
+  <object id="24" type="sprite" x="375" y="240" width="32" height="24">
    <properties>
     <property name="depth" value="6"/>
     <property name="foreground" value="true"/>
@@ -185,7 +184,7 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object type="sprite" x="476" y="247" width="88" height="48">
+  <object id="25" type="sprite" x="476" y="247" width="88" height="48">
    <properties>
     <property name="depth" value="20"/>
     <property name="foreground" value="true"/>
@@ -194,47 +193,47 @@
     <property name="width" value="88"/>
    </properties>
   </object>
-  <object type="info" x="222" y="126" width="66" height="18">
+  <object id="26" type="info" x="222" y="126" width="66" height="18">
    <properties>
     <property name="info" value="1979 - The Greendale Air Conditioning Repair School is founded and the prophecy of the truest repair man is foretold by its founder, Steve."/>
    </properties>
   </object>
-  <object type="info" x="312" y="96" width="48" height="18">
+  <object id="27" type="info" x="312" y="96" width="48" height="18">
    <properties>
     <property name="info" value="2000 - Greendale Community College gets a roof."/>
    </properties>
   </object>
-  <object type="info" x="156" y="156" width="36" height="30">
+  <object id="28" type="info" x="156" y="156" width="36" height="30">
    <properties>
     <property name="info" value="1812 - Homesteading begins in the area then known as Verdant Valley. Settlers find that name at odds with the poor soil conditions and perpetual plagues of locusts."/>
    </properties>
   </object>
-  <object type="info" x="186" y="96" width="84" height="24">
+  <object id="29" type="info" x="186" y="96" width="84" height="24">
    <properties>
     <property name="info" value="1974 - Greendale Community College is founded. It is established after a bet between two senile identical twin industrialists on the site of an abandoned rendering plant."/>
    </properties>
   </object>
-  <object type="info" x="240" y="150" width="42" height="12">
+  <object id="30" type="info" x="240" y="150" width="42" height="12">
    <properties>
     <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
-  <object type="info" x="285" y="150" width="72" height="36">
+  <object id="31" type="info" x="285" y="150" width="72" height="36">
    <properties>
     <property name="info" value="1990 - Manuel Noriega is granted an honorary degree."/>
    </properties>
   </object>
-  <object type="info" x="210" y="150" width="30" height="30">
+  <object id="32" type="info" x="210" y="150" width="30" height="30">
    <properties>
     <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
-  <object type="info" x="240" y="246" width="36" height="48">
+  <object id="33" type="info" x="240" y="246" width="36" height="48">
    <properties>
     <property name="info" value="I've made a terrible mistake coming here.  Maybe it's not too late to get out of my contract..."/>
    </properties>
   </object>
-  <object name="bathroom" type="door" x="72" y="168" width="24" height="72">
+  <object id="34" name="bathroom" type="door" x="72" y="168" width="24" height="72">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="info" value="It looks like the light is broken.  You need a flashlight to see anything."/>
@@ -243,7 +242,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="sprite" x="204" y="258" width="36" height="38">
+  <object id="35" type="sprite" x="204" y="258" width="36" height="38">
    <properties>
     <property name="depth" value="4"/>
     <property name="foreground" value="true"/>
@@ -252,7 +251,7 @@
     <property name="width" value="36"/>
    </properties>
   </object>
-  <object type="sprite" x="234" y="246" width="48" height="48">
+  <object id="36" type="sprite" x="234" y="246" width="48" height="48">
    <properties>
     <property name="animation" value="1-5,1"/>
     <property name="depth" value="2"/>
@@ -262,13 +261,21 @@
     <property name="width" value="48"/>
    </properties>
   </object>
-  <object type="sprite" x="288" y="240" width="32" height="24">
+  <object id="37" type="sprite" x="288" y="240" width="32" height="24">
    <properties>
     <property name="depth" value="6"/>
     <property name="foreground" value="true"/>
     <property name="height" value="24"/>
     <property name="sheet" value="images/sprites/greendale/lounge-chair-right.png"/>
     <property name="width" value="32"/>
+   </properties>
+  </object>
+  <object id="38" type="door" x="-4" y="182" width="24" height="84">
+   <properties>
+    <property name="button" value="LEFT"/>
+    <property name="instant" value="true"/>
+    <property name="level" value="greendale-exterior"/>
+    <property name="to" value="admin4"/>
    </properties>
   </object>
  </objectgroup>

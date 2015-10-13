@@ -29,9 +29,13 @@ return {
           player.money = player.money + 5044350
           npc.trust = npc.trust + 1
           npc.menu:close(player)
+          Dialog.new("I hope you can put that money to good use fixing up Greendale.  I'm sure the Bursar knows what to fix up, her office is in the Administration Hallway.  Now leave me and Raquel alone!", function()
+          	npc.menu:close(player)
+        	end)
         end)
+
       else
-        Dialog.new("I hope you can put that money to good use fixing up Greendale.  Now leave me and Raquel alone!", function()
+        Dialog.new("I hope you can put that money to good use fixing up Greendale.  I'm sure the Bursar knows what to fix up, her office is in the Administration Hallway.  Now leave me and Raquel alone!", function()
           npc.menu:close(player)
         end)
       end

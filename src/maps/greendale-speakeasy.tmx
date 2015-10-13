@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="54">
  <properties>
   <property name="blue" value="92"/>
   <property name="green" value="114"/>
@@ -30,8 +30,8 @@
    eJztzDELgkAYh/HbHGtzKVxqs60222yrrS+QplBZkFZQWp+9Z7jhxe24E4f6ww9fPHiU+u+XNsK4w/4EU33HWDloeuIOMcMWa2wsukP9HYh/cywMOzskSLFHhly8++KOsDTsH3DECQXOuIj3wLDX3hUlKtxwx8OyKffECzUavPFx2O9zX+S2DgQ=
   </data>
  </layer>
- <objectgroup color="#90d83c" name="floorspace">
-  <object id="3" x="230" y="232" width="120" height="6">
+ <objectgroup color="#90d83c" name="floorspace" visible="0">
+  <object id="3" x="240" y="232" width="90" height="6">
    <properties>
     <property name="height" value="38"/>
    </properties>
@@ -67,17 +67,17 @@
     <property name="height" value="62"/>
    </properties>
   </object>
-  <object id="2" x="6" y="288">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="-6,0 66,-72 396,-72 408,-60 516,-60 570,0 570,24 -6,24"/>
-  </object>
   <object id="1" x="408" y="221">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 48,48 144,48 96,0"/>
+  </object>
+  <object id="2" x="6" y="288">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="-6,0 66,-72 396,-72 408,-60 516,-60 570,0 570,24 -6,24"/>
   </object>
  </objectgroup>
  <objectgroup name="nodes">
@@ -89,9 +89,8 @@
     <property name="width" value="65"/>
    </properties>
   </object>
-  <object id="7" name="main" type="door" x="30" y="192" width="24" height="72">
+  <object id="7" name="main" type="door" x="49" y="192" width="24" height="72">
    <properties>
-    <property name="button" value="LEFT"/>
     <property name="level" value="sophieb"/>
     <property name="to" value="sandwich-shop"/>
    </properties>
@@ -125,7 +124,7 @@
     <property name="width" value="6"/>
    </properties>
   </object>
-  <object id="18" type="sprite" x="494" y="177" width="29" height="52">
+  <object id="18" type="sprite" x="482" y="176" width="29" height="52">
    <properties>
     <property name="animation" value="1-2,1"/>
     <property name="depth" value="2"/>
@@ -190,7 +189,7 @@
     <property name="width" value="46"/>
    </properties>
   </object>
-  <object id="33" type="sprite" x="476" y="244" width="49" height="59">
+  <object id="33" type="sprite" x="476" y="250" width="49" height="59">
    <properties>
     <property name="depth" value="4"/>
     <property name="height" value="59"/>
@@ -222,7 +221,7 @@
     <property name="info" value="What can I say, they ran out of costumes."/>
    </properties>
   </object>
-  <object id="47" type="sprite" x="0" y="2" width="22" height="332">
+  <object id="47" type="sprite" x="0" y="0" width="22" height="334">
    <properties>
     <property name="depth" value="4"/>
     <property name="foreground" value="true"/>
@@ -230,6 +229,13 @@
     <property name="sheet" value="images/sprites/greendale/speakeasy-light.png"/>
     <property name="trigger" value="speakeasy-lights"/>
     <property name="width" value="576"/>
+   </properties>
+  </object>
+  <object id="52" type="door" x="24" y="192" width="24" height="72">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="sophieb"/>
+    <property name="to" value="sandwich-shop"/>
    </properties>
   </object>
  </objectgroup>
