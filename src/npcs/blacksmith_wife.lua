@@ -84,10 +84,10 @@ return {
   talk_responses = {
     
     ["Anything happening here?"]={
-      "I've been trying to convince my husband to build us a new home.  I keep telling him it's a terrible idea to have his workshop inside a wooden house!",
+      "I've been trying to convince my husband to build us a new home. I keep telling him it's a terrible idea to have his workshop inside a wooden house!",
     },
     ["Any useful info for me?"]={
-      "My husband is the best blacksmith around.  He can help you stock up on supplies before venturing into the woods.",
+      "My husband is the best blacksmith around. He can help you stock up on supplies before venturing into the woods.",
     },
   },
 
