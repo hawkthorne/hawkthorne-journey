@@ -14,7 +14,7 @@ local quests = {
       },
     successPrompt = "Do you want to collect flowers for {{red_light}}Hilda{{white}}?",
     completeQuestFail = "Have you found any flowers? Try looking beyond the town.",
-    completeQuestSucceed = "My goodness, these flowers are beautiful!  Thank you so very much!",
+    completeQuestSucceed = "My goodness, these flowers are beautiful! Thank you so very much!",
     reward = {affection = 300},
   },
 }

@@ -3,7 +3,7 @@
 return {
   width = 32,
   height = 48,   
-  greeting = 'Hello, my precious blueberry!  You can call me {{red_light}}Professor Holly{{white}}.', 
+  greeting = 'Hello, my precious blueberry! You can call me {{red_light}}Professor Holly{{white}}.', 
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
@@ -32,7 +32,7 @@ return {
   talk_responses = {
     ["Hello, professor."]={
       "Hello, my precious blueberry!",
-    "I hope you've been having a fantastic adventure.",
+      "I hope you've been having a fantastic adventure.",
     },
     ["A long lonely tiiiiime"]={
       "(Professor Holly grinds his teeth.)",
