@@ -17,8 +17,8 @@ return {
   greeting = "I'm {{red}}Officer Cackowski{{white}}.  There were reports of a disturbance, something about a bandit, and I'm patrolling the area.",
 
   walking = true,
-  max_walk = 240,
-  min_walk = 240,
+  max_walk = 100,
+  min_walk = 100,
 
   stare = false,
 

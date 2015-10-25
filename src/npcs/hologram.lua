@@ -40,7 +40,10 @@ return {
             sound.playSfx("greendale")
           end)
     else
-      Dialog.new("This almost looks like the platform to some kind of hologram...", function()
+    	local script = {"This almost looks like the platform to some kind of hologram...",
+    					"It seems broken though, maybe the bursar knows when it will be fixed."
+    					}
+      Dialog.new(script, function()
           player.freeze = false
           npc.menu:close(player)
         end)

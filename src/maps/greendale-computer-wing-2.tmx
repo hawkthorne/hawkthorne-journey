@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24" nextobjectid="5">
  <properties>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
@@ -7,40 +7,40 @@
   <property name="soundtrack" value="computer-wing"/>
   <property name="title" value="Borchert Hallway"/>
  </properties>
- <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24" tilecount="230">
   <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
  </tileset>
- <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="background" width="24" height="14">
+ <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxzZ2BgcKchZqExFgDiAChNbQw0t2HU/FHzKTU/CojzaICB5jZUAOkUIOajAQaa20Ars+mFaVm2gTAAhx0vVw==
+   eJxzZ2BgcKcBZqERFgDiAChNLQw0r2HU3FFz0c2NAuI8KmKgeQ0VQDoFiPmoiIHmNVDbTFpjWpQ5IAwA7bYsIw==
   </data>
  </layer>
- <layer name="foreground" width="24" height="14">
+ <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgwWIQmkxBoYGcs2QoI5T6A4SILhhDZBei0PNViDeBsTbgXgHEOsA8TEgPo6kJhC3+Q5AfACf+SBwAIgPIvEvAPFFJD4vlD4ExIeB+AgQH8VijhwSOxqIY/DYiQzEofQZID4LxOeA+DwWdRpI7GvAcEsj0nxigRGVzSMFNABxIxA34ZAvB2IfIPall4PwAADRRxpi
+   eJxjYBgF9AKiUFqMgaGBVL0S1HUKzUACBDesAdJrcajZCsTbgHg7EO8AYh0gPgbEx5HUBGKa6wDEB/CZCwIHgPggEv8CEF9E4vNC6UNAfBiIjwDxUSR5OSR2NBDH4LELGYhD6TNAfBaIzwHxeSR5DST2NWD4pBFpLiFgRCVzSAENQNwIxE045MuB2AeIfenlICQAACFDGmI=
   </data>
  </layer>
- <layer name="fade" width="24" height="14">
+ <layer name="fade" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJy7xMDAcGkUj+JRPIpHMckYANr7E7A=
+   eJy7xMDAcGkUj+JRPIqHAQYAFh78qQ==
   </data>
  </layer>
- <layer name="collision" width="24" height="14">
+ <layer name="collision" width="22" height="14" visible="0">
   <data encoding="base64" compression="zlib">
-   eJx7zsDA8JyGmAGJphUYNX/UfFqZz8gIwehADCgmjkUcl/nEqkUGUlC7JbHoRXYTLcOHlmUDreOVHgAA5HQ02w==
+   eJx7zsDA8JwGmAGJpjYYNXfUXGLNZWSEYHQgBhQTxyKObi4hNdiAFNROSSS9yG6gRTjQIg/TKr5oCQCeszE/
   </data>
  </layer>
  <objectgroup name="nodes">
-  <object name="main" type="door" x="288" y="192" width="24" height="72">
+  <object id="1" name="main" type="door" x="288" y="192" width="24" height="72">
    <properties>
     <property name="level" value="greendale-computer-wing"/>
     <property name="to" value="wing2"/>
    </properties>
   </object>
-  <object type="info" x="372" y="204" width="42" height="36">
+  <object id="2" type="info" x="372" y="204" width="42" height="36">
    <properties>
     <property name="info" value="They're just a bunch of basketball cards with white people on them."/>
    </properties>

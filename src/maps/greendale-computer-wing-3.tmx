@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="4">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24" nextobjectid="4">
  <properties>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
@@ -13,34 +13,34 @@
  <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
- <layer name="background" width="24" height="14">
+ <layer name="background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxzZ2BgcKchZqExFgDiAChNbQw0t2HU/FHzKTU/CojzkHAFGp9cDDS3AWRWChDz0QADzW2gldn0wrQs20AYAJkVL2E=
+   eJxzZ2BgcKcBZqERFgDiAChNLQw0r2HU3FFz0c2NAuI8JFyBxicVA81rAJmRAsR8VMRA8xqobSatMS3KHBAGAP4eLC0=
   </data>
  </layer>
- <layer name="foreground" width="24" height="14">
+ <layer name="foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzkduwkAYhmFfAsQZyCVDyTIgJHrvPQFCaAEh2EFYAqFlQwnn4I3EYmTZkk28yIJPeuTx+J/PI0n3/IdYDOgwX58mA7puyQprbLDFDt+w4kHlTAVVvGjo3+OAI074wRkeYcYLn/DeQhsddGV9fjjgxJOwPxTWYUQQRQxxJGQ9I4wV7pvEM1xwC/sTYZ1FDnkUUERJ+N7DB/oYyPrLCCCIkML/f/OKGupo4A1NlVl53pFCGhmNZ5QyxSdmOs48wga7htk5FljiS+/l/pgLXmMz8A==
+   eJztzslOAkEQxvF5CQ3PAC8JCEcgJoDIvsiOyKpsIXgTOMomcEGQ5+B/GJLKhNFMIJz8kl+6u7qq04ryn2vEdMbsrbreXOIjBjLHAl9YYoU1zLDozBRRwvMv727wjS12+MEe96LHC584N/GKN7TUmh93cMApevtiH0QIYUQQRUzznwHexTkOF9zwiPqH2D8hjQyyyCEv7tvooIueWivgAQE8KqdTxgsqqKKGuk7vMQ0kkETqj15thhhhbHDOChvsOvefmGCKmcG3z8kB4bQz8A==
   </data>
  </layer>
- <layer name="fade" width="24" height="14">
+ <layer name="fade" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJy7xMDAcGkUj+JRPIpHMckYANr7E7A=
+   eJy7xMDAcGkUj+JRPIqHAQYAFh78qQ==
   </data>
  </layer>
- <layer name="collision" width="24" height="14">
+ <layer name="collision" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJx7zsDA8JyGmAGJphUYNX/U/KFuvhgjBIOAOCNCXArIlmCEiEkyYtf7HE0PNQEtywZahzs9AAAxuDUb
+   eJx7zsDA8JwGmAGJpjYYNXfU3MFirhgjBIOAOCNCXArIlmCEiEkyoup5jqaWGoAWeZhW4UpLAADkMDF/
   </data>
  </layer>
  <objectgroup name="nodes">
-  <object id="1" name="main" type="door" x="552" y="192" width="24" height="72">
+  <object id="1" name="main" type="door" x="504" y="192" width="24" height="72">
    <properties>
     <property name="level" value="greendale-computer-wing"/>
     <property name="to" value="wing3"/>
    </properties>
   </object>
-  <object id="2" type="hiddendoortrigger" x="114" y="204" width="36" height="24">
+  <object id="2" type="hiddendoortrigger" x="114" y="204" width="36" height="60">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Do you want to select a song?"/>

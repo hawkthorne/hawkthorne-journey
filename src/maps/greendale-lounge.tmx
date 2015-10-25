@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="14" tilewidth="24" tileheight="24" nextobjectid="39">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24" nextobjectid="41">
  <properties>
   <property name="blue" value="92"/>
   <property name="green" value="114"/>
@@ -10,19 +10,19 @@
  <tileset firstgid="1" name="greendale-lounge" tilewidth="24" tileheight="24" tilecount="154">
   <image source="../images/tilesets/greendale-lounge.png" width="264" height="336"/>
  </tileset>
- <layer name="Background" width="24" height="14">
+ <layer name="Background" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJzd1LkOglAQRuEh2CKl2mLtioqiKK64sqioj+Ojc0x8gptLQ/HlzzSnHENEjBLVYIl8Ieb/1q1K/Q666KGPAYZwMcIYE3iK/Slm8DHHAgGWWCHEGhvF/hY77HFAhCNOOOOCK26K/RgJUmS444EncrzwxkehX4etUYMupMlCWmhr5NB1NDerpszf9lMAk/ch2A==
+   eJzV1LkOglAQRuEh2CKl2mLtioqiKK64sqioj+Ojc0x8gZtcCoovf6Y55RgiYpSgBkvkCzH/ty5V7nbQRQ99DDCEixHGmMBT7E4xg485FgiwxAoh1tgodrfYYY8DIhxxwhkXXHFT7MZIkCLDHQ88keOFNz4K3TpsDRr0IE0W0kJbA4eeo6lVdWX8nJ8C32QgZg==
   </data>
  </layer>
- <layer name="Foreground" width="24" height="14">
+ <layer name="Foreground" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzssKglAUhWERsgYOtLKJ10BNqxfygiMvOPf98R84EEH0hCBCCz44m31YbEk6fs64jGZ5r0MEou59wIpcccMdBh4z/xKkUAT7bThw4eE52Rc4oUQFXbA/Qow3PvhO9i00ZMhhCfYvpYOJGg1eG/X6CIZ3uFHnP7+lBxEjByM=
+   eJztzrsKg0AQheFF0Fgao5WXWHj3iaJipRF735/8hcUWUVi2EMEDH8zOwGGFuF4esKW3cdZHLhoXL3jw/9w/aGEp9kaI8UYi7QeYGDHhqdhbokKNRtovcNChR6jYu5cVAb6YUWj2pci2OdfsunOcH4R6BrQ=
   </data>
  </layer>
- <layer name="Tile Layer 3" width="24" height="14">
+ <layer name="Tile Layer 3" width="22" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDHXQSAMzi2lgJi1B6wDYCQCCNwF6
+   eJxjYBgFo2AU0Bs0DrQDBgC00sEOAOYcAQc=
   </data>
  </layer>
  <objectgroup color="#000000" name="floorspace">
@@ -44,12 +44,6 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="4" x="558" y="222">
-   <properties>
-    <property name="primary" value="true"/>
-   </properties>
-   <polygon points="0,0 -54,0 -54,-6 -462,-6 -486,18 -534,18 -558,42 -558,90 18,90 18,18"/>
-  </object>
   <object id="5" x="234" y="283" width="6" height="6">
    <properties>
     <property name="height" value="24"/>
@@ -60,13 +54,13 @@
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object id="7" x="486" y="268">
+  <object id="7" x="438" y="268">
    <properties>
     <property name="height" value="20"/>
    </properties>
    <polygon points="0,0 18,18 54,18 36,0"/>
   </object>
-  <object id="8" x="472" y="263">
+  <object id="8" x="424" y="263">
    <properties>
     <property name="height" value="24"/>
    </properties>
@@ -98,17 +92,17 @@
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object id="14" x="513" y="261" width="14" height="6">
+  <object id="14" x="465" y="261" width="14" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object id="15" x="546" y="288" width="18" height="6">
+  <object id="15" x="498" y="288" width="18" height="6">
    <properties>
     <property name="height" value="24"/>
    </properties>
   </object>
-  <object id="16" x="542" y="288" width="4" height="6">
+  <object id="16" x="494" y="288" width="4" height="6">
    <properties>
     <property name="height" value="36"/>
    </properties>
@@ -118,9 +112,15 @@
     <property name="height" value="39"/>
    </properties>
   </object>
+  <object id="4" x="558" y="222">
+   <properties>
+    <property name="primary" value="true"/>
+   </properties>
+   <polygon points="-46,2 -102,2 -102,-6 -462,-6 -486,18 -534,18 -558,42 -558,90 -30,90 -30,18"/>
+  </object>
  </objectgroup>
  <objectgroup name="nodes">
-  <object id="18" type="info" x="126" y="102" width="36" height="24">
+  <object id="18" type="info" x="126" y="102" width="36" height="48">
    <properties>
     <property name="info" value="1609 - The land now known as Greendale is discovered by the Portuguese explorer known as Sir English Memorial while searching for a cure for syphilis."/>
    </properties>
@@ -139,7 +139,7 @@
     <property name="to" value="admin4"/>
    </properties>
   </object>
-  <object id="21" name="vendingmachine" type="door" x="508" y="152" width="44" height="64">
+  <object id="21" name="vendingmachine" type="door" x="460" y="152" width="44" height="64">
    <properties>
     <property name="background" value="true"/>
     <property name="closedinfo" value="You need some rope to get down there."/>
@@ -157,7 +157,7 @@
     <property name="trigger" value="doortriggers.vendingmachinetrigger"/>
    </properties>
   </object>
-  <object id="22" type="hiddendoortrigger" x="480" y="174" width="72" height="24">
+  <object id="22" type="hiddendoortrigger" x="432" y="176" width="72" height="48">
    <properties>
     <property name="height" value="24"/>
     <property name="message" value="Each year in the US, 6 people are crushed to death in vending machine accidents. Are you sure you want to move it?"/>
@@ -184,7 +184,7 @@
     <property name="width" value="32"/>
    </properties>
   </object>
-  <object id="25" type="sprite" x="476" y="247" width="88" height="48">
+  <object id="25" type="sprite" x="428" y="247" width="88" height="48">
    <properties>
     <property name="depth" value="20"/>
     <property name="foreground" value="true"/>
@@ -198,34 +198,34 @@
     <property name="info" value="1979 - The Greendale Air Conditioning Repair School is founded and the prophecy of the truest repair man is foretold by its founder, Steve."/>
    </properties>
   </object>
-  <object id="27" type="info" x="312" y="96" width="48" height="18">
+  <object id="27" type="info" x="312" y="96" width="48" height="40">
    <properties>
     <property name="info" value="2000 - Greendale Community College gets a roof."/>
    </properties>
   </object>
-  <object id="28" type="info" x="156" y="156" width="36" height="30">
+  <object id="28" type="info" x="104" y="156" width="29" height="60">
    <properties>
-    <property name="info" value="1812 - Homesteading begins in the area then known as Verdant Valley. Settlers find that name at odds with the poor soil conditions and perpetual plagues of locusts."/>
+    <property name="info" value="1812 - Homesteading begins in the area then known as Verdant Valley. |Settlers find that name at odds with the poor soil conditions and perpetual plagues of locusts."/>
    </properties>
   </object>
   <object id="29" type="info" x="186" y="96" width="84" height="24">
    <properties>
-    <property name="info" value="1974 - Greendale Community College is founded. It is established after a bet between two senile identical twin industrialists on the site of an abandoned rendering plant."/>
+    <property name="info" value="1974 - Greendale Community College is founded. |It is established after a bet between two senile identical twin industrialists on the site of an abandoned rendering plant."/>
    </properties>
   </object>
-  <object id="30" type="info" x="240" y="150" width="42" height="12">
+  <object id="30" type="info" x="240" y="150" width="42" height="66">
    <properties>
-    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
+    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in| protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
-  <object id="31" type="info" x="285" y="150" width="72" height="36">
+  <object id="31" type="info" x="285" y="150" width="72" height="65">
    <properties>
     <property name="info" value="1990 - Manuel Noriega is granted an honorary degree."/>
    </properties>
   </object>
-  <object id="32" type="info" x="210" y="150" width="30" height="30">
+  <object id="32" type="info" x="210" y="150" width="30" height="66">
    <properties>
-    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
+    <property name="info" value="1983 - Students demonstrate their political activism by occupying the administration office in a 13 day sit-in| protesting the school's racially insensitive mascot, Big Chief Drunky.| They succeeded and the school adopts a new mascot, The Sober Casinoman."/>
    </properties>
   </object>
   <object id="33" type="info" x="240" y="246" width="36" height="48">
@@ -278,5 +278,11 @@
     <property name="to" value="admin4"/>
    </properties>
   </object>
+  <object id="40" type="info" x="155" y="155" width="37" height="60">
+   <properties>
+    <property name="info" value="1813 - Settlers consider other names for Verdant Valley.  |These include Scab Canyon, Harmon's heartbreak and Racist Meadows before deciding on the less emotionally charged 'Greendale'."/>
+   </properties>
+  </object>
  </objectgroup>
+ <objectgroup name="Object Layer 3"/>
 </map>
