@@ -76,7 +76,7 @@ return {
 
   enter = function( enemy )
     if enemy.db:get("bosstriggers.benzalk", false) then
-      enemy:die()
+      enemy:die(true)
     end
     enemy.direction = 'left'
     enemy.state = 'default'
@@ -328,3 +328,4 @@ return {
     end
   end
 }
+
