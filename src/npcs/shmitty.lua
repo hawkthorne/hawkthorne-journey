@@ -2,6 +2,7 @@ return {
   width = 48,
   height = 48,
   greeting = 'Oh man, {{red_dark}}shmitty alert!{{white}}',    
+  nocommands = "We don't take commands from shmitty.  Uh-duh!",
   animations = {
     default = {
       'loop',{'1,1','4,1','1,1','1,1','1,1','1,1','1,1','2,1','1,1','1,1','1,1','1,1','3,1','1,1','1,1','1,1'},.2,
