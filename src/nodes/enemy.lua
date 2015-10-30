@@ -110,6 +110,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.attackingWorld = false
 
   enemy.burn = false
+  enemy.continousRage = node.properties.continousRage or false
   enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
 
   enemy.fadeIn = enemy.props.fadeIn or false
