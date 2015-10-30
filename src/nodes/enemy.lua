@@ -111,6 +111,7 @@ function Enemy.new(node, collider, enemytype)
 
   enemy.burn = false
   enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
+  enemy.grab = enemy.props.grab or false
 
   enemy.fadeIn = enemy.props.fadeIn or false
   enemy.fade = {255, 255, 255, 0}
@@ -432,8 +433,12 @@ function Enemy:collide(node, dt, mtv_x, mtv_y)
     player:hurt(self.props.damage)
     player.top_bb:move(mtv_x, mtv_y)
     player.bottom_bb:move(mtv_x, mtv_y)
-    player.velocity.y = -450
-    player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
+    if self.grab then
+      player.freeze = true
+    else
+      player.velocity.y = -450
+      player.velocity.x = self.player_rebound * ( player.position.x < self.position.x + ( self.props.width / 2 ) + self.bb_offset.x and -1 or 1 )
+    end
   end
 end
 
@@ -441,6 +446,7 @@ function Enemy:collide_end( node )
   if node and node.isPlayer and node.current_enemy == self then
     node.current_enemy = nil
   end
+  player.freeze = false
 end
 
 function Enemy:update( dt, player, map )

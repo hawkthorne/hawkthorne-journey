@@ -15,6 +15,7 @@ return {
   hp = 6,
   speed = 10,
   vulnerabilities = {'slash'},
+  grab = true,
   tokens = 3,
   tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
