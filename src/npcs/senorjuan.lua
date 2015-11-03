@@ -3,7 +3,7 @@
 return {
   width = 32,
   height = 48,   
-  greeting = 'My name is {{red_light}}Senor Juan{{white}}.  I guard this {{orange}}fence{{white}}.', 
+  greeting = 'My name is {{red_light}}Senor Juan{{white}}. I guard this {{orange}}fence{{white}}.', 
   animations = {
     default = {
       'loop',{'1,1','11,1'},.5,
@@ -29,8 +29,8 @@ return {
   talk_responses = {
  	  ["Where's your hat?"]={
       "I lost the damned thing in the {{olive}}chilli fields{{white}}.",
-		  "I must have dropped it when I tripped on the cow skull outside the...",
-		  "Um... never mind. Just keep an eye for it if you happen to pass through the fields, will you?",
+      "I must have dropped it when I tripped on the cow skull outside the...",
+  	  "Um... never mind. Just keep an eye for it if you happen to pass through the fields, will you?",
     },
     ["Who are you?"]={
       "I am Senor Juan, the lead border guard in charge of making sure no one gets out of this Valley.",

@@ -13,7 +13,7 @@ local quests = {
     },
     successPrompt = "Can you help me clean up by picking up some bottles?",
     completeQuestFail = "This place is filthy!",
-    completeQuestSucceed = "Thanks for helping clean up!  The town looks so much nicer!",
+    completeQuestSucceed = "Thanks for helping clean up! The town looks so much nicer!",
     reward = {affection = 100},
   },
 }

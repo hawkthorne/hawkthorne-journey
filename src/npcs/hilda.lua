@@ -220,7 +220,7 @@ return {
       npc.walking = false
       npc.stare = false
       if affection < 1000 and player.married == false then
-        Dialog.new("I cannot marry someone whom I do not truly love and trust.  My current affection for you is " .. affection .. ".", function()
+        Dialog.new("I cannot marry someone whom I do not truly love and trust. My current affection for you is " .. affection .. ".", function()
           npc.walking = true
           npc.menu:close(player)
         end)
@@ -232,7 +232,7 @@ return {
           npc.menu:close(player)
         end)
       elseif player.married == 'hilda' then
-        Dialog.new("I live in the village.  I love {{orange}}" .. player.character.name .. "{{white}}." , function()
+        Dialog.new("I live in the village. I love {{orange}}" .. player.character.name .. "{{white}}." , function()
           npc.walking = true
           Dialog.currentDialog = nil
           npc.menu:close(player)
@@ -263,7 +263,7 @@ return {
     },
     ['throne of hawkthorne']={
       "The throne is in {{grey}}Castle Hawkthorne{{white}}, {{red_dark}}north{{white}} of here.",
-    "You unlock the castle with the {{peach}}white crystal{{white}} of discipline, which you must free from the {{purple}}black caverns{{white}}.",
+      "You unlock the castle with the {{peach}}white crystal{{white}} of discipline, which you must free from the {{purple}}black caverns{{white}}.",
     },
     ['frog extinction']={
       "You know what? My prank is going to cause a sea of laughter,",
@@ -413,7 +413,7 @@ return {
     },
     ['raccoon clothes']={
       "A raccoon once bit my sister.",
-      "No realli! She was carving her initials on the raccoon...",
+      "No really! She was carving her initials on the raccoon...",
       "with the sharpened end of an intergalactic toothbrush.",
       "Go watch Monty Python if you think realli is wrong.",
     },
@@ -444,7 +444,7 @@ return {
     ['time bombs']={
       "We have three realistic alternatives",
       "#1, Sit here and get blown up,",
-      "#2. Stand here and get blown up,",
+      "#2, Stand here and get blown up,",
       "#3, Jump up and down, shout at me for not being able to think of anything, then get blown up.",
     },
     ['rock punch']={
@@ -743,7 +743,7 @@ return {
         end)
       elseif player.married and not player.married == 'hilda' then
         sound.playSfx( "dbl_beep" )
-        Dialog.new("How dare you!  You're already married!", function()
+        Dialog.new("How dare you! You're already married!", function()
           npc.walking = true
           Dialog.currentDialog = nil
           npc.menu:close(player)

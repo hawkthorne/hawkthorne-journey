@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="36" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="36" height="14" tilewidth="24" tileheight="24" nextobjectid="27">
  <properties>
   <property name="blue" value="128"/>
   <property name="green" value="115"/>
@@ -7,7 +7,7 @@
   <property name="red" value="102"/>
   <property name="soundtrack" value="mash-theme"/>
  </properties>
- <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="gazette-office" tilewidth="24" tileheight="24" tilecount="121">
   <image source="../images/tilesets/gazette-office.png" width="264" height="264"/>
  </tileset>
  <layer name="Tile Layer 1" width="36" height="14">
@@ -25,111 +25,111 @@
    eJxjYBgFwwHIEKmOnQZm4gJaDAwNWlCaQqPAgJFMfa5A+42AtCkQg2hjEvSC1JsAcRDUHDKdAAbcUNoK6gYTiJsOGKHZhwxMkNiuUL40kruwgVgi3OIMxGJIfEcgdoJiRyz+xBZmVkSowWIvhtkg4AfEekAsCeX7ALEvgo1VDzUA0N4GbG7iA2JLWlmKBwD93+CHxT2SWNQOFKCXW/KR6HwcagZTuAxGAADWcBJw
   </data>
  </layer>
- <objectgroup name="floorspace" width="36" height="14">
-  <object x="250" y="209" width="12" height="6">
+ <objectgroup name="floorspace">
+  <object id="1" x="250" y="209" width="12" height="6">
    <properties>
     <property name="height" value="17"/>
    </properties>
   </object>
-  <object x="362" y="198">
+  <object id="2" x="362" y="198">
    <properties>
     <property name="height" value="25"/>
    </properties>
    <polygon points="0,0 25,25 54,25 26,0"/>
   </object>
-  <object x="266" y="198">
+  <object id="3" x="266" y="198">
    <properties>
     <property name="height" value="25"/>
    </properties>
    <polygon points="0,0 25,25 54,25 26,0"/>
   </object>
-  <object x="393" y="222">
+  <object id="4" x="393" y="222">
    <properties>
     <property name="height" value="15"/>
    </properties>
    <polygon points="0,0 11,0 16,5 5,5"/>
   </object>
-  <object x="753" y="270">
+  <object id="5" x="753" y="270">
    <properties>
     <property name="height" value="15"/>
    </properties>
    <polygon points="0,0 11,0 16,5 5,5"/>
   </object>
-  <object x="722" y="246">
+  <object id="6" x="722" y="246">
    <properties>
     <property name="height" value="25"/>
    </properties>
    <polygon points="0,0 25,25 54,25 26,0"/>
   </object>
-  <object x="533" y="282" width="12" height="6">
+  <object id="7" x="533" y="282" width="12" height="6">
    <properties>
     <property name="height" value="17"/>
    </properties>
   </object>
-  <object x="509" y="258" width="12" height="6">
+  <object id="8" x="509" y="258" width="12" height="6">
    <properties>
     <property name="height" value="17"/>
    </properties>
   </object>
-  <object name="primary" x="0" y="312">
+  <object id="10" x="556" y="273">
+   <properties>
+    <property name="height" value="19"/>
+   </properties>
+   <polygon points="2,1 16,15 74,15 59,1"/>
+  </object>
+  <object id="11" x="435" y="273">
+   <properties>
+    <property name="height" value="19"/>
+   </properties>
+   <polygon points="2,1 16,15 74,15 59,1"/>
+  </object>
+  <object id="12" x="251" y="192" width="2" height="6">
+   <properties>
+    <property name="height" value="62"/>
+   </properties>
+  </object>
+  <object id="13" x="492" y="192" width="48" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object id="14" x="587" y="191" width="2" height="6">
+   <properties>
+    <property name="height" value="62"/>
+   </properties>
+  </object>
+  <object id="15" x="714" y="192" width="12" height="6">
+   <properties>
+    <property name="height" value="24"/>
+   </properties>
+  </object>
+  <object id="9" name="primary" x="0" y="312">
    <properties>
     <property name="primary" value="true"/>
    </properties>
    <polygon points="0,0 120,-120 744,-120 864,0"/>
   </object>
-  <object x="556" y="273">
-   <properties>
-    <property name="height" value="19"/>
-   </properties>
-   <polygon points="2,1 16,15 74,15 59,1"/>
-  </object>
-  <object x="435" y="273">
-   <properties>
-    <property name="height" value="19"/>
-   </properties>
-   <polygon points="2,1 16,15 74,15 59,1"/>
-  </object>
-  <object x="251" y="192" width="2" height="6">
-   <properties>
-    <property name="height" value="62"/>
-   </properties>
-  </object>
-  <object x="492" y="192" width="48" height="6">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-  </object>
-  <object x="587" y="192" width="2" height="6">
-   <properties>
-    <property name="height" value="62"/>
-   </properties>
-  </object>
-  <object x="714" y="192" width="12" height="6">
-   <properties>
-    <property name="height" value="24"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup name="nodes" width="36" height="14">
-  <object type="info" x="149" y="113" width="86" height="73">
+ <objectgroup name="nodes">
+  <object id="16" type="info" x="149" y="113" width="86" height="73">
    <properties>
     <property name="info" value="Story assignments: Toni Braxton-gate, best pizza and underage drinking."/>
    </properties>
   </object>
-  <object name="main" type="door" x="80" y="188" width="16" height="50">
+  <object id="17" name="main" type="door" x="80" y="188" width="16" height="50">
    <properties>
     <property name="button" value="LEFT"/>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin3"/>
    </properties>
   </object>
-  <object name="gazette2" type="door" x="648" y="144" width="24" height="50">
+  <object id="18" name="gazette2" type="door" x="648" y="144" width="24" height="50">
    <properties>
     <property name="level" value="gazette-office-2"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="sprite" x="245" y="191" width="24" height="24">
+  <object id="19" type="sprite" x="245" y="191" width="24" height="24">
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
@@ -137,7 +137,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="264" y="168" width="58" height="55">
+  <object id="20" type="sprite" x="264" y="168" width="58" height="55">
    <properties>
     <property name="depth" value="24"/>
     <property name="direction" value="right"/>
@@ -146,7 +146,7 @@
     <property name="width" value="58"/>
    </properties>
   </object>
-  <object type="sprite" x="360" y="168" width="58" height="55">
+  <object id="21" type="sprite" x="360" y="168" width="58" height="55">
    <properties>
     <property name="depth" value="25"/>
     <property name="direction" value="right"/>
@@ -155,7 +155,7 @@
     <property name="width" value="58"/>
    </properties>
   </object>
-  <object type="sprite" x="720" y="216" width="58" height="55">
+  <object id="22" type="sprite" x="720" y="216" width="58" height="55">
    <properties>
     <property name="depth" value="25"/>
     <property name="direction" value="right"/>
@@ -164,7 +164,7 @@
     <property name="width" value="58"/>
    </properties>
   </object>
-  <object type="sprite" x="504" y="240" width="24" height="24">
+  <object id="23" type="sprite" x="504" y="240" width="24" height="24">
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
@@ -172,7 +172,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="528" y="264" width="24" height="24">
+  <object id="24" type="sprite" x="528" y="264" width="24" height="24">
    <properties>
     <property name="depth" value="5"/>
     <property name="height" value="24"/>
@@ -180,7 +180,7 @@
     <property name="width" value="24"/>
    </properties>
   </object>
-  <object type="sprite" x="552" y="240" width="96" height="48">
+  <object id="25" type="sprite" x="552" y="240" width="96" height="48">
    <properties>
     <property name="depth" value="14"/>
     <property name="direction" value="right"/>
@@ -189,7 +189,7 @@
     <property name="width" value="96"/>
    </properties>
   </object>
-  <object type="sprite" x="432" y="240" width="96" height="48">
+  <object id="26" type="sprite" x="432" y="240" width="96" height="48">
    <properties>
     <property name="depth" value="14"/>
     <property name="direction" value="right"/>
@@ -199,4 +199,5 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Object Layer 3"/>
 </map>
