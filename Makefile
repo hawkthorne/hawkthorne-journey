@@ -62,7 +62,7 @@ CI_TARGET=test validate maps productionize binaries
 ifeq ($(TRAVIS), true)
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 ifeq ($(TRAVIS_BRANCH), release)
-CI_TARGET=clean test validate maps productionize upload social
+CI_TARGET=clean test validate maps productionize social
 endif
 endif
 endif
