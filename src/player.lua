@@ -818,9 +818,7 @@ function Player:draw()
   if self.currently_held and self.currently_held.type == 'vehicle' then return end
 
   if self.stencil then
-    love.graphics.setStencil( self.stencil )
-  else
-    love.graphics.setStencil( )
+    love.graphics.stencil( self.stencil )
   end
 
   if self.character.warpin then
@@ -871,7 +869,6 @@ function Player:draw()
 
   love.graphics.setColor( 255, 255, 255, 255 )
 
-  love.graphics.setStencil()
 end
 
 -- Modifies the affection level of an npc toward the player

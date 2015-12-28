@@ -68,14 +68,12 @@ end
 
 function CharacterStrip:draw()
 
-  love.graphics.setStencil( self.stencilFunc, self )
+  love.graphics.stencil(function() self.stencilFunc(self) end) 
 
   for i, offset in ipairs(colorSpacing) do
     love.graphics.setColor( self:getColor((i-1) / (#colorSpacing-1)) )
     love.graphics.polygon('fill', self:getPolyVerts(i))
   end
-
-  love.graphics.setStencil()
 
   if self.selected and self.ratio == 0 then -- Father forgive me for I have sinned
     local flipped = self.flip and 1 or -1

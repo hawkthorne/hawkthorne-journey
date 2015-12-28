@@ -31,7 +31,7 @@ local Fonts = {
 for _,x in pairs( fonts ) do
   local img = love.graphics.newImage( "images/fonts/" .. x .. ".png" )
   img:setFilter( 'nearest', 'nearest' )
-  Fonts[x] = love.graphics.newImageFont( img, glyphs )
+  Fonts[x] = love.graphics.newImageFont( img, glyphs, 1 )
 end
 
 function Fonts.set( x )

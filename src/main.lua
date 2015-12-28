@@ -50,9 +50,8 @@ function love.load(arg)
   local revision = tonumber(version[3])
 
   if major ~= 0 or
-     minor ~= 9 or
-     revision < 1 then
-    error("Love 0.9.1 is required")
+     minor ~= 10 then
+    error("Love 0.10.0 is required")
   end
 
   -- The Mavericks builds of Love adds too many arguments

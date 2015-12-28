@@ -74,7 +74,8 @@ function Tooltip:draw(x, y, selectedItem, parent)
     
   local lineHeight = love.graphics.getFont():getHeight("line height")
 
-  local _, descriptionWrap = love.graphics.getFont():getWrap(item.description, textWidth)
+  local _, descriptionWrapTable = love.graphics.getFont():getWrap(item.description, textWidth)
+  local descriptionWrap = table.getn(descriptionWrapTable)
   love.graphics.printf(item.description, textX, textY, textWidth, "left")
 
   drawSeparator(textX, textY + (descriptionWrap * lineHeight), textWidth)

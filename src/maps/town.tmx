@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="80" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="24" tileheight="24" nextobjectid="22">
  <properties>
   <property name="blue" value="124"/>
   <property name="floor" value="9"/>
@@ -9,10 +9,10 @@
   <property name="soundtrack" value="town"/>
   <property name="title" value="Town"/>
  </properties>
- <tileset firstgid="1" name="town" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="town" tilewidth="24" tileheight="24" tilecount="120">
   <image source="../images/tilesets/town.png" width="360" height="192"/>
  </tileset>
- <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="121" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="mountains" width="80" height="14">
@@ -74,71 +74,71 @@
    eJxjYBgFo2B4gzVAPA2IZw60Q4YBmMEwfMMRlE4mo+HVA+oi6oOR4MfhDqhVllFqzlArU0HunY7EB5Vl+NI+vryCbg56OEyBqp9KBXeMglEwCugLYHl/sOfLylFMER4Fo2AgAQBObkGh
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="0" height="0">
-  <object type="cow" x="415" y="206" width="114" height="60"/>
-  <object name="main" type="door" x="48" y="216" width="24" height="48"/>
-  <object type="door" x="1896" y="120" width="24" height="144">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" type="cow" x="415" y="206" width="114" height="60"/>
+  <object id="2" name="main" type="door" x="48" y="216" width="24" height="48"/>
+  <object id="3" type="door" x="1896" y="120" width="24" height="144">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="treeline"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="tavern" type="door" x="360" y="216" width="24" height="48">
+  <object id="4" name="tavern" type="door" x="360" y="216" width="24" height="48">
    <properties>
     <property name="level" value="tavern"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
+  <object id="5" name="blacksmith" type="building" x="1080" y="144" width="144" height="120">
    <properties>
     <property name="trigger" value="blacksmith-dead"/>
    </properties>
   </object>
-  <object name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
+  <object id="6" name="blacksmith" type="door" x="1176" y="216" width="24" height="48">
    <properties>
     <property name="level" value="blacksmith"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="house" type="door" x="768" y="216" width="24" height="48">
+  <object id="7" name="house" type="door" x="768" y="216" width="24" height="48">
    <properties>
     <property name="level" value="house"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="climbable" x="567" y="165" width="1" height="100"/>
-  <object name="rock" type="material" x="1776" y="240" width="24" height="24"/>
-  <object type="door" x="0" y="0" width="24" height="264">
+  <object id="8" type="climbable" x="567" y="165" width="1" height="100"/>
+  <object id="9" name="rock" type="material" x="1776" y="240" width="24" height="24"/>
+  <object id="10" type="door" x="0" y="0" width="24" height="264">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="forest-2"/>
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object name="next" type="door" x="1848" y="216" width="24" height="48"/>
-  <object name="townsperson" type="npc" x="840" y="216" width="48" height="48"/>
-  <object name="townknight" type="npc" x="1050" y="210" width="70" height="55"/>
-  <object name="oldman" type="npc" x="648" y="232" width="24" height="24"/>
-  <object name="upstairs" type="door" x="648" y="120" width="24" height="50">
+  <object id="11" name="next" type="door" x="1848" y="216" width="24" height="48"/>
+  <object id="12" name="townsperson" type="npc" x="840" y="216" width="48" height="48"/>
+  <object id="13" name="townknight" type="npc" x="1050" y="210" width="70" height="55"/>
+  <object id="14" name="oldman" type="npc" x="648" y="232" width="24" height="24"/>
+  <object id="15" name="upstairs" type="door" x="648" y="120" width="24" height="50">
    <properties>
     <property name="level" value="upstairs"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="townlady" type="npc" x="600" y="134" width="48" height="48">
+  <object id="16" name="townlady" type="npc" x="600" y="134" width="48" height="48">
    <properties>
     <property name="foreground" value="true"/>
    </properties>
   </object>
-  <object name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
-  <object type="enemy" x="1530" y="192" width="71" height="70">
+  <object id="17" name="hilda" type="npc" x="480" y="216" width="48" height="48"/>
+  <object id="18" type="enemy" x="1530" y="192" width="71" height="70">
    <properties>
     <property name="enemytype" value="acornBoss"/>
    </properties>
   </object>
-  <object name="jumpinggirl" type="npc" x="582" y="120" width="24" height="48"/>
-  <object name="tavern" type="building" x="264" y="144" width="144" height="120"/>
-  <object name="house" type="building" x="552" y="24" width="288" height="240"/>
+  <object id="19" name="jumpinggirl" type="npc" x="582" y="120" width="24" height="48"/>
+  <object id="20" name="tavern" type="building" x="264" y="144" width="144" height="120"/>
+  <object id="21" name="house" type="building" x="552" y="24" width="288" height="240"/>
  </objectgroup>
 </map>
