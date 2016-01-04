@@ -69,6 +69,7 @@ end
 function CharacterStrip:draw()
 
   love.graphics.stencil(function() self.stencilFunc(self) end) 
+  love.graphics.setStencilTest("greater", 0)
 
   for i, offset in ipairs(colorSpacing) do
     love.graphics.setColor( self:getColor((i-1) / (#colorSpacing-1)) )
@@ -91,6 +92,8 @@ function CharacterStrip:draw()
     love.graphics.polygon('line', x1, y1, x2, y2, x3, y3, x4, y4)
     -- I know not what I do
   end
+
+  love.graphics.setStencilTest()
 end
 
 local time = 0
