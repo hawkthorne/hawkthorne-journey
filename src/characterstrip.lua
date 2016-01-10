@@ -68,14 +68,13 @@ end
 
 function CharacterStrip:draw()
 
-  love.graphics.setStencil( self.stencilFunc, self )
+  love.graphics.stencil(function() self.stencilFunc(self) end) 
+  love.graphics.setStencilTest("greater", 0)
 
   for i, offset in ipairs(colorSpacing) do
     love.graphics.setColor( self:getColor((i-1) / (#colorSpacing-1)) )
     love.graphics.polygon('fill', self:getPolyVerts(i))
   end
-
-  love.graphics.setStencil()
 
   if self.selected and self.ratio == 0 then -- Father forgive me for I have sinned
     local flipped = self.flip and 1 or -1
@@ -93,6 +92,8 @@ function CharacterStrip:draw()
     love.graphics.polygon('line', x1, y1, x2, y2, x3, y3, x4, y4)
     -- I know not what I do
   end
+
+  love.graphics.setStencilTest()
 end
 
 local time = 0

@@ -104,8 +104,6 @@ return {
   draw = function( enemy )
     fonts.set( 'small' )
 
-    love.graphics.setStencil( )
-
     local energy = love.graphics.newImage('images/enemies/bossHud/energy.png')
     local bossChevron = love.graphics.newImage('images/enemies/bossHud/bossChevron.png')
     local bossPic = love.graphics.newImage('images/enemies/bossHud/benzalkBoss.png')
@@ -127,7 +125,6 @@ return {
     energy_stencil = function( x, y )
       love.graphics.rectangle( 'fill', x + 11, y + 27, 59, 9 )
     end
-    love.graphics.setStencil(energy_stencil, x, y)
     local max_hp = 100
     local rate = 55/max_hp
     love.graphics.setColor(
@@ -136,9 +133,10 @@ return {
       0,
       255
     )
-    love.graphics.draw(energy, x + ( max_hp - enemy.hp ) * rate, y)
+    local energy_quad = love.graphics.newQuad( -(max_hp - enemy.hp) * rate, 0, 70, 60, energy:getWidth(), energy:getHeight())
 
-    love.graphics.setStencil( )
+    love.graphics.draw(energy, energy_quad, x , y)
+    
     love.graphics.setColor( 255, 255, 255, 255 )
     fonts.revert()
   end,

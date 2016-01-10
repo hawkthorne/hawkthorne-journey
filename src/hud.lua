@@ -25,7 +25,7 @@ function HUD.new(level)
   local character = level.player.character
 
   hud.sheet = level.player.character:sheet()
-  hud.character_quad = love.graphics.newQuad(0, character.offset or 5, 48, 48, hud.sheet:getWidth(), hud.sheet:getHeight())
+  hud.character_quad = love.graphics.newQuad(0, character.offset or 5, 48, 34, hud.sheet:getWidth(), hud.sheet:getHeight())
 
   hud.character_stencil = function( x, y )
     love.graphics.circle( 'fill', x + 31, y + 31, 21 )
@@ -74,19 +74,21 @@ function HUD:draw( player )
 
   self.x, self.y = camera.x + 10, camera.y + 10
 
-  love.graphics.setStencil( )
   love.graphics.setColor( 255, 255, 255, 255 )
   love.graphics.draw( chevron, self.x, self.y)
-  love.graphics.setStencil( self.energy_stencil, self.x, self.y )
+  --love.graphics.stencil(function() self.energy_stencil(self.x, self.y) end)--doesn't pass arguments so is essentially useless
   love.graphics.setColor(
     math.min(utils.map(player.health, player.max_health, player.max_health / 2 + 1, 0, 255 ), 255 ), -- green to yellow
     math.min(utils.map(player.health, player.max_health / 2, 0, 255, 0), 255), -- yellow to red
     0,
     255
   )
+  --HEALTH
+  
+  local energy_quad = love.graphics.newQuad(50 + (player.max_health - player.health) * .56, 0, 59, 60, energy:getWidth(), energy:getHeight())
 
-  love.graphics.draw(energy, self.x - (player.max_health - player.health) * .56, self.y)
-  love.graphics.setStencil(self.character_stencil, self.x, self.y)
+  love.graphics.draw(energy, energy_quad, self.x + 50, self.y)
+
   love.graphics.setColor(255, 255, 255, 255)
 
   local currentWeapon = player.inventory:currentWeapon()
@@ -96,7 +98,6 @@ function HUD:draw( player )
   else
     love.graphics.draw(self.sheet, self.character_quad, self.x + 7, self.y + 17)
   end
-  love.graphics.setStencil()
   love.graphics.draw(lens, self.x, self.y)
   love.graphics.setColor( 0, 0, 0, 255 )
   love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
