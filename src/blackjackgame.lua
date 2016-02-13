@@ -160,7 +160,7 @@ function state:keypressed(button, player)
     elseif self.selected == 'BET -' then -- check decrements against increments above
       local betDelta = 0
       if self.currentBet > 250  then
-        if (self.currentBet - 250)%100 == 0) then
+        if (self.currentBet - 250)%100 == 0 then
           betDelta = -100
         else
           betDelta = -((self.currentBet-250)%100) -- subtract out the portion that is not part of the standard increment
