@@ -154,21 +154,35 @@ function state:keypressed(button, player)
       elseif (self.currentBet < self.player.money - 100) then
         betDelta = 100
       else
-        betDelta = 0
+        betDelta = self.player.money - self.currentBet -- set bet increase to available money
       end
       self.currentBet = self.currentBet + betDelta
-    elseif self.selected == 'BET -' then
+    elseif self.selected == 'BET -' then -- check decrements against increments above
       local betDelta = 0
-      if (self.currentBet > 250 and (self.currentBet -250)%100 ~= 0) then
-        betDelta = -(self.currentBet - 250)%100
-      elseif self.currentBet > 250 then
-        betDelta = -100
+      if self.currentBet > 250  then
+        if (self.currentBet - 250)%100 == 0) then
+          betDelta = -100
+        else
+          betDelta = -((self.currentBet-250)%100) -- subtract out the portion that is not part of the standard increment
+        end
       elseif self.currentBet > 125 then
-        betDelta = -25
+        if self.currentBet%25 == 0 then 
+          betDelta = -25
+        else
+          betDelta = -(self.currentBet%25) -- subtract out the portion that is not part of the standard increment
+        end
       elseif self.currentBet > 50 then
-        betDelta = -10
+        if self.currentBet%10 == 0 then
+          betDelta = -10
+        else
+          betDelta = -(self.currentBet%10) -- subtract out the portion that is not part of the standard increment
+        end
       elseif self.currentBet > 20 then
-        betDelta = -5
+        if self.curentBet%5 == 0 then
+          betDelta = -5
+        else
+          betDelta = -(self.currentBet%5) -- subtract out the portion that is not part of the standard increment
+        end
       elseif self.currentBet > 1 then
         betDelta = -1
       end
@@ -203,15 +217,15 @@ function state:gameMenu() -- set the game menu after card additions/changes
     actualBets = self.currentBet
   end
 
-  -- the bet is doubled so need to account for that when checking availablity
-  if actualBets < self.player.money/2 then
+  -- check if money player has enough money to add a additional current bet for purposes of doubling down
+  if (actualBets + self.currentBet) < self.player.money then
     self.options[ 3 ].active = true           -- double
   else
     self.options[ 3 ].active = false          -- double
   end
 
-  -- same situation as above
-  if actualBets < self.player.money/2 and
+   -- check if money player has enough money to add a additional current bet for purposes of splitting
+  if (actualBets + self.currentBet) < self.player.money and
                   self.playerHand[self.activeHand].cards[1].card==self.playerHand[self.activeHand].cards[2].card then
     self.options[ 4 ].active = true           -- split
   else
@@ -542,8 +556,12 @@ function state:stand()
       self.outcome = 'You have Blackjack!\nYou Win!'
     -- Dealer blackjack :(
     elseif #self.dealerHand[1].cards == 2 and self.dealerHand[1].score == 21 then
-      self.player.money = self.player.money - self.currentBet
-      self.outcome = 'Dealer has Blackjack.\nYou Lose.'
+      if self.is_blackjack == true then
+        self.outcome = 'It\'s a push.'
+      else
+        self.player.money = self.player.money - self.currentBet
+        self.outcome = 'Dealer has Blackjack.\nYou Lose.'
+      end
     -- else, run through other scenarios, which may have multiple hands and/or double downs
     else
       for curHandNum=1,self.numOfHands do
