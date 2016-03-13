@@ -13,7 +13,7 @@ return {
   dean = {'You are a pansexual imp, with an abundance of impulses and fetishes that no one can possibly understand.'},
   chang = {'You are a rice-eating vagrant, psychotic teacher, lone wolf, murderous security guard, and a forgetful plotting lunatic.'},
   guzman = {'You are one of the worst actors alive, tainting Boogie Nights with your disgraceful southern structure.'},
-  fateil = {'You are a dungeon-loving nerd who cant help eating everything in sight, basting your chubby cheeks in tears of gravy as you try to keep hold of that miserable thing you call "your life".'},
+  fatneil = {'You are a dungeon-loving nerd who cant help eating everything in sight, basting your chubby cheeks in tears of gravy as you try to keep hold of that miserable thing you call "your life".'},
   buddy = {'You are an insecure wreck who panders to popular individuals when they come into your radar.'},
   vicedean = {'You are an overweight man who cant get a grip on his life, let alone his school, and cant tell a difference between a right-hand man and a murderer.'},
   leonard = {' You are a war veteran, unable to recover from your memories, instead hiding them by playing your money away and drowning your sorrows in hip flasks of whisky.'},
