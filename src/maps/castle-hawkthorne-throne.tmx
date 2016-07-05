@@ -7,7 +7,7 @@
   <property name="offset" value="23"/>
   <property name="overworldName" value="caverns"/>
   <property name="red" value="0"/>
-  <property name="soundtrack" value="benzalk-battle"/>
+  <property name="soundtrack" value="castle"/>
  </properties>
  <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
