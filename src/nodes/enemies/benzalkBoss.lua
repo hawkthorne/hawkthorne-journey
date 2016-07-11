@@ -3,7 +3,6 @@ local sound = require 'vendor/TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local Sprite = require 'nodes/sprite'
-local sound = require 'vendor/TEsound'
 local utils = require 'utils'
 local game = require 'game'
 local collision  = require 'hawk/collision'
@@ -75,9 +74,14 @@ return {
   },
 
   enter = function( enemy )
+    sound.playMusic("benzalk-battle")
     if enemy.db:get("bosstriggers.benzalk", false) then
+      local level = enemy.containerLevel
       enemy:die(true)
+      -- Required because of bug where all music stops
+      sound.playMusic(level.music)
     end
+
     enemy.direction = 'left'
     enemy.state = 'default'
     enemy.jump_speed = {x = -150,
@@ -99,6 +103,7 @@ return {
   die = function( enemy )
     enemy.velocity.y = enemy.speed
     enemy.db:set("bosstriggers.benzalk", true)
+    sound.stopMusic()
   end,
 
   draw = function( enemy )
