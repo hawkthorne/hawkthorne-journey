@@ -1,7 +1,7 @@
 return {
   name = 'bat',
-  attack_sound = 'acorn_growl',--need new sound
-  die_sound = 'acorn_crush',--need new sound
+  attack_sound = 'bat_attack',--need new sound
+  die_sound = 'bat_die',--need new sound
   position_offset = { x = 0, y = 0 },
   height = 22,
   width = 30,

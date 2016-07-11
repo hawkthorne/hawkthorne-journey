@@ -5,6 +5,9 @@ local sound = require 'vendor/TEsound'
 
 return {
   name = 'turkey',
+  attack_sound = 'turkey_attack',
+  passive_sound = 'turkey_attack',
+  passive_sound_chance = .5,
   height = 72,
   width = 72,
   damage = 30,
