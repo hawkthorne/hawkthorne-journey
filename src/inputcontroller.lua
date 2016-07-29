@@ -15,7 +15,7 @@ local DEFAULT_ACTIONMAP = {
     RIGHT = 'right',
     SELECT = 's',
     START = 'escape',
-    JUMP = ' ',
+    JUMP = 'space',
     ATTACK = 'a',
     INTERACT = 'd',
   },
