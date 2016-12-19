@@ -50,6 +50,7 @@ Once you have the repo, click on it in Github for Windows, select "tools > open 
 In your new PowerShell window, run
 
 ```powershell
+> cd C:\Users\Utilisateur\Documents\GitHub\hawkthorne-journey
 > .\make.ps1 run
 ```
  
