@@ -30,7 +30,7 @@ return {
       "Damn man! Ain't you ever heard of knocking?!",
     },
     ["Listen to me."]={
-      "Toilets and sinks...REAL THINGS!",
+      "Toilets and sinks... REAL THINGS!",
       "Things that people always use and always need to get fixed! You could be a plumber!,",
     },
   },
