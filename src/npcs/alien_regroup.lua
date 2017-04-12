@@ -69,7 +69,7 @@ return {
     elseif player.quest == 'Aliens! - Destroy the QFO!' then
       if check then
       local script3 = {
-      "You...you've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
+      "You... You've done it! You've defeated the {{orange}}QFO{{white}}! I can't believe it! Now I can eat Mexican food in peace, forever!",
       "I know I've treated you unfairly human, but you have my gratitude.",
       "As a token of thanks, I'll give you my standard issue {{blue_light}}alien pistol{{white}}, you'll need it more than I do. Here's some gold as well.",
       "Whenever you run out of ammo for the pistol, come back to me, I will sell some to you.",
@@ -149,7 +149,7 @@ return {
   },
   talk_responses = {
     ['You are a dick.']={
-      "Yeeeah...I do some questionable things, not even gonna lie.",
+      "Yeeeah... I do some questionable things, not even gonna lie.",
     },
     ['Aliens are everywhere!']={
       "They're crawling everywhere, I know! The invasion has pretty much started.",
