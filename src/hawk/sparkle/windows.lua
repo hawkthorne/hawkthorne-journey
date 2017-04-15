@@ -1,5 +1,5 @@
 local os = require "os"
-local url = require "socket.url"
+local url = require "vendor/luasocket/socket/socket.url"
 local urllib = require "hawk/sparkle/urllib"
 local utils = require "utils"
 
