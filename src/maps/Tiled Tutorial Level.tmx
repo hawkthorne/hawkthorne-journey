@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="20" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="offset" value="6"/>
+ </properties>
+ <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/forest.png" width="216" height="480"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKwjAQheFZdqlLxYpFW7GuvGFu4lV9mAQriN1IJtj/g8ckXQ0zZFOz37h9CPywj7qwj/o0ZmGlujb2UYO8j8a7ETxttY9NrKjATmlTdA6+3aBXhpSefQBfXVMARLwJ4B1vAng5Tc73mJDvx+LdLM90/p1mf1CdS1eotyXZa/b5/0cb7zbq20V1LqNLx//trNnn/x9DvLMPR+yjvAcdxhae
+  </data>
+ </layer>
+ <objectgroup color="#aa0000" name="block" width="100" height="20">
+  <object x="552" y="384" height="96"/>
+  <object x="288" y="384" width="264" height="96"/>
+  <object x="168" y="408" width="120" height="72"/>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="platform" width="100" height="20">
+  <object x="552" y="144" height="48"/>
+  <object x="456" y="192" width="96"/>
+  <object x="456" y="144" width="96" height="48"/>
+  <object x="552" y="216" width="48" height="24"/>
+  <object x="480" y="264" width="48" height="24"/>
+  <object x="408" y="312" width="48" height="24"/>
+ </objectgroup>
+ <objectgroup color="#000000" name="nodes" width="100" height="20">
+  <object name="main" type="door" x="168" y="360" width="24" height="48"/>
+ </objectgroup>
+ <layer name="Tile Layer 2" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJgDAQBdBLa5sFHDWjOIqjOIoXUBBLCaTwPTjCb8LBJ4kYo0Zsy2Myr4Ou5oPsIEpEK9eZuU1e6ddeffS8z93o3/J/6h0c91TvAwAAAAAAgHQCcyoJNw==
+  </data>
+ </layer>
+</map>
