@@ -3,7 +3,7 @@ local fonts = { 'arial', 'courier', 'big', 'small' }
 local glyphs = " abcdefghijklmnopqrstuvwxyz" ..
                "ABCDEFGHIJKLMNOPQRSTUVWXYZ0" ..
                "123456789.,!?-+/\\:;%&`'*#=\"$()<>{}" ..
-               "|||||||||" .. -- Eventuall add these back áíóúñ¿¡éü
+               "||||||||||_" .. -- Eventuall add these back áíóúñ¿¡éü
                "^" --cursor
 
 local Fonts = {
