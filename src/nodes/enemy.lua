@@ -17,6 +17,7 @@ local tween = require 'vendor/tween'
 local cheat = require 'cheat'
 local sound = require 'vendor/TEsound'
 local token = require 'nodes/token'
+local material = require 'nodes/materials'
 local game = require 'game'
 local utils = require 'utils'
 local window = require 'window'
@@ -223,6 +224,7 @@ function Enemy:hurt( damage, special_damage, knockback )
     end)
     if self.reviveTimer then Timer.cancel( self.reviveTimer ) end
     self:dropTokens()
+    self:dropMaterials()
   else
     if knockback and not self.knockbackDisabled and not self.knockbackActive then
       self.knockbackActive = true
@@ -316,7 +318,7 @@ function Enemy:dropTokens()
   
   for i=1, self.props.tokens do
     local r = math.random(100) / 100
-    for _,d in pairs( self.props.tokenTypes ) do
+    for _,d in ipairs( self.props.tokenTypes ) do
       if r < d.p then
         local node = {
           type = "token",
@@ -334,6 +336,31 @@ function Enemy:dropTokens()
         self.containerLevel:addNode(token)
         break
       end
+    end
+  end
+end
+
+function Enemy:dropMaterials()
+  if not self.props.materials or self.props.materials == 0 then return end
+    
+  for i=1, self.props.materials do
+    local r = math.random(100) / 100
+    for _,d in ipairs( self.props.materialTypes ) do
+      local node = {
+        type = "material",
+        name = d.item,
+        x = self.position.x + self.props.width / 2,
+        y = self.position.y + self.props.height-24,
+        width = 24,
+        height = 24,
+        properties = {
+        }
+      }
+      local NodeClass = require('nodes/material')
+      local spawnedNode = NodeClass.new(node, self.collider)
+      local level = gamestate.currentState()
+      level:addNode(spawnedNode)
+      break
     end
   end
 end

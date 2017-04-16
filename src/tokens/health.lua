@@ -8,4 +8,4 @@ return {
   onPickup = function( player, value )
     player.health = math.min( player.health + value, player.max_health )
   end
-}
+

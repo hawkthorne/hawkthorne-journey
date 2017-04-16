@@ -15,9 +15,16 @@ return{
   vulnerabilities = {'blunt'},
   damage = 30,
   tokens = 10,
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-      { item = 'coin', v = 1, p = 0.9 },
-      { item = 'health', v = 1, p = 1 }
+  materials = 1,
+  materialTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'blade', p = 0.1 },
+    { item = 'arm', p = 0.3 },
+  },
+  tokenTypes = { -- p is probability ceiling, with the last being 1
+      { item = 'coin', v = 1, p = 0.2 },
+      { item = 'health', v = 1, p = 0.4 },
+      { item = 'greaterCoin', v = 10, p = 0.7 },
+      { item = 'gold', v = 100, p = 1 },
   },
   animations = {
     default = {

@@ -15,7 +15,11 @@ return {
   jump_vel = 500,
   vulnerabilities = {'lightning'},
   tokens = 3,
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
+  materials = 1,
+  materialTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'ember', p = 0.3 },
+  },
+  tokenTypes = { -- p is probability ceiling, with the last being 1
     { item = 'coin', v = 1, p = 0.9 },
     { item = 'health', v = 1, p = 1 }
   },

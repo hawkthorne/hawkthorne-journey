@@ -15,8 +15,9 @@ return {
   antigravity = true,
   dyingdelay = 5,
   tokens = 3,
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'coin', v = 1, p = 1 },
+  tokenTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'coin', v = 1, p = .9 },
+    { item = 'greaterCoin', v = 10, p = 1 },
   },
   animations = {
     dying = { -- same as dive

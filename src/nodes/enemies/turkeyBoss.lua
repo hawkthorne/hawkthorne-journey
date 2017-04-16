@@ -28,12 +28,26 @@ return {
   attack_offset = { x = -40, y = 10},
   velocity = {x = 0, y = 1},
   hp = 100,
-  tokens = 15,
+  tokens = 5,
+  materials = 2,
   hand_x = -40,
   hand_y = 70,
-  tokenTypes = { -- p is probability ceiling and this list should be sorted by it, with the last being 1
-    { item = 'coin', v = 1, p = 0.9 },
-    { item = 'health', v = 1, p = 1 }
+  materials = 3,
+  materialTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'arm', p = 0.1 },
+    { item = 'blade', p = 0.3 },
+    { item = 'star', p = 0.5 },
+  },
+  tokenTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'coin', v = 1, p = 0.1 },
+    { item = 'health', v = 1, p = 0.2 },
+    { item = 'greaterCoin', v = 10, p = 0.4},
+    { item = 'gold', v = 100, p = 0.9 },
+    { item = 'jewel', v = 1000, p = 1 }
+  },
+  materialTypes = {
+    { item = 'arm', p = 1 },
+
   },
 
   animations = {

@@ -8,6 +8,11 @@ return {
   hp = 1,
   speed = 100,
   antigravity = true,
+  materials = 1,
+  materialTypes = { -- p is probability ceiling, with the last being 1
+    { item = 'frog', p = 0.3 },
+    { item = 'eye', p = 0.1 },
+  },
   animations = {
     dying = {
       right = {'once', {'5-8,2'}, 0.2},
