@@ -93,6 +93,7 @@ local function loadLevels()
   --   item.fromDoor Door - door in the source level (for reporting purposes in case of errors) [optional]
   local levelNamesTodo = {}
   addTodoItem(levelNamesTodo, {toLevel="studyroom", fromLevel="(default)"})
+  addTodoItem(levelNamesTodo, {toLevel="new-abedtown", fromLevel="(overworld)"})
 
   while #levelNamesTodo > 0 do
     local levelTodo = removeTodoItem(levelNamesTodo)
@@ -289,6 +290,51 @@ function TS.test_breakable_blocks()
     end
   end
   Sound.disabled = oldSoundDisabled
+end
+
+---
+-- Tests reachability of levels
+function TS.test_reachability()
+  -- Checks if given level is loaded, fails test if not
+  function checkLevelFail(levelname)
+    assert_not_nil(levels[levelname], string.format("Level %s not reachable.", levelname))
+  end
+  -- Checks if given level is loaded, prints warning if not
+  function checkLevelWarn(levelname)
+    if levels[levelname] == nil then
+      print(string.format("Warning: Level %s not reachable.", levelname))
+    end
+  end
+
+  -- part 1 - check all levels in directory maps
+  local levelnamesSet = {}
+  for _, filename in ipairs(love.filesystem.getDirectoryItems('maps')) do
+    local index, _ = string.find(filename, ".lua")
+    if index then
+      local name, _ = filename:gsub(".lua", "")
+      levelnamesSet[name] = true
+    end
+    index, _ = string.find(filename, ".tmx")
+    if index then
+      local name, _ = filename:gsub(".tmx", "")
+      levelnamesSet[name] = true
+    end
+  end
+
+  for levelname, _ in pairs(levelnamesSet) do
+    checkLevelWarn(levelname)
+  end
+
+  -- part 2 - check few key levels
+  checkLevelFail("studyroom")
+  checkLevelFail("forest")
+  checkLevelFail("town")
+  checkLevelFail("valley-tacotown")
+  checkLevelFail("valley-3")
+  checkLevelFail("rainbow-bar")
+  checkLevelFail("seabluff")
+  checkLevelFail("castle-hawkthorne-throne")
+  checkLevelFail("greendale-exterior")
 end
 
 return TS
