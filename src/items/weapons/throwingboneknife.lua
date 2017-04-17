@@ -1,0 +1,17 @@
+-----------------------------------------------
+-- throwingKnifeItem.lua
+-- The code for the throwing knife, when it in the players inventory.
+-- Created by HazardousPeach
+-----------------------------------------------
+return{
+  name = "throwingboneknife",
+  description = "Throwing Bone Knife",
+  type = "weapon",
+  subtype = "projectile",
+  damage = '1',
+  special_damage = 'stab= 1',
+  info = 'a set of 5 throwing knives',
+  MAX_ITEMS = 15,
+  quantity = 5,
+  directory = 'weapons/',
+}
