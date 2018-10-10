@@ -44,7 +44,7 @@ local function setCheat(cheatName, turnOn)
       'pink_potion','purple_potion','red_potion','white_potion',
       'yellow_potion'}},
     give_fryables = {materials = {
-      'bubblgum','carkeys','fries','pancake','toast'}},
+      'bubblegum','carkeys','fries','pancake','toast'}},
     give_recipes = {details = {
       'blue_potion','green_potion','orange_potion','pink_potion',
       'purple_potion','red_potion','white_potion', 'yellow_potion'}},
