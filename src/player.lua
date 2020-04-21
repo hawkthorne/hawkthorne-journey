@@ -863,7 +863,7 @@ function Player:draw()
   if self.showDamageText then
     local health = self.damageTaken
     if health > 0 then health = health * -1 end
-    love.graphics.setColor( 255, 0, 0, 255 )
+    love.graphics.setColor( 1, 0, 0, 1 )
     love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
   end
 

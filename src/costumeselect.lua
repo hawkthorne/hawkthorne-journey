@@ -395,7 +395,7 @@ function state:draw()
       end
 
       local x, y = background.getPosition(1, 3)
-      love.graphics.setColor(255, 255, 255, 200)
+      love.graphics.setColor(1, 1, 1, 0.78)
       love.graphics.print("INSUFFICIENT", x, y + 5, 0, 0.5, 0.5, 12, -6)
       love.graphics.print(  "FRIENDS"   , x, y + 5, 0, 0.5, 0.5, -12, -32)
       love.graphics.setColor(1, 1, 1, 1)

@@ -98,7 +98,7 @@ function Debugger:draw()
     end
     Debugger.drawInfoBox( x, y )
     camera:unset()
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
   end
   for k,v in pairs( Debugger.graphData ) do
     love.graphics.setColor( v.color )
@@ -130,7 +130,7 @@ function Debugger.drawShape( s, x, y, r, g, b )
 end
 
 function Debugger.drawInfoBox( x, y )
-  love.graphics.setColor(0,0,0,255)
+  love.graphics.setColor(0,0,0,1)
   love.graphics.line( x - 2, y, x + 2, y )
   love.graphics.line( x, y - 2, x, y + 2 )
   if #Debugger.infoToShow > 0 then
@@ -140,7 +140,7 @@ function Debugger.drawInfoBox( x, y )
     love.graphics.rectangle( 'fill', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
     love.graphics.setColor(0,0,0,50)
     love.graphics.rectangle( 'line', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
     x, y = x + 5, y + 5
     local origy = y
     for _,info in pairs(Debugger.infoToShow) do

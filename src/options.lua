@@ -332,7 +332,7 @@ end
 function state:draw()
   VerticalParticles.draw()
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   local back = controls:getKey("START") .. ": BACK TO MENU"
   love.graphics.print(back, 25, 25)
 
@@ -369,7 +369,7 @@ function state:draw()
   if self.page ~= 'optionspage' then
     love.graphics.draw( self.arrow, 138, 124 + ( 26 * ( menu.selection - 1 ) ) )
   else
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
     love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
   end
   love.graphics.setColor( 1, 1, 1, 1 )

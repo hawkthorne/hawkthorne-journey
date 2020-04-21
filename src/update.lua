@@ -58,7 +58,7 @@ function screen:draw()
                      window.height / 2 - self.logo:getHeight() / 2)
 
   if self.progress > 0 then
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle("line", 40, window.height - 75, window.width - 80, 10)
     love.graphics.rectangle("fill", 40, window.height - 75, 
                             (window.width - 80) * self.progress / 100, 10)

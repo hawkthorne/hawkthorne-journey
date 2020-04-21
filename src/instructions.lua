@@ -87,7 +87,7 @@ function state:draw()
 
   local n = 1
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   local back = controls:getKey("START") .. ": BACK TO MENU"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": REASSIGN CONTROL"
 

@@ -77,7 +77,7 @@ function Prompt:draw()
       love.graphics.setColor( 1, 1, 1, 1 )
 
       if i == self.selected then
-        love.graphics.setColor( 254, 204, 2, 255 )
+        love.graphics.setColor( 0.99, 0.8, 0.007, 1 )
         love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
       end
 

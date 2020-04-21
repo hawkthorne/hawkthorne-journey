@@ -397,9 +397,9 @@ function NPC:draw()
   self.emotion:draw(self)
 
   if self.displayAffection then
-    love.graphics.setColor( 0, 0, 255, 255 )
+    love.graphics.setColor( 0, 0, 1, 1 )
     love.graphics.print("+ " .. self.affection, self.affectionText.x, self.affectionText.y, 0, 0.7, 0.7)
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
   end
 
 end
