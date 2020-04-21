@@ -89,5 +89,5 @@ if($args[0] -eq "run"){
   }
 }elseif($args[0] -eq "test"){
   Write-Host "Testing Journey to the Center of Hawkthorne..."
-  .\bin\llove-11.3-win64\love.exe src --test --console
+  .\bin\love-11.3-win64\love.exe src --test --console
 }
