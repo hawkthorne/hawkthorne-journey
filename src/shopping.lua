@@ -120,7 +120,7 @@ function state:enter(previous, player, screenshot, supplierName)
       local name = info[1]
       local amount = info[2]
       local item
-      if love.filesystem.exists('items/'..category) then
+      if love.filesystem.getInfo('items/'..category) then
         local itemNode = require ('items/' .. category .. '/' .. name)
         item = Item.new(itemNode)
       elseif category=="keys" then

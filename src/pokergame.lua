@@ -105,7 +105,7 @@ function state:enter(previous, player, screenshot)
   self.prompt = nil
 
   self.player = player
-  self.hasNakedSprite = love.filesystem.exists("images/characters/" .. self.player.character.name .. "/naked.png")
+  self.hasNakedSprite = love.filesystem.getInfo("images/characters/" .. self.player.character.name .. "/naked.png")
   self.naked = self.player.character.costume == 'naked' or false
   self.nakedBet = false
   self.nakedMoney = 100

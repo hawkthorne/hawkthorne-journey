@@ -21,7 +21,7 @@ function Consumable.new(node, collider)
   consumable.name = node.name
   consumable.type = 'consumable'
 
-  if not love.filesystem.exists('images/consumables/'..node.name..'.png') then
+  if not love.filesystem.getInfo('images/consumables/'..node.name..'.png') then
     return nil
   end
 
