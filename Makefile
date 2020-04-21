@@ -87,7 +87,7 @@ build/hawkthorne-win-x86_64.zip: win64/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
 	rm -f hawkthorne-win-x86_64.zip
-	cp -r win32 hawkthorne
+	cp -r win64 hawkthorne
 	zip --symlinks -q -r hawkthorne-win-x86_64 hawkthorne -x "*/love.exe"
 	mv hawkthorne-win-x86_64.zip build
 
@@ -112,7 +112,7 @@ binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
 upload: binaries post.md venv
 	venv/bin/python scripts/release.py
 
-appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
+appcast: venv build/hawkthorne-osx.zip win64/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
 	cat sparkle/appcast.json | python -m json.tool > /dev/null
 	venv/bin/python scripts/upload.py / sparkle/appcast.json
