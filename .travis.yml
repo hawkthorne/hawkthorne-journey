@@ -25,7 +25,7 @@ script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "make deploy"
-before_deploy:
+addons:
   artifacts:
     paths:
       - ./build/hawkthorne-osx.zip
