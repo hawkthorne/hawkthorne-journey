@@ -8,7 +8,7 @@ local api = require 'api'
 local Application = middle.class('Application')
 
 function Application:initialize(configurationPath)
-  assert(love.filesystem.exists(configurationPath),
+  assert(love.filesystem.getInfo(configurationPath),
          "Can't read app configuration at path: " .. configurationPath)
   self.config = config.load(configurationPath)
   self.gamesaves = gamesave(3)
