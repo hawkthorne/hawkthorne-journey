@@ -46,7 +46,7 @@ end
 
 function screen:leave()
   self.logo = nil
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 end
 
 function screen:keypressed(button)

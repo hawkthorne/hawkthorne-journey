@@ -51,7 +51,7 @@ function Application:errhand(msg)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   love.graphics.clear()
 
   local trace = debug.traceback()
@@ -100,7 +100,7 @@ function Application:releaseerrhand(msg)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   love.graphics.clear()
 

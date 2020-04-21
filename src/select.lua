@@ -196,7 +196,7 @@ function state:update(dt)
     local current = character.current()
     current.changed = true
 
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
 
     local level = Gamestate.get('overworld')
     level:reset()
@@ -250,7 +250,7 @@ function state:draw()
     love.graphics.print("INSUFFICIENT", x, y + 5, 0, 0.5, 0.5, 12, -6)
     love.graphics.print(  "FRIENDS"   , x, y + 5, 0, 0.5, 0.5, -12, -32)
     love.graphics.print(self.current_page .. ' / ' .. #self.character_selections, x + 60, y + 15, 0, 0.5, 0.5 )
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   for i=0,1,1 do

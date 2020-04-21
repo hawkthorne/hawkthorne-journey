@@ -105,7 +105,7 @@ function flyin:draw()
   for i = #flyin.flying, 1, -1 do
     local v = flyin.flying[i]
     if v.show then
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
 
       self:drawCharacter(v, v.x, v.y, v.r - (v.r % (math.pi / 2)),
                          math.min(v.s, 5), math.min(v.s, 5), 22, 32)

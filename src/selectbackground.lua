@@ -59,7 +59,7 @@ function selectBackground.draw()
 
   for _,strip in ipairs(strips) do strip:draw() end
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   local x, y = strips[8]:getCharacterPos()
   love.graphics.draw(unknownFriend, x + 14, y + 10)

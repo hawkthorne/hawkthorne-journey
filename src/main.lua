@@ -295,10 +295,10 @@ function love.draw()
   camera:unset()
 
   if paused then
-    love.graphics.setColor(75, 75, 75, 125)
+    love.graphics.setColor(0.29, 0.29, 0.29, 0.49)
     love.graphics.rectangle('fill', 0, 0, love.graphics:getWidth(),
     love.graphics:getHeight())
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   if debugger.on then debugger:draw() end

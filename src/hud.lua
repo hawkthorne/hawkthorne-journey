@@ -89,7 +89,7 @@ function HUD:draw( player )
 
   love.graphics.draw(energy, energy_quad, self.x + 50, self.y)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   local currentWeapon = player.inventory:currentWeapon()
   if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then

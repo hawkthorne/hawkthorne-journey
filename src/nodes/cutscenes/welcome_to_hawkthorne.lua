@@ -184,7 +184,7 @@ function Scene:draw(player)
   love.graphics.setColor(unpack(self.fade))
   love.graphics.rectangle('fill', camera.x, camera.y,
     love.graphics.getWidth(), love.graphics.getHeight())
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
     
 
   -- Lightning
@@ -195,13 +195,13 @@ function Scene:draw(player)
     
   love.graphics.setColor(255, 255, 255, self.nodes.head.opacity)
   self.talking:draw(self.head, self.nodes.head.x, self.nodes.head.y)
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   
   for i, s in pairs(self.sparkle_animations) do
     local spark = self.sparkles[i]
     love.graphics.setColor(255, 255, 255, self.sparkle_opacity)
     s:draw(self.sparkle, self.nodes[spark].x, self.nodes[spark].y)
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
   
 

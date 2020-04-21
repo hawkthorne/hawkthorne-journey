@@ -520,7 +520,7 @@ function Enemy:draw()
     tween(2, self.fade, {255, 255, 255, 255}, 'outQuad', function() self.fadeIn = false end)
     love.graphics.setColor(unpack(self.fade))
   else
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   if not self.dead then

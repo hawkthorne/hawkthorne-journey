@@ -394,7 +394,7 @@ function state:draw()
   --flags
   for _,flag in pairs(self.flags) do
     if flag then
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(self.flag_image, flag['x'] * map.tileWidth + 10, flag['y'] * map.tileHeight - 24)
     end
   end
@@ -428,7 +428,7 @@ function state:draw()
     end
   end
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   
   for _,cloud in pairs(self.clouds) do
     if cloud then

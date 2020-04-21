@@ -379,7 +379,7 @@ function state:draw()
   -- Only draw the details on the screen when the background is up
     if not background.slideIn then
     
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
 
       love.graphics.printf(self.chartext, 0, window.height - 65, window.width, 'center')
       love.graphics.printf(self.menutext, 0, window.height - 45, window.width, 'center')
@@ -398,7 +398,7 @@ function state:draw()
       love.graphics.setColor(255, 255, 255, 200)
       love.graphics.print("INSUFFICIENT", x, y + 5, 0, 0.5, 0.5, 12, -6)
       love.graphics.print(  "FRIENDS"   , x, y + 5, 0, 0.5, 0.5, -12, -32)
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
     end
 
     for i=0,1,1 do
@@ -412,7 +412,7 @@ function state:draw()
     end
   else
     VerticalParticles.draw()
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.printf(self.costext, 0, window.height - 75, window.width, 'center')
     love.graphics.printf(self.backtext, 0, window.height - 55, window.width, 'center')
 

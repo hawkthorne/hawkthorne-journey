@@ -85,7 +85,7 @@ function Prompt:draw()
       x = x + font:getWidth(o) + 20  --padding
     end
   end
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   fonts.revert()
 end
