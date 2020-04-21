@@ -634,7 +634,7 @@ function state:draw()
     love.graphics.draw(self.screenshot, camera.x, camera.y, 0,
       window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('fill', 0, 0, love.graphics:getDimensions() )
     love.graphics.setColor(1, 1, 1, 1)
   end

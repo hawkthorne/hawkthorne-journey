@@ -62,7 +62,7 @@ function Prompt:draw()
 
     love.graphics.setColor(112, 28, 114, 255)
     love.graphics.rectangle('fill', x, y, self.width, self.height)
-    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('line', x, y, self.width, self.height)
     love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw(corner, x - 2, y - 2)
