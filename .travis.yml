@@ -1,10 +1,17 @@
 language: general
 sudo: required
 dist: bionic
-install:
-  - sudo apt-get update -y
-  - sudo apt-get install xvfb python-dev libffi-dev libssl-dev -y
-  - sudo apt-get install python-virtualenv lua5.1 -y
+addons:
+  apt:
+    packages:
+      - xvfb
+      - python-dev
+      - libffi-dev
+      - libssl-dev
+      - python-virtualenv
+      - lua5.1
+      - libpulse0
+      - libsdl2-2.0-0
 after_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
