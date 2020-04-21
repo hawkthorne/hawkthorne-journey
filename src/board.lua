@@ -87,7 +87,7 @@ function Board:draw(x, y)
 
   love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.rectangle('fill', x - halfWidth, y - halfHeight, width, height)
-  love.graphics.setColor( 112, 28, 114, 255 )
+  love.graphics.setColor( 0.4, 0.10, 0.44, 1 )
   love.graphics.rectangle('line', x - halfWidth, y - halfHeight, width, height)
   love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.draw(corner, x - halfWidth - 3, y - halfHeight - 3)
