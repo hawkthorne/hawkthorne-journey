@@ -28,5 +28,5 @@ env:
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script:
   - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - "systemctl start xvfb"
   - "make deploy"
