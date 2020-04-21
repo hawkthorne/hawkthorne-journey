@@ -7,7 +7,7 @@ ifeq ($(UNAME), Darwin)
   LOVE = bin/love.app/Contents/MacOS/love
 else
   TMXTAR = tmx2lua.linux.tar
-  LOVE = /usr/bin/love
+  LOVE = bin/love-11.3-x86_64.AppImage
 endif
 
 ifeq ($(shell which wget),)
@@ -42,16 +42,17 @@ bin/tmx2lua:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-macosx-x64.zip
-	unzip -q love-0.10.1-macosx-x64.zip
-	rm -f love-0.10.1-macosx-x64.zip
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-macos.zip
+	unzip -q love-11.3-macos.zip
+	rm -f love-11.3-macos.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
-/usr/bin/love:
-	sudo add-apt-repository -y ppa:bartbes/love-stable
-	sudo apt-get update -y -f
-	sudo apt-get install -y love
+bin/love-11.3-x86_64.AppImage:
+	mkdir -p bin
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-x86_64.AppImage
+	mv love-11.3-x86_64.AppImage bin
+	chmod +x bin/love-11.3-x86_64.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -72,23 +73,23 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-win32/love.exe:
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip
-	unzip -q love-0.10.1-win32.zip
-	mv love-0.10.1-win32 win32
-	rm -f love-0.10.1-win32.zip
-	rm win32/changes.txt win32/game.ico win32/license.txt win32/love.ico win32/readme.txt
+win64/love.exe:
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-win64.zip
+	unzip -q love-11.3-win64.zip
+	mv love-11.3-win64 win64
+	rm -f love-11.3-win64.zip
+	rm win64/changes.txt win64/game.ico win64/license.txt win64/love.ico win64/readme.txt
 
-win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+win64/hawkthorne.exe: build/hawkthorne.love win64/love.exe
+	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 
-build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
+build/hawkthorne-win-x86_64.zip: win64/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
-	rm -f hawkthorne-win-x86.zip
+	rm -f hawkthorne-win-x86_64.zip
 	cp -r win32 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x86.zip build
+	zip --symlinks -q -r hawkthorne-win-x86_64 hawkthorne -x "*/love.exe"
+	mv hawkthorne-win-x86_64.zip build
 
 OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
@@ -106,7 +107,7 @@ build/hawkthorne-osx.zip: $(OSXAPP)
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
+binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
 
 upload: binaries post.md venv
 	venv/bin/python scripts/release.py
