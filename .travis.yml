@@ -19,8 +19,7 @@ env:
   global:
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script: make deploy
-addons:
-  artifacts:
+artifacts:
     paths:
       - ./build/hawkthorne-osx.zip
       - ./build/hawkthorne-win-x86_64.zip
