@@ -26,8 +26,5 @@ addons:
 env:
   global:
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
 script:
   - "xvfb-run make deploy"
