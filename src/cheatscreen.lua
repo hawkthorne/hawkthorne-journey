@@ -218,7 +218,7 @@ function cheatscreen:draw()
       end
       if display then
         if self.current_key == key then
-          love.graphics.setColor( 0.34, 0.96, 0, 60 )
+          love.graphics.setColor( 0.34, 0.96, 0, 0.23 )
           love.graphics.rectangle( 'fill', kx + 0.5, ky + 0.5, w - 1, h - 1 )
           love.graphics.setColor( 0.34, 0.96, 0, 1 )
         else
