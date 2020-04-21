@@ -27,4 +27,5 @@ env:
   global:
   - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
 script:
+  - "mkdir -p $TRAVIS_BUILD_DIR/share/love/"
   - "xvfb-run make deploy"
