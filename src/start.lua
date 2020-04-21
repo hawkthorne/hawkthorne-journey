@@ -174,7 +174,7 @@ function state:draw()
 
     local y = 90
 
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
 
     for n, opt in pairs(self.options) do
       if tonumber( n ) ~= nil  then
@@ -189,7 +189,7 @@ function state:draw()
         end
       end
     end
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     -- Determine how far the arrow should move for the last menu item
     local arrowYFactor = 2
     if self.selection > 2 then
@@ -202,11 +202,11 @@ function state:draw()
     local delete = controls:getKey("JUMP") .. ": SELECT OPTION"
     love.graphics.print(howto, 25, 25)
     love.graphics.print(delete, 25, 55)
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.printf('Are you sure you want to delete this slot?', 155, 110, self.background:getWidth() - 30, 'left')
     love.graphics.print('Yes', 175, 175, 0)
     love.graphics.print('No', 175, 205, 0)
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw( self.arrow, 140, 170 + 30 * self.selectionDelete ) 
   end
 end

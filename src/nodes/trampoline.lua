@@ -86,7 +86,7 @@ function Trampoline:draw()
   if self.whiteout > 0 then
     love.graphics.setColor( 255, 255, 255, math.min( self.whiteout, 255 ) )
     love.graphics.rectangle( 'fill', 0, 0, window.width, window.height * 2 )
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
   end
 end
 

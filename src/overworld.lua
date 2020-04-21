@@ -434,7 +434,7 @@ function state:draw()
     if cloud then
       love.graphics.setColor( 255, 255, 255, cloud.o * 255 )
       love.graphics.draw(self.cloudpuffsprite, self.cloudquads[cloud.q], cloud.x, cloud.y )
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
     end
   end
 

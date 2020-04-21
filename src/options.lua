@@ -342,7 +342,7 @@ function state:draw()
   camera:getWidth() / 2 - self.background:getWidth() / 2,
   camera:getHeight() / 2 - self.background:getHeight() / 2)
 
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
 
   local xoffset = self.page == 'optionspage' and 20 or 0
 
@@ -372,7 +372,7 @@ function state:draw()
     love.graphics.setColor(255,255,255,255)
     love.graphics.draw( self.bigarrow, 138, 116 + ( 26 * ( menu.selection - 1) ) )
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 return state

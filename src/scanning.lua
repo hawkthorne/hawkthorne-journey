@@ -54,7 +54,7 @@ function state:draw()
   --background colour
   love.graphics.setColor( 60, 86, 173, 255 )
   love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   -- coloured backgrounds
   local width = window.width

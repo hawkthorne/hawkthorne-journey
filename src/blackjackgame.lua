@@ -679,14 +679,14 @@ function state:draw()
     local co = 0 -- color offset
     if not n.active then co = 180 end
     if i == self.selection + 1 then
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
       love.graphics.draw( self.options_arrow, x - 5, y + 4 )
       co = 255
     end
     love.graphics.setColor( 255 - co, 255 - co, 255 - co )
     love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   cx = 0 -- chip offset x
   for color,count in pairs( cardutils.getChipCounts( self.player.money ) ) do
@@ -748,7 +748,7 @@ function state:draw()
   -- print current bet
   love.graphics.print('Bet $ ' .. self.currentBet, 361+camera.x, 141+camera.y, 0, 0.5)
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   -- Ensure font is reverted
   fonts.revert()
@@ -785,7 +785,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
     utils.map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
   )
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 return state

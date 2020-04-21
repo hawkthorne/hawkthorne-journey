@@ -401,9 +401,9 @@ function state:draw()
   if self.screenshot then
     love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
   end
 
    -- HUD
@@ -438,7 +438,7 @@ function state:draw()
           love.graphics.draw( self.noselection, xcorner + 19 + 32*visI, ycorner + 22, 0 )
           love.graphics.setColor( 101, 101, 101, 213 )
           love.graphics.print(string.upper(category), xcorner + 13 + 32*visI + self.shift[category], ycorner + 45, 0, 0.5, 0.5 )
-          love.graphics.setColor( 255, 255, 255, 255 )
+          love.graphics.setColor( 1, 1, 1, 1 )
         else
           love.graphics.print(string.upper(category), xcorner + 13 + 32*visI + self.shift[category], ycorner + 45, 0, 0.5, 0.5 )
         end               

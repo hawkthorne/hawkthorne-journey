@@ -101,13 +101,13 @@ function state:draw()
 
   local controls = self.player.controls
 
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.print('Controls', 198, 101)
   love.graphics.print('Options', 198, 131)
   love.graphics.print('Quit to Map', 198, 161)
   love.graphics.print('Quit to Menu', 198, 191)
   love.graphics.print('Quit to Desktop', 198, 221)
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
   local back = controls:getKey("START") .. ": BACK TO GAME"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT ITEM"

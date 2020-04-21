@@ -867,7 +867,7 @@ function Player:draw()
     love.graphics.print(health, self.healthText.x, self.healthText.y, 0, 0.7, 0.7)
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
 end
 

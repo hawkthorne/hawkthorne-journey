@@ -34,7 +34,7 @@ end
 
 function state:draw()
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   VerticalParticles.draw()
   
   local width = self.background:getWidth()
@@ -49,7 +49,7 @@ function state:draw()
   self.savingAnimation:draw(self.savingImage, x + 10, y + height - 26)
   self.savingAnimation:draw(self.savingImage, x + width - 27, y + height - 26)
 
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.printf(self.text, x + 10, y + 65, width - 20, "center")
 
 end

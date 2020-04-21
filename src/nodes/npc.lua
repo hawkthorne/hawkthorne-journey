@@ -165,7 +165,7 @@ function Menu:draw(x, y)
     i = i - self.offset
     if i > 0 then
       -- black text stroke created by 4 different offsets behind the white text
-      love.graphics.setColor( 0, 0, 0, 255 )
+      love.graphics.setColor( 0, 0, 0, 1 )
       love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
                  self.itemWidth, 'right', 0, 1, 1, 0.5, 0.5)
       love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
@@ -175,18 +175,18 @@ function Menu:draw(x, y)
       love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
                  self.itemWidth, 'right', 0, 1, 1, -0.5, -0.5)
 
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
       love.graphics.printf(value.text, x - self.itemWidth, y - (i - 1) * 12,
                  self.itemWidth, 'right')
 
       if self.choice == i then
         -- pointer
-        love.graphics.setColor( 255, 255, 255, 255 )
+        love.graphics.setColor( 1, 1, 1, 1 )
         love.graphics.draw(self.tick, x - (Font:getWidth(value.text)+10), y - (i - 1) * 12 + 2)
       end
     end
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   fonts.revert()
 end
 

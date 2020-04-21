@@ -113,7 +113,7 @@ function Debugger:draw()
       end
     end
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   fonts.set('big')
   love.graphics.print(math.floor(collectgarbage('count')), window.screen_width - 30, window.screen_height - 10,0,0.5,0.5 )
   fonts.revert()

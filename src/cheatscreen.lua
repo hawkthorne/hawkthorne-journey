@@ -188,7 +188,7 @@ end
 
 function cheatscreen:draw()
   local y = self.cmd.offset_y
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.rectangle( 'fill', 0, 0, window.width, window.height )
   love.graphics.setColor( 88, 246, 0, 255 )
   for i,n in pairs(self.cmd.queue) do
@@ -232,7 +232,7 @@ function cheatscreen:draw()
     end
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 return cheatscreen

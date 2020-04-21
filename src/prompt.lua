@@ -64,7 +64,7 @@ function Prompt:draw()
     love.graphics.rectangle('fill', x, y, self.width, self.height)
     love.graphics.setColor(0, 0, 0, 255)
     love.graphics.rectangle('line', x, y, self.width, self.height)
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw(corner, x - 2, y - 2)
     love.graphics.draw(corner, x - 2, y + self.height - 2)
     love.graphics.draw(corner, x - 2 + self.width, y - 2)
@@ -74,7 +74,7 @@ function Prompt:draw()
     y = y + self.height / 4
 
     for i,o in pairs( self.options ) do
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
 
       if i == self.selected then
         love.graphics.setColor( 254, 204, 2, 255 )
