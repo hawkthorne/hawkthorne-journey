@@ -1,5 +1,6 @@
 language: generic
-sudo: required
+os:
+  - linux
 dist: bionic
 addons:
   apt:
