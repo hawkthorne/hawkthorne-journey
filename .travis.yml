@@ -12,6 +12,9 @@ addons:
       - python-virtualenv
       - lua5.1
       - libpulse0
+      - pulseaudio
+      - sndiod
+      - virtualenv
       - libsdl2-2.0-0
       - alsa
       - alsa-tools
