@@ -60,7 +60,7 @@ function Prompt:draw()
     local x = x2 - self.width + self.height / 2
     local y = y1 - self.height / 2
 
-    love.graphics.setColor(112, 28, 114, 255)
+    love.graphics.setColor(0.43, 0.10, 0.44, 1)
     love.graphics.rectangle('fill', x, y, self.width, self.height)
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('line', x, y, self.width, self.height)
