@@ -517,7 +517,7 @@ function Enemy:draw()
   if self.flash then
     love.graphics.setColor(1, 0, 0, 1)
   elseif self.fadeIn then
-    tween(2, self.fade, {255, 255, 255, 255}, 'outQuad', function() self.fadeIn = false end)
+    tween(2, self.fade, {1, 1, 1, 1}, 'outQuad', function() self.fadeIn = false end)
     love.graphics.setColor(unpack(self.fade))
   else
     love.graphics.setColor(1, 1, 1, 1)
