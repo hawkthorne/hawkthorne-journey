@@ -559,7 +559,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
   if(overlay) then
     darkness = 150
   end
-  love.graphics.setColor( darkness, darkness, darkness )
+  love.graphics.setColor( darkness/255, darkness/255, darkness/255 )
   love.graphics.draw(
     self.cardSprite, _card,                             -- image, quad
     x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip

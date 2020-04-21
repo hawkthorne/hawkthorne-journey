@@ -683,7 +683,7 @@ function state:draw()
       love.graphics.draw( self.options_arrow, x - 5, y + 4 )
       co = 255
     end
-    love.graphics.setColor( 255 - co, 255 - co, 255 - co )
+    love.graphics.setColor( 1 - co/255, 1 - co/255, 1 - co/255 )
     love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
   end
   love.graphics.setColor( 1, 1, 1, 1 )
@@ -775,7 +775,7 @@ function state:drawCard( card, suit, flip, x, y, overlay )
     darkness = 150
   end
 
-  love.graphics.setColor( darkness, darkness, darkness )
+  love.graphics.setColor( darkness/255, darkness/255, darkness/255 )
   love.graphics.draw(
     self.cardSprite, _card,                             -- image, quad
     x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip

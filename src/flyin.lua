@@ -111,7 +111,7 @@ function flyin:draw()
                          math.min(v.s, 5), math.min(v.s, 5), 22, 32)
       -- black mask while coming out of 'tunnel'
       if v.s <= 1 then
-        love.graphics.setColor(0, 0, 0, 255 * (1 - v.s ))
+        love.graphics.setColor(0, 0, 0, (1 - v.s ))
 
         self:drawCharacter(v, v.x, v.y, v.r - (v.r % (math.pi / 2)),
                            math.min(v.s, 5), math.min(v.s, 5), 22, 32)

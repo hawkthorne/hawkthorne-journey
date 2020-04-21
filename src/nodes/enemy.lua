@@ -527,7 +527,7 @@ function Enemy:draw()
     self:animation():draw( self.sprite, math.floor( self.position.x ), math.floor( self.position.y ) )
   end
 
-  love.graphics.setColor(r, g, b, a)
+  love.graphics.setColor(r/255, g/255, b/255, a/255)
 
   if self.props.draw then
     self.props.draw(self)

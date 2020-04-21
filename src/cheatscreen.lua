@@ -190,7 +190,7 @@ function cheatscreen:draw()
   local y = self.cmd.offset_y
   love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.rectangle( 'fill', 0, 0, window.width, window.height )
-  love.graphics.setColor( 88, 246, 0, 255 )
+  love.graphics.setColor( 0.34, 0.96, 0, 1 )
   for i,n in pairs(self.cmd.queue) do
     love.graphics.print( n, self.cmd.offset_x, y, 0, 0.5, 0.5 )
     y = y + self.cmd.line_height
@@ -218,13 +218,13 @@ function cheatscreen:draw()
       end
       if display then
         if self.current_key == key then
-          love.graphics.setColor( 88, 246, 0, 60 )
+          love.graphics.setColor( 0.34, 0.96, 0, 60 )
           love.graphics.rectangle( 'fill', kx + 0.5, ky + 0.5, w - 1, h - 1 )
-          love.graphics.setColor( 88, 246, 0, 255 )
+          love.graphics.setColor( 0.34, 0.96, 0, 1 )
         else
-          love.graphics.setColor( 88, 246, 0, 35 )
+          love.graphics.setColor( 0.34, 0.96, 0, 0.13 )
           love.graphics.rectangle( 'fill', kx + 0.5, ky + 0.5, w - 1, h - 1 )
-          love.graphics.setColor( 88, 246, 0, 240 )
+          love.graphics.setColor( 0.34, 0.96, 0, 0.94 )
         end
         utils.roundedrectangle( kx, ky, w, h, keywidth / 6 )
         love.graphics.print( display, kx + 9, ky + 6, 0, 0.6, 0.7)
