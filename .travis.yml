@@ -1,4 +1,4 @@
-language: general
+language: generic
 sudo: required
 dist: bionic
 addons:
