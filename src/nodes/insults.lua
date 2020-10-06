@@ -17,7 +17,7 @@ return {
   buddy = {'You are an insecure wreck who panders to popular individuals when they come into your radar.'},
   vicedean = {'You are an overweight man who cant get a grip on his life, let alone his school, and cant tell a difference between a right-hand man and a murderer.'},
   leonard = {' You are a war veteran, unable to recover from your memories, instead hiding them by playing your money away and drowning your sorrows in hip flasks of whisky.'},
-  vaughan = {'You are a miniscule-nippled wannabe-rebel who asks the sky for help and sings about meaningless feelings that Im surprised even YOU care about.'},
+  vaughn = {'You are a miniscule-nippled wannabe-rebel who asks the sky for help and sings about meaningless feelings that Im surprised even YOU care about.'},
   duncan = {'You are a British slob, sticking your rod in anything that remotely resembles a woman, and cant teach a single class without a drink.'},
   kevin = {'You are nothing but a figment of a psychos imagination, leading a fake double life that will still never accomplish anything except be a puppet of a coloured power-hungry miscreant.'},
   rich = {'You are a flawed pretty boy who thinks that by being as successful as can be he might be able to win back the heart of a mother who never loved him in the first place.'},
