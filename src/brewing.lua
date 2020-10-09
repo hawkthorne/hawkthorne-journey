@@ -223,9 +223,9 @@ function state:draw()
   if self.screenshot then
     love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
   end
 
   self.hud:draw( self.player )
@@ -243,7 +243,7 @@ function state:draw()
     love.graphics.newQuad(0,0,selectionSprite:getWidth(),selectionSprite:getHeight(),selectionSprite:getWidth(),selectionSprite:getHeight()),
     firstcell_right, firstcell_top + ((self.selected-1) * 22))
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.printf(self.player.controls:getKey('JUMP') .. " BREW", 0, 200, width, 'center')
   love.graphics.printf(self.player.controls:getKey('START') .. " CANCEL", 0, 213, width, 'center')
 

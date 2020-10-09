@@ -98,7 +98,7 @@ function Debugger:draw()
     end
     Debugger.drawInfoBox( x, y )
     camera:unset()
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
   end
   for k,v in pairs( Debugger.graphData ) do
     love.graphics.setColor( v.color )
@@ -113,16 +113,16 @@ function Debugger:draw()
       end
     end
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   fonts.set('big')
   love.graphics.print(math.floor(collectgarbage('count')), window.screen_width - 30, window.screen_height - 10,0,0.5,0.5 )
   fonts.revert()
 end
 
 function Debugger.drawShape( s, x, y, r, g, b )
-  love.graphics.setColor(r,g,b,100)
+  love.graphics.setColor(r/255,g/255,b/255,0.39)
   s:draw('fill')
-  love.graphics.setColor(r,g,b,50)
+  love.graphics.setColor(r/255,g/255,b/255,0.19)
   s:draw('line')
   if s:contains( x, y ) and s.node and s.node.node then
     table.insert( Debugger.infoToShow, s.node.node )
@@ -130,17 +130,17 @@ function Debugger.drawShape( s, x, y, r, g, b )
 end
 
 function Debugger.drawInfoBox( x, y )
-  love.graphics.setColor(0,0,0,255)
+  love.graphics.setColor(0,0,0,1)
   love.graphics.line( x - 2, y, x + 2, y )
   love.graphics.line( x, y - 2, x, y + 2 )
   if #Debugger.infoToShow > 0 then
     if x + Debugger.infowidth * #Debugger.infoToShow >= camera.x + window.width then x = x - Debugger.infowidth * #Debugger.infoToShow end
     if y + Debugger.infoheight >= camera.y + window.height then y = y - Debugger.infoheight end
-    love.graphics.setColor(0,0,0,100)
+    love.graphics.setColor(0,0,0,0.39)
     love.graphics.rectangle( 'fill', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
-    love.graphics.setColor(0,0,0,50)
+    love.graphics.setColor(0,0,0,0.19)
     love.graphics.rectangle( 'line', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
-    love.graphics.setColor(255,255,255,255)
+    love.graphics.setColor(1,1,1,1)
     x, y = x + 5, y + 5
     local origy = y
     for _,info in pairs(Debugger.infoToShow) do

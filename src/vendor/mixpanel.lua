@@ -15,7 +15,7 @@ math.randomseed(os.time())
 
 -- Generate a 10-digit random ID
 function mixpanel.distinctId()
-  if not love.filesystem.exists('mixpanel.txt') then
+  if not love.filesystem.getInfo('mixpanel.txt') then
     love.filesystem.write('mixpanel.txt', mixpanel.randomId())
   end
 

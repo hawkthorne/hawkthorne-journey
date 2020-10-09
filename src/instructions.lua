@@ -87,14 +87,14 @@ function state:draw()
 
   local n = 1
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   local back = controls:getKey("START") .. ": BACK TO MENU"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": REASSIGN CONTROL"
 
   love.graphics.print(back, 25, 25)
   love.graphics.print(howto, 25, 55)
   love.graphics.print(self.statusText, self.left_column, 280)
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
 
   for i, button in ipairs(menu.options) do
     local y = self.top + self.spacing * (i - 1)
@@ -108,7 +108,7 @@ function state:draw()
     love.graphics.print(key, self.right_column, y, 0, 0.5)
   end
   
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.draw(self.arrow, 135, 87 + self.spacing * menu:selected())
 end
 

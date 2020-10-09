@@ -8,7 +8,7 @@ local api = require 'api'
 local Application = middle.class('Application')
 
 function Application:initialize(configurationPath)
-  assert(love.filesystem.exists(configurationPath),
+  assert(love.filesystem.getInfo(configurationPath),
          "Can't read app configuration at path: " .. configurationPath)
   self.config = config.load(configurationPath)
   self.gamesaves = gamesave(3)
@@ -51,7 +51,7 @@ function Application:errhand(msg)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   love.graphics.clear()
 
   local trace = debug.traceback()
@@ -100,7 +100,7 @@ function Application:releaseerrhand(msg)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   love.graphics.clear()
 

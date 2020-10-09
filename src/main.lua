@@ -1,14 +1,6 @@
 local utils = require 'utils'
 local app = require 'app'
 
-function love.errhand(msg)
-  app:errhand(msg)
-end
-
-function love.releaseerrhand(msg)
-  app:releaseerrhand(msg)
-end
-
 local tween = require 'vendor/tween'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
@@ -48,11 +40,6 @@ function love.load(arg)
   local major = tonumber(version[1])
   local minor = tonumber(version[2])
   local revision = tonumber(version[3])
-
-  if major ~= 0 or
-     minor ~= 10 then
-    error("Love 0.10.0 is required")
-  end
 
   -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
@@ -308,16 +295,16 @@ function love.draw()
   camera:unset()
 
   if paused then
-    love.graphics.setColor(75, 75, 75, 125)
+    love.graphics.setColor(0.29, 0.29, 0.29, 0.49)
     love.graphics.rectangle('fill', 0, 0, love.graphics:getWidth(),
     love.graphics:getHeight())
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   if debugger.on then debugger:draw() end
   -- If the user has turned the FPS display on AND a screenshot is not being taken
   if window.showfps and window.dressing_visible then
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     fonts.set('big')
     love.graphics.print( love.timer.getFPS() .. ' FPS', love.graphics.getWidth() - 100, 5, 0, 1, 1 )
     fonts.revert()

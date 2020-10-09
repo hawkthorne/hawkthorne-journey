@@ -109,11 +109,11 @@ return {
 
     x, y = camera.x + window.width - 130 , camera.y + 10
 
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw( bossChevron, x , y )
     love.graphics.draw( bossPic, x + 69, y + 10 )
 
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.printf( "JIVE MOTHER", x + 15, y + 15, 100, 'left', 0, 0.9, 0.9 )
     love.graphics.printf( "BOSS", x + 15, y + 41, 52, 'center' )
 
@@ -132,7 +132,7 @@ return {
 
     love.graphics.draw(energy, energy_quad, x , y)
     
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     fonts.revert()
   end,
 

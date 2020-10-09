@@ -159,13 +159,13 @@ end
 function state:draw()
   VerticalParticles.draw()
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   love.graphics.draw(self.background,
     camera:getWidth() / 2 - self.background:getWidth() / 2,
     camera:getHeight() / 2 - self.background:getHeight() / 2)
 
   if self.window == 'main' then
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
     local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT SLOT"
     local delete = controls:getKey("INTERACT") .. ": DELETE SLOT"
     love.graphics.print(howto, 25, 25)
@@ -174,7 +174,7 @@ function state:draw()
 
     local y = 90
 
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
 
     for n, opt in pairs(self.options) do
       if tonumber( n ) ~= nil  then
@@ -189,7 +189,7 @@ function state:draw()
         end
       end
     end
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     -- Determine how far the arrow should move for the last menu item
     local arrowYFactor = 2
     if self.selection > 2 then
@@ -197,16 +197,16 @@ function state:draw()
     end
     love.graphics.draw( self.arrow, 135, 127 + ( (yFactor * arrowYFactor) * ( self.selection - 1 ) ) )
   elseif self.window == 'deleteSlot' then
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
     local howto = controls:getKey("UP") .. " OR " .. controls:getKey("DOWN") .. ": CHANGE OPTION"
     local delete = controls:getKey("JUMP") .. ": SELECT OPTION"
     love.graphics.print(howto, 25, 25)
     love.graphics.print(delete, 25, 55)
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.printf('Are you sure you want to delete this slot?', 155, 110, self.background:getWidth() - 30, 'left')
     love.graphics.print('Yes', 175, 175, 0)
     love.graphics.print('No', 175, 205, 0)
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw( self.arrow, 140, 170 + 30 * self.selectionDelete ) 
   end
 end

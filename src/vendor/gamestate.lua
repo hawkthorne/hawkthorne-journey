@@ -54,7 +54,7 @@ function GS.new()
 end
 
 function GS.get(name)
-  if love.filesystem.exists("maps/" .. name .. ".lua") then
+  if love.filesystem.getInfo("maps/" .. name .. ".lua") then
     return require("level").new(name)
   else
     return require(name)
