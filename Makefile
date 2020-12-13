@@ -3,10 +3,10 @@
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.tar
+  OPTION = osx/tmx2lua
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXTAR = tmx2lua.linux.tar
+  OPTION = linux/tmx2lua
   LOVE = /usr/bin/love
 endif
 
@@ -35,16 +35,18 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
-	tar -xvf $(TMXTAR)
-	rm -f $(TMXTAR)
-	mv tmx2lua bin
+	$(wget) https://github.com/evan-wallin/tmx2lua/archive/master.zip
+	unzip master.zip
+	rm -rf master.zip
+	make -C tmx2lua-master
+	mv tmx2lua-master/$(OPTION) bin
+	rm -rf tmx2lua-master
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-macosx-x64.zip
-	unzip -q love-0.10.1-macosx-x64.zip
-	rm -f love-0.10.1-macosx-x64.zip
+	$(wget) https://archive.org/download/love-0.10.2/love-0.10.2-macosx-x64.zip
+	unzip -q love-0.10.2-macosx-x64.zip
+	rm -f love-0.10.2-macosx-x64.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
