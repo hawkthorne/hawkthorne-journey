@@ -35,7 +35,7 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) https://github.com/evan-wallin/tmx2lua/archive/master.zip
+	$(wget) https://github.com/hawkthorne/tmx2lua/archive/master.zip
 	unzip master.zip
 	rm -rf master.zip
 	make -C tmx2lua-master
