@@ -45,7 +45,7 @@ bin/tmx2lua:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://archive.org/download/love-0.10.2/love-0.10.2-macosx-x64.zip
+	$(wget) https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-macosx-x64.zip
 	unzip -q love-0.10.2-macosx-x64.zip
 	rm -f love-0.10.2-macosx-x64.zip
 	mv love.app bin
@@ -76,7 +76,7 @@ src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 win32/love.exe:
-	$(wget) https://archive.org/download/love-0.10.2/love-0.10.2-win32.zip
+	$(wget) https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-win32.zip
 	unzip -q love-0.10.2-win32.zip
 	mv love-0.10.2-win32 win32
 	rm -f love-0.10.2-win32.zip

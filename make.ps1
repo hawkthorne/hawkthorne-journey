@@ -33,7 +33,7 @@ if($check -eq $false){
 
   if($check -eq $false){
     Write-Host "Downloading love2d..."
-    $url = "https://archive.org/download/love-0.10.2/love-0.10.2-win32.zip"
+    $url = "https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-win32.zip"
     $webclient.DownloadFile($url,$filename)
   }
 
