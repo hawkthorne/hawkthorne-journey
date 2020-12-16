@@ -38,6 +38,7 @@ bin/tmx2lua:
 	$(wget) https://github.com/hawkthorne/tmx2lua/archive/master.zip
 	unzip master.zip
 	rm -rf master.zip
+	make -C tmx2lua-master install
 	make -C tmx2lua-master
 	mv tmx2lua-master/$(OPTION) bin
 	rm -rf tmx2lua-master
@@ -75,10 +76,10 @@ src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 win32/love.exe:
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip
-	unzip -q love-0.10.1-win32.zip
-	mv love-0.10.1-win32 win32
-	rm -f love-0.10.1-win32.zip
+	$(wget) https://archive.org/download/love-0.10.2/love-0.10.2-win32.zip
+	unzip -q love-0.10.2-win32.zip
+	mv love-0.10.2-win32 win32
+	rm -f love-0.10.2-win32.zip
 	rm win32/changes.txt win32/game.ico win32/license.txt win32/love.ico win32/readme.txt
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
