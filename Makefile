@@ -54,7 +54,7 @@ bin/love.app/Contents/MacOS/love:
 /usr/bin/love:
 	sudo add-apt-repository -y ppa:bartbes/love-stable
 	sudo apt-get update -y -f
-	sudo apt-get install -y love=0.10.2ppa1
+	sudo apt-get install -y love=0.10.2
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
