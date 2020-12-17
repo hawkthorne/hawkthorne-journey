@@ -3,10 +3,10 @@
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.tar
+  OPTION = osx/tmx2lua
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXTAR = tmx2lua.linux.tar
+  OPTION = linux/tmx2lua
   LOVE = /usr/bin/love
 endif
 
@@ -35,23 +35,26 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
-	tar -xvf $(TMXTAR)
-	rm -f $(TMXTAR)
-	mv tmx2lua bin
+	$(wget) https://github.com/hawkthorne/tmx2lua/archive/master.zip
+	unzip master.zip
+	rm -rf master.zip
+	make -C tmx2lua-master install
+	make -C tmx2lua-master
+	mv tmx2lua-master/$(OPTION) bin
+	rm -rf tmx2lua-master
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-macosx-x64.zip
-	unzip -q love-0.10.1-macosx-x64.zip
-	rm -f love-0.10.1-macosx-x64.zip
+	$(wget) https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-macosx-x64.zip
+	unzip -q love-0.10.2-macosx-x64.zip
+	rm -f love-0.10.2-macosx-x64.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
 /usr/bin/love:
 	sudo add-apt-repository -y ppa:bartbes/love-stable
 	sudo apt-get update -y -f
-	sudo apt-get install -y love
+	sudo apt-get install -y love=0.10.2
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -73,10 +76,10 @@ src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 win32/love.exe:
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip
-	unzip -q love-0.10.1-win32.zip
-	mv love-0.10.1-win32 win32
-	rm -f love-0.10.1-win32.zip
+	$(wget) https://github.com/love2d/love/releases/download/0.10.2/love-0.10.2-win32.zip
+	unzip -q love-0.10.2-win32.zip
+	mv love-0.10.2-win32 win32
+	rm -f love-0.10.2-win32.zip
 	rm win32/changes.txt win32/game.ico win32/license.txt win32/love.ico win32/readme.txt
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
