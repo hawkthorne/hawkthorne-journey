@@ -3,10 +3,10 @@
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.tar
+  TMXDIR = osx
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXTAR = tmx2lua.linux.tar
+  TMXDIR = linux
   LOVE = /usr/bin/love
 endif
 
@@ -33,12 +33,17 @@ run: $(tilemaps) $(LOVE)
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
+# tmx2lua requires golang to be installed.
+# If you need to install it on OSX:
+# brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
-	tar -xvf $(TMXTAR)
-	rm -f $(TMXTAR)
-	mv tmx2lua bin
+	git clone https://github.com/hawkthorne/tmx2lua bin/tmx2lua-git
+	cd bin/tmx2lua-git; go mod init .git/config
+	cd bin/tmx2lua-git; go get github.com/kyleconroy/go-tmx/tmx
+	cd bin/tmx2lua-git; make
+	mv bin/tmx2lua-git/$(TMXDIR)/tmx2lua bin
+	rm -rf bin/tmx2lua-git
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
@@ -152,6 +157,7 @@ clean:
 	rm -f post.md
 	rm -f notes.html
 	rm -rf src/maps/*.lua
+	rm -rf bin/tmx2lua-git
 	rm -rf $(OSXAPP)
 
 reset:
