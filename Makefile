@@ -2,11 +2,14 @@
 
 UNAME := $(shell uname)
 
+LOVE2D_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
+LOVE2D_VERSION = 0.10.1
+
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.tar
+  TMXDIR = osx
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXTAR = tmx2lua.linux.tar
+  TMXDIR = linux
   LOVE = /usr/bin/love
 endif
 
@@ -33,18 +36,23 @@ run: $(tilemaps) $(LOVE)
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
+# tmx2lua requires golang to be installed.
+# If you need to install it on OSX:
+# brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
-	tar -xvf $(TMXTAR)
-	rm -f $(TMXTAR)
-	mv tmx2lua bin
+	git clone https://github.com/hawkthorne/tmx2lua bin/tmx2lua-git
+	cd bin/tmx2lua-git; go mod init .git/config
+	cd bin/tmx2lua-git; go get github.com/kyleconroy/go-tmx/tmx
+	cd bin/tmx2lua-git; make
+	mv bin/tmx2lua-git/$(TMXDIR)/tmx2lua bin
+	rm -rf bin/tmx2lua-git
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-macosx-x64.zip
-	unzip -q love-0.10.1-macosx-x64.zip
-	rm -f love-0.10.1-macosx-x64.zip
+	$(wget) $(LOVE2D_DOWNLOAD_URL)/$(LOVE2D_VERSION)/love-$(LOVE2D_VERSION)-macosx-x64.zip
+	unzip -q love-$(LOVE2D_VERSION)-macosx-x64.zip
+	rm -f love-$(LOVE2D_VERSION)-macosx-x64.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
@@ -73,10 +81,10 @@ src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
 win32/love.exe:
-	$(wget) https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip
-	unzip -q love-0.10.1-win32.zip
-	mv love-0.10.1-win32 win32
-	rm -f love-0.10.1-win32.zip
+	$(wget) $(LOVE2D_DOWNLOAD_URL)/$(LOVE2D_VERSION)/love-$(LOVE2D_VERSION)-win32.zip
+	unzip -q love-$(LOVE2D_VERSION)-win32.zip
+	mv love-$(LOVE2D_VERSION)-win32 win32
+	rm -f love-$(LOVE2D_VERSION)-win32.zip
 	rm win32/changes.txt win32/game.ico win32/license.txt win32/love.ico win32/readme.txt
 
 win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
@@ -126,7 +134,7 @@ post.md:
 	venv/bin/python scripts/create_post.py post.md
 
 venv:
-	virtualenv -q --python=python2.7 venv
+	virtualenv -q --python=python3.6 venv
 	venv/bin/pip install -q -r requirements.txt
 
 deploy: $(CI_TARGET)
@@ -152,6 +160,7 @@ clean:
 	rm -f post.md
 	rm -f notes.html
 	rm -rf src/maps/*.lua
+	rm -rf bin/tmx2lua-git
 	rm -rf $(OSXAPP)
 
 reset:

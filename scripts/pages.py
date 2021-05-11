@@ -35,11 +35,11 @@ if args.media == 'audio':
         links[kind.lower()].append((title, url))
 
     for kind in ['soundtrack', 'sound effect', 'fan service']:
-        print "<h2>{}</h2>".format(kind.title())
-        print "<ul>"
+        print("<h2>{}</h2>".format(kind.title()))
+        print("<ul>")
         for track in links[kind]:
             try:
-                print "<li>" + embed_code(track[1]) + "</li>"
+                print("<li>" + embed_code(track[1]) + "</li>")
             except:
                 pass
-        print "</ul>"
+        print("</ul>")
