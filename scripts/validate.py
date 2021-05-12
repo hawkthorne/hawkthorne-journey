@@ -16,7 +16,7 @@ def scan(directory):
                     json.load(open(json_path))
                 except ValueError:
                     errors = True
-                    print "{} is not valid JSON".format(json_path)
+                    print("{} is not valid JSON".format(json_path))
 
             if f.endswith(".tmx") or f.endswith(".xml"):
                 xml_path = os.path.join(path, f)
@@ -25,7 +25,7 @@ def scan(directory):
                     etree.parse(open(xml_path))
                 except etree.ParseError:
                     errors = True
-                    print "{} is not valid XML".format(xml_path)
+                    print("{} is not valid XML".format(xml_path))
 
 
     if errors:
