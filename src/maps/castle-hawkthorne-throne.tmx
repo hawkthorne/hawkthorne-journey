@@ -9,10 +9,10 @@
   <property name="red" value="0"/>
   <property name="soundtrack" value="castle"/>
  </properties>
- <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="castle-hawkthorne" tilewidth="24" tileheight="24" tilecount="800">
   <image source="../images/tilesets/castle-hawkthorne.png" width="384" height="1200"/>
  </tileset>
- <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="801" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="sky" width="96" height="37">

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="14" tilewidth="24" tileheight="24">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-bursar" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/greendale-bursar.png" width="240" height="192"/>
+ </tileset>
+ <tileset firstgid="81" name="collisions" tilewidth="24" tileheight="24">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="Background" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJwTY2BgEKMBVhhiWHQUj2IsmInK5mlBMQ8SmxpYfohhWpQ5IAwAWrQeqg==
+  </data>
+ </layer>
+ <layer name="Wall Features 1" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0AuYQDEymxp4FEAAACiLBEU=
+  </data>
+ </layer>
+ <layer name="Wall Features 2" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzksLglAQhmHBtBK6mEHaDVwZuLKFQjcUtFWkP8mf3gvNIgRRaSd+8HBmDnOGoyhDhtTngituf+5RK32KDM8Wb0fQoGOMCaYwMJOZl5xv5Chqdnk4ST3HAkuYWMHCGpuGP4WIfvoAZ6ltONhihz0OOMKt7Lnj8VVSlzF1Ivdd4nec72s+YKoIZQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 6" width="22" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BwAwsgtkQTA/IbgOINlJjrBMTOaGJAfoMTheaSCjyB2IueFg5jAABK1ASA
+  </data>
+ </layer>
+ <layer name="foreground" width="22" height="14">
+  <properties>
+   <property name="foreground" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDAVgCsRqDAwNqkCsAsTKQEwNc+2B2ABolj4Q6wGxLpXMHQgAAE2zBcE=
+  </data>
+ </layer>
+ <layer name="collision" width="22" height="14" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJwLZGBgCKQBHgWjYBQQBg1AnA3FDWjipIA0GuGhBgD2nhIR
+  </data>
+ </layer>
+ <objectgroup name="nodes">
+  <object name="main" type="door" x="48" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="admin-hallway"/>
+    <property name="to" value="bursar"/>
+   </properties>
+  </object>
+  <object type="info" x="200" y="216" width="30" height="30">
+   <properties>
+    <property name="info" value="All they have are old issues of Dean Magazine"/>
+   </properties>
+  </object>
+  <object name="bursar" type="npc" x="408" y="204" width="72" height="36"/>
+  <object type="info" x="288" y="192" width="48" height="36">
+   <properties>
+    <property name="info" value="Official Greendale Campus Map"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

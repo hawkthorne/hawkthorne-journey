@@ -44,6 +44,7 @@ function Item.new(node, count)
   end
 
   if not love.filesystem.exists(imagePath) then
+    assert(love.filesystem.exists(imagePath), "There is no image at the path ("..imagePath..").  Items require an image.")
     return nil
   end
 

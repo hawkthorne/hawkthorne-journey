@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="140" height="18" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="140" height="18" tilewidth="24" tileheight="24" nextobjectid="10">
  <properties>
   <property name="blue" value="249"/>
   <property name="green" value="154"/>
@@ -8,10 +8,10 @@
   <property name="soundtrack" value="greendale"/>
   <property name="title" value="Greendale Quad"/>
  </properties>
- <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/greendale-exterior.png" width="480" height="480"/>
+ <tileset firstgid="1" name="greendale-exterior" tilewidth="24" tileheight="24" tilecount="400">
+  <image source="../images/tilesets/greendale-exterior.png" width="480" height="456"/>
  </tileset>
- <tileset firstgid="401" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="401" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="skyline" width="140" height="18">
@@ -42,44 +42,44 @@
  </layer>
  <layer name="bushes" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt0tEJwjAUheELXUA7gORBHcA3HaBvdiZHcSCH8gRauEgS0NrW1v+DQ0PJw01yzAAAAAAAwBiqQoAUOoMhfF8emaxZbXbbKhtl7lmWJNeVtfflqJ4clD19ecu/9uWinpzpyke+1ZfG7H5S4lrfEKN/obQ3JrdnTK26cnV96eYJqbkbN+PrujtD9pyeP3Mixfv6JUP70t/DTutU/Dv0Ke1Zwp0BAABgGk8VHjoW
+   eJzt0kEKwjAUhOEHXsB6AMnCegB3eoDu7Jk8igfyUE6ghYckWTQEbf0/GBpKFi/JmAEAAAAAgJZ2hQApdAY1fF9emWzRwezRKXvl27OsUa4rW+3LWT3plRN9WeTf+nJTT650pUptXwaz50WJa31DjP6F0t6Y3J6WRnXl7voyzRNScw9uxs/1dIbsOT1/5kSK9/WLlvZlvoej1qn4d5hT2rOmOwMAAEBbb0d3OhY=
   </data>
  </layer>
  <layer name="floor" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1DsKwkAURuELKgg26hrUDVhpYSs+SzvfbkDwVdrY6QLsXIpL8xdTaMAxBiQjnAMfgUwuTHGJGREREREREUUt67Aw2yd3M/KxlrSlI93Q2crsws7Qc0MZyVgmMpWZzINz/WcuiVyMvGwZspaNbGVn7Au9dnA4GvtyLy8FKf545h86f8C+mJWkLJUI3+ZizPxTA7OrC/vyqCb1CN9VY8z42OnN+9QH7MujnvQd543g2fxixrfSwBcyAAB44AbbPi9A
+   eJzt1DkKwlAURuELKgg26hrUDVhpYSuOpZ2zGxCcShs7XYBdluLS/IUUGjCDID7JOfARyMuFV1xiRkREREREREnLh1iZHX93M3KxjnSlJ/3A2cbMY2foubFMZCozmctClv65/jPeTy5GTrYO2MpO9nIw9oVeO4U4W7r3pSglKX955p+6RkjzvlSkKrUY3xY+mPnHRma3MGnel0cNacb4rv7BjMtd3rzPREj7vgxkGHLe8p/tBDOulQUSyAEA4IA71W8vQA==
   </data>
  </layer>
  <layer name="trunk" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt1cENgCAMheEe3cEd1Bl0EUdxdEHDxUikB/RF/u9CYmrTlkbNAAAAAABAS3qzrf+6CBFxFsN5NsXTd25fWtwj9qUstta+3OVQvhPl2moq7XsKcSP7ckizUKyttnQnof84h8fY3L6UvO/JrX4nnrn9idL/6Dp71e9LpFpbZ7bWzL+EvufzLIq9i8s999ZxzeGp7W3KtQEAAHxpB2s3IrU=
+   eJzt1cENgCAMheEe3cEd1Bl0EUdxdEHDxUikB/RF/u9CYmrTlkbNAAAAAABAS3qzrf+6CBFxFsN5NsXTd25fWtwj9qUstta+3OVQvhPl2moq7XsKcSP7ckizUKyttnQnof84h8fY3L6UvO/JrX4nnrn9idL/6Dp71e9LpFxb1JmtNfIuoe/5PIti7+Jyz711XHN4anubcm0AAABf2gFn9yK1
   </data>
  </layer>
  <layer name="leaves" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJztluENwiAQRlnEpCuwAX/Yo6MwSkfpKI7iIRDPC63xalrifS+5NBpE+HycOAcAsER0bvGlplz0erp6TaPBMlos55NzuNFTlpVMaJ+hnpF1Z0zOKPGyko+Esgo9X+j9dOW6ziCWva+1wpYzlIWTvvg6lvfmIw7F8v3qz59FzcKkL/7lS34Gr/CFnzdtZrzHj+4Mra/rS7ThS/Ng9/eO7+Pa/1Gqcxz2ZWuOOOh9SfYYC70lwzxIn85IHku53KlmPo5n90tf5L1yJGdYFs+y0Fsade+zds88O+0cPec6Z3jVzA3+j55z8p5g6QwDHc0juAIAAAAAAAAAAIBveADrLUwF
+   eJztluEJwyAQRl2kkBXcwD/ukVEcJaM4SekoPROlVzEpXIKR3vfgCC3W6tfnVWMAAJrwxix2qykVvZ7uXtNosIwWzfmkHB70rEtLJrRPl89IPBiTMgq8tORTQ1m5li/0frhzXT3w295jLrfnDGVhal9sHst78xmH/Pb94s/3Imeh0hf78SU9nRX4ws+bNDPe40d3htbX9MXr8KV4cPh7++9x5f8o5DlO+7I3hx/0vlT3GA29JcE8CL/OSBpLubyoZj6OZ3elL/W9ciRnWBZraegthbz3Wbpnnp10jpZzjTMcJXOD/6PlXH1P0HSGgYziEVwBAIB+PO9eAAAAAAAAABfwBlMTTOM=
   </data>
  </layer>
  <layer name="features" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJztl81NAzEQRmfhgkQNoDQAUqAAiBQEBVAAFxASNAAXtoHkAgUESAvAiQZyowEkfgrhs3YtBjMK69gke/ie9GTLGY9H0cjyihBCCCHtoi9SHmIMJcTiAl4aEmIxgEP4JjLy43jBNZH2cgxPDAmxcPcL7pNS3y/DRRdFWgvfLyQG/X4Zi32/rIgczb0w0kpu4R28r0evhv1CPA/wET7V+rkmV7+s/lPsrHtTztCcwfOMuXPVFZunSbx7v0zgs1Tvlkk9FoXIElwu8vXLdkTswRzOSTlDcwXLGWuwSNmbkuev/2MDvbAJe5i/SPUd/Sq/v6d9nOMUrmG+Xnyv69+nsR9Re0xs0727laWOC9d6DfLv4Y3XrcW8c421G7Xu1sIa9B7DjtPt83W9ww/4aZy/E9Qd5P6RJ4aU/3waXfTGVoP+IIQQQgjJxRdNr0pF
+   eJztl8suBEEUhk+zkVhhTWaD1UiGFRZMQthg4wFcQiRsETb6BcyGB3CZV8DKC8zOC0gMr+HyV7o6OVrpTHeNmU78X/KluqvrVJ10n1SqRQghhJBisiASrqNNSoiLE3jqkBAX57AGX0Su4rbe5ZxIcdmBuw4JcWH2F+wnod5fat1OihSGd/gBP+09zy8kjYFAZBAOBdG9Pr/Uxb2/9IlsdDRJUhhGUSdjcNzWyzW8gbe2jdWwXv4v06iTGThr6+UO3sMHa3yt8a2X/j8amzfWZw3NPjxo49ztyivrPGnjV1Anq3DN1os5vzTgo0TnloZtAzzvgb2Bf71MZRi73IF1fNbQnMEwZw4ufGJ95kl7H5v4/ltwG5bhBKyi/0mi/+hn+fk/HY8z7MFhXI+oeP3cxVKG3LOMbTV2PjLU45J91RbmX8TZrmLFdekCfZeq3/Qlc9AxDktGExfn1YSv8M2x/lwi78Tc3+bJQtr4Q3zXI3ic8n1/o4KYyRxxhBBCCCF5+QLLqlIZ
   </data>
  </layer>
  <layer name="collision" width="140" height="18">
   <data encoding="base64" compression="zlib">
-   eJzt10sKgCAUBVDb/6h1RIvos7Bq0CSUBMMUzoE7U3h+kGcIANCWaYgHAKA3qb7myqy/AeBjPf2nr7q2RmurzV6EsBfe1dL5T7lnsp5jlh/P7ut1k8/ec4u9A3+/DSlvvUHNusdBJD8A0IID269vdw==
+   eJzt10sKhDAQBcB4/5XnEC/gQpwZD6ZBV0PEQMQPVsHbGYjpNrQhAMA9NVU6AABPszXXxLTmm1fp5nr3ak6Gnz6hwBP+p+N+9PnCWYQwFvZo6fp/uTX5zs98Lqzd0e9NPmefFr+JYc1bpO6Bq++GLXszwZn7riuR/ADAHUyChXP6
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="140" height="18">
-  <object name="main" type="door" x="2184" y="288" width="24" height="48">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="2184" y="288" width="24" height="48">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="sound" value="false"/>
     <property name="to" value="quad"/>
    </properties>
   </object>
-  <object name="shmitty" type="npc" x="1528" y="287" width="48" height="48"/>
-  <object name="bubblegum" type="spawn" x="1392" y="312" width="24" height="24">
+  <object id="2" name="shmitty" type="npc" x="1528" y="287" width="48" height="48"/>
+  <object id="3" name="bubblegum" type="spawn" x="1392" y="312" width="24" height="24">
    <properties>
     <property name="nodeType" value="material"/>
     <property name="sound" value="false"/>
@@ -87,7 +87,7 @@
     <property name="sprite" value="wastebin"/>
    </properties>
   </object>
-  <object name="chickenfinger" type="spawn" x="912" y="312" width="24" height="24">
+  <object id="4" name="chickenfinger" type="spawn" x="912" y="312" width="24" height="24">
    <properties>
     <property name="nodeType" value="consumable"/>
     <property name="sound" value="false"/>
@@ -95,25 +95,30 @@
     <property name="sprite" value="wastebin"/>
    </properties>
   </object>
-  <object type="scenetrigger" x="3120" y="24" width="24" height="312">
+  <object id="5" type="scenetrigger" x="3120" y="24" width="24" height="312">
    <properties>
     <property name="cutscene" value="mike"/>
    </properties>
   </object>
-  <object type="enemy" x="3288" y="288" width="48" height="48">
+  <object id="6" type="enemy" x="3288" y="288" width="48" height="48">
    <properties>
     <property name="enemytype" value="mike"/>
    </properties>
   </object>
-  <object name="vents" type="door" x="384" y="312" width="24" height="24">
+  <object id="7" name="vents" type="door" x="432" y="312" width="24" height="24">
    <properties>
     <property name="level" value="vents-2"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="info" x="120" y="288" width="24" height="48">
+  <object id="8" type="info" x="168" y="287" width="24" height="48">
    <properties>
     <property name="info" value="This building is closed due to construction."/>
+   </properties>
+  </object>
+  <object id="9" type="info" x="36" y="302" width="57" height="15">
+   <properties>
+    <property name="info" value="Keep A Loose Grip"/>
    </properties>
   </object>
  </objectgroup>

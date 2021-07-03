@@ -8,6 +8,8 @@ local HUD = require 'hud'
 local utils = require 'utils'
 local Item = require 'items/item'
 local tooltip = require 'tooltip'
+local app = require 'app'
+
 
 
 --instantiate this gamestate
@@ -55,6 +57,7 @@ function state:init()
   self.shift["keys"] = 8
   self.shift["armor"] = 6
   self.shift["misc"] = 9
+  self.shift["improvements"] = 0
 
   self.categoriespic = {}
   for i = 1, #self.categories do
@@ -77,6 +80,8 @@ function state:init()
 
   self.window = "categoriesWindow"
   self.player = nil
+  self.improvements = false
+  self.db = app.gamesaves:active()
 
 end
 
@@ -89,12 +94,26 @@ function state:enter(previous, player, screenshot, supplierName)
   self.player = player
   self.screenshot = screenshot
   self.hud = HUD.new(previous)
+  if supplierName == 'bursar' then 
+    self.improvements = true
+    self.categories[1] = "improvements"
+    self.categories[2] = nil
+    self.categories[3] = nil
+    self.categories[4] = nil
+    self.categories[5] = nil
+    self.categories[6] = nil
+    self.categoriespic[1] = love.graphics.newImage('images/shopping/improvements.png')
+  end
   
   self.tooltip = tooltip:new()
   
   self.message = nil
 
-  self.categorySelection = utils.indexof(self.categories,"weapons")
+  if self.improvements then 
+    self.categorySelection = utils.indexof(self.categories,"improvements")
+  else
+    self.categorySelection = utils.indexof(self.categories,"weapons")
+  end
   self.itemsSelection = 1
   self.purchaseSelection = 1
 
@@ -163,7 +182,8 @@ end
 function state:categoriesWindowKeypressed( button )
 
   local c = #self.categories
-
+  if self.improvements then
+  end
   if button == "RIGHT" and self.categorySelection < c then
     self.categorySelection = nonzeroMod(self.categorySelection + 1, c )
     if self.categoriesWindowLeft + ROW < self.categorySelection then
@@ -237,7 +257,11 @@ function state:purchaseWindowKeypressed( button )
   local amount = itemInfo[2]
   local cost = itemInfo[3]
   local item = itemInfo.item
-  local iamount = self.player.inventory:count(item)
+  local iamount = 0
+  if not self.improvements then
+    local iamount = self.player.inventory:count(item)
+  end
+
 
   local p = #self.purchaseOptions
 
@@ -320,7 +344,12 @@ function state:buySelectedItem()
   elseif amount <= 0 then
     self.message = "This item is out of stock."
     self.window = "messageWindow"
-
+  elseif self.improvements then
+    local action = tostring(itemInfo[4])
+    self.db:set(action, true)
+    self.player.money = self.player.money - cost*self.buyAmount
+    itemInfo[2] = itemInfo[2] - self.buyAmount
+    return
   else
 
     for i = 1,self.buyAmount do
@@ -353,7 +382,11 @@ function state:buySelectedItem()
 end
 
 function state:sellSelectedItem()
-
+  if self.improvements then 
+    self.message = "You can't sell something you don't own."
+    self.window = "messageWindow"
+    return
+  end
   local itemInfo = self.items[self.itemSelection]
   local name = itemInfo[1]
   local cost = itemInfo[3]
@@ -463,7 +496,11 @@ function state:draw()
 
         local visI = i - self.itemsWindowLeft
 
-        love.graphics.print(cost .. " coins", xcorner + 15 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
+        if self.improvements then
+          love.graphics.print(cost , xcorner + 20 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
+        else
+          love.graphics.print(cost .. " coins", xcorner + 15 + 32*visI, ycorner + 45, 0, 0.5, 0.5 )
+        end
 
         if itemInfo.draw then
           itemInfo.draw(xcorner + 20 + 32*visI, ycorner + 23, self.player)
@@ -478,13 +515,15 @@ function state:draw()
     end
 
   elseif self.window == "purchaseWindow" then
-
     local itemInfo = self.items[self.itemSelection]
     local name = itemInfo[1]
     local amount = itemInfo[2]
     local cost = itemInfo[3]
     local item = itemInfo.item
-    local iamount = self.player.inventory:count(item)
+    local iamount = 0
+    if not self.improvements then
+      local iamount = self.player.inventory:count(item)
+    end
 
     love.graphics.draw( self.backgroundp, xcorner, ycorner , 0 )
     love.graphics.printf(item.description, xcorner + 8 , ycorner + 8 , 103, "center")
