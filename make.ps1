@@ -33,8 +33,14 @@ if($check -eq $false){
 
   if($check -eq $false){
     Write-Host "Downloading love2d..."
-    $url = "https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip"
-    $webclient.DownloadFile($url,$filename)
+    $url = "https://github.com/love2d/love/releases/download/0.10.1/love-0.10.1-win32.zip"
+    try {
+      $webclient.DownloadFile($url,$filename)
+    } catch {
+      Write-Error "Failed to download love2d..."
+      Write-Error $_
+      Exit
+    }
   }
 
   $shell_app=new-object -com shell.application
@@ -54,8 +60,14 @@ if($check -eq $false){
 
   if($check -eq $false){
     Write-Host "Downloading tmx2lua..."
-    $url = "http://hawkthorne.github.com/tmx2lua/downloads/tmx2lua.windows32.zip"
-    $webclient.DownloadFile($url,$filename)
+    $url = "http://hawkthorne.github.io/tmx2lua/downloads/tmx2lua.windows32.zip"
+    try {
+      $webclient.DownloadFile($url,$filename)
+    } catch {
+      Write-Error "Failed to download tmx2lua..."
+      Write-Error $_
+      Exit
+    }
   }
 
   $shell_app=new-object -com shell.application
