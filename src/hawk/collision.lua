@@ -323,7 +323,9 @@ function module.move_y(map, player, x, y, width, height, dx, dy)
           -- will never be dropping when standing on a block  
           player.platform_dropping = false
           -- If the block is sloped, interpolate the y value to be correct
-          if slope_y <= (new_y + height - tile_slope * dx + 2) and (slope_y >= y + height or not special) then
+          -- If slope_y < new_y, it's above our current position, which doesn't make sense if we're moving down
+          --    if you were to return slope_y - height in that case, then the player would warp upwards, potentially clipping into the geometry
+          if slope_y >= new_y and slope_y <= (new_y + height - tile_slope * dx + 2) and (slope_y >= y + height or not special) then
             if player.floor_pushback then
               player:floor_pushback(tile)
             end

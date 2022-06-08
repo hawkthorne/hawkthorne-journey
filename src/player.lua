@@ -319,7 +319,7 @@ function Player:keypressed( button, map )
         self:throw()
       end
     elseif self.current_state_set ~= 'crawling' then
-      self:attack()
+      self:attack(map)
     end
     return true
   elseif button == 'JUMP' then
@@ -1069,8 +1069,8 @@ end
 ---
 -- The player attacks
 -- @return nil
-function Player:attack()
-  if self.prevAttackPressed or self.dead or self.isClimbing then return end 
+function Player:attack(map)
+  if self.prevAttackPressed or self.dead or self.isClimbing then return end
 
   local currentWeapon = self.inventory:currentWeapon()
   local function punch()
@@ -1082,9 +1082,15 @@ function Player:attack()
       self.attack_box:deactivate()
       -- prepare the animation to be replayed
       self.character:animation():restart()
-      self:setSpriteStates(self.previous_state_set)
+      -- Check that it's safe to stand up and we won't clip into the ceiling
+      if self:canStand(map) then
+        self:setSpriteStates(self.previous_state_set or 'default')
+      else
+        -- if it's not safe, just go to the crawling state, it's not perfect, but helps not clip through ceilings
+        self:setSpriteStates('crawling')
+      end
       -- call update to solidify changes to the state, assume no dt
-      self:update(0) 
+      self:update(0)
     end)
     Timer.add(0.2, function()
       self.prevAttackPressed = false
@@ -1118,7 +1124,7 @@ function Player:attack()
       currentWeapon:select(self)
       if currentWeapon.props.subtype=='melee' then
         -- prevent ranged weapons from shooting when drawn
-        self:attack()
+        self:attack(map)
       end
     end
   elseif currentWeapon then

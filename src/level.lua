@@ -726,7 +726,7 @@ function Level:keypressed( button )
     end
   end
 
-  if self.player:keypressed( button, self ) then
+  if self.player:keypressed( button, self.map ) then
     return true
   end
 
