@@ -1,16 +1,16 @@
 {
   "start": "commencer",
-  "controls": "controles",
-  "options": "les options",
-  "credits": "credits",
-  "exit": "sortie",
+  "controls": "contrôles",
+  "options": "options",
+  "credits": "crédits",
+  "exit": "quitter",
   "load": "charger",
-  "s_or_s_select_item": "%s ou %s: choisir produit",
-  "FULLSCREEN": "plein ecran",
+  "s_or_s_select_item": "%s ou %s: valide le choix séléctionner",
+  "FULLSCREEN": "plein écran",
   "MUSIC VOLUME": "volume de la musique",
-  "SFX VOLUME": "volume de sfx",
+  "SFX VOLUME": "volume sfx",
   "SHOW FPS": "montrer fps",
-  "SEND PLAY DATA": "evoyer les données du jeu",
-  "RESET SETTINGS AND EXIT": "remettre cadres & sortie",
-  "RESET + EXIT": "remettre + sortie"
+  "SEND PLAY DATA": "envoyer et lire les données du jeu",
+  "RESET SETTINGS AND EXIT": "réinitialiser les paramètres et quitter",
+  "RESET + EXIT": "réinitialiser + quitter"
 }
