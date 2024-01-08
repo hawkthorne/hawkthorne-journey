@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hawkthorne/hawkthorne-journey.png?branch=master)](https://travis-ci.org/hawkthorne/hawkthorne-journey)
 
-This 2d platformer is based on Community's [Digital Estate Planning][estate]
+This 2D platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [report any issues or bugs][githubissues] you have with the game!
 
@@ -69,8 +69,7 @@ Congratulations! You're running Journey to the Center of Hawkthorne! Your next s
 
 ## Releasing a new version
 
-We release a new version of Journey to the Center of Hawkthorne about every two
-weeks. To create a release, open a pull request from the `master` branch to the
+To create a release, open a pull request from the `master` branch to the
 `release` branch. You should never commit directly to the `release` branch.
 
 ## License
