@@ -1,5 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local utils = require 'utils'
+local app = require 'app'
 
 local Sprite = {}
 
@@ -79,12 +80,14 @@ function Sprite.new(node, collider, level)
     sprite.velocity_y = tonumber(p.velocity_y)
   end
 
+  sprite.db = app.gamesaves:active()
+  sprite.trigger = p.trigger or nil
+
   return sprite
 end
 
 function Sprite:update(dt)
-  self.dt = self.dt + dt
-
+  self.dt = self.dt + dt  
   if self.random and self.dt > self.interval then
     self.dt = 0
     self.animation:gotoFrame(1)
@@ -112,6 +115,10 @@ function Sprite:update(dt)
 end
 
 function Sprite:draw()
+  if self.trigger ~= nil then
+    local triggered = self.db:get( self.trigger )
+    if triggered ~= true then return end
+  end
   if self.animation then
     self.animation:draw(self.sheet, self.x, self.y + self.offsetY, 0, self.flip and -1 or 1, 1, self.flip and self.width or 0)
   else

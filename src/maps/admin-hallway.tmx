@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="48" height="14" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="48" height="14" tilewidth="24" tileheight="24" nextobjectid="18">
  <properties>
   <property name="blue" value="159"/>
   <property name="green" value="123"/>
@@ -7,74 +7,74 @@
   <property name="soundtrack" value="greendale-alt"/>
   <property name="title" value="Admin Hallway"/>
  </properties>
- <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="greendale-hallways" tilewidth="24" tileheight="24" tilecount="600">
   <image source="../images/tilesets/greendale-hallways.png" width="576" height="600"/>
  </tileset>
- <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="601" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="Tile Layer 1" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaSDjcBCZBPjwNjdC7S3j0K7TwL1nyLDDGYohgFJIJbCwsYHlgLtXTZAYYfL/dIMhN0vQ4T5QDUNxKhDB7JEqoO5nx2KDYHYCIiNkdjsOLAJHjkkNQ3EqEPHpljE7mIRYx7FgwIzDnEMAH5IPoY=
+   eJxjZGBwYBzCmImBgWGI4wNDGTOMQJA+SM0aBaSDjcBCZBPjwNnfC7S7jwL7TwL1niJDPzMUw4AkEEthYRMCS4F2LxuA8MPlfmkG4twvQ1i+gZAabECWSHUw97NDsSEQGwGxMRKbHQ82ISzfQEgNNmyKRewuFjHmUTwoMOMQxwBzfD6G
   </data>
  </layer>
  <layer name="Tile Layer 2" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4B8UM3A4FCDBxOSJ1cttXAyEOPzHyF5ctVSCyRTKE+uWmqBUfdjqn3LyMDwjpFMBwFBJ1BvFwH9nkBcy8BwgFj3+wDTdgoQA2kFQmpBwAaIbQk7FStYCHT7IgLuT8JiJwhk4HAT0N0MKRC6AVneF4lPbvrJgmIYSCNCD8z9wDKPoQaHmhokeWTMgEUMXS0DHnXoGOZ+mL4pUIzPvllAPJsIf46CUYAPAAAHeUoj
+   eJxjYBgFo4B8UM3A4FCDBxOSp1Q9pTgZiPH5j5A8peopBckUylOqnlIw6n7s6t8yMjC8YyTDQUDQCdTXRUCvJxDXMjAcINb9PsB0nQLEQFpBC8jXBmIdPOptgNiWeCejgIVAty8i4P4kNPtgIAOHe4DuZkiB0A3oZvkiiZGTfrKgGAbSiNADcz+wvGOowaGmBkkeHTPgEEc3D5sadAxzP0zfFCjGZ9csIJ5NhD9HwSjABwAc30qk
   </data>
  </layer>
  <layer name="Tile Layer 3" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFAw38B9oBZACgmxtgbA4qmqswAHqR9XkjsdOJ1I+sR4EEfbjc4Y1PERQg26GASxEFbqCnXkrspKZZuPRGMjIwRAFxNCN5droA9bkCsRsQuwOxBw5zCJnFA8S8QMwHxPxkuAMdeEFpCyQxRRxqVYBYFYjVsMh9BOJPWMxCBtyouAGKUQC63r9A/A+IG4F4HRCvB7kPGHZK0PCrRSqDsIE0KF3HAFbY0MCA0LAWiH2B2A+IOYHmceGIE7wWAEELDnGQ+aJAM8WA+CiQfQyIjwOxJZBvhWbXVBxmwMSn4ZBPheCGyUB6MlTMHIcZDFA1yBif3TAAM+8eEN9HUj8diGcQ0DsKRgEhAABRcCXk
+   eJxjYBgFAw38B9oBZACgmxtgbA4qm60wgPq8kdjpROr3RuMrkKAXmzvQzcMGkM1XwKWITECuefTWR23zcOmLZGRgiALiaEby7HMB6nMFYjcgdgdiDxzmEDKPB4h5gZgPiPnJcAc68ILSFkhiijjUqgCxKhCrQfm6aPIfgfgTFvNggBsVN0AxCkDX9xeI/wFxIxCvA+L1IPcBw04JGn61SGUQNpAGpesYwAobGhhQNawFYl8g9gNiTqCZXDjiBZ8lLTjEQWaLAs0TA+KjQPYxID4OxJZAvhWaPVNxmAETn4bH/lQIbpgMpCdDxcxxmDMZDeOzGwZgZt0D4vtI6qcD8QwCekfBKCAEAPEsJhE=
   </data>
  </layer>
  <layer name="collision" width="48" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBjaIJJpaONRMApGwSgYBUMXFDNB8ECBLqDdnTjs72BCVdcBxbjUEzIPHeQxDW08CgYWAAA5xyve
+   eJxjYBjaIJJpaONRMApGwSgYBfhBBxMEUxsUM0EwLc2g1HxiQBfQjk4C9nQxIcIRn1pizIKBPKahjUfBwAIAizwtxw==
   </data>
  </layer>
- <objectgroup name="nodes" width="48" height="14">
-  <object name="main" type="door" x="96" y="216" width="24" height="60">
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="96" y="216" width="24" height="60">
    <properties>
     <property name="level" value="greendale-exterior"/>
     <property name="to" value="admin1"/>
    </properties>
   </object>
-  <object name="humanbeing" type="npc" x="576" y="216" width="48" height="50"/>
-  <object type="firealarm" x="480" y="216" width="24" height="48"/>
-  <object type="firealarm" x="840" y="216" width="24" height="48"/>
-  <object type="firealarm" x="24" y="216" width="24" height="48"/>
-  <object type="info" x="360" y="216" width="48" height="48">
+  <object id="2" name="humanbeing" type="npc" x="600" y="216" width="48" height="50"/>
+  <object id="3" type="firealarm" x="504" y="216" width="24" height="48"/>
+  <object id="4" type="firealarm" x="840" y="216" width="24" height="48"/>
+  <object id="5" type="firealarm" x="24" y="216" width="24" height="48"/>
+  <object id="6" type="info" x="384" y="216" width="48" height="48">
    <properties>
     <property name="info" value="The only trophy reads: | Most Valued Customer ... | Henderson Trophy Cases"/>
    </properties>
   </object>
-  <object type="info" x="1104" y="216" width="48" height="48">
+  <object id="7" type="info" x="1104" y="216" width="48" height="48">
    <properties>
     <property name="info" value="Stairway closed due to black mold"/>
    </properties>
   </object>
-  <object type="info" x="216" y="216" width="24" height="48">
+  <object id="8" type="info" x="216" y="216" width="24" height="48">
    <properties>
     <property name="info" value="$0.25 per sip. 2 drink minimum."/>
    </properties>
   </object>
-  <object type="info" x="169" y="216" width="16" height="48">
+  <object id="9" type="info" x="169" y="216" width="16" height="48">
    <properties>
     <property name="info" value="The extinguisher reads ... | WARNING CONTENTS HIGHLY FLAMMABLE"/>
    </properties>
   </object>
-  <object type="info" x="1011" y="218" width="41" height="44">
+  <object id="10" type="info" x="1011" y="218" width="41" height="44">
    <properties>
     <property name="info" value="Wait a minute... This is just hot soda."/>
    </properties>
   </object>
-  <object type="info" x="984" y="216" width="23" height="44">
+  <object id="11" type="info" x="984" y="216" width="23" height="44">
    <properties>
     <property name="info" value="This ATM only dispenses ... | Greendale Dollars."/>
    </properties>
   </object>
-  <object name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
+  <object id="12" name="raveSwitch" type="door" x="768" y="216" width="24" height="60">
    <properties>
     <property name="button" value="INTERACT"/>
     <property name="level" value="rave-hallway"/>
@@ -82,27 +82,33 @@
     <property name="to" value="raveSwitch"/>
    </properties>
   </object>
-  <object type="info" x="313" y="218" width="22" height="44">
-   <properties>
-    <property name="info" value="This door is locked."/>
-   </properties>
-  </object>
-  <object type="info" x="529" y="215" width="44" height="47">
+  <object id="13" type="info" x="528" y="216" width="48" height="48">
    <properties>
     <property name="info" value="These doors are locked."/>
    </properties>
   </object>
-  <object type="info" x="866" y="217" width="22" height="47">
+  <object id="14" type="info" x="866" y="217" width="22" height="47">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="office_key" type="spawn" x="936" y="240" width="24" height="24">
+  <object id="15" name="office_key" type="spawn" x="936" y="240" width="24" height="24">
    <properties>
     <property name="nodeType" value="key"/>
     <property name="sound" value="false"/>
     <property name="spawnType" value="keypress"/>
     <property name="sprite" value="wastebin"/>
+   </properties>
+  </object>
+  <object id="16" type="info" x="244" y="195" width="66" height="42">
+   <properties>
+    <property name="info" value="Due to a mix up in the records room all student records have been lost.  As you know, our student records are stored on a Microsoft Paint file, which the Dean was assured was future-proof. | Meanwhile, our extended warranty is not being honored by the restaurant that used to be Circuit City and we are asking every student to re-register for their classes."/>
+   </properties>
+  </object>
+  <object id="17" name="bursar" type="door" x="336" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-bursar"/>
+    <property name="to" value="main"/>
    </properties>
   </object>
  </objectgroup>

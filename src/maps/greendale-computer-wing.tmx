@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="14" tilewidth="24" tileheight="24" nextobjectid="8">
+ <properties>
+  <property name="blue" value="159"/>
+  <property name="green" value="123"/>
+  <property name="red" value="104"/>
+  <property name="soundtrack" value="computer-wing"/>
+  <property name="title" value="Borchert Hallway"/>
+ </properties>
+ <tileset firstgid="1" name="greendale-computer-wing" tilewidth="24" tileheight="24" tilecount="230">
+  <image source="../images/tilesets/greendale-computer-wing.png" width="240" height="552"/>
+ </tileset>
+ <tileset firstgid="231" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="background" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxzZ2BgcB9AzAjETEDMDMQsA4C5gZhngOwGYTYoZkVigzAHFjF8mFi16OoEoJgfiEWR+EJQMRBbDEkcF+bHIyeBQ50oHv0yBMwkxX586tiheNR+VHG1AbLfBoIbkNXyEjCTlwj7eQnYLwnEUkDsBsEN0lAxEC0OpXFhcSS1+NRII9kDE+cb4Xgg6x4QBgAfwSfD
+  </data>
+ </layer>
+ <layer name="foreground" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzrtzQUEUx3G1WksQgs6QxCPj3XgWQUqvKEgwXgnjXQla/mHfzGyxc2fuNSqF+5v5zO49e87uNRj06NFzq6yxgedC3wOssMGORzjg1JipoIqaRs8eByyxkupP0v5d2tfRwCea0rkfz3jBKwJooY0vaT6IEMJ4wxEn/GGHPgbwqvzvNzrooifVI4gihjgSGGKEseixIImUyt3/mWGOhfg2izWPAn7wiwmmitk0MsgiJ2pG6dyt8a4yW7G6rpgpooQyPkTNJJ37rrjrXnIGYoYaYw==
+  </data>
+ </layer>
+ <layer name="rope" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFnKP2j9o/av+Ist8FiF2hbOEBsN8PiP0HwF4YiADiyAG0f7AAABdUAjM=
+  </data>
+ </layer>
+ <layer name="fade" width="32" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7xMDAcGkUj+JRPIpH8SgeYRgAcYdvkA==
+  </data>
+ </layer>
+ <layer name="collision" width="32" height="14" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJx7zsDA8HwA8SgYBaNgeAExRgYGcUby9Q4kYATaLwXEkoyo7pGC+kmMESHGSIRbkf2DrP4fA6T8+zNAmIFxtPwFAQDG9z5G
+  </data>
+ </layer>
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="6" y="216" width="48" height="60"/>
+  <object id="3" type="climbable" x="24" y="60" width="12" height="198"/>
+  <object id="4" type="door" x="0" y="30" width="48" height="30">
+   <properties>
+    <property name="instant" value="true"/>
+    <property name="level" value="greendale-lounge"/>
+    <property name="sound" value="false"/>
+    <property name="to" value="vendingmachine"/>
+   </properties>
+  </object>
+  <object id="5" type="info" x="624" y="216" width="24" height="60">
+   <properties>
+    <property name="info" value="This door is locked."/>
+   </properties>
+  </object>
+  <object id="6" name="wing3" type="door" x="408" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-computer-wing-3"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+  <object id="7" name="wing2" type="door" x="216" y="216" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-computer-wing-2"/>
+    <property name="to" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

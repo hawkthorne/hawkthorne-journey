@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="14" tilewidth="24" tileheight="24" nextobjectid="4">
+ <properties>
+  <property name="soundtrack" value="greendale-alt"/>
+ </properties>
+ <tileset firstgid="1" name="bathroom" tilewidth="24" tileheight="24" tilecount="100">
+  <image source="../images/tilesets/bathroom.png" width="240" height="240"/>
+ </tileset>
+ <tileset firstgid="101" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
+  <image source="../images/tilesets/collisions.png" width="632" height="512"/>
+ </tileset>
+ <layer name="Background" width="10" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjZGA4wEgEZmJgYCAGs43iQYWZicSMRGIApzIKHw==
+  </data>
+ </layer>
+ <layer name="Wall Features 1" width="10" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuUGRgcFAigEFqxIkwSxyKR9VhqgOGYQMwLBnwYZAaIowjCQAAXz8HlQ==
+  </data>
+ </layer>
+ <layer name="Wall Features 2" width="10" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAv4GNgaMAnz8PAkMANpAlhMQLmkAMkqG0gDqCMxObHIi8MpbmAWAXKVgdiUTR1slCaE0lMimLX4QcAuu0C+w==
+  </data>
+ </layer>
+ <layer name="fade" width="10" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzTYGBg0BjFo5hIDAAcWBXh
+  </data>
+ </layer>
+ <layer name="collision" width="10" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxLZWBgSCUCjwL6gXoS1U/BI1dFJCYWAAAQbgnK
+  </data>
+ </layer>
+ <objectgroup name="nodes">
+  <object id="1" name="main" type="door" x="144" y="240" width="24" height="60">
+   <properties>
+    <property name="level" value="greendale-lounge"/>
+    <property name="to" value="bathroom"/>
+   </properties>
+  </object>
+  <object id="2" name="rope" type="spawn" x="48" y="264" width="24" height="24">
+   <properties>
+    <property name="nodeType" value="key"/>
+    <property name="sound" value="false"/>
+    <property name="spawnType" value="keypress"/>
+    <property name="sprite" value="wastebin"/>
+   </properties>
+  </object>
+  <object id="3" type="info" x="168" y="240" width="24" height="60">
+   <properties>
+    <property name="info" value="The lightswitch is broken!  Good thing you have that flashlight!"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
