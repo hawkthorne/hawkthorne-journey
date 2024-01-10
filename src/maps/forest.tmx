@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="22" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="22" tilewidth="24" tileheight="24" nextobjectid="86">
  <properties>
   <property name="blue" value="250"/>
   <property name="floor" value="12"/>
@@ -10,10 +10,10 @@
   <property name="soundtrack" value="forest-2"/>
   <property name="title" value="Forest"/>
  </properties>
- <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="forest" tilewidth="24" tileheight="24" tilecount="189">
   <image source="../images/tilesets/forest.png" width="216" height="504"/>
  </tileset>
- <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="190" name="collisions" tilewidth="24" tileheight="24" tilecount="546">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="clouds 2" width="200" height="22">
@@ -114,19 +114,19 @@
   </data>
  </layer>
  <objectgroup color="#0007a4" name="nodes">
-  <object name="rock" type="material" x="888" y="216" width="24" height="24"/>
-  <object name="rock" type="material" x="1104" y="360" width="24" height="24"/>
-  <object name="rock" type="material" x="4320" y="288" width="24" height="24"/>
-  <object name="stick" type="material" x="1128" y="288" width="24" height="24"/>
-  <object name="stick" type="material" x="2184" y="96" width="24" height="24"/>
-  <object type="door" x="4752" y="0" width="48" height="408">
+  <object id="1" name="rock" type="material" x="888" y="216" width="24" height="24"/>
+  <object id="2" name="rock" type="material" x="1104" y="360" width="24" height="24"/>
+  <object id="3" name="rock" type="material" x="4320" y="288" width="24" height="24"/>
+  <object id="4" name="stick" type="material" x="1128" y="288" width="24" height="24"/>
+  <object id="5" name="stick" type="material" x="2184" y="96" width="24" height="24"/>
+  <object id="6" type="door" x="4752" y="0" width="48" height="408">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="forest-2"/>
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object type="liquid" x="1368" y="432" width="288" height="96">
+  <object id="7" type="liquid" x="1368" y="432" width="288" height="96">
    <properties>
     <property name="foreground" value="false"/>
     <property name="speed" value="0.2"/>
@@ -134,40 +134,40 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="888" y="360" width="24" height="24">
+  <object id="8" type="enemy" x="888" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object type="enemy" x="1032" y="360" width="24" height="24">
+  <object id="9" type="enemy" x="1032" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object type="enemy" x="4608" y="384" width="24" height="24">
+  <object id="10" type="enemy" x="4608" y="384" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4464" y="336" width="24" height="24">
+  <object id="11" type="enemy" x="4464" y="336" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="scenetrigger" x="1272" y="0" width="24" height="384">
+  <object id="12" type="scenetrigger" x="1272" y="0" width="24" height="384">
    <properties>
     <property name="cutscene" value="welcome_to_hawkthorne"/>
    </properties>
   </object>
-  <object name="next" type="door" x="4728" y="360" width="24" height="48"/>
-  <object type="enemy" x="912" y="96" width="24" height="24">
+  <object id="13" name="next" type="door" x="4728" y="360" width="24" height="48"/>
+  <object id="14" type="enemy" x="912" y="96" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="displacement" value="48"/>
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1704" y="336" width="48" height="48">
+  <object id="15" type="breakable_block" x="1704" y="336" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
     <property name="dying_animation" value="boulder-crumble"/>
@@ -176,41 +176,41 @@
     <property name="sprite" value="boulder"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="1872" y="144" width="24" height="24"/>
-  <object type="enemy" x="2112" y="288" width="24" height="24">
+  <object id="16" name="rock" type="material" x="1872" y="144" width="24" height="24"/>
+  <object id="17" type="enemy" x="2112" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="1968" y="144" width="24" height="24">
+  <object id="18" type="enemy" x="1968" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object name="leaf" type="material" x="2064" y="408" width="24" height="24"/>
-  <object name="stick" type="material" x="3720" y="264" width="24" height="24"/>
-  <object name="main" type="door" x="48" y="360" width="24" height="48">
+  <object id="19" name="leaf" type="material" x="2064" y="408" width="24" height="24"/>
+  <object id="20" name="stick" type="material" x="3720" y="264" width="24" height="24"/>
+  <object id="21" name="main" type="door" x="48" y="360" width="24" height="48">
    <properties>
     <property name="level" value="hallway"/>
     <property name="to" value="exit"/>
    </properties>
   </object>
-  <object type="liquid" x="2136" y="504" width="72" height="24">
+  <object id="22" type="liquid" x="2136" y="504" width="72" height="24">
    <properties>
     <property name="drag" value="true"/>
     <property name="opacity" value="0.5"/>
     <property name="sprite" value="images/liquid/water.png"/>
    </properties>
   </object>
-  <object name="red_potion" type="spawn" x="2928" y="240" width="24" height="24">
+  <object id="23" name="red_potion" type="spawn" x="2928" y="240" width="24" height="24">
    <properties>
     <property name="message" value="Looks like a Health Potion. But who really knows..."/>
     <property name="nodeType" value="consumable"/>
     <property name="spawnType" value="keypress"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="3528" y="264" width="24" height="24"/>
-  <object type="liquid" x="3840" y="360" width="96" height="168">
+  <object id="24" name="rock" type="material" x="3528" y="264" width="24" height="24"/>
+  <object id="25" type="liquid" x="3840" y="360" width="96" height="168">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -218,65 +218,65 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="info" x="1872" y="408" width="24" height="48">
+  <object id="26" type="info" x="1872" y="408" width="24" height="48">
    <properties>
     <property name="info" value="Beyond here there be Sewer Gaters!"/>
    </properties>
   </object>
-  <object type="killing_floor" x="2616" y="197" width="96" height="19"/>
-  <object type="enemy" x="3672" y="264" width="24" height="24">
+  <object id="27" type="killing_floor" x="2616" y="197" width="96" height="19"/>
+  <object id="28" type="enemy" x="3672" y="264" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4128" y="288" width="24" height="24">
+  <object id="29" type="enemy" x="4128" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4200" y="144" width="24" height="24">
+  <object id="30" type="enemy" x="4200" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="1296" y="240" width="24" height="24"/>
-  <object name="leaf" type="material" x="1248" y="120" width="24" height="24"/>
-  <object type="climbable" x="2360" y="194" width="5" height="207">
+  <object id="31" name="rock" type="material" x="1296" y="240" width="24" height="24"/>
+  <object id="32" name="leaf" type="material" x="1248" y="120" width="24" height="24"/>
+  <object id="33" type="climbable" x="2360" y="194" width="5" height="207">
    <properties>
     <property name="blockTop" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="4440" y="216" width="24" height="24">
+  <object id="34" type="enemy" x="4440" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4344" y="144" width="24" height="24">
+  <object id="35" type="enemy" x="4344" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="2160" y="288" width="24" height="24">
+  <object id="36" type="enemy" x="2160" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="bat"/>
    </properties>
   </object>
-  <object type="enemy" x="3288" y="360" width="24" height="24">
+  <object id="37" type="enemy" x="3288" y="360" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3024" y="216" width="24" height="24">
+  <object id="38" type="enemy" x="3024" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="3120" y="216" width="24" height="24">
+  <object id="39" type="enemy" x="3120" y="216" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1752" y="336" width="48" height="48">
+  <object id="40" type="breakable_block" x="1752" y="336" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
     <property name="dying_animation" value="boulder-crumble"/>
@@ -285,10 +285,10 @@
     <property name="sprite" value="boulder"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="2760" y="72" width="24" height="24"/>
-  <object name="rock" type="material" x="3072" y="216" width="24" height="24"/>
-  <object name="stick" type="material" x="2616" y="456" width="24" height="24"/>
-  <object type="liquid" x="2904" y="312" width="48" height="216">
+  <object id="41" name="rock" type="material" x="2760" y="72" width="24" height="24"/>
+  <object id="42" name="rock" type="material" x="3072" y="216" width="24" height="24"/>
+  <object id="43" name="stick" type="material" x="2616" y="456" width="24" height="24"/>
+  <object id="44" type="liquid" x="2904" y="312" width="48" height="216">
    <properties>
     <property name="foreground" value="true"/>
     <property name="opacity" value="0.2"/>
@@ -297,7 +297,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="3048" y="288" width="96" height="240">
+  <object id="45" type="liquid" x="3048" y="288" width="96" height="240">
    <properties>
     <property name="foreground" value="true"/>
     <property name="opacity" value="0.2"/>
@@ -306,29 +306,29 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="enemy" x="2280" y="456" width="24" height="24">
+  <object id="46" type="enemy" x="2280" y="456" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="4248" y="48" width="24" height="24">
+  <object id="47" type="enemy" x="4248" y="48" width="24" height="24">
    <properties>
     <property name="direction" value="left"/>
     <property name="displacement" value="48"/>
     <property name="enemytype" value="monkey"/>
    </properties>
   </object>
-  <object type="enemy" x="4440" y="144" width="24" height="24">
+  <object id="48" type="enemy" x="4440" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object type="enemy" x="4176" y="288" width="24" height="24">
+  <object id="49" type="enemy" x="4176" y="288" width="24" height="24">
    <properties>
     <property name="enemytype" value="cat"/>
    </properties>
   </object>
-  <object type="liquid" x="4368" y="384" width="48" height="144">
+  <object id="50" type="liquid" x="4368" y="384" width="48" height="144">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -336,7 +336,7 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object type="liquid" x="4536" y="432" width="48" height="96">
+  <object id="51" type="liquid" x="4536" y="432" width="48" height="96">
    <properties>
     <property name="foreground" value="true"/>
     <property name="speed" value="0.2"/>
@@ -344,10 +344,10 @@
     <property name="uniform" value="true"/>
    </properties>
   </object>
-  <object name="rock" type="material" x="4392" y="144" width="24" height="24"/>
-  <object name="stick" type="material" x="4032" y="72" width="24" height="24"/>
-  <object name="stick" type="material" x="4656" y="384" width="24" height="24"/>
-  <object type="breakable_block" x="2592" y="384" width="48" height="48">
+  <object id="52" name="rock" type="material" x="4392" y="144" width="24" height="24"/>
+  <object id="53" name="stick" type="material" x="4032" y="72" width="24" height="24"/>
+  <object id="54" name="stick" type="material" x="4656" y="384" width="24" height="24"/>
+  <object id="55" type="breakable_block" x="2592" y="384" width="48" height="48">
    <properties>
     <property name="crack" value="false"/>
     <property name="dying_animation" value="boulder-crumble"/>
@@ -356,120 +356,126 @@
     <property name="sprite" value="boulder"/>
    </properties>
   </object>
-  <object name="green_potion" type="detail" x="2040" y="144" width="24" height="24">
+  <object id="56" name="green_potion" type="detail" x="2040" y="144" width="24" height="24">
    <properties>
     <property name="category" value="recipe"/>
    </properties>
   </object>
-  <object type="enemy" x="2112" y="144" width="24" height="24">
+  <object id="57" type="enemy" x="2112" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="enemy" x="1824" y="144" width="24" height="24">
+  <object id="58" type="enemy" x="1824" y="144" width="24" height="24">
    <properties>
     <property name="enemytype" value="acorn"/>
    </properties>
   </object>
-  <object type="tutorial" x="2325" y="431" width="24" height="24">
+  <object id="59" type="tutorial" x="2325" y="431" width="24" height="24">
    <properties>
     <property name="type" value="climbing"/>
    </properties>
   </object>
-  <object type="tutorial" x="2796" y="106" width="24" height="24">
+  <object id="60" type="tutorial" x="2796" y="106" width="24" height="24">
    <properties>
     <property name="type" value="dropping"/>
    </properties>
   </object>
-  <object type="tutorial" x="2795" y="275" width="24" height="24">
+  <object id="61" type="tutorial" x="2795" y="275" width="24" height="24">
    <properties>
     <property name="type" value="crawling"/>
    </properties>
   </object>
-  <object type="tutorial" x="2595" y="342" width="24" height="24">
+  <object id="62" type="tutorial" x="2595" y="342" width="24" height="24">
    <properties>
     <property name="type" value="digging"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1272" y="384" width="24" height="24">
+  <object id="63" type="breakable_block" x="1272" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="grass-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1296" y="384" width="24" height="24">
+  <object id="64" type="breakable_block" x="1296" y="384" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="grass-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1272" y="408" width="24" height="24">
+  <object id="65" type="breakable_block" x="1272" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1296" y="408" width="24" height="24">
+  <object id="66" type="breakable_block" x="1296" y="408" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1272" y="432" width="24" height="24">
+  <object id="67" type="breakable_block" x="1272" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1248" y="432" width="24" height="24">
+  <object id="68" type="breakable_block" x="1248" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1296" y="432" width="24" height="24">
+  <object id="69" type="breakable_block" x="1296" y="432" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1296" y="456" width="24" height="24">
+  <object id="70" type="breakable_block" x="1296" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="info" x="1254" y="456" width="24" height="24">
+  <object id="71" type="info" x="1254" y="456" width="24" height="24">
    <properties>
     <property name="info" value="Well, this was worth the wait, wasn't it? | At least now you can cross it off your bucket list."/>
     <property name="sprite" value="note"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1248" y="456" width="24" height="24">
+  <object id="72" type="breakable_block" x="1248" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
    </properties>
   </object>
-  <object type="breakable_block" x="1272" y="456" width="24" height="24">
+  <object id="73" type="breakable_block" x="1272" y="456" width="24" height="24">
    <properties>
     <property name="hp" value="1"/>
     <property name="sprite" value="dirt-block"/>
+   </properties>
+  </object>
+  <object id="85" type="enemy" x="264" y="384" width="24" height="24">
+   <properties>
+    <property name="continousRage" value="true"/>
+    <property name="enemytype" value="acorn"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup name="welcome_to_hawkthorne">
-  <object name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
-  <object name="head" type="head" x="1440" y="120" width="144" height="192"/>
-  <object name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
-  <object name="sparkle_1" type="sparkle" x="1464" y="144" width="24" height="24"/>
-  <object name="sparkle_2" type="sparkle" x="1440" y="192" width="24" height="24"/>
-  <object name="sparkle_3" type="sparkle" x="1464" y="264" width="24" height="24"/>
-  <object name="sparkle_4" type="sparkle" x="1488" y="216" width="24" height="24"/>
-  <object name="sparkle_5" type="sparkle" x="1536" y="264" width="24" height="24"/>
-  <object name="sparkle_7" type="sparkle" x="1536" y="192" width="24" height="24"/>
-  <object name="sparkle_8" type="sparkle" x="1536" y="120" width="24" height="24"/>
-  <object name="sparkle_9" type="sparkle" x="1488" y="96" width="24" height="24"/>
+  <object id="74" name="lightning" type="lightning" x="1488" y="0" width="48" height="384"/>
+  <object id="75" name="head" type="head" x="1440" y="120" width="144" height="192"/>
+  <object id="76" name="oval" type="oval" x="1416" y="72" width="192" height="288"/>
+  <object id="77" name="sparkle_1" type="sparkle" x="1464" y="144" width="24" height="24"/>
+  <object id="78" name="sparkle_2" type="sparkle" x="1440" y="192" width="24" height="24"/>
+  <object id="79" name="sparkle_3" type="sparkle" x="1464" y="264" width="24" height="24"/>
+  <object id="80" name="sparkle_4" type="sparkle" x="1488" y="216" width="24" height="24"/>
+  <object id="81" name="sparkle_5" type="sparkle" x="1536" y="264" width="24" height="24"/>
+  <object id="82" name="sparkle_7" type="sparkle" x="1536" y="192" width="24" height="24"/>
+  <object id="83" name="sparkle_8" type="sparkle" x="1536" y="120" width="24" height="24"/>
+  <object id="84" name="sparkle_9" type="sparkle" x="1488" y="96" width="24" height="24"/>
  </objectgroup>
  <layer name="stalagmatites" width="200" height="22" opacity="0.65">
   <properties>
