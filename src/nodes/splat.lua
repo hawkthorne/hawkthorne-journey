@@ -96,7 +96,7 @@ end
 
 function Splat:draw()
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   for _,s in pairs( self.splats ) do
 
@@ -111,7 +111,7 @@ function Splat:draw()
       end
     end
 
-    love.graphics.setColor( 200, 200, 200, 255 )  -- Giving darker shade to splash on ceiling and floor
+    love.graphics.setColor( 200/255, 200/255, 200/255, 1 )  -- Giving darker shade to splash on ceiling and floor
 
     if s.floorQuad then
       if y < self.floor.y then
@@ -126,7 +126,7 @@ function Splat:draw()
     end
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 return Splat

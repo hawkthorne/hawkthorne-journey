@@ -188,7 +188,7 @@ function Liquid:update(dt, player)
 end
 
 function Liquid:draw()
-  love.graphics.setColor( 255, 255, 255, self.fade and 255 or utils.map( self.opacity, 0, 1, 0, 255 ) )
+  love.graphics.setColor( 1, 1, 1, self.fade and 1 or self.opacity )
   for i = 0, ( self.width / 24 ) - 1, 1 do
     love.graphics.draw(
       self.image,
@@ -198,10 +198,10 @@ function Liquid:draw()
     )
     for j = 1, ( self.height / 24 ) - 1, 1 do
       love.graphics.setColor(
-        255, 255, 255,
+        1, 1, 1,
         utils.map( 
             self.fade and ( 1 - ( ( 1 - self.opacity ) / ( ( self.height / 24 ) - 1 ) * j ) ) or self.opacity,
-            0, 1, 0, 255
+            0, 1, 0, 1
         )
       )
       love.graphics.draw(
@@ -212,7 +212,7 @@ function Liquid:draw()
       )
     end
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 return Liquid

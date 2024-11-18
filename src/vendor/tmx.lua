@@ -93,7 +93,7 @@ function tmx.load(level)
 
 
   for _, tilelayer in ipairs(level.tilelayers) do
-    if tilelayer.tiles then
+    if tilelayer.name ~= "collision" and tilelayer.tiles then
       for i, tile in ipairs(tilelayer.tiles) do
         local x = (i - 1) % level.width
         local y = math.floor((i - 1)/ level.width)

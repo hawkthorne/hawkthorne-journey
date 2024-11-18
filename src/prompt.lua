@@ -60,11 +60,11 @@ function Prompt:draw()
     local x = x2 - self.width + self.height / 2
     local y = y1 - self.height / 2
 
-    love.graphics.setColor(112, 28, 114, 255)
+    love.graphics.setColor(112/255, 28/255, 114/255, 1)
     love.graphics.rectangle('fill', x, y, self.width, self.height)
-    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('line', x, y, self.width, self.height)
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.draw(corner, x - 2, y - 2)
     love.graphics.draw(corner, x - 2, y + self.height - 2)
     love.graphics.draw(corner, x - 2 + self.width, y - 2)
@@ -74,10 +74,10 @@ function Prompt:draw()
     y = y + self.height / 4
 
     for i,o in pairs( self.options ) do
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
 
       if i == self.selected then
-        love.graphics.setColor( 254, 204, 2, 255 )
+        love.graphics.setColor( 254/255, 204/255, 2/255, 1 )
         love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
       end
 
@@ -85,7 +85,7 @@ function Prompt:draw()
       x = x + font:getWidth(o) + 20  --padding
     end
   end
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   fonts.revert()
 end

@@ -88,13 +88,13 @@ end
 function state:draw()
 
   --background colour
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.rectangle( 'fill', 0, 0, love.graphics:getWidth(), love.graphics:getHeight() )
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   -- green terminal
   fonts.set('courier')
-  love.graphics.setColor( 48, 254, 31, 225 )
+  love.graphics.setColor( 48/255, 254/255, 31/255, 1 )
   if self.code_loaded == false then
     love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
     for i = 1, 7 do
@@ -107,7 +107,7 @@ function state:draw()
     end
   end
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   fonts.set( 'big' )
 
   -- menu

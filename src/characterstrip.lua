@@ -68,7 +68,7 @@ end
 
 function CharacterStrip:draw()
 
-  love.graphics.stencil(function() self.stencilFunc(self) end) 
+  love.graphics.stencil(function() self.stencilFunc(self) end)
   love.graphics.setStencilTest("greater", 0)
 
   for i, offset in ipairs(colorSpacing) do
@@ -88,7 +88,7 @@ function CharacterStrip:draw()
     local x4 = x1 + stripSize * flipped
     local y4 = y1 + stripSize
 
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.polygon('line', x1, y1, x2, y2, x3, y3, x4, y4)
     -- I know not what I do
   end
@@ -131,13 +131,13 @@ end
 function CharacterStrip:getColor(ratio)
   assert(ratio >= 0 and ratio <= 1, "Color ratio must be between 0 and 1.")
 
-  if ratio == 0 then return self.color1.r, self.color1.g, self.color1.b,255 end
-  if ratio == 1 then return self.color2.r, self.color2.g, self.color2.b,255 end
+  if ratio == 0 then return self.color1.r/255, self.color1.g/255, self.color1.b/255,1 end
+  if ratio == 1 then return self.color2.r/255, self.color2.g/255, self.color2.b/255,1 end
 
-  return self.color1.r + ( ( self.color2.r - self.color1.r ) * ratio ),
-         self.color1.g + ( ( self.color2.g - self.color1.g ) * ratio ),
-         self.color1.b + ( ( self.color2.b - self.color1.b ) * ratio ),
-         255
+  return self.color1.r/255 + ( ( self.color2.r/255 - self.color1.r/255 ) * ratio ),
+         self.color1.g/255 + ( ( self.color2.g/255 - self.color1.g/255 ) * ratio ),
+         self.color1.b/255 + ( ( self.color2.b/255 - self.color1.b/255 ) * ratio ),
+         1
 end
 
 function CharacterStrip:getOffset()

@@ -113,7 +113,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
 
   enemy.fadeIn = enemy.props.fadeIn or false
-  enemy.fade = {255, 255, 255, 0}
+  enemy.fade = {1, 1, 1, 0}
   enemy.animations = {}
   
   for state, data in pairs( enemy.props.animations ) do
@@ -515,12 +515,12 @@ function Enemy:draw()
   local r, g, b, a = love.graphics.getColor()
 
   if self.flash then
-    love.graphics.setColor(255, 0, 0, 255)
+    love.graphics.setColor(1, 0, 0, 1)
   elseif self.fadeIn then
-    tween(2, self.fade, {255, 255, 255, 255}, 'outQuad', function() self.fadeIn = false end)
+    tween(2, self.fade, {1, 1, 1, 1}, 'outQuad', function() self.fadeIn = false end)
     love.graphics.setColor(unpack(self.fade))
   else
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   if not self.dead then

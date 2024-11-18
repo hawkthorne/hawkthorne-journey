@@ -48,9 +48,9 @@ function Transition:update(dt)
 end
 
 function Transition:draw(x, y, width, height)
-  love.graphics.setColor(0, 0, 0, self.alpha * 255)
+  love.graphics.setColor(0, 0, 0, self.alpha)
   love.graphics.rectangle('fill', x, y, width, height)
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 end
 
 return Transition

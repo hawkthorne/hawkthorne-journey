@@ -46,25 +46,18 @@ end
 -- Remove all files in a directory. The directory must be in the game save
 -- folder
 function windows.removeRecursive(path)
-  if love.filesystem.isFile(path) then
-    return love.filesystem.remove(path)
+  if not love.filesystem.getInfo( path ) then
+    return true
   end
-
-  for k, file in ipairs(love.filesystem.getDirectoryItems(path)) do
-    local subpath = path .. "/" .. file
-
-    if love.filesystem.isDirectory(subpath) then
-      if not windows.removeRecursive(subpath) then
-        return false
-      end
+  if love.filesystem.getInfo( path , "directory" ) then
+    for _, child in ipairs( love.filesystem.getDirectoryItems( path )) do
+      windows.removeRecursive( path .. '/' .. child )
+      love.filesystem.remove( path .. '/' .. child )
     end
-
-    if not love.filesystem.remove(subpath) then
-      return false
-    end
+  elseif love.filesystem.getInfo( path ) then
+    love.filesystem.remove( path )
   end
-
-  return true
+  return love.filesystem.remove( path )
 end
 
 function windows.cleanup()

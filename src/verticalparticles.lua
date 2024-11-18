@@ -28,7 +28,7 @@ end
 
 function Particle:draw()
   love.graphics.setPointSize(self.size)
-  --love.graphics.setPointStyle("rough")
+  love.graphics.setPointStyle("rough")
   love.graphics.points(self.pos.x, self.pos.y)
 end
 
@@ -53,7 +53,7 @@ function VerticalParticles.update(dt)
 end
 
 function VerticalParticles.draw()
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   for _,particle in ipairs(particles) do
     particle:draw()
   end

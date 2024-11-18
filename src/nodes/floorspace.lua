@@ -68,13 +68,13 @@ function Footprint:moveBoundingBox()
 end
 
 function Footprint:draw()
-  love.graphics.setColor( 0, 0, 0, 20 )
+  love.graphics.setColor( 0, 0, 0, 20/255 )
   love.graphics.line( self.x, self.y-1-self.offset, self.x + self.width, self.y-1-self.offset )
   love.graphics.line( self.x+1, self.y-self.offset, self.x + self.width+1, self.y-self.offset )
   love.graphics.line( self.x, self.y+1-self.offset, self.x + self.width, self.y+1-self.offset )
-  love.graphics.setColor( 0, 0, 0, 80 )
+  love.graphics.setColor( 0, 0, 0, 80/255 )
   love.graphics.line( self.x, self.y-self.offset, self.x + self.width, self.y-self.offset )
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 local Floorspace = {}

@@ -124,7 +124,7 @@ function Dialog:draw()
     self.drawable:draw()
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   return x, y
 end

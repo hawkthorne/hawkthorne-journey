@@ -46,19 +46,19 @@ end
 
 function screen:leave()
   self.logo = nil
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 end
 
 function screen:keypressed(button)
 end
 
 function screen:draw()
-  love.graphics.setColor(255, 255, 255, math.min(255, self.time * 100))
+  love.graphics.setColor(1, 1, 1, math.min(255, self.time * 100) / 255)
   love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth() / 2,
                      window.height / 2 - self.logo:getHeight() / 2)
 
   if self.progress > 0 then
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle("line", 40, window.height - 75, window.width - 80, 10)
     love.graphics.rectangle("fill", 40, window.height - 75, 
                             (window.width - 80) * self.progress / 100, 10)

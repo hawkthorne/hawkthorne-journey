@@ -100,9 +100,9 @@ local function setBackgroundColor(map)
     love.graphics.setBackgroundColor(0, 0, 0)
     return
   end
-  love.graphics.setBackgroundColor(tonumber(prop.red),
-                   tonumber(prop.green),
-                   tonumber(prop.blue))
+  love.graphics.setBackgroundColor(tonumber(prop.red)/255,
+                   tonumber(prop.green)/255,
+                   tonumber(prop.blue)/255)
 end
 
 local function getCameraOffset(map)
@@ -136,7 +136,7 @@ function Level.new(name)
   level.state = 'idle'  -- TODO: Use state machine
   level.name = name
 
-  assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
+  assert( love.filesystem.getInfo( "maps/" .. name .. ".lua" ),
           "maps/" .. name .. ".lua not found.\n\n" ..
           "Have you generated your maps lately?\n\n" ..
           "LINUX / OSX: run 'make maps'\n" ..

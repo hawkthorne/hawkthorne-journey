@@ -61,7 +61,7 @@ local debug = debug
 
 -- Use luasocket's gettime(), luaposix' gettimeofday(), or os.date for
 -- timestamps
-local now = pcall(require, "socket") and socket.gettime or
+local now = pcall(require, "socket") and socket and socket.gettime or
             pcall(require, "posix") and posix.gettimeofday and
             function ()
                local s, us = posix.gettimeofday()

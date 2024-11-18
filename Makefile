@@ -2,15 +2,12 @@
 
 UNAME := $(shell uname)
 
-LOVE2D_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
-LOVE2D_VERSION = 0.10.1
-
 ifeq ($(UNAME), Darwin)
-  TMXDIR = osx
+  TMXTAR = tmx2lua.osx.zip
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXDIR = linux
-  LOVE = /usr/bin/love
+  TMXTAR = tmx2lua.linux.tar.gz
+  LOVE = bin/love-11.3-x86_64.AppImage
 endif
 
 ifeq ($(shell which wget),)
@@ -41,25 +38,24 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 # brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	git clone https://github.com/hawkthorne/tmx2lua bin/tmx2lua-git
-	cd bin/tmx2lua-git; go mod init .git/config
-	cd bin/tmx2lua-git; go get github.com/kyleconroy/go-tmx/tmx
-	cd bin/tmx2lua-git; make
-	mv bin/tmx2lua-git/$(TMXDIR)/tmx2lua bin
-	rm -rf bin/tmx2lua-git
+	$(wget) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.0/$(TMXTAR)
+	tar -xzvf $(TMXTAR)
+	rm -f $(TMXTAR)
+	mv tmx2lua bin
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) $(LOVE2D_DOWNLOAD_URL)/$(LOVE2D_VERSION)/love-$(LOVE2D_VERSION)-macosx-x64.zip
-	unzip -q love-$(LOVE2D_VERSION)-macosx-x64.zip
-	rm -f love-$(LOVE2D_VERSION)-macosx-x64.zip
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-macos.zip
+	unzip -q love-11.3-macos.zip
+	rm -f love-11.3-macos.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
-/usr/bin/love:
-	sudo add-apt-repository -y ppa:bartbes/love-stable
-	sudo apt-get update -y -f
-	sudo apt-get install -y love
+bin/love-11.3-x86_64.AppImage:
+	mkdir -p bin
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-x86_64.AppImage
+	mv love-11.3-x86_64.AppImage bin
+	chmod +x bin/love-11.3-x86_64.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -80,23 +76,23 @@ positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
 src/positions/%.lua: psds/positions/%.png
 	overlay2lua src/positions/config.json $<
 
-win32/love.exe:
-	$(wget) $(LOVE2D_DOWNLOAD_URL)/$(LOVE2D_VERSION)/love-$(LOVE2D_VERSION)-win32.zip
-	unzip -q love-$(LOVE2D_VERSION)-win32.zip
-	mv love-$(LOVE2D_VERSION)-win32 win32
-	rm -f love-$(LOVE2D_VERSION)-win32.zip
-	rm win32/changes.txt win32/game.ico win32/license.txt win32/love.ico win32/readme.txt
+win64/love.exe:
+	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-win64.zip
+	unzip -q love-11.3-win64.zip
+	mv love-11.3-win64 win64
+	rm -f love-11.3-win64.zip
+	rm win64/changes.txt win64/game.ico win64/license.txt win64/love.ico win64/readme.txt
 
-win32/hawkthorne.exe: build/hawkthorne.love win32/love.exe
-	cat win32/love.exe build/hawkthorne.love > win32/hawkthorne.exe
+win64/hawkthorne.exe: build/hawkthorne.love win64/love.exe
+	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
 
-build/hawkthorne-win-x86.zip: win32/hawkthorne.exe
+build/hawkthorne-win-x86_64.zip: win64/hawkthorne.exe
 	mkdir -p build
 	rm -rf hawkthorne
-	rm -f hawkthorne-win-x86.zip
-	cp -r win32 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x86 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x86.zip build
+	rm -f hawkthorne-win-x86_64.zip
+	cp -r win64 hawkthorne
+	zip --symlinks -q -r hawkthorne-win-x86_64 hawkthorne -x "*/love.exe"
+	mv hawkthorne-win-x86_64.zip build
 
 OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
@@ -114,12 +110,12 @@ build/hawkthorne-osx.zip: $(OSXAPP)
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86.zip
+binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
 
 upload: binaries post.md venv
 	venv/bin/python scripts/release.py
 
-appcast: venv build/hawkthorne-osx.zip win32/hawkthorne.exe
+appcast: venv build/hawkthorne-osx.zip win64/hawkthorne.exe
 	venv/bin/python scripts/sparkle.py
 	cat sparkle/appcast.json | python -m json.tool > /dev/null
 	venv/bin/python scripts/upload.py / sparkle/appcast.json
@@ -144,7 +140,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test: $(LOVE) maps
-	$(LOVE) src --test
+	$(LOVE) src - --test
 
 validate: venv lint
 	venv/bin/python scripts/validate.py src
