@@ -105,7 +105,7 @@ function state:enter(previous, player, screenshot)
   self.prompt = nil
 
   self.player = player
-  self.hasNakedSprite = love.filesystem.exists("images/characters/" .. self.player.character.name .. "/naked.png")
+  self.hasNakedSprite = love.filesystem.getInfo("images/characters/" .. self.player.character.name .. "/naked.png")
   self.naked = self.player.character.costume == 'naked' or false
   self.nakedBet = false
   self.nakedMoney = 100
@@ -434,9 +434,9 @@ function state:draw()
   if self.screenshot then
     love.graphics.draw( self.screenshot, camera.x, camera.y, 0, window.width / love.graphics:getWidth(), window.height / love.graphics:getHeight() )
   else
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     love.graphics.rectangle( 'fill', 0, 0, love.graphics:getDimensions() )
-    love.graphics.setColor( 255, 255, 255, 255 )
+    love.graphics.setColor( 1, 1, 1, 1 )
   end
 
   love.graphics.draw( self.table, self.center_x - ( self.table:getWidth() / 2 ), self.center_y - ( self.table:getHeight() / 2 ) )
@@ -478,14 +478,14 @@ function state:draw()
     co = 0 -- color offset
     if not n.active then co = 180 end
     if i == self.selection + 1 and self.horizontal_selection == 0 then
-      love.graphics.setColor( 255, 255, 255, 255 )
+      love.graphics.setColor( 1, 1, 1, 1 )
       love.graphics.draw( self.options_arrow, x - 5, y + 4 )
       co = 255
     end
-    love.graphics.setColor( 255 - co, 255 - co, 255 - co )
+    love.graphics.setColor( 1/255 - co/255, 1/255 - co/255, 1/255 - co/255 )
     love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
   end
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   cx = 0 -- chip offset x
   for color,count in pairs( cardutils.getChipCounts( self.player.money ) ) do
@@ -535,7 +535,7 @@ function state:draw()
     love.graphics.print( 'Bet $ ' .. self.bet , 315+36+camera.x, 112+33+camera.y, 0, 0.5 )
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   -- Ensure font is reverted
   fonts.revert()
@@ -559,7 +559,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
   if(overlay) then
     darkness = 150
   end
-  love.graphics.setColor( darkness, darkness, darkness )
+  love.graphics.setColor( darkness/255, darkness/255, darkness/255 )
   love.graphics.draw(
     self.cardSprite, _card,                             -- image, quad
     x + utils.map( flip, 50, limit, w / 2, 0 ),               -- offset for flip
@@ -569,7 +569,7 @@ function state:draw_card( card, suit, flip, x, y, offset, overlay )
     utils.map( flip, 50, limit , 1 + st, 1 )                  -- scale height for flip
   )
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 end
 
 function get_first_nil(t)

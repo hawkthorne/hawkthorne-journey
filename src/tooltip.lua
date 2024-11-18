@@ -6,16 +6,16 @@ local function drawSeparator(x, y, width)
   y = y + 2
 
   --draw dividing line
-  love.graphics.setColor(112, 28, 114)
+  love.graphics.setColor(0.43, 0.10, 0.44)
   love.graphics.line(x, y, x + width, y)
   
   --draw yellow squares on the ends of the dividing line
-  love.graphics.setColor(219, 206, 98)
+  love.graphics.setColor(0.85, 0.80, 0.38)
   love.graphics.rectangle("fill", x, y - 1, 2, 2)
   love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
 
   -- set color back to white
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
 end
 
 local Tooltip = {}
@@ -92,7 +92,7 @@ function Tooltip:draw(x, y, selectedItem, parent)
   
   -- Lastly, insert our item information after everything else
   love.graphics.printf("\n" .. item.info, textX, textY + (descriptionWrap + statWrap) * lineHeight, textWidth, "left")
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
 
 end
 

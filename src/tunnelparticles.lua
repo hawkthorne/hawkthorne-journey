@@ -66,7 +66,7 @@ function TunnelParticles.update(dt)
 end
 
 function TunnelParticles.draw()
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   for _, particle in ipairs(particles) do
     particle:draw()
   end

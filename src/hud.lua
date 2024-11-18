@@ -74,7 +74,7 @@ function HUD:draw( player )
 
   self.x, self.y = camera.x + 10, camera.y + 10
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.draw( chevron, self.x, self.y)
   --love.graphics.stencil(function() self.energy_stencil(self.x, self.y) end)--doesn't pass arguments so is essentially useless
   love.graphics.setColor(
@@ -89,7 +89,7 @@ function HUD:draw( player )
 
   love.graphics.draw(energy, energy_quad, self.x + 50, self.y)
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   local currentWeapon = player.inventory:currentWeapon()
   if currentWeapon and not player.doBasicAttack or (player.holdingAmmo and currentWeapon) then
@@ -99,17 +99,17 @@ function HUD:draw( player )
     love.graphics.draw(self.sheet, self.character_quad, self.x + 7, self.y + 17)
   end
   love.graphics.draw(lens, self.x, self.y)
-  love.graphics.setColor( 0, 0, 0, 255 )
+  love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.print(player.money, self.x + 69, self.y + 41,0,0.5,0.5)
   love.graphics.print(player.character.name, self.x + 60, self.y + 15,0,0.5,0.5)
   if player.activeEffects then
-    love.graphics.setColor( 0, 0, 0, 255 )
+    love.graphics.setColor( 0, 0, 0, 1 )
     for i,effect in ipairs(player.activeEffects) do
       love.graphics.printf(effect, self.x + 20, self.y + 40 + (20 * i), 350, "left",0,0.5,0.5)
     end
   end
 
-  love.graphics.setColor( 255, 255, 255, 255 )
+  love.graphics.setColor( 1, 1, 1, 1 )
 
   if self.saving then
     self.savingAnimation:draw(savingImage, self.x + camera:getWidth() - 60, self.y)

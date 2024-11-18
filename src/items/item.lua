@@ -43,7 +43,7 @@ function Item.new(node, count)
     imagePath = 'images/' .. item.type .. 's/' .. item.name .. '.png'
   end
 
-  if not love.filesystem.exists(imagePath) then
+  if not love.filesystem.getInfo(imagePath) then
     return nil
   end
 

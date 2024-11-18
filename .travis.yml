@@ -1,29 +1,31 @@
-language: python
-os: linux
+language: generic
+os:
+  - linux
 dist: bionic
-services:
-  - xvfb
-before_install:
-  - "export DISPLAY=:99.0"
-install:
-  - sudo apt-get update -y
-  - sudo apt-get install python-dev libffi-dev libssl-dev -y
-  - sudo apt-get install python-virtualenv lua5.1 -y
-  # download Love2D 0.10.1 and the liblove dependency (links are for x64 architecture)
-  - wget https://github.com/love2d/love/releases/download/0.10.1/liblove0_0.10.1ppa1_amd64.deb
-  - wget https://github.com/love2d/love/releases/download/0.10.1/love_0.10.1ppa1_amd64.deb
-  # install Love2D 0.10.1
-  - sudo apt install libphysfs1  # required dependency
-  - sudo apt-get install ./liblove0_0.10.1ppa1_amd64.deb
-  - sudo apt-get install ./love_0.10.1ppa1_amd64.deb
-  - mkdir -p $TRAVIS_BUILD_DIR/share/love/
-env:
-  global:
-  - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
-script: make deploy
 addons:
+  apt:
+    packages:
+      - xvfb
+      - python-dev
+      - libffi-dev
+      - libssl-dev
+      - python-virtualenv
+      - lua5.1
+      - libpulse0
+      - pulseaudio
+      - sndiod
+      - virtualenv
+      - libsdl2-2.0-0
+      - alsa
+      - alsa-tools
   artifacts:
     paths:
       - ./build/hawkthorne-osx.zip
-      - ./build/hawkthorne-win-x86.zip
+      - ./build/hawkthorne-win-x86_64.zip
       - ./build/hawkthorne.love
+env:
+  global:
+  - XDG_DATA_HOME="$TRAVIS_BUILD_DIR/share"
+script:
+  - "mkdir -p $TRAVIS_BUILD_DIR/share/love/"
+  - "xvfb-run make deploy"

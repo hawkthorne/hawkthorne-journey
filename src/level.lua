@@ -136,7 +136,7 @@ function Level.new(name)
   level.state = 'idle'  -- TODO: Use state machine
   level.name = name
 
-  assert( love.filesystem.exists( "maps/" .. name .. ".lua" ),
+  assert( love.filesystem.getInfo( "maps/" .. name .. ".lua" ),
           "maps/" .. name .. ".lua not found.\n\n" ..
           "Have you generated your maps lately?\n\n" ..
           "LINUX / OSX: run 'make maps'\n" ..

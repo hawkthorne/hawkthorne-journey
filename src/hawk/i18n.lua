@@ -10,7 +10,7 @@ end
 
 function i18n:getLocale(locale)
   local path = self.path .. "/" .. locale .. '.json'
-  assert(love.filesystem.exists(path), string.format("The locale %q is unknown", locale))
+  assert(love.filesystem.getInfo(path), string.format("The locale %q is unknown", locale))
   local contents, _  = love.filesystem.read(path)
   return json.decode(contents)
 end

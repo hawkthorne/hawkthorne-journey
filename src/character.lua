@@ -69,11 +69,11 @@ function Character:getOverworld()
 end
 
 function module.pick(name, costume)
-  if not love.filesystem.exists("characters/" .. name .. ".json") then
+  if not love.filesystem.getInfo("characters/" .. name .. ".json") then
     error("Unknown character " .. name)
   end
 
-  if not love.filesystem.exists("images/characters/" .. name .. "/" .. costume .. ".png") then
+  if not love.filesystem.getInfo("images/characters/" .. name .. "/" .. costume .. ".png") then
     error("Unknown costume " .. costume .. " for character " .. name)
   end
 
@@ -83,7 +83,7 @@ function module.pick(name, costume)
 end
 
 function module.load(character)
-  if not love.filesystem.exists("characters/" .. character .. ".json") then
+  if not love.filesystem.getInfo("characters/" .. character .. ".json") then
     error("Unknown character " .. character)
   end
 
@@ -101,7 +101,7 @@ function module.current()
   local basePath = 'images/characters/' .. _character .. '/base.png'
   local characterPath = "characters/" .. _character .. ".json"
 
-  if not love.filesystem.exists(characterPath) then
+  if not love.filesystem.getInfo(characterPath) then
     error("Unknown character " .. _character)
   end
 

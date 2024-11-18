@@ -88,7 +88,7 @@ function CharacterStrip:draw()
     local x4 = x1 + stripSize * flipped
     local y4 = y1 + stripSize
 
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.polygon('line', x1, y1, x2, y2, x3, y3, x4, y4)
     -- I know not what I do
   end

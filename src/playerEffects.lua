@@ -78,7 +78,7 @@ function PlayerEffects.zombie(player)
     end))
   end
   player:addEffectsTimer(Timer.add(6, function () -- Set costume to zombie and double unarmed player damage.
-    if love.filesystem.exists("images/characters/" .. player.character.name .. "/zombie.png") then
+    if love.filesystem.getInfo("images/characters/" .. player.character.name .. "/zombie.png") then
       player.character.costume = 'zombie'
     end
     HUDMessage("holy crap, you are a zombie!", player, 10)
