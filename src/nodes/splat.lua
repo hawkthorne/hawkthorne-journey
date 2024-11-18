@@ -111,7 +111,7 @@ function Splat:draw()
       end
     end
 
-    love.graphics.setColor( 0.78, 0.78, 0.78, 1 )  -- Giving darker shade to splash on ceiling and floor
+    love.graphics.setColor( 200/255, 200/255, 200/255, 1 )  -- Giving darker shade to splash on ceiling and floor
 
     if s.floorQuad then
       if y < self.floor.y then

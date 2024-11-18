@@ -94,7 +94,7 @@ function state:draw()
 
   -- green terminal
   fonts.set('courier')
-  love.graphics.setColor( 0.18, 0.9, 0.12, 1 )
+  love.graphics.setColor( 48/255, 254/255, 31/255, 1 )
   if self.code_loaded == false then
     love.graphics.print(self.line_short, 50, 50, 0, 0.5, 0.5 )
     for i = 1, 7 do

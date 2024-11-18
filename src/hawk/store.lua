@@ -6,7 +6,7 @@ local Datastore = middle.class('Datastore')
 function Datastore:initialize(namespace)
   self.path = namespace .. ".json"
 
-  if not love.filesystem.getInfo(self.path) then 
+  if not love.filesystem.getInfo(self.path) then
     love.filesystem.write(self.path, json.encode({}))
   end
 

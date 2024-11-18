@@ -367,7 +367,7 @@ end
 
 function state:draw()
 
-  love.graphics.setBackgroundColor(133, 185, 250)
+  love.graphics.setBackgroundColor(133/255, 185/255, 250/255)
 
   for x=math.floor(camera.x / 36), math.floor((camera.x + camera:getWidth()) / 36) do
     for y=math.floor(camera.y / 36), math.floor((camera.y + camera:getHeight()) / 36) do

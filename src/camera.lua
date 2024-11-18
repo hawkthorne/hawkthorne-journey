@@ -73,8 +73,9 @@ function camera:setPosition(x, y)
 end
 
 function camera:setScale(sx, sy)
-  self.scaleX = sx or self.scaleX
-  self.scaleY = sy or self.scaleY
+  local scale = math.min(sx, sy)
+  self.scaleX = scale
+  self.scaleY = scale
 end
 
 return camera

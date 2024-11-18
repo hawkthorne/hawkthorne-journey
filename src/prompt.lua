@@ -60,7 +60,7 @@ function Prompt:draw()
     local x = x2 - self.width + self.height / 2
     local y = y1 - self.height / 2
 
-    love.graphics.setColor(0.43, 0.10, 0.44, 1)
+    love.graphics.setColor(112/255, 28/255, 114/255, 1)
     love.graphics.rectangle('fill', x, y, self.width, self.height)
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('line', x, y, self.width, self.height)
@@ -77,7 +77,7 @@ function Prompt:draw()
       love.graphics.setColor( 1, 1, 1, 1 )
 
       if i == self.selected then
-        love.graphics.setColor( 0.99, 0.8, 0.007, 1 )
+        love.graphics.setColor( 254/255, 204/255, 2/255, 1 )
         love.graphics.draw(arrow, x - arrow:getWidth() - 3, y + 1) 
       end
 

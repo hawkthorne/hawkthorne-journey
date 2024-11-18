@@ -53,7 +53,7 @@ function screen:keypressed(button)
 end
 
 function screen:draw()
-  love.graphics.setColor(255, 255, 255, math.min(255, self.time * 100))
+  love.graphics.setColor(1, 1, 1, math.min(255, self.time * 100) / 255)
   love.graphics.draw(self.logo, window.width / 2 - self.logo:getWidth() / 2,
                      window.height / 2 - self.logo:getHeight() / 2)
 

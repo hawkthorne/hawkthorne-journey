@@ -646,7 +646,7 @@ function Player:hurt(damage)
   self.showDamageText = true
 
   local color = self.color
-  self.color = {255, 0, 0, 255}
+  self.color = {1, 0, 0, 1}
   if not color then color = self.color end
 
   if damage ~= nil then

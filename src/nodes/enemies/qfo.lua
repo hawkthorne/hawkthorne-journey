@@ -124,7 +124,7 @@ return {
     local energy_quad = love.graphics.newQuad( -(max_hp - enemy.hp) * rate, 0, 70, 60, energy:getWidth(), energy:getHeight())
 
     love.graphics.draw(energy, energy_quad, x , y)
-    
+
     love.graphics.setColor( 1, 1, 1, 1 )
     fonts.revert()
   end,

@@ -6,11 +6,11 @@ local function drawSeparator(x, y, width)
   y = y + 2
 
   --draw dividing line
-  love.graphics.setColor(0.43, 0.10, 0.44)
+  love.graphics.setColor(112/255, 28/255, 114/255)
   love.graphics.line(x, y, x + width, y)
   
   --draw yellow squares on the ends of the dividing line
-  love.graphics.setColor(0.85, 0.80, 0.38)
+  love.graphics.setColor(219/255, 206/255, 98/255)
   love.graphics.rectangle("fill", x, y - 1, 2, 2)
   love.graphics.rectangle("fill", x + width, y - 1, 2, 2)
 

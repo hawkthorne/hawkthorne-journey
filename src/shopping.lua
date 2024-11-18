@@ -436,7 +436,7 @@ function state:draw()
 
         if not self.supplier[self.categories[i]] then
           love.graphics.draw( self.noselection, xcorner + 19 + 32*visI, ycorner + 22, 0 )
-          love.graphics.setColor( 0.39, 0.39, 0.39, 0.83 )
+          love.graphics.setColor( 101/255, 101/255, 101/255, 213/255 )
           love.graphics.print(string.upper(category), xcorner + 13 + 32*visI + self.shift[category], ycorner + 45, 0, 0.5, 0.5 )
           love.graphics.setColor( 1, 1, 1, 1 )
         else

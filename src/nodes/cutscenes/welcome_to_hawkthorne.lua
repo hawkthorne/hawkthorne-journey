@@ -113,20 +113,20 @@ function Scene:start(player)
     "Today, moist towelettes are stocked in every supermarket, while arcade after arcade closes.",
     "Nevertheless, I designed this game to be played upon my death by you and whatever cabal of fruits, junkies, and sluts you call your friends.",
     "Only one player can win... the first to reach my throne inside Castle Hawkthorne. Their reward, Pierce, will be your inheritance.",
-    "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha ! WORST SON EVER!",
+    "So you see, Pierce, turns out you were right. Video games are important. Ha Ha Ha! WORST SON EVER!",
   }
 
   self.dialog = dialog.new("Welcome to Hawkthorne.", function()
 
     tween(3, self.camera, {tx=x, ty=y + 48}, 'outQuad', function()
-      tween(0.1, self.lightning, {opacity=255}, 'outQuad', function()
+      tween(0.1, self.lightning, {opacity=1}, 'outQuad', function()
         self.shake = true
         self.enter = true
         tween(1, self.lightning, {opacity=0}, 'outQuad')
-        tween(1, self.fade, {0, 0, 200, 130}, 'outQuad')
-        tween(1, self.nodes.oval, {opacity=255}, 'outQuad', function()
-          tween(3, self.nodes.head, {opacity=255}, 'outQuad')
-          tween(3, self, {sparkle_opacity=255}, 'outQuad')
+        tween(1, self.fade, {0, 0, 200/255, 130/255}, 'outQuad')
+        tween(1, self.nodes.oval, {opacity=1}, 'outQuad', function()
+          tween(3, self.nodes.head, {opacity=1}, 'outQuad')
+          tween(3, self, {sparkle_opacity=1}, 'outQuad')
               
           self.shake = false
           self.oval = self.pulse

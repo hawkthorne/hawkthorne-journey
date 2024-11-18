@@ -113,7 +113,7 @@ function Enemy.new(node, collider, enemytype)
   enemy.knockbackDisabled = enemy.props.knockbackDisabled or false
 
   enemy.fadeIn = enemy.props.fadeIn or false
-  enemy.fade = {255, 255, 255, 0}
+  enemy.fade = {1, 1, 1, 0}
   enemy.animations = {}
   
   for state, data in pairs( enemy.props.animations ) do

@@ -100,9 +100,9 @@ local function setBackgroundColor(map)
     love.graphics.setBackgroundColor(0, 0, 0)
     return
   end
-  love.graphics.setBackgroundColor(tonumber(prop.red),
-                   tonumber(prop.green),
-                   tonumber(prop.blue))
+  love.graphics.setBackgroundColor(tonumber(prop.red)/255,
+                   tonumber(prop.green)/255,
+                   tonumber(prop.blue)/255)
 end
 
 local function getCameraOffset(map)

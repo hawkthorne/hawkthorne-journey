@@ -166,7 +166,7 @@ function state:keypressed(button, player)
           betDelta = -((self.currentBet-250)%100) -- subtract out the portion that is not part of the standard increment
         end
       elseif self.currentBet > 125 then
-        if self.currentBet%25 == 0 then 
+        if self.currentBet%25 == 0 then
           betDelta = -25
         else
           betDelta = -(self.currentBet%25) -- subtract out the portion that is not part of the standard increment
@@ -683,7 +683,7 @@ function state:draw()
       love.graphics.draw( self.options_arrow, x - 5, y + 4 )
       co = 255
     end
-    love.graphics.setColor( 1 - co/255, 1 - co/255, 1 - co/255 )
+    love.graphics.setColor( (255 - co) / 255, (255 - co) / 255, (255 - co) / 255 )
     love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
   end
   love.graphics.setColor( 1, 1, 1, 1 )

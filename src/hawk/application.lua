@@ -47,7 +47,7 @@ function Application:errhand(msg)
   -- Load.
   if love.audio then love.audio.stop() end
   love.graphics.reset()
-  love.graphics.setBackgroundColor(89, 157, 220)
+  love.graphics.setBackgroundColor(89/255, 157/255, 220/255)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 
@@ -96,7 +96,7 @@ function Application:releaseerrhand(msg)
   -- Load.
   if love.audio then love.audio.stop() end
   love.graphics.reset()
-  love.graphics.setBackgroundColor(89, 157, 220)
+  love.graphics.setBackgroundColor(89/255, 157/255, 220/255)
   local font = love.graphics.newFont(14)
   love.graphics.setFont(font)
 

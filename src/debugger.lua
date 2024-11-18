@@ -16,7 +16,7 @@ Debugger.infowidth = 100
 Debugger.infoheight = 125
 
 Debugger.graphData = {
-  { name = 'gc', color = { 255, 0, 0, 150 } }
+  { name = 'gc', color = { 1, 0, 0, 150/255 } }
 }
 
 function Debugger:reset()
@@ -120,9 +120,9 @@ function Debugger:draw()
 end
 
 function Debugger.drawShape( s, x, y, r, g, b )
-  love.graphics.setColor(r/255,g/255,b/255,0.39)
+  love.graphics.setColor(r/255,g/255,b/255,100/255)
   s:draw('fill')
-  love.graphics.setColor(r/255,g/255,b/255,0.19)
+  love.graphics.setColor(r/255,g/255,b/255,50/255)
   s:draw('line')
   if s:contains( x, y ) and s.node and s.node.node then
     table.insert( Debugger.infoToShow, s.node.node )
@@ -136,9 +136,9 @@ function Debugger.drawInfoBox( x, y )
   if #Debugger.infoToShow > 0 then
     if x + Debugger.infowidth * #Debugger.infoToShow >= camera.x + window.width then x = x - Debugger.infowidth * #Debugger.infoToShow end
     if y + Debugger.infoheight >= camera.y + window.height then y = y - Debugger.infoheight end
-    love.graphics.setColor(0,0,0,0.39)
+    love.graphics.setColor(0,0,0,100/255)
     love.graphics.rectangle( 'fill', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
-    love.graphics.setColor(0,0,0,0.19)
+    love.graphics.setColor(0,0,0,50/255)
     love.graphics.rectangle( 'line', x, y, Debugger.infowidth * #Debugger.infoToShow, Debugger.infoheight )
     love.graphics.setColor(1,1,1,1)
     x, y = x + 5, y + 5

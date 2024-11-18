@@ -2,14 +2,11 @@
 
 UNAME := $(shell uname)
 
-LOVE2D_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
-LOVE2D_VERSION = 0.10.1
-
 ifeq ($(UNAME), Darwin)
-  TMXDIR = osx
+  TMXTAR = tmx2lua.osx.zip
   LOVE = bin/love.app/Contents/MacOS/love
 else
-  TMXTAR = tmx2lua.linux.tar
+  TMXTAR = tmx2lua.linux.tar.gz
   LOVE = bin/love-11.3-x86_64.AppImage
 endif
 
@@ -41,12 +38,10 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 # brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	git clone https://github.com/hawkthorne/tmx2lua bin/tmx2lua-git
-	cd bin/tmx2lua-git; go mod init .git/config
-	cd bin/tmx2lua-git; go get github.com/kyleconroy/go-tmx/tmx
-	cd bin/tmx2lua-git; make
-	mv bin/tmx2lua-git/$(TMXDIR)/tmx2lua bin
-	rm -rf bin/tmx2lua-git
+	$(wget) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.0/$(TMXTAR)
+	tar -xzvf $(TMXTAR)
+	rm -f $(TMXTAR)
+	mv tmx2lua bin
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
@@ -145,7 +140,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test: $(LOVE) maps
-	$(LOVE) src --test
+	$(LOVE) src - --test
 
 validate: venv lint
 	venv/bin/python scripts/validate.py src

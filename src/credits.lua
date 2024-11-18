@@ -43,7 +43,7 @@ function state:keypressed( button )
 end
 
 state.credits = {
-  app.i18n('credits'),
+  app.i18n('credits'), '',
   '6sutters',
   '8bitgentleman',
   'a8252359',

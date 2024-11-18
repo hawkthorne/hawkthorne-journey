@@ -482,7 +482,7 @@ function state:draw()
       love.graphics.draw( self.options_arrow, x - 5, y + 4 )
       co = 255
     end
-    love.graphics.setColor( 1/255 - co/255, 1/255 - co/255, 1/255 - co/255 )
+    love.graphics.setColor( (255 - co) / 255, (255 - co) / 255, (255 - co) / 255 )
     love.graphics.print( n.name, x + 3, y + 3, 0, 0.5 )
   end
   love.graphics.setColor( 1, 1, 1, 1 )
