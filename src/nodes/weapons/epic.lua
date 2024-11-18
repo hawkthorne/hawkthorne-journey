@@ -61,8 +61,8 @@ return {
     if weapon.charged then
       weapon.animation = weapon.wieldChargedAnimation
       weapon.charged = false
-      weapon:weaponShake(weapon)
       weapon:throwProjectile(weapon)
+      weapon:weaponShake(weapon)
     else
       weapon.animation = weapon.wieldAnimation
     end
@@ -72,23 +72,23 @@ return {
   end,
 
   throwProjectile = function( weapon )
-    Timer.add(.3, function()
-      local node = {
-        type = 'projectile',
-        name = 'waterSpout',
-        x = weapon.position.x+weapon.hand_x,
-        y = weapon.player.position.y - weapon.player.height + 17,
-        width = 24,
-        height = 16,
-        properties = {}
-      }
-      local water = Projectile.new( node, weapon.collider )
-      local level = weapon.containerLevel
-      if level then
+    local level = weapon.containerLevel
+    local node = {
+      type = 'projectile',
+      name = 'waterSpout',
+      x = weapon.position.x + weapon.hand_x,
+      y = (math.floor(weapon.player.position.y / level.map.tileheight) * level.map.tileheight) - level.map.tileheight,
+      width = 24,
+      height = 16,
+      properties = {}
+    }
+    local water = Projectile.new( node, weapon.collider )
+    if level then
+      Timer.add(.5, function()
         level:addNode(water)
         water:throw(weapon)
-      end
-    end)
+      end)
+    end
   end,
 
   weaponShake = function (weapon)
