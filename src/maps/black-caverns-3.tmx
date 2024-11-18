@@ -81,7 +81,7 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object id="3" name="epic" type="weapon" x="1728" y="141" width="48" height="60">
+  <object id="3" name="epic" type="weapon" x="1728" y="144" width="48" height="60">
    <properties>
     <property name="foreground" value="true"/>
    </properties>
