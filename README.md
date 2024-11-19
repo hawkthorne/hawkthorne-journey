@@ -1,6 +1,6 @@
 # Journey to the Center of Hawkthorne
 
-![Journey to the Center of Hawkthorne](https://projecthawkthorne.com/assets/images/metatag.png)
+[![Journey to the Center of Hawkthorne](https://projecthawkthorne.com/assets/images/metatag.png)](https://projecthawkthorne.com)
 
 A 2D platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
