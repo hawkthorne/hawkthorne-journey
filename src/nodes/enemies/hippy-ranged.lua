@@ -72,7 +72,7 @@ return {
     cloudbomb.position.x = enemy.position.x +24
     cloudbomb.position.y = enemy.position.y + 24
     cloudbomb.velocity.x = math.random(500)*direction
-    cloudbomb.velocity.y = math.random(-200,-400)
+    cloudbomb.velocity.y = math.random(200,400) * -1
 
   end,
   hurt = function( enemy )

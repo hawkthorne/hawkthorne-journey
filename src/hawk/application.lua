@@ -40,7 +40,7 @@ end
 function Application:errhand(msg)
   msg = tostring(msg)
 
-  if not love.graphics or not love.event or not love.window.isCreated() then
+  if not love.graphics or not love.event or not love.window.isOpen() then
     return
   end
 
@@ -86,7 +86,7 @@ end
 function Application:releaseerrhand(msg)
   print("An error has occurred, the game has been stopped.")
 
-  if not love.graphics or not love.event or not love.window.isCreated() then
+  if not love.graphics or not love.event or not love.window.isOpen() then
     return
   end
 

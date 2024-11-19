@@ -12,9 +12,10 @@ local state = Gamestate.new()
 
 function state:init()
   self.name = "welcome"
-  self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'exit' })
+  self.menu = menu.new({ 'start', 'controls', 'options', 'credits', 'quit' })
   self.menu:onSelect(function(option)
-    if option == 'exit' then
+    if option == 'quit' then
+      love.graphics.clear(0,0,0,1,true,true)
       love.event.push("quit")
     elseif option == 'controls' then
       Gamestate.switch('instructions')

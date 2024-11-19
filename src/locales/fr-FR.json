@@ -3,7 +3,7 @@
   "controls": "controles",
   "options": "les options",
   "credits": "credits",
-  "exit": "sortie",
+  "quit": "quitter",
   "load": "charger",
   "s_or_s_select_item": "%s ou %s: choisir produit",
   "FULLSCREEN": "plein ecran",
@@ -11,6 +11,6 @@
   "SFX VOLUME": "volume de sfx",
   "SHOW FPS": "montrer fps",
   "SEND PLAY DATA": "evoyer les données du jeu",
-  "RESET SETTINGS AND EXIT": "remettre cadres & sortie",
-  "RESET + EXIT": "remettre + sortie"
+  "RESET SETTINGS": "remettre cadres",
+  "RESET + QUIT": "remettre + quitter"
 }
