@@ -301,7 +301,14 @@ function utils.startswith(s, prefix)
 end
 
 function utils.require(path)
-  return love.filesystem.load(path .. ".lua")()
+  local ok, chunk, err = pcall(love.filesystem.load, path .. ".lua") -- load the chunk safely
+  if not ok    then error("Failed loading code: " .. chunk)  end
+  if not chunk then error("Failed reading file: " .. err)    end
+
+  local ok, value = pcall(chunk) -- execute the chunk safely
+  if not ok then error("Failed calling chunk: " .. tostring(value)) end
+
+  return value
 end
 
 return utils
