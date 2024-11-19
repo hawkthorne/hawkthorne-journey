@@ -407,7 +407,12 @@ end
 function NPC:keypressed( button, player )
   if self.dead or self.angry then return end
 
-  if button == 'INTERACT' and self.menu.state == 'closed' and not player.jumping and not player.isClimbing and not self.busy then
+  if button == 'INTERACT' and
+     self.menu.state == 'closed' and
+     not player.freeze and
+     not player.jumping and
+     not player.isClimbing and
+     not self.busy then
     player.freeze = true
     player.character.state = 'idle'
     self.state = 'default'
