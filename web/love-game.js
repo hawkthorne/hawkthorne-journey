@@ -4,7 +4,7 @@ class LoveGame extends HTMLElement {
   constructor() {
     super();
 
-    this.LIBRARIES = ["game.js", "love.js"];
+    this.LIBRARIES = ["assets/js/game.js", "assets/js/love.js"];
   }
 
   connectedCallback() {
@@ -20,9 +20,13 @@ class LoveGame extends HTMLElement {
       form.remove();
     });
 
-    form.appendChild(submit);
+    this.pregameContainer = document.createElement("div");
+    this.pregameContainer.className = "pregame";
 
-    this.appendChild(form);
+    form.appendChild(submit);
+    this.pregameContainer.appendChild(form);
+
+    this.appendChild(this.pregameContainer);
   }
 
   init() {
@@ -47,20 +51,21 @@ class LoveGame extends HTMLElement {
 
         return canvas;
       })(),
-      setStatus: function(text) {
+      setStatus: (text) => {
         if (text) {
-          console.log(text);
+          this.pregameContainer.innerText = text;
         }
       },
       totalDependencies: 0,
       remainingDependencies: 0,
-      monitorRunDependencies: function(left) {
-        this.remainingDependencies = left;
-        this.totalDependencies = Math.max(this.totalDependencies, left);
+      monitorRunDependencies: (left) => {
+        this.Module.remainingDependencies = left;
+        this.Module.totalDependencies = Math.max(this.Module.totalDependencies, left);
         if (left) {
-          this.setStatus('Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')');
+          this.Module.setStatus('Preparing... (' + (this.Module.totalDependencies - left) + '/' + this.Module.totalDependencies + ')');
         } else {
-          this.setStatus('All downloads complete.');
+          this.Module.setStatus('All downloads complete.');
+          this.pregameContainer.remove();
         }
       }
     };

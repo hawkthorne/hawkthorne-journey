@@ -1,8 +1,10 @@
 love-game {
+    display: block;
     position: relative;
     background: #000;
     margin-inline: auto;
     color: #FFF;
+    margin-block: 1rem;
 
     /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
     & canvas {
@@ -10,7 +12,7 @@ love-game {
         border: none;
         display: block;
         background: #000;
-        height: min(100dvh, 672px);
+        height: auto;
         max-width: 100%;
     }
 
@@ -20,13 +22,13 @@ love-game {
         }
     }
 
-    & form,
+    & .pregame,
     & noscript {
         width: 100%;
         height: 100%;
     }
 
-    & form {
+    & .pregame {
         position: absolute;
         top: 0;
         left: 0;
