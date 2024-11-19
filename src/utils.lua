@@ -292,14 +292,6 @@ function utils.setMode(width, height, fullscreen, vsync, fsaa)
   end
 end
 
-function utils.cleanarg(args)
-  local first = table.remove(args, 1)
-  if first == args[#args] then
-  table.remove(args)
-  end
-  return args
-end
-
 function utils.endswith(s, suffix)
   return s:sub(-suffix:len()) == suffix
 end

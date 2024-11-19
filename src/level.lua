@@ -524,8 +524,10 @@ function Level:moveCamera()
   if not self.trackPlayer then return end
   local x = self.player.position.x + self.player.character.bbox.width / 2
   local y = self.player.position.y - self.map.tilewidth * 4.5
-  camera:setPosition( math.max(x - window.width / 2, 0),
-                      limit( limit(y, 0, self.offset) + self.pan, 0, self.offset ) )
+  camera:setPosition(
+    math.max(x - window.width / 2, 0),
+    limit( limit(y, 0, self.offset) + self.pan, 0, self.offset )
+  )
 end
 
 function Level:quit()

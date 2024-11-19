@@ -31,22 +31,11 @@ end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
-  if not (type(love._version) == "string")
-  then
-    error("invalid version label")
+  local version = love.getVersion()
+
+  if version < 11 then
+    error("Love 11 or later is required")
   end
-
-  local version = utils.split(love._version:gsub("%.", "/"),"/")
-  local major = tonumber(version[1])
-  local minor = tonumber(version[2])
-
-  if major < 11 or
-     minor < 3 then
-    error("Love 11.3 or later is required")
-  end
-
-  -- The Mavericks builds of Love adds too many arguments
-  arg = utils.cleanarg(arg)
 
   local mixpanel = require 'vendor/mixpanel'
 

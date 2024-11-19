@@ -85,9 +85,11 @@ function tmx.load(level)
       local offsetY = y * tileheight
       local offsetX = x * tilewidth
 
-      tiles[index] = love.graphics.newQuad(offsetX, offsetY,
-                                           tilewidth, tileheight,
-                                           atlaswidth, atlasheight)
+      tiles[index] = love.graphics.newQuad(
+        offsetX, offsetY,
+        tilewidth, tileheight,
+        atlaswidth, atlasheight
+      )
     end
   end
 
@@ -96,7 +98,7 @@ function tmx.load(level)
     if tilelayer.name ~= "collision" and tilelayer.tiles then
       for i, tile in ipairs(tilelayer.tiles) do
         local x = (i - 1) % level.width
-        local y = math.floor((i - 1)/ level.width)
+        local y = math.floor((i - 1) / level.width)
 
         if tile then
           local info = tmx.tileRotation(tile)
@@ -110,11 +112,13 @@ function tmx.load(level)
 
           layer = tmx.getParallaxLayer( map, tilelayer )
 
-          layer.batch:add(tiles[tile.id], 
-                         x * tilewidth + (tilewidth / 2),
-                         y * tileheight + (tileheight / 2),
-                         tile.flipDiagonal and math.pi * 1.5 or 0, --rotation
-                         sx, sy, tilewidth / 2, tileheight / 2)
+          layer.batch:add(
+            tiles[tile.id],
+            x * tilewidth + (tilewidth / 2),
+            y * tileheight + (tileheight / 2),
+            tile.flipDiagonal and math.pi * 1.5 or 0, --rotation
+            sx, sy, tilewidth / 2, tileheight / 2
+          )
         end
       end
     end
