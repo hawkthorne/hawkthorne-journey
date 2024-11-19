@@ -24,7 +24,7 @@ function Fire.new(tile)
   fire.state = 'burning'
 
   fire.x = tile.x + math.random((tile.width / 2) * -1, (tile.width / 2))
-  fire.y = tile.y + math.random(0, -5)
+  fire.y = tile.y + math.random(-5, 0)
 
   return fire
 end

@@ -2,7 +2,7 @@
 
 **DOWNLOAD**
 
-- [OS X](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v{version}/hawkthorne-osx.zip)
+- [macOS](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v{version}/hawkthorne-osx.zip)
 - [Windows](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v{version}/hawkthorne-win-x86.zip)
 - [hawkthorne.love](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v{version}/hawkthorne.love)
   You'll need to install the [love](http://love2d.org) framework as well.

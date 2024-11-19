@@ -16,7 +16,7 @@ return{
   canPlayerStore = false,
   velocity = { x = 0, y = 0 }, --initial vel isn't used since this is insantly picked up
   throwVelocityX = math.random(400,500),
-  throwVelocityY = math.random(-100,-200),
+  throwVelocityY = math.random(100,200) * -1,
   stayOnScreen = false,
   damage = 10,
   idletime = 0,

@@ -22,6 +22,12 @@ maps: $(tilemaps)
 
 love: build/hawkthorne.love
 
+love.js: build/hawkthorne.love
+	mkdir -p build/web
+	npm install
+	npx love.js -t "Journey to the Center of Hawkthorne" -m 77594624 -c build/hawkthorne.love build/web
+	cp web/* build/web/
+
 build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \

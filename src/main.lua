@@ -229,11 +229,11 @@ function buttonpressed(key)
   end
 end
 
-function love.keyreleased(key)
+function love.keyreleased(key, scancode)
   buttonreleased(key)
 end
 
-function love.keypressed(key)
+function love.keypressed(key, scancode, isrepeat)
   controls:switch()
   buttonpressed(key)
 end
@@ -304,27 +304,11 @@ function love.draw()
   end
 end
 
---function love.draw()
---end
---
---function love.update(dt)
---end
---
---function love.load()
---end
---
---function love.keyreleased()
---end
---
---function love.keypressed()
---end
-
 -- Override the default screenshot functionality so we can disable the fps before taking it
-local newScreenshot = love.graphics.newScreenshot
-function love.graphics.newScreenshot()
+local captureScreenshot = love.graphics.captureScreenshot
+function love.graphics.captureScreenshot( callback )
   window.dressing_visible = false
   love.draw()
-  local ss = newScreenshot()
+  captureScreenshot( callback )
   window.dressing_visible = true
-  return ss
 end

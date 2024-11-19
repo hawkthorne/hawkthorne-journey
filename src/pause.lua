@@ -87,6 +87,7 @@ function state:keypressed( button )
       self.previous:quit()
       Gamestate.switch('start')
     elseif self.option == 4 then
+      love.graphics.clear(0,0,0,1,true,true)
       love.event.push("quit")
     end
   end
@@ -106,7 +107,7 @@ function state:draw()
   love.graphics.print('Options', 198, 131)
   love.graphics.print('Quit to Map', 198, 161)
   love.graphics.print('Quit to Menu', 198, 191)
-  love.graphics.print('Quit to Desktop', 198, 221)
+  love.graphics.print('Quit Game', 198, 221)
   love.graphics.setColor( 1, 1, 1, 1 )
   love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
   local back = controls:getKey("START") .. ": BACK TO GAME"

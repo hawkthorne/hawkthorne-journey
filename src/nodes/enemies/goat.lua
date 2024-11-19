@@ -36,7 +36,7 @@ return {
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.maxx = enemy.position.x + math.random(48,60)
     enemy.minx = enemy.position.x - math.random(48,60)
-    enemy.velocity.x = enemy.direction=='left' and math.random(15,20) or math.random(-15,-20)
+    enemy.velocity.x = enemy.direction=='left' and math.random(15,20) or (math.random(15,20) * -1)
   end,
   update = function( dt, enemy, player )
     if enemy.position.x > enemy.maxx then 

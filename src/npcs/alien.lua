@@ -125,8 +125,12 @@ return {
   },
   inventory = function(npc, player)
     if Quest.alreadyCompleted(npc, player, quests.qfo) then
-      local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-      Gamestate.stack("shopping", player, screenshot, "alien")
+      love.graphics.captureScreenshot(
+        function ( imgData )
+          local screenshot = love.graphics.newImage(imgData)
+          Gamestate.stack("shopping", player, screenshot, "alien")
+        end
+      )
     else
       Dialog.new("Too bad, I'm not selling anything to some Earthling like you!", function()
         npc.menu:close(player)

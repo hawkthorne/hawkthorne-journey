@@ -3,7 +3,7 @@
   "controls": "controls",
   "options": "options",
   "credits": "credits",
-  "exit": "exit",
+  "quit": "quit",
   "load": "load",
   "s_or_s_select_item": "%s or %s: select item",
   "FULLSCREEN": "fullscreen",
@@ -12,5 +12,5 @@
   "SHOW FPS": "show fps",
   "SEND PLAY DATA": "send play data",
   "RESET SETTINGS": "reset settings",
-  "RESET + EXIT": "RESET + EXIT"
+  "RESET + QUIT": "RESET + QUIT"
 }

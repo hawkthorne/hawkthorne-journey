@@ -1,18 +1,23 @@
 # Journey to the Center of Hawkthorne
 
-[![Build Status](https://travis-ci.org/hawkthorne/hawkthorne-journey.png?branch=master)](https://travis-ci.org/hawkthorne/hawkthorne-journey)
+[![Journey to the Center of Hawkthorne](https://projecthawkthorne.com/assets/images/metatag.png)](https://projecthawkthorne.com)
 
-This 2D platformer is based on Community's [Digital Estate Planning][estate]
+A 2D platformer is based on Community's [Digital Estate Planning][estate]
 episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
 [report any issues or bugs][githubissues] you have with the game!
 
 [estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
 [githubissues]: https://github.com/hawkthorne/hawkthorne-journey/issues?state=open
 
-## Download the game
 
-- [OS X](http://files.projecthawkthorne.com/releases/latest/hawkthorne-osx.zip)
-- [Windows](http://files.projecthawkthorne.com/releases/latest/hawkthorne-win-x86.zip)
+## Play the game
+
+Visit [projecthawkthorne.com](https://projecthawkthorne.com) to play the game in your browser.
+
+### Download
+
+- [macOS](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.0.4/hawkthorne-osx.zip)
+- [Windows](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.0.4/hawkthorne-win-x86.zip)
 
 ## Contribute to the game
 
@@ -22,7 +27,7 @@ contributions you'd like to submit, either open a pull request or create a post
 on the subreddit. The steps below are only needed if you want to write code for
 the game.
 
-### Getting started with development on OS X / Linux
+### Getting started with development on macOS / Linux
 
 Getting start is easy. Just clone the repository and run `make run`.
 
@@ -60,17 +65,16 @@ Congratulations! You're running Journey to the Center of Hawkthorne! Your next s
 - Fix [bugs](https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open) with the game
 - Add new features and content to the game
 
+### Releasing a new version
+
+To create a release, open a pull request from the `master` branch to the
+`release` branch. You should never commit directly to the `release` branch.
+
 
 ## Community
 
 - [/r/hawkthorne subreddit](http://www.reddit.com/r/hawkthorne)
-- [#hawkthorne@irc.freenode.net](http://webchat.freenode.net/?channels=hawkthorne) on IRC
 
-
-## Releasing a new version
-
-To create a release, open a pull request from the `master` branch to the
-`release` branch. You should never commit directly to the `release` branch.
 
 ## License
 

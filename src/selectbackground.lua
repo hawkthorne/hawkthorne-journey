@@ -53,7 +53,7 @@ end
 
 -- Renders the starry background and each strip
 function selectBackground.draw()
-  love.graphics.setBackgroundColor(0, 0, 0, 0)
+  love.graphics.setBackgroundColor(0, 0, 0, 1)
 
   VerticalParticles.draw()
 
