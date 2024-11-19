@@ -140,7 +140,7 @@ contributors: venv
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test: $(LOVE) maps
-	$(LOVE) src - --test
+	$(LOVE) src --test
 
 validate: venv lint
 	venv/bin/python scripts/validate.py src

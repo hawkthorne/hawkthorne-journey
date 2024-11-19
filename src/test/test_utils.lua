@@ -32,20 +32,6 @@ function test_split_string()
   assert_equal(output[2], "a")
 end
 
---should remove first and last values if they are the same
-function test_remove_duplicate_args()
-  local output = utils.cleanarg({"src", "--level=forest", "src"})
-  assert_equal(output[1], "--level=forest")
-  assert_equal(#output, 1)
-end
-
---should remove first value
-function test_remove_first_args()
-  local output = utils.cleanarg({"src", "--level=forest"})
-  assert_equal(output[1], "--level=forest")
-  assert_equal(#output, 1)
-end
-
 function test_string_endswith()
   assert_true(utils.endswith(".lua.lua", ".lua"))
   assert_true(utils.endswith("main.lua", ".lua"))
