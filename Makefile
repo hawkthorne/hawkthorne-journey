@@ -33,8 +33,15 @@ love.js: build/hawkthorne.love
 
 build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
-	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
+	cd src && zip --symlinks -q -r ../build/hawkthorne.love . \
+		-x ".*" \
+		-x "*.DS_Store" \
+		-x "psds/*" \
+		-x "test/*" \
+		-x "*.tmx" \
+		-x "maps/test-level.lua" \
+		-x "*/full_soundtrack.ogg" \
+		-x "*.bak"
 
 run: $(tilemaps) $(LOVE)
 	$(LOVE) src
@@ -55,6 +62,13 @@ else
 endif
 	rm -f $(TMXTAR)
 	mv tmx2lua bin
+
+bin/win32/love.exe:
+	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win32.zip
+	unzip -q love-$(LOVE_VERSION)-win32.zip
+	mv love-$(LOVE_VERSION)-win32 bin/win32
+	rm -f love-$(LOVE_VERSION)-win32.zip
+	rm bin/win32/changes.txt bin/win32/game.ico bin/win32/love.ico bin/win32/readme.txt
 
 bin/win64/love.exe:
 	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win64.zip
@@ -93,15 +107,23 @@ CI_TARGET=test validate maps productionize binaries
 
 deploy: $(CI_TARGET)
 
-build/hawkthorne.exe: build/hawkthorne.love bin/win64/love.exe
-	cat bin/win64/love.exe build/hawkthorne.love > build/hawkthorne.exe
+build/win32/hawkthorne.exe: build/hawkthorne.love bin/win32/love.exe
+	mkdir -p build/win32
+	cat bin/win32/love.exe build/hawkthorne.love > build/win32/hawkthorne.exe
 
-build/hawkthorne-win-x86_64.zip: build/hawkthorne.exe
+build/win64/hawkthorne.exe: build/hawkthorne.love bin/win64/love.exe
 	mkdir -p build/win64
-	cp build/hawkthorne.exe build/win64/
+	cat bin/win64/love.exe build/hawkthorne.love > build/win64/hawkthorne.exe
+
+build/hawkthorne-win32.zip: build/win32/hawkthorne.exe
+	cp -R bin/win32/* build/win32/
+	zip --symlinks -q -r hawkthorne-win32 build/win32/ -x "*/love*.exe"
+	mv hawkthorne-win32.zip build
+
+build/hawkthorne-win64.zip: build/win64/hawkthorne.exe
 	cp -R bin/win64/* build/win64/
-	zip --symlinks -q -r hawkthorne-win-x86_64 build/win64/ -x "*/love*.exe"
-	mv hawkthorne-win-x86_64.zip build
+	zip --symlinks -q -r hawkthorne-win64 build/win64/ -x "*/love*.exe"
+	mv hawkthorne-win64.zip build
 
 MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
@@ -119,7 +141,7 @@ build/hawkthorne-macos.zip: $(MACOS_APP)
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-macos.zip build/hawkthorne-win-x86_64.zip
+binaries: build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip
 
 venv:
 	python3 -m venv venv

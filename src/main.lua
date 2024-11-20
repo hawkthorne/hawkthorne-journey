@@ -18,7 +18,6 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
-local lovetest = require 'test/lovetest'
 
 local testing = false
 local paused = false
@@ -60,7 +59,8 @@ function love.load(arg)
     error("Could not parse command line arguments")
   end
 
-  if lovetest.detect(arg) then
+  if args["test"] then
+    local lovetest = require 'test/lovetest'
     testing = true
     lovetest.run()
     return
