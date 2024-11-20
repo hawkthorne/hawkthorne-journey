@@ -1,15 +1,15 @@
-build
+bin/
+build/
 .DS_Store
 __*
 full_soundtrack.ogg
-hawkthorne
-win32/*
-win64/*
+hawkthorne/
+win32/
+win64/
 redditors.txt
 src/maps/*.lua
 venv
 tmx2lua*
-bin/*
 dsa_priv.pem
 release.md
 post.md
@@ -22,4 +22,4 @@ save
 src/test/fixtures/Fake.app
 Journey\ to\ the\ Center\ of\ Hawkthorne.app
 sparkle/appcast.json
-node_modules/*
+node_modules/

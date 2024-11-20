@@ -2,28 +2,23 @@ local middle = require 'hawk/middleclass'
 local json = require 'hawk/json'
 local i18n = require 'hawk/i18n'
 local gamesave = require 'hawk/gamesave'
-local config = require 'hawk/config'
-local api = require 'api'
 
 local Application = middle.class('Application')
 
-function Application:initialize(configurationPath)
-  assert(love.filesystem.getInfo(configurationPath),
-         "Can't read app configuration at path: " .. configurationPath)
-  self.config = config.load(configurationPath)
+function Application:initialize()
+  self.config = {}
   self.gamesaves = gamesave(3)
   self.i18n = i18n("locales")
 end
 
 
-local function stackmessage(msg, trace, version)
+local function stackmessage(msg, trace)
   local err = {}
 
   table.insert(err, msg.."\n\n")
 
   for l in string.gmatch(trace, "(.-)\n") do
     if not string.match(l, "boot.lua") then
-      l = string.gsub(l, "stack traceback:", "Traceback [v" .. version .. "]\n")
       table.insert(err, l)
     end
   end
@@ -55,7 +50,7 @@ function Application:errhand(msg)
   love.graphics.clear()
 
   local trace = debug.traceback()
-  local p = stackmessage(msg, trace, self.config.iteration)
+  local p = stackmessage(msg, trace)
 
   local function draw()
     love.graphics.clear()
@@ -105,7 +100,7 @@ function Application:releaseerrhand(msg)
   love.graphics.clear()
 
   local trace = debug.traceback()
-  local report_msg = stackmessage(msg, trace, self.config.iteration)
+  local report_msg = stackmessage(msg, trace)
 
   local release = love._release or {}
 
@@ -119,12 +114,6 @@ function Application:releaseerrhand(msg)
   end
 
   draw()
-
-  api.report(report_msg, {
-    ['release'] = 'production',
-    ['os'] = love._os,
-    ['version'] = self.config.iteration,
-  })
 
   local e, a, b, c
   while true do

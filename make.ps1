@@ -16,8 +16,8 @@ if($check -eq $false){
 }
 
 $webclient = New-Object System.Net.WebClient
-$lovedir = "bin\love-11.3-win64\"
-$check = Test-Path "bin\love-11.3-win64\love.exe"
+$lovedir = "bin\love-11.5-win64\"
+$check = Test-Path "bin\love-11.5-win64\love.exe"
 
 #add love to the path if necessary
 $foundlove = $env:Path.Contains($lovedir)
@@ -27,13 +27,13 @@ if($foundlove -eq $false){
 
 if($check -eq $false){
 
-  $filename = (Get-Location).Path + "\bin\love-11.3-win64.zip"
+  $filename = (Get-Location).Path + "\bin\love-11.5-win64.zip"
 
   $check = Test-Path $filename
 
   if($check -eq $false){
     Write-Host "Downloading love2d..."
-    $url = "https://github.com/love2d/love/releases/download/11.3/love-11.3-win64.zip"
+    $url = "https://github.com/love2d/love/releases/download/11.5/love-11.5-win64.zip"
     try {
       $webclient.DownloadFile($url,$filename)
     } catch {
@@ -95,11 +95,11 @@ foreach($fileName in $fileEntries)
 if($args[0] -eq "run"){
   Write-Host "Running Journey to the Center of Hawkthorne..."
   if($args.Length -ne 1){
-    .\bin\love-11.3-win64\love.exe src $args[1..($args.Length-1)]
+    .\bin\love-11.5-win64\love.exe src $args[1..($args.Length-1)]
   }else{
-    .\bin\love-11.3-win64\love.exe src
+    .\bin\love-11.5-win64\love.exe src
   }
 }elseif($args[0] -eq "test"){
   Write-Host "Testing Journey to the Center of Hawkthorne..."
-  .\bin\love-11.3-win64\love.exe src --test --console
+  .\bin\love-11.5-win64\love.exe src --test --console
 }
