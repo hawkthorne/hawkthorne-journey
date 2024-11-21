@@ -1,9 +1,11 @@
-.PHONY: clean contributors run deploy love maps lint
+.PHONY: clean contributors validate run deploy maps lint love love.js
 
 UNAME := $(shell uname)
-
+TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 LOVE_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
 LOVE_VERSION = 11.5
+MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
+CI_TARGET=clean test validate maps binaries
 
 ifeq ($(UNAME), Darwin)
 	TMXTAR = tmx2lua.osx.zip
@@ -17,12 +19,10 @@ else
 endif
 
 ifeq ($(shell which wget),)
-	wget = curl -s -O -L
+	WGET = curl -s -O -L
 else
-	wget = wget -q --no-check-certificate
+	WGET = wget -q --no-check-certificate
 endif
-
-TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 
 maps: $(TILEMAPS)
 
@@ -57,7 +57,7 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 # brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.1/$(TMXTAR)
+	$(WGET) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.1/$(TMXTAR)
 ifeq ($(UNAME), Darwin)
 	unzip -q $(TMXTAR)
 else
@@ -67,14 +67,14 @@ endif
 	mv tmx2lua bin
 
 bin/win32/love.exe:
-	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win32.zip
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win32.zip
 	unzip -q love-$(LOVE_VERSION)-win32.zip
 	mv love-$(LOVE_VERSION)-win32 bin/win32
 	rm -f love-$(LOVE_VERSION)-win32.zip
 	rm bin/win32/changes.txt bin/win32/game.ico bin/win32/love.ico bin/win32/readme.txt
 
 bin/win64/love.exe:
-	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win64.zip
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win64.zip
 	unzip -q love-$(LOVE_VERSION)-win64.zip
 	mv love-$(LOVE_VERSION)-win64 bin/win64
 	rm -f love-$(LOVE_VERSION)-win64.zip
@@ -82,28 +82,26 @@ bin/win64/love.exe:
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-macos.zip
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-macos.zip
 	unzip -q love-$(LOVE_VERSION)-macos.zip
 	rm -f love-$(LOVE_VERSION)-macos.zip
 	mv love.app bin
 
 bin/love.AppImage:
 	mkdir -p bin
-	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-x86_64.AppImage
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-x86_64.AppImage
 	mv love-$(LOVE_VERSION)-x86_64.AppImage bin/love.AppImage
 	chmod +x bin/love.AppImage
 
 bin/appimagetool.AppImage:
 	mkdir -p bin
-	$(wget) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+	$(WGET) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
 	mv appimagetool-x86_64.AppImage bin/appimagetool.AppImage
 	chmod +x bin/appimagetool.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
-
-CI_TARGET=clean test validate maps binaries
 
 deploy: $(CI_TARGET)
 
@@ -124,8 +122,6 @@ build/hawkthorne-win64.zip: build/win64/hawkthorne.exe
 	cp -R bin/win64/* build/win64/
 	zip --symlinks -q -r hawkthorne-win64 build/win64/ -x "*/love*.exe"
 	mv hawkthorne-win64.zip build
-
-MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
 
 $(MACOS_APP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
 	cp -R bin/love.app $(MACOS_APP)
@@ -170,6 +166,9 @@ lint:
 		xargs -I {} ./scripts/lualint.lua -r "{}"
 
 clean:
-	rm -rf bin
-	rm -rf build
+	rm -rf bin/
+	rm -rf build/
+	rm -rf venv/
+	rm -rf node_modules/
+	rm -rf scripts/*.pyc
 	rm -rf src/maps/*.lua
