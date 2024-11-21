@@ -22,9 +22,9 @@ else
 	wget = wget -q --no-check-certificate
 endif
 
-tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 
-maps: $(tilemaps)
+maps: $(TILEMAPS)
 
 love: build/hawkthorne.love
 
@@ -34,7 +34,7 @@ love.js: build/hawkthorne.love
 	npx love.js -t "Journey to the Center of Hawkthorne" -m 77594624 -c build/hawkthorne.love build/web
 	cp templates/web/* build/web/
 
-build/hawkthorne.love: $(tilemaps) src/*
+build/hawkthorne.love: $(TILEMAPS) src/*
 	mkdir -p build
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . \
 		-x ".*" \
@@ -46,7 +46,7 @@ build/hawkthorne.love: $(tilemaps) src/*
 		-x "*/full_soundtrack.ogg" \
 		-x "*.bak"
 
-run: $(tilemaps) $(LOVE)
+run: $(TILEMAPS) $(LOVE)
 	$(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
