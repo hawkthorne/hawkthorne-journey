@@ -103,15 +103,7 @@ bin/appimagetool.AppImage:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps binaries
-
-# ifeq ($(TRAVIS), true)
-# ifeq ($(TRAVIS_PULL_REQUEST), false)
-# ifeq ($(TRAVIS_BRANCH), release)
-# CI_TARGET=clean test validate maps
-# endif
-# endif
-# endif
+CI_TARGET=clean test validate maps binaries
 
 deploy: $(CI_TARGET)
 
