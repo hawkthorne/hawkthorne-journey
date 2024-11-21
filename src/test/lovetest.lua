@@ -1,15 +1,5 @@
 local lovetest = {}
 
--- Search the passed in arguments for either -t or --test
-function lovetest.detect(args) 
-  for _, flag in ipairs(args) do
-    if flag == "-t" or flag == "--test" then
-      return true
-    end
-  end
-  return false
-end
-
 -- Run the unit tests, On windows, don't quit. This allows the user to see the
 -- test results in the console
 function lovetest.run() 

@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>12D78</string>
+	<string>23C71</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>love</string>
 	<key>CFBundleIconFile</key>
-	<string>Love.icns</string>
+	<string>GameIcon.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.projecthawkthorne.journey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -19,30 +19,40 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8.0</string>
+	<string>11.5a</string>
 	<key>CFBundleSignature</key>
-	<string>HaWk</string>
-	<key>CFBundleVersion</key>
-	<string>0.0.0</string>
+	<string>LoVe</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
 	<key>DTCompiler</key>
-	<string></string>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>4H512</string>
+	<string></string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>14.2</string>
 	<key>DTSDKBuild</key>
-	<string>12D75</string>
+	<string>23C53</string>
 	<key>DTSDKName</key>
-	<string>macosx10.8</string>
+	<string>macosx14.2</string>
 	<key>DTXcode</key>
-	<string>0461</string>
+	<string>1520</string>
 	<key>DTXcodeBuild</key>
-	<string>4H512</string>
+	<string>15C500b</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.games</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.11</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2006-2012 Hawkthorne Development Team</string>
-	<key>NSMainNibFile</key>
-	<string>SDLMain</string>
+	<string>© 2006-2024 Hawkthorne Development Team</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<false/>
 </dict>
 </plist>

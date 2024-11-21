@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Journey to the Center of Hawkthorne
+Comment=A 2D platformer based on Community's Digital Estate Planning
+MimeType=application/x-love-game;
+Exec=hawkthorne %f
+Type=Application
+Categories=Game;
+Terminal=false
+Icon=hawkthorne
+NoDisplay=true

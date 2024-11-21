@@ -1,24 +1,30 @@
-.PHONY: clean contributors run productionize deploy love maps appcast lint
+.PHONY: clean contributors validate run deploy maps lint love love.js
 
 UNAME := $(shell uname)
+TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
+LOVE_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
+LOVE_VERSION = 11.5
+MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
+CI_TARGET=clean test validate maps binaries
 
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.zip
-  LOVE = bin/love.app/Contents/MacOS/love
+	TMXTAR = tmx2lua.osx.zip
+	LOVE = bin/love.app/Contents/MacOS/love
+	# macOS cannot create a Linux AppImage
+	BINARIES = build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip
 else
-  TMXTAR = tmx2lua.linux.tar.gz
-  LOVE = bin/love-11.3-x86_64.AppImage
+	TMXTAR = tmx2lua.linux.tar.gz
+	LOVE = bin/love.AppImage
+	BINARIES = build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip build/hawkthorne-linux.AppImage
 endif
 
 ifeq ($(shell which wget),)
-  wget = curl -s -O -L
+	WGET = curl -s -O -L
 else
-  wget = wget -q --no-check-certificate
+	WGET = wget -q --no-check-certificate
 endif
 
-tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
-
-maps: $(tilemaps)
+maps: $(TILEMAPS)
 
 love: build/hawkthorne.love
 
@@ -26,123 +32,126 @@ love.js: build/hawkthorne.love
 	mkdir -p build/web
 	npm install
 	npx love.js -t "Journey to the Center of Hawkthorne" -m 77594624 -c build/hawkthorne.love build/web
-	cp web/* build/web/
+	cp templates/web/* build/web/
 
-build/hawkthorne.love: $(tilemaps) src/*
+build/hawkthorne.love: $(TILEMAPS) src/*
 	mkdir -p build
-	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
+	cd src && zip --symlinks -q -r ../build/hawkthorne.love . \
+		-x ".*" \
+		-x "*.DS_Store" \
+		-x "psds/*" \
+		-x "test/*" \
+		-x "*.tmx" \
+		-x "maps/test-level.lua" \
+		-x "*/full_soundtrack.ogg" \
+		-x "*.bak"
 
-run: $(tilemaps) $(LOVE)
+run: $(TILEMAPS) $(LOVE)
 	$(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
 # tmx2lua requires golang to be installed.
-# If you need to install it on OSX:
+# If you need to install it on macOS:
 # brew update && brew install golang
 bin/tmx2lua:
 	mkdir -p bin
-	$(wget) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.0/$(TMXTAR)
+	$(WGET) https://github.com/hawkthorne/tmx2lua/releases/download/v1.0.1/$(TMXTAR)
+ifeq ($(UNAME), Darwin)
+	unzip -q $(TMXTAR)
+else
 	tar -xzvf $(TMXTAR)
-	rm -f $(TMXTAR)
+endif
+	rm -f $(TMXTAR) ._tmx2lua
 	mv tmx2lua bin
+
+bin/win32/love.exe:
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win32.zip
+	unzip -q love-$(LOVE_VERSION)-win32.zip
+	mv love-$(LOVE_VERSION)-win32 bin/win32
+	rm -f love-$(LOVE_VERSION)-win32.zip
+	rm bin/win32/changes.txt bin/win32/game.ico bin/win32/love.ico bin/win32/readme.txt
+
+bin/win64/love.exe:
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-win64.zip
+	unzip -q love-$(LOVE_VERSION)-win64.zip
+	mv love-$(LOVE_VERSION)-win64 bin/win64
+	rm -f love-$(LOVE_VERSION)-win64.zip
+	rm bin/win64/changes.txt bin/win64/game.ico bin/win64/love.ico bin/win64/readme.txt
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
-	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-macos.zip
-	unzip -q love-11.3-macos.zip
-	rm -f love-11.3-macos.zip
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-macos.zip
+	unzip -q love-$(LOVE_VERSION)-macos.zip
+	rm -f love-$(LOVE_VERSION)-macos.zip
 	mv love.app bin
-	cp osx/Info.plist bin/love.app/Contents
 
-bin/love-11.3-x86_64.AppImage:
+bin/love.AppImage:
 	mkdir -p bin
-	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-x86_64.AppImage
-	mv love-11.3-x86_64.AppImage bin
-	chmod +x bin/love-11.3-x86_64.AppImage
+	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-x86_64.AppImage
+	mv love-$(LOVE_VERSION)-x86_64.AppImage bin/love.AppImage
+	chmod +x bin/love.AppImage
+
+bin/appimagetool.AppImage:
+	mkdir -p bin
+	$(WGET) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+	mv appimagetool-x86_64.AppImage bin/appimagetool.AppImage
+	chmod +x bin/appimagetool.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps productionize binaries
-
-ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_PULL_REQUEST), false)
-ifeq ($(TRAVIS_BRANCH), release)
-CI_TARGET=clean test validate maps productionize social
-endif
-endif
-endif
-
-positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
-
-src/positions/%.lua: psds/positions/%.png
-	overlay2lua src/positions/config.json $<
-
-win64/love.exe:
-	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-win64.zip
-	unzip -q love-11.3-win64.zip
-	mv love-11.3-win64 win64
-	rm -f love-11.3-win64.zip
-	rm win64/changes.txt win64/game.ico win64/license.txt win64/love.ico win64/readme.txt
-
-win64/hawkthorne.exe: build/hawkthorne.love win64/love.exe
-	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
-
-build/hawkthorne-win-x86_64.zip: win64/hawkthorne.exe
-	mkdir -p build
-	rm -rf hawkthorne
-	rm -f hawkthorne-win-x86_64.zip
-	cp -r win64 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x86_64 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x86_64.zip build
-
-OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
-
-$(OSXAPP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
-	cp -R bin/love.app $(OSXAPP)
-	cp build/hawkthorne.love $(OSXAPP)/Contents/Resources/hawkthorne.love
-	cp osx/Info.plist $(OSXAPP)/Contents/Info.plist
-	cp osx/Hawkthorne.icns $(OSXAPP)/Contents/Resources/Love.icns
-
-build/hawkthorne-osx.zip: $(OSXAPP)
-	mkdir -p build
-	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
-	mv hawkthorne-osx.zip build
-
-productionize: venv
-	venv/bin/python scripts/productionize.py
-
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
-
-upload: binaries post.md venv
-	venv/bin/python scripts/release.py
-
-appcast: venv build/hawkthorne-osx.zip win64/hawkthorne.exe
-	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.json | python -m json.tool > /dev/null
-	venv/bin/python scripts/upload.py / sparkle/appcast.json
-
-social: venv notes.html post.md
-	venv/bin/python scripts/socialize.py post.md
-
-notes.html: post.md
-	venv/bin/python -m markdown post.md > notes.html
-
-post.md:
-	venv/bin/python scripts/create_post.py post.md
-
-venv:
-	virtualenv -q --python=python3.6 venv
-	venv/bin/pip install -q -r requirements.txt
-
 deploy: $(CI_TARGET)
 
+build/win32/hawkthorne.exe: build/hawkthorne.love bin/win32/love.exe
+	mkdir -p build/win32
+	cat bin/win32/love.exe build/hawkthorne.love > build/win32/hawkthorne.exe
+
+build/win64/hawkthorne.exe: build/hawkthorne.love bin/win64/love.exe
+	mkdir -p build/win64
+	cat bin/win64/love.exe build/hawkthorne.love > build/win64/hawkthorne.exe
+
+build/hawkthorne-win32.zip: build/win32/hawkthorne.exe
+	cp -R bin/win32/* build/win32/
+	zip --symlinks -q -r hawkthorne-win32 build/win32/ -x "*/love*.exe"
+	mv hawkthorne-win32.zip build
+
+build/hawkthorne-win64.zip: build/win64/hawkthorne.exe
+	cp -R bin/win64/* build/win64/
+	zip --symlinks -q -r hawkthorne-win64 build/win64/ -x "*/love*.exe"
+	mv hawkthorne-win64.zip build
+
+$(MACOS_APP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
+	cp -R bin/love.app $(MACOS_APP)
+	cp build/hawkthorne.love $(MACOS_APP)/Contents/Resources/hawkthorne.love
+	cp templates/macos/Info.plist $(MACOS_APP)/Contents/Info.plist
+	cp templates/macos/Hawkthorne.icns $(MACOS_APP)/Contents/Resources/GameIcon.icns
+
+build/hawkthorne-macos.zip: $(MACOS_APP)
+	mkdir -p build
+	zip --symlinks -q -r hawkthorne-macos $(MACOS_APP)
+	mv hawkthorne-macos.zip build
+
+build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/appimagetool.AppImage
+	mkdir -p build/linux
+	bin/love.AppImage --appimage-extract
+	mv squashfs-root build/linux/
+	cat build/linux/squashfs-root/bin/love build/hawkthorne.love > build/linux/squashfs-root/bin/hawkthorne
+	chmod +x build/linux/squashfs-root/bin/hawkthorne
+	cp templates/linux/* build/linux/squashfs-root/
+	rm build/linux/squashfs-root/bin/love build/linux/squashfs-root/love.svg
+	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
+	chmod +x build/hawkthorne-linux.AppImage
+
+binaries: $(BINARIES)
+
+venv:
+	python3 -m venv venv
+	venv/bin/pip install -q -r requirements.txt
+
 contributors: venv
-	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
 
 test: $(LOVE) maps
@@ -157,15 +166,9 @@ lint:
 		xargs -I {} ./scripts/lualint.lua -r "{}"
 
 clean:
-	rm -rf build
-	rm -f release.md
-	rm -f post.md
-	rm -f notes.html
-	rm -rf src/maps/*.lua
-	rm -rf bin/tmx2lua-git
-	rm -rf $(OSXAPP)
-
-reset:
-	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
-	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
+	rm -rf bin/
+	rm -rf build/
+	rm -rf venv/
+	rm -rf node_modules/
+	rm -rf scripts/*.pyc
 	rm -rf src/maps/*.lua

@@ -6,7 +6,6 @@ local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
-local mixpanel = require 'vendor/mixpanel'
 
 local debugger = require 'debugger'
 local camera = require 'camera'
@@ -19,15 +18,9 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
-local lovetest = require 'test/lovetest'
 
 local testing = false
 local paused = false
-
--- Get the current version of the game
-local function getVersion()
-  return utils.split(love.window.getCaption(), "v")[2]
-end
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
@@ -37,13 +30,7 @@ function love.load(arg)
     error("Love 11 or later is required")
   end
 
-  local mixpanel = require 'vendor/mixpanel'
-
   local state, door, position = 'update', nil, nil
-
-  -- SCIENCE!
-  mixpanel.init(app.config.iteration)
-  mixpanel.track('game.opened')
 
   -- set settings
   local options = require 'options'
@@ -72,7 +59,8 @@ function love.load(arg)
     error("Could not parse command line arguments")
   end
 
-  if lovetest.detect(arg) then
+  if args["test"] then
+    local lovetest = require 'test/lovetest'
     testing = true
     lovetest.run()
     return

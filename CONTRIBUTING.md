@@ -76,14 +76,6 @@ in the repository.
 * No trailing whitespace. Blank lines should not have any space.
 * Follow the conventions you see used in the source already.
 
-### Handy Code Templates:
-[Node Template][node]: used for making objects in the game
-
-[Gamestate Template][gamestate]: used for making a new gamescreen(e.g the pause menu)
-
-[node]: https://github.com/hawkthorne/hawkthorne-journey/blob/master/docs/codetemplates/node.lua
-[gamestate]: https://github.com/hawkthorne/hawkthorne-journey/blob/master/docs/codetemplates/state.lua
-
 [gameplay]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=gameplay&state=open
 [bugs]: https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open
 

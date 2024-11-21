@@ -20,7 +20,6 @@ function state:onSelectCallback()
     local options = {
       ['FULLSCREEN'] = 'updateFullscreen',
       ['SHOW FPS'] = 'updateFpsSetting',
-      ['SEND PLAY DATA'] = 'updateSendDataSetting',
       ['HARDCORE MODE'] = 'updateHardcore',
       ['TUTORIAL MODE'] = 'updateTutorial',
       ['SFX VOLUME'] = true,
@@ -61,7 +60,6 @@ local OPTIONS = {
   { name = 'MUSIC VOLUME',            range  = { 0, 10, 10 }  },
   { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
   { name = 'SHOW FPS',                bool   = false          },
-  { name = 'SEND PLAY DATA',          bool   = false          },
   { name = 'HARDCORE MODE',           bool   = false          },
   { name = 'TUTORIAL MODE',           bool   = true           },
 }
@@ -72,7 +70,6 @@ local MENU = {
     {name = 'SAVE GAME'},
     {name = 'HARDCORE MODE'},
     {name = 'TUTORIAL MODE'},
-    {name = 'SEND PLAY DATA'},
     {name = 'RESET SETTINGS/SAVES', page = {
       {name = 'RESET SETTINGS'},
       {name = 'RESET SAVES'},
@@ -125,7 +122,6 @@ function state:init()
   self:updateFullscreen()
   self:updateSettings()
   self:updateFpsSetting()
-  self:updateSendDataSetting()
   self:updateHardcore()
   self:updateTutorial()
 end
@@ -242,11 +238,6 @@ function state:updateFpsSetting()
   window.showfps = self.option_map['SHOW FPS'].bool
 end
 
-function state:updateSendDataSetting()
-  local setting = self.option_map['SEND PLAY DATA']
-  app.config.tracker = setting and setting.bool or false
-end
-
 function state:updateSettings()
   sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
   sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
@@ -266,7 +257,6 @@ function state.reset_settings(self)
   self:updateFullscreen()
   self:updateSettings()
   self:updateFpsSetting()
-  self:updateSendDataSetting()
   self:updateHardcore()
   self:updateTutorial()
 
