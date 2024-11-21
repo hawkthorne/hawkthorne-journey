@@ -1,4 +1,4 @@
-.PHONY: clean contributors run productionize deploy love maps lint
+.PHONY: clean contributors run deploy love maps lint
 
 UNAME := $(shell uname)
 
@@ -6,17 +6,20 @@ LOVE_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
 LOVE_VERSION = 11.5
 
 ifeq ($(UNAME), Darwin)
-  TMXTAR = tmx2lua.osx.zip
-  LOVE = bin/love.app/Contents/MacOS/love
+	TMXTAR = tmx2lua.osx.zip
+	LOVE = bin/love.app/Contents/MacOS/love
+	# macOS cannot create a Linux AppImage
+	BINARIES = build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip
 else
-  TMXTAR = tmx2lua.linux.tar.gz
-  LOVE = bin/love.AppImage
+	TMXTAR = tmx2lua.linux.tar.gz
+	LOVE = bin/love.AppImage
+	BINARIES = build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip build/hawkthorne-linux.AppImage
 endif
 
 ifeq ($(shell which wget),)
-  wget = curl -s -O -L
+	wget = curl -s -O -L
 else
-  wget = wget -q --no-check-certificate
+	wget = wget -q --no-check-certificate
 endif
 
 tilemaps := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
@@ -83,7 +86,6 @@ bin/love.app/Contents/MacOS/love:
 	unzip -q love-$(LOVE_VERSION)-macos.zip
 	rm -f love-$(LOVE_VERSION)-macos.zip
 	mv love.app bin
-	cp templates/macos/Info.plist bin/love.app/Contents
 
 bin/love.AppImage:
 	mkdir -p bin
@@ -101,12 +103,12 @@ bin/appimagetool.AppImage:
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
 ######################################################
 
-CI_TARGET=test validate maps productionize binaries
+CI_TARGET=test validate maps binaries
 
 # ifeq ($(TRAVIS), true)
 # ifeq ($(TRAVIS_PULL_REQUEST), false)
 # ifeq ($(TRAVIS_BRANCH), release)
-# CI_TARGET=clean test validate maps productionize
+# CI_TARGET=clean test validate maps
 # endif
 # endif
 # endif
@@ -137,7 +139,7 @@ $(MACOS_APP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
 	cp -R bin/love.app $(MACOS_APP)
 	cp build/hawkthorne.love $(MACOS_APP)/Contents/Resources/hawkthorne.love
 	cp templates/macos/Info.plist $(MACOS_APP)/Contents/Info.plist
-	cp templates/macos/Hawkthorne.icns $(MACOS_APP)/Contents/Resources/Love.icns
+	cp templates/macos/Hawkthorne.icns $(MACOS_APP)/Contents/Resources/GameIcon.icns
 
 build/hawkthorne-macos.zip: $(MACOS_APP)
 	mkdir -p build
@@ -155,10 +157,7 @@ build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/app
 	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
 	chmod +x build/hawkthorne-linux.AppImage
 
-productionize: venv
-	venv/bin/python scripts/productionize.py
-
-binaries: build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip build/hawkthorne-linux.AppImage
+binaries: $(BINARIES)
 
 venv:
 	python3 -m venv venv
