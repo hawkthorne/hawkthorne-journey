@@ -60,7 +60,7 @@ ifeq ($(UNAME), Darwin)
 else
 	tar -xzvf $(TMXTAR)
 endif
-	rm -f $(TMXTAR)
+	rm -f $(TMXTAR) ._tmx2lua
 	mv tmx2lua bin
 
 bin/win32/love.exe:
@@ -90,6 +90,12 @@ bin/love.AppImage:
 	$(wget) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-x86_64.AppImage
 	mv love-$(LOVE_VERSION)-x86_64.AppImage bin/love.AppImage
 	chmod +x bin/love.AppImage
+
+bin/appimagetool.AppImage:
+	mkdir -p bin
+	$(wget) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+	mv appimagetool-x86_64.AppImage bin/appimagetool.AppImage
+	chmod +x bin/appimagetool.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -138,10 +144,21 @@ build/hawkthorne-macos.zip: $(MACOS_APP)
 	zip --symlinks -q -r hawkthorne-macos $(MACOS_APP)
 	mv hawkthorne-macos.zip build
 
+build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/appimagetool.AppImage
+	mkdir -p build/linux
+	bin/love.AppImage --appimage-extract
+	mv squashfs-root build/linux/
+	cat build/linux/squashfs-root/bin/love build/hawkthorne.love > build/linux/squashfs-root/bin/hawkthorne
+	chmod +x build/linux/squashfs-root/bin/hawkthorne
+	cp templates/linux/* build/linux/squashfs-root/
+	rm build/linux/squashfs-root/love.svg
+	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
+	chmod +x build/hawkthorne-linux.AppImage
+
 productionize: venv
 	venv/bin/python scripts/productionize.py
 
-binaries: build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip
+binaries: build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip build/hawkthorne-linux.AppImage
 
 venv:
 	python3 -m venv venv
