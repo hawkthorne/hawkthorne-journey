@@ -151,7 +151,7 @@ build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/app
 	cat build/linux/squashfs-root/bin/love build/hawkthorne.love > build/linux/squashfs-root/bin/hawkthorne
 	chmod +x build/linux/squashfs-root/bin/hawkthorne
 	cp templates/linux/* build/linux/squashfs-root/
-	rm build/linux/squashfs-root/love.svg
+	rm build/linux/squashfs-root/bin/love build/linux/squashfs-root/love.svg
 	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
 	chmod +x build/hawkthorne-linux.AppImage
 
