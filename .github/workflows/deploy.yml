@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt-get install -y curl desktop-file-utils file libfuse2t64 lua5.4 make python3-pip python3-venv xvfb zip zsync
+
+    - name: Deploy
+      run: xvfb-run make binaries
+
+    - name: Tar build artifacts
+      run: tar -cvf build/builds.tar build/hawkthorne-macos.zip build/hawkthorne-win32.zip build/hawkthorne-win64.zip build/hawkthorne-linux.AppImage build/hawkthorne.love
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: builds.zip
+        path: build/builds.tar
+        retention-days: 7
