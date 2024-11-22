@@ -5,7 +5,7 @@ TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 LOVE_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
 LOVE_VERSION = 11.5
 MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
-CI_TARGET=clean test validate maps binaries
+CI_TARGET=clean validate test binaries
 
 ifeq ($(UNAME), Darwin)
 	TMXTAR = tmx2lua.osx.zip
@@ -91,13 +91,13 @@ bin/love.AppImage:
 	mkdir -p bin
 	$(WGET) $(LOVE_DOWNLOAD_URL)/$(LOVE_VERSION)/love-$(LOVE_VERSION)-x86_64.AppImage
 	mv love-$(LOVE_VERSION)-x86_64.AppImage bin/love.AppImage
-	chmod +x bin/love.AppImage
+	chmod a+x bin/love.AppImage
 
 bin/appimagetool.AppImage:
 	mkdir -p bin
 	$(WGET) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
 	mv appimagetool-x86_64.AppImage bin/appimagetool.AppImage
-	chmod +x bin/appimagetool.AppImage
+	chmod a+x bin/appimagetool.AppImage
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
@@ -139,11 +139,11 @@ build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/app
 	bin/love.AppImage --appimage-extract
 	mv squashfs-root build/linux/
 	cat build/linux/squashfs-root/bin/love build/hawkthorne.love > build/linux/squashfs-root/bin/hawkthorne
-	chmod +x build/linux/squashfs-root/bin/hawkthorne
+	chmod a+x build/linux/squashfs-root/bin/hawkthorne
 	cp templates/linux/* build/linux/squashfs-root/
 	rm build/linux/squashfs-root/bin/love build/linux/squashfs-root/love.svg
 	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
-	chmod +x build/hawkthorne-linux.AppImage
+	chmod a+x build/hawkthorne-linux.AppImage
 
 binaries: $(BINARIES)
 
