@@ -2,85 +2,44 @@
 
 [![Journey to the Center of Hawkthorne](https://projecthawkthorne.com/assets/images/metatag.png)](https://projecthawkthorne.com)
 
-A 2D platformer is based on Community's [Digital Estate Planning][estate]
-episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please
-[report any issues or bugs][githubissues] you have with the game!
+A 2D platformer is based on Community's [Digital Estate Planning][estate] episode. It's built using the [LÖVE](https://love2d.org/) game engine. Please [report any issues or bugs][githubissues] you have with the game!
 
-[estate]: http://en.wikipedia.org/wiki/Digital_Estate_Planning
+[estate]: https://en.wikipedia.org/wiki/Digital_Estate_Planning
 [githubissues]: https://github.com/hawkthorne/hawkthorne-journey/issues?state=open
 
+## Play
 
-## Play the game
-
-Visit [projecthawkthorne.com](https://projecthawkthorne.com) to play the game in your browser.
+Visit [projecthawkthorne.com](https://projecthawkthorne.com) to play the game in your browser or download the game for your native platform.
 
 ### Download
 
-- [macOS](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.0.4/hawkthorne-osx.zip)
-- [Windows](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.0.4/hawkthorne-win-x86.zip)
+- [macOS](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.1.0/hawkthorne-macos.zip)
+- [Windows 32bit](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.1.0/hawkthorne-win32.zip)
+- [Windows 64bit](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.1.0/hawkthorne-win64.zip)
+- [Linux](https://github.com/hawkthorne/hawkthorne-journey/releases/download/v1.1.0/hawkthorne-linux.AppImage)
 
-## Contribute to the game
+## Development
 
-All discussion and development takes place on
-[/r/hawkthorne](http://www.reddit.com/r/hawkthorne). If you have any
-contributions you'd like to submit, either open a pull request or create a post
-on the subreddit. The steps below are only needed if you want to write code for
-the game.
-
-### Getting started with development on macOS / Linux
-
-Getting start is easy. Just clone the repository and run `make run`.
+Getting start is easy. Just clone the repository and run `make run` (or `.\make.ps1 run` in Windows PowerShell).
 
 ```bash
-$ git clone git://github.com/hawkthorne/hawkthorne-journey.git
+$ git clone https://github.com/hawkthorne/hawkthorne-journey.git
 $ cd hawkthorne-journey
 $ make run
 ```
 
-### Getting started with development on Windows
-
-First, download and install [Github for Windows](http://windows.github.com/)
-which will setup git on your computer. You'll also need PowerShell, which comes
-pre-installed on Windows 7 & 8.
-
-Once you've installed and logged in with Github for Windows, go to
-`https://github.com/hawkthorne/hawkthorne-journey` and click the `Fork` button
-
-After you've successfully forked the repository go to
-`https://github.com/<your username>/hawkthorne-journey` and click the "Clone in
-Windows" button.
-
-Once you have the repo, click on it in Github for Windows, select "tools > open a shell here".
-
-In your new PowerShell window, run
-
-```powershell
-> .\make.ps1 run
-```
- 
 ### Next steps
 
-Congratulations! You're running Journey to the Center of Hawkthorne! Your next steps can be:
+Congratulations! You're running Journey to the Center of Hawkthorne!
 
-- Fix [bugs](https://github.com/hawkthorne/hawkthorne-journey/issues?labels=bug&state=open) with the game
-- Add new features and content to the game
-
-### Releasing a new version
-
-To create a release, open a pull request from the `master` branch to the
-`release` branch. You should never commit directly to the `release` branch.
-
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Community
 
-- [/r/hawkthorne subreddit](http://www.reddit.com/r/hawkthorne)
-
+All discussion and development takes place on [/r/hawkthorne](https://reddit.com/r/hawkthorne).
 
 ## License
 
 Unless otherwise noted, this code is licensed under the MIT License.
 
-Artwork and audio files are licensed under [CC BY-NC
-3.0](http://creativecommons.org/licenses/by-nc/3.0/). Artwork includes all
-.png, .psd, .ogg, and .wav files.
-
+Artwork and audio files are licensed under [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/). Artwork includes all .png, .psd, .ogg, and .wav files.
