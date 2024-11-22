@@ -1,11 +1,10 @@
-.PHONY: clean contributors validate run deploy maps lint love love.js
+.PHONY: clean contributors validate run maps lint love love.js
 
 UNAME := $(shell uname)
 TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
 LOVE_DOWNLOAD_URL = https://github.com/love2d/love/releases/download
 LOVE_VERSION = 11.5
 MACOS_APP=build/Journey\ to\ the\ Center\ of\ Hawkthorne.app
-CI_TARGET=clean validate test binaries
 
 ifeq ($(UNAME), Darwin)
 	TMXTAR = tmx2lua.osx.zip
@@ -98,12 +97,6 @@ bin/appimagetool.AppImage:
 	$(WGET) https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
 	mv appimagetool-x86_64.AppImage bin/appimagetool.AppImage
 	chmod a+x bin/appimagetool.AppImage
-
-######################################################
-# THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
-######################################################
-
-deploy: $(CI_TARGET)
 
 build/win32/hawkthorne.exe: build/hawkthorne.love bin/win32/love.exe
 	mkdir -p build/win32

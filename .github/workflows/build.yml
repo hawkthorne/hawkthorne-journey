@@ -1,19 +1,12 @@
 name: Build
 
 on:
-  # push:
-  #   branches:
-  #     - release
-  # pull_request:
-  #   branches:
-  #     - master
-
-  # TODO: Remove this once workflow is confirmed to be stable
-  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-24.04
 
     steps:
@@ -22,16 +15,5 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install -y curl desktop-file-utils file libfuse2t64 lua5.4 make python3-pip python3-venv xvfb zip zsync
 
-    - name: Build/Deploy
-      run: xvfb-run make deploy
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: hawkthorne-linux.AppImage
-        path: build/hawkthorne-linux.AppImage
-        # TODO: Also these artifacts
-        # 
-        # build/hawkthorne-macos.zip
-        # build/hawkthorne-win32.zip
-        # build/hawkthorne-win64.zip
-        # build/hawkthorne.love
+    - name: Build
+      run: xvfb-run make clean validate test
