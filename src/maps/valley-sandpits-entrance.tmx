@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="70" height="45" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="70" height="45" tilewidth="24" tileheight="24">
  <properties>
   <property name="offset" value="31"/>
   <property name="overworldName" value="valley_1"/>
   <property name="soundtrack" value="valley"/>
  </properties>
  <tileset firstgid="1" name="valley" tilewidth="24" tileheight="24">
-  <image source="../images/tilesets/valley.png" width="288" height="1776"/>
+  <image source="../images/tilesets/valley.png" width="288" height="1824"/>
  </tileset>
- <tileset firstgid="889" name="collisions" tilewidth="24" tileheight="24">
+ <tileset firstgid="913" name="collisions" tilewidth="24" tileheight="24">
   <image source="../images/tilesets/collisions.png" width="632" height="512"/>
  </tileset>
  <layer name="bg_filler" width="70" height="45">
@@ -43,7 +43,7 @@
  </layer>
  <layer name="foreground" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJztl7FOwzAQhi2LCSTYydKlzQzlAXgrYLMEzMADFHWDSIyFRwNGfqNataIkdmwntpP7pFPaJLLvvvoahzGCIAiCaGbDmYidgw+/2mfUwl65/5gYQ1SZe9FBLf9ufNll5uUGNd8i7lpq/8T5rwBeMIbAWCJ2L51azn+Pmh8Qjy21VwGcKN6R01tkL+cd8y9R62pf7xOOz4iXnl4uLH0dsUMeOfURQeTEJfpxHfA/jCD05wTRj62HtxD71iHn8cnPxctmv5cPuUdrY+cxj887h4sX7DHlXnMULxV3q0/e7/PO0eTFJgflZsheUmvSxY3Kz5W6lz79EeodsA19XbrM5bOe6176rIOx+sjVf0gvarwxarYhpVyG7o9cSeX3iUFhuO6z38sV6aQ03DNHL0vEinWvmY8ZepGsEVexk0gQUx8RBJEeJWfb4hALfF/Ur+nnpo6q+QzPt3oUDdem7qbLhynkelIxNU+FpQOLccTgyY5EabFObJmKF5OTVPhG/MROggjKCWfXx4iuY6i51HMi1Hg5o++pYudCEHPgD4//X7E=
+   eJztl7FOwzAQhi2PIMFOli5tZigPwFsBmyVgBh6gqBtEYmz7aMDIb1QLK0pix3ZiO7lPOqVNIvvuq69xGCMIgiCIZjacidg5+PCjfUYt7I37j4kxRJW5Fx3U8ufGl11mXm5R8x3ivqX2Pc4fAnjBGAJjidi9dGY5/wNqfkQ8tdReBXCi+EBO75G9XHTMv0Stq2O9zzi+IF57erl08JVTHxFETlyhH9cB/8MIQn9OEP3YengLsW8dch6f/Fy8bI57+ZB7tDZ2HvP4vHO4eMEeU+41R/FScbf65P0+7xxNXmxyUG6G7CW1Jl3cqPxcqXvp0x+h3gHb0Nely1w+67nupc86GKuPXP2H9KLGG6NmG1LKZej+yJVUfp8YFIbrPvu9XJFOSsM9c/SyRKxY95r5nKEXyRpxHTuJBDH1EUEQ6VFyti3+Y4Hvi/o1/dzUUTWf4/lWj6Lh2tTddPkwhVxPKqbmqbB0YDGOGDzZkSgt1oktU/FicpIKX4jv2EkQQTnl7OYE0XUMNZd6ToQaL2f0PVXsXAhiDvwCJcJfLQ==
   </data>
  </layer>
  <layer name="shrubs" width="70" height="45">
@@ -53,10 +53,10 @@
  </layer>
  <layer name="collision" width="70" height="45">
   <data encoding="base64" compression="zlib">
-   eJzt2VsKwjAQheFCVi14WUTByyIE3WHzUtAa00mbSSbk/2Ae+mA7HszNDgMAAACA3hxcG3X2dXG107KLfOLIJ44xl4584iTz+ri4BgCgBUe/Zp0qn1liPWjVWi8Se56z57MlpeQhtZaLRaP7Lg0t5lJCC+Nk6e77ehjtzYLleCKvOO25R9vL9/3OuE63bs5Dy9Xf++bKrFtbPd1vaZnz6J3l38Mn3qOErc2JveYjXSv25lPqvV/oTLzlXqlraGhO/lc5SL+T5ByasmfQ3lvkOjfn2h/VzkXjf4QcauViNY9Z6T269Ty09Xb+kSKDsK25TCiKkPk=
+   eJzt2UsKwjAQxvFC7r8QfByi4OMQgt6q2RS0xnTSZpIJ+f9gFl3Yjh/mZYcBAAAAQG8Oro06+7q42mnZRT5x5BPHmEtHPnGSeX1cXAMA0IKjX7NOlc8ssR60aq0XiT3P2fPZklLykFrLxaLRfZeGFnMpoYVxsnT3fT2M9mbBcjyRV5z23KPt5ft+Z1ynWzfnoeXq731zZdatrZ7ut7TMefTO8u/hE+9RwtbmxF7zka4Ve/Mp9d4vdCbecq/UNTQ0J/+rHKTfSXIOTdkzaO8tcp2bc+2Pauei8T9CDrVysZrHrPQe3Xoe2no7/0iRQdjWXCYs6quB
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="70" height="45">
+ <objectgroup color="#000000" name="nodes">
   <object name="main" type="door" x="504" y="216" width="24" height="48">
    <properties>
     <property name="level" value="valley-chili-fields-2"/>
@@ -213,8 +213,13 @@
   <object name="bone" type="material" x="432" y="552" width="24" height="24"/>
   <object name="bone" type="material" x="264" y="864" width="24" height="24"/>
   <object name="bone" type="material" x="1080" y="792" width="24" height="24"/>
+  <object name="bone" type="material" x="960" y="240" width="24" height="24">
+   <properties>
+    <property name="sprite" value="skull"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="movement" width="70" height="45">
+ <objectgroup name="movement">
   <object name="platform_2" x="1024" y="876">
    <polyline points="-8,0 64,0"/>
   </object>

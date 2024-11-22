@@ -23,9 +23,10 @@ function Material.new(node, collider)
   material.name = node.name
   material.type = 'material'
   local file = utils.require( 'nodes/materials/' .. material.name)
-  material.width = file.width or 24
-  material.height = file.height or 24
-  material.image = love.graphics.newImage('images/materials/'..node.name..'.png')
+  material.width = file.width or node.properties.width or 24
+  material.height = file.height or node.properties.height or 24
+  material.image_sprite = node.properties.sprite or node.name
+  material.image = love.graphics.newImage('images/materials/'..material.image_sprite..'.png')
   material.image_q = love.graphics.newQuad( 0, 0, material.width, material.height, material.image:getWidth(),material.image:getHeight() )
   material.foreground = node.properties.foreground
   material.collider = collider
