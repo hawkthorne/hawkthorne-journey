@@ -4,7 +4,10 @@ class LoveGame extends HTMLElement {
   constructor() {
     super();
 
-    this.LIBRARIES = ["assets/js/game.js", "assets/js/love.js"];
+    this.LIBRARIES = [
+      new URL("game.js", import.meta.url),
+      new URL("love.js", import.meta.url)
+    ];
   }
 
   connectedCallback() {
@@ -32,16 +35,17 @@ class LoveGame extends HTMLElement {
   init() {
     this.Module = {
       arguments: ["./game.love"],
-      INITIAL_MEMORY: 77594624,
+      filePackagePrefixURL: new URL("game.data", import.meta.url).href.replace(/game.data$/, ""),
+      INITIAL_MEMORY: parseInt(this.dataset.memory),
       printErr: console.error.bind(console),
       canvas: (() => {
-        const canvas = document.getElementById('canvas');
+        const canvas = this.querySelector("#canvas");
 
         // As a default initial behavior, pop up an alert when webgl context is lost. To make your
         // application robust, you may want to override this behavior before shipping!
         // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
         canvas.addEventListener("webglcontextlost", function(e) {
-          alert('WebGL context lost. You will need to reload the page.');
+          alert("WebGL context lost. You will need to reload the page.");
           e.preventDefault();
         }, false);
 
@@ -62,9 +66,9 @@ class LoveGame extends HTMLElement {
         this.Module.remainingDependencies = left;
         this.Module.totalDependencies = Math.max(this.Module.totalDependencies, left);
         if (left) {
-          this.Module.setStatus('Preparing... (' + (this.Module.totalDependencies - left) + '/' + this.Module.totalDependencies + ')');
+          this.Module.setStatus("Preparing... (" + (this.Module.totalDependencies - left) + "/" + this.Module.totalDependencies + ")");
         } else {
-          this.Module.setStatus('All downloads complete.');
+          this.Module.setStatus("All downloads complete.");
           this.pregameContainer.remove();
         }
       }
@@ -87,13 +91,13 @@ class LoveGame extends HTMLElement {
 
         window.onerror = (event) => {
           // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
-          this.Module.setStatus('Exception thrown, see JavaScript console');
+          this.Module.setStatus("Exception thrown, see JavaScript console");
           this.Module.setStatus = function(text) {
-            if (text) Module.printErr('[post-exception status] ' + text);
+            if (text) Module.printErr("[post-exception status] " + text);
           };
         };
 
-        this.Module.setStatus('Downloading...');
+        this.Module.setStatus("Downloading...");
         Love(this.Module);
       },
       err => {throw new Error("Unable to load necessary libraries", { cause: err })}
@@ -112,8 +116,8 @@ class LoveGame extends HTMLElement {
         });
         return;
       }
-      let script = document.createElement('script');
-      script.type = 'text/javascript';
+      let script = document.createElement("script");
+      script.type = "text/javascript";
       script.async = true;
       script.src = url;
 
