@@ -2,7 +2,6 @@ local Gamestate = require 'vendor/gamestate'
 local Tween = require 'vendor/tween'
 local anim8 = require 'vendor/anim8'
 local sound = require 'vendor/TEsound'
-local Prompt = require 'prompt'
 local utils = require 'utils'
 local app = require 'app'
 local collision  = require 'hawk/collision'
@@ -147,7 +146,6 @@ function Door:switch(player)
       player.freeze = false
     end
     local options = {'Exit'}
-    self.prompt = Prompt.new(message, callback, options)
   end
 end
 
@@ -171,7 +169,6 @@ function Door:keypressed( button, player)
           player.freeze = false
         end
         local options = {'Exit'}
-        self.prompt = Prompt.new(message, callback, options)
       return end
     else return end
     end

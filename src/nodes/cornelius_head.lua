@@ -95,7 +95,7 @@ end
 function Cornelius:draw()
   self:animation():draw( image, self.position.x - self.offset.x, self.position.y - self.offset.y )
   fonts.set( 'big' )
-  love.graphics.print( self.score, window.width - 40, window.height - 40, 0, 0.5 )
+  love.graphics.printf( self.score, window.width - 70, 20, 100, "right", 0, 0.5, 0.5)
   fonts.revert()
 end
 

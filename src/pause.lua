@@ -24,7 +24,7 @@ function state:enter(previous, player)
   camera:setPosition(0, 0)
   self.option = 0
 
-  if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') and previous ~= Gamestate.get('overworld') then
+  if previous ~= Gamestate.get('options') and previous ~= Gamestate.get('instructions') then
     self.previous = previous
     self.player = player
   end
@@ -43,10 +43,10 @@ end
 
 function state:keypressed( button )
   if button == "UP" then
-    self.option = (self.option - 1) % 5
+    self.option = (self.option - 1) % 3
     sound.playSfx( 'click' )
   elseif button == "DOWN" then
-    self.option = (self.option + 1) % 5
+    self.option = (self.option + 1) % 3
     sound.playSfx( 'click' )
   end
 
@@ -77,16 +77,6 @@ function state:keypressed( button )
     elseif self.option == 1 then
       Gamestate.switch('options', self.previous)
     elseif self.option == 2 then
-      if app.config.hardcore then
-        sound.playSfx( 'dbl_beep' )
-      else
-        Gamestate.switch('overworld')
-      end
-    elseif self.option == 3 then
-      Player.kill()
-      self.previous:quit()
-      Gamestate.switch('start')
-    elseif self.option == 4 then
       love.graphics.clear(0,0,0,1,true,true)
       love.event.push("quit")
     end
@@ -105,11 +95,13 @@ function state:draw()
   love.graphics.setColor( 0, 0, 0, 1 )
   love.graphics.print('Controls', 198, 101)
   love.graphics.print('Options', 198, 131)
-  love.graphics.print('Quit to Map', 198, 161)
-  love.graphics.print('Quit to Menu', 198, 191)
   love.graphics.print('Quit Game', 198, 221)
   love.graphics.setColor( 1, 1, 1, 1 )
-  love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+  if self.option == 2 then
+    love.graphics.draw(self.arrow, 156, 96 + 30 * 4)
+  else
+    love.graphics.draw(self.arrow, 156, 96 + 30 * self.option)
+  end
   local back = controls:getKey("START") .. ": BACK TO GAME"
   local howto = controls:getKey("ATTACK") .. " OR " .. controls:getKey("JUMP") .. ": SELECT ITEM"
   love.graphics.print(back, 25, 25)

@@ -6,17 +6,12 @@ local window = require 'window'
 local sound = require 'vendor/TEsound'
 local game = require 'game'
 local character = require 'character'
-local Dialog = require 'dialog'
-local Prompt = require 'prompt'
-local Quest = require 'quest'
 local PlayerAttack = require 'playerAttack'
 local Statemachine = require 'hawk/statemachine'
 local Gamestate = require 'vendor/gamestate'
 local InputController = require 'inputcontroller'
 local app = require 'app'
 local camera = require 'camera'
-
-local Inventory = require('inventory')
 
 local Player = {}
 Player.__index = Player
@@ -58,7 +53,6 @@ function Player.new(collider)
   plyr.controlState = Statemachine.create({
     initial = 'normal',
     events = {
-      {name = 'inventory', from = 'normal', to = 'ignoreMovement'},
       {name = 'standard', from = 'ignoreMovement', to = 'normal'},
   }})
   plyr.controls = InputController.get()
@@ -80,7 +74,6 @@ function Player.new(collider)
   plyr.jumpDamage = 3
   plyr.punchDamage = 1
 
-  plyr.inventory = Inventory.new( plyr )
   plyr.currentArmor = {primary = 0, secondary = 0}
   plyr.defense = 0
   plyr.protection_per_armor = 5 -- Amount of protection for each piece of armor
@@ -112,7 +105,6 @@ function Player:refreshPlayer(collider)
       self.character.changed = false
       self.money = 0
       self:refillHealth()
-      self.inventory = Inventory.new( self )
       local gamesave = app.gamesaves:active()
       if gamesave then
         self:loadSaveData( gamesave )
@@ -262,12 +254,6 @@ function Player:selectWeapon(weapon)
   end
 end
 
--- Switches weapons. if there's nothing to switch to
--- this switches to default attack
--- @return true if this function captured the keypress
-function Player:switchWeapon()
-  self:selectWeapon(self.inventory:tryNextWeapon())
-end
 
 -- Set the current armor.
 -- @return nil
@@ -293,7 +279,6 @@ function Player:keypressed( button, map )
       --dequips
       if self.currently_held and self.currently_held.isWeapon then
         self.currently_held:deselect()
-        self.inventory.selectedWeaponIndex = self.inventory.selectedWeaponIndex - 1
       end
       self.doBasicAttack = true
       return true
@@ -302,11 +287,9 @@ function Player:keypressed( button, map )
       --cycle to next weapon
       if held then
         self.doBasicAttack = false
-        self:switchWeapon()
         return true
       end
     else
-      self.inventory:open()
       return true
     end
   elseif button == 'ATTACK' then
@@ -374,7 +357,6 @@ end
 -- @return nil
 function Player:update(dt, map)
   if not map then return end -- because something is horribly wrong that shouldn't ever happen
-  self.inventory:update( dt )
   self.attack_box:update()
 
   if self.freeze then
@@ -681,39 +663,10 @@ end
 function Player:die()
   self.health = 0
   self.dead = true
-  self.inventory:close()
   self.character.state = 'dead'
   if self.isClimbing then
     self.isClimbing:release(player)
   end
-  if Dialog.currentDialog then
-    Dialog.currentDialog = nil
-    Prompt.currentPrompt = nil
-  end
-end
-
-function Player:bossKilled(cornelius)
-  self.dancing = true
-  -- Disable movement
-  self.controlState:inventory()
-  self.character.state = 'dance'
-  
-  local dancetime = 6
-  
-  if not cornelius then
-    dancetime = 2
-    sound.stopMusic()
-    sound.playSfx( 'boss-defeated' )
-    Timer.add(6, function()
-      sound.playMusic(self.currentLevel.music)
-    end)
-  end
-  
-  Timer.add(dancetime, function()
-    self.dancing = false
-    self.controlState:standard()
-  end)
-  
 end
 
 function Player:addEffectsTimer(timer)
@@ -1072,7 +1025,7 @@ end
 function Player:attack(map)
   if self.prevAttackPressed or self.dead or self.isClimbing then return end
 
-  local currentWeapon = self.inventory:currentWeapon()
+  local currentWeapon = nil
   local function punch()
       -- punch/kick
     self.attack_box:activate(self.punchDamage)
@@ -1218,8 +1171,6 @@ function Player:saveData( gamesave )
   -- Save item changes in current level
   gamesave:set(self.currentLevel.name .. '_added', self.currentLevel.added_nodes)
   gamesave:set(self.currentLevel.name .. '_removed', self.currentLevel.removed_nodes)
-  -- Save the inventory
-  self.inventory:save( gamesave )
   -- Save our money
   gamesave:set( 'coins', self.money )
 
@@ -1235,8 +1186,6 @@ end
 -- Loads necessary player data from the gamesave object
 -- @param gamesave the gamesave object to load data from
 function Player:loadSaveData( gamesave )
-  -- First, load the inventory
-  self.inventory:loadSaveData( gamesave )
   -- Then load the money
   local coins = gamesave:get( 'coins' )
   if coins ~= nil then
@@ -1247,8 +1196,6 @@ function Player:loadSaveData( gamesave )
   if affection then
     self.affection = json.decode( affection )
   end
-
-  Quest:load(self)
 
   -- Then load the visited levels
   local visited = gamesave:get( 'visitedLevels' )

@@ -11,7 +11,6 @@ local camera = require 'camera'
 local window = require 'window'
 local sound = require 'vendor/TEsound'
 local transition = require 'transition'
-local HUD = require 'hud'
 local utils = require 'utils'
 local music = {}
 
@@ -376,8 +375,6 @@ function Level:enter(previous, door, position)
  
   sound.playMusic( self.music )
 
-  self.hud = HUD.new(self)
-
   if door and self.doors[door] then
     self.player.position = {
       x = self.doors[ door ].x + self.doors[ door ].node.width / 2 - self.player.character.bbox.width / 2,
@@ -452,10 +449,6 @@ function Level:update(dt)
     self.player:update(dt, self.map)
   end
 
-  if self.hud then
-    self.hud:update(dt)
-  end
-
   -- falling off the bottom of the map
   if self.player.position.y - self.player.height > self.map.height * self.map.tileheight then
     self.player:die()
@@ -466,9 +459,6 @@ function Level:update(dt)
     sound.stopMusic()
     sound.playSfx( 'death' )
     local gamesave = app.gamesaves:active()
-    if app.config.hardcore then
-      self.player.inventory:dropAllItems()
-    end
     self.player:saveData( gamesave )
     self.over = true
     self.respawn = Timer.add(3, function()
@@ -575,10 +565,6 @@ function Level:draw()
     self.scene:draw(self.player)
   end
 
-  
-  self.player.inventory:draw(self.player.position)
-  self.hud:draw( self.player )
-
   if self.state == 'idle' then
     self.transition:draw(camera.x, camera.y, camera:getWidth(), camera:getHeight())
   end
@@ -681,11 +667,6 @@ end
 
 function Level:keypressed( button )
   if self.state ~= 'active' then
-    return true
-  end
-
-  if self.player.inventory.visible then
-    self.player.inventory:keypressed( button )
     return true
   end
 

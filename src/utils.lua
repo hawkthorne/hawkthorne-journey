@@ -124,12 +124,6 @@ end
 ------------------------------------------------------------
 --   TABLE UTILITIES
 ------------------------------------------------------------
-local inspector = require('vendor/inspect')
-
--- pretty print objects
-function utils.inspect(obj,n)
-  print(inspector(obj,n))
-end
 
 -- deepcopies an object
 function utils.deepcopy(object)

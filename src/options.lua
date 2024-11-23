@@ -1,4 +1,3 @@
-local app = require 'app'
 local store = require 'hawk/store'
 local utils = require 'utils'
 
@@ -7,7 +6,6 @@ local camera = require 'camera'
 local sound = require 'vendor/TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
-local Player = require 'player'
 local window = require 'window'
 local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
@@ -20,19 +18,10 @@ function state:onSelectCallback()
     local options = {
       ['FULLSCREEN'] = 'updateFullscreen',
       ['SHOW FPS'] = 'updateFpsSetting',
-      ['HARDCORE MODE'] = 'updateHardcore',
-      ['TUTORIAL MODE'] = 'updateTutorial',
       ['SFX VOLUME'] = true,
       ['MUSIC VOLUME'] = true,
     }
     local menus = {
-      ['COSTUME'] = 'change_costume',
-      ['SAVE GAME'] = 'save_game',
-      ['GAME'] = 'game_menu',
-      ['RESET SETTINGS'] = 'reset_settings',
-      ['RESET SAVES'] = 'reset_saves',
-      ['RESET SETTINGS/SAVES'] = 'reset_menu',
-      ['CANCEL RESET'] = 'game_menu',
       ['AUDIO'] = 'audio_menu',
       ['VIDEO'] = 'video_menu',
       ['BACK TO OPTIONS'] = 'options_menu',
@@ -60,23 +49,9 @@ local OPTIONS = {
   { name = 'MUSIC VOLUME',            range  = { 0, 10, 10 }  },
   { name = 'SFX VOLUME',              range  = { 0, 10, 10 }  },
   { name = 'SHOW FPS',                bool   = false          },
-  { name = 'HARDCORE MODE',           bool   = false          },
-  { name = 'TUTORIAL MODE',           bool   = true           },
 }
 
 local MENU = {
-  {name = 'COSTUME'},
-  {name = 'GAME', page = {
-    {name = 'SAVE GAME'},
-    {name = 'HARDCORE MODE'},
-    {name = 'TUTORIAL MODE'},
-    {name = 'RESET SETTINGS/SAVES', page = {
-      {name = 'RESET SETTINGS'},
-      {name = 'RESET SAVES'},
-      {name = 'CANCEL RESET'},
-    }},
-    {name = 'BACK TO OPTIONS'},
-  }},
   {name = 'AUDIO', page = {
     {name = 'MUSIC VOLUME'},
     {name = 'SFX VOLUME'},
@@ -122,8 +97,6 @@ function state:init()
   self:updateFullscreen()
   self:updateSettings()
   self:updateFpsSetting()
-  self:updateHardcore()
-  self:updateTutorial()
 end
 
 function state.switchMenu(menu)
@@ -144,27 +117,15 @@ function state:options_menu()
   menu.selection = 0
 end
 
-function state:game_menu()
-  menu.options = self.switchMenu(self.pages[2].page)
-  self.page = 'gamepage'
-  menu.selection = 0
-end
-
 function state:audio_menu()
-  menu.options = self.switchMenu(self.pages[3].page)
+  menu.options = self.switchMenu(self.pages[1].page)
   self.page = 'audiopage'
   menu.selection = 0
 end
 
 function state:video_menu()
-  menu.options = self.switchMenu(self.pages[4].page)
+  menu.options = self.switchMenu(self.pages[2].page)
   self.page = 'videopage'
-  menu.selection = 0
-end
-
-function state:reset_menu()
-  menu.options = self.switchMenu(self.pages[2].page[5].page)
-  self.page = 'resetpage'
   menu.selection = 0
 end
 
@@ -175,28 +136,6 @@ function state:main_menu()
   else
     Gamestate.switch(self.previous)
   end
-end
-
-function state:change_costume()
-  if not self.target then sound.playSfx('dbl_beep') return end
-  Gamestate.switch('costumeselect', self.target)
-end
-
-function state:save_game()
-  if not self.target then sound.playSfx('dbl_beep') return end
-  local gamesave = app.gamesaves:active()
-  local player = Player.factory()
-  gamesave:set('savepoint', {level=self.target.name})
-  player:saveData(gamesave)
-  gamesave:flush()
-end
-
-function state:updateHardcore()
-  app.config.hardcore = self.option_map['HARDCORE MODE'].bool
-end
-
-function state:updateTutorial()
-  app.config.tutorial = self.option_map['TUTORIAL MODE'].bool
 end
 
 function state:update(dt)
@@ -241,41 +180,6 @@ end
 function state:updateSettings()
   sound.volume('music', self.option_map['MUSIC VOLUME'].range[3] / 10)
   sound.volume('sfx', self.option_map['SFX VOLUME'].range[3] / 10)
-end
-
-function state.reset_settings(self)
-  -- Reset all settings
-  self.option_map = {}
-  self.options = utils.deepcopy(OPTIONS)
-
-  for i,o in pairs(self.options) do
-    if o.name then
-      self.option_map[o.name] = self.options[i]
-    end
-  end
-
-  self:updateFullscreen()
-  self:updateSettings()
-  self:updateFpsSetting()
-  self:updateHardcore()
-  self:updateTutorial()
-
-  db:set('options', self.options)
-  db:flush()
-
-  sound.playSfx('beep')
-  love.timer.sleep(0.5)
-  Gamestate.switch('welcome')
-end
-
-function state:reset_saves()
-  -- Reset saves
-  for slotNumber=1, 3 do
-    app.gamesaves:delete( slotNumber )
-  end
-  sound.playSfx('beep')
-  love.timer.sleep(0.5)
-  Gamestate.switch('welcome')
 end
 
 function state:keypressed( button )
