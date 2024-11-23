@@ -8,7 +8,9 @@ with open('CONTRIBUTORS', 'r') as f:
 
 with open('CONTRIBUTORS', 'w') as f:
     for name in sorted(names):
-        f.write(name + "\n")
+        name = name.strip()
+        if name != "":
+            f.write(name + "\n")
 
 template = jinja2.Template(open('templates/credits.lua').read())
 print(template.render(contributors=[l.strip().replace("'", "\\'") for l in open('CONTRIBUTORS')]))

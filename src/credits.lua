@@ -44,7 +44,6 @@ end
 
 state.credits = {
   app.i18n('credits'), '',
-  '',
   '6sutters',
   '8bitgentleman',
   'a8252359',
@@ -250,6 +249,7 @@ state.credits = {
   'marbly',
   'mario3d',
   'masonnixon',
+  'mateusrodcosta',
   'matthewbauer',
   'matthewdelacruz15',
   'max100101',
