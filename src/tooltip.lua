@@ -87,7 +87,7 @@ function Tooltip:draw(x, y, selectedItem, parent)
     tastytext = fonts.tasty.new(itemStats, textX, textY + (descriptionWrap * lineHeight), textWidth, love.graphics.getFont(), fonts.colors, lineHeight)
     statWrap = tastytext.lines
     tastytext:draw()
-    drawSeparator(textX, textY + (descriptionWrap + statWrap) * lineHeight, textWidth)
+    drawSeparator(textX, textY + ((descriptionWrap + statWrap) * lineHeight), textWidth)
   end
   
   -- Lastly, insert our item information after everything else

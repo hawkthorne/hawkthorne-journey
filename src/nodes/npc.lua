@@ -77,8 +77,10 @@ function Menu:keypressed( button, player )
     elseif item.text == 'inventory' then
       if self.host.props.inventory then
         self:instahide()
-        self.host.props.inventory(self.host, player)
-        self.dialog = Dialog.new(self.responses[item.text], function() self:show() end)
+        self.dialog = Dialog.new(self.responses[item.text], function()
+          self.host.props.inventory(self.host, player)
+          self:show()
+        end)
       else
         self:hide()
         self.dialog = Dialog.new(self.host.noinventory, function() self:show() end)

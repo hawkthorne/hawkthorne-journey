@@ -234,6 +234,7 @@ function TastyText:_getMetaData()
 	local line_lengths = {}
 	local line_widths  = {}
 	local length       = 0
+	local lines        = 1
 	for i = 1,#self.chunk_array do
 		local chunk = self.chunk_array[i]
 		if chunk.length then
@@ -244,7 +245,12 @@ function TastyText:_getMetaData()
 				(line_widths[chunk.line] or 0) + chunk.width
 		end
 	end
-	return #line_lengths,length,line_lengths,line_widths
+	-- NOTE: This is a love.js workaround.
+	-- Returning #line_lengths always results in 0 in love.js for some reason.
+	for k,v in pairs(line_lengths) do
+		lines = lines + 1
+	end
+	return lines,length,line_lengths,line_widths
 end
 
 function TastyText:_parseString(str)
