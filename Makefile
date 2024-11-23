@@ -139,7 +139,7 @@ build/hawkthorne-linux.AppImage: build/hawkthorne.love bin/love.AppImage bin/app
 	mv squashfs-root build/linux/
 	cat build/linux/squashfs-root/bin/love build/hawkthorne.love > build/linux/squashfs-root/bin/hawkthorne
 	chmod a+x build/linux/squashfs-root/bin/hawkthorne
-	cp templates/linux/* build/linux/squashfs-root/
+	cp templates/linux/{AppRun,hawkthorne.png,love.desktop} build/linux/squashfs-root/
 	rm build/linux/squashfs-root/bin/love build/linux/squashfs-root/love.svg
 	./bin/appimagetool.AppImage build/linux/squashfs-root build/hawkthorne-linux.AppImage
 	chmod a+x build/hawkthorne-linux.AppImage
