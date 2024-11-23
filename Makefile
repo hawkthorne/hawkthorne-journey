@@ -31,6 +31,12 @@ love.js: build/hawkthorne.love
 	mkdir -p build/web
 	npm install
 	npx love.js -t "Journey to the Center of Hawkthorne" -m 77594624 -c build/hawkthorne.love build/web
+	######## Temporary LÖVE v11.5 until new version is published on NPM ########
+	$(WGET) https://github.com/Davidobot/love.js/raw/refs/heads/master/src/compat/love.js
+	$(WGET) https://github.com/Davidobot/love.js/raw/refs/heads/master/src/compat/love.wasm
+	mv love.js build/web/
+	mv love.wasm build/web/
+	################################### END ####################################
 	cp templates/web/* build/web/
 
 build/hawkthorne.love: $(TILEMAPS) src/*
