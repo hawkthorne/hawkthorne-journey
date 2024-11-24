@@ -235,6 +235,7 @@ state.credits = {
   'lavenenosa',
   'lc514',
   'letharg',
+  'liberodark',
   'lifedreamcreate',
   'liwaldo',
   'lmol99',
