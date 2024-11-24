@@ -1,5 +1,5 @@
 function love.conf(t)
-  t.title             = "Journey to the Center of Hawkthorne"
+  t.window.title      = "Journey to the Center of Hawkthorne"
   t.version           = "11.5"
   t.identity          = "hawkthorne"
   t.window.width      = 1056
