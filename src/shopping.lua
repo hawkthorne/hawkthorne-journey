@@ -467,7 +467,7 @@ function state:draw()
 
         if itemInfo.draw then
           itemInfo.draw(xcorner + 20 + 32*visI, ycorner + 23, self.player)
-        elseif itemInfo.item.draw then
+        elseif itemInfo.item and itemInfo.item.draw then
           itemInfo.item:draw({x=xcorner + 20 + 32*visI, y =  ycorner + 23 }, nil, true)
         end
 
@@ -492,7 +492,7 @@ function state:draw()
 
     if itemInfo.draw then
        itemInfo.draw(xcorner + 20, ycorner + 23, self.player)
-    elseif itemInfo.item.draw then
+    elseif itemInfo.item and itemInfo.item.draw then
        itemInfo.item:draw({x=xcorner + 20, y =  ycorner + 23 }, nil, true)
     end
 
