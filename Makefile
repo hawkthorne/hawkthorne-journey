@@ -1,4 +1,4 @@
-.PHONY: clean contributors validate run maps lint love love.js
+.PHONY: clean contributors validate run maps lint build/hawkthorne.love love love.js
 
 UNAME := $(shell uname)
 TILEMAPS := $(patsubst %.tmx,%.lua,$(wildcard src/maps/*.tmx))
@@ -41,6 +41,7 @@ love.js: build/hawkthorne.love
 
 build/hawkthorne.love: $(TILEMAPS) src/*
 	mkdir -p build
+	rm -f build/hawkthorne.love
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . \
 		-x ".*" \
 		-x "*.DS_Store" \
