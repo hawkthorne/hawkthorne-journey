@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="25" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="25" tilewidth="24" tileheight="24" nextobjectid="30">
  <properties>
   <property name="offset" value="11"/>
   <property name="overworldName" value="valley_1"/>
@@ -96,7 +96,7 @@
  </layer>
  <layer name="grass/roofs" width="100" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1UsKwjAUQNGQPTkK2YiLcOY8m/I39DdXx7oV9Ymt1phKAoaIuQcu2ppKitKnFAAAAGoxkabSTJpLi7Lbqd5SWklraSNty24H+BkXpdz5tds5AI2dtC+9CTwcpVPC+pEOv8d3HJrXoX7mH/ed8z83WrlPa9ps5LpuY357ZDK4/8dcW+n95GD/9L5qEHh+Rj83Q9d3MwnfAwBALimzzZ9PNmLe9c0zw4wDgDdX1KY6XQ==
+   eJzt10kKgzAARuHgnXqZHqI7916qg0ttu1fX7VVaf3FsUFSqRPB98HAKIaAoGgMAAIC9OKuLuqqbCt0uZ/ciFau7eqin2+UAm/E1Jvj8VpwDUElU6noRaLzUe8b4k9e/j2Vk1fbotdnHQ+fs62Njps7Vl8+9x0oO5TMW1LleD9D1z/tzbOzUuQAAWNvcfwP7+8T3DACWkQP9BTbr
   </data>
  </layer>
  <layer name="collision" width="100" height="25">
@@ -104,9 +104,9 @@
    eJzt10EOwiAQheEm3n9hUvUQJlXPoN6rs+nCSVUoQzoD/5fMrguYBwWGAQAAAFh3PXwW0Bq9xr8V4iFLO5566WksUbxW+vUs6NlePbfOPso68jw29GXrHpzkm1vifeud+F2Nuks9Gt5rSw7RtPAPjHLe5BplHiepY2bB1pLDVrn51aiz1CVxDpZvd8u7ZWkOHuXk8su/3uq3Ssk7pcUcNKtcauohB81jLj3moO19vnH/AXyYATkQln4=
   </data>
  </layer>
- <objectgroup color="#000000" name="nodes" width="100" height="25">
-  <object name="main" type="door" x="48" y="384" width="48" height="48"/>
-  <object type="door" x="0" y="312" width="24" height="120">
+ <objectgroup color="#000000" name="nodes">
+  <object id="1" name="main" type="door" x="48" y="384" width="48" height="48"/>
+  <object id="2" type="door" x="0" y="312" width="24" height="120">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-2"/>
@@ -114,7 +114,7 @@
     <property name="to" value="next"/>
    </properties>
   </object>
-  <object type="door" x="2376" y="48" width="24" height="336">
+  <object id="3" type="door" x="2376" y="48" width="24" height="336">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-3"/>
@@ -122,31 +122,31 @@
     <property name="to" value="main"/>
    </properties>
   </object>
-  <object name="mayorjuan" type="npc" x="264" y="384" width="48" height="48"/>
-  <object name="next" type="door" x="2304" y="336" width="48" height="48"/>
-  <object type="enemy" x="1600" y="272" width="14" height="25">
+  <object id="4" name="mayorjuan" type="npc" x="264" y="384" width="48" height="48"/>
+  <object id="5" name="next" type="door" x="2304" y="336" width="48" height="48"/>
+  <object id="6" type="enemy" x="1600" y="272" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="2079" y="295" width="14" height="25">
+  <object id="7" type="enemy" x="2079" y="295" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object type="enemy" x="424" y="368" width="14" height="25">
+  <object id="8" type="enemy" x="424" y="368" width="14" height="25">
    <properties>
     <property name="enemytype" value="pinata"/>
    </properties>
   </object>
-  <object name="blacksmithjuan" type="npc" x="1200" y="288" width="48" height="48"/>
-  <object name="juanita" type="npc" x="1584" y="480" width="48" height="48"/>
-  <object name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
-  <object name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
-  <object name="bone" type="material" x="744" y="408" width="24" height="24"/>
-  <object type="climbable" x="1421" y="334" width="12" height="192"/>
-  <object name="bone" type="material" x="1680" y="504" width="24" height="24"/>
-  <object type="door" x="0" y="96" width="24" height="192">
+  <object id="9" name="blacksmithjuan" type="npc" x="1200" y="288" width="48" height="48"/>
+  <object id="10" name="juanita" type="npc" x="1584" y="480" width="48" height="48"/>
+  <object id="11" name="telescopejuan" type="npc" x="1152" y="480" width="48" height="48"/>
+  <object id="12" name="juan1" type="npc" x="1656" y="288" width="48" height="48"/>
+  <object id="13" name="bone" type="material" x="744" y="408" width="24" height="24"/>
+  <object id="14" type="climbable" x="1421" y="334" width="12" height="192"/>
+  <object id="15" name="bone" type="material" x="1680" y="504" width="24" height="24"/>
+  <object id="16" type="door" x="0" y="96" width="24" height="192">
    <properties>
     <property name="instant" value="true"/>
     <property name="level" value="valley-2"/>
@@ -154,27 +154,27 @@
     <property name="to" value="next-upper"/>
    </properties>
   </object>
-  <object name="main-upper" type="door" x="24" y="240" width="48" height="48"/>
-  <object name="bone" type="material" x="96" y="259" width="24" height="24"/>
-  <object type="info" x="984" y="288" width="24" height="48">
+  <object id="17" name="main-upper" type="door" x="24" y="240" width="48" height="48"/>
+  <object id="18" name="bone" type="material" x="96" y="259" width="24" height="24"/>
+  <object id="19" type="info" x="984" y="288" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object type="info" x="1800" y="288" width="24" height="48">
+  <object id="20" type="info" x="1800" y="288" width="24" height="48">
    <properties>
     <property name="info" value="This door is locked."/>
    </properties>
   </object>
-  <object name="alcohol" type="consumable" x="360" y="408" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="1056" y="312" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="1176" y="312" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="1368" y="312" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="2112" y="360" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="1368" y="504" width="24" height="24"/>
-  <object name="alcohol" type="consumable" x="1008" y="504" width="24" height="24"/>
-  <object type="cauldron" x="1224" y="504" width="24" height="24"/>
-  <object name="farm" type="door" x="1560" y="288" width="24" height="48">
+  <object id="21" name="alcohol" type="consumable" x="360" y="408" width="24" height="24"/>
+  <object id="22" name="alcohol" type="consumable" x="1056" y="312" width="24" height="24"/>
+  <object id="23" name="alcohol" type="consumable" x="1176" y="312" width="24" height="24"/>
+  <object id="24" name="alcohol" type="consumable" x="1368" y="312" width="24" height="24"/>
+  <object id="25" name="alcohol" type="consumable" x="2112" y="360" width="24" height="24"/>
+  <object id="26" name="alcohol" type="consumable" x="1368" y="504" width="24" height="24"/>
+  <object id="27" name="alcohol" type="consumable" x="1008" y="504" width="24" height="24"/>
+  <object id="28" type="cauldron" x="1224" y="504" width="24" height="24"/>
+  <object id="29" name="farm" type="door" x="1560" y="288" width="24" height="48">
    <properties>
     <property name="level" value="valley-goat-farm"/>
     <property name="to" value="main"/>

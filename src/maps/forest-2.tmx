@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="24" tilewidth="24" tileheight="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="24" tilewidth="24" tileheight="24">
  <properties>
   <property name="blue" value="250"/>
   <property name="green" value="222"/>
@@ -57,6 +57,16 @@
    eJzt0rEJwDAMAEFN4z20WUYP6dIaLATy3QRffAQAwCwZ8XQ3MEuGrzjr+8lXnPb/KrtjGMNXVPAVFXwFAAAAAADsWN0BjOQrKviKCr66zwvbKAwv
   </data>
  </layer>
+ <layer name="tree fade" width="150" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIA0H8a0EkCyMjLOQueQdNIwAAAIAPsoMNOQQb7IoLPgsAAAAAAAAAYFb/CwrB
+  </data>
+ </layer>
+ <layer name="Copy of tree fade" width="150" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIA0H8a0EkCyMjLOQueQdNIwAAAIAPsoMNOQQb7IoLPgsAAAAAAAAAYFb/CwrB
+  </data>
+ </layer>
  <layer name="leaves3" width="150" height="24">
   <data encoding="base64" compression="zlib">
    eJzt2EEKgkAUgOGBXLTIpS08nUfpKB7Fo3SU3lDCZIalERHfB4+GyUWLn4eUEv+kKgbe1aTUH2LmvtMVa+SmdvE5zpSuWCP2VNIVnxb76mlX3q/YotxZcR7Ge12xRd5Z0VOXJ85dvht7qlM655n2Fc+e9teBRXVxPkY35X11/9ygK14RHfW5nbn/HMauij2mKxY1t6byzL3DH9NjV2101X73ZwIAAAAAAAAA/IQLzeQPKA==
@@ -82,12 +92,12 @@
    eJztmFEOgjAMhvFBY4jRhz1LeNJrcBSOwlE4CkfxKHYBDC6dS3FsA/4vaUhwrM360xazDPgmJztYjH5rQvjTfkL4BuFIVVcKuooGnX1FOSmnRvdKyR6hdaUsflCr0sGmCYm2QuuK86mgKxFDPWlHk9YSFzZNSPLC1Y+le5H2STG+tI0+uHtbhNFEJ11v5j137CHFh66G2D85DZXb8wq1o/rcimeNKfR8JdEEt17n/UTnd+yvyeoqBJcsq7XFjmMOg55a44ydtYaDqTWNYz2rqxs9d+2v3nVl62Fb7iMx+PH+dv/uNUdXZt5960oz9LB6NGjKPz51Zc4crnzZ+uY078j5Ook5b6RYN8xvibkzwd7BvPGN5b/tLmZMa0U6F20Z6MofKfajWEBXYAm4uWDP7xnwB75HAQAAFFT/72RF7EDApniSph5kz9iBAAAAAAAAsAPeP4dHoQ==
   </data>
  </layer>
- <layer name="collision" width="150" height="24">
+ <layer name="collision" width="150" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1wEKgzAMQNHe/1A7h8dwPYETFESatkusxvY/CAzmTFiyZoYAAAAAAAAAAMA1pl/Mmffjds0xMJZz/1PhsSYvtaKNb9D1c/1MvLiW3pT2Qo62L4DGfq5HQ6T2g3V3HGti9/yn9L2z4zGy1HMZc+9DaZdo95LHM8/yPxHw7OM8tJ4+M3qh7ZGld6O68/dhyVlbU67WUu1vnSuP52Lr61vdQ7qf9Lom71vn6g7MlZyHudJjruQ8zJUecyXn6XWuFmUL3Kk=
   </data>
  </layer>
- <objectgroup name="nodes" width="150" height="24">
+ <objectgroup name="nodes">
   <object name="main" type="door" x="36" y="432" width="24" height="49"/>
   <object name="leaf" type="material" x="1320" y="287" width="24" height="24"/>
   <object name="leaf" type="material" x="2184" y="238" width="24" height="24"/>
