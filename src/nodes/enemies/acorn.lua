@@ -43,19 +43,25 @@ return {
     enemy.direction = math.random(2) == 1 and 'left' or 'right'
     enemy.maxx = enemy.position.x + 24
     enemy.minx = enemy.position.x - 24
+    if enemy.continousRage then
+      enemy.state = 'attack'
+      enemy.jumpkill = false
+    end
   end,
 
   attack = function(enemy)
     enemy.state = 'attack'
     enemy.jumpkill = false
-    Timer.add(5, function() 
-      if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack' then
-        enemy.state = 'default'
-        enemy.maxx = enemy.position.x + 24
-        enemy.minx = enemy.position.x - 24
-        enemy.jumpkill = true
-      end
-    end)
+    if not enemy.continousRage then
+      Timer.add(5, function() 
+        if enemy.state ~= 'dying' and enemy.state ~= 'dyingattack'  then
+          enemy.state = 'default'
+          enemy.maxx = enemy.position.x + 24
+          enemy.minx = enemy.position.x - 24
+          enemy.jumpkill = true
+        end
+      end)
+    end
   end,
 
   die = function(enemy)
