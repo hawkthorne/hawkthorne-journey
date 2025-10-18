@@ -46,7 +46,9 @@ Note: [the deprecated sprite/sound/character spreadsheet](https://docs.google.co
    Comment on the issue so that we know you are working on it.
 2. Fork the repo. Please also create a separate branch
 
+   ```bash
     $ git checkout -b my-cool-feature
+    ```
 
    We don't accept pull requests from master branches.
 3. Make sure the game runs with your change. See the README for details.
